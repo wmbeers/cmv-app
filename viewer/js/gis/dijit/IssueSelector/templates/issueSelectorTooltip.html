@@ -1,0 +1,47 @@
+<div class='slrtootip'>
+	<div class='tooltipContainer dijitTooltipContainer'>	
+        <span id='slrTTClose' class="slrTTClose" data-dojo-attach-event="onClick" data-dojo-attach-point="slrTTCloseNode" data-dojo-attach-event="onClick:closeSLRTooltip"></span>
+		<label class="slrTooltiptitle h4">Scenario Selector</label>
+		<hr id='tooltipHR'>
+		<b class="h5">To view a SLR scenario, please choose one of each of the following:</b>
+		<div class="h5 slrTooltipContentListTitle" >		
+		<b><i>	1 - First choose a source Agency (either USACE or NOAA) for projections</i> </b></div>
+		<ul  class='slrTooltipContentList'>
+			<li>USACE = U.S. Army Corp of Engineers sea level projections</li>
+			<li>NOAA =  National Oceanic and Atmospheric Administration sea level projections </li>
+		</ul>
+		<div class="h5 slrTooltipContentListTitle"> 
+			<b><i>	2 – Next choose the projection curve, <br>
+		 		C = curve, the higher the number the larger the SLR </i></b>
+		 </div>
+		<div class="slrTooltipContentListsubTitle"><u> USACE has three projections:</u></div>
+		<ul  class='slrTooltipContentList'>
+			<li>C1 = USACE Low (Same as NOAA Low)</li>
+			<li>C2 = USACE Intermediate (Same as NOAA Int Low)</li>
+			<li>C4 = USACE High</li>
+		</ul>
+		<div class="slrTooltipContentListsubTitle"><u>NOAA has four projections:</u></div>
+			<ul  class='slrTooltipContentList'>
+			<li>C1 = NOAA Low (Same as NOAA Low)</li>
+			<li>C2 = NOAA Intermediate Low (Same as NOAA Int)</li>
+			<li>C3 = NOAA Intermediate High</li>
+			<li>C5 = NOAA High</li>
+		</ul>
+		<div class="h5 slrTooltipContentListTitle"> 
+		<b><i>3 - Choose a time period</i></b></div>
+		<ul  class='slrTooltipContentList'>
+			<li>Currently four time periods – 2040, 2060, 2080, 2100</li>
+		</ul>
+		<!-- <div class="h5 slrTooltipContentListTitle"> 
+		<b><i> 4 - Choose a Tidal Datum</i></b></div>
+		<ul  class='slrTooltipContentList'>
+			<li>MSL – Mean Sea Level </li>
+			<li>MHHW – Mean Higher High Water</li>
+		</ul> -->
+		<div class="h5 slrTooltipContentListTitle"> 
+		<b><i> Now click “Show Scenario” </i></b></div>
+		<a href="images/SLR_curves.PNG" target="_blank">  
+		<img id="imgSLRCurves" data-dojo-attach-point="slrcurvesimgNode"  src="images/SLR_curves.PNG" class="img-responsive" alt="">		
+		</a>
+	</div>
+</div>

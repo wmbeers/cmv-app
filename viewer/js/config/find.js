@@ -8,8 +8,8 @@ define([
         zoomExtentFactor: 2,
         queries: [
             {
-                description: i18n.find.louisvillePubSafety,
-                url: 'https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/PublicSafety/PublicSafetyOperationalLayers/MapServer',
+                description: 'Projects (Previously Reviewed)',
+                url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Previously_Reviewed_Dev/MapServer',
                 layerIds: [1, 2, 3, 4, 5, 6, 7],
                 searchFields: ['FDNAME, PDNAME', 'NAME', 'RESNAME'],
                 minChars: 2,

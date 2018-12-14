@@ -90,41 +90,48 @@ define([
         // map options, passed to map constructor. see: https://developers.arcgis.com/javascript/jsapi/map-amd.html#map1
         mapOptions: {
             basemap: 'streets',
-            center: [-96.59179687497497, 39.09596293629694],
-            zoom: 5,
-            sliderStyle: 'small'
+            center: [-84.380741, 28.190003],
+            zoom: 6,
+            sliderStyle: 'small'/*,
+            titles: {
+                header: 'Environmental Screening Tool',
+                subHeader: 'Map Viewer',
+                pageTitle: 'EST Map Viewer'
+            }*/
         },
 
         //webMapId: 'ef9c7fbda731474d98647bebb4b33c20',  // High Cost Mortgage
         // webMapOptions: {},
 
-        // panes: {
-        // 	left: {
-        // 		splitter: true
-        // 	},
-        // 	right: {
-        // 		id: 'sidebarRight',
-        // 		placeAt: 'outer',
-        // 		region: 'right',
-        // 		splitter: true,
-        // 		collapsible: true
-        // 	},
-        // 	bottom: {
-        // 		id: 'sidebarBottom',
-        // 		placeAt: 'outer',
-        // 		splitter: true,
-        // 		collapsible: true,
-        // 		region: 'bottom'
-        // 	},
-        // 	top: {
-        // 		id: 'sidebarTop',
-        // 		placeAt: 'outer',
-        // 		collapsible: true,
-        // 		splitter: true,
-        // 		region: 'top'
-        // 	}
-        // },
-        // collapseButtonsPane: 'center', //center or outer
+        panes: {
+            left: {
+                splitter: true
+            },
+            /*right: {
+                  id: 'sidebarRight',
+                  placeAt: 'outer',
+                  region: 'right',
+                  splitter: true,
+                  collapsible: true
+            },*/
+            bottom: {
+                id: 'sidebarBottom',
+                placeAt: 'outer',
+                splitter: true,
+                collapsible: true,
+                region: 'bottom',
+                collapsed: true
+
+            }/*,
+         	top: {
+         		id: 'sidebarTop',
+         		placeAt: 'outer',
+         		collapsible: true,
+         		splitter: true,
+         		region: 'top'
+         	}*/
+        },
+        collapseButtonsPane: 'center', //center or outer
 
         // custom titles
         titles: {
@@ -166,19 +173,19 @@ define([
         // The 'options' object is passed as the layers options for constructor. Title will be used in the legend only. id's must be unique and have no spaces.
         // 3 'mode' options: MODE_SNAPSHOT = 0, MODE_ONDEMAND = 1, MODE_SELECTION = 2
         operationalLayers: [{
-            type: 'feature',
-            url: 'https://services.arcgis.com/doC3DvW5p9jGtDST/arcgis/rest/services/RestaurantInspections_April2018/FeatureServer/0/',
-            title: i18n.viewer.operationalLayers.restaurants,
+            type: 'dynamic',
+            url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Previously_Reviewed_Dev/MapServer',
+            title: 'Projects (Previously Reviewed)',
             options: {
-                id: 'restaurants',
+                id: 'projects',
                 opacity: 1.0,
                 visible: true,
                 outFields: ['*'],
-                featureReduction: has('phone') ? null : {
-                    type: 'cluster',
-                    clusterRadius: 10
-                },
-                mode: 0
+                //featureReduction: has('phone') ? null : {
+                //    type: 'cluster',
+                //    clusterRadius: 10
+                //},
+                mode: 1
             },
             editorLayerInfos: {
                 disableGeometryUpdate: false
@@ -186,158 +193,226 @@ define([
             legendLayerInfos: {
                 exclude: false,
                 layerInfo: {
-                    title: i18n.viewer.operationalLayers.restaurants
+                    title: 'Projects'
                 }
             },
             layerControlLayerInfos: {
-                layerGroup: 'Grouped Feature Layers',
+                //layerGroup: 'Project Data',
                 menu: [{
+                    label: 'Open Attribute Table',
+                    topic: 'openTable',
+                    iconClass: 'fa fa-table fa-fw'
+                }/*{
                     id: 'toggle-clustering-menu',
                     topic: 'toggleClustering',
                     label: 'Toggle Clustering',
                     iconClass: 'fas fa-fw fa-toggle-on'
-                }]
+                }*/]
             }
-        }, {
-            type: 'feature',
-            url: 'https://sampleserver6.arcgisonline.com/ArcGIS/rest/services/SF311/FeatureServer/0',
-            title: i18n.viewer.operationalLayers.sf311Incidents,
-            options: {
-                id: 'sf311Incidents',
-                opacity: 1.0,
-                visible: false,
-                outFields: ['req_type', 'req_date', 'req_time', 'address', 'district'],
-                mode: 0
-            },
-            layerControlLayerInfos: {
-                layerGroup: 'Grouped Feature Layers',
-                menu: [{
-                    topic: 'hello',
-                    label: 'Say Hello Custom',
-                    iconClass: 'far fa-fw fa-smile'
-                }]
-            }
-        }, {
-            type: 'dynamic',
-            url: 'https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/PublicSafety/PublicSafetyOperationalLayers/MapServer',
-            title: i18n.viewer.operationalLayers.louisvillePubSafety,
-            options: {
-                id: 'louisvillePubSafety',
-                opacity: 1.0,
-                visible: true,
-                imageParameters: buildImageParameters({
-                    // include only sub layer ids.
-                    // group layers omitted
-                    layerIds: [2, 4, 5, 8, 12, 21],
-                    layerOption: 'show'
-                })
-            },
-            identifyLayerInfos: {
-                layerIds: [2, 4, 5, 8, 12, 21]
-            },
-            layerControlLayerInfos: {
-                // group layers included to maintain folder hierarchy, not visibility.
-                layerIds: [0, 2, 4, 5, 8, 9, 10, 12, 21]
-            },
-            legendLayerInfos: {
-                layerInfo: {
-                    hideLayers: [21]
-                }
-            }
-        }, {
-            type: 'dynamic',
-            url: 'https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/MapServer',
-            title: i18n.viewer.operationalLayers.damageAssessment,
-            options: {
-                id: 'damageAssessment',
-                opacity: 1.0,
-                visible: true,
-                imageParameters: buildImageParameters()
-            },
-            identifyLayerInfos: {
-                returnFieldName: true
-            },
-            legendLayerInfos: {
-                exclude: true
-            },
-            layerControlLayerInfos: {
-                swipe: true,
-                metadataUrl: true,
-                expanded: true,
+        }
+        
 
-                //override the menu on this particular layer
-                subLayerMenu: [{
-                    topic: 'hello',
-                    label: 'Say Hello',
-                    iconClass: 'far fa-fw fa-smile'
-                }]
-            }
-        }, {
-            type: 'dynamic',
-            url: 'https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer',
-            title: i18n.viewer.operationalLayers.cities,
-            options: {
-                id: 'cities',
-                visible: false
-            }
-        /*
-        //examples of vector tile layers (beta in v3.15)
-        }, {
-            type: 'vectortile',
-            title: 'Light Gray Canvas Vector',
-            url: 'https//www.arcgis.com/sharing/rest/content/items/bdf1eec3fa79456c8c7c2bb62f86dade/resources/styles/root.json',
-            options: {
-                id: 'vectortile1',
-                opacity: 0.8,
-                visible: true
-            }
-        }, {
-           //  taken from this demo: https://github.com/ycabon/presentations/blob/gh-pages/2015-berlin-plenary/demos/3.15-vectortile/create-by-style-object.html
-            type: 'vectortile',
-            title: 'Custom Vector Style',
-            options: {
-                id: 'vectortile2',
-                opacity: 1.0,
-                visible: true,
-                'glyphs': 'https://www.arcgis.com/sharing/rest/content/items/00cd8e843bae49b3a040423e5d65416b/resources/fonts/{fontstack}/{range}.pbf',
-                'sprite': 'https://www.arcgis.com/sharing/rest/content/items/00cd8e843bae49b3a040423e5d65416b/resources/sprites/sprite',
-                'version': 8,
-                'sources': {
-                    'esri': {
-                        'url': 'https://basemapsdev.arcgis.com/arcgis/rest/services/World_Basemap/VectorTileServer',
-                        'type': 'vector'
-                    }
-                },
-                'layers': [{
-                    'id': 'background',
-                    'type': 'background',
-                    'paint': {
-                        'background-color': '#556688'
-                    }
-                }, {
-                    'id': 'Land',
-                    'type': 'fill',
-                    'source': 'esri',
-                    'source-layer': 'Land',
-                    'paint': {
-                        'fill-color': '#273344'
-                    },
-                }, {
-                    'id': 'roads',
-                    'type': 'line',
-                    'source': 'esri',
-                    'source-layer': 'Road',
-                    'layout': {
-                        'line-join': 'round'
-                    },
-                    'paint': {
-                        'line-width': 1,
-                        'line-color': '#131622'
-                    }
-                }]
-            }
-        */
-        }],
+            
+
+        //{
+        //        type: 'feature',
+        //        url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Draft_Projects/MapServer/8',
+        //        title: 'Project Alternative Lines',
+        //        options: {
+        //            id: 'projectsDraft',
+        //            opacity: 1.0,
+        //            visible: true,
+        //            outFields: ['*'],
+        //            //featureReduction: has('phone') ? null : {
+        //            //    type: 'cluster',
+        //            //    clusterRadius: 10
+        //            //},
+        //            mode: 1
+        //        },
+        //        editorLayerInfos: {
+        //            disableGeometryUpdate: false
+        //        },
+        //        legendLayerInfos: {
+        //            exclude: false,
+        //            layerInfo: {
+        //                title: 'Projects'
+        //            }
+        //        },
+        //        layerControlLayerInfos: {
+        //            //layerGroup: 'Project Data',
+        //            menu: [{
+        //                label: 'Open Attribute Table',
+        //                topic: 'openTable',
+        //                iconClass: 'fa fa-table fa-fw'
+        //            }/*{
+        //            id: 'toggle-clustering-menu',
+        //            topic: 'toggleClustering',
+        //            label: 'Toggle Clustering',
+        //            iconClass: 'fas fa-fw fa-toggle-on'
+        //        }*/]
+        //        }
+        //    },
+        //    {
+        //        type: 'dynamic',
+        //        url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Draft_Projects/MapServer/19',
+        //        title: 'Alternative Buffers',
+        //        options: {
+        //            id: 'altBuffers',
+        //            opacity: 1.0,
+        //            visible: true,
+        //            outFields: ['*'],
+        //            //featureReduction: has('phone') ? null : {
+        //            //    type: 'cluster',
+        //            //    clusterRadius: 10
+        //            //},
+        //            mode: 1
+        //        },
+        //        editorLayerInfos: {
+        //            disableGeometryUpdate: false
+        //        },
+        //        legendLayerInfos: {
+        //            exclude: false,
+        //            layerInfo: {
+        //                title: 'Projects'
+        //            }
+        //        },
+        //        layerControlLayerInfos: {
+        //            //layerGroup: 'Project Data',
+        //            expanded: true,
+        //            menu: [{
+        //                label: 'Open Attribute Table',
+        //                topic: 'openTable',
+        //                iconClass: 'fa fa-table fa-fw'
+        //            }/*{
+        //            id: 'toggle-clustering-menu',
+        //            topic: 'toggleClustering',
+        //            label: 'Toggle Clustering',
+        //            iconClass: 'fas fa-fw fa-toggle-on'
+        //        }*/]
+        //        }
+        //    }
+        //{
+        //    type: 'dynamic',
+        //    url: 'https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/PublicSafety/PublicSafetyOperationalLayers/MapServer',
+        //    title: i18n.viewer.operationalLayers.louisvillePubSafety,
+        //    options: {
+        //        id: 'louisvillePubSafety',
+        //        opacity: 1.0,
+        //        visible: true,
+        //        imageParameters: buildImageParameters({
+        //            // include only sub layer ids.
+        //            // group layers omitted
+        //            layerIds: [2, 4, 5, 8, 12, 21],
+        //            layerOption: 'show'
+        //        })
+        //    },
+        //    identifyLayerInfos: {
+        //        layerIds: [2, 4, 5, 8, 12, 21]
+        //    },
+        //    layerControlLayerInfos: {
+        //        // group layers included to maintain folder hierarchy, not visibility.
+        //        layerIds: [0, 2, 4, 5, 8, 9, 10, 12, 21]
+        //    },
+        //    legendLayerInfos: {
+        //        layerInfo: {
+        //            hideLayers: [21]
+        //        }
+        //    }
+        //}, {
+        //    type: 'dynamic',
+        //    url: 'https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/MapServer',
+        //    title: i18n.viewer.operationalLayers.damageAssessment,
+        //    options: {
+        //        id: 'damageAssessment',
+        //        opacity: 1.0,
+        //        visible: true,
+        //        imageParameters: buildImageParameters()
+        //    },
+        //    identifyLayerInfos: {
+        //        returnFieldName: true
+        //    },
+        //    legendLayerInfos: {
+        //        exclude: true
+        //    },
+        //    layerControlLayerInfos: {
+        //        swipe: true,
+        //        metadataUrl: true,
+        //        expanded: true,
+
+        //        //override the menu on this particular layer
+        //        subLayerMenu: [{
+        //            topic: 'hello',
+        //            label: 'Say Hello',
+        //            iconClass: 'far fa-fw fa-smile'
+        //        }]
+        //    }
+        //}, {
+        //    type: 'dynamic',
+        //    url: 'https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer',
+        //    title: i18n.viewer.operationalLayers.cities,
+        //    options: {
+        //        id: 'cities',
+        //        visible: false
+        //    }
+        //    /*
+        //    //examples of vector tile layers (beta in v3.15)
+        //    }, {
+        //        type: 'vectortile',
+        //        title: 'Light Gray Canvas Vector',
+        //        url: 'https//www.arcgis.com/sharing/rest/content/items/bdf1eec3fa79456c8c7c2bb62f86dade/resources/styles/root.json',
+        //        options: {
+        //            id: 'vectortile1',
+        //            opacity: 0.8,
+        //            visible: true
+        //        }
+        //    }, {
+        //       //  taken from this demo: https://github.com/ycabon/presentations/blob/gh-pages/2015-berlin-plenary/demos/3.15-vectortile/create-by-style-object.html
+        //        type: 'vectortile',
+        //        title: 'Custom Vector Style',
+        //        options: {
+        //            id: 'vectortile2',
+        //            opacity: 1.0,
+        //            visible: true,
+        //            'glyphs': 'https://www.arcgis.com/sharing/rest/content/items/00cd8e843bae49b3a040423e5d65416b/resources/fonts/{fontstack}/{range}.pbf',
+        //            'sprite': 'https://www.arcgis.com/sharing/rest/content/items/00cd8e843bae49b3a040423e5d65416b/resources/sprites/sprite',
+        //            'version': 8,
+        //            'sources': {
+        //                'esri': {
+        //                    'url': 'https://basemapsdev.arcgis.com/arcgis/rest/services/World_Basemap/VectorTileServer',
+        //                    'type': 'vector'
+        //                }
+        //            },
+        //            'layers': [{
+        //                'id': 'background',
+        //                'type': 'background',
+        //                'paint': {
+        //                    'background-color': '#556688'
+        //                }
+        //            }, {
+        //                'id': 'Land',
+        //                'type': 'fill',
+        //                'source': 'esri',
+        //                'source-layer': 'Land',
+        //                'paint': {
+        //                    'fill-color': '#273344'
+        //                },
+        //            }, {
+        //                'id': 'roads',
+        //                'type': 'line',
+        //                'source': 'esri',
+        //                'source-layer': 'Road',
+        //                'layout': {
+        //                    'line-join': 'round'
+        //                },
+        //                'paint': {
+        //                    'line-width': 1,
+        //                    'line-color': '#131622'
+        //                }
+        //            }]
+        //        }
+        //    */
+        //}
+        ],
         // set include:true to load. For titlePane type set position the the desired order in the sidebar
         widgets: {
             growler: {
@@ -468,39 +543,37 @@ define([
                 options: {
                     map: true,
                     extent: new Extent({
-                        xmin: -180,
-                        ymin: -85,
-                        xmax: 180,
-                        ymax: 85,
+                        xmin: -87.79,
+                        ymin: 24.38,
+                        xmax: -79.8,
+                        ymax: 31.1,
                         spatialReference: {
                             wkid: 4326
                         }
                     })
                 }
             },
-            legend: {
+            issueSelector: {
                 include: true,
-                id: 'legend',
+                id: 'issueSelector',
                 type: 'titlePane',
-                path: 'gis/dijit/Legend',
-                title: i18n.viewer.widgets.legend,
-                iconClass: 'far fa-fw fa-images',
-                open: false,
-                position: 1,
-                options: {
-                    map: true,
-                    legendLayerInfos: true
-                }
+                canFloat: true,
+                path: 'gis/dijit/IssueSelector',
+                title: 'Map Loader',
+                open: true,
+                position: 0,
+                options: 'config/issueSelector'
             },
             layerControl: {
                 include: true,
                 id: 'layerControl',
                 type: 'titlePane',
+                canFloat: true,
                 path: 'gis/dijit/LayerControl',
                 title: i18n.viewer.widgets.layerControl,
                 iconClass: 'fas fa-fw fa-th-list',
-                open: false,
-                position: 0,
+                open: true,
+                position: 1,
                 options: {
                     map: true,
                     layerControlLayerInfos: true,
@@ -527,6 +600,20 @@ define([
                     }
                 }
             },
+            legend: {
+                include: true,
+                id: 'legend',
+                type: 'titlePane',
+                path: 'gis/dijit/Legend',
+                title: i18n.viewer.widgets.legend,
+                iconClass: 'far fa-fw fa-images',
+                open: false,
+                position: 2,
+                options: {
+                    map: true,
+                    legendLayerInfos: true
+                }
+            },
             bookmarks: {
                 include: true,
                 id: 'bookmarks',
@@ -535,7 +622,7 @@ define([
                 title: i18n.viewer.widgets.bookmarks,
                 iconClass: 'fas fa-fw fa-bookmark',
                 open: false,
-                position: 2,
+                position: 3,
                 options: 'config/bookmarks'
             },
             find: {
@@ -547,7 +634,7 @@ define([
                 title: i18n.viewer.widgets.find,
                 iconClass: 'fas fa-fw fa-search',
                 open: false,
-                position: 3,
+                position: 4,
                 options: 'config/find'
             },
             draw: {
@@ -559,7 +646,7 @@ define([
                 title: i18n.viewer.widgets.draw,
                 iconClass: 'fas fa-fw fa-paint-brush',
                 open: false,
-                position: 4,
+                position: 5,
                 options: {
                     map: true,
                     mapClickMode: true
@@ -574,7 +661,7 @@ define([
                 title: i18n.viewer.widgets.measure,
                 iconClass: 'fas fa-fw fa-expand',
                 open: false,
-                position: 5,
+                position: 6,
                 options: {
                     map: true,
                     mapClickMode: true,
@@ -591,7 +678,7 @@ define([
                 title: i18n.viewer.widgets.print,
                 iconClass: 'fas fa-fw fa-print',
                 open: false,
-                position: 6,
+                position: 7,
                 options: {
                     map: true,
                     printTaskURL: 'https://utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task',
@@ -618,7 +705,7 @@ define([
                 title: i18n.viewer.widgets.directions,
                 iconClass: 'fas fa-fw fa-map-signs',
                 open: false,
-                position: 7,
+                position: 8,
                 options: {
                     map: true,
                     mapRightClickMenu: true,
@@ -632,7 +719,7 @@ define([
                     }
                 }
             },
-            editor: {
+            /*TODO editor: {
                 include: has('phone') ? false : true,
                 id: 'editor',
                 type: 'titlePane',
@@ -659,7 +746,9 @@ define([
                         }
                     }
                 }
-            },
+            },*/
+            /*
+             * TODO: need Google Maps API key,
             streetview: {
                 include: true,
                 id: 'streetview',
@@ -683,8 +772,8 @@ define([
                     mapClickMode: true,
                     mapRightClickMenu: true
                 }
-            },
-            locale: {
+            },*/
+            /*locale: {
                 include: true,
                 type: has('phone') ? 'titlePane' : 'domNode',
                 id: 'locale',
@@ -696,7 +785,7 @@ define([
                 options: {
                     style: has('phone') ? null : 'margin-left: 30px;'
                 }
-            },
+            },*/
             help: {
                 include: has('phone') ? false : true,
                 id: 'help',
@@ -714,5 +803,8 @@ define([
             }
 
         }
+    
     };
+
+
 });

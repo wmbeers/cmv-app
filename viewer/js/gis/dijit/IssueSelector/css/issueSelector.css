@@ -1,0 +1,501 @@
+/*tabcontainer is off*/
+
+#slrFilterTabContainer_tablist {
+    display: none
+}
+
+#IssueSelectDom span {
+    float: left;
+    width: 85px;
+    height: 100px;
+    text-align: center;
+    font-size: 0.85em;
+    padding-top: 5px;
+    border: 1px solid #ffffff;
+}
+
+    #IssueSelectDom span.active {
+        border: 1px solid rgb(0, 0, 0);
+        background-color: rgb(250, 250, 140);
+        font-weight: 600;
+    }
+    #IssueSelectDom span.enabled {
+        cursor: pointer
+    }
+
+    #IssueSelectDom span.disabled {
+        font-weight: lighter;
+        cursor: not-allowed;
+    }
+
+    #IssueSelectDom span.disabled img {
+        opacity: 0.5;
+    }
+
+/*tabcontainer is off*/
+.slr-help {
+    z-index: 50;
+    top: 0;
+    right: 10px;
+    position: absolute;
+    border-radius: 18px;
+}
+
+.slr-help:before {
+    color: #0192d4;
+    content: "\f05a";
+    font-family: FontAwesome;
+    font-size: large;
+}
+
+.slr_filterControl input:checked+label {
+    background-image: none;
+    outline: 0;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+    /*font-weight: bold;*/
+}
+
+.row-issueSelect-tidalSelect {
+    /*max-width: 280px;*/
+    padding-top: 4px;
+    display: inline-flex;
+}
+
+.rbhidden {
+    display: none;
+}
+
+
+/*overwrite dbootstrap*/
+
+.slr_filterControl .dbootstrap .dijitReadOnly *,
+.dbootstrap .dijitDisabled *,
+.dbootstrap .dijitReadOnly,
+.dbootstrap .dijitDisabled {
+    cursor: not-allowed;
+}
+
+.slr_filterControl .dijitInputContainer {
+    padding: 2px 3px 0px 10px !important;
+}
+
+
+/* overwrite dbootstrap*/
+
+.slr_filterControl {
+    /*width: 250px;*/
+    width: auto;
+    overflow: visible;
+    z-index: 9999px;
+}
+
+.SlrTabFilterContentPane {
+    text-align: center;
+}
+
+#lblMHHW {
+    font-size: .9em;
+}
+
+.slrApplybtn {
+    width: 98%;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-top: 5px;
+}
+
+.slrbtn {
+    border-radius: 0;
+    padding: 2px 10px;
+    font-weight: bold;
+}
+
+.RegionSelectDom {
+    width: auto;
+    padding-top: 3px;
+    min-width: 250px;
+    margin-bottom: auto;
+    /*max-width: 250px;*/
+}
+
+.RegionSelectDom .regionSelect {
+    min-width: 60px;
+    height: 24px;
+}
+
+.IssueSelectDom {
+    float: left;
+    width: auto;
+    padding-top: 3px;
+    padding-right: 8px;
+    min-width: 70px;
+    max-width: 250px;
+    margin-bottom: auto;
+}
+
+.RegionSelectDom .dijitComboBox .dijitButtonNode {
+    height: 22px;
+}
+
+.slr_filterControl .dijitComboBox .dijitButtonNode.dijitArrowButton {
+    padding-top: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2;
+}
+
+.IssueSelectDom .issueSelect {
+    height: 24px;
+    max-width: 80px;
+}
+
+.IssueSelectDom .dijitComboBox .dijitButtonNode {
+    height: 22px;
+}
+
+.slr_filterControl .projectionSelect {}
+
+.slr_filterControl .issueSelect {
+    border-radius: 0;
+    min-width: 50px;
+    width: 100%;
+    max-width: 100px;
+}
+
+.slr_filterControl .tidalSelect
+{
+    width: 100%;
+}
+
+.slr_filterControl .regionSelect {
+    border-radius: 0;
+    width: 50%;
+    max-width: 125px;
+    min-width: 80px;
+}
+
+.slr_filterControl .regionGlobal {
+    border-radius: 0;
+    height: 24px;
+    width: 48%;
+    font-weight: bold;
+    max-width: 100px;
+    min-width: 70px;
+    /*margin-right: 5;*/
+}
+
+.buttonActionBar {
+    1px solid rgba(102, 102, 102, 0.8)
+    /*max-width: 250px;*/
+}
+
+.buttonActionBar .success {
+    margin-bottom: auto;
+}
+
+#apply1_label,
+#apply2_label,
+#apply3_label {
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.slr_filterControl label {
+    /*font-weight: bolder;*/
+    font-size: inherit;
+    text-align: center;
+}
+
+.slr_filterControl #slrFilterForm {
+    /*width: inherit;*/
+}
+
+.dbootstrap .success .dijitButtonNode {
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#imgSLRCurvesDIV {
+    position: absolute;
+    bottom: 100px;
+    right: 100px;
+    width: 1000px;
+    height: 1000px;
+    z-index: 999999999999;
+}
+
+a:hover .dojoxEnlarge {
+    display: block !important;
+}
+
+.dojoxEnlarge {
+    background: url(images/enlarge.png) no-repeat 0 0;
+    top: -5px;
+    left: -5px;
+    margin: 0 !important;
+    width: 16px;
+    height: 16px;
+}
+
+.dojoxLoading {
+    background: #333 url(images/loading-dark.gif) no-repeat center center;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border: 2px solid #000;
+    height: 24px;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    padding: 6px;
+    width: 24px;
+}
+
+.slrTooltipContentListnumber {
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.slrTooltipContentListTitle {
+    text-align: left;
+    padding-top: 5px;
+    border-top: 1px solid #dfdede;
+}
+
+.slrTooltipContentListsubTitle {
+    text-align: left;
+}
+
+.slrTooltipContentList {
+    padding-left: 10px;
+    list-style-type: disc;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.slrTooltipContentListnumber li {
+    text-align: left;
+}
+
+.slrTooltipContentList li {
+    text-align: left;
+}
+
+.slr_filterControl #slrFilterControl_parent_pane {
+    min-height: 315px;
+}
+
+.slr_filterControl #slrFilterTabContainer {
+    width: auto !important;
+    padding-top: 2px;
+    overflow: visible;
+    height: auto !important;
+}
+
+.slr_filterControl .dijitTabPaneWrapper {
+    /*box-shadow: 2px 2px lightgray;*/
+    -moz-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+    width: auto;
+}
+
+.slr_filterControl .dijitTabChecked {
+    /*box-shadow: 1px 1px lightgray;*/
+    -moz-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+.dijitTab {
+    border: 1px solid lightgray;
+}
+
+.slr_filterControl .dijitLayoutContainer {
+    position: relative;
+    /*display: table-cell;*/
+    overflow: visible;
+}
+
+.slr_filterControl .dijitContentPane {
+    width: auto;
+    overflow: hidden;
+}
+
+.slr_filterControl .dijitContentPaneDock {
+    display: inline-flex;
+    align-items: flex-end;
+    white-space: nowrap width: auto !important;
+}
+
+.slr_filterControl .dijitContentPaneUnDock {
+    /*Undock*/
+    display: block;
+    width: auto !important;
+    max-width: 295px !important;
+}
+
+.slr_filterControl .btn-toolbar .projection {}
+
+.slr_filterControl .btn-group.projection {
+    float: none;
+    margin-left: auto;
+}
+
+.btn-toolbar .tidal {
+    width: auto;
+    margin-left: auto;
+    min-width: auto;
+}
+
+.slr_filterControl .btn-group.tidal {
+    float: none;
+    min-width: auto;
+}
+
+
+/*SLR tooltip*/
+
+.slrtootip {
+    background-color: white;
+}
+
+.slrTooltiptitle {
+    font-weight: 600;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+#tooltipHR {
+    margin-top: 0px;
+    margin-bottom: 8px;
+}
+
+.tooltipContainer {
+    text-align: center;
+}
+
+.slrTooltipContent {
+    margin-top: 4px;
+    text-indent: 1em;
+    text-align: left;
+}
+
+.slrTTClose {
+    z-index: 50;
+    top: 10;
+    right: 10px;
+    position: absolute;
+    border-radius: 18px;
+}
+
+.slrTTClose:before {
+    color: #000000;
+    content: "\f00d";
+    font-family: FontAwesome;
+    font-size: large;
+}
+
+
+/*END SLR tooltip*/
+
+
+/*media queries*/
+
+@media (max-width: 991px) {
+    .btn-toolbar .tidal {}
+    .AgencyLabel {}
+    .issueSelector {
+        /*Undock*/
+        display: block;
+        width: auto !important;
+        max-width: 210px;
+    }
+    .btn-responsive {
+        padding: 2px 4px;
+        font-size: 80%;
+        line-height: 1;
+        border-radius: 3px;
+    }
+    .RegionSelectDom {
+        min-width: 175px;
+    }
+    .RegionSelectDom .regionSelect {
+        width: 84px;
+        height: 18px;
+        font-size: 80%;
+    }
+    .RegionSelectDom .regionGlobal {
+        width: 50px;
+        height: 18px;
+        font-size: 80%;
+    }
+    .RegionSelectDom .dijitComboBox .dijitButtonNode {
+        height: 16px;
+    }
+    .slr_filterControl .dijitComboBox .dijitButtonNode.dijitArrowButton {
+        padding-top: 2px;
+    }
+    .IssueSelectDom {}
+    .IssueSelectDom .issueSelect {
+        height: 18px;
+        font-size: 80%;
+        max-width: 80px;
+    }
+    .IssueSelectDom .dijitComboBox .dijitButtonNode {
+        height: 16px;
+    }
+    .slr_filterControl .btn-group.projection {
+        min-width: 104px;
+        padding-bottom: 1px
+    }
+    .slr_filterControl .btn-group.tidal {
+        /*min-width: 122px;*/
+        padding-bottom: 1px
+    }
+    .buttonActionBar .success {
+        line-height: 1;
+        border-radius: 3px;
+        text-decoration-style: dashed;
+    }
+    #apply1_label,
+    #apply2_label,
+    #apply3_label {
+        font-size: 1.14em;
+        font-weight: bold;
+        margin-top: -2;
+    }
+    .buttonActionBar .success .dijitButtonNode {
+        padding-bottom: 15px;
+        height: 20px;
+        font-weight: bolder;
+        font-size: x-small;
+    }
+    .slr_filterControl .dijitTab {
+        font-size: 80%;
+        padding-top: 2px;
+    }
+    #slrFilterControl_parent_pane.dijitTitlePaneContentInner {
+        padding: 5px 6px 0px 6px;
+    }
+    .TidalSelectDom {
+        width: 100px;
+        padding-left: 8px;
+        right: 8px;
+    }
+    .IssueSelectDom {
+        padding-left: 16px;
+    }
+    .slr_filterControl .dijitInputContainer {
+        padding: 3px 2px !important;
+    }
+    #lblMHHW {
+        font-size: 0;
+    }
+    #lblMHHW:before {
+        content: "MHHW";
+        font-size: 14px;
+    }
+}

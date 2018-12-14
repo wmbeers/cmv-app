@@ -60,6 +60,13 @@ define([
 
             this.map = new Map(container, this.config.mapOptions);
 
+            //on(this.map, "layer-add-result", function (a,b,c,d,e,f,g) {
+            //    console.log('layer added from url ' + (a.layer ? a.layer.url : 'unknown') + ' to target ' + (a.target ? a.target.id : 'unknown'));
+            //    console.log('layer loaded = ' + a.layer.loaded);
+            //    console.log('map now contains ' + this._layerSize + ' layers');
+            //});
+
+
             // let some other mixins modify or add map items async
             var wait = this.inherited(arguments);
             if (wait) {
