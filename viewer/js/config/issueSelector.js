@@ -2,41 +2,42 @@ define({
     map: true,
     issueServices: [
         {
-            name: 'Aesthetic Effects'
+            title: 'Aesthetic Effects'
         },
         {
-            name: 'Air Quality'
+            title: 'Air Quality'
         },
         {
-            name: 'Coastal and Marine'
+            title: 'Coastal and Marine'
         },
         {
-            name: 'Contamination',
-            url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer'
+            title: 'Contamination',
+            url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer',
+            type: 'dynamic'
         },
         {
-            name: 'Economic'
+            title: 'Economic'
         },
         {
-            name: 'Emergency Response'
+            title: 'Emergency Response'
         },
         {
-            name: 'Farmlands'
+            title: 'Farmlands'
         },
         {
-            name: 'Floodplains'
+            title: 'Floodplains'
         },
         {
-            name: 'Historic and Archaeological Sites'
+            title: 'Historic and Archaeological Sites'
         },
         {
-            name: 'Infrastructure'
+            title: 'Infrastructure'
         },
         {
-            name: 'Land Use Changes'
+            title: 'Land Use Changes'
         },
         {
-            name: 'Mobility'
+            title: 'Mobility'
         }
 
 

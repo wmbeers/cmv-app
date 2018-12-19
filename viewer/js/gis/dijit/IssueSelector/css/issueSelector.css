@@ -1,8 +1,4 @@
-/*tabcontainer is off*/
-
-#slrFilterTabContainer_tablist {
-    display: none
-}
+/* tabcontainer is off */
 
 #IssueSelectDom span {
     float: left;
@@ -14,25 +10,27 @@
     border: 1px solid #ffffff;
 }
 
-    #IssueSelectDom span.active {
+    #IssueSelectDom .active {
         border: 1px solid rgb(0, 0, 0);
         background-color: rgb(250, 250, 140);
         font-weight: 600;
     }
-    #IssueSelectDom span.enabled {
-        cursor: pointer
+
+    #IssueSelectDom .enabled {
+        cursor: pointer;
     }
 
-    #IssueSelectDom span.disabled {
+    #IssueSelectDom .disabled {
         font-weight: lighter;
+        color: gray;
         cursor: not-allowed;
     }
 
-    #IssueSelectDom span.disabled img {
+    #IssueSelectDom .disabled img {
         opacity: 0.5;
     }
 
-/*tabcontainer is off*/
+/* tabcontainer is off */
 .slr-help {
     z-index: 50;
     top: 0;
@@ -48,57 +46,18 @@
     font-size: large;
 }
 
-.slr_filterControl input:checked+label {
-    background-image: none;
-    outline: 0;
-    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-    color: #333;
-    background-color: #e6e6e6;
-    border-color: #adadad;
-    /*font-weight: bold;*/
-}
-
-.row-issueSelect-tidalSelect {
-    /*max-width: 280px;*/
-    padding-top: 4px;
-    display: inline-flex;
-}
-
-.rbhidden {
-    display: none;
-}
-
-
-/*overwrite dbootstrap*/
-
-.slr_filterControl .dbootstrap .dijitReadOnly *,
-.dbootstrap .dijitDisabled *,
-.dbootstrap .dijitReadOnly,
-.dbootstrap .dijitDisabled {
-    cursor: not-allowed;
-}
-
 .slr_filterControl .dijitInputContainer {
-    padding: 2px 3px 0px 10px !important;
+    padding: 2px 3px 0 10px !important;
 }
-
-
-/* overwrite dbootstrap*/
 
 .slr_filterControl {
-    /*width: 250px;*/
     width: auto;
     overflow: visible;
-    z-index: 9999px;
+    z-index: 9999;
 }
 
 .SlrTabFilterContentPane {
     text-align: center;
-}
-
-#lblMHHW {
-    font-size: .9em;
 }
 
 .slrApplybtn {
@@ -114,37 +73,19 @@
     font-weight: bold;
 }
 
-.RegionSelectDom {
-    width: auto;
-    padding-top: 3px;
-    min-width: 250px;
-    margin-bottom: auto;
-    /*max-width: 250px;*/
-}
-
-.RegionSelectDom .regionSelect {
-    min-width: 60px;
-    height: 24px;
-}
-
 .IssueSelectDom {
     float: left;
     width: auto;
     padding-top: 3px;
     padding-right: 8px;
     min-width: 70px;
-    max-width: 250px;
     margin-bottom: auto;
-}
-
-.RegionSelectDom .dijitComboBox .dijitButtonNode {
-    height: 22px;
 }
 
 .slr_filterControl .dijitComboBox .dijitButtonNode.dijitArrowButton {
     padding-top: 2px;
     -webkit-border-radius: 2px;
-    border-radius: 2;
+    border-radius: 2px;
 }
 
 .IssueSelectDom .issueSelect {
@@ -156,18 +97,11 @@
     height: 22px;
 }
 
-.slr_filterControl .projectionSelect {}
-
 .slr_filterControl .issueSelect {
     border-radius: 0;
     min-width: 50px;
     width: 100%;
     max-width: 100px;
-}
-
-.slr_filterControl .tidalSelect
-{
-    width: 100%;
 }
 
 .slr_filterControl .regionSelect {
@@ -184,16 +118,6 @@
     font-weight: bold;
     max-width: 100px;
     min-width: 70px;
-    /*margin-right: 5;*/
-}
-
-.buttonActionBar {
-    1px solid rgba(102, 102, 102, 0.8)
-    /*max-width: 250px;*/
-}
-
-.buttonActionBar .success {
-    margin-bottom: auto;
 }
 
 #apply1_label,
@@ -201,16 +125,6 @@
 #apply3_label {
     font-size: 1.2em;
     font-weight: 500;
-}
-
-.slr_filterControl label {
-    /*font-weight: bolder;*/
-    font-size: inherit;
-    text-align: center;
-}
-
-.slr_filterControl #slrFilterForm {
-    /*width: inherit;*/
 }
 
 .dbootstrap .success .dijitButtonNode {
@@ -227,7 +141,7 @@
     z-index: 999999999999;
 }
 
-a:hover .dojoxEnlarge {
+.dojoxEnlarge a:hover {
     display: block !important;
 }
 
@@ -242,9 +156,9 @@ a:hover .dojoxEnlarge {
 
 .dojoxLoading {
     background: #333 url(images/loading-dark.gif) no-repeat center center;
-    border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    border-radius: 5px;
     border: 2px solid #000;
     height: 24px;
     opacity: 0.8;
@@ -295,18 +209,18 @@ a:hover .dojoxEnlarge {
 }
 
 .slr_filterControl .dijitTabPaneWrapper {
-    /*box-shadow: 2px 2px lightgray;*/
-    -moz-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
-    -webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+    /* box-shadow: 2px 2px lightgray; */
+    -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
     width: auto;
 }
 
 .slr_filterControl .dijitTabChecked {
-    /*box-shadow: 1px 1px lightgray;*/
-    -moz-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
-    -webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+    /* box-shadow: 1px 1px lightgray; */
+    -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
 }
 
 .dijitTab {
@@ -315,7 +229,6 @@ a:hover .dojoxEnlarge {
 
 .slr_filterControl .dijitLayoutContainer {
     position: relative;
-    /*display: table-cell;*/
     overflow: visible;
 }
 
@@ -327,17 +240,16 @@ a:hover .dojoxEnlarge {
 .slr_filterControl .dijitContentPaneDock {
     display: inline-flex;
     align-items: flex-end;
-    white-space: nowrap width: auto !important;
+    white-space: nowrap;
+    width: auto !important;
 }
 
 .slr_filterControl .dijitContentPaneUnDock {
-    /*Undock*/
+    /* Undock */
     display: block;
     width: auto !important;
     max-width: 295px !important;
 }
-
-.slr_filterControl .btn-toolbar .projection {}
 
 .slr_filterControl .btn-group.projection {
     float: none;
@@ -356,7 +268,7 @@ a:hover .dojoxEnlarge {
 }
 
 
-/*SLR tooltip*/
+/* SLR tooltip */
 
 .slrtootip {
     background-color: white;
@@ -369,7 +281,7 @@ a:hover .dojoxEnlarge {
 }
 
 #tooltipHR {
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 8px;
 }
 
@@ -385,7 +297,7 @@ a:hover .dojoxEnlarge {
 
 .slrTTClose {
     z-index: 50;
-    top: 10;
+    top: 10px;
     right: 10px;
     position: absolute;
     border-radius: 18px;
@@ -399,103 +311,111 @@ a:hover .dojoxEnlarge {
 }
 
 
-/*END SLR tooltip*/
+/* END SLR tooltip */
 
 
-/*media queries*/
+/* media queries */
 
 @media (max-width: 991px) {
-    .btn-toolbar .tidal {}
-    .AgencyLabel {}
     .issueSelector {
-        /*Undock*/
+        /* Undock */
         display: block;
         width: auto !important;
         max-width: 210px;
     }
+
     .btn-responsive {
         padding: 2px 4px;
         font-size: 80%;
         line-height: 1;
         border-radius: 3px;
     }
+
     .RegionSelectDom {
         min-width: 175px;
     }
+
     .RegionSelectDom .regionSelect {
         width: 84px;
         height: 18px;
         font-size: 80%;
     }
+
     .RegionSelectDom .regionGlobal {
         width: 50px;
         height: 18px;
         font-size: 80%;
     }
+
     .RegionSelectDom .dijitComboBox .dijitButtonNode {
         height: 16px;
     }
+
     .slr_filterControl .dijitComboBox .dijitButtonNode.dijitArrowButton {
         padding-top: 2px;
     }
-    .IssueSelectDom {}
+
     .IssueSelectDom .issueSelect {
         height: 18px;
         font-size: 80%;
         max-width: 80px;
     }
+
     .IssueSelectDom .dijitComboBox .dijitButtonNode {
         height: 16px;
     }
+
     .slr_filterControl .btn-group.projection {
         min-width: 104px;
-        padding-bottom: 1px
+        padding-bottom: 1px;
     }
+
     .slr_filterControl .btn-group.tidal {
-        /*min-width: 122px;*/
-        padding-bottom: 1px
+        /* min-width: 122px; */
+        padding-bottom: 1px;
     }
+
     .buttonActionBar .success {
         line-height: 1;
         border-radius: 3px;
         text-decoration-style: dashed;
     }
+
     #apply1_label,
     #apply2_label,
     #apply3_label {
         font-size: 1.14em;
         font-weight: bold;
-        margin-top: -2;
+        margin-top: -2px;
     }
+
     .buttonActionBar .success .dijitButtonNode {
         padding-bottom: 15px;
         height: 20px;
         font-weight: bolder;
         font-size: x-small;
     }
+
     .slr_filterControl .dijitTab {
         font-size: 80%;
         padding-top: 2px;
     }
+
     #slrFilterControl_parent_pane.dijitTitlePaneContentInner {
-        padding: 5px 6px 0px 6px;
+        padding: 5px 6px 0 6px;
     }
+
     .TidalSelectDom {
         width: 100px;
         padding-left: 8px;
         right: 8px;
     }
+
     .IssueSelectDom {
         padding-left: 16px;
     }
+
     .slr_filterControl .dijitInputContainer {
         padding: 3px 2px !important;
-    }
-    #lblMHHW {
-        font-size: 0;
-    }
-    #lblMHHW:before {
-        content: "MHHW";
-        font-size: 14px;
     }
 }

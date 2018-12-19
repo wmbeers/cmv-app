@@ -21,6 +21,7 @@ define([
     'dijit/registry',
     'dijit/form/FilteringSelect',
     'esri/layers/ArcGISDynamicMapServiceLayer',
+    'esri/dijit/Legend',
     'esri/InfoTemplate',
     'esri/request',
     'xstyle/css!./IssueSelector/css/issueSelector.css',
@@ -31,7 +32,7 @@ define([
 ],
     function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, TooltipDialog, LightboxNano, ready, popup, lang, on, aspect, dom, domStyle, domClass, domConstruct, 
         topic, SlrFiltertemplate, SlrFilterTooltiptemplate, query, registry, fSelect,
-        ArcGISDynamicMapServiceLayer, InfoTemplate, esriRequest
+        ArcGISDynamicMapServiceLayer, Legend, InfoTemplate, esriRequest
 ) {
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
             widgetsInTemplate: true,
@@ -92,7 +93,13 @@ define([
 
             },
             _addIssueToMap: function (issue) {
-                topic.publish('growler/growl', 'Loading ' + issue.name);
+                topic.publish('growler/growl', 'Loading ' + issue.title);
+
+                //todo add layerControlInfo
+                //Note: I tried app.initLayer, and while it does do a great job of adding the layer to the map, 
+                //it doesn't then call functions to make it show up in the LayerControl widget
+                //app._initLayer(issue, ArcGISDynamicMapServiceLayer);
+
                 var layer = new ArcGISDynamicMapServiceLayer(issue.url,
                     {
                         opacity: 0.75, //todo store in config?
@@ -100,17 +107,22 @@ define([
                         infoTemplate: new InfoTemplate('Attributes', '${*}')
                     }
                 );
+                //Note: _MapMixin adds layers to the layers control with unshift, e.g.:
+                //layers.unshift(l)
+                //but that's to keep it in the order in which they're listed in operationalLayers
+                app.layers.push(layer);
                 //construct on-load handler. The layer needs to be loaded before getting the layerInfo
                 //and adding to layerControl widget
                 on(layer, 'load', function () {
-                    console.log("layer " + layer.id + " loaded");
+                    //I don't know why we need to make this separate esriRequest, but the layer won't show up in layerControl
+                    //unless we do
                     esriRequest({
                         url: issue.url,
-                        content: { f: 'json' },
+                        content: {f: 'json'},
                         handleAs: 'json',
                         callbackParamName: 'callback'
-                    }).then(function (response, b, c, d, e) {
-                        console.log("Success: ", response.layers);
+                    }).then(function () {
+                        //todo: put this in config? Or have some default options if not in config?
                         var layerControlInfo = {
                             controlOptions: {
                                 expanded: true,
@@ -131,123 +143,61 @@ define([
                                 }]
                             },
                             layer: layer,
-                            title: issue.name,
+                            title: issue.title,
                             type: 'dynamic'
                         };
                         topic.publish('layerControl/addLayerControls', [layerControlInfo]);
-
-
+                        //topic.publish('legendControl/addLayerControls') TODO
+                        topic.publish('identify/addLayerInfos', [{
+                            type: 'dynamic',
+                            layer: layer,
+                            title: issue.title
+                        }]);
+                        app.legendLayerInfos.push({layer: layer, title: issue.title});
+                        Legend.refresh();
                     }, function (error) {
-                        console.log("Error: ", error.message);
-                        //TODO better error handler
+                        topic.publish('growler/growl', {
+                            title: 'Issue Selector Error',
+                            message: error.message,
+                            level: 'error', //can be: 'default', 'warning', 'info', 'error', 'success'.
+                            timeout: 0, //set to 0 for no timeout
+                            opacity: 1.0
+                        });
                     });
 
                 }); //end on-load
 
                 //add the layer to the map
-                //TODO: in DnD, after which this is modelled, "this.map" is a thing
+                //note: in DnD, after which this is modelled, "this.map" is a thing
                 //for some reason it doesn't work here, so using app.map
                 app.map.addLayer(layer);
-
             },
             _initializeIssueSelector: function () {
-                for (var i = 0; i < this.issueServices.length; i++) {
-                    var issueService = this.issueServices[i];
-                    var span = domConstruct.create("span", null, this.IssueSelectDom);
+                this.issueServices.forEach(function (issueService) {
+                    var span = domConstruct.create('span', null, this.IssueSelectDom);
                     if (!issueService.iconUrl) {
                         //default to image named the same as the issue
-                        issueService.iconUrl = issueService.name.replace(/\s/g, '_') + '.png';
+                        issueService.iconUrl = issueService.title.replace(/\s/g, '_') + '.png';
                     }
-                    var img = domConstruct.create("img", { 'alt': issueService.name, 'src': 'js/gis/dijit/IssueSelector/images/' + issueService.iconUrl }, span);
-                    domConstruct.create("br", null, span);
-                    var label = domConstruct.create("span", { 'innerHTML': issueService.name }, span);
+                    domConstruct.create('img', {'alt': issueService.title, 'src': 'js/gis/dijit/IssueSelector/images/' + issueService.iconUrl}, span);
+                    domConstruct.create('br', null, span);
                     if (issueService.url) {
-                        this._addClickHandler(span, issueService);
-                        domClass.add(span, "enabled");
+                        on(span, 'click', lang.hitch(this, function () {
+                            this._addIssueToMap(issueService);
+                        }));
+                        domClass.add(span, 'enabled');
+                        domConstruct.create('span', {'innerHTML': issueService.title}, span);
                     } else {
-                        domClass.add(span, "disabled");
-                        label.disable;
+                        domClass.add(span, 'disabled');
+                        domConstruct.create('span', {'innerHTML': issueService.title, 'disabled': true}, span);
                     }
-                }
-            },
-            _addClickHandler: function (span, issue) {
-                on(span, "click", this._addIssueToMap(issue));
+                }, this);
             },
             openFilterHelp: function () {
                 this.myDialog.show();
             },
-            _onIssueChange: function (timeIdx) {
+            _onIssueChange: function () {
                 //TODO?
-            },
-            _applyFilter: function () {
-                // Added layers Check
-                if (this.addedLayers < this.maxLayers) {
-                    // console.log('apply ok ' + String(this.addedLayers) + ' is less than ' +  String(this.maxLayers));
-                } else {
-                    // console.log('apply disabled ' + String(this.addedLayers) + ' is not less than ' +  String(this.maxLayers));
-                    this.clearGrowl();
-                    var msg = {
-                        title: 'Scenario Limit:',
-                        message: 'Layer limit exceeded(' + this.maxLayers + '). Please remove a Scenario to add a new one.',
-                        level: 'warning',
-                        timeout: 5000,
-                        opacity: 1.0
-                    };
-                    topic.publish('growler/growl', msg);          
-                    return;                
-                }
-                var selectedcontentPane = registry.byId('slrFilterTabContainer').domNode;
-
-
-                    topic.publish('slrFilterCntrool/applyFilter2', {
-                        projection: this._getSelectedIssue(selectedcontentPane).projection,                
-                        state: this._getSelectedIssue(selectedcontentPane).state,
-                        time: this._getSelectedIssue(selectedcontentPane).time,
-                        tidal: this._getSelectedIssue(selectedcontentPane).tidalDatum,
-
-                        scenario:
-                            this._RetrieveScenario(this.defaultScenarioType,
-                            this._getSelectedIssue(selectedcontentPane).state,
-                            this._getSelectedIssue(selectedcontentPane).time,
-                            this._getSelectedIssue(selectedcontentPane).projection, 
-                            this._getSelectedIssue(selectedcontentPane).tidalDatum)
-                    });
-            },
-            _RetrieveScenario: function (scenarioType, state, year, projection, tidalDatum) {
-                var SelectedScenarioKey = scenarioType + state + year + projection + tidalDatum; 
-                var scenarios = this.scenarios;
-                var ScenarioOBJ;
-                scenarios.forEach (function (scenario) {
-                    var ScenarioID = scenario.scenarioType + scenario.state + scenario.year + scenario.projection + scenario.tidal;                     
-                    if (SelectedScenarioKey === ScenarioID) {
-                        ScenarioOBJ = scenario;                                         
-                    }
-                });
-                return ScenarioOBJ;
-            },
-            _getFilterInputsConfig: function () {
-                this.inherited(arguments);
-                var regionTypeVal = this.regionType[this.regionTypeIdx];
-                var regionVal = this.regions[this.regionIdx];
-                var stateVal = this.regions[this.regionIdx].state;
-                var extentVal = this.regions[this.regionIdx].extent;
-                var timeVal = this.times[this.timeIdx].time;
-
-                return {
-                    // How to return array index from config
-                    regionTypeArray: regionTypeVal,
-                    regionArray: regionVal,
-                    state: stateVal,
-                    extent: extentVal,
-                    time: timeVal
-                };
-            },
-            _getSelectedIssue: function () {
-
-                return {
-                    issueName: this.issueSelectDijit.get('displayedValue'),
-                    issueUrl: this.issueSelectDijit.get('value')
-                };           
             },
             // get the sidebar pane containing the widget (if any)
             getSidebarPane: function () {

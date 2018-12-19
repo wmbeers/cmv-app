@@ -78,7 +78,7 @@ define([
             //Bill Beers modified to support growling with a simple string, defaulting to 3000 ms, info, no title
             if (typeof props === 'string' || props instanceof String) {
                 // it's a string, create default object
-                props = { message: props, title: null, level: 'info', timeout: 3000  };
+                props = {message: props, title: null, level: 'info', timeout: 3000};
             }
             lang.mixin(props, {
                 _container: this.containerNode
