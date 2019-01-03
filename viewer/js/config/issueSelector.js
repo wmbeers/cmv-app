@@ -1,5 +1,4 @@
 define({
-    map: true,
     issueServices: [
         {
             title: 'Aesthetic Effects'
@@ -28,7 +27,9 @@ define({
             title: 'Floodplains'
         },
         {
-            title: 'Historic and Archaeological Sites'
+            title: 'Historic and Archaeological Sites',
+            url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Shpo/MapServer',
+            type: 'dynamic'
         },
         {
             title: 'Infrastructure'
@@ -39,7 +40,5 @@ define({
         {
             title: 'Mobility'
         }
-
-
     ]
 });
