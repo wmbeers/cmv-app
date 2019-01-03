@@ -125,23 +125,27 @@ define([
                         //todo: put this in config? Or have some default options if not in config?
                         var layerControlInfo = {
                             controlOptions: {
-                                expanded: true,
+                                expanded: false,
                                 metadataUrl: true,
                                 //includeUnspecifiedLayers: true, //might be important
                                 swipe: true,
                                 noMenu: false,
+                                noZoom: true, //TODO: disable zoom to layer for state-wide layers?
                                 mappkgDL: true,
-                                removeControl: true,
-                                menu: [{
-                                    label: 'Open Attribute Table',
-                                    topic: 'openTable',
-                                    iconClass: 'fa fa-table fa-fw'
-                                }, {
-                                    label: 'Open Metadata',
-                                    topic: 'openMetadata',
-                                    iconClass: 'fa fa-info fa-fw'
-                                }]
+                                allowRemove: true,
+                                menu: {
+                                    dynamic: {
+                                        label: 'Remove A',
+                                        topic: 'remove',
+                                        iconClass: 'fa fa-info fa-fw'
+                                    }
+                                }
                             },
+                            menu: [{
+                                label: 'Remove B',
+                                topic: 'remove',
+                                iconClass: 'fa fa-info fa-fw'
+                            }],
                             layer: layer,
                             title: issue.title,
                             type: 'dynamic'
@@ -154,7 +158,7 @@ define([
                             title: issue.title
                         }]);
                         app.legendLayerInfos.push({layer: layer, title: issue.title});
-                        Legend.refresh();
+                        //Legend.refresh();
                     }, function (error) {
                         topic.publish('growler/growl', {
                             title: 'Issue Selector Error',
