@@ -536,8 +536,16 @@ define([
                     app.legendLayerInfos.splice(i, 1);
                 }
             }
+
+            //refresh the map; it isn't really necessary to do this as far as the map display is concerned, 
+            //because the map will update on the removeLayer call above, but without this the removed layer 
+            //remains in the legend until after the user pans/zooms the map
+            //TODO surely there's a better way to refresh the map?
+            this.map.setExtent(this.map.extent);
     
-            //???
+            //TODO: the layer still seems to linger and some events continue to fire
+            //I've tried a couple of other fixes, such as below, to no avail.
+            //See the "ham-fisted" work-around in _checkboxScaleRange of _Control.js
             //this.destroy()
             //console.log(this._handlers);
             delete layer;
