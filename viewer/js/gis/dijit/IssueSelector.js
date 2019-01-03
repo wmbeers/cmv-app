@@ -31,29 +31,23 @@ define([
     'dijit/layout/TabContainer'
 ],
     function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, TooltipDialog, LightboxNano, ready, popup, lang, on, aspect, dom, domStyle, domClass, domConstruct, 
-        topic, SlrFiltertemplate, SlrFilterTooltiptemplate, query, registry, fSelect,
+        topic, issueSelectorTemplate, issueSelectorTooltipTemplate, query, registry, fSelect,
         ArcGISDynamicMapServiceLayer, Legend, InfoTemplate, esriRequest
 ) {
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
             widgetsInTemplate: true,
-            templateString: SlrFiltertemplate,
-            tooltiptemplateString: SlrFilterTooltiptemplate,            
+            templateString: issueSelectorTemplate,
+            tooltiptemplateString: issueSelectorTooltipTemplate,            
             topicID: 'issueSelector',            
             baseClass: 'issueSelector',
             map: this.map,
-            sidebarPane: null,
-            defaultProjection: null,
-            defaultRegion: null,
-            defaultTime: null,
-            defaultTidal: null,
             postCreate: function () {
                 this.inherited(arguments);
                 this._initializeIssueSelector();
             },
             startup: function () {
                 this.inherited(arguments);
-                this.initializeTooltip();                                
-              
+                this.initializeTooltip();
             },
             initializeTooltip: function () {
                 // tooltip Dialog
@@ -62,7 +56,7 @@ define([
                 var myTooltipDialog = new TooltipDialog({
                     id: 'myTooltipDialog',
                     style: 'width: 300px;',
-                    templateString: SlrFilterTooltiptemplate,
+                    templateString: issueSelectorTooltipTemplate,
                     onShow: function () {
                         // Focus the first element in the TooltipDialog
                         this.focus();
@@ -109,7 +103,9 @@ define([
                 );
                 //Note: _MapMixin adds layers to the layers control with unshift, e.g.:
                 //layers.unshift(l)
-                //but that's to keep it in the order in which they're listed in operationalLayers
+                //but that's to keep it in the order in which they're listed in operationalLayers;
+                //we're using push so they appear on top. If we want them to appear under the projects
+                //change the next line to unshift
                 app.layers.push(layer);
                 //construct on-load handler. The layer needs to be loaded before getting the layerInfo
                 //and adding to layerControl widget
@@ -199,77 +195,6 @@ define([
             },
             openFilterHelp: function () {
                 this.myDialog.show();
-            },
-            _onIssueChange: function () {
-                //TODO?
-            },
-            // get the sidebar pane containing the widget (if any)
-            getSidebarPane: function () {
-                if (!this.sidebarPane) {
-                    this.sidebarPane = registry.byId(this.sidebarID);
-                }
-            },
-            // open the sidebar pane containing this widget (if any)
-            openPane: function () {
-                this.getSidebarPane();
-                if (this.sidebarPane) {
-                    var paneID = this.sidebarPane.id.toLowerCase().replace('sidebar', '');
-                    topic.publish('viewer/togglePane', {
-                        pane: paneID,
-                        show: 'block'
-                    });
-                }
-            },
-            closePane: function () {
-                this.getSidebarPane();
-                if (this.sidebarPane) {
-                    var paneID = this.sidebarPane.id.toLowerCase().replace('sidebar', '');
-                    topic.publish('viewer/togglePane', {
-                        pane: paneID,
-                        show: 'none'
-                    });
-                }
-            },          
-            _overrideSlrFilterDockHandle: function () {
-                this.inherited(arguments);
-                var self = this;
-                /*eslint-disable */
-                var slrFilterControl_parent = registry.byId('slrFilterControl_parent');
-                var dockhandler = slrFilterControl_parent.dockHandleNode;
-
-                aspect.after(slrFilterControl_parent._moveable, 'onMoveStop', function () {
-                    console.log('moveStop');
-                    self.closePane();
-                });
-                },
-              _checkedRadioBtn: function (sGroupName) {
-                var activebtnsX = query(':checked');  
-                var value;
-                activebtnsX.forEach( function(node) {
-                    if(node.name === sGroupName){
-                        value = node.value;
-                        return value;
-                    }
-                });
-                     return value;
-            },
-            _SLRFilterError: function (errorMsg) {
-                this.clearGrowl();
-                var msg = {
-                    title: 'Scenario Selector Error: ' + errorMsg,
-                    level: 'error',
-                    timeout: 5000,
-                    opacity: 1.0
-                };
-                topic.publish('growler/growl', msg);          
-            },
-            clearGrowl: function () {
-                var growl = registry.byId(this.growlID);
-                if (growl && growl.close) {
-                    growl.close();
-                    registry.remove(this.growlID);
-                }
             }
-
         });
     });
