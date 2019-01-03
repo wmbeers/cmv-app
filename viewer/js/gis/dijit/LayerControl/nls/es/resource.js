@@ -5,6 +5,7 @@ define ({
     zoomTo: 'Amplía a Capa',
     transparency: 'Transparencia',
     metadata: 'Metadatos',
+    layerSwipe: 'Eliminar capa',
     layerSwipe: 'Flagelo capa',
     layerSwipeVertical: 'Vertical',
     layerSwipeHorizontal: 'Horizontal',

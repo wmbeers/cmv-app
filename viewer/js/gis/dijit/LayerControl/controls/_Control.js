@@ -206,6 +206,11 @@ define([
         },
         // check scales and add/remove disabled classes from checkbox
         _checkboxScaleRange: function () {
+            //TODO this if block is a ham-fisted work-around to weird behavior that happens after a layer is removed from the map. Some control for it persists besides my best efforts.   
+            //without it, the call to layer.getMap() returns null, throwing an error on the .getScale call below
+            if (this._destroyed) {
+                return; 
+            }
             var node = this.checkNode,
                 layer = this.layer,
                 scale = layer.getMap().getScale(),

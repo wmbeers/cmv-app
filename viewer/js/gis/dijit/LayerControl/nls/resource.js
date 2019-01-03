@@ -14,6 +14,7 @@ define({
         transparency: 'Transparency',
         metadata: 'Metadata',
         layerSwipe: 'Layer Swipe',
+        remove: 'Remove Layer',
         layerSwipeVertical: 'Vertical',
         layerSwipeHorizontal: 'Horizontal',
         layerSwipeScope: 'Scope',

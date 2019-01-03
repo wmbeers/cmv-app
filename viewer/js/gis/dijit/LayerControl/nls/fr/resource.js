@@ -5,6 +5,7 @@ define ({
     zoomTo: 'Zoom sur la couche',
     transparency: 'Transparence',
     metadata: 'Métadonnées',
+    layerSwipe: 'Supprimer la couche',
     layerSwipe: 'Couche swipe',
     layerSwipeVertical: 'Vertical',
     layerSwipeHorizontal: 'Horizontal',

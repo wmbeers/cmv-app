@@ -123,6 +123,17 @@ define([
                     }
                 }));
             }
+            // remove
+            if (controlOptions.allowRemove) {
+                self.addChild(new MenuSeparator());
+                self.addChild(new MenuItem({
+                    label: i18n.remove,
+                    iconClass: 'fas fa-fw fa-minus-circle',
+                    onClick: function () {
+                        controller._removeLayer(layer);
+                    }
+                }));
+            }
             //if last child is a separator remove it
             var lastChild = self.getChildren()[self.getChildren().length - 1];
             if (lastChild && lastChild.isInstanceOf(MenuSeparator)) {

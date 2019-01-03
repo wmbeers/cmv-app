@@ -12,6 +12,7 @@ define({
     zoomTo: 'Aproximar à Camada',
     transparency: 'Transparência',
     metadata: 'Metadados',
+    remove: 'Remover Camada',
     layerSwipe: 'Deslizar camada',
     layerSwipeVertical: 'Vertical',
     layerSwipeHorizontal: 'Horizontal',

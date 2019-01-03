@@ -515,6 +515,34 @@ define([
                 }
             }));
         },
+        _removeLayer: function (layer) {
+            //remove from the map
+            this.map.removeLayer(layer);
+
+            //remove from the app layers collection
+            for (var i = 0; i < app.layers.length; i++) {
+                if (app.layers[i] === layer) {
+                    app.layers.splice(i, 1);
+                }
+            }
+
+            //remove from layerControls
+            topic.publish('layerControl/removeLayerControls', [layer]);
+            //remove from identify
+            topic.publish('identify/removeLayerInfos', [{id: layer.id}]); //that's all we need of the layerInfo used in removeLayerInfos method
+            //remove from legend
+             for (var i = 0; i < app.legendLayerInfos.length; i++) {
+                if (app.legendLayerInfos[i].layer === layer) {
+                    app.legendLayerInfos.splice(i, 1);
+                }
+            }
+    
+            //???
+            //this.destroy()
+            //console.log(this._handlers);
+            delete layer;
+
+        },
         _swipeDisable: function () {
             this._swiper.disable();
             if (this._swipeLayerToggleHandle) {
