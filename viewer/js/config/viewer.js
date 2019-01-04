@@ -8,12 +8,16 @@ define([
     'gis/plugins/Google',
     'dojo/i18n!./nls/main',
     'dojo/topic',
-    'dojo/sniff'
-], function (units, Extent, esriConfig, /*urlUtils,*/ GeometryService, ImageParameters, GoogleMapsLoader, i18n, topic, has) {
+    'dojo/sniff',
+    'dijit/Dialog',
+    'dojo/request'
+], function (units, Extent, esriConfig, /*urlUtils,*/ GeometryService, ImageParameters, GoogleMapsLoader, i18n, topic, has, Dialog, request) {
 
     // url to your proxy page, must be on same machine hosting you app. See proxy folder for readme.
     esriConfig.defaults.io.proxyUrl = 'proxy/proxy.ashx';
     esriConfig.defaults.io.alwaysUseProxy = false;
+    //might be needed for metadata if we want to load it in a Dialog; not necessary if just opening in new window
+    esriConfig.defaults.io.corsEnabledServers.push("www.fla-etat.org");
 
     // add a proxy rule to force specific domain requests through proxy
     // be sure the domain is added in proxy.config
@@ -68,6 +72,38 @@ define([
                 (event.subLayer ? event.subLayer.name : '') +
                 ' says goodbye'
         });
+    });
+
+    topic.subscribe('layerControl/viewMetadata', function (event) {
+        //using request instead of the direct href property so we can handle errors
+        //there's probably a way to handle errors with dialog.show, but Dojo documentation isn't clear on that
+        request('/est/metadata/' + event.subLayer.sdeLayerName + '.htm', {
+            headers: {
+                "X-Requested-With": null
+            }
+        }).then(
+            function (data) {
+                var dlg = new Dialog({
+                    id: event.subLayer.sdeLayerName + '_metadata',
+                    title: 'Metadata for ' + event.subLayer.name,
+                    content: data
+                });
+                dlg.show();
+            },
+            function (err) {
+                //happens when running on a local server that doesn't have /est/metadata path
+                //so make request to pub server
+                //using window.open to work around CORS issues
+                topic.publish('growler/growl', 'Fetching metadata for ' + event.subLayer.name);
+                window.open('https://etdmpub.fla-etat.org/est/metadata/' + event.subLayer.sdeLayerName + '.htm');
+            });
+
+        //var dlg = new Dialog({
+        //    id: event.subLayer.sdeLayerName + '_metadata',
+        //    title: 'Metadata for ' + event.subLayer.name,
+        //    href: '/est/metadata/' + event.subLayer.sdeLayerName + '.htm'
+        //});
+        //dlg.show();
     });
 
     // simple clustering example now. should be replaced with a layerControl plugin

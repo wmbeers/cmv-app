@@ -101,6 +101,7 @@ define([
                         infoTemplate: new InfoTemplate('Attributes', '${*}')
                     }
                 );
+
                 //Note: _MapMixin adds layers to the layers control with unshift, e.g.:
                 //layers.unshift(l)
                 //but that's to keep it in the order in which they're listed in operationalLayers;
@@ -111,43 +112,78 @@ define([
                 //and adding to layerControl widget
                 on(layer, 'load', function () {
                     //I don't know why we need to make this separate esriRequest, but the layer won't show up in layerControl
-                    //unless we do
+                    //unless we do. We don't do anything with the response. It's cribbed from DnD plug in, DroppedItem.js.
                     esriRequest({
                         url: issue.url,
                         content: {f: 'json'},
                         handleAs: 'json',
                         callbackParamName: 'callback'
-                    }).then(function () {
+                    }).then(function (response) {
+                        //copy extended properties from our database and append to the sublayers
+                        //this relies on our JS being in perfect sync with what's actually being served!
+                        for (var i = 0; i < issue.layers.length; i++) {
+                            //response.layers[i].sdeLayerName = issue.layers[i].sdeLayerName;
+                            layer.layerInfos[i].sdeLayerName = issue.layers[i].sdeLayerName;
+                        }
+
                         //todo: put this in config? Or have some default options if not in config?
                         var layerControlInfo = {
                             controlOptions: {
                                 expanded: false,
                                 metadataUrl: true,
-                                //includeUnspecifiedLayers: true, //might be important
+                                //includeUnspecifiedLayers: true, //TODO: if this is included, the service doesn't load properly for some reason, and no layers show up.
                                 swipe: true,
                                 noMenu: false,
                                 noZoom: true, //TODO: disable zoom to layer for state-wide layers?
                                 mappkgDL: true,
                                 allowRemove: true,
-                                menu: {
-                                    dynamic: {
-                                        label: 'Remove A',
-                                        topic: 'remove',
-                                        iconClass: 'fa fa-info fa-fw'
-                                    }
-                                }
+                                //TODO: documentation on this is really confusing, neither of these work
+                                //menu: {
+                                //    dynamic: {
+                                //        label: 'Wny does this not show up?',
+                                //        topic: 'remove',
+                                //        iconClass: 'fa fa-info fa-fw'
+                                //    }
+                                //},
+                                //menu: [{
+                                //    label: 'Wny does this not show up?',
+                                //    topic: 'remove',
+                                //    iconClass: 'fa fa-info fa-fw'
+                                //}],
+                                //Note: the following is what's documented on the CMV site, but doesn't work, 
+                                //see below for the correct way discovered via trial-and-error
+                                // gives all dynamic layers the subLayerMenu items
+                                //subLayerMenu: {
+                                //    dynamic: [{
+                                //        label: 'Query Layer...',
+                                //        iconClass: 'fa fa-search fa-fw',
+                                //        topic: 'queryLayer'
+                                //    }, {
+                                //        label: 'Open Attribute Table',
+                                //        topic: 'openTable',
+                                //        iconClass: 'fa fa-table fa-fw'
+                                //    }]
+                                //},
+                                subLayerMenu: [
+                                    {
+                                        label: 'Query Layer...',
+                                        iconClass: 'fa fa-search fa-fw',
+                                        topic: 'queryLayer'
+                                    }, {
+                                        label: 'Open Attribute Table',
+                                        topic: 'openTable',
+                                        iconClass: 'fa fa-table fa-fw'
+                                    }, {
+                                        label: 'View Metadata',
+                                        topic: 'viewMetadata',
+                                        iconClass: 'fa fa-info-circle fa-fw'
+                                    }]
                             },
-                            menu: [{
-                                label: 'Remove B',
-                                topic: 'remove',
-                                iconClass: 'fa fa-info fa-fw'
-                            }],
                             layer: layer,
                             title: issue.title,
                             type: 'dynamic'
                         };
                         topic.publish('layerControl/addLayerControls', [layerControlInfo]);
-                        //topic.publish('legendControl/addLayerControls') TODO
                         topic.publish('identify/addLayerInfos', [{
                             type: 'dynamic',
                             layer: layer,
@@ -155,6 +191,9 @@ define([
                         }]);
                         app.legendLayerInfos.push({layer: layer, title: issue.title});
                         //Legend.refresh();
+
+
+
                     }, function (error) {
                         topic.publish('growler/growl', {
                             title: 'Issue Selector Error',
