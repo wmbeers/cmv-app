@@ -34,14 +34,17 @@
         // or replace core mixins with your own
         'viewer/_ConfigMixin', // manage the Configuration
         'viewer/_LayoutMixin', // build and manage the Page Layout and User Interface
+        
+        
         'viewer/_MapMixin', // build and manage the Map
         'viewer/_WidgetsMixin', // build and manage the Widgets
 
         // 'viewer/_WebMapMixin' // for WebMaps
 
-        'viewer/_SidebarMixin' // for mobile sidebar
+        'viewer/_SidebarMixin', // for mobile sidebar
 
         //'config/_customMixin'
+        'viewer/_LayerLoadMixin' // custom
 
     ], function (
         declare,
@@ -54,7 +57,8 @@
 
         // _WebMapMixin
 
-        _SidebarMixin
+        _SidebarMixin,
+        _LayerLoadMixin
         //_MyCustomMixin
 
     ) {
@@ -67,6 +71,7 @@
             // for the most part they are interchangeable, except _ConfigMixin
             // and _ControllerBase
             //
+            _LayerLoadMixin,
 
             // Mixin for Mobile Sidebar
             _SidebarMixin,
