@@ -8,6 +8,7 @@ define([
     'dojo/ready',
     'dijit/popup',
     'dojo/_base/lang',
+    'dojo/_base/array',
     'dojo/on',
     'dojo/aspect',
     'dojo/dom',
@@ -26,7 +27,7 @@ define([
     'dijit/layout/ContentPane',
     'dijit/layout/TabContainer'
 ],
-    function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, TooltipDialog, LightboxNano, ready, popup, lang, on, aspect, dom, domStyle, domClass, domConstruct, 
+    function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, TooltipDialog, LightboxNano, ready, popup, lang, array, on, aspect, dom, domStyle, domClass, domConstruct, 
         topic, issueSelectorTemplate, issueSelectorTooltipTemplate, query, registry, fSelect
 ) {
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
@@ -82,25 +83,57 @@ define([
 
             },
             _initializeIssueSelector: function () {
+                //flattened list of all layers--will be defined server-side eventually
+                var layerDefs = [];
                 this.issueServices.forEach(function (issueService) {
                     var span = domConstruct.create('span', null, this.IssueSelectDom);
                     if (!issueService.iconUrl) {
                         //default to image named the same as the issue
-                        issueService.iconUrl = issueService.title.replace(/\s/g, '_') + '.png';
+                        issueService.iconUrl = issueService.name.replace(/\s/g, '_') + '.png';
                     }
-                    domConstruct.create('img', {'alt': issueService.title, 'src': 'js/gis/dijit/IssueSelector/images/' + issueService.iconUrl}, span);
+                    domConstruct.create('img', {'alt': issueService.name, 'src': 'js/gis/dijit/IssueSelector/images/' + issueService.iconUrl}, span);
                     domConstruct.create('br', null, span);
                     if (issueService.url) {
                         on(span, 'click', lang.hitch(this, function () {
                             app.addToMap(issueService);
                         }));
                         domClass.add(span, 'enabled');
-                        domConstruct.create('span', {'innerHTML': issueService.title}, span);
+                        domConstruct.create('span', {'innerHTML': issueService.name}, span);
+
+                        //TODO: it would be faster to do this server-side when generating issueSelector.js
+                        //but for now this hackiness will suffice
+                        issueService.layers.forEach(function (layerDef) {
+                            //test if already listed--included in another issue
+                            //build URL
+                            layerDef.url = issueService.url + '/' + layerDef.layerIndex;
+                            layerDef.type = 'feature';
+                            if (!array.some(layerDefs, function (ld) { return ld.sdeLayerName == layerDef.sdeLayerName; })) {
+                                layerDefs.push(layerDef);
+                            }
+                        });
                     } else {
                         domClass.add(span, 'disabled');
-                        domConstruct.create('span', {'innerHTML': issueService.title, 'disabled': true}, span);
+                        domConstruct.create('span', {'innerHTML': issueService.name, 'disabled': true}, span);
                     }
+                    
                 }, this);
+
+                //sort layerDefs by name (again, we'll do this server-side eventually)
+                layerDefs.sort(function (a, b) {
+                    if (a.name == b.name) return 0;
+                    if (a.name > b.name) return 1;
+                    return -1;
+                });
+
+                //add layerDefs to all-layers list
+                layerDefs.forEach(function (layerDef) {
+                    var li = domConstruct.create('li', null, this.LayerSelectDom);
+                    var a = domConstruct.create('a', { 'href': '#', 'innerHTML': layerDef.name, 'title': layerDef.description }, li);
+                    on(a, 'click', lang.hitch(this, function () {
+                        app.addToMap(layerDef);
+                    }));
+                }, this);
+
             },
             openFilterHelp: function () {
                 this.myDialog.show();

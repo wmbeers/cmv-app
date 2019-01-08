@@ -32,7 +32,7 @@ define([
         },
 
         addToMap: function (layerDef) {
-            topic.publish('growler/growl', 'Loading ' + layerDef.title);
+            topic.publish('growler/growl', 'Loading ' + layerDef.name);
 
             //todo add layerControlInfo
             //Note: I tried app.initLayer, and while it does do a great job of adding the layer to the map, 
@@ -140,17 +140,16 @@ define([
                                 }]
                         },
                         layer: layer,
-                        title: layerDef.title,
+                        title: layerDef.name,
                         type: layerDef.type
                     };
                     topic.publish('layerControl/addLayerControls', [layerControlInfo]);
                     topic.publish('identify/addLayerInfos', [{
                         type: layerDef.type,
                         layer: layer,
-                        title: layerDef.title
+                        title: layerDef.name
                     }]);
-                    app.legendLayerInfos.push({ layer: layer, title: layerDef.title });
-                    //Legend.refresh();
+                    app.legendLayerInfos.push({ layer: layer, title: layerDef.name });
                     //TODO: somewhere around here we should warn the user if the layer loaded to the map is out of scale range
 
 

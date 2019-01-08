@@ -30,6 +30,10 @@
         opacity: 0.5;
     }
 
+ul.layerList {
+    /*padding: 0, 0, 0, 20px;*/
+    padding-left: 20px;
+}
 /* tabcontainer is off */
 .slr-help {
     z-index: 50;
@@ -223,7 +227,7 @@
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
 }
 
-.dijitTab {
+.xxdijitTab {
     border: 1px solid lightgray;
 }
 

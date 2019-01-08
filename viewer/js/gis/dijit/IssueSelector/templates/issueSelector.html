@@ -1,15 +1,15 @@
 <div class="slr_filterControl">
-    <div class="formContainer" id="slrFilterForm">
-        <div data-dojo-attach-point="issueSelectorDigit" data-dojo-type="dijit/form/Form">
-            <div data-dojo-props="doLayout:false,'class':'slrFilterTabContainer'" data-dojo-type="dijit/layout/TabContainer" id="slrFilterTabContainer">
-                <div>
-                    <span id='issueSelectorHelpNode' class="slr-help" data-dojo-attach-point="issueSelectorHelpNode"></span>
-                </div>
-                <div class="row row-issueSelect">
-                    <div id="IssueSelectDom" class="IssueSelectDom col-xs-12" data-dojo-attach-point="IssueSelectDom">
-                    </div>
-                </div>
+    <div data-dojo-props="doLayout:false,'class':'slrFilterTabContainer'" data-dojo-type="dijit/layout/TabContainer" id="slrFilterTabContainer">
+        <div data-dojo-type="dijit/layout/ContentPane" title="By Issue" data-dojo-props="selected:true">
+            <div>
+                <span id='issueSelectorHelpNode' class="slr-help" data-dojo-attach-point="issueSelectorHelpNode"></span>
             </div>
+            <div id="IssueSelectDom" class="IssueSelectDom col-xs-12" data-dojo-attach-point="IssueSelectDom">
+            </div>
+        </div>
+        <div data-dojo-type="dijit/layout/ContentPane" title="By Layer">
+            <ul id="LayerSelectDom" class="layerList" data-dojo-attach-point="LayerSelectDom">
+            </ul>
         </div>
     </div>
 </div>
