@@ -2,11 +2,11 @@ define([
     'dojo/_base/declare',
     'dojo/_base/lang',
     'dojo/on',
-    'dojo/_base/array',
     'dojo/topic',
 
     'esri/map',
     'esri/layers/ArcGISDynamicMapServiceLayer',
+    'esri/layers/FeatureLayer',
     'esri/dijit/Legend',
     'esri/InfoTemplate',
     'esri/request'
@@ -15,11 +15,11 @@ define([
     declare,
     lang,
     on,
-    array,
     topic,
 
     Map,
     ArcGISDynamicMapServiceLayer,
+    FeatureLayer,
     Legend,
     InfoTemplate,
     esriRequest
@@ -39,13 +39,24 @@ define([
             //it doesn't then call functions to make it show up in the LayerControl widget
             //app._initLayer(layerDef, ArcGISDynamicMapServiceLayer);
 
-            var layer = new ArcGISDynamicMapServiceLayer(layerDef.url,
-                {
-                    opacity: 0.75, //todo store in config?
-                    id: layerDef.name,
-                    infoTemplate: new InfoTemplate('Attributes', '${*}')
-                }
-            );
+            var layer;
+            if (layerDef.type === 'dynamic') {
+                layer = new ArcGISDynamicMapServiceLayer(layerDef.url,
+                    {
+                        opacity: 0.75, //todo store in config?
+                        //todo either use db id or just let this be autoassigned id: layerDef.name,
+                        infoTemplate: new InfoTemplate('Attributes', '${*}')
+                    });
+            } else if (layerDef.type === 'feature') {
+                layer = new FeatureLayer(layerDef.url,
+                    {
+                        opacity: 0.75, //todo store in config?
+                        //todo either use db id or just let this be autoassigned id: layerDef.name,
+                        infoTemplate: new InfoTemplate('Attributes', '${*}')
+                    });
+            } else {
+                throw ("Unsupported or undefined type property of layerDef: " + layerDef.type);
+            }
 
             //Note: _MapMixin adds layers to the layers control with unshift, e.g.:
             //layers.unshift(l)
@@ -66,11 +77,15 @@ define([
                 }).then(function (response) {
                     //copy extended properties from our database and append to the sublayers
                     //this relies on our JS being in perfect sync with what's actually being served!
-                    for (var i = 0; i < layerDef.layers.length; i++) {
-                        //response.layers[i].sdeLayerName = layerDef.layers[i].sdeLayerName;
-                        layer.layerInfos[i].sdeLayerName = layerDef.layers[i].sdeLayerName;
+                    if (layerDef.layers) {
+                        for (var i = 0; i < layerDef.layers.length; i++) {
+                            //response.layers[i].sdeLayerName = layerDef.layers[i].sdeLayerName;
+                            layer.layerInfos[i].sdeLayerName = layerDef.layers[i].sdeLayerName;
+                        }
                     }
-
+                    if (layerDef.sdeLayerName) {
+                        layer.sdeLayerName = layerDef.sdeLayerName;
+                    }
                     //todo: put this in config? Or have some default options if not in config?
                     var layerControlInfo = {
                         controlOptions: {
@@ -126,11 +141,11 @@ define([
                         },
                         layer: layer,
                         title: layerDef.title,
-                        type: 'dynamic'
+                        type: layerDef.type
                     };
                     topic.publish('layerControl/addLayerControls', [layerControlInfo]);
                     topic.publish('identify/addLayerInfos', [{
-                        type: 'dynamic',
+                        type: layerDef.type,
                         layer: layer,
                         title: layerDef.title
                     }]);
