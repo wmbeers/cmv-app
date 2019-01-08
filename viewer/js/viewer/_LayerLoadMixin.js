@@ -2,7 +2,6 @@ define([
     'dojo/_base/declare',
     'dojo/_base/lang',
     'dojo/on',
-    'dojo/dom',
     'dojo/_base/array',
     'dojo/topic',
 
@@ -16,9 +15,9 @@ define([
     declare,
     lang,
     on,
-    dom,
     array,
     topic,
+
     Map,
     ArcGISDynamicMapServiceLayer,
     Legend,
@@ -137,7 +136,7 @@ define([
                     }]);
                     app.legendLayerInfos.push({ layer: layer, title: layerDef.title });
                     //Legend.refresh();
-
+                    //TODO: somewhere around here we should warn the user if the layer loaded to the map is out of scale range
 
 
                 }, function (error) {
