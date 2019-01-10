@@ -17,7 +17,7 @@ define([
     esriConfig.defaults.io.proxyUrl = 'proxy/proxy.ashx';
     esriConfig.defaults.io.alwaysUseProxy = false;
     //might be needed for metadata if we want to load it in a Dialog; not necessary if just opening in new window
-    esriConfig.defaults.io.corsEnabledServers.push("www.fla-etat.org");
+    esriConfig.defaults.io.corsEnabledServers.push("tasks.arcgisonline.com");
 
     // add a proxy rule to force specific domain requests through proxy
     // be sure the domain is added in proxy.config
@@ -378,16 +378,16 @@ define([
                     })
                 }
             },
-            issueSelector: {
+            layerLoader: {
                 include: true,
-                id: 'issueSelector',
+                id: 'layerLoader',
                 type: 'titlePane',
                 canFloat: true,
-                path: 'gis/dijit/IssueSelector',
+                path: 'gis/dijit/LayerLoader',
                 title: 'Map Loader',
                 open: true,
                 position: 0,
-                options: 'config/issueSelector'
+                options: 'config/layerLoader'
             },
             layerControl: {
                 include: true,

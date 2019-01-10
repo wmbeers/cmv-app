@@ -16,30 +16,30 @@ define([
     'dojo/dom-class',
     'dojo/dom-construct',
     'dojo/topic',
-    'dojo/text!./IssueSelector/templates/issueSelector.html',
-    'dojo/text!./IssueSelector/templates/issueSelectorTooltip.html',
+    'dojo/text!./LayerLoader/templates/layerLoader.html',
+    'dojo/text!./LayerLoader/templates/layerLoaderTooltip.html',
     'dojo/query',    
     'dijit/registry',
     'dijit/form/FilteringSelect',
-    'xstyle/css!./IssueSelector/css/issueSelector.css',
+    'xstyle/css!./LayerLoader/css/layerLoader.css',
     // If nested widgets fail on load try adding these
     'dijit/form/Form',
     'dijit/layout/ContentPane',
     'dijit/layout/TabContainer'
 ],
     function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, TooltipDialog, LightboxNano, ready, popup, lang, array, on, aspect, dom, domStyle, domClass, domConstruct, 
-        topic, issueSelectorTemplate, issueSelectorTooltipTemplate, query, registry, fSelect
+        topic, layerLoaderTemplate, layerLoaderTooltipTemplate, query, registry, fSelect
 ) {
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
             widgetsInTemplate: true,
-            templateString: issueSelectorTemplate,
-            tooltiptemplateString: issueSelectorTooltipTemplate,            
-            topicID: 'issueSelector',            
-            baseClass: 'issueSelector',
+            templateString: layerLoaderTemplate,
+            tooltiptemplateString: layerLoaderTooltipTemplate,            
+            topicID: 'layerLoader',            
+            baseClass: 'layerLoader',
             map: this.map,
             postCreate: function () {
                 this.inherited(arguments);
-                this._initializeIssueSelector();
+                this._initializeLayerLoader();
             },
             startup: function () {
                 this.inherited(arguments);
@@ -52,7 +52,7 @@ define([
                 var myTooltipDialog = new TooltipDialog({
                     id: 'myTooltipDialog',
                     style: 'width: 300px;',
-                    templateString: issueSelectorTooltipTemplate,
+                    templateString: layerLoaderTooltipTemplate,
                     onShow: function () {
                         // Focus the first element in the TooltipDialog
                         this.focus();
@@ -67,10 +67,10 @@ define([
                         }
                     }
                 });
-                this.issueSelectorTooltip = myTooltipDialog;    
-                this.issueSelectorTooltip.startup();
+                this.layerLoaderTooltip = myTooltipDialog;    
+                this.layerLoaderTooltip.startup();
 
-                on(this.issueSelectorHelpNode, 'click', function () {
+                on(this.layerLoaderHelpNode, 'click', function () {
                     popup.open({
                         popup: myTooltipDialog,
                         around: dom.byId('tooltipNode'),
@@ -82,30 +82,31 @@ define([
                 });
 
             },
-            _initializeIssueSelector: function () {
+            _initializeLayerLoader: function () {
                 //flattened list of all layers--will be defined server-side eventually
                 var layerDefs = [];
-                this.issueServices.forEach(function (issueService) {
-                    var span = domConstruct.create('span', null, this.IssueSelectDom);
-                    if (!issueService.iconUrl) {
-                        //default to image named the same as the issue
-                        issueService.iconUrl = issueService.name.replace(/\s/g, '_') + '.png';
+     
+                this.mapServices.forEach(function (mapService) {
+                    var span = domConstruct.create('span', null, this.ServicesList);
+                    if (!mapService.iconUrl) {
+                        //default to image named the same as the map service
+                        mapService.iconUrl = mapService.name.replace(/\s/g, '_') + '.png';
                     }
-                    domConstruct.create('img', {'alt': issueService.name, 'src': 'js/gis/dijit/IssueSelector/images/' + issueService.iconUrl}, span);
+                    domConstruct.create('img', {'alt': mapService.name, 'src': 'js/gis/dijit/LayerLoader/images/' + mapService.iconUrl}, span);
                     domConstruct.create('br', null, span);
-                    if (issueService.url) {
+                    if (mapService.url) {
                         on(span, 'click', lang.hitch(this, function () {
-                            app.addToMap(issueService);
+                            app.addToMap(mapService);
                         }));
                         domClass.add(span, 'enabled');
-                        domConstruct.create('span', {'innerHTML': issueService.name}, span);
+                        domConstruct.create('span', {'innerHTML': mapService.name}, span);
 
-                        //TODO: it would be faster to do this server-side when generating issueSelector.js
+                        //TODO: it would be faster to do this server-side when generating layerLoader.js
                         //but for now this hackiness will suffice
-                        issueService.layers.forEach(function (layerDef) {
-                            //test if already listed--included in another issue
+                        mapService.layers.forEach(function (layerDef) {
+                            //test if already listed--included in another map service
                             //build URL
-                            layerDef.url = issueService.url + '/' + layerDef.layerIndex;
+                            layerDef.url = mapService.url + '/' + layerDef.layerIndex;
                             layerDef.type = 'feature';
                             if (!array.some(layerDefs, function (ld) { return ld.sdeLayerName == layerDef.sdeLayerName; })) {
                                 layerDefs.push(layerDef);
@@ -113,7 +114,7 @@ define([
                         });
                     } else {
                         domClass.add(span, 'disabled');
-                        domConstruct.create('span', {'innerHTML': issueService.name, 'disabled': true}, span);
+                        domConstruct.create('span', {'innerHTML': mapService.name, 'disabled': true}, span);
                     }
                     
                 }, this);
@@ -127,7 +128,7 @@ define([
 
                 //add layerDefs to all-layers list
                 layerDefs.forEach(function (layerDef) {
-                    var li = domConstruct.create('li', null, this.LayerSelectDom);
+                    var li = domConstruct.create('li', null, this.LayersList);
                     var a = domConstruct.create('a', { 'href': '#', 'innerHTML': layerDef.name, 'title': layerDef.description }, li);
                     on(a, 'click', lang.hitch(this, function () {
                         app.addToMap(layerDef);
