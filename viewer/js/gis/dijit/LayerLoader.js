@@ -86,7 +86,7 @@ define([
                 //flattened list of all layers--will be defined server-side eventually
                 var layerDefs = [];
      
-                this.mapServices.forEach(function (mapService) {
+                this.categories.forEach(function (mapService) {
                     var span = domConstruct.create('span', null, this.ServicesList);
                     if (!mapService.iconUrl) {
                         //default to image named the same as the map service
@@ -104,9 +104,6 @@ define([
                         //TODO: it would be faster to do this server-side when generating layerLoader.js
                         //but for now this hackiness will suffice
                         mapService.layers.forEach(function (layerDef) {
-                            //test if already listed--included in another map service
-                            //build URL
-                            layerDef.url = mapService.url + '/' + layerDef.layerIndex;
                             layerDef.type = 'feature';
                             if (!array.some(layerDefs, function (ld) { return ld.sdeLayerName == layerDef.sdeLayerName; })) {
                                 layerDefs.push(layerDef);
