@@ -7,10 +7,19 @@
 </head>
 <body>
     <button onclick="showMap()">Show Map</button>
-    <button onclick="loadBrownfieldAreas()">Load Data</button>
-    <button onclick="showMap(true)">
-        Show Map and Load Data
+    <button onclick="loadData()">Load Data (Method 1)</button>
+    <button onclick="loadData2()">Load Data (Method 2)</button>
+    <button onclick="showMapAndLoadData()">
+        Show Map and Load Data (Method 1)
     </button>
+    <button onclick="showMapAndLoadData2()">
+        Show Map and Load Data (Method 2)
+    </button>
+
+    <hr />
+    <label>Layer Name <input type="text" id="layerName" name="layerName" /></label><br />
+    <label>Feature ID <input type="text" id="autoId" name="autoId" /></label><br />
+    <button onclick="showFeature()">Show Feature</button>
 
 </body>
 </html>

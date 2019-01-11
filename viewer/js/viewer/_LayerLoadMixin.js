@@ -46,42 +46,50 @@ define([
             var mapServices = app.widgets.layerLoader.mapServices; //TODO or read directly from JS?
 
             for (var i = 0; i < mapServices.length; i++) {
-                if (mapServices[i].url === layerDef) {
-                    return mapServices[i];
+                var mapService = mapServices[i];
+                if (mapService.url === sdeLayerNameOrUrl) {
+                    return mapService;
                 }
-                for (var j = 0; j < mapServices[i].layers.length; j++) {
-                    //TODO eventually we'll have the layers as a separate list generated server-side
-                    var l = mapServices[i].layers[j];
-                    if (l.url === layerDef || l.sdeLayerName === layerDef) {
-                        return l;
+                if (mapService.layers) {
+                    for (var j = 0; j < mapServices[i].layers.length; j++) {
+                        //TODO eventually we'll have the layers as a separate list generated server-side
+                        var l = mapService.layers[j];
+                        if (l.url === sdeLayerNameOrUrl || l.sdeLayerName === sdeLayerNameOrUrl) {
+                            return l;
+                        }
                     }
                 }
+            }
+            //maybe it's just a plain old URL?
+            if (sdeLayerNameOrUrl.toLowerCase().startsWith('http')) {
+                //TODO construct a new layerDef
+                //we need to determine if it's a map service (dynamic) or layer (featureLayer)
+                //or any other URL-based thing, see DnD for examples
             }
             //if we make it this far, it's a problem
             topic.publish('viewer/handleError', {
                 source: 'LayerLoadMixin.getLayerDef',
-                error: 'Unable to find service or layer with sdeLayerName or URL "' + sdeLayerNameOrUrl + '"'
+                error: 'Unable to find definition for service or layer with sdeLayerName or URL "' + sdeLayerNameOrUrl + '"'
             });
         },
 
-        addToMap: function (layerDef) {
+        addToMap: function (layerDef, definitionExpression) {
             var layer;
 
             if (typeof layerDef === 'string') {
+                //find layer by sdeLayerName or url property
                 layerDef = this.getLayerDef(layerDef);
                 if (!layerDef) return;
             }
 
-            //test if it's already in the map
-            //URL seems as good as anything for a unique identifier
-            //HOWEVER--if the definitionExpression doesn't match we'll want to update it
+            //test if it's already in the map by url and definitionExpression
             if (array.some(this.layers, function (l) {
-                if (l.url == layerDef.url && l.getDefinitionExpression() == layerDef.definitionExpression) {
+                if (l.url == layerDef.url && l.getDefinitionExpression() == definitionExpression) {
                     //assign reference
                     layer = l;
                     //Make it visible
                     l.setVisibility(true); // use this method rather than .visible property to keep LayerControl in sync
-                    //rezoom?
+                    //rezoom--user might have panned/zoomed elsewhere, but are requesting to go back
                     this.zoomToLayer(l);
                     //Warn if not visible at current scale
                     if (!l.visibleAtMapScale) {
@@ -124,11 +132,11 @@ define([
 
             //definitionExpression only applies to a featureLayer
             //but we can support it for projects loaded via dynamic map service, applying it to all feature layers in the service
-            if (layerDef.definitionExpression) {
+            if (definitionExpression) {
                 if (layerDef.type === 'dynamic') {
                     //TODO see https://developers.arcgis.com/javascript/3/jsapi/arcgisdynamicmapservicelayer-amd.html#setlayerdefinitions
                 } else if (layerDef.type === 'feature') {
-                    layer.setDefinitionExpression(layerDef.definitionExpression);
+                    layer.setDefinitionExpression(definitionExpression);
                 }
             }
 
@@ -218,9 +226,9 @@ define([
                         title: layerDef.name,
                         type: layerDef.type
                     };
-                    if (layerDef.definitionExpression) {
+                    if (definitionExpression) {
                         //TODO: this is just a proof of concept, we'll probably want something cleaner than raw definitionExpression
-                        layerControlInfo.title = layerControlInfo.title + ' (' + layerDef.definitionExpression + ')';
+                        layerControlInfo.title = layerControlInfo.title + ' (' + definitionExpression + ')';
                     }
                     topic.publish('layerControl/addLayerControls', [layerControlInfo]);
                     topic.publish('identify/addLayerInfos', [layerControlInfo]);
@@ -232,11 +240,12 @@ define([
                     //}]);
                     //app.legendLayerInfos.push({ layer: layer, title: layerDef.name });
 
-                    if (layerDef.definitionExpression) {
+                    if (definitionExpression) {
                         //zoom to layer
                         app.zoomToLayer(layer);
                         //TODO? is it possible after zooming to the defined features (which, as far our documented requirements go, will be just one)
                         //it's still not visible? if so, need a callback handler after zooming
+                        //with visibleAtMapScale check, like below
                     } else {
                         if (!layer.visibleAtMapScale) {
                             topic.publish('growler/growl', {
@@ -260,8 +269,6 @@ define([
             }); //end on-load
 
             //add the layer to the map
-            //note: in DnD, after which this is modelled, "this.map" is a thing
-            //for some reason it doesn't work here, so using app.map
             app.map.addLayer(layer);
 
             return layer;
@@ -270,7 +277,7 @@ define([
         zoomToLayer: function (layer) {
             //this.zoomToExtent([layer.fullExtent]); //unfortunately, this doesn't take definitionExpression into account
             var q = new Query({
-                where: '1=1' //TODO or use definitionExpression?
+                where: '1=1' //definitionExpression, if present doesn't need to be re-applied
             });
             layer.queryExtent(q, function (r) {
                 app.zoomToExtent(r.extent);
@@ -282,32 +289,26 @@ define([
             });
         },
 
-        zoomToFeature: function (feature) {
-
-        },
-
-        zoomToFeatureByOid: function (layer, objectId) {
-
-        },
-
         zoomToExtent: function (extent) {
             var map = this.map;
+            //project the extent--most often we're getting an extent from one of our layers,
+            //and the extent will be in Albers; need to project it to the Map's World Mercator coordinate system
             var params = lang.mixin(new ProjectParameters(), {
                 geometries: [extent],
                 outSR: map.spatialReference
             });
             esriConfig.defaults.geometryService.project(params, 
                 function (r) {
-                    //we could just call setExtent with r[0], but 
-                    //if the extent is of a point, it results in the map just panning to the point
-                    //this is best done by constructing a proper Extent instance, then expanding it if it's a line/poly
+                    //we could just call setExtent with r[0], but if the extent is of a point, 
+                    //it results in the map just panning to the point and staying at whatever zoom 
+                    //level the map currently is at, even statewide; and if extent of line/poly
+                    //it often zooms in too tightly.
+                    //To handle this, we create an Extent object, then expanding it if it's a line/poly
                     //or just center and zoom if a point
                     extent = new Extent(r[0]);
                     if (extent.getWidth() == 0 && extent.getHeight() == 0) {
-                        //expanding it has no effect
-                        //TODO: this next line sort of works, but then the feature doesn't draw, and zooming gets screwed up
-                        //maybe because the point isn't properly set?
-                        map.centerAndZoom({x: extent.xmin, y: extent.ymin}, 21);
+                        //expanding it has no effect, so just use center and zoom
+                        map.centerAndZoom(extent.getCenter(), 21);
                     } else {
                         extent.expand(1.1);
                         map.setExtent(extent, true);
