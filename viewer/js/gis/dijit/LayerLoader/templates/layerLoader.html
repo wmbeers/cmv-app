@@ -1,15 +1,10 @@
-<div class="slr_filterControl">
-    <div data-dojo-props="doLayout:false,'class':'slrFilterTabContainer'" data-dojo-type="dijit/layout/TabContainer" id="slrFilterTabContainer">
-        <div data-dojo-type="dijit/layout/ContentPane" title="By Category" data-dojo-props="selected:true">
-            <div>
-                <span id='layerLoaderHelpNode' class="slr-help" data-dojo-attach-point="layerLoaderHelpNode"></span>
-            </div>
-            <div id="ServicesList" class="col-xs-12" data-dojo-attach-point="ServicesList">
-            </div>
-        </div>
-        <div data-dojo-type="dijit/layout/ContentPane" title="By Layer">
-            <ul id="LayersList" class="layerList" data-dojo-attach-point="LayersList">
-            </ul>
-        </div>
-    </div>
+<div>
+    <label>Search</label>
+    <input data-dojo-attach-point="searchNode" class="searchInput" type="text" />
+    <button data-dojo-attach-point="searchButton">Search</button>
+    <hr />
+    <button data-dojo-attach-point="showCategoriesButton">List All Categories</button>
+    <button data-dojo-attach-point="listAllButton">List All</button>
+
+
 </div>

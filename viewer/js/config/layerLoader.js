@@ -6,7 +6,7 @@
  * layer layerIndex, name, fullName, description, sdeLayerName
  */
 define({
-    'layers': [
+    'allLayers': [
         {
             'id': 4543,
             'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/0',

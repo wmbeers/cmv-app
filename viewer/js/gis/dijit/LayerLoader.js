@@ -3,7 +3,7 @@ define([
     'dijit/_WidgetBase',
     'dijit/_TemplatedMixin',
     'dijit/_WidgetsInTemplateMixin',
-    'dijit/TooltipDialog',
+    'dijit/Dialog',
     'dojox/image/LightboxNano',
     'dojo/ready',
     'dijit/popup',
@@ -17,7 +17,6 @@ define([
     'dojo/dom-construct',
     'dojo/topic',
     'dojo/text!./LayerLoader/templates/layerLoader.html',
-    'dojo/text!./LayerLoader/templates/layerLoaderTooltip.html',
     'dojo/query',    
     'dijit/registry',
     'dijit/form/FilteringSelect',
@@ -27,60 +26,128 @@ define([
     'dijit/layout/ContentPane',
     'dijit/layout/TabContainer'
 ],
-    function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, TooltipDialog, LightboxNano, ready, popup, lang, array, on, aspect, dom, domStyle, domClass, domConstruct, 
-        topic, layerLoaderTemplate, layerLoaderTooltipTemplate, query, registry, fSelect
+    function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog, LightboxNano, ready, popup, lang, array, on, aspect, dom, domStyle, domClass, domConstruct, 
+        topic, layerLoaderTemplate, query, registry, fSelect
 ) {
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
             widgetsInTemplate: true,
             templateString: layerLoaderTemplate,
-            tooltiptemplateString: layerLoaderTooltipTemplate,            
             topicID: 'layerLoader',            
             baseClass: 'layerLoader',
             map: this.map,
+            //broader scope needed so declaring these here
+            categoryDialog: null, 
+            layerDialog: null,
+            searchResultsDialog: null,
             postCreate: function () {
                 this.inherited(arguments);
-                this._initializeLayerLoader();
+
+                on(this.searchButton, 'click', lang.hitch(this, 'handleSearch'));
+                on(this.showCategoriesButton, 'click', lang.hitch(this, 'showCategories'));
+                on(this.listAllButton, 'click', lang.hitch(this, 'listAllLayers'));
+                
+                this._initializeDialogs();
             },
             startup: function () {
                 this.inherited(arguments);
-                this.initializeTooltip();
             },
-            initializeTooltip: function () {
-                // tooltip Dialog
-                this.inherited(arguments);
+            handleSearch: function () {
+                //filter this.allLayers
+                //TODO lucene or some more powerful search engine will be replacing this
+                var searchString = this.searchNode.value;
+                var tokens = searchString.toLowerCase().split(' ');
+                var matches = array.filter(this.allLayers, function (l) {
+                    var x = array.some(tokens, function (s) {
+                        var name = String(l.name).toLowerCase(), 
+                            description = String(l.description).toLowerCase(), 
+                            fullName = String(l.fullName).toLowerCase();
 
-                var myTooltipDialog = new TooltipDialog({
-                    id: 'myTooltipDialog',
-                    style: 'width: 300px;',
-                    templateString: layerLoaderTooltipTemplate,
-                    onShow: function () {
-                        // Focus the first element in the TooltipDialog
-                        this.focus();
-                    },                    
-                    _onBlur: function () {
-                        // User must have clicked a blank area of the screen, so close the TooltipDialog
-                        // popup.close(myTooltipDialog);
-                    },                 
-                    onClick: function (evt) {
-                        if (evt.target === this.slrTTCloseNode) {
-                            popup.close(myTooltipDialog);
-                        }
-                    }
-                });
-                this.layerLoaderTooltip = myTooltipDialog;    
-                this.layerLoaderTooltip.startup();
-
-                on(this.layerLoaderHelpNode, 'click', function () {
-                    popup.open({
-                        popup: myTooltipDialog,
-                        around: dom.byId('tooltipNode'),
-                        onCancel: function () {                            
-                            // User pressed escape, so close myself
-                            popup.close(myTooltipDialog);
-                        }
+                        return (name.indexOf(s) >= 0 ||
+                            description.indexOf(s) >= 0 ||
+                            fullName.indexOf(s) >= 0);
                     });
+                    if (x) return true;
+                });
+                var ul = domConstruct.toDom('<ul class="layerList"></ul>');
+                matches.forEach(function (layerDef) {
+                    var li = domConstruct.create('li', null, ul);
+                    var a = domConstruct.create('a', { 'href': '#', 'innerHTML': layerDef.name, 'title': layerDef.description }, li);
+                    on(a, 'click', lang.hitch(this, function () {
+                        app.addToMap(layerDef);
+                        this.layersDialog.hide();
+                    }));
+                }, this);
+                this.searchResultsDialog.set('content', ul);
+
+                this.searchResultsDialog.show();
+            },
+            showCategories: function () {
+                this.categoryDialog.show();
+            },
+            listAllLayers: function () {
+                this.layersDialog.show();
+            },
+            _initializeDialogs: function () {
+                //categories dialog
+                var div = domConstruct.toDom('<div class="categoriesList"></div>');
+                this.categoryDialog = new Dialog({
+                    id: 'layerloader_categories_dialog',
+                    title: 'Select Category',
+                    content: div
+                });
+                
+                this.categories.forEach(function (mapService) {
+                    var span = domConstruct.create('span', null, div);
+                    if (!mapService.iconUrl) {
+                        //default to image named the same as the map service
+                        mapService.iconUrl = mapService.name.replace(/\s/g, '_') + '.png';
+                    }
+                    domConstruct.create('img', { 'alt': mapService.name, 'src': 'js/gis/dijit/LayerLoader/images/' + mapService.iconUrl }, span);
+                    domConstruct.create('br', null, span);
+                    if (mapService.url) {
+                        on(span, 'click', lang.hitch(this, function () {
+                            app.addToMap(mapService);
+                            this.categoryDialog.hide();
+                        }));
+                        domClass.add(span, 'enabled');
+                        domConstruct.create('span', { 'innerHTML': mapService.name }, span);
+                    } else {
+                        domClass.add(span, 'disabled');
+                        domConstruct.create('span', { 'innerHTML': mapService.name, 'disabled': true }, span);
+                    }
+
+                    }, this);
+
+                //layers dialog
+                var div2 = domConstruct.toDom('<ul class="layerList"></ul>');
+                this.layersDialog = new Dialog({
+                    id: 'layerloader_layers_dialog',
+                    title: 'Select Layer',
+                    content: div2
                 });
 
+                //sort layerDefs by name (we'll do this server-side eventually)
+                this.allLayers.sort(function (a, b) {
+                    if (a.name == b.name) return 0;
+                    if (a.name > b.name) return 1;
+                    return -1;
+                });
+
+                //add layerDefs to all-layers list
+                this.allLayers.forEach(function (layerDef) {
+                    var li = domConstruct.create('li', null, div2);
+                    var a = domConstruct.create('a', { 'href': '#', 'innerHTML': layerDef.name, 'title': layerDef.description }, li);
+                    on(a, 'click', lang.hitch(this, function () {
+                        app.addToMap(layerDef);
+                        this.layersDialog.hide();
+                    }));
+                }, this);
+
+                //search results dialog (content added in search handler)
+                this.searchResultsDialog = new Dialog({
+                    id: 'layerloader_search_dialog',
+                    title: 'Search Results'
+                });
             },
             _initializeLayerLoader: function () {
                 //flattened list of all layers--will be defined server-side eventually
