@@ -516,11 +516,12 @@ define([
             }));
         },
         _removeLayer: function (layer) {
+            var i = 0;
             //remove from the map
             this.map.removeLayer(layer);
 
             //remove from the app layers collection
-            for (var i = 0; i < app.layers.length; i++) {
+            for (i = 0; i < app.layers.length; i++) {
                 if (app.layers[i] === layer) {
                     app.layers.splice(i, 1);
                 }
@@ -531,7 +532,7 @@ define([
             //remove from identify
             topic.publish('identify/removeLayerInfos', [{id: layer.id}]); //that's all we need of the layerInfo used in removeLayerInfos method
             //remove from legend
-             for (var i = 0; i < app.legendLayerInfos.length; i++) {
+            for (i = 0; i < app.legendLayerInfos.length; i++) {
                 if (app.legendLayerInfos[i].layer === layer) {
                     app.legendLayerInfos.splice(i, 1);
                 }
@@ -548,7 +549,7 @@ define([
             //See the "ham-fisted" work-around in _checkboxScaleRange of _Control.js
             //this.destroy()
             //console.log(this._handlers);
-            delete layer;
+            //delete layer;
 
         },
         _swipeDisable: function () {

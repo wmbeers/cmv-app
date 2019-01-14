@@ -1,7 +1,6 @@
-var mapWindow; //global reference to map window; will be set when map loads
+var mapWindow = null; //global reference to map window; will be set when map loads
 
-
-function showMap(callback) {
+function showMap (callback) {
     /// <summary>
     /// Shows the map, opening it in a new window if not already open
     /// </summary>
@@ -21,24 +20,14 @@ function showMap(callback) {
                 }, 2000);
             };
         }
-    } else {
-        if (callback) {
-            callback();
-        }
+    } else if (callback) {
+        //map window already loaded
+        callback();
     }
 }
 
-//examples of how to open the map and load a layer in one step
-function showMapAndLoadData() {
-    showMap(loadData);
-}
-
-function showMapAndLoadData2() {
-    showMap(loadData2);
-}
-
 //examples of how to load a layer filtered to a specific feature by autoId in an already opened map
-function loadData() {
+function loadData () {
     mapWindow.app.addToMap(
         {
             name: 'Solid Waste',
@@ -50,16 +39,37 @@ function loadData() {
     );
 }
 //minimalist flavor, just using the sdeLayerName property; URL of map service is also supported
-function loadData2() {
-    mapWindow.app.addToMap('sldwst','autoid = 228');
+function loadData2 () {
+    mapWindow.app.addToMap('sldwst', 'autoid = 228');
+}
+
+//examples of how to open the map and load a layer in one step
+/* exported showMapAndLoadData */
+function showMapAndLoadData () {
+    showMap(loadData);
+}
+
+/* exported showMapAndLoadData2 */
+function showMapAndLoadData2 () {
+    showMap(loadData2);
 }
 
 
-function showFeature() {
+
+
+function showFeature () {
     showMap(function () {
         mapWindow.app.addToMap(
             document.getElementById('layerName').value,
             'autoid = ' + document.getElementById('autoId').value
         );
-    })
+    });
+}
+
+function showProject () {
+    showMap(function () {
+        mapWindow.app.addProjectToMap(
+            document.getElementById('projectId').value
+        );
+    });
 }

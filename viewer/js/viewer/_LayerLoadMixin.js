@@ -38,7 +38,6 @@ define([
 
         startup: function () {
             //nothing really to do here
-            console.log('LayerLoadMixin startup');
         },
 
         getLayerDef: function (sdeLayerNameOrUrl) {
@@ -71,20 +70,24 @@ define([
                 source: 'LayerLoadMixin.getLayerDef',
                 error: 'Unable to find definition for service or layer with sdeLayerName or URL "' + sdeLayerNameOrUrl + '"'
             });
+
+            return null; //just to shut up eslint
         },
 
-        addToMap: function (layerDef, definitionExpression) {
+        addToMap: function (layerDef, definitionExpression, includeDefinitionExpressionInTitle) {
             var layer;
 
             if (typeof layerDef === 'string') {
                 //find layer by sdeLayerName or url property
                 layerDef = this.getLayerDef(layerDef);
-                if (!layerDef) return;
+                if (!layerDef) {
+                    return null;
+                }
             }
 
             //test if it's already in the map by url and definitionExpression
             if (array.some(this.layers, function (l) {
-                if (l.url == layerDef.url && l.getDefinitionExpression() == definitionExpression) {
+                if (l.url === layerDef.url && l.getDefinitionExpression() === definitionExpression) {
                     //assign reference
                     layer = l;
                     //Make it visible
@@ -127,7 +130,7 @@ define([
                         //infoTemplate: new InfoTemplate('Attributes', '${*}')
                     });
             } else {
-                throw ("Unsupported or undefined type property of layerDef: " + layerDef.type);
+                throw 'Unsupported or undefined type property of layerDef: ' + layerDef.type;
             }
 
             //definitionExpression only applies to a featureLayer
@@ -153,10 +156,10 @@ define([
                 //unless we do. We don't do anything with the response. It's cribbed from DnD plug in, DroppedItem.js.
                 esriRequest({
                     url: layerDef.url,
-                    content: { f: 'json' },
+                    content: {f: 'json'},
                     handleAs: 'json',
                     callbackParamName: 'callback'
-                }).then(function (response) {
+                }).then(function () {
                     //copy extended properties from our database and append to the sublayers
                     //this relies on our JS being in perfect sync with what's actually being served!
                     if (layerDef.layers) {
@@ -226,7 +229,7 @@ define([
                         title: layerDef.name,
                         type: layerDef.type
                     };
-                    if (definitionExpression) {
+                    if (definitionExpression && includeDefinitionExpressionInTitle !== false) {
                         //TODO: this is just a proof of concept, we'll probably want something cleaner than raw definitionExpression
                         layerControlInfo.title = layerControlInfo.title + ' (' + definitionExpression + ')';
                     }
@@ -246,19 +249,15 @@ define([
                         //TODO? is it possible after zooming to the defined features (which, as far our documented requirements go, will be just one)
                         //it's still not visible? if so, need a callback handler after zooming
                         //with visibleAtMapScale check, like below
+                    } else if (!layer.visibleAtMapScale) {
+                        topic.publish('growler/growl', {
+                            title: '',
+                            message: layerDef.name + ' loaded, but is not visible at the current map scale.',
+                            level: 'warning'
+                        });
                     } else {
-                        if (!layer.visibleAtMapScale) {
-                            topic.publish('growler/growl', {
-                                title: '',
-                                message: layerDef.name + ' loaded, but is not visible at the current map scale.',
-                                level: 'warning'
-                            });
-                        } else {
-                            topic.publish('growler/growl', layerDef.name + ' loaded.');
-                        }
+                        topic.publish('growler/growl', layerDef.name + ' loaded.');
                     }
-
-
                 }, function (error) {
                     topic.publish('viewer/handleError', {
                         source: 'LayerLoadMixin.addToMap',
@@ -272,6 +271,20 @@ define([
             app.map.addLayer(layer);
 
             return layer;
+        },
+
+        //TODO: support adding draft projects to map for editing
+        addProjectToMap: function (projectId) {
+            this.addToMap(
+                {
+                    name: 'Project # ' + projectId,
+                    url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Query_MMA_Dev/MapServer/0',
+                    type: 'feature',
+                    sdeLayerName: null //only needed for metadata
+                },
+                'fk_project = ' + projectId,
+                false //prevents definitionExpression from overriding title
+            );
         },
 
         zoomToLayer: function (layer) {
@@ -306,19 +319,20 @@ define([
                     //To handle this, we create an Extent object, then expanding it if it's a line/poly
                     //or just center and zoom if a point
                     extent = new Extent(r[0]);
-                    if (extent.getWidth() == 0 && extent.getHeight() == 0) {
+                    if (extent.getWidth() === 0 && extent.getHeight() === 0) {
                         //expanding it has no effect, so just use center and zoom
                         map.centerAndZoom(extent.getCenter(), 21);
                     } else {
                         extent.expand(1.1);
                         map.setExtent(extent, true);
                     }
-            }, function (e) {
-                topic.publish('viewer/handleError', {
-                    source: 'LayerLoadMixin.zoomToExtent',
-                    error: e
-                });
-            });
+                }, function (e) {
+                    topic.publish('viewer/handleError', {
+                        source: 'LayerLoadMixin.zoomToExtent',
+                        error: e
+                    });
+                }
+            );
         }
     });
 });

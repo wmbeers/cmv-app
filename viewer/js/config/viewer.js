@@ -17,7 +17,7 @@ define([
     esriConfig.defaults.io.proxyUrl = 'proxy/proxy.ashx';
     esriConfig.defaults.io.alwaysUseProxy = false;
     //might be needed for metadata if we want to load it in a Dialog; not necessary if just opening in new window
-    esriConfig.defaults.io.corsEnabledServers.push("tasks.arcgisonline.com");
+    esriConfig.defaults.io.corsEnabledServers.push('tasks.arcgisonline.com');
 
     // add a proxy rule to force specific domain requests through proxy
     // be sure the domain is added in proxy.config
@@ -79,7 +79,7 @@ define([
         //there's probably a way to handle errors with dialog.show, but Dojo documentation isn't clear on that
         request('/est/metadata/' + event.subLayer.sdeLayerName + '.htm', {
             headers: {
-                "X-Requested-With": null
+                'X-Requested-With': null
             }
         }).then(
             function (data) {
@@ -90,7 +90,7 @@ define([
                 });
                 dlg.show();
             },
-            function (err) {
+            function () {
                 //happens when running on a local server that doesn't have /est/metadata path
                 //so make request to pub server
                 //using window.open to work around CORS issues
@@ -418,7 +418,7 @@ define([
                             iconClass: 'fas fa-fw fa-smile',
                             label: 'Say Hello B'
                         }]
-                    },
+                    }
 
                     //create a example sub layer menu that will
                     /*apply to all layers of type 'dynamic'

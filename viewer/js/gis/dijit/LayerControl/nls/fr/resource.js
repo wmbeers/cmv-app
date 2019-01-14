@@ -6,7 +6,6 @@ define ({
     transparency: 'Transparence',
     metadata: 'Métadonnées',
     layerSwipe: 'Supprimer la couche',
-    layerSwipe: 'Couche swipe',
     layerSwipeVertical: 'Vertical',
     layerSwipeHorizontal: 'Horizontal',
     layerSwipeScope: 'Étendue',

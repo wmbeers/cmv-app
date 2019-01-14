@@ -1,0 +1,4 @@
+viewer/js/gis/dijit/DnD.js
+viewer/js/gis/dijit/DnD/*.js
+viewer/js/externalTest.js
+viewer/js/config/layerLoader.js
