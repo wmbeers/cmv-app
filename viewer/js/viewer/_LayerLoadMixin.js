@@ -13,9 +13,8 @@ define([
     'esri/request',
     'esri/tasks/ProjectParameters',
     'esri/tasks/query',
-    'esri/geometry/Extent'
-
-
+    'esri/geometry/Extent',
+    'esri/renderers/SimpleRenderer'
 ], function (
     declare,
     lang,
@@ -31,7 +30,8 @@ define([
     esriRequest,
     ProjectParameters,
     Query,
-    Extent
+    Extent,
+    SimpleRenderer
 ) {
 
     return declare(null, {
@@ -74,7 +74,7 @@ define([
             return null; //just to shut up eslint
         },
 
-        addToMap: function (layerDef, definitionExpression, includeDefinitionExpressionInTitle) {
+        addToMap: function (layerDef, definitionExpression, includeDefinitionExpressionInTitle, renderer) {
             var layer;
 
             if (typeof layerDef === 'string') {
@@ -142,7 +142,9 @@ define([
                     layer.setDefinitionExpression(definitionExpression);
                 }
             }
-
+            if (renderer) {
+                layer.setRenderer(renderer);
+            }
             //Note: _MapMixin adds layers to the layers control with unshift, e.g.:
             //layers.unshift(l)
             //but that's to keep it in the order in which they're listed in operationalLayers;
@@ -275,6 +277,21 @@ define([
 
         //TODO: support adding draft projects to map for editing
         addProjectToMap: function (projectId) {
+            //TODO just set this in the map service rather than having to code in js
+            var renderer = new SimpleRenderer({
+                'type': 'simple',
+                'symbol': {
+                    'type': 'esriSFS',
+                    'style': 'esriSFSSolid',
+                    'color': [255, 255, 0, 180],
+                    'outline': {
+                        'type': 'esriSLS',
+                        'style': 'esriSLSSolid',
+                        'color': [255, 255, 0, 255],
+                        'width': 3
+                    }
+                }
+            });
             this.addToMap(
                 {
                     name: 'Project # ' + projectId,
@@ -283,7 +300,8 @@ define([
                     sdeLayerName: null //only needed for metadata
                 },
                 'fk_project = ' + projectId,
-                false //prevents definitionExpression from overriding title
+                false, //prevents definitionExpression from overriding title TODO cleaner method of handling this
+                renderer
             );
         },
 
