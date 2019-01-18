@@ -143,28 +143,29 @@ define([
         panes: {
             left: {
                 splitter: true
-            },
-            /*right: {
+            }/*,
+            right: {
                   id: 'sidebarRight',
                   placeAt: 'outer',
                   region: 'right',
                   splitter: true,
                   collapsible: true
-            },*/
+            },
             bottom: {
                 id: 'sidebarBottom',
                 placeAt: 'outer',
                 splitter: true,
                 collapsible: true,
                 region: 'bottom',
-                collapsed: true
+                open: false
 
-            }/*,
+            },
          	top: {
          		id: 'sidebarTop',
          		placeAt: 'outer',
-         		collapsible: true,
-         		splitter: true,
+                  collapsible: true,
+                    open: false,
+         		splitter: false,
          		region: 'top'
          	}*/
         },

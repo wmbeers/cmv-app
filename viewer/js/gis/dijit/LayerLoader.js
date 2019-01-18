@@ -26,11 +26,12 @@ define([
             map: this.map,
             //broader scope needed for these dialogs to support closing when option is selected, so declaring these here
             categoryDialog: null, 
-            layerDialog: null,
+            layersDialog: null,
             searchResultsDialog: null,
             postCreate: function () {
                 this.inherited(arguments);
 
+                on(this.searchNode, 'keydown', lang.hitch(this, 'handleSearchKeyDown'));
                 on(this.searchButton, 'click', lang.hitch(this, 'handleSearch'));
                 on(this.showCategoriesButton, 'click', lang.hitch(this, 'showCategories'));
                 on(this.listAllButton, 'click', lang.hitch(this, 'listAllLayers'));
@@ -39,6 +40,11 @@ define([
             },
             startup: function () {
                 this.inherited(arguments);
+            },
+            handleSearchKeyDown: function (event) {
+                if (event.keyCode === 13) {
+                    this.handleSearch();
+                }
             },
             handleSearch: function () {
                 //filter this.allLayers
@@ -58,6 +64,7 @@ define([
                     if (x) {
                         return true;
                     }
+                    return false; //not really necessary, but prevents a consistent-return eslint error
                 });
                 var ul = domConstruct.toDom('<ul class="layerList"></ul>');
                 matches.forEach(function (layerDef) {
@@ -95,7 +102,6 @@ define([
                         this.categoryDialog.hide();
                     }));
                     domConstruct.create('span', {'innerHTML': mapService.name}, span);
-
                 }, this);
 
                 //layers dialog
@@ -134,6 +140,7 @@ define([
                 on(a, 'click', lang.hitch(this, function () {
                     app.addToMap(layerDef);
                     this.layersDialog.hide();
+                    this.searchResultsDialog.hide();
                 }));
             }
         });

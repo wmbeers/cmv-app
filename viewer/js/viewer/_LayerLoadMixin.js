@@ -8,6 +8,7 @@ define([
     'esri/map',
     'esri/layers/ArcGISDynamicMapServiceLayer',
     'esri/layers/FeatureLayer',
+    'esri/layers/VectorTileLayer',
     'esri/dijit/Legend',
     'esri/InfoTemplate',
     'esri/request',
@@ -25,6 +26,7 @@ define([
     Map,
     ArcGISDynamicMapServiceLayer,
     FeatureLayer,
+    VectorTileLayer,
     Legend,
     InfoTemplate,
     esriRequest,
@@ -87,7 +89,7 @@ define([
 
             //test if it's already in the map by url and definitionExpression
             if (array.some(this.layers, function (l) {
-                if (l.url === layerDef.url && l.getDefinitionExpression() === definitionExpression) {
+                if (l.url === layerDef.url && l.getDefinitionExpression && l.getDefinitionExpression() === definitionExpression) {
                     //assign reference
                     layer = l;
                     //Make it visible
@@ -104,6 +106,7 @@ define([
                     }
                     return true; //shortcuts the array.some call to stop looping through layers
                 }
+                return false; //not really necessary, but prevents a consistent-return eslint error
             }, this)) {
                 return layer;
             }
@@ -129,8 +132,10 @@ define([
                         //todo either use db id or just let this be autoassigned id: layerDef.name,
                         //infoTemplate: new InfoTemplate('Attributes', '${*}')
                     });
+            } else if (layerDef.type === 'vectortile') {
+                layer = new VectorTileLayer(layerDef.url);
             } else {
-                throw 'Unsupported or undefined type property of layerDef: ' + layerDef.type;
+                throw new Error('Unsupported or undefined type property of layerDef: ' + layerDef.type);
             }
 
             //definitionExpression only applies to a featureLayer
@@ -261,6 +266,11 @@ define([
                         topic.publish('growler/growl', layerDef.name + ' loaded.');
                     }
                 }, function (error) {
+                    topic.publish('viewer/handleError', {
+                        source: 'LayerLoadMixin.addToMap',
+                        error: error
+                    });
+                }).catch(function (error) {
                     topic.publish('viewer/handleError', {
                         source: 'LayerLoadMixin.addToMap',
                         error: error

@@ -2,7 +2,6 @@
 @import url('./cmv.css'); /* the start of cmv theme */
 
 .appHeader {
-    /*background: url("../images/linen.jpg") repeat-x scroll left top transparent;*/
     background-color: rgba(0, 116, 77, 255);
     height: 50px;
     margin: 0;
