@@ -33,6 +33,21 @@ module.exports = function (grunt) {
     // grunt task config
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        scp: {
+            options: {
+                host: 'prometheus.est.vpn',
+                username: 'bill'
+            },
+            your_target: {
+                files: [{
+                    cwd: 'dist',
+                    src: '**/*',
+                    filter: 'isFile',
+                    // path on the server
+                    dest: '/var/www/map'
+                }]
+            },
+        },
         tag: {
             banner: '/*  <%= pkg.name %>\n' +
                 ' *  version <%= pkg.version %>\n' +
@@ -170,12 +185,17 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-newer');
     grunt.loadNpmTasks('grunt-open');
     grunt.loadNpmTasks('grunt-contrib-compress');
+    grunt.loadNpmTasks('grunt-scp');
 
     // define the tasks
     grunt.registerTask('default', 'Watches the project for changes, automatically builds them and runs a web server and opens default browser to preview.', ['eslint', 'stylelint', 'connect:dev', 'open:dev_browser', 'watch:dev']);
-    grunt.registerTask('build', 'Compiles all of the assets and copies the files to the build directory.', ['clean', 'copy', 'scripts', 'stylesheets', 'compress']);
+    grunt.registerTask('build', 'Compiles all of the assets and copies the files to the build directory.', ['clean', 'copy', 'scripts', 'stylesheets']); // we don't want to zip it, 'compress']);
     grunt.registerTask('build-view', 'Compiles all of the assets and copies the files to the build directory starts a web server and opens browser to preview app.', ['clean', 'copy', 'scripts', 'stylesheets', 'compress', 'connect:build', 'open:build_browser', 'watch:build']);
     grunt.registerTask('scripts', 'Compiles the JavaScript files.', ['eslint', 'uglify']);
     grunt.registerTask('stylesheets', 'Auto prefixes css and compiles the stylesheets.', ['stylelint', 'postcss', 'cssmin']);
     grunt.registerTask('lint', 'Run eslint and stylelint.', ['eslint', 'stylelint']);
+    grunt.registerTask('build-deploy-dev', 'Compiles all of the assets and copies the files to the build directory, then deploys to dev.', ['clean', 'copy', 'scripts', 'stylesheets','scp']);
+    grunt.registerTask('deploy-dev', 'Deploys the dist folder to dev.', ['scp']);
+    
+    
 };
