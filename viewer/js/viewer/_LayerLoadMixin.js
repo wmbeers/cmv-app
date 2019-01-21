@@ -286,7 +286,7 @@ define([
         },
 
         //TODO: support adding draft projects to map for editing
-        addProjectToMap: function (projectId) {
+        addProjectToMap: function (projectId, altNumber) {
             //TODO just set this in the map service rather than having to code in js
             var renderer = new SimpleRenderer({
                 'type': 'simple',
@@ -302,14 +302,19 @@ define([
                     }
                 }
             });
+            var definitionQuery = 'fk_project = ' + projectId;
+            if (altNumber) {
+                definitionQuery = 'alt_id = \'' + projectId + '-' + altNumber + '\'';
+            }
+
             this.addToMap(
                 {
-                    name: 'Project # ' + projectId,
+                    name: 'Project # ' + projectId + (altNumber ? '-' + altNumber : ''),
                     url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Query_MMA_Dev/MapServer/0',
                     type: 'feature',
                     sdeLayerName: null //only needed for metadata
                 },
-                'fk_project = ' + projectId,
+                definitionQuery,
                 false, //prevents definitionExpression from overriding title TODO cleaner method of handling this
                 renderer
             );
