@@ -46819,10 +46819,10 @@ define({
             }
         },
         {
-            url: 'https://www.arcgis.com/sharing/rest/content/items/4cf7e1fb9f254dcda9c8fbadb15cf0f8/resources/styles/root.json',
-            name: 'Vector Tile Test',
-            fullName: 'Vector Tile Test',
-            description: 'Vector Tile Test',
+            url: 'https://tiles.arcgis.com/tiles/LBbVDC0hKPAnLRpO/arcgis/rest/services/nwi_tile_package/VectorTileServer/',
+            name: 'NWI (Vector Tile Test)',
+            fullName: 'National Wetlands Inventory (Vector Tile Test)',
+            description: 'National Wetlands Inventory (Vector Tile Test)',
             type: 'vectortile'
         }
     ],
