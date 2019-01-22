@@ -574,9 +574,9 @@ define([
                 options: {
                     map: true,
 
-                    url: 'http://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/2',
+                    url: 'https://services.arcgis.com/LBbVDC0hKPAnLRpO/ArcGIS/rest/services/countyBoundary/FeatureServer/1',
                     field: 'NAME',
-                    where: 'STATE_FIPS = \'12\'',
+                    //where: 'STATE_FIPS = \'12\'',
 
                     // you can customize the text
                     i18n: {
