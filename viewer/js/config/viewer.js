@@ -220,7 +220,7 @@ define([
                 visible: true,
                 outFields: ['*'],
                 imageParameters: buildImageParameters({
-                    layerIds: [0,7],
+                    layerIds: [0, 7],
                     layerOption: 'show'
                 }),
                 mode: 1
