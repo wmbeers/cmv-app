@@ -563,15 +563,57 @@ define([
                     }
                 }
             },
-            /*TODO editor: {
-                include: has('phone') ? false : true,
+            zoomToCounty: {
+                include: true,
+                id: 'zoomToCounty',
+                type: 'titlePane',
+                title: 'Zoom to County',
+                position: 10,
+                open: true,
+                path: 'gis/dijit/ZoomToFeature',
+                options: {
+                    map: true,
+
+                    url: 'http://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/2',
+                    field: 'NAME',
+                    where: 'STATE_FIPS = \'12\'',
+
+                    // you can customize the text
+                    i18n: {
+                        selectFeature: "Select a County"
+                    }
+                }
+            },
+            zoomToWMD: {
+                include: true,
+                id: 'zoomToWMD',
+                type: 'titlePane',
+                title: 'Zoom to Water Management District',
+                position: 11,
+                open: true,
+                path: 'gis/dijit/ZoomToFeature',
+                options: {
+                    map: true,
+
+                    url: 'https://ca.dep.state.fl.us/arcgis/rest/services/Map_Direct/Boundaries/MapServer/9',
+                    field: 'NAME',
+
+                    // you can customize the text
+                    i18n: {
+                        selectFeature: "Select a District"
+                    }
+                }
+            },
+            
+            editor: {
+                include: false, // TODO has('phone') ? false : true,
                 id: 'editor',
                 type: 'titlePane',
                 path: 'gis/dijit/Editor',
                 title: i18n.viewer.widgets.editor,
                 iconClass: 'fas fa-fw fa-pencil-alt',
                 open: false,
-                position: 10,
+                position: 12,
                 options: {
                     map: true,
                     mapClickMode: true,
@@ -590,9 +632,9 @@ define([
                         }
                     }
                 }
-            },*/
-            /*
-             * TODO: need Google Maps API key,
+            },
+            
+            /* TODO: need Google Maps API key,
             streetview: {
                 include: true,
                 id: 'streetview',
