@@ -580,7 +580,7 @@ define([
 
                     // you can customize the text
                     i18n: {
-                        selectFeature: "Select a County"
+                        selectFeature: 'Select a County'
                     }
                 }
             },
@@ -600,7 +600,7 @@ define([
 
                     // you can customize the text
                     i18n: {
-                        selectFeature: "Select a District"
+                        selectFeature: 'Select a District'
                     }
                 }
             },
