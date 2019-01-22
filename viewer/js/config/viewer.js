@@ -219,6 +219,10 @@ define([
                 opacity: 1.0,
                 visible: true,
                 outFields: ['*'],
+                imageParameters: buildImageParameters({
+                    layerIds: [0,7],
+                    layerOption: 'show'
+                }),
                 mode: 1
             },
             editorLayerInfos: {
@@ -227,7 +231,7 @@ define([
             legendLayerInfos: {
                 exclude: false,
                 layerInfo: {
-                    title: 'Projects'
+                    title: 'Projects (Previously Reviewed)'
                 }
             },
             layerControlLayerInfos: {
