@@ -302,9 +302,11 @@ define([
                     }
                 }
             });
-            var definitionQuery = 'fk_project = ' + projectId;
+            var definitionQuery;
             if (altNumber) {
                 definitionQuery = 'alt_id = \'' + projectId + '-' + altNumber + '\'';
+            } else {
+                definitionQuery = 'alt_id like \'' + projectId + '-%\'';
             }
 
             this.addToMap(

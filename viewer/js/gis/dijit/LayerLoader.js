@@ -35,6 +35,10 @@ define([
                 on(this.searchButton, 'click', lang.hitch(this, 'handleSearch'));
                 on(this.showCategoriesButton, 'click', lang.hitch(this, 'showCategories'));
                 on(this.listAllButton, 'click', lang.hitch(this, 'listAllLayers'));
+
+                on(this.projectId, 'keydown', lang.hitch(this, 'handleProjectKeyDown'));
+                on(this.altNumber, 'keydown', lang.hitch(this, 'handleProjectKeyDown'));
+                on(this.addProjectToMapButton, 'click', lang.hitch(this, 'addProject'));
                 
                 this._initializeDialogs();
             },
@@ -45,6 +49,19 @@ define([
                 if (event.keyCode === 13) {
                     this.handleSearch();
                 }
+            },
+            handleProjectKeyDown: function (event) {
+                if (event.keyCode === 13) {
+                    this.addProject();
+                }
+            },
+            addProject: function () {
+                //TODO: first a quick DWR call to check if user can see it (valid project, if draft then only show if user has draft access, etc.)
+                //either do that here or in addProjectToMap function 
+                app.addProjectToMap(
+                    this.projectId.value,
+                    this.altNumber.value
+                );
             },
             handleSearch: function () {
                 //filter this.allLayers
