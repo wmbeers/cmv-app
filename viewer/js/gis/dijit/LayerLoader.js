@@ -100,14 +100,12 @@ define([
                 this.layersDialog.show();
             },
             _initializeDialogs: function () {
-                console.log('initializing dialogs');
                 //categories dialog
                 this.categoryDialog = new Dialog({
                     id: 'layerloader_categories_dialog',
                     title: 'Layer Browser',
                     content: this.dialogTemplate,
-                    style: "width: 90%",
-
+                    style: 'width: 90%'
                 });
 
                 this.layerDefs.forEach(function (layerDef) {
@@ -127,7 +125,7 @@ define([
                 this._processCategories(this.categories, this.layerDefs);
 
                 //apply knockout bindings
-                ko.applyBindings(this, dom.byId('layerLoaderDialog'))
+                ko.applyBindings(this, dom.byId('layerLoaderDialog'));
                 //bindings appear to muck this up and set it to the last one
                 this.currentCategory(this.categories[0]);
 
@@ -183,7 +181,7 @@ define([
             },
             currentCategory: ko.observable(null),
             currentLayer: ko.observable(null),
-           _constructLayerLink: function (layerDef, targetNode) {
+            _constructLayerLink: function (layerDef, targetNode) {
                 var li = domConstruct.create('li', null, targetNode);
                 var a = domConstruct.create('a', {'href': '#', 'innerHTML': layerDef.name, 'title': layerDef.description}, li);
                 on(a, 'click', lang.hitch(this, function () {

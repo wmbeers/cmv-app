@@ -44,7 +44,7 @@ define([
 
         getLayerDef: function (sdeLayerNameOrUrl) {
             for (var i = 0; i < this.categories.length; i++) {
-                var category = categories[i];
+                var category = this.categories[i];
                 if (category.name === sdeLayerNameOrUrl) {
                     return category;
                 }
@@ -73,7 +73,7 @@ define([
         },
 
         addToMap: function (layerDef, definitionExpression, includeDefinitionExpressionInTitle, renderer) {
-            var layer;
+            var layer = null;
 
             if (typeof layerDef === 'string') {
                 //find layer by sdeLayerName or url property
@@ -96,13 +96,13 @@ define([
                     //group it
                     ld.layerGroup = layerDef.name;
                     //add it
-                    var l = this.addToMap(ld);
+                    this.addToMap(ld);
                 }, this);
 
                 topic.publish('growler/growl', 'Loaded ' + layerCount + ' layers for category ' + layerDef.name);
 
 
-                return;
+                return null; //TODO return an array or something
             }
 
             //test if it's already in the map by url and definitionExpression
@@ -129,7 +129,7 @@ define([
                 return layer;
             }
 
-            if (layerDef.layerGroup == null) {
+            if (layerDef.layerGroup === null) {
                 topic.publish('growler/growl', 'Loading ' + layerDef.name);
             }
 
@@ -288,7 +288,7 @@ define([
                         //with visibleAtMapScale check, like below
                     }
                     //Report it's been loaded, suppressed if we're adding a whole category
-                    if (layerDef.layerGroup == null) {
+                    if (layerDef.layerGroup === null) {
                         if (!layer.visibleAtMapScale) {
                             topic.publish('growler/growl', {
                                 title: '',
