@@ -64,11 +64,11 @@ define([
                 );
             },
             handleSearch: function () {
-                //filter this.allLayers
+                //filter this.layerDefs
                 //TODO lucene or some more powerful search engine will be replacing this
                 var searchString = this.searchNode.value;
                 var tokens = searchString.toLowerCase().split(' ');
-                var matches = array.filter(this.allLayers, function (l) {
+                var matches = array.filter(this.layerDefs, function (l) {
                     var x = array.some(tokens, function (s) {
                         var name = String(l.name).toLowerCase(), 
                             description = String(l.description).toLowerCase(), 
@@ -106,19 +106,23 @@ define([
                     content: div
                 });
                 
-                this.categories.forEach(function (mapService) {
+                this.categories.forEach(function (category) {
                     var span = domConstruct.create('span', null, div);
-                    if (!mapService.iconUrl) {
-                        //default to image named the same as the map service
-                        mapService.iconUrl = mapService.name.replace(/\s/g, '_') + '.png';
-                    }
-                    domConstruct.create('img', {'alt': mapService.name, 'src': 'js/gis/dijit/LayerLoader/images/' + mapService.iconUrl}, span);
+                    //default to image named the same as the map service
+                    category.iconUrl = category.name.replace(/\s/g, '_') + '.png';
+                    domConstruct.create('img', { 'alt': category.name, 'src': 'js/gis/dijit/LayerLoader/images/' + category.iconUrl }, span);
+                    category.layerDefs = category.layerIds.map(function (layerId) {
+                        return this.layerDefs.find(function (l) {
+                            return l.id === layerId;
+                        });
+                    }, this);
+                    category.layerDefs.reverse();
                     domConstruct.create('br', null, span);
                     on(span, 'click', lang.hitch(this, function () {
-                        app.addToMap(mapService);
+                        app.addToMap(category);
                         this.categoryDialog.hide();
                     }));
-                    domConstruct.create('span', {'innerHTML': mapService.name}, span);
+                    domConstruct.create('span', { 'innerHTML': category.name}, span);
                 }, this);
 
                 //layers dialog
@@ -130,7 +134,7 @@ define([
                 });
 
                 //sort layerDefs by name (we'll do this server-side eventually)
-                this.allLayers.sort(function (a, b) {
+                this.layerDefs.sort(function (a, b) {
                     if (a.name === b.name) {
                         return 0;
                     }
@@ -141,7 +145,7 @@ define([
                 });
 
                 //add layerDefs to all-layers list
-                this.allLayers.forEach(function (layerDef) {
+                this.layerDefs.forEach(function (layerDef) {
                     this._constructLayerLink(layerDef, ul);
                 }, this);
 

@@ -43,18 +43,14 @@ define([
         },
 
         getLayerDef: function (sdeLayerNameOrUrl) {
-            //search for it in mapServices
-            var mapServices = app.widgets.layerLoader.mapServices; //TODO or read directly from JS?
-
-            for (var i = 0; i < mapServices.length; i++) {
-                var mapService = mapServices[i];
-                if (mapService.url === sdeLayerNameOrUrl) {
-                    return mapService;
+            for (var i = 0; i < this.categories.length; i++) {
+                var category = categories[i];
+                if (category.name === sdeLayerNameOrUrl) {
+                    return category;
                 }
-                if (mapService.layers) {
-                    for (var j = 0; j < mapServices[i].layers.length; j++) {
-                        //TODO eventually we'll have the layers as a separate list generated server-side
-                        var l = mapService.layers[j];
+                if (category.layersDefs) {
+                    for (var j = 0; j < category.layersDefs.length; j++) {
+                        var l = category.layersDefs[j];
                         if (l.url === sdeLayerNameOrUrl || l.sdeLayerName === sdeLayerNameOrUrl) {
                             return l;
                         }
@@ -70,7 +66,7 @@ define([
             //if we make it this far, it's a problem
             topic.publish('viewer/handleError', {
                 source: 'LayerLoadMixin.getLayerDef',
-                error: 'Unable to find definition for service or layer with sdeLayerName or URL "' + sdeLayerNameOrUrl + '"'
+                error: 'Unable to find definition for category with name or layer with sdeLayerName or URL "' + sdeLayerNameOrUrl + '"'
             });
 
             return null; //just to shut up eslint
@@ -85,6 +81,28 @@ define([
                 if (!layerDef) {
                     return null;
                 }
+            }
+
+            if (layerDef.type === 'category') {
+                //a pre-defined collection of layers (may also include user-defined in the future)
+                //what will be reported at the end
+                //How many layers loaded
+                var layerCount = 0;
+                //TODO Whether or not any of them are out of scale range--tricky because we run into a race condition with the layers loading
+                layerDef.layerDefs.forEach(function (categorylayerDef) {
+                    layerCount++;
+                    //clone it (so grouping won't screw it up later)
+                    var ld = lang.clone(categorylayerDef);
+                    //group it
+                    ld.layerGroup = layerDef.name;
+                    //add it
+                    var l = this.addToMap(ld);
+                }, this);
+
+                topic.publish('growler/growl', 'Loaded ' + layerCount + ' layers for category ' + layerDef.name);
+
+
+                return;
             }
 
             //test if it's already in the map by url and definitionExpression
@@ -111,7 +129,9 @@ define([
                 return layer;
             }
 
-            topic.publish('growler/growl', 'Loading ' + layerDef.name);
+            if (layerDef.layerGroup == null) {
+                topic.publish('growler/growl', 'Loading ' + layerDef.name);
+            }
 
             //Note: I tried app.initLayer, and while it does do a great job of adding the layer to the map, 
             //it doesn't then call functions to make it show up in the LayerControl widget
@@ -189,6 +209,7 @@ define([
                             noZoom: true, //TODO: disable zoom to layer for state-wide layers?
                             mappkgDL: true,
                             allowRemove: true,
+                            layerGroup: layerDef.layerGroup,
                             //TODO: documentation on this is really confusing, neither of these work
                             //menu: {
                             //    dynamic: {
@@ -235,12 +256,13 @@ define([
                         layer: layer,
                         title: layerDef.name,
                         type: layerDef.type
+                        
                     };
                     if (definitionExpression && includeDefinitionExpressionInTitle !== false) {
                         //TODO: this is just a proof of concept, we'll probably want something cleaner than raw definitionExpression
                         layerControlInfo.title = layerControlInfo.title + ' (' + definitionExpression + ')';
                     }
-                    topic.publish('layerControl/addLayerControls', [layerControlInfo]);
+                    topic.publish('layerControl/addLayerControls', [layerControlInfo]); //TODO the whole collection of layers to be added should be passed at once for layerGroup to do anything.
                     topic.publish('identify/addLayerInfos', [layerControlInfo]);
                     app.legendLayerInfos.push(layerControlInfo);
                     //topic.publish('identify/addLayerInfos', [{
@@ -256,14 +278,18 @@ define([
                         //TODO? is it possible after zooming to the defined features (which, as far our documented requirements go, will be just one)
                         //it's still not visible? if so, need a callback handler after zooming
                         //with visibleAtMapScale check, like below
-                    } else if (!layer.visibleAtMapScale) {
-                        topic.publish('growler/growl', {
-                            title: '',
-                            message: layerDef.name + ' loaded, but is not visible at the current map scale.',
-                            level: 'warning'
-                        });
-                    } else {
-                        topic.publish('growler/growl', layerDef.name + ' loaded.');
+                    }
+                    //Report it's been loaded, suppressed if we're adding a whole category
+                    if (layerDef.layerGroup == null) {
+                        if (!layer.visibleAtMapScale) {
+                            topic.publish('growler/growl', {
+                                title: '',
+                                message: layerDef.name + ' loaded, but is not visible at the current map scale.',
+                                level: 'warning'
+                            });
+                        } else {
+                            topic.publish('growler/growl', layerDef.name + ' loaded.');
+                        }
                     }
                 }, function (error) {
                     topic.publish('viewer/handleError', {
