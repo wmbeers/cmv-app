@@ -12,15 +12,17 @@ define([
     'dojo/dom',
     'dojo/dom-construct',
     'dojo/topic',
-    'dojo/text!./LayerLoader/templates/layerLoader.html', // template for the widget in left panel
+    'dojo/text!./LayerLoader/templates/layerLoaderSidebar.html', // template for the widget in left panel
+    'dojo/text!./LayerLoader/templates/layerLoaderDialog.html', // template for the dialog
     'xstyle/css!./LayerLoader/css/layerLoader.css'
 ],
     function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog, ready, popup, lang, array, on, dom, domConstruct, 
-        topic, layerLoaderTemplate
+        topic, layerLoaderSidebarTemplate, layerLoaderDialogTemplate
 ) {
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
             widgetsInTemplate: true,
-            templateString: layerLoaderTemplate,
+            templateString: layerLoaderSidebarTemplate,
+            dialogTemplate: layerLoaderDialogTemplate,
             topicID: 'layerLoader',            
             baseClass: 'layerLoader',
             map: this.map,
@@ -98,32 +100,37 @@ define([
                 this.layersDialog.show();
             },
             _initializeDialogs: function () {
+                console.log('initializing dialogs');
                 //categories dialog
-                var div = domConstruct.toDom('<div class="categoriesList"></div>');
                 this.categoryDialog = new Dialog({
                     id: 'layerloader_categories_dialog',
-                    title: 'Select Category',
-                    content: div
+                    title: 'Layer Browser',
+                    content: this.dialogTemplate,
+                    style: "width: 90%",
+
                 });
-                
-                this.categories.forEach(function (category) {
-                    var span = domConstruct.create('span', null, div);
-                    //default to image named the same as the map service
-                    category.iconUrl = category.name.replace(/\s/g, '_') + '.png';
-                    domConstruct.create('img', { 'alt': category.name, 'src': 'js/gis/dijit/LayerLoader/images/' + category.iconUrl }, span);
-                    category.layerDefs = category.layerIds.map(function (layerId) {
-                        return this.layerDefs.find(function (l) {
-                            return l.id === layerId;
-                        });
-                    }, this);
-                    category.layerDefs.reverse();
-                    domConstruct.create('br', null, span);
-                    on(span, 'click', lang.hitch(this, function () {
-                        app.addToMap(category);
-                        this.categoryDialog.hide();
-                    }));
-                    domConstruct.create('span', { 'innerHTML': category.name}, span);
+
+                this.layerDefs.forEach(function (layerDef) {
+                    layerDef.loadLayer = function () {
+                        app.addToMap(layerDef);
+                    };
+                    layerDef.removeLayer = function () {
+                        if (layerDef.layer) {
+                            app.widgets.layerControl._removeLayer(layerDef.layer);
+                        }
+                    };
+                    layerDef.loaded = ko.observable(false);
                 }, this);
+
+                //This is problematic because of the recursive call lang.hitch(this, '_processCategories', this.categories);
+
+                this._processCategories(this.categories, this.layerDefs);
+
+                //apply knockout bindings
+                ko.applyBindings(this, dom.byId('layerLoaderDialog'))
+                //bindings appear to muck this up and set it to the last one
+                this.currentCategory(this.categories[0]);
+
 
                 //layers dialog
                 var ul = domConstruct.toDom('<ul class="layerList"></ul>');
@@ -155,7 +162,28 @@ define([
                     title: 'Search Results'
                 });
             },
-            _constructLayerLink: function (layerDef, targetNode) {
+            _processCategories: function (categories, layerDefs) {
+                //post-process categories to cross-reference layers and knockoutify
+                categories.forEach(function (category) {
+                    category.layerDefs = category.layerIds.map(function (layerId) {
+                        return layerDefs.find(function (l) {
+                            return l.id === layerId;
+                        });
+                    }, this);
+                    category.layerDefs.reverse();
+                    //category.showCategory = function () {
+                    //    //handled by knockout
+                    //    self.currentCategory = category;
+                    //};
+                    //console.log(category.name + (category.categories ? category.categories.length : 'null'));
+                    if (category.categories && category.categories.length > 0) {
+                        this._processCategories(category.categories, layerDefs);
+                    }
+                }, this);
+            },
+            currentCategory: ko.observable(null),
+            currentLayer: ko.observable(null),
+           _constructLayerLink: function (layerDef, targetNode) {
                 var li = domConstruct.create('li', null, targetNode);
                 var a = domConstruct.create('a', {'href': '#', 'innerHTML': layerDef.name, 'title': layerDef.description}, li);
                 on(a, 'click', lang.hitch(this, function () {

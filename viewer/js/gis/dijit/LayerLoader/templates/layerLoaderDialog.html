@@ -1,0 +1,44 @@
+<div id="layerLoaderDialog">
+    <script type="text/html" id="categoryTemplate">
+        <li>
+            <span data-bind="style: {backgroundColor: $root.currentCategory() == $data ? 'teal' : ''}, text: name, event: {mouseover: function() {$root.currentCategory($data);}}"></span>
+            <ul class="plain-list" data-bind="template: {foreach: categories, name: 'categoryTemplate'}"></ul>
+        </li>
+    </script>
+
+
+
+    <!--TODO bootstrap or dojo panels or something better than table layout-->
+    <table style="width: 100%">
+        <tr>
+            <td style="vertical-align: top; width: 30%">
+                <ul class="plain-list" data-bind="template: {foreach: categories, name: 'categoryTemplate'}"></ul>
+            </td>
+            <td style="vertical-align: top; width: 30%">
+                <!-- ko with: currentCategory -->
+                <h3 data-bind="text: name"></h3>
+                <ul class="plain-list" data-bind="foreach: layerDefs">
+                    <li>
+                        <span data-bind="style: {backgroundColor: $root.currentLayer() == $data ? 'teal' : ''},
+                              text: name,
+                              event: {mouseover: function() {$root.currentLayer($data);}}"></span>
+                    </li>
+                </ul>
+                <div data-bind="visible: layerDefs.length ===0">
+                    No layers defined for this category yet.
+                </div>
+                <!-- /ko -->
+            </td>
+            <td style="vertical-align: top; width: 40%">
+                <!-- ko with: currentLayer -->
+                <h3 data-bind="text: name"></h3>
+                <span data-bind="text: loaded() ? '-' : '+'"></span>
+                <p data-bind="text: description"></p>
+                <button type="button" data-bind="visible: !loaded(), click: loadLayer">Load</button>
+                <button type="button" data-bind="visible: loaded(), click: removeLayer">Remove</button>
+                <!-- /ko -->
+
+            </td>
+        </tr>
+    </table>
+</div>

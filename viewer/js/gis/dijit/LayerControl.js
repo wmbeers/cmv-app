@@ -527,6 +527,10 @@ define([
                 }
             }
 
+            if (layer.layerDef && layer.layerDef.loaded) {
+                layer.layerDef.loaded(false);
+            }
+
             //remove from layerControls
             topic.publish('layerControl/removeLayerControls', [layer]);
             //remove from identify

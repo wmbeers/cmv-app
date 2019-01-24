@@ -170,6 +170,11 @@ define([
             if (renderer) {
                 layer.setRenderer(renderer);
             }
+
+            //cross-reference
+            layer.layerDef = layerDef;
+            layerDef.layer = layer;
+
             //Note: _MapMixin adds layers to the layers control with unshift, e.g.:
             //layers.unshift(l)
             //but that's to keep it in the order in which they're listed in operationalLayers;
@@ -179,6 +184,9 @@ define([
             //construct on-load handler. The layer needs to be loaded before getting the layerInfo
             //and adding to layerControl widget
             on(layer, 'load', function () {
+                if (layer.layerDef.loaded) {
+                    layer.layerDef.loaded(true);
+                }
                 //I don't know why we need to make this separate esriRequest, but the layer won't show up in layerControl
                 //unless we do. We don't do anything with the response. It's cribbed from DnD plug in, DroppedItem.js.
                 esriRequest({
