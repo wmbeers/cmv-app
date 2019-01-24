@@ -5,13 +5,15 @@ define([
     /*'esri/urlUtils',*/
     'esri/tasks/GeometryService',
     'esri/layers/ImageParameters',
+    'esri/tasks/locator',
+    'esri/layers/FeatureLayer',
     'gis/plugins/Google',
     'dojo/i18n!./nls/main',
     'dojo/topic',
     'dojo/sniff',
     'dijit/Dialog',
     'dojo/request'
-], function (units, Extent, esriConfig, /*urlUtils,*/ GeometryService, ImageParameters, GoogleMapsLoader, i18n, topic, has, Dialog, request) {
+], function (units, Extent, esriConfig, /*urlUtils,*/ GeometryService, ImageParameters, Locator, FeatureLayer, GoogleMapsLoader, i18n, topic, has, Dialog, request) {
 
     // url to your proxy page, must be on same machine hosting you app. See proxy folder for readme.
     esriConfig.defaults.io.proxyUrl = 'proxy/proxy.ashx';
@@ -266,9 +268,62 @@ define([
                 options: {
                     map: true,
                     visible: true,
-                    enableInfoWindow: false,
+                    enableInfoWindow: true,
                     enableButtonMode: has('phone') ? false : true,
-                    expanded: has('phone') ? true : false
+                    expanded: true, // || has('phone') ? true : false,
+                    allPlaceholder: 'Find address, place, county or district',
+                    enableSourcesMenu: true,
+                    addLayersFromMap: true, //doesn't seem to to anything
+                    exactMatch: true,
+                    sources: [
+                        {
+                            locator: new Locator('//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer'),
+                            singleLineFieldName: 'SingleLine',
+                            outFields: ['Addr_type'],
+                            name: 'Esri World Geocoder',
+                            countryCode: 'US',
+                            localSearchOptions: {
+                                minScale: 300000,
+                                distance: 50000
+                            },
+                            placeholder: 'Find address or place',
+                            highlightSymbol: {
+                                url: 'https://js.arcgis.com/3.27/esri/dijit/Search/images/search-pointer.png',
+                                width: 36, height: 36, xoffset: 9, yoffset: 18
+                            }
+                        },
+                        {
+                            featureLayer: new FeatureLayer('https://services.arcgis.com/LBbVDC0hKPAnLRpO/ArcGIS/rest/services/countyBoundary/FeatureServer/1'),
+                            searchFields: ['NAME'],
+                            suggestionTemplate: '${NAME}', //setting this to 'Name' causes it to return 'Untitled', have to match case
+                            //displayField: 'Name',
+                            exactMatch: true, //doesn't seem to do anything, still returns match for 'SEMINOLE' before 'LEON' when searching 'LE'
+                            outFields: ['*'],
+                            name: 'Counties',
+                            placeholder: 'County name',
+                            maxResults: 6,
+                            maxSuggestions: 6,
+                            enableSuggestions: true,
+                            minCharacters: 0,
+                            localSearchOptions: {distance: 5000}
+                        },
+                        {
+                            featureLayer: new FeatureLayer('https://ca.dep.state.fl.us/arcgis/rest/services/Map_Direct/Boundaries/MapServer/9'), //TODO use a geoplan source
+                            searchFields: ['NAME'],
+                            suggestionTemplate: '${NAME}', //setting this to 'Name' causes it to return 'Untitled', have to match case
+                            //displayField: 'Name',
+                            exactMatch: false, 
+                            outFields: ['*'],
+                            name: 'Water Management Districts',
+                            placeholder: 'WMD name',
+                            maxResults: 6,
+                            maxSuggestions: 6,
+                            enableSuggestions: true,
+                            minCharacters: 0,
+                            localSearchOptions: {distance: 5000}
+                        }
+                    ]
+
                 }
             },
             reverseGeocoder: {
