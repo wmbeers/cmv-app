@@ -68,7 +68,7 @@
         "no-empty-pattern": "error",
         "no-eq-null": "error",
         "no-eval": "error",
-        "no-extend-native": "error",
+        "no-extend-native": ["error", {"exceptions": ["Object","Array"]}],
         "no-extra-bind": "error",
         "no-fallthrough": "error",
         "no-floating-decimal": "error",
