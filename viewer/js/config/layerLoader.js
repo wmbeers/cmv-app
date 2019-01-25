@@ -9,7 +9,7 @@ define({
     'layerDefs': [
         {
             'id': 4543,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/0',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/0',
             'name': 'FDEP Dry Cleaning Program Sites',
             'source': 'FDEP',
             'description': 'FDEP Dry Cleaning Program Sites - October 2018',
@@ -244,7 +244,7 @@ define({
         },
         {
             'id': 4541,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/1',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/1',
             'name': 'FDEP Hazardous Waste Faciltities',
             'type': 'feature',
             'description': 'FDEP Hazardous Waste Facilities - October 2018',
@@ -619,7 +619,7 @@ define({
         },
         {
             'id': 3393,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/2',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/2',
             'name': 'FDEP Institutional Control Registry',
             'type': 'feature',
             'description': 'FDEP Institutional Controls Registry Sites in Florida - August 2018',
@@ -938,7 +938,7 @@ define({
         },
         {
             'id': 4544,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/3',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/3',
             'name': 'FDEP Large Quantity Generators of Hazardous Waste',
             'type': 'feature',
             'description': 'FDEP Large Quantity Generators of Hazardous Waste - October 2018',
@@ -1142,7 +1142,7 @@ define({
         },
         {
             'id': 1247,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/4',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/4',
             'name': 'FDEP Off Site Contamination Notices',
             'type': 'feature',
             'description': 'FDEP Off-Site Contamination Notices',
@@ -1496,7 +1496,7 @@ define({
         },
         {
             'id': 4545,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/5',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/5',
             'name': 'FDEP Petroleum Contamination Monitoring Sites',
             'type': 'feature',
             'description': 'This coverage includes all identified petroleum program contaminated discharge sites where cleanup is ongoing or complete. Discharge cleanup sites may be eligible or ineligible for state funding assistance. More than one discharge site may be present at a current or former petroleum storage tank facility.',
@@ -2003,7 +2003,7 @@ define({
         },
         {
             'id': 4540,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/6',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/6',
             'name': 'FDEP Storage Tank Contamination Monitoring',
             'type': 'feature',
             'description': 'FDEP Storage Tank Contamination Monitoring (STCM) - October 2018',
@@ -2446,7 +2446,7 @@ define({
         },
         {
             'id': 4546,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/7',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/7',
             'name': 'FDEP Treaters, Storers, and Disposers of Hazardous Waste',
             'type': 'feature',
             'description': 'FDEP Treaters, Storers, and Disposers of Hazardous Waste - October 2018',
@@ -2657,7 +2657,7 @@ define({
         },
         {
             'id': 4547,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/8',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/8',
             'name': 'FDEP Wastewater Facilities',
             'type': 'feature',
             'description': 'FDEP Wastewater Facilities - October 2018',
@@ -3034,7 +3034,7 @@ define({
         },
         {
             'id': 2371,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/9',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/9',
             'name': 'FDOH Biomedical Waste',
             'type': 'feature',
             'description': 'FDOH Biomedical Waste Facilities in Florida - March 2018',
@@ -3322,7 +3322,7 @@ define({
         },
         {
             'id': 2376,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/10',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/10',
             'name': 'FDOH Onsite Sewage',
             'type': 'feature',
             'description': 'This shapefile contains onsite sewage treatment and disposal systems inspected by the Department of Health. This is an update to the septic_oct10 layer.',
@@ -3556,7 +3556,7 @@ define({
         },
         {
             'id': 4280,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/11',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/11',
             'name': 'Miami-Dade DERM Contaminated Sites',
             'type': 'feature',
             'description': 'DERM Contaminated Sites in Miami Dade County - February 2018',
@@ -3788,7 +3788,7 @@ define({
         },
         {
             'id': 156,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/12',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/12',
             'name': 'Solid Waste Facilities',
             'type': 'feature',
             'description': 'FDEP Solid Waste Facilities - September 2018',
@@ -4150,7 +4150,7 @@ define({
         },
         {
             'id': 3416,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/13',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/13',
             'name': 'State funded Hazardous Waste Cleanup Sites',
             'type': 'feature',
             'description': 'The State-Funded cleanup program is designed to address sites where there are no viable responsible parties; the site poses an imminent hazard; and, the site does not qualify for Superfund or is a low priority for EPA. Remediation efforts are triggered when a Florida Dept. of Environmental Protection District Office requests adoption of a site for state-funded cleanup. Funding for these remedial efforts comes from the Water Quality Assurance Trust Fund. Remedial activity may include contamination assessments, risk assessments, feasibility studies, design and construction of treatment systems, operation and maintenance of the installed treatment systems, and removal of contaminated media when necessary.',
@@ -4437,7 +4437,7 @@ define({
         },
         {
             'id': 9423,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/14',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/14',
             'name': 'USEPA Assessment Cleanup and Redevelopment Exchange System',
             'type': 'feature',
             'description': 'This data set contains locations of properties targeted for EPA Brownfields grant assistance from the Assessment, Cleanup and Redevelopment Exchange System (ACRES) database. ACRES stores information reported by EPA Brownfields grant recipients on brownfields properties assessed or cleaned up with grant funding as well as information on Targeted Brownfields Assessments performed by EPA Regions. A brownfield is a property, the expansion, redevelopment, or reuse of which may be complicated by the presence or potential presence of a hazardous substance, pollutant, or contaminant. Additional Information is available at the EPA website: https://www.epa.gov/brownfields/brownfields-grantee-reporting-using-assessment-cleanup-and-redevelopment-exchange-system.',
@@ -4734,7 +4734,7 @@ define({
         },
         {
             'id': 1852,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/15',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/15',
             'name': 'USEPA National Pollutant Discharge Elimination System',
             'type': 'feature',
             'description': 'US EPA National Pollutant Discharge Elimination System (NPDES) in Florida - April 2018  ',
@@ -5038,7 +5038,7 @@ define({
         },
         {
             'id': 1126,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/16',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/16',
             'name': 'USEPA National Priority Site from CERCLIS',
             'type': 'feature',
             'description': 'FDEP Superfund/National Priority List Site Boundaries - 2007 (Areas) ',
@@ -5293,7 +5293,7 @@ define({
         },
         {
             'id': 8203,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/17',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/17',
             'name': 'USEPA Regulated Air Emissions Facilities',
             'type': 'feature',
             'description': 'US EPA Regulated Air Emissions Facilities (ICIS-AIR) in Florida - April 2018',
@@ -5597,7 +5597,7 @@ define({
         },
         {
             'id': 1853,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/18',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/18',
             'name': 'USEPA Resource Conservation and Recovery Act Regulated Facility',
             'type': 'feature',
             'description': 'US EPA Resource Conservation and Recovery Act (RCRA) Regulated Facilities in Florida - April 2018',
@@ -5901,7 +5901,7 @@ define({
         },
         {
             'id': 163,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/19',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/19',
             'name': 'USEPA Superfund Sites',
             'type': 'feature',
             'description': 'US EPA Regulated Superfund Sites in Florida - April 2018',
@@ -6219,7 +6219,7 @@ define({
         },
         {
             'id': 1283,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/20',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/20',
             'name': 'USEPA Toxic Release Inventory',
             'type': 'feature',
             'description': 'US EPA Toxic Release Inventory (TRI) - Basic Facility Information in Florida - 2016 ',
@@ -6501,7 +6501,7 @@ define({
         },
         {
             'id': 7122,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/21',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/21',
             'name': 'Waste Cleanup (Closed) Responsible Party Sites',
             'type': 'feature',
             'description': 'FDEP Waste Cleanup Responsible Party Sites - Closed - October 2018',
@@ -6903,7 +6903,7 @@ define({
         },
         {
             'id': 7123,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/22',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/22',
             'name': 'Waste Cleanup (Inactive) Responsible Party Sites',
             'type': 'feature',
             'description': 'FDEP Waste Cleanup Responsible Party Sites - Inactive - October 2018',
@@ -7305,7 +7305,7 @@ define({
         },
         {
             'id': 7124,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/23',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/23',
             'name': 'Waste Cleanup (Open) Responsible Party Sites',
             'type': 'feature',
             'description': 'FDEP Waste Cleanup Responsible Party Sites - Open - October 2018',
@@ -7714,7 +7714,7 @@ define({
         },
         {
             'id': 38,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/24',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/24',
             'name': 'EPA Ocean Dredged Material Disposal Sites',
             'type': 'feature',
             'description': 'US EPA Ocean Dredged Material Disposal Sites (ODMDS) in Florida - 2018',
@@ -7929,7 +7929,7 @@ define({
         },
         {
             'id': 1281,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/25',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/25',
             'name': 'Brownfield Areas',
             'type': 'feature',
             'description': 'FDEP Brownfield Areas in Florida - February 2018',
@@ -8171,7 +8171,7 @@ define({
         },
         {
             'id': 3415,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/26',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/26',
             'name': 'NPDES Stormwater Permits',
             'type': 'feature',
             'description': 'FDEP National Pollutant Discharge Elimination System Stormwater Permits',
@@ -8367,7 +8367,7 @@ define({
         },
         {
             'id': 3093,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Shpo/MapServer/0',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/0',
             'name': 'County Commission approved Historic Structures - Highlands County',
             'type': 'feature',
             'description': 'County Commission approved Historic Structures - Highlands County',
@@ -8562,7 +8562,7 @@ define({
         },
         {
             'id': 153,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Shpo/MapServer/1',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/1',
             'name': 'Historic Structures',
             'type': 'feature',
             'description': 'BAR Historical Structure Locations in Florida - October 2018',
@@ -8898,7 +8898,7 @@ define({
         },
         {
             'id': 6,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Shpo/MapServer/2',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/2',
             'name': 'State Historic Bridges',
             'type': 'feature',
             'description': 'BAR Historic Bridges in Florida - October 2018',
@@ -9184,7 +9184,7 @@ define({
         },
         {
             'id': 293,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Shpo/MapServer/3',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/3',
             'name': 'State Historical Highways',
             'type': 'feature',
             'description': 'State Historic Highways -  March 2015',
@@ -9424,7 +9424,7 @@ define({
         },
         {
             'id': 8,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Shpo/MapServer/4',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/4',
             'name': 'SHPO National Register Sites',
             'type': 'feature',
             'description': 'BAR National Register of Historic Places in Florida - October 2018',
@@ -9639,7 +9639,7 @@ define({
         },
         {
             'id': 7763,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Shpo/MapServer/5',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/5',
             'name': 'SHPO No Survey Present',
             'type': 'feature',
             'source': 'BAR',
@@ -9792,7 +9792,7 @@ define({
         },
         {
             'id': 7,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Shpo/MapServer/6',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/6',
             'name': 'Historic Cemeteries',
             'type': 'feature',
             'source': 'BAR',
@@ -10064,7 +10064,7 @@ define({
         },
         {
             'id': 9,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Shpo/MapServer/7',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/7',
             'name': 'SHPO Resource Groups',
             'type': 'feature',
             'description': 'BAR Resource Groups in Florida - October 2018',
@@ -10364,7 +10364,7 @@ define({
         },
         {
             'id': 10,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Shpo/MapServer/8',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/8',
             'name': 'SHPO Survey Areas',
             'type': 'feature',
             'description': 'BAR Field Survey Project Boundaries and Attributes in Florida - October 2018',
@@ -10614,7 +10614,7 @@ define({
         },
         {
             'id': 5,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Shpo/MapServer/9',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/9',
             'name': 'Archaeological and Historic Sites',
             'type': 'feature',
             'description': 'BAR Archaeological Sites in Florida - October 2018',
@@ -10958,7 +10958,7 @@ define({
         },
         {
             'id': 3092,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Shpo/MapServer/10',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/10',
             'name': 'High Archaeological Site Potential - Highlands County',
             'type': 'feature',
             'description': 'This dataset represents areas of high archaeological site potential within Highlands County.',
@@ -11111,7 +11111,7 @@ define({
         },
         {
             'id': 4700,
-            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Shpo/MapServer/11',
+            'url': 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/11',
             'name': 'National Historic Preservation Act Certified Local Governments',
             'type': 'feature',
             'description': 'National Historic Preservation Act - Florida Certified Local Governments - 2017',
