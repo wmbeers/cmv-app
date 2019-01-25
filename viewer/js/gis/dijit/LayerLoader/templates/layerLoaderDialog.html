@@ -1,7 +1,7 @@
 <div id="layerLoaderDialog">
     <script type="text/html" id="categoryTemplate">
         <li>
-            <span data-bind="style: {backgroundColor: $root.currentCategory() == $data ? 'teal' : ''}, text: name, event: {mouseover: function() {$root.currentCategory($data);}}"></span>
+            <span data-bind="style: {backgroundColor: $root.currentCategory() == $data ? 'teal' : ''}, text: name, event: {click: function() {$root.currentCategory($data);}}"></span>
             <ul class="plain-list" data-bind="template: {foreach: categories, name: 'categoryTemplate'}"></ul>
         </li>
     </script>
@@ -11,17 +11,17 @@
     <!--TODO bootstrap or dojo panels or something better than table layout-->
     <table style="width: 100%">
         <tr>
-            <td style="vertical-align: top; width: 30%">
+            <td style="vertical-align: top; width: 30%;">
                 <ul class="plain-list" data-bind="template: {foreach: categories, name: 'categoryTemplate'}"></ul>
             </td>
-            <td style="vertical-align: top; width: 30%">
+            <td style="vertical-align: top; width: 30%;">
                 <!-- ko with: currentCategory -->
                 <h3 data-bind="text: name"></h3>
                 <ul class="plain-list" data-bind="foreach: layerDefs">
                     <li>
                         <span data-bind="style: {backgroundColor: $root.currentLayer() == $data ? 'teal' : ''},
                               text: name,
-                              event: {mouseover: function() {$root.currentLayer($data);}}"></span>
+                              event: {click: function() {$root.currentLayer($data);}}"></span>
                     </li>
                 </ul>
                 <div data-bind="visible: layerDefs.length ===0">
@@ -29,11 +29,16 @@
                 </div>
                 <!-- /ko -->
             </td>
-            <td style="vertical-align: top; width: 40%">
+            <td style="vertical-align: top; width: 40%;">
                 <!-- ko with: currentLayer -->
-                <h3 data-bind="text: name"></h3>
-                <span data-bind="text: loaded() ? '-' : '+'"></span>
+                <span style="float: right" data-bind="text: loaded() ? '-' : '+'"></span>
+                <h3 data-bind="text: fullName || name"></h3>
+                <label>Description</label>
                 <p data-bind="text: description"></p>
+                <label data-bind="text: scaleText"></label>
+                <p data-bind="if: sdeLayerName">
+                    <a data-bind="attr: {href: '/metadata/' + sdeLayerName + '.htm'}" target="_blank">View Complete Metadata</a>
+                </p>
                 <button type="button" data-bind="visible: !loaded(), click: loadLayer">Load</button>
                 <button type="button" data-bind="visible: loaded(), click: removeLayer">Remove</button>
                 <!-- /ko -->

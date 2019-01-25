@@ -117,6 +117,24 @@ define([
                             app.widgets.layerControl._removeLayer(layerDef.layer);
                         }
                     };
+                    layerDef._legend = null;
+                    //TODO make a request to get the legend, or pre-cache it
+                    layerDef.scaleText = ko.computed(function () {
+                        var scaleText = '';
+                        var minScale = layerDef.layer == null ? layerDef.minScale : layer.minScale;
+                        var maxScale = layerDef.layer == null ? layerDef.maxScale : layer.maxScale;
+
+                        if (minScale > 0) {
+                            if (maxScale > 0) {
+                                scaleText = 'Visible between 1:' + maxScale + ' and 1:' + minScale;
+                            } else {
+                                scaleText = 'Visible when zoomed in closer than 1:' + minScale;
+                            }
+                        } else if (maxScale > 0) {
+                            scaleText = 'Visible when zoomed out beyond 1:' + maxScale;
+                        }
+                        return scaleText;
+                    });
                     layerDef.loaded = ko.observable(false);
                 }, this);
 
