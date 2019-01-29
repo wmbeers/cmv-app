@@ -31,8 +31,10 @@
             </td>
             <td style="vertical-align: top; width: 40%;">
                 <!-- ko with: currentLayer -->
-                <span style="float: right" data-bind="text: loaded() ? '-' : '+'"></span>
                 <h3 data-bind="text: fullName || name"></h3>
+                <div data-bind="foreach: legend">
+                    <img data-bind="attr: {src: 'data:image/png;base64, ' + imageData, alt: label}" />
+                </div>
                 <label>Description</label>
                 <p data-bind="text: description"></p>
                 <label data-bind="text: scaleText"></label>

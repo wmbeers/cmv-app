@@ -6,6 +6,733 @@
  * layer layerIndex, name, fullName, description, sdeLayerName
  */
 define({
+
+
+    'histLayers': [
+        {
+            "layerId": 0,
+            "layerName": "County Commission approved Historic Structures - Highlands County",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "75f1b1f532441df6e2e7d2a83324e590",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jYaAyYBk1cAgZ+P9ESh4DAwMfVklGhrOM5nO2k2QgAwNDGQMDgzR22xhmMjAwkGwgWWDUwKFkIKPFHBmqGkguGDWQcgAAWzQJIjzztnwAAAAASUVORK5CYII=",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 1,
+            "layerName": "Historic Structures",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "7725192ad6abf62eb04b417343357438",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEtJREFUOI1jYaAyYBk1cAgZ+P8EQx4DAwMfVklGhrOM5gzbSTKQgYGhjIGBQRq7bQwzGRhIN5AsMGrgUDKQ0YJBhqoGkgtGDaQcAAADtQeGn1jIzQAAAABJRU5ErkJggg==",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 2,
+            "layerName": "State Historic Bridges",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "0cab20705cb3f2aadf2d2d4d2db15090",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYBk1cNRAMg2cyTDzPzUMS2dIZ2ShlmEMDBCHUd/L6QzpjFT1MoxBDQMZGIZMshk1cHAZCABFsgxR+Em8PgAAAABJRU5ErkJggg==",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 3,
+            "layerName": "State Historical Highways",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "41216acc5ccf4a020fd253d4648bff29",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgQ0NDf8pNayhoYGRdi4cNXDUwFEDRw0cGgY2NDQwohgIE6AUAAA4WwdT4pyLowAAAABJRU5ErkJggg==",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 4,
+            "layerName": "SHPO National Register Sites",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "69843647c9edfc264e9e9fe67435fb13",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgRmL3RdTYtCM2J2HGRgYZqG40DpK6zAFBjIwMNDSy6MGjho4auCogVgNnBG78zCsCCITzEIxECZAKQAA6w0N1Fu/pMIAAAAASUVORK5CYII=",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 5,
+            "layerName": "SHPO No Survey Present",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "92b527115f3e2cdd1aa8e967eb477456",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGZgf+XixRQZtT3C4yRXw+woAtSZigtvTxq4KiBowaOGojDQMqKLsbIrwdQDIQJUAoAwesN/ZM1+xkAAAAASUVORK5CYII=",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 6,
+            "layerName": "Historic Cemeteries",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "d28e6476b0080b8adc1c11c253ef018e",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHhJREFUOI2tlDsSACEIQ8MM978y27KDSiKmssAnn6DjsRwAIhAvYGYwfwHK+gHNYKfgCMQqJlfozIX8YBdTMpxCSw+n0OVQJtDtlBUoBbyFtj5koHSGN1B6U1iotHqysZkMJGOzZUnGnkJLyavzSZKxb+RA/w8q+gCvxlSBQp7bCAAAAABJRU5ErkJggg==",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 7,
+            "layerName": "SHPO Resource Groups",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "3f9a6f3f0c388fd6a97f9194fa719acd",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGxJREFUOI1jYaAyYKGZgbtWFfyn1DC3sAmMLOgCyPxdqwr+o4uhA5gamINwepkUw5DFsBpIrmFYDaTEMAwDKTUMw0BKDcMwkFLDiDaQWMOIMpDYcCXKwNGETZSaIZawiSkTcamBWcSCLkApAAAQJHxRiETHzQAAAABJRU5ErkJggg==",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 8,
+            "layerName": "SHPO Survey Areas",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "5ed2f38032e6911b24616f9fec43d004",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jYaAyYKGZgcX7/QsoMWjztj0XbnV/PYDiQgM7tQsUGMjAwEBLL48aOGrgqIGjBmI1cPO2PRdgRRA54Fb31wMoBsIEKAUA9xsXKB4bNg0AAAAASUVORK5CYII=",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 9,
+            "layerName": "Archaeological and Historic Sites",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "7747ff406bf5d8758f4e57ccd32e92ef",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgY8fS/+n1DBZ2aeMtHPhqIGjBo4aOGrg0DBQVvYpI4qBMAFKAQAUUAaRX8Q7BQAAAABJRU5ErkJggg==",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 10,
+            "layerName": "High Archaeological Site Potential - Highlands County",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "9e807a6ae34d2a7448d530719e04a922",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJxJREFUOI2tk9ENgCAMRK9Jp3EHtiFhJhK2YQfXwQ81AQXaKv0kry/G3jEWDwNAKT6ukBGlwAbeAcgSVAsdUdpmcCk+EqXQe+8J82jhHqIUJIatCxLz+od/pd2j/JEOr2yRqoRG6Y4rUmIONVJU+VQFWynVCy3SpikrpKamaKTmpkjcp6bMuEZYh7TO1mye3OzKoqzHMXB+vnJZnAOWwYitNFhJogAAAABJRU5ErkJggg==",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 11,
+            "layerName": "National Historic Preservation Act Certified Local Governments",
+            "layerType": "Feature Layer",
+            "minScale": 500000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "a85fe56b9719062b5d1c2323030f4d71",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGBJREFUOI1jYaAyYGFgYGDIz88/Qw3DJk6caMIC4zBy8GhSYtj/H1+uMzBAXQgD7Gr618kx7Oeti3DHsOBTSA4YNXDUwFEDh6GByKUGxQbCyjOqGDhx4kQTahjGwMDAAAAhDRTHu9XQKwAAAABJRU5ErkJggg==",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        }
+    ],
+
+    'contamLayers': [
+        {
+            "layerId": 0,
+            "layerName": "FDEP Dry Cleaning Program Sites",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "e450e1d536a9660381b09d1a1ce14e8c",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAVNJREFUOI211E8ow2Ecx/H3U1tN++NE6sdEclztpLlISdlwmiU3qSVSLhTlwpzYcjDt4ODgsKwclIOUoigOc+CkMSctf3Zgaqf9HERtP/v9nmz73J7PU6/n+/TUY6LKMdUUVFXVA9T/w7kTQjxowI8csYKKS1YRgMMOwBIQ0oDxI5TjG/mx3K0w7f9F0YAv75gTGXnQZgG1pDN8lG4bzHshmYLlpPEhhuBKAJ6zMDEI4SR8VgpmXqHTCVNRY0wKjJ5AYg7cLXD4ViG4MwB9XXB2DWP94PNAaE8f/hNccEFwGNJPEFiHi9x3v9EDsRm4vIXJfUnwYBQ6nLC6C9uPxXuzp7B1DpERuFqEcFwCVBohn4egD4Llb4a1DqwWCdC/Cd52EEJHA+6z0GTX9howXYBoSh/7ybgR6Gojt2bCIcdBcwOYS0YqWg71CkUWK5fafrDVyBcwKU4dcntIfwAAAABJRU5ErkJggg==",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 1,
+            "layerName": "FDEP Hazardous Waste Faciltities",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "2511e8cd7bc2b5b59ae30082068c0984",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAkhJREFUOI2l1E9IFGEcxvHvrAMVI7IIdqpmQk1sFdnATCtROlh6MEEJwqCsll1FwkqsjaUxa23Rci9by26W5BJEkBRpRB26KP0BZbHsoIGTnhKshEEJajqMBwnZHdwX3sP78vB53/f3vrwiFtvFNs739nE7WU60gr19g6OtnQAwACymDM7Nc31iArGxEVcsxs2UwXicqoAf4nE8kCL4+iV1vk62jDyDqsNsA3KB6Q2DmiZddjXpSBK4Pdj2jtMeCuPaEDg9zabOq/oen9cc7y+Dp0McA9zAX8vgmeMUKLtQvZeo3ppFmiyb84oM23eQXnOEH4rM41CYHv47/lows0uVvN/m9ROTcbJKKxDq601EEMyAIECwF9usRsboGGeLnZzOy2MOkXAsRgRYFAEGH3A3dAeXT9VtAT8EboAkrV8GQYCditnrarFF+5E7vHQ7nXQdqqBDBGg8SXNpCS8mP+P98JGS6lrSXE1mzeQ1OwQwDNA0GB2DyH04UMry4ACvFJkrByuZEldXNYBhYNj4yeZ4A+6pL7T4A+SkS3Crx0QNAy60w68l/lSUS+OdPr27qoahhJci2FkBgkBwaZHs1nPMaBooCsxq8H2BZfUadodD/71eSRI+m4xMvj56yMzoGDmKYh6zqJARh4N1saQgwO58Qu5W+o7WQjSKUZCLmiifFCzKJVxZTm+0n7TCIhai9/iUEijYWRl6wvu6Bsq6VGkQ9IR5S79NoQP/vmKe+1TdnyxrCczOZ6Slmci7U4k/V8vg6jv1WMn+A/z6stDEqmhiAAAAAElFTkSuQmCC",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 2,
+            "layerName": "FDEP Institutional Control Registry",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "e51dd4ca1a0471d552c4a5b4572a4a6d",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAUpJREFUOI1jYaAyYBk1kC4G8luEltvxCohz7t62/ArD09PXyDbQvXhJvIK2bRGvqKweAwMjg5ZryutHN06uWl/nWs7AwPCVJAM98+f5Kpv7T+Lg5OGDibFy8ooqG7pkBzftZVlb55xBkoEiysZpMMP+//3L8O//XwZmFjYGBgYGBkl1s0gRh4zpbw7MuEi0gexcvDow9qU9ixh2T0liKFz/k4GZhY2Bg4uHz9LMwWozKQYy/Pv/B8YUltVgcM2Zx8DEyAwV+c/w5/ffP9i04TTw26d35wQklVQYGBgYZLQsGWS0LOFyn98+f/P+2fV1JBn49undel5BUVteMXlJZPGf37/+e/PkRv+JlS1vSTJwZ3/EDf+qzW7fPn3oZucVsGRmYuL89fvHzW9vHk9dW+M8E5c+vOlwY5vvFQYGBk98akgykBwwaiDlAAAzjGfTde5j4AAAAABJRU5ErkJggg==",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 3,
+            "layerName": "FDEP Large Quantity Generators of Hazardous Waste",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "97890fc2050098c51f7a2fffb998d2d1",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAiJJREFUOI2l1N9L1WccB/DX0cNx8cj4Mk7eZB5kxqBFbMFS+nEpQizIi2hsDC9a0o9dFRLpzYlSi6IfF1JzQkoMii4a2xT6B8KxiBUljBXCKW/04A6MB+tA2UUGFaEH/cBz9+b1fB4+D5+0CuuQcHhAPLdULl0JNmrN58dMncYwZlcMTimdvE/6G6HzmnhqxeA9sS0veCgewMrAX2nvZdUNiXaxHuvw77LBQsge64gEGXuFqr/FriE6lwXepuZinNvUJQEtEr+zh7gfLysGv2VDo5A/zY7VVDfIgAYZa6htE/5bK14f4oz3nv82+ElPCN1PY/x+gtVbSLVLNMhILQRSOKWuqqD88Tj7vhT3NvGkWrh8TRzEbBp+kr00pNjZG2NVXnBcIix09X6lkJORU+dr5aphpVxe7N/Iie3C0TR0Kh7crPGPCdPdd8Tm3WJ1h6wWNe90CPMoKBv33IiiZuYGhVv1kp4dpibSC7fOMzmK0RIf3Zfd/w+Hzio11aJPndQC1m3a/7zYGlbd7Yn6d3GT6PX5wFASnlG8gAtPNH7aZfpRQVlORkHZDHM/iklrjOWKp/ym1pp8/LPso3HPm3IyxpVsYKyVD2JLgvAZA0cUz+9UY0ScX0d+sfyS4EbFy9s4e0Wpej0zIzxYEZjw7Bfhz+/ELT0hXBXjovmKts16dX1fmfytN8a+pbIVgV+YHPtBdvAvxUWXa8Xg639aPFBJ9hVvLq5+fohBcwAAAABJRU5ErkJggg==",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 4,
+            "layerName": "FDEP Off Site Contamination Notices",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "8c1745be8c6cdf72e2896859c7aeee4c",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAASZJREFUOI3t0TtLA0EUhuH3bBY7C0G0082inZUgCKnEziqiggiaRhArkXghja2Fl8VKgljkB/gbUtopYmOVHay1sPOSzLEwhrCsLhuDWPhVM+djHmZ3XLoc9x/8HbC2pVP+oVS7BopSrpV0wt+Xpx+DpqiTCqO8kgcqqcFwR4dF6WsNLKsAAstmW29a4zoNP5DbRFBfUFzOgfFINa2W6+b6UTIsAcmgfyL3pqA5209ZYCXmq67EYc47EBPTxf9DryLPQCEsag+w2FYZeSDX7GOT9Chjkf2QM0gvkB40GzqiH+ClWtbEYQ+Yb7yRB87S39BlVizHDLCbLUkdWAiLuk6GmY5Aa7nwA6m1z7JHcmo2taqoCKKpwCj2GS+Qu6/OfAt2mr8PvgMl71ljmiWNXQAAAABJRU5ErkJggg==",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 5,
+            "layerName": "FDEP Petroleum Contamination Monitoring Sites",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "ELIGIBLE DISCHARGES OPEN",
+                    "url": "4b34a17563afec2ca7c3f66aa1434350",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAfFJREFUOI3V1N9Lk1Ecx/H33NzTdtYe1Kei7bKwHwSFTPwP0rECoSjqZrQIopsJ3QgRSr9ASeqiKCoIugop6iKKIi/CLrrodxApq4Q5hXVyzvW1wnJdpDDreZ5WeNPn6vx88T3nwPGxyPH9d+D5yk4zCXOtiq0PSnhFDT7/LDPTRQpjTxl4PcyjLxVL99uClmVd+tmKeJK64/AT7m2ZFO0JUQeUGeVtnVCIJunagJo9ciqQvA+gtbavUGv9GOAgJ2+PMhTfzSFMGhYcoYjmLlcCMWk9cVZeZnYSueZ2ZFJWT0dej8TbOUAN3t/uyMRiG2luccETRF3uJz+wg+UFJ7D2nX7RtZfjtth8vHiJs4d++kK76NwH9DqBbTE21/oxHLH5+FnCOlrIMrTdEVRKtUSlMfhHbS4RVpHlTaRybAEoImEDYwowqwENAkxT+u4IAh/GeT/SwMqN1YCT5JnhW8YRVEo9OCfpziRHMQhQosgnJphiAoAw9YSoZykmQok7XKSJ1jOOoIgMCjLcR2pTNRU2k8he5dhNRxAoW5aV0lo/BFwfx6Lx61j0eYIcZTcQrfUzpVSbiFwHltlj0Y+fVW6rzsmrX+dsfxsRGQTWKKXSItIOrJ6bygA3NLnTCEW7vW7fV0FEuoFulzV/Bf5TFh38AXdNov8UAFY9AAAAAElFTkSuQmCC",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20,
+                    "values": [
+                        "ELIGIBLE,ELIGIBILITY",
+                        "ELIGIBLE,WORK UNDERWAY"
+                    ]
+                },
+                {
+                    "label": "INELIGIBLE DISCHARGES OPEN",
+                    "url": "8c410be40692522f7cbf8682c105a96c",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAiFJREFUOI3V1D9oE1EcB/Dvu7vcXS+hsZFqoylVKKSI0C7SwU5KMKUKDqI4JpcEl6Jb7SCKiEMnQQeHCwdOURSLiCDWIVSHgJhBqVKi+Ce1jW1Jk5L7k9wfB1Mx9C5mcNAfvOX93u/Dj997PAZ/OZj/C5Qk6XZLUvf5+UrvAabO74ZNsTaxFINTvqmBlQWL1rWtc4lE4pwjSAiRAICyKdLzceTSZvDDcYvXCOpegAAN/0aPyWh7+16PHQQxry4fys617VAUxVcAMDuVf6LuXBsPPYqAfdbdUqAfq6AUyXXteB++PiTGC4dB7ruCAHDv2ssLOr0x3j9zBGSN2jYj7qkf/W+PYmkyS5gzvJy7az8fBSk7gplMxqOvli4P3JxwxH6NZolG8M4Yiok5n/dxNIkaZhxBRVGigWLYQy+yrthW0AssvCshVE8XT0F2AQGMej8HhT9qzRC+7EJt//Ke3/daQMuyuqmapwrA3wlIbXIwOM10BQkhq+q+7594BIY7ARuhCgC70K7DbGk4d9GYVkE1WBi8CkNQYHp+vmG6wYNRBDBaFwxOQ3XgHbhy3y1XMJlMzkuStLg+mB/ppENG8309OxWZdQUB2ISQOIAXANpeDrEZ3RKUCQB2OxCiKObT6XQUwAMAvY4Y6HVQ5olYLP5mW9dOBaIozsuyHLYs6zyAkwAGm6kCgIeGWb+RSqUqTrWu31csFisDuNJcHce//8H+ADLRuoyQ6/fqAAAAAElFTkSuQmCC",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20,
+                    "values": [
+                        "INELIGIBLE,WORK UNDERWAY",
+                        "INELIGIBLE,ELIGIBILITY",
+                        "INELIGIBLE,REPORTED",
+                        "INELIGIBLE,<Null>"
+                    ]
+                },
+                {
+                    "label": "ELIGIBLE DISCHARGES COMPLETED",
+                    "url": "c5a5c5d6b0a7da881728c7740c6b7156",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAitJREFUOI3V1FtIk2EYB/D//OZOb+6g37S2ohuZMKK6W1C7sBsnumpQBF0ISVFhWCPogITLRkaJSHUxYVDdBRnlTRAlFXoxYhDkARzLSbZK97pTPaOwbV2kMGvfWuFN/7v39ON5D7xyrHHk/x3oK2zYWw7orLYdVq3WUFdRISiyS0uZZDz24dXIk6k3gRdfC6YeLwqKougHAJPJJHO5ey4Gng63pha4TKcXkQcwFw4Z0qm4+cSl61ty2e893W3OZwDAOS9eIec8CACdff7HkdBU87Guq9DX1K7aQjw2j+G7PvUux54r9ydi4cb1sqFSW8aZfv/pj+8izYc6zkIQhN/OqNpYhzZ3F4YGB2SaKu3t5wv5kcZaWUIKrJwIBrrdvTeKYisRBDlc7R2403d53ZEL3qMArkmBDnuTs1KhVEtiK1Go1Nhq24nZ6fH9kiBjzLa5war5o7acTfUWvJ2eNBX2rQKJSKtQqtIAdOWASo0GmVQqKwkCiL2fCc8aN2zcVg4Yn/+EXC4XlgQZYy97O9vPn/T2Q6XWgNJJJBZj+Bz/+c6qqkUYaoxgWj0yX1K4N3gTu5tab0mCRDRKFAl5Dru2l1Ohfe/BOZ/33CNJEEBeFMV2zvkYgJKXY7ZYvs0Ex1oA5EuB4Jy/Zow5iOgBAGMxTDRbFpPRqJOIxn8dK/rbENEogAbG2Cki2gegfnkoDOAhj4YGAKSKrS31fSWIyAPAU2LOX4H/lDUHfwDyccA+Y1spLgAAAABJRU5ErkJggg==",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20,
+                    "values": [
+                        "ELIGIBLE,CLOSURE",
+                        "ELIGIBLE,NO CLEANUP REQUIRED"
+                    ]
+                },
+                {
+                    "label": "INELIGIBLE DISCHARGES COMPETED",
+                    "url": "bba387e3ef339fa9767eea007fa83664",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAhRJREFUOI3V1D9oE1EcB/Dve/c/TRMNTRurIGghIEKKUBzsUqWQEgsOLo7JJcFNRxdRHBycHBwcLmQNqOjkYkVidSgKEZQKEkFRbE0T04T0cne5e+eSiqF3MYOD/uAt7/d+H3783uPx+MvB/1+gpml3B5JKMCzuix7jRHkKhIpwmW4b+jezsbnObNPYPZfNZi96goQQDQAopWT86OzVnY2PZ5llEE4eAwD02tv7Wc84OJGYPw7m3Nh6U14Z2qGqqq8B4N7zymOrXV+KzS1CCIQGCqydFhrv1pTxw/GbR1KZ6kKM3PcFAaD05OVlu7O9NHXiNAile2YkjoURmzuDWqVMOFEuPqu5TxcmSdMTLJVKgvXj+7XpUylP7NdoKIdoYh6br1aCcjiZA3DLE9R1PRmaiQuUF32x3aC8CCV6CHr963lfEMBJZeJA4I9aP+TIJLr1jenf9wZAxliI8kIbQHgUkBMkOKbh+IKEkC2zWfskhSKJUcBepwXArQ7rsNxYX7tiG11QQYRjduGYOpz+G+YkGZwUACcpcCwDnc/vIUdid3zBXC63qmnah1a1MjtKh7wS/HJhefGRLwjAJYRkALwAMPRyCMebzNRTANxhIFRVrRQKhSSABwCinhjlGmDOcjqTebuna68CVVVXi8VinDF2CcA5ADP9VBXAQ7tn3c7n8y2vWt/vK51ONwFc76+R49//YH8CP2S1butfmhQAAAAASUVORK5CYII=",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20,
+                    "values": [
+                        "INELIGIBLE,NO CLEANUP REQUIRED",
+                        "INELIGIBLE,CLOSURE"
+                    ]
+                }
+            ]
+        },
+        {
+            "layerId": 6,
+            "layerName": "FDEP Storage Tank Contamination Monitoring",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "cb0c1215a8f27ced40c6e29e06074886",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAZhJREFUOI3V1L9LVlEYB/DPWzq8nkCKW4KO/YIKaivoH1DUcCjahaAhqKkaisQioqAiGhqk/oGiWoKgoFCagiBBSaQGeYPymEQ8kBDa8CqYvD8oGuq7XO45537u91lOi7+clv8OvLP65QjtB1LatSmiY5Efn/n4lIkXfF917HhdsCiKEeikNJzz+cf0zUWUCkziC13X2LOY0nBvufwMcs71G+acX8MITybpuYItq/Y/VUcoH4q4PBsxXeJ+s5HdLYpT73PuOY11a/Y6cA7XKbVzb4nnJeYbga2vcr5wqwa2kvU4gUtsuMgxXG0EdvfTWq6DraSMgxjncEMwpbR/d0RbEw9sxwSda9d/ASNiYYa3W9nbDPyGed41BFNKLwcjzt5AW/UDs8gosBkbl9dvo6/6aNhw9ANTA+xr1vAoM2d41BDEUlEUgznnseWSNbODhbGurl6VylIzUM75TUqpOyIeqE65FpurpNQflcp4rZ/VvBwiYhQ7U0onI2IA2zCNh1PcFPG1XvtGt818RAxhqMGZ3wL/KP8++BOWQoRwnxsDMAAAAABJRU5ErkJggg==",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 7,
+            "layerName": "FDEP Treaters, Storers, and Disposers of Hazardous Waste",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "2d27c761a9e005b0c6ce19222e551d92",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAqRJREFUOI2l1FtIk2EYB/D/ty3nNufWjjgVWZubZY4Kp7kwrVhhYVBdKIEESaJ2F4VpEUKlRlLeZOJFZN5YMDrMA161i1GWYbDFwB36kJxrR5W5k5FfF1JQmPvQ5/rPj+d9H56HBZoV7FVekV4lH6TLsehgVqu+mD/iuJeqx1P2CCLbBqX+1B1GMsaKa3lNQKxn26CIDJ8IlGnAn4+0bBucfnvwDO+VnTN6fR/q71ryUhdRyH4C15bBnd/j7d4KFZY5LHgrVQyRJ3oNIJu2BJregS2dDB+w1u0BAMyWyFE1s1BHAc0EsEYbXOzM3ZuQCjr5Y4GTP7IymO4cLgDAncOFQcDOirVJFiMC/nOem7z/7/P/gKl6iMLVyo7MULQh078kDe8WE5+P7Ic7hwuKWM9QBPCspZSh9sWztXb/Jc4Cr3H5FucbRSQGOLOxQfYIIiwAcJp0j9csnibJJ5IRKNPgdWMhljkb/wZFAC4FFy6FEoLD+Qyj2VUg++jsXpPwbgd7ZW0sANCctbWai2tGC8hQh3w2VF7XY2F6K1Rw6uR/dQgABAWofXFobH7kvvdgJV+YIGt0k2EZ+4ahctqx3gYBqhYTYwDGupcuZOq/zjXnkbHLh1441BXsDAw360AR61jDgA3M5OrPYJF4xn66pLv82NRLwPv/obQLh5IA+gD09QdqVef7Z9xqXxwuBRdqXxw7VqKJqeqQ0Gj0rtKe8u9qlZk9R016t8bmV7sUSmjtfkQVsnGjMbQhlhYEgHkl75FhyPEwuyofuVYPlRQLOzfLp1+9XQUDJcq53uNmFzMh5wRFN71ftgW2C4eSpyb0H4pM04ZQqXIYCG2ap3Vt5pSSrkIO743YQnaly9ICa7UT485q3aDmnG3T40obBAFKA1sLnegvkXf8LukMLOoAAAAASUVORK5CYII=",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 8,
+            "layerName": "FDEP Wastewater Facilities",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "NPDES Surface Water Discharge",
+                    "url": "824a223fa7c32bebbc0223b331e26a06",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAWVJREFUOI3l1D9IAlEcwPFvcf3RKymRMByMoKZoCBpcIqitzb2xCKSIaGtpiMaGiKCWgoaWxtYamoSgMEowlChRLFLM6+V1dmeDwWV3LXVL9Nve9z0+/KYn4fBI/xxcG/QNFSmHDy7EVhzSvwb9vseZhWOmJgOcxzMOgLqBC8Aj0/4TzAIaOm6A5gptjoC6TitAk8sp0PgAJVkGUfdwf5T1NwgDqBqN2zG65obJAaQeKC/H6bOAJ/eEAG5VEVnsl8Of786ywt/rxQvwqsMT8KwSANAkSrYbroRw7Y4B0AmiE6AKRE5gc8R8J3Q4ysL0QO2cUuS71QthBTNKDfg8VQOUCqRfzPZSAfFqtruScNtumCxCQfsCAnkFLvP1oFI2W7KAxxYcD0K3XA8aOhzewESP2RQN9hJmu+4gN39qA+5cgafFumEsAxsxs6k6JIpmuy0QtN1w6ZwGvplo1Npmbdof+76cmHeEb4G3BI3Z5QAAAABJRU5ErkJggg==",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20,
+                    "values": [
+                        "Y"
+                    ]
+                },
+                {
+                    "label": "Non-Surface Water Discharge",
+                    "url": "3ec5630632ad51ea9f3034b489325116",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAZZJREFUOI3llD9IAlEcxz+ZYNkfMiKihqampoIGpyhaGlqkSRwLisY2p4agIVxawskpKFyCKGiIIMGhhgpSsEEwKT0s7Qq7O++611Bcf84h6pboB294n/fjw/f3eDw3Dpf7nwsXJxeHZVMOJPeT0TTp/K+Fvh7fXCQWmZ0amTpNnzggNDCaAdwt7rafyGxCYQgvgMflaXVEaGI2AXhwSiheha5GV8vXxuWZ5TVDNwIA+rPuih/Gu4MTwSJA4bagRHejAzbhWebMD3Bzf7MQGg8FPp5lspme3u7eTgDj2UDXdBRN6QOoGbWHugnnA/PNSzNLAL63hRCClY0VwqGw1aeoCsfnx0yPTQOQl/JXsf2YXViqlGx3IoTgSX1CKksWUzUVFdVi0p3krZswJ+WoPFZsUlmWuby6tPaariFX39n17XV7XaF/0E9XR9cnmSlMEhcJRodGLVZVquwd7VksV8wVI/GIXbid2KbV+/nFCFOQyqbYPNh8H7mmki1nLVYoFfrrJlzfWW+wzftWq1ur32J/7Ptyol4AgH2xRbagv8cAAAAASUVORK5CYII=",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20,
+                    "values": [
+                        "N"
+                    ]
+                }
+            ]
+        },
+        {
+            "layerId": 9,
+            "layerName": "FDOH Biomedical Waste",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "2a04728ba17a021573edc19981c5b63b",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAATtJREFUOI3d1L1LAgEcxvHv+cKBBQ2WSxC5dC7pdOBLqDQE6hB4g9JdRMIhLQ2ZgtkcSPQHOAoitwQeiJvr4Sj0J4RLuDq0REMEEV3mCwQ+4/PAh9/0c7HkuFYGdABvSwM1jWarxQ3wvDAoy2vxWm1yEAxyV6lwuijo0LTJdSDAriDg6HQ2w5Y1HswNKgq6qhIFkCR28vlx1bI4nhfcUBTyXi/ezyKXI9Lvc2KatGcGCwWq2SyRr53Px5aicGaaPAKvs4B7msahKCJ+HxSFaK/HpWFw/2ewVOI2mUT+afN4WFdV0oZBE3iZCvr9pHUdWRBsbgdSKWLFIuVGg/I00K3rXEgSAXsOnE7c5+fEut3t/dFo9GQLhsNchULEh8PfuI+IIpFEYvTQbnNkCw4G1DMZ6tM5+6zO+/o/8B0/yUfGpnzp7AAAAABJRU5ErkJggg==",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 10,
+            "layerName": "FDOH Onsite Sewage",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "da2edf941607a9627e4e29aa8d4f3d90",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAUFJREFUOI3d1L1LAgEcxvGvbwi94GA1dGC2qIsFwdHd+RYGgjYEHaGkEQUSLQ2VgdUcSPQHNAohLkFCtNUotxkGQlND3BKuDi3REEFEl/kCQc/4PPDhN/2s9DnWfwOagde+gRmF4nmVA+CpZ1D0DIYPl1vBKRfH+2VWewXNGbm15xNwmyTMl/URqdpoal2Dqkg2HUYB8I7jSonNfLXBYregQ50l5RzG+VEkg8g3dVYqNUodgxsh8ksy8uduzMGoKrFWqXEBvHQCejIRonYb9q+DqqBc19gua5z8GtyNczTnR/xuG7AzlA6RKGsUgee24CQksjFEk8ngdiA+Q2AzSu7sllw70JZNsuUV8BlzYLFgW58ncPUg+HVdvzcEJYGdaTfhu8efuPfYrciRCf20pBMzBDWdwkKBQnvOOP/nff0d+AY+4Eb4guQNwwAAAABJRU5ErkJggg==",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 11,
+            "layerName": "Miami-Dade DERM Contaminated Sites",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "26a01cf63a0aefcc9bd59768f4d6a9a3",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAATFJREFUOI3t0T9Lw0AYx/HvU0oUioPSJa1oB906CYLQScTFSVHrIVQXQXwFbr4EVyniIA4G/7yGjm6KuDhJENI4xMEhILHNOVi1ltiSWsTBZ7p7ftyH5+6S9LiS/+DvgFbKmVZ+ttIzUJCyhTupMJ9+DJ6knSntMQ7hPHAYGzzjYfQlHQ6+77XHRmPK0nG6ev0xdZ/UlWPedARraJ3wOAAmWqKZhMdVY/2oU+Eq0BlUmPdH2AUDowysRdzqUggXV/xhOyKLfsMSuWdg3aJqCKimyA4ICo08stp+ikC+pTUi9A8A8cFT3LEQnQcudFY2xQl3QJaMt9/ejw3W0QuSYnfID7ZnnVwNWLaobgFzXYEJOC/6mbvmniKzZ+FWQAuIjgUW+Yp9oubtd2fagt3W3wdfAY86V4OYwQ1mAAAAAElFTkSuQmCC",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 12,
+            "layerName": "FDEP Solid Waste Facilities",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "e6fa57bdb2820b2e0046d1bb4da1aa23",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAANdJREFUOI3tzrFKw1AUxvE/3AvJUENpH8EtQqYGzlLHDj5DwUWc+gAO7uLaPoJuneoTCFkOBskWunVwcu+QDIe6FxK41UXoN37n8DvH88fxZ/AfglmWTZxz11EU7du23VRV9X0ymOf5ClgAmBne+2cRuVXVt2BQRO7MbHFUD83sNU3Tq7quv0I/vO/oL5IkmQNPQaCZjXqOjbsGfR9+Apcdxz6CwTiOH5qmuQEGR6P3sizXwWBRFDsRyc1sCUyBvXPuRVUfgUMwCKCqW2DWtxMEnpIz+Pv8AAr4QE9pmOHfAAAAAElFTkSuQmCC",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 13,
+            "layerName": "FDEP State funded Hazardous Waste Cleanup Sites",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "e51dd4ca1a0471d552c4a5b4572a4a6d",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAUpJREFUOI1jYaAyYBk1kC4G8luEltvxCohz7t62/ArD09PXyDbQvXhJvIK2bRGvqKweAwMjg5ZryutHN06uWl/nWs7AwPCVJAM98+f5Kpv7T+Lg5OGDibFy8ooqG7pkBzftZVlb55xBkoEiysZpMMP+//3L8O//XwZmFjYGBgYGBkl1s0gRh4zpbw7MuEi0gexcvDow9qU9ixh2T0liKFz/k4GZhY2Bg4uHz9LMwWozKQYy/Pv/B8YUltVgcM2Zx8DEyAwV+c/w5/ffP9i04TTw26d35wQklVQYGBgYZLQsGWS0LOFyn98+f/P+2fV1JBn49undel5BUVteMXlJZPGf37/+e/PkRv+JlS1vSTJwZ3/EDf+qzW7fPn3oZucVsGRmYuL89fvHzW9vHk9dW+M8E5c+vOlwY5vvFQYGBk98akgykBwwaiDlAAAzjGfTde5j4AAAAABJRU5ErkJggg==",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 14,
+            "layerName": "USEPA Assessment Cleanup and Redevelopment Exchange System",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "64a3edc8be1a6447a7908910fabfbbdf",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAOFJREFUOI3t0LFKw1AUxvF/bi4SSAtFfYOOrnW0W1uiryC4SKcMkTp0cBeHkNA+Qrt1SouIuDgL7m4dOhU6JpvNdXMISfCmLoV+4/m4v3s4kn+OPIB7CHqnTktuaG8hVsgoZLGuDN5zNVYbXAUIANKnAc6Nz8tcGxzg3CpwM+MGiKlH5yzkbaUFpoi+yK/qJkfXwKMWKOC4qMMWJyT5VcmGfApo5nVGkn4UvSvZUA7h+xKoZT56D3ieaYM+0fKO3rmJHCm4AGLDFhMrsR4ApQ0CBLx+Ad3fQcHd/gxWyQHcPT/O4TH276NCgwAAAABJRU5ErkJggg==",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 15,
+            "layerName": "USEPA National Pollutant Discharge Elimination System",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "85cfad0dcfc3509e72a8fbac1f1a65d1",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAANpJREFUOI3t0LFqAlEQheH/uEIaA5I8gkUWbZNSy0BEyQsIwipWPoBF+pBW67UxXSqTxdo6kPZiZ5Eq/bY61gnrwtU0gqecGb4Zpsg/p3gGTxBMXHwrqWEoDWTzhzD6ORhMXDxBGhoAxsZ4SVzcbVV7797gh5v2EcM/5TLS63wV1x7D3rffhdIALKtzGZg6wLMXKOxq7zK43tfI++EXUMlexqc3aIVgpO2mCZR+1WHZCqM3b7B9010v3PRuK8ZAHUiFZhdB+oSyn5sLAjSr0Qq4z5vxAg/JGTw+O3ocNPfD6DxNAAAAAElFTkSuQmCC",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 16,
+            "layerName": "USEPA National Priority Site from CERCLIS",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "05b77dc52f725c1412ad10b10fed0516",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIBJREFUOI1jYaAyYKGZgVXSxf8pNaztaS8jC7oAPg1V0sX/camBOYiFWA0wCwmpwXAhpYZiRAqlhmKNZUoMxZlsyDUUbzokxVCiDCTHUKJyCjGGEu1CUg0lKS+TnLCJcQFJCZtYb5GUsCk1lOycgksdRhji4+MCyIbCDSQmjREDAItNo8U+7/xzAAAAAElFTkSuQmCC",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 17,
+            "layerName": "USEPA Regulated Air Emissions Facilities",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "0b21bc1454bfddaf59baf36f48180f34",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAANlJREFUOI3t0CGLAkEYxvH/ixsEFcS7b2C0atRosAsuHFjEtLDaDHYxiKt+BAX3MHmf4LJgtxkuCRt3m+dcMIjHDtzoFcGnzfswv3kZi3+O9QQfEHzvvBaRoAKEJ8Xa9jjcDPouM0XgoM5ngeHSpWlP+DAGfZcWgvNrnBVhsepQqHt8mW0otDVN5ghvwMAMhJz+rdQLRLGdFhTYKsjHdYpoo7unBU8JevJNDUhfY3zaHitj0B6x97uUlGIqUAZCJDWXZNQ/u4YgQGPMDqheJvH/9mfwljzB+/MDj9ox1rDbE3sAAAAASUVORK5CYII=",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 18,
+            "layerName": "USEPA Resource Conservation and Recovery Act Regulated Facility",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "348c08b48039ddf363b0808137bd0c83",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAMNJREFUOI3t0LEKQWEYxvH/K1kOJdyB0cpwEqPBNSiLTC7AYJeVS2AzcQWKk1J2m8GkjM7qNRxJ8sl3WNR5xufp/fX1xflx4hH4h+Aqp0U5URU4K8zKyDE06KEjTnQANKgGHtosI3Nr0ENbEGAPSQOTJVqoIAfbF7YNfSoGDaBvC2aMi0MW//X0DtwC+VeD+GxMR0YwBt0L1IHk07RwYWoNush+jZYuMAQqwBmHccKnJ4hagzd0B9TuheHfPgbDJAK/zxVLUinWImKMuQAAAABJRU5ErkJggg==",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 19,
+            "layerName": "USEPA Superfund Sites",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "bd8649f7f10532129002af50272bf8f9",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAATdJREFUOI3t0T1Lw3AQx/GvbVKR4CAEHQpKQTOIi0JB6CRuThUVRNAugjiJxAe6uDr4EJykiENfgK+ho4OgiCCSwRQhi0Swwx+rjYlLC9pWa2MRB2+6ux/3WU6ixSX9g78DKtramDB3cy0Dwc9AOg7bhR+D6qA+6rgMoL0kMck2D2obfarid1VGR3iL5XZeHV6/rOzb791X2zauGoPSs+88SsfIjFQl447wLsr9gxIJzwHfAK8P7iCVQFMzwEJNXuIcOTQlrJ18TVYXBCBbxCSFpkeA2XdBHstJQLZY/67xU4aq5l7iPZ2cEQCMrfSXwdOo8JbsSGgLmWkKpSRw1DzYIU0qT96+sLo3bdIuMENMX4bwRDDQ9U6EZdx+2Fl7h0RXc0Ab4DcHmlVYpWzj5tObL8GA9ffBN2MAW29frh9SAAAAAElFTkSuQmCC",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 20,
+            "layerName": "USEPA Toxic Release Inventory",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "05f0d73cf6d86a1a5f06069c2760211a",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAANZJREFUOI3t0LEOwVAUxvF/bztIkAjewGhlZDR4BolFTIZKDQa7GJo2PAKbiScwS+w2g0li1FGPRSJpStyySHzjObm/++VYfDnWH/xB0LaLFcs6169XLiKsfJ9TYnAwYCZy7omAUgBMHIe267LWBh2Hjgi9yDgHLGybsu9z1ALDkO69VTRZ06QFjLVApcg/20G6AEHs5lXDnVKU4naGEWyfvXvVcAg0gUzko43nsdQGXZdDv0/VNJmKUAMuhpGep1LBCBBtEMDz2AONxyT+bm+DSfIHP88NHLI3+T7n73MAAAAASUVORK5CYII=",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 21,
+            "layerName": "FDEP Waste Cleanup (Closed) Responsible Party Sites",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "68d309f954682cd99f59bbc1878b0902",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAXBJREFUOI1jYaAyYBk1ECvY/euFlCubxDOqGLj333Pf+1c4F+7+9UKHGEOxGrjz2+vW/wwMXgwMDAy/fzAwvH7CIiirwnx2x7fXLxgYGBiYWf7NdGUTn0G0gddPc8SwcvyX+/eXYRcn93/TV0+YGW5dYL/EyfVf+dZFNmXn8M+mDAwMxBuoYvTb+s551sd6tt/W/vrOuOn1U5YpOpZfq948Z+tW0WNgYGL6V0uSl314hZ7MufRx89vnrDMFBP+2MjAwMPxnYDJ+dJPd0dDha7oTI+6wxBkpKXr8fhMOff4vYPHbi4GBgeHpXfY2aZVf150YxWfh0oPXQAYGBgYh6b/Vj25wtP77x8Dw/iWzsLbl90R86gkaGKcs0Na7/0v6qR3sciktHxY5M0lupshABgYGBlXD78U/vjKu5uH/PYmQWqIM5Ob78/P/P4bnjoySZ6lioDOT5OaG1V9eEGMYUQYyMDAwNITynKaqgaSAwW8gAB/9fW3/VUmeAAAAAElFTkSuQmCC",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 22,
+            "layerName": "FDEP Waste Cleanup (Inactive) Responsible Party Sites",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "25772f9eb2176689d3d0cf619dff4666",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAVBJREFUOI3t0j1oFFEUxfHfjNmFuBYWA3Ft4haWBsN0KYUUAROwsbdJlULQ1o8hooiVYOPUAW3SOOksLcRiLSwsBJE0Wz3SDUSz7FhMRJRkZgN28ZTn3fN/917ujH+smf/AWj9cTDpJvy0cojBsBSZVkgahCEIr0MSaWNEIDEKKvu0PXPpWm1XE85XfRdd2uXVFTy8tlc1AB3Z0sFSwf57BXSYDtm7+GoFnr8BsNFuUyuaRdY1M5PqP1r3bYX7w5/uLj1x4TCUP8RQ7BGOZjnWLW3zaZOFe7S9/Z/UJDI1lR0WPBnaNepNeVp57/cD4BvtXa//+W85uQ65rND0QZVw+VLluMUu9f8rGHkt36u4i+XG55sOuZM58fmNul9tfib/UXoOagbFCZejyRnr4Qf733Z0MCAfWdLxUGSVRkgehsbwdWC9/Fdpg0wFPqFMI/AmR5WG7YBw+pQAAAABJRU5ErkJggg==",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 23,
+            "layerName": "FDEP Waste Cleanup (Open) Responsible Party Sites",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "a022441c59e8772f016ff03c3be79613",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAU5JREFUOI3t0iFIA1Ecx/HvnXeT8+qBm2VgmM1yQVAxDkS3aLMuiGBwZr2gGASLxQsbiM3miYKCcW1ZsAzBTRgP22OwjT3DrUy33Q1s+qvv//+8///xDH45xj/YT3vOccxUVLMQWjUSdBzlCkEgBJEg9PKgB2NBIXCB1E3miiSVocwHK2y9bmPbuFIyHoTOHZjc17Pspi/Q6A6cKqZ5ePMAsCwtkHKwewiYaEDPL8tkIdsqsmCdDpy+tIqU5SygfCH06DcM0/XALJSaGxynrzF4D2fvzlNqrgNUw5qfGQEmGrbd856kfZhrHbBq7QFQkfs8yxkAP9wkNghS6kegNs9ry+5iZg1FgrP6Un86zR/VF/GxlVdj6vbxc4c2BnV0QA1dNSaoB6CqJyLj9i/wv/+7CUGATh7MSyDlOJovxPjqGGCiAeQAorCY4GT5g+AX/lpqoG+V+mkAAAAASUVORK5CYII=",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 24,
+            "layerName": "USEPA Ocean Dredged Material Disposal Sites",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "8f155e66225ebd89ce93a84258aef1a6",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jYaAyYKGZgUktu99TYtC8428uMGyNdERxYV6mzQXyDdzAwMBASy+PGjhq4KiBowZiNXDe8TcXYEUQWWBrpCOKgTABSgEABLMTHQ7cpB8AAAAASUVORK5CYII=",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 25,
+            "layerName": "FDEP Brownfield Areas",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "56ec9c0b263492b7121c51589213d539",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEBJREFUOI1jYVAr/s9ARcBCTcOGqoG3ehlJMgEtDujgQt8VpMX6zdMEDNwcMdi9PGog5QaOwGRDYfk4FGOZQgAAUWUS+QR93soAAAAASUVORK5CYII=",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        },
+        {
+            "layerId": 26,
+            "layerName": "FDEP NPDES Stormwater Permits",
+            "layerType": "Feature Layer",
+            "minScale": 250000,
+            "maxScale": 0,
+            "legend": [
+                {
+                    "label": "",
+                    "url": "f77006b8084a9c0591a914d9df02bb4e",
+                    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE1JREFUOI1jYaAyYKGZgRMmdl6jxKC7d54cnjx5cjqKC63sDA5TYCADAwMtvTxq4KiBowaOGojVwLt3nhyGFUHkgMmTJ6ejGAgToBQAAJJzFpYiA4cFAAAAAElFTkSuQmCC",
+                    "contentType": "image/png",
+                    "height": 20,
+                    "width": 20
+                }
+            ]
+        }
+    ],
+
     'layerDefs': [
         {
             'id': 4543,
@@ -46823,16 +47550,18 @@ define({
             "capabilities": "Query"
         },
 
-        
+
         {
-            id: '-4',
+            id: -4,
             url: 'https://tiles.arcgis.com/tiles/LBbVDC0hKPAnLRpO/arcgis/rest/services/nwi_tile_package/VectorTileServer/',
             name: 'NWI (Vector Tile Test)',
             fullName: 'National Wetlands Inventory (Vector Tile Test)',
             description: 'National Wetlands Inventory (Vector Tile Test)',
             'source': 'BAR',
-
-            type: 'vectortile'
+            type: 'vectortile',
+            minScale: 295828763,
+            maxScale: 564,
+            sdeLayerName: null
         }
     ],
     "categories": [
@@ -46965,13 +47694,13 @@ define({
         },
         {
             "name": "Wetlands and Other Surface Waters",
-            "layerIds": ["-4"],
+            "layerIds": [-4],
             "type": "category",
             "categories": []
         }
         //{
         //  "name": "Wildlife and Habitat",
-        //  "layerIds": [ "-4" ],
+        //  "layerIds": [ -4 ],
         //  "type": "category"
         //}
     ]

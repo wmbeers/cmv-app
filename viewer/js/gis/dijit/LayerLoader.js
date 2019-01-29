@@ -52,6 +52,30 @@ define([
             postCreate: function () {
                 this.inherited(arguments);
 
+                //TEMPORARY!
+                //this will be a core part of the layerDef
+                this.layerDefs.forEach(function (layerDef) {
+                    var legendSource = null;
+                    if (layerDef.url.startsWith('https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste')) {
+                        legendSource = this.contamLayers;
+                    } else if (layerDef.url.startsWith('https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources')) {
+                        legendSource = this.histLayers;
+                    }
+
+                    if (legendSource) {
+                        var legendItem = legendSource.find(function (li) {
+                            //layerDef.url number after last slash
+                            var layerDefLayerId = layerDef.url.substr(layerDef.url.lastIndexOf('/') + 1);
+                            return li.layerId == layerDefLayerId;
+                        });
+                        layerDef.legend = legendItem ? legendItem.legend : [];
+                    } else {
+                        layerDef.legend = [];
+                    }
+                }, this);
+
+
+
                 this._initializeDialogs();
             },
             startup: function () {
