@@ -11,3 +11,34 @@ div.categoriesList span {
 ul.layerList {
     padding-left: 20px;
 }
+
+#layerLoaderDialog section {
+	display: flex; 
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#layerLoaderDialog section div {
+	flex-basis: 28%;
+	max-height: 360px;
+	overflow-y: auto;
+}
+
+#layerLoaderDialog section div:last-child {
+	flex-basis: 38%;
+}
+
+#layerLoaderDialog section ul {
+	list-style: none;
+}
+
+#layerLoaderDialog section ul li {
+	border-radius: 5px;
+	display: block;
+	padding: 0.25em;
+}
+
+.selectedItem {
+	background-color: #69A1C2;
+	color: #FFFFFF;
+}
