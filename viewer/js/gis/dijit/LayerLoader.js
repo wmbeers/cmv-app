@@ -227,8 +227,8 @@ define([
                     //TODO make a request to get the legend, or pre-cache it
                     layerDef.scaleText = ko.computed(function () {
                         var scaleText = '';
-                        var minScale = layerDef.layer === null ? layerDef.minScale : layer.minScale;
-                        var maxScale = layerDef.layer === null ? layerDef.maxScale : layer.maxScale;
+                        var minScale = (layerDef.layer && layerDef.layer.minScale) ? layererDef.layer.minScale : (layerDef.minScale || 0);
+                        var maxScale = (layerDef.layer && layerDef.layer.maxScale) ? layererDef.layer.maxScale : (layerDef.maxScale || 0);
 
                         if (minScale > 0) {
                             if (maxScale > 0) {
