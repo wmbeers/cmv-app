@@ -7,53 +7,53 @@
     </script>
 
 
-	<section>
-		<div>
-			<ul class="plain-list" data-bind="template: {foreach: categories, name: 'categoryTemplate'}"></ul>
-		</div>
-		
-		<div>
-			<!-- ko with: currentCategory -->
-			<h3 data-bind="text: name"></h3>
-			<ul class="plain-list" data-bind="foreach: layerDefs">
-				<li data-bind="css: {selectedItem: $root.currentLayer() == $data}">
-					<span data-bind="text: name,
+    <section>
+        <div>
+            <ul class="plain-list" data-bind="template: {foreach: categories, name: 'categoryTemplate'}"></ul>
+        </div>
+
+        <div>
+            <!-- ko with: currentCategory -->
+            <h3 data-bind="text: name"></h3>
+            <ul class="plain-list" data-bind="foreach: layerDefs">
+                <li data-bind="css: {selectedItem: $root.currentLayer() == $data}">
+                    <span data-bind="text: name,
 						  event: {click: function() {$root.currentLayer($data);}}"></span>
-				</li>
-			</ul>
-			<div data-bind="visible: layerDefs.length ===0">
-				No layers defined for this category yet.
-			</div>
-			<!-- /ko -->
-		</div>
-		
-		<div>
-			 <!-- ko with: currentLayer -->
-			<span style="float: right" data-bind="text: loaded() ? '-' : '+'"></span>
-			<h3 data-bind="text: fullName || name"></h3>
+                </li>
+            </ul>
+            <div data-bind="visible: layerDefs.length ===0">
+                No layers defined for this category yet.
+            </div>
+            <!-- /ko -->
+        </div>
+
+        <div>
+            <!-- ko with: currentLayer -->
+            <span style="float: right" data-bind="text: loaded() ? '-' : '+'"></span>
+            <h3 data-bind="text: fullName || name"></h3>
             <div data-bind="foreach: legend">
                 <img data-bind="attr: {src: 'data:image/png;base64, ' + imageData, alt: label}" />
             </div>
-			<label>Description</label>
-			<p data-bind="text: description"></p>
-			<label data-bind="text: scaleText"></label>
-			<p data-bind="if: sdeLayerName">
-				<a data-bind="attr: {href: '/metadata/' + sdeLayerName + '.htm'}" target="_blank">View Complete Metadata</a>
-			</p>
-			<div class="buttonContainer">
-				<div data-bind="visible: !loaded(), click: loadLayer">
-					<div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus-square fa-fw'">
-						Add to Map
-					</div>
-				</div>
-				<div data-bind="visible: loaded(), click: removeLayer">
-					<div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-minus-square fa-fw'">
-						Remove from Map
-					</div>
-				</div>
-			</div>
-			<!-- /ko -->
-		</div>
-	</section>
+            <label>Description</label>
+            <p data-bind="text: description"></p>
+            <label data-bind="text: scaleText"></label>
+            <p data-bind="if: sdeLayerName">
+                <a data-bind="attr: {href: '/metadata/' + sdeLayerName + '.htm'}" target="_blank">View Complete Metadata</a>
+            </p>
+            <div class="buttonContainer">
+                <div data-bind="visible: !loaded(), click: loadLayer">
+                    <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus-square fa-fw'">
+                        Add to Map
+                    </div>
+                </div>
+                <div data-bind="visible: loaded(), click: removeLayer">
+                    <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-minus-square fa-fw'">
+                        Remove from Map
+                    </div>
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+    </section>
 
 </div>
