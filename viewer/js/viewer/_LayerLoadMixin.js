@@ -47,7 +47,7 @@ define([
             var layerDefs = this.widgets.layerLoader.layerDefs;
 
             if (typeof sdeLayerNameOrUrl === 'number') {
-                var ld = layerDefs.find(function(layerDef) {
+                var ld = layerDefs.find(function (layerDef) {
                     return layerDef.id === sdeLayerNameOrUrl;
                 });
                 //if we make it this far, it's a problem
@@ -207,7 +207,7 @@ define([
                 //unless we do. We don't do anything with the response. It's cribbed from DnD plug in, DroppedItem.js.
                 esriRequest({
                     url: layerDef.url,
-                    content: { f: 'json' },
+                    content: {f: 'json'},
                     handleAs: 'json',
                     callbackParamName: 'callback'
                 }).then(function () {
@@ -421,7 +421,7 @@ define([
             );
         },
 
-        getLayerConfig: function() {
+        getLayerConfig: function () {
             return array.map(this.layers, function (layer) {
                 var x = {
                     url: layer.url, //TODO this will change if we support uploaded shapefiles
@@ -454,7 +454,8 @@ define([
                 //ignore projects (for now) TODO still important to know the order
                 //also ignore projects loaded TODO better way of determining this
                 if (layerConfigItem.id === 'Projects' || layerConfigItem.name === 'Milestone Max Alternatives') {
-                    continue;
+                    continue; // eslint-disable-line no-continue
+                    //continue is OK for now; eventually we'll just exclude from layerConfig when saving, or include them or something
                 }
                 var layer = this.addToMap(layerConfigItem.id, layerConfigItem.definitionExpression);
                 if (layerConfigItem.visible === false) {

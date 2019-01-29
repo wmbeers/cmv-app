@@ -17,8 +17,7 @@
             <h3 data-bind="text: name"></h3>
             <ul class="plain-list" data-bind="foreach: layerDefs">
                 <li data-bind="css: {selectedItem: $root.currentLayer() == $data}">
-                    <span data-bind="text: name,
-						  event: {click: function() {$root.currentLayer($data);}}"></span>
+                    <span data-bind="text: name, event: {click: function() {$root.currentLayer($data);}}"></span>
                 </li>
             </ul>
             <div data-bind="visible: layerDefs.length ===0">

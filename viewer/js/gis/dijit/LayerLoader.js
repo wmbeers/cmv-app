@@ -66,15 +66,13 @@ define([
                         var legendItem = legendSource.find(function (li) {
                             //layerDef.url number after last slash
                             var layerDefLayerId = layerDef.url.substr(layerDef.url.lastIndexOf('/') + 1);
-                            return li.layerId == layerDefLayerId;
+                            return li.layerId == layerDefLayerId; // eslint-disable-line eqeqeq
                         });
                         layerDef.legend = legendItem ? legendItem.legend : [];
                     } else {
                         layerDef.legend = [];
                     }
                 }, this);
-
-
 
                 this._initializeDialogs();
             },
@@ -97,8 +95,8 @@ define([
                 this.savedMaps(savedMaps);
 
                 //dojo->ko--handle change
-                on(this.savedMapsDijit, 'change', function (newValue) {
-                    //newValue is going to just be the name, stupidly
+                on(this.savedMapsDijit, 'change', function () {
+                    //argument passed to this function is going to just be the name, stupidly
                     //to get the actual object, use the item property
                     //in this context "this" is the dijit
                     self.selectedMap(this.item);
@@ -116,9 +114,6 @@ define([
                 //});
 
                 ko.applyBindings(this, dom.byId('savedMapsDialog'));
-            },
-            foo: function (a, b, c, d, e) {
-                debugger;
             },
             handleSearchKeyDown: function (event) {
                 if (event.keyCode === 13) {
@@ -145,13 +140,18 @@ define([
             },
             saveMap: function () {
                 var mapName = this.mapName.value;
-                if (!mapName) return;
+                if (!mapName) {
+                    return;
+                }
 
                 //TODO confirm overwrite
                 var savedMap = this.getSavedMap(mapName);
                 if (!savedMap) {
                     //construct new
-                    savedMap = { name: mapName, id: mapName };
+                    savedMap = {
+                        name: mapName,
+                        id: mapName //dojo needs this. Eventually we'll have our own server-provided ids
+                    };
                     this.savedMaps.push(savedMap);
                 }
                 //get layers
@@ -227,8 +227,8 @@ define([
                     //TODO make a request to get the legend, or pre-cache it
                     layerDef.scaleText = ko.computed(function () {
                         var scaleText = '';
-                        var minScale = layerDef.layer == null ? layerDef.minScale : layer.minScale;
-                        var maxScale = layerDef.layer == null ? layerDef.maxScale : layer.maxScale;
+                        var minScale = layerDef.layer === null ? layerDef.minScale : layer.minScale;
+                        var maxScale = layerDef.layer === null ? layerDef.maxScale : layer.maxScale;
 
                         if (minScale > 0) {
                             if (maxScale > 0) {
