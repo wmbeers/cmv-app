@@ -12,12 +12,20 @@ define([
     'dojo/dom',
     'dojo/dom-construct',
     'dojo/topic',
+    'dojo/store/Memory',
     'dojo/text!./LayerLoader/templates/layerLoaderSidebar.html', // template for the widget in left panel
     'dojo/text!./LayerLoader/templates/layerLoaderDialog.html', // template for the dialog
+
+    'dijit/form/Form',
+    'dijit/form/FilteringSelect',
+    'dijit/form/CheckBox',
+    'dijit/form/ValidationTextBox',
+    'dijit/form/TextBox',
+
     'xstyle/css!./LayerLoader/css/layerLoader.css'
 ],
     function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog, ready, popup, lang, array, on, dom, domConstruct, 
-        topic, layerLoaderSidebarTemplate, layerLoaderDialogTemplate
+        topic, Memory, layerLoaderSidebarTemplate, layerLoaderDialogTemplate
 ) {
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
             widgetsInTemplate: true,
@@ -30,22 +38,63 @@ define([
             categoryDialog: null, 
             layersDialog: null,
             searchResultsDialog: null,
+            savedMaps: ko.observableArray(),
+            selectedMap: ko.observable(),
+            clearMapFirst: ko.observable(false),
+            loadSelectedMap: function () {
+                this.loadMap(this.selectedMap());
+            },
+            deleteSelectedMap: function () {
+                this.savedMaps.remove(this.selectedMap());
+                //TODO save to database/user config, not LSO
+                localStorage.setItem('savedMaps', JSON.stringify(this.savedMaps()));
+            },
             postCreate: function () {
                 this.inherited(arguments);
 
-                on(this.searchNode, 'keydown', lang.hitch(this, 'handleSearchKeyDown'));
-                on(this.searchButton, 'click', lang.hitch(this, 'handleSearch'));
-                on(this.showCategoriesButton, 'click', lang.hitch(this, 'showCategories'));
-                on(this.listAllButton, 'click', lang.hitch(this, 'listAllLayers'));
-
-                on(this.projectId, 'keydown', lang.hitch(this, 'handleProjectKeyDown'));
-                on(this.altNumber, 'keydown', lang.hitch(this, 'handleProjectKeyDown'));
-                on(this.addProjectToMapButton, 'click', lang.hitch(this, 'addProject'));
-                
                 this._initializeDialogs();
             },
             startup: function () {
+                var self = this; //solves the problem of "this" meaning something different in onchange event handler
                 this.inherited(arguments);
+
+                //TODO save to database/user config, not LSO
+                var savedMaps = localStorage.getItem('savedMaps') || '[]';
+                savedMaps = JSON.parse(savedMaps);
+
+                //ko->dojo--load the data
+                this.savedMaps.subscribe(function () {
+                    var format = new Memory({
+                        data: this.savedMaps()
+                    });
+                    this.savedMapsDijit.set('store', format);
+                }, this);
+
+                this.savedMaps(savedMaps);
+
+                //dojo->ko--handle change
+                on(this.savedMapsDijit, 'change', function (newValue) {
+                    //newValue is going to just be the name, stupidly
+                    //to get the actual object, use the item property
+                    //in this context "this" is the dijit
+                    self.selectedMap(this.item);
+                });
+
+                //ko->dojo--handle change (not really used, but just to sort of document how these interact)
+                //Note: this just doesn't work with FilteringSelect. All the background properties are changed, but it will continue
+                //to display the previous value. Since we don't need to dynamically update the displayed value, I'm letting this go.
+                //this.selectedMap.subscribe(function () {
+                //    self.savedMapsDijit.item = self.selectedMap();
+                //    var s = self.selectedMap() ? self.selectedMap().name : '';
+                //    self.savedMapsDijit.displayedValue = s;
+                //    self.savedMapsDijit.value = s;
+                //    debugger;
+                //});
+
+                ko.applyBindings(this, dom.byId('savedMapsDialog'));
+            },
+            foo: function (a, b, c, d, e) {
+                debugger;
             },
             handleSearchKeyDown: function (event) {
                 if (event.keyCode === 13) {
@@ -61,14 +110,47 @@ define([
                 //TODO: first a quick DWR call to check if user can see it (valid project, if draft then only show if user has draft access, etc.)
                 //either do that here or in addProjectToMap function 
                 app.addProjectToMap(
-                    this.projectId.value,
-                    this.altNumber.value
+                    this.projectAltId.value
                 );
+            },
+            getSavedMap: function (mapName) {
+                var savedMap = this.savedMaps().find(function (sm) {
+                    return sm.name === mapName;
+                });
+                return savedMap;
+            },
+            saveMap: function () {
+                var mapName = this.mapName.value;
+                if (!mapName) return;
+
+                //TODO confirm overwrite
+                var savedMap = this.getSavedMap(mapName);
+                if (!savedMap) {
+                    //construct new
+                    savedMap = { name: mapName, id: mapName };
+                    this.savedMaps.push(savedMap);
+                }
+                //get layers
+                savedMap.layers = app.getLayerConfig();
+                //TODO save to database/user config, not LSO
+                localStorage.setItem('savedMaps', JSON.stringify(this.savedMaps()));
+            },
+            loadMap: function (savedMap) {
+                //is it an object or just the name of a map?
+                if (typeof savedMap === 'string') {
+                    savedMap = this.getSavedMap(savedMap);
+                }
+
+                if (savedMap) {
+                    app.loadLayerConfig(savedMap.layers, this.clearMapFirst());
+                }
+                //TODO: this happens too quickly, growling before all the layers are done loading.
+                topic.publish('growler/growl', 'Loaded ' + savedMap.name);
             },
             handleSearch: function () {
                 //filter this.layerDefs
                 //TODO lucene or some more powerful search engine will be replacing this
-                var searchString = this.searchNode.value;
+                var searchString = this.searchNode.displayedValue;
                 var tokens = searchString.toLowerCase().split(' ');
                 var matches = array.filter(this.layerDefs, function (l) {
                     var x = array.some(tokens, function (s) {

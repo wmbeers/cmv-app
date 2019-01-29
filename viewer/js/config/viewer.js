@@ -217,7 +217,7 @@ define([
             url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Previously_Reviewed_Dev/MapServer',
             title: 'Projects (Previously Reviewed)',
             options: {
-                id: 'projects',
+                id: 'Projects',
                 opacity: 1.0,
                 visible: true,
                 outFields: ['*'],

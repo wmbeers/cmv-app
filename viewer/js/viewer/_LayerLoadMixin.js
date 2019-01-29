@@ -43,8 +43,24 @@ define([
         },
 
         getLayerDef: function (sdeLayerNameOrUrl) {
-            for (var i = 0; i < this.categories.length; i++) {
-                var category = this.categories[i];
+            var categories = this.widgets.layerLoader.categories;
+            var layerDefs = this.widgets.layerLoader.layerDefs;
+
+            if (typeof sdeLayerNameOrUrl === 'number') {
+                var ld = layerDefs.find(function(layerDef) {
+                    return layerDef.id === sdeLayerNameOrUrl;
+                });
+                //if we make it this far, it's a problem
+                if (ld === null) {
+                    topic.publish('viewer/handleError', {
+                        source: 'LayerLoadMixin.getLayerDef',
+                        error: 'Unable to find definition for layerDef with id ' + sdeLayerNameOrUrl
+                    });
+                }
+                return ld;
+            }
+            for (var i = 0; i < categories.length; i++) {
+                var category = categories[i];
                 if (category.name === sdeLayerNameOrUrl) {
                     return category;
                 }
@@ -75,8 +91,8 @@ define([
         addToMap: function (layerDef, definitionExpression, includeDefinitionExpressionInTitle, renderer) {
             var layer = null;
 
-            if (typeof layerDef === 'string') {
-                //find layer by sdeLayerName or url property
+            if (typeof layerDef === 'string' || typeof layerDef === 'number') {
+                //find layer by id, sdeLayerName, or url property
                 layerDef = this.getLayerDef(layerDef);
                 if (!layerDef) {
                     return null;
@@ -191,7 +207,7 @@ define([
                 //unless we do. We don't do anything with the response. It's cribbed from DnD plug in, DroppedItem.js.
                 esriRequest({
                     url: layerDef.url,
-                    content: {f: 'json'},
+                    content: { f: 'json' },
                     handleAs: 'json',
                     callbackParamName: 'callback'
                 }).then(function () {
@@ -264,7 +280,7 @@ define([
                         layer: layer,
                         title: layerDef.name,
                         type: layerDef.type
-                        
+
                     };
                     if (definitionExpression && includeDefinitionExpressionInTitle !== false) {
                         //TODO: this is just a proof of concept, we'll probably want something cleaner than raw definitionExpression
@@ -320,8 +336,9 @@ define([
         },
 
         //TODO: support adding draft projects to map for editing
-        addProjectToMap: function (projectId, altNumber) {
-            //TODO just set this in the map service rather than having to code in js
+        addProjectToMap: function (projectAltId) {
+            ////TODO just set this in the map service rather than having to code in js
+            //currently it's the right color, but the width is too narrow
             var renderer = new SimpleRenderer({
                 'type': 'simple',
                 'symbol': {
@@ -337,15 +354,15 @@ define([
                 }
             });
             var definitionQuery;
-            if (altNumber) {
-                definitionQuery = 'alt_id = \'' + projectId + '-' + altNumber + '\'';
+            if (projectAltId.indexOf('-') > 0) {
+                definitionQuery = 'alt_id = \'' + projectAltId + '\'';
             } else {
-                definitionQuery = 'alt_id like \'' + projectId + '-%\'';
+                definitionQuery = 'alt_id like \'' + projectAltId + '-%\'';
             }
 
             this.addToMap(
                 {
-                    name: 'Project # ' + projectId + (altNumber ? '-' + altNumber : ''),
+                    name: 'Project # ' + projectAltId,
                     url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Query_MMA_Dev/MapServer/0',
                     type: 'feature',
                     sdeLayerName: null //only needed for metadata
@@ -379,7 +396,7 @@ define([
                 geometries: [extent],
                 outSR: map.spatialReference
             });
-            esriConfig.defaults.geometryService.project(params, 
+            esriConfig.defaults.geometryService.project(params,
                 function (r) {
                     //we could just call setExtent with r[0], but if the extent is of a point, 
                     //it results in the map just panning to the point and staying at whatever zoom 
@@ -402,6 +419,48 @@ define([
                     });
                 }
             );
+        },
+
+        getLayerConfig: function() {
+            return array.map(this.layers, function (layer) {
+                var x = {
+                    url: layer.url, //TODO this will change if we support uploaded shapefiles
+                    name: layer._name || layer.id, //TODO why does esri layer object use _name?
+                    visible: layer.visible,
+                    id: layer.id, //for layers loaded directly in viewer.js (which we might eventually do away with)
+                    definitionExpression: layer.getDefinitionExpression ? layer.getDefinitionExpression() : null
+                };
+                if (layer.layerDef) {
+                    x.id = layer.layerDef.id; //for layers loaded via layerLoader
+                }
+                return x;
+            });
+        },
+
+        loadLayerConfig: function (layerConfig, clearMapFirst) {
+            if (clearMapFirst) {
+                //clone the layers array first, otherwise forEach bails
+                var layerClone = this.layers.slice(0);
+                layerClone.forEach(function (layer) {
+                    if (layer.id !== 'Projects' && layer.name !== 'Milestone Max Alternatives') {
+                        this.widgets.layerControl._removeLayer(layer);
+                    }
+                }, this);
+            }
+
+            //load in reverse order
+            for (var i = layerConfig.length - 1; i >= 0; i--) {
+                var layerConfigItem = layerConfig[i];
+                //ignore projects (for now) TODO still important to know the order
+                //also ignore projects loaded TODO better way of determining this
+                if (layerConfigItem.id === 'Projects' || layerConfigItem.name === 'Milestone Max Alternatives') {
+                    continue;
+                }
+                var layer = this.addToMap(layerConfigItem.id, layerConfigItem.definitionExpression);
+                if (layerConfigItem.visible === false) {
+                    layer.visible = false;
+                }
+            }
         }
     });
 });
