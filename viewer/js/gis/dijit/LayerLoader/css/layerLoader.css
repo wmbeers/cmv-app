@@ -13,13 +13,15 @@ ul.layerList {
 }
 
 #layerLoaderDialog section {
-	display: flex; /* or inline-flex */
+	display: flex; 
 	flex-direction: row;
 	justify-content: space-between;
 }
 
 #layerLoaderDialog section div {
 	flex-basis: 28%;
+	max-height: 360px;
+	overflow-y: auto;
 }
 
 #layerLoaderDialog section div:last-child {
@@ -38,4 +40,5 @@ ul.layerList {
 
 .selectedItem {
 	background-color: #69A1C2;
+	color: #FFFFFF;
 }
