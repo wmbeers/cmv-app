@@ -8,11 +8,11 @@
 
 
     <section>
-        <div>
+        <div class="layerLoaderColumn">
             <ul class="plain-list" data-bind="template: {foreach: categories, name: 'categoryTemplate'}"></ul>
         </div>
 
-        <div>
+        <div class="layerLoaderColumn">
             <!-- ko with: currentCategory -->
             <h3 data-bind="text: name"></h3>
             <p data-bind="html: description"></p>
@@ -38,7 +38,7 @@
             <!-- /ko -->
         </div>
 
-        <div>
+        <div class="layerLoaderColumn">
             <!-- ko with: currentLayer -->
             <span style="float: right" data-bind="text: loaded() ? '-' : '+'"></span>
             <h3 data-bind="text: fullName || name"></h3>

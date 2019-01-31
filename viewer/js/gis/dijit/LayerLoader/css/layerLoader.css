@@ -1,3 +1,7 @@
+#layerLoaderDialog, section {
+    height: 100%;
+}
+
 div.categoriesList span {
     float: left;
     width: 85px;
@@ -18,13 +22,13 @@ ul.layerList {
 	justify-content: space-between;
 }
 
-#layerLoaderDialog section div {
+#layerLoaderDialog section .layerLoaderColumn {
 	flex-basis: 28%;
-	max-height: 75%;
+	max-height: 95%;
 	overflow-y: auto;
 }
 
-#layerLoaderDialog section div:last-child {
+#layerLoaderDialog section .layerLoaderColumn:last-child {
 	flex-basis: 38%;
 }
 
