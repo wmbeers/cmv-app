@@ -47569,31 +47569,42 @@ define({
             "name": "Aesthetic Effects",
             "layerIds": [],
             "type": "category",
+            "description": "Layers that help describe an area's existing aesthetic features and summarize a project's potential involvement. The aesthetic qualities of a community or area are defined by a combination of visual resources and other qualities that define the character of the community and site. See <a href='https://fdotwww.blob.core.windows.net/sitefinity/docs/default-source/environment/pubs/pdeman/2019/pt2ch5_011419-current.pdf?sfvrsn=a4f98505_2' target='_blank'>PD&amp;E Manual, Part 2, Chapter 5: Aesthetic Effects</a>.",
             "categories": []
         },
         {
             "name": "Archaeological and Historical Resources",
             "layerIds": [3093, 153, 6, 293, 8, 7763, 7, 9, 10, 5, 3092, 4700],
             "type": "category",
+            "description": "Layers that help identify known sites listed or eligible for listing on the National Register of Historic Places. This includes, but is not limited to historic districts, objects, archaeological remains, and historic structures, including bridges. See <a href='https://fdotwww.blob.core.windows.net/sitefinity/docs/default-source/environment/pubs/pdeman/2019/pt2ch8_011419-current.pdf?sfvrsn=7069521a_2' target='_blank'>PD&amp;E Manual, Part 2, Chapter 8: Archaeological and Historical Resources</a>.",
             "categories": []
         },
         {
             "name": "Air Quality",
             "layerIds": [],
             "type": "category",
+            "description": "",
             "categories": []
         },
         {
             "name": "Coastal and Marine", //TODO split to coastal zone consistency and coastal barrier resources?
             "layerIds": [],
             "type": "category",
+            "description": "",
             "categories": []
         },
         {
             "name": "Contamination",
-            "layerIds": [4543, 4541, 3393, 4544, 1247, 4545, 4540, 4546, 4547, 2371, 2376, 4280, 156, 3416, 9423, 1852, 1126, 8203, 1853, 163, 1283, 7122, 7123, 7124, 38, 1281, 3415],
+            "layerIds": [],
             "type": "category",
-            "categories": []
+            "description": "",
+            "categories": [{
+                "name": "Waste",
+                "layerIds": [4543, 4541, 3393, 4544, 1247, 4545, 4540, 4546, 4547, 2371, 2376, 4280, 156, 3416, 9423, 1852, 1126, 8203, 1853, 163, 1283, 7122, 7123, 7124, 38, 1281, 3415],
+                "type": "category",
+                "description": "",
+                "categories": []
+            }]
         },
         //{
         //  "name": "Emergency Response",
@@ -47604,6 +47615,7 @@ define({
             "name": "Farmland",
             "layerIds": [],
             "type": "category",
+            "description": "",
             "categories": []
         },
         {
@@ -47616,6 +47628,7 @@ define({
             "name": "Highway Traffic Noise",
             "layerIds": [],
             "type": "category",
+            "description": "",
             "categories": []
         },
         //{
@@ -47642,6 +47655,7 @@ define({
             "name": "Section 4(f) Resources",
             "layerIds": [],
             "type": "category",
+            "description": "",
             "categories": []
         },
         {
@@ -47653,12 +47667,14 @@ define({
                     "name": "Economic",
                     "layerIds": [],
                     "type": "category",
+            "description": "",
                     "categories": []
                 },
                 {
                     "name": "Land Use Changes",
                     "layerIds": [],
                     "type": "category",
+            "description": "",
                     "categories": []
                 },
                 {
@@ -47671,6 +47687,7 @@ define({
                     "name": "Relocation Potential",
                     "layerIds": [],
                     "type": "category",
+            "description": "",
                     "categories": []
                 }
             ]
@@ -47684,18 +47701,21 @@ define({
             "name": "Tests",
             "layerIds": [-1, -2, -4],
             "type": "category",
+            "description": "Experimental layers, including those served by ArcGIS Online and Vector Tile format",
             "categories": []
         },
         {
             "name": "Water Quality and Quantity",
             "layerIds": [],
             "type": "category",
+            "description": "",
             "categories": []
         },
         {
             "name": "Wetlands and Other Surface Waters",
             "layerIds": [-4],
             "type": "category",
+            "description": "",
             "categories": []
         }
         //{

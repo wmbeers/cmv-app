@@ -56,7 +56,8 @@ define([
                     label: i18n.zoomTo,
                     iconClass: 'fas fa-fw fa-search',
                     onClick: function () {
-                        controller._zoomToLayer(layer);
+                        //controller._zoomToLayer(layer);
+                        app.zoomToLayer(layer);
                     }
                 }));
             }

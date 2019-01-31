@@ -4,6 +4,8 @@ define([
     'dojo/_base/array',
     'dojo/on',
     'dojo/topic',
+    'dojo/Deferred',
+    'dojo/promise/all',
 
     'esri/map',
     'esri/layers/ArcGISDynamicMapServiceLayer',
@@ -22,6 +24,8 @@ define([
     array,
     on,
     topic,
+    Deferred,
+    all,
 
     Map,
     ArcGISDynamicMapServiceLayer,
@@ -88,37 +92,15 @@ define([
             return null; //just to shut up eslint
         },
 
-        addToMap: function (layerDef, definitionExpression, includeDefinitionExpressionInTitle, renderer) {
+        constructLayer: function (layerDef, definitionExpression, includeDefinitionExpressionInTitle, renderer) {
             var layer = null;
 
             if (typeof layerDef === 'string' || typeof layerDef === 'number') {
                 //find layer by id, sdeLayerName, or url property
                 layerDef = this.getLayerDef(layerDef);
                 if (!layerDef) {
-                    return null;
+                    return null; //error has already been handled in getLayerDef
                 }
-            }
-
-            if (layerDef.type === 'category') {
-                //a pre-defined collection of layers (may also include user-defined in the future)
-                //what will be reported at the end
-                //How many layers loaded
-                var layerCount = 0;
-                //TODO Whether or not any of them are out of scale range--tricky because we run into a race condition with the layers loading
-                layerDef.layerDefs.forEach(function (categorylayerDef) {
-                    layerCount++;
-                    //clone it (so grouping won't screw it up later)
-                    var ld = lang.clone(categorylayerDef);
-                    //group it
-                    ld.layerGroup = layerDef.name;
-                    //add it
-                    this.addToMap(ld);
-                }, this);
-
-                topic.publish('growler/growl', 'Loaded ' + layerCount + ' layers for category ' + layerDef.name);
-
-
-                return null; //TODO return an array or something
             }
 
             //test if it's already in the map by url and definitionExpression
@@ -143,10 +125,6 @@ define([
                 return false; //not really necessary, but prevents a consistent-return eslint error
             }, this)) {
                 return layer;
-            }
-
-            if (layerDef.layerGroup === null) {
-                topic.publish('growler/growl', 'Loading ' + layerDef.name);
             }
 
             //Note: I tried app.initLayer, and while it does do a great job of adding the layer to the map, 
@@ -176,11 +154,15 @@ define([
 
             //definitionExpression only applies to a featureLayer
             //but we can support it for projects loaded via dynamic map service, applying it to all feature layers in the service
+            layerDef.title = layerDef.name;
             if (definitionExpression) {
                 if (layerDef.type === 'dynamic') {
                     //TODO see https://developers.arcgis.com/javascript/3/jsapi/arcgisdynamicmapservicelayer-amd.html#setlayerdefinitions
                 } else if (layerDef.type === 'feature') {
-                    layer.setDefinitionExpression(definitionExpression);
+                    layer.setDefinitionExpression(definitionExpression); //TODO need to be careful we're not overwritting any service defined def expressions. We don't have any yet, but if we do we'll need to deal with merging them together somehow.
+                }
+                if (includeDefinitionExpressionInTitle) {
+                    layerDef.title = layerDef.name + ' (' + definitionExpression + ')'; //TODO some cleaner way of indicating data are filtered
                 }
             }
             if (renderer) {
@@ -191,28 +173,39 @@ define([
             layer.layerDef = layerDef;
             layerDef.layer = layer;
 
+            return layer;
+        },
+        //layer has to be built with constructLayer, so that the fully-formed layerDef object is added to it
+        addLayer: function (layer) {
+            var deferred = new Deferred();
+            var layerDef = layer.layerDef;
+
             //Note: _MapMixin adds layers to the layers control with unshift, e.g.:
             //layers.unshift(l)
             //but that's to keep it in the order in which they're listed in operationalLayers;
             //we're using push so they appear on top. If we want them to appear under the projects
             //change the next line to unshift
             app.layers.push(layer);
+
             //construct on-load handler. The layer needs to be loaded before getting the layerInfo
             //and adding to layerControl widget
             on(layer, 'load', function () {
-                if (layer.layerDef.loaded) {
-                    layer.layerDef.loaded(true);
+                if (layerDef.loaded) { //if it has a loaded observable, assign it to true. (It always does when it's a layerDef defined by our system)
+                    layerDef.loaded(true);
                 }
                 //I don't know why we need to make this separate esriRequest, but the layer won't show up in layerControl
                 //unless we do. We don't do anything with the response. It's cribbed from DnD plug in, DroppedItem.js.
                 esriRequest({
                     url: layerDef.url,
-                    content: {f: 'json'},
+                    content: {
+                        f: 'json'
+                    },
                     handleAs: 'json',
                     callbackParamName: 'callback'
                 }).then(function () {
                     //copy extended properties from our database and append to the sublayers
                     //this relies on our JS being in perfect sync with what's actually being served!
+                    //we don't need this next block
                     if (layerDef.layers) {
                         for (var i = 0; i < layerDef.layers.length; i++) {
                             //response.layers[i].sdeLayerName = layerDef.layers[i].sdeLayerName;
@@ -230,10 +223,10 @@ define([
                             //includeUnspecifiedLayers: true, //TODO: if this is included, the service doesn't load properly for some reason, and no layers show up.
                             swipe: true,
                             noMenu: false,
-                            noZoom: true, //TODO: disable zoom to layer for state-wide layers?
+                            noZoom: false,
                             mappkgDL: true,
-                            allowRemove: true,
-                            layerGroup: layerDef.layerGroup,
+                            allowRemove: true
+                            //layerGroup: layerDef.layerGroup,
                             //TODO: documentation on this is really confusing, neither of these work
                             //menu: {
                             //    dynamic: {
@@ -262,67 +255,56 @@ define([
                             //    }]
                             //},
                             //TODO finish working on menus
-                            subLayerMenu: [
-                                {
-                                    label: 'Query Layer...',
-                                    iconClass: 'fa fa-search fa-fw',
-                                    topic: 'queryLayer'
-                                }, {
-                                    label: 'Open Attribute Table',
-                                    topic: 'openTable',
-                                    iconClass: 'fa fa-table fa-fw'
-                                }, {
-                                    label: 'View Metadata',
-                                    topic: 'viewMetadata',
-                                    iconClass: 'fa fa-info-circle fa-fw'
-                                }]
+                            //subLayerMenu: [
+                            //    {
+                            //        label: 'Query Layer...',
+                            //        iconClass: 'fa fa-search fa-fw',
+                            //        topic: 'queryLayer'
+                            //    }, {
+                            //        label: 'Open Attribute Table',
+                            //        topic: 'openTable',
+                            //        iconClass: 'fa fa-table fa-fw'
+                            //    }, {
+                            //        label: 'View Metadata',
+                            //        topic: 'viewMetadata',
+                            //        iconClass: 'fa fa-info-circle fa-fw'
+                            //    }]
                         },
                         layer: layer,
-                        title: layerDef.name,
+                        title: layerDef.title,
                         type: layerDef.type
 
                     };
-                    if (definitionExpression && includeDefinitionExpressionInTitle !== false) {
-                        //TODO: this is just a proof of concept, we'll probably want something cleaner than raw definitionExpression
-                        layerControlInfo.title = layerControlInfo.title + ' (' + definitionExpression + ')';
-                    }
                     topic.publish('layerControl/addLayerControls', [layerControlInfo]); //TODO the whole collection of layers to be added should be passed at once for layerGroup to do anything.
                     topic.publish('identify/addLayerInfos', [layerControlInfo]);
                     app.legendLayerInfos.push(layerControlInfo);
-                    //topic.publish('identify/addLayerInfos', [{
-                    //    type: layerDef.type,
-                    //    layer: layer,
-                    //    title: layerDef.name
-                    //}]);
-                    //app.legendLayerInfos.push({ layer: layer, title: layerDef.name });
 
-                    if (definitionExpression) {
+                    if (layer.getDefinitionExpression()) { //TODO there might be some pre-defined layers with definition expressions assigned in map service. None yet, but if there are we need some other way to handle deciding when to zoom
                         //zoom to layer
                         app.zoomToLayer(layer);
                         //TODO? is it possible after zooming to the defined features (which, as far our documented requirements go, will be just one)
                         //it's still not visible? if so, need a callback handler after zooming
                         //with visibleAtMapScale check, like below
                     }
-                    //Report it's been loaded, suppressed if we're adding a whole category
-                    if (layerDef.layerGroup === null) {
-                        if (!layer.visibleAtMapScale) {
-                            topic.publish('growler/growl', {
-                                title: '',
-                                message: layerDef.name + ' loaded, but is not visible at the current map scale.',
-                                level: 'warning'
-                            });
-                        } else {
-                            topic.publish('growler/growl', layerDef.name + ' loaded.');
-                        }
+                    if (!layer.visibleAtMapScale) {
+                        topic.publish('growler/growl', {
+                            title: '',
+                            message: layerDef.name + ' loaded, but is not visible at the current map scale.',
+                            level: 'warning'
+                        });
+                    } else {
+                        topic.publish('growler/growl', layerDef.name + ' loaded.');
                     }
+                    deferred.resolve(layer);
+
                 }, function (error) {
                     topic.publish('viewer/handleError', {
-                        source: 'LayerLoadMixin.addToMap',
+                        source: 'LayerLoadMixin.addLayer',
                         error: error
                     });
                 }).catch(function (error) {
                     topic.publish('viewer/handleError', {
-                        source: 'LayerLoadMixin.addToMap',
+                        source: 'LayerLoadMixin.addLayer',
                         error: error
                     });
                 });
@@ -332,7 +314,7 @@ define([
             //add the layer to the map
             app.map.addLayer(layer);
 
-            return layer;
+            return deferred;
         },
 
         //TODO: support adding draft projects to map for editing
@@ -360,7 +342,7 @@ define([
                 definitionQuery = 'alt_id like \'' + projectAltId + '-%\'';
             }
 
-            this.addToMap(
+            var projectLayer = this.constructLayer(
                 {
                     name: 'Project # ' + projectAltId,
                     url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Query_MMA_Dev/MapServer/0',
@@ -371,54 +353,70 @@ define([
                 false, //prevents definitionExpression from overriding title TODO cleaner method of handling this
                 renderer
             );
+
+            this.addLayer(projectLayer);
         },
 
         zoomToLayer: function (layer) {
-            //this.zoomToExtent([layer.fullExtent]); //unfortunately, this doesn't take definitionExpression into account
-            var q = new Query({
-                where: '1=1' //definitionExpression, if present doesn't need to be re-applied
-            });
-            layer.queryExtent(q, function (r) {
-                app.zoomToExtent(r.extent);
-            }, function (e) {
-                topic.publish('viewer/handleError', {
-                    source: 'LayerLoadMixin.zoomToLayer',
-                    error: e
+
+            if (layer.getDefinitionExpression && layer.getDefinitionExpression()) {
+                //this.zoomToExtent([layer.fullExtent]); //unfortunately, this doesn't take definitionExpression into account
+                var q = new Query({
+                    where: '1=1' //definitionExpression, if present doesn't need to be re-applied
                 });
-            });
+                layer.queryExtent(q, function (r) {
+                    app.zoomToExtent(r.extent);
+                }, function (e) {
+                    topic.publish('viewer/handleError', {
+                        source: 'LayerLoadMixin.zoomToLayer',
+                        error: e
+                    });
+                });
+            } else {
+                app.zoomToExtent(layer.fullExtent);
+            }
         },
 
         zoomToExtent: function (extent) {
             var map = this.map;
-            //project the extent--most often we're getting an extent from one of our layers,
-            //and the extent will be in Albers; need to project it to the Map's World Mercator coordinate system
-            var params = lang.mixin(new ProjectParameters(), {
-                geometries: [extent],
-                outSR: map.spatialReference
-            });
-            esriConfig.defaults.geometryService.project(params,
-                function (r) {
-                    //we could just call setExtent with r[0], but if the extent is of a point, 
-                    //it results in the map just panning to the point and staying at whatever zoom 
-                    //level the map currently is at, even statewide; and if extent of line/poly
-                    //it often zooms in too tightly.
-                    //To handle this, we create an Extent object, then expanding it if it's a line/poly
-                    //or just center and zoom if a point
-                    extent = new Extent(r[0]);
-                    if (extent.getWidth() === 0 && extent.getHeight() === 0) {
-                        //expanding it has no effect, so just use center and zoom
-                        map.centerAndZoom(extent.getCenter(), 21);
-                    } else {
-                        extent.expand(1.1);
-                        map.setExtent(extent, true);
+            if (extent.spatialReference === map.spatialReference) {
+                map.setExtent(extent, true);
+            } else if (esriConfig.defaults.geometryService) {
+                //project the extent--most often we're getting an extent from one of our layers,
+                //and the extent will be in Albers; need to project it to the Map's World Mercator coordinate system
+                var params = lang.mixin(new ProjectParameters(), {
+                    geometries: [extent],
+                    outSR: map.spatialReference
+                });
+                esriConfig.defaults.geometryService.project(params,
+                    function (r) {
+                        //we could just call setExtent with r[0], but if the extent is of a point, 
+                        //it results in the map just panning to the point and staying at whatever zoom 
+                        //level the map currently is at, even statewide; and if extent of line/poly
+                        //it often zooms in too tightly.
+                        //To handle this, we create an Extent object, then expanding it if it's a line/poly
+                        //or just center and zoom if a point
+                        extent = new Extent(r[0]);
+                        if (extent.getWidth() === 0 && extent.getHeight() === 0) {
+                            //expanding it has no effect, so just use center and zoom
+                            map.centerAndZoom(extent.getCenter(), 21);
+                        } else {
+                            extent.expand(1.1);
+                            map.setExtent(extent, true);
+                        }
+                    }, function (e) {
+                        topic.publish('viewer/handleError', {
+                            source: 'LayerLoadMixin.zoomToExtent',
+                            error: e
+                        });
                     }
-                }, function (e) {
-                    topic.publish('viewer/handleError', {
-                        source: 'LayerLoadMixin.zoomToExtent',
-                        error: e
-                    });
-                }
-            );
+                );
+            } else {
+                topic.publish('viewer/handleError', {
+                    source: 'LayerLoadMixin.zoomToExtent',
+                    error: 'esriConfig.defaults.geometryService is not set'
+                });
+            }
         },
 
         getLayerConfig: function () {
@@ -438,6 +436,8 @@ define([
         },
 
         loadLayerConfig: function (layerConfig, clearMapFirst) {
+            var deferred = new Deferred();
+            var promises = [];
             if (clearMapFirst) {
                 //clone the layers array first, otherwise forEach bails
                 var layerClone = this.layers.slice(0);
@@ -457,11 +457,21 @@ define([
                     continue; // eslint-disable-line no-continue
                     //continue is OK for now; eventually we'll just exclude from layerConfig when saving, or include them or something
                 }
-                var layer = this.addToMap(layerConfigItem.id, layerConfigItem.definitionExpression);
+
+                var layer = this.constructLayer(layerConfigItem.id, layerConfigItem.definitionExpression);
+                promises.push(this.addLayer(layer));
                 if (layerConfigItem.visible === false) {
                     layer.visible = false;
                 }
             }
+
+            if (promises.length > 0) {
+                all(promises).then(function (layers) {
+                    deferred.resolve(layers);
+                });
+            }
+
+            return deferred;
         }
     });
 });

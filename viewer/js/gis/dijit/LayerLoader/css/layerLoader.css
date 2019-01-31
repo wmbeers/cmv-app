@@ -20,7 +20,7 @@ ul.layerList {
 
 #layerLoaderDialog section div {
 	flex-basis: 28%;
-	max-height: 360px;
+	max-height: 75%;
 	overflow-y: auto;
 }
 
@@ -38,7 +38,8 @@ ul.layerList {
 	padding: 0.25em;
 }
 
-.selectedItem {
+li.selectedItem {
 	background-color: #69A1C2;
 	color: #FFFFFF;
 }
+

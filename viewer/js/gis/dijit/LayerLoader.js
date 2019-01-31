@@ -13,8 +13,8 @@ define([
     'dojo/dom-construct',
     'dojo/topic',
     'dojo/store/Memory',
-    'dojo/text!./LayerLoader/templates/layerLoaderSidebar.html', // template for the widget in left panel
-    'dojo/text!./LayerLoader/templates/layerLoaderDialog.html', // template for the dialog
+    'dojo/text!./LayerLoader/templates/layerLoaderSidebar.html', // template for the widget in left panel, and some dialogs
+    'dojo/text!./LayerLoader/templates/layerLoaderDialog.html', // template for the resource layer broswer dialog
 
     'dijit/form/Form',
     'dijit/form/FilteringSelect',
@@ -30,17 +30,19 @@ define([
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
             widgetsInTemplate: true,
             templateString: layerLoaderSidebarTemplate,
-            dialogTemplate: layerLoaderDialogTemplate,
             topicID: 'layerLoader',            
             baseClass: 'layerLoader',
             map: this.map,
             //broader scope needed for these dialogs to support closing when option is selected, so declaring these here
-            categoryDialog: null, 
-            layersDialog: null,
+            layerBrowserDialog: null, //Note: we actually keep this open, and user closes it the usual way, so might not need broad scope for this one
+            saveMapDialog: null,
+            //loadMapDialog: null,
             searchResultsDialog: null,
             savedMaps: ko.observableArray(),
             selectedMap: ko.observable(),
             clearMapFirst: ko.observable(false),
+            includeProjects: ko.observable(false),
+            hasProjects: ko.observable(false), // non-computed, because fundamentally app.layers aren't observable, so computed doesn't know when to re-run. We set this when the save dialog loads
             loadSelectedMap: function () {
                 this.loadMap(this.selectedMap());
             },
@@ -73,7 +75,6 @@ define([
                         layerDef.legend = [];
                     }
                 }, this);
-
                 this._initializeDialogs();
             },
             startup: function () {
@@ -113,7 +114,9 @@ define([
                 //    debugger;
                 //});
 
-                ko.applyBindings(this, dom.byId('savedMapsDialog'));
+                ko.applyBindings(this, dom.byId('layerLoaderSideBarKO'));
+                ko.applyBindings(this, dom.byId('loadMapDialog'));
+                ko.applyBindings(this, dom.byId('saveMapDialog'));
             },
             handleSearchKeyDown: function (event) {
                 if (event.keyCode === 13) {
@@ -137,6 +140,21 @@ define([
                     return sm.name === mapName;
                 });
                 return savedMap;
+            },
+            showLoadMapDialog: function () {
+                //todo apply bindings here?
+                this.loadMapDialog.show();
+            },
+            showSaveMapDialog: function () {
+                this.hasProjects = false;
+                if (app.layers.find(
+                    function (l) {
+                        return l.name === 'Milestone Max Alternatives';
+                    }
+                )) {
+                    this.hasProjects = true;
+                }
+                this.saveMapDialog.show();
             },
             saveMap: function () {
                 var mapName = this.mapName.value;
@@ -166,10 +184,11 @@ define([
                 }
 
                 if (savedMap) {
-                    app.loadLayerConfig(savedMap.layers, this.clearMapFirst());
+                    app.loadLayerConfig(savedMap.layers, this.clearMapFirst()).then(function (layers) {
+                        topic.publish('growler/growl', 'Loaded ' + layers.length + ' layers for ' + savedMap.name);
+                    });
                 }
-                //TODO: this happens too quickly, growling before all the layers are done loading.
-                topic.publish('growler/growl', 'Loaded ' + savedMap.name);
+                this.loadMapDialog.hide();
             },
             handleSearch: function () {
                 //filter this.layerDefs
@@ -200,31 +219,30 @@ define([
                 this.searchResultsDialog.show();
             },
             showCategories: function () {
-                this.categoryDialog.show();
+                this.layerBrowserDialog.show();
             },
             listAllLayers: function () {
                 this.layersDialog.show();
             },
             _initializeDialogs: function () {
-                //categories dialog
-                this.categoryDialog = new Dialog({
-                    id: 'layerloader_categories_dialog',
+                //layer browser dialog
+                this.layerBrowserDialog = new Dialog({
+                    id: 'layerloader_browser_dialog',
                     title: 'Layer Browser',
-                    content: this.dialogTemplate,
-                    style: 'width: 90%'
+                    content: layerLoaderDialogTemplate,
+                    style: 'width: 90%; height: 75%'
                 });
 
                 this.layerDefs.forEach(function (layerDef) {
                     layerDef.loadLayer = function () {
-                        app.addToMap(layerDef);
+                        var layer = app.constructLayer(layerDef);
+                        app.addLayer(layer);
                     };
                     layerDef.removeLayer = function () {
                         if (layerDef.layer) {
                             app.widgets.layerControl._removeLayer(layerDef.layer);
                         }
                     };
-                    layerDef._legend = null;
-                    //TODO make a request to get the legend, or pre-cache it
                     layerDef.scaleText = ko.computed(function () {
                         var scaleText = '';
                         var minScale = (layerDef.layer && layerDef.layer.minScale) ? layererDef.layer.minScale : (layerDef.minScale || 0);
@@ -309,7 +327,8 @@ define([
                 var li = domConstruct.create('li', null, targetNode);
                 var a = domConstruct.create('a', {'href': '#', 'innerHTML': layerDef.name, 'title': layerDef.description}, li);
                 on(a, 'click', lang.hitch(this, function () {
-                    app.addToMap(layerDef);
+                    var layer = app.constructLayer(layerDef);
+                    app.addLayer(layer);
                     this.layersDialog.hide();
                     this.searchResultsDialog.hide();
                 }));

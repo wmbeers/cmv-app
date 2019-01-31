@@ -464,10 +464,10 @@ define([
                     layerControlLayerInfos: true,
                     separated: true,
                     vectorReorder: true,
-                    overlayReorder: true,
+                    overlayReorder: true
                     // create a custom menu entry in all of these feature types
                     // the custom menu item will publish a topic when clicked
-                    menu: {
+                    /*menu: {
                         feature: [{
                             topic: 'hello',
                             iconClass: 'fas fa-fw fa-smile',
@@ -478,7 +478,7 @@ define([
                             iconClass: 'fas fa-fw fa-smile',
                             label: 'Say Hello B'
                         }]
-                    }
+                    }*/
 
                     //create a example sub layer menu that will
                     /*apply to all layers of type 'dynamic'

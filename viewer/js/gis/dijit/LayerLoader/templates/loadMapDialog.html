@@ -1,0 +1,19 @@
+<div id="loadMapDialog">
+    <h3>Load Map</h3>
+    <label>Select Map</label>
+    <input id="savedMapsDijit" type="select" data-dojo-type="dijit/form/FilteringSelect" data-dojo-props="name:'selectedMap',autoComplete:true,required:true,searchAttr:'name',style:'width:100%;'" data-dojo-attach-point="savedMapsDijit" />
+    <div data-dojo-attach-point="clearMapFirstDom">
+        <input type="checkbox" data-dojo-attach-point="clearMapFirstCheckBox" data-dojo-type="dijit/form/CheckBox" data-dojo-props="'class':'optionsCheckBox'" data-bind="checked: clearMapFirst" />
+        <label>Clear map before loading</label>
+    </div>
+
+    <div class="buttonContainer">
+        <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-folder-open fa-fw'" data-bind="click: loadSelectedMap">
+            Load
+        </div>
+        <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-trash fa-fw'" data-bind="click: deleteSelectedMap">
+            Delete
+        </div>
+    </div>
+
+</div>

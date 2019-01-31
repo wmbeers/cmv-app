@@ -1,7 +1,7 @@
 <div id="layerLoaderDialog">
     <script type="text/html" id="categoryTemplate">
         <li data-bind="css: {selectedItem: $root.currentCategory() == $data}">
-            <span data-bind="text: name, event: {click: function() {$root.currentCategory($data);}}"></span>
+            <span data-bind="text: name, event: {click: function() {$root.currentCategory($data); $root.currentLayer(null)}}"></span>
             <ul class="plain-list" data-bind="template: {foreach: categories, name: 'categoryTemplate'}"></ul>
         </li>
     </script>
@@ -15,12 +15,24 @@
         <div>
             <!-- ko with: currentCategory -->
             <h3 data-bind="text: name"></h3>
-            <ul class="plain-list" data-bind="foreach: layerDefs">
-                <li data-bind="css: {selectedItem: $root.currentLayer() == $data}">
-                    <span data-bind="text: name, event: {click: function() {$root.currentLayer($data);}}"></span>
-                </li>
-            </ul>
-            <div data-bind="visible: layerDefs.length ===0">
+            <p data-bind="html: description"></p>
+            <div data-bind="if: categories && categories.length > 0">
+                <h4>Subcategories</h4>
+                <ul class="plain-list" data-bind="foreach: categories">
+                    <li>
+                        <span data-bind="text: name, event: {click: function() {$root.currentCategory($data);}}"></span>
+                    </li>
+                </ul>
+            </div>
+            <div data-bind="if: layerDefs && layerDefs.length > 0">
+                <h4>Layers</h4>
+                <ul class="plain-list" data-bind="foreach: layerDefs">
+                    <li data-bind="css: {selectedItem: $root.currentLayer() == $data}">
+                        <span data-bind="text: name, event: {click: function() {$root.currentLayer($data);}}"></span>
+                    </li>
+                </ul>
+            </div>
+            <div data-bind="visible: layerDefs.length === 0" style="font-style: italic">
                 No layers defined for this category yet.
             </div>
             <!-- /ko -->
