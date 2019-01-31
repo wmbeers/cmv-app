@@ -529,7 +529,7 @@ define([
                 options: 'config/bookmarks'
             },
             find: {
-                include: true,
+                include: false,
                 id: 'find',
                 type: 'titlePane',
                 canFloat: true,
