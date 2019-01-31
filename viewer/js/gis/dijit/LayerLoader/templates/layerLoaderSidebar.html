@@ -39,11 +39,14 @@
         <input id="savedMapsDijit" type="select" data-dojo-type="dijit/form/FilteringSelect" data-dojo-props="name:'selectedMap',autoComplete:true,required:true,searchAttr:'name',style:'width:100%;'" data-dojo-attach-point="savedMapsDijit" />
         <br />
         <div data-dojo-attach-point="clearMapFirstDom">
-            <input type="checkbox" data-dojo-attach-point="clearMapFirstCheckBox" data-dojo-type="dijit/form/CheckBox" data-dojo-props="'class':'optionsCheckBox'" data-bind="checked: clearMapFirst" />
-            <label>Clear map before loading</label>
+            <br />
+            <label>
+                <input type="checkbox" data-dojo-attach-point="clearMapFirstCheckBox" data-dojo-type="dijit/form/CheckBox" data-dojo-props="'class':'optionsCheckBox'" data-bind="checked: clearMapFirst" />
+                Clear map before loading
+            </label>
         </div>
         <br />
-        <div class="buttonContainer">
+        <div class="buttonContainer buttonContainerRight">
             <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-folder-open fa-fw'" data-bind="click: loadSelectedMap">
                 Open
             </div>
@@ -64,7 +67,7 @@
             <br />
         </div>
 
-        <div class="buttonContainer">
+        <div class="buttonContainer buttonContainerRight">
             <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-save fa-fw'" data-dojo-attach-event="click: saveMap">
                 Save
             </div>

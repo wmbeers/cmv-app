@@ -43,3 +43,6 @@ li.selectedItem {
 	color: #FFFFFF;
 }
 
+.buttonContainerRight {
+    text-align: right;
+}

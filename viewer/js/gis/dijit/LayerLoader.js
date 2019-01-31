@@ -4,6 +4,7 @@ define([
     'dijit/_TemplatedMixin',
     'dijit/_WidgetsInTemplateMixin',
     'dijit/Dialog',
+    'dijit/ConfirmDialog',
     'dojo/ready',
     'dijit/popup',
     'dojo/_base/lang',
@@ -24,7 +25,7 @@ define([
 
     'xstyle/css!./LayerLoader/css/layerLoader.css'
 ],
-    function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog, ready, popup, lang, array, on, dom, domConstruct, 
+    function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog, ConfirmDialog, ready, popup, lang, array, on, dom, domConstruct, 
         topic, Memory, layerLoaderSidebarTemplate, layerLoaderDialogTemplate
 ) {
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
@@ -47,9 +48,22 @@ define([
                 this.loadMap(this.selectedMap());
             },
             deleteSelectedMap: function () {
-                this.savedMaps.remove(this.selectedMap());
-                //TODO save to database/user config, not LSO
-                localStorage.setItem('savedMaps', JSON.stringify(this.savedMaps()));
+                if (!this.selectedMap()) {
+                    return;
+                }
+                var thisWidget = this;
+                var dialog = new ConfirmDialog({
+                    title: 'Confirm Delete',
+                    content: 'Are you sure you want to delete the ' + this.selectedMap().name + ' map?',
+                    onExecute: function () {
+                        thisWidget.savedMaps.remove(thisWidget.selectedMap());
+                        thisWidget.selectedMap(null);
+                        //TODO save to database/user config, not LSO
+                        localStorage.setItem('savedMaps', JSON.stringify(thisWidget.savedMaps()));
+                    }
+                });
+                dialog.show();
+                
             },
             postCreate: function () {
                 this.inherited(arguments);
@@ -92,6 +106,19 @@ define([
                     });
                     this.savedMapsDijit.set('store', format);
                 }, this);
+
+                //ko->dojo--update UI
+                this.selectedMap.subscribe(function () {
+                    if (self.selectedMap()) {
+                        //this bit already works
+                    } else {
+                        //when set to null, this doesn't get reflected in UI
+                        self.savedMapsDijit.value = null;
+                        self.savedMapsDijit.displayedValue = null;
+                        self.savedMapsDijit.item = null;
+                        dojo.byId('savedMapsDijit').value = null;
+                    }
+                });
 
                 this.savedMaps(savedMaps);
 
@@ -161,8 +188,6 @@ define([
                 if (!mapName) {
                     return;
                 }
-
-                //TODO confirm overwrite
                 var savedMap = this.getSavedMap(mapName);
                 if (!savedMap) {
                     //construct new
@@ -171,11 +196,26 @@ define([
                         id: mapName //dojo needs this. Eventually we'll have our own server-provided ids
                     };
                     this.savedMaps.push(savedMap);
+                    this._saveMap(savedMap);
+                } else {
+                    //confirm overwrite
+                    var thisWidget = this;
+                    var dialog = new ConfirmDialog({
+                        title: 'Confirm Overwrite',
+                        content: 'Are you sure you want to overwrite the ' + mapName + ' map?',
+                        onExecute: function () {
+                            thisWidget._saveMap(savedMap);
+                        }
+                    });
+                    dialog.show();
                 }
+            },
+            _saveMap: function (savedMap) {
                 //get layers
                 savedMap.layers = app.getLayerConfig();
                 //TODO save to database/user config, not LSO
                 localStorage.setItem('savedMaps', JSON.stringify(this.savedMaps()));
+                this.saveMapDialog.hide();
             },
             loadMap: function (savedMap) {
                 //is it an object or just the name of a map?
