@@ -22,12 +22,15 @@
     <hr />
     <div id="layerLoaderSideBarKO">
         <div class="buttonContainer">
-            <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-save fa-fw'" data-dojo-attach-event="click: showSaveMapDialog" >
+            <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-save fa-fw'" data-dojo-attach-event="click: showSaveMapDialog">
                 Save
             </div>
-            <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-folder-open fa-fw'" data-dojo-attach-event="click: showLoadMapDialog" data-bind="visible: savedMaps().length > 0">
+            <!--ko if: savedMaps().length > 0--> 
+            <!--Note: use ko if binding wrapping the entire button div; using ko visible binding on the div itself still renders the border of the button, without content -->
+            <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-folder-open fa-fw'" data-dojo-attach-event="click: showLoadMapDialog">
                 Open
             </div>
+            <!--/ko-->
         </div>
     </div>
 
@@ -42,7 +45,7 @@
         <br />
         <div class="buttonContainer">
             <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-folder-open fa-fw'" data-bind="click: loadSelectedMap">
-                Load
+                Open
             </div>
             <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-trash fa-fw'" data-bind="click: deleteSelectedMap">
                 Delete
