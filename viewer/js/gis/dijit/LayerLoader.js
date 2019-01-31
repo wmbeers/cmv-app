@@ -51,19 +51,17 @@ define([
                 if (!this.selectedMap()) {
                     return;
                 }
-                var thisWidget = this;
-                var dialog = new ConfirmDialog({
+                new ConfirmDialog({
                     title: 'Confirm Delete',
                     content: 'Are you sure you want to delete the ' + this.selectedMap().name + ' map?',
-                    onExecute: function () {
-                        thisWidget.savedMaps.remove(thisWidget.selectedMap());
-                        thisWidget.selectedMap(null);
-                        //TODO save to database/user config, not LSO
-                        localStorage.setItem('savedMaps', JSON.stringify(thisWidget.savedMaps()));
-                    }
-                });
-                dialog.show();
-                
+                    onExecute: lang.hitch(this, '_deleteSelectedMap')
+                }).show();
+            },
+            _deleteSelectedMap: function () {
+                this.savedMaps.remove(this.selectedMap());
+                this.selectedMap(null);
+                //TODO save to database/user config, not LSO
+                localStorage.setItem('savedMaps', JSON.stringify(this.savedMaps()));
             },
             postCreate: function () {
                 this.inherited(arguments);
@@ -199,15 +197,11 @@ define([
                     this._saveMap(savedMap);
                 } else {
                     //confirm overwrite
-                    var thisWidget = this;
-                    var dialog = new ConfirmDialog({
+                    new ConfirmDialog({
                         title: 'Confirm Overwrite',
                         content: 'Are you sure you want to overwrite the ' + mapName + ' map?',
-                        onExecute: function () {
-                            thisWidget._saveMap(savedMap);
-                        }
-                    });
-                    dialog.show();
+                        onExecute: lang.hitch(this, '_saveMap', savedMap)
+                    }).show();
                 }
             },
             _saveMap: function (savedMap) {
@@ -216,6 +210,7 @@ define([
                 //TODO save to database/user config, not LSO
                 localStorage.setItem('savedMaps', JSON.stringify(this.savedMaps()));
                 this.saveMapDialog.hide();
+                topic.publish('growler/growl', 'Saved ' + savedMap.layers.length + ' layers to ' + savedMap.name);
             },
             loadMap: function (savedMap) {
                 //is it an object or just the name of a map?
