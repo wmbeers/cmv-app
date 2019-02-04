@@ -1,7 +1,7 @@
 <div id="layerLoaderDialog">
     <script type="text/html" id="categoryTemplate">
-        <li data-bind="css: {selectedItem: $root.currentCategory() == $data}">
-            <span data-bind="text: name, event: {click: function() {$root.currentCategory($data); $root.currentLayer(null)}}"></span>
+        <li>
+            <span data-bind="css: {selectedItem: $root.currentCategory() == $data}, text: name, event: {click: function() {$root.currentCategory($data); $root.currentLayer(null)}}"></span>
             <ul class="plain-list" data-bind="template: {foreach: categories, name: 'categoryTemplate'}"></ul>
         </li>
     </script>
@@ -27,8 +27,8 @@
             <div data-bind="if: layerDefs && layerDefs.length > 0">
                 <h4>Layers</h4>
                 <ul class="plain-list" data-bind="foreach: layerDefs">
-                    <li data-bind="css: {selectedItem: $root.currentLayer() == $data}">
-                        <span data-bind="text: name, event: {click: function() {$root.currentLayer($data);}}"></span>
+                    <li>
+                        <span data-bind="css: {selectedItem: $root.currentLayer() == $data}, text: name, event: {click: function() {$root.currentLayer($data);}}"></span>
                     </li>
                 </ul>
             </div>
@@ -40,7 +40,6 @@
 
         <div class="layerLoaderColumn">
             <!-- ko with: currentLayer -->
-            <span style="float: right" data-bind="text: loaded() ? '-' : '+'"></span>
             <h3 data-bind="text: fullName || name"></h3>
             <div data-bind="foreach: legend">
                 <img data-bind="attr: {src: 'data:image/png;base64, ' + imageData, alt: label}" />

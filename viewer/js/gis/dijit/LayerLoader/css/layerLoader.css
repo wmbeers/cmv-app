@@ -36,13 +36,14 @@ ul.layerList {
 	list-style: none;
 }
 
-#layerLoaderDialog section ul li {
+#layerLoaderDialog section ul li span {
 	border-radius: 5px;
+    cursor: pointer;
 	display: block;
 	padding: 0.25em;
 }
 
-li.selectedItem {
+span.selectedItem {
 	background-color: #69A1C2;
 	color: #FFFFFF;
 }
@@ -50,3 +51,4 @@ li.selectedItem {
 .buttonContainerRight {
     text-align: right;
 }
+
