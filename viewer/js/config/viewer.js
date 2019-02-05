@@ -145,6 +145,16 @@ define([
         panes: {
             left: {
                 splitter: true
+            },
+            bottom: {
+                id: 'sidebarBottom',
+                placeAt: 'outer',
+                splitter: true,
+                collapsible: true,
+                region: 'bottom',
+                style: 'height:200px;width:100%;', //have to set width if open is false, or it gets stuck collapsed
+                content: '<div id="attributesContainer"></div>',
+                open: false
             }/*,
             right: {
                   id: 'sidebarRight',
@@ -324,6 +334,40 @@ define([
                         }
                     ]
 
+                }
+            },
+            attributesTable: {
+                include: true,
+                id: 'attributesTable',
+                type: 'domNode',
+                srcNodeRef: 'attributesContainer',
+                path: 'gis/dijit/AttributesTable',
+                options: {
+                    map: true,
+                    mapClickMode: true,
+
+                    // use a tab container for multiple tables or
+                    // show only a single table
+                    useTabs: false,
+
+                    // used to open the sidebar after a query has completed
+                    sidebarID: 'sidebarBottom'//,
+
+                    //// optional tables to load when the widget is first instantiated
+                    //tables: [
+                    //    {
+                    //        title: 'Census',
+                    //        topicID: 'censusQuery',
+                    //        queryOptions: {
+                    //            queryParameters: {
+                    //                url: 'http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Demographics/ESRI_Census_USA/MapServer/4',
+                    //                maxAllowableOffset: 100,
+                    //                where: 'STATE_FIPS = \'06\' OR STATE_FIPS = \'08\''
+                    //            },
+                    //            idProperty: 'ObjectID'
+                    //        }
+                    //    }
+                    //]
                 }
             },
             reverseGeocoder: {

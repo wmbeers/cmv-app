@@ -43,7 +43,31 @@ define([
     return declare(null, {
 
         startup: function () {
-            //nothing really to do here
+            //subscribe to topics
+            topic.subscribe('layerControl/openAttributeTable', lang.hitch(this, 'openAttributeTable'));
+
+            //topic.subscribe('layerControl/openAttributeTable', lang.hitch(this, function (args) {
+            //    debugger;
+            //    //this.togglePane(args.pane, args.show, args.suppressEvent);
+            //}));
+
+        },
+
+        openAttributeTable: function (layerControlItem) {
+            var tableOptions = {
+                title: layerControlItem.layer.name,
+                topicID: layerControlItem.layer.id,
+                queryOptions: {
+                    queryParameters: {
+                        url: layerControlItem.layer.url,
+                        maxAllowableOffset: 100, // TODO this is used for generalizing geometries. At this setting, they polygons are highly generalized
+                        where: layerControlItem.layer.getDefinitionExpression() || '1=1',
+                        geometry: app.map.extent //TODO should we be filtering by map extent?
+                    },
+                    idProperty: 'AUTOID' // TODO get this from the layer's fields property
+                }
+            };
+            topic.publish('attributesTable/addTable', tableOptions);
         },
 
         getLayerDef: function (sdeLayerNameOrUrl) {
@@ -225,7 +249,7 @@ define([
                             noMenu: false,
                             noZoom: false,
                             mappkgDL: true,
-                            allowRemove: true
+                            allowRemove: true,
                             //layerGroup: layerDef.layerGroup,
                             //TODO: documentation on this is really confusing, neither of these work
                             //menu: {
@@ -235,11 +259,11 @@ define([
                             //        iconClass: 'fa fa-info fa-fw'
                             //    }
                             //},
-                            //menu: [{
-                            //    label: 'Wny does this not show up?',
-                            //    topic: 'remove',
-                            //    iconClass: 'fa fa-info fa-fw'
-                            //}],
+                            menu: [{
+                                label: 'Open Attribute Table',
+                                topic: 'openAttributeTable',
+                                iconClass: 'fa fa-table fa-fw'
+                            }]
                             //Note: the following is what's documented on the CMV site, but doesn't work, 
                             //see below for the correct way discovered via trial-and-error
                             // gives all dynamic layers the subLayerMenu items
@@ -256,15 +280,17 @@ define([
                             //},
                             //TODO finish working on menus
                             //subLayerMenu: [
+                            //    //{
+                            //    //    label: 'Query Layer...',
+                            //    //    iconClass: 'fa fa-search fa-fw',
+                            //    //    topic: 'queryLayer'
+                            //    //},
                             //    {
-                            //        label: 'Query Layer...',
-                            //        iconClass: 'fa fa-search fa-fw',
-                            //        topic: 'queryLayer'
-                            //    }, {
                             //        label: 'Open Attribute Table',
                             //        topic: 'openTable',
                             //        iconClass: 'fa fa-table fa-fw'
-                            //    }, {
+                            //    },
+                            //    {
                             //        label: 'View Metadata',
                             //        topic: 'viewMetadata',
                             //        iconClass: 'fa fa-info-circle fa-fw'
