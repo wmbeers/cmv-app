@@ -38,6 +38,7 @@ define([
         topicID: 'attributesTable',
         sidebarID: null,
         sidebarPane: null,
+        tables: [],
 
         // i18n
         i18n: i18n,
@@ -87,6 +88,9 @@ define([
             this.resizeChildren();
         },
 
+        startup: function () {
+            this.closePane();
+        },
         addTopics: function () {
             // add an array of tables to the tab strip
             this.own(topic.subscribe(this.topicID + '/addTables', lang.hitch(this, 'addTables')));
@@ -124,6 +128,7 @@ define([
         addTable: function (table) {
             var tab = this.addTab(table);
             topic.publish(this.topicID + '/tableAdded', tab);
+            this.tables.push(tab);
             return tab;
         },
 
