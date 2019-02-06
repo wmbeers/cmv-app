@@ -381,7 +381,7 @@ define([
             var projectLayer = this.constructLayer(
                 {
                     name: 'Project # ' + projectAltId,
-                    id: 'project_' + projectAltId.replace('-','_'),
+                    id: 'project_' + projectAltId.replace('-', '_'),
                     url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Query_MMA_Dev/MapServer/0',
                     type: 'feature',
                     projectAltId: projectAltId, //used when saving to layerconfig
@@ -471,7 +471,8 @@ define([
                     if (layer.name === 'Milestone Max Alternatives') {
                         //special case for our project/alt layers
                         x.projectAltId = layer.layerDef.projectAltId;
-                    }                }
+                    }
+                }
                 return x;
             });
         },
@@ -496,7 +497,7 @@ define([
                 //ignore projects (for now) TODO still important to know the order
                 if (layerConfigItem.id === 'Projects') {
                     //don't load these for now--hard-coded in viewer.js
-                } else if (layerConfigItem.name = 'Milestone Max Alternatives' && layerConfigItem.projectAltId) {
+                } else if (layerConfigItem.name === 'Milestone Max Alternatives' && layerConfigItem.projectAltId) {
                     promises.push (this.addProjectToMap(layerConfigItem.projectAltId));
                     if (layerConfigItem.visible === false) {
                         layer.visible = false;

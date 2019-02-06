@@ -62,8 +62,10 @@
         <input type="text" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-props="name:'mapName',trim:true,required:true,style:'width:100%;'" data-dojo-attach-point="mapName" />
 
         <div data-dojo-attach-point="includeProjectsDom" data-bind="visible: hasProjects" style="margin-top: 1em; margin-bottom: 1em;">
-            <input type="checkbox" data-dojo-attach-point="includeProjectsCheckbox" data-dojo-type="dijit/form/CheckBox" data-dojo-props="'class':'optionsCheckBox'" data-bind="checked: includeProjects" />
-            <label>Include Projects</label>
+            <label>
+                <input type="checkbox" data-dojo-attach-point="includeProjectsCheckbox" data-dojo-type="dijit/form/CheckBox" data-dojo-props="'class':'optionsCheckBox'" data-bind="checked: includeProjects" />
+                Include Projects
+            </label>
             <br />
         </div>
 
