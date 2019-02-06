@@ -171,13 +171,13 @@ define([
                 this.loadMapDialog.show();
             },
             showSaveMapDialog: function () {
-                this.hasProjects = false;
+                this.hasProjects(false);
                 if (app.layers.find(
                     function (l) {
                         return l.name === 'Milestone Max Alternatives';
                     }
                 )) {
-                    this.hasProjects = true;
+                    this.hasProjects(true);
                 }
                 this.saveMapDialog.show();
             },
@@ -207,6 +207,13 @@ define([
             _saveMap: function (savedMap) {
                 //get layers
                 savedMap.layers = app.getLayerConfig();
+                savedMap.includesProjects = this.hasProjects() && this.includeProjects();
+                if (this.hasProjects() && !this.includeProjects()) {
+                    //filter projects out of the map
+                    savedMap.layers = array.filter(savedMap.layers, function (l) {
+                        return l.name === 'Milestone Max Alternatives';
+                    });
+                }
                 //TODO save to database/user config, not LSO
                 localStorage.setItem('savedMaps', JSON.stringify(this.savedMaps()));
                 this.saveMapDialog.hide();

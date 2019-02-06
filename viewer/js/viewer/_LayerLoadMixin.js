@@ -381,8 +381,10 @@ define([
             var projectLayer = this.constructLayer(
                 {
                     name: 'Project # ' + projectAltId,
+                    id: 'project_' + projectAltId.replace('-','_'),
                     url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Query_MMA_Dev/MapServer/0',
                     type: 'feature',
+                    projectAltId: projectAltId, //used when saving to layerconfig
                     sdeLayerName: null //only needed for metadata
                 },
                 definitionQuery,
@@ -390,7 +392,7 @@ define([
                 renderer
             );
 
-            this.addLayer(projectLayer);
+            return this.addLayer(projectLayer);
         },
 
         zoomToLayer: function (layer) {
@@ -459,14 +461,17 @@ define([
             return array.map(this.layers, function (layer) {
                 var x = {
                     url: layer.url, //TODO this will change if we support uploaded shapefiles
-                    name: layer._name || layer.id, //TODO why does esri layer object use _name?
+                    name: layer._name || layer.id,
                     visible: layer.visible,
-                    id: layer.id, //for layers loaded directly in viewer.js (which we might eventually do away with)
+                    id: layer.id, 
                     definitionExpression: layer.getDefinitionExpression ? layer.getDefinitionExpression() : null
                 };
                 if (layer.layerDef) {
                     x.id = layer.layerDef.id; //for layers loaded via layerLoader
-                }
+                    if (layer.name === 'Milestone Max Alternatives') {
+                        //special case for our project/alt layers
+                        x.projectAltId = layer.layerDef.projectAltId;
+                    }                }
                 return x;
             });
         },
@@ -478,7 +483,7 @@ define([
                 //clone the layers array first, otherwise forEach bails
                 var layerClone = this.layers.slice(0);
                 layerClone.forEach(function (layer) {
-                    if (layer.id !== 'Projects' && layer.name !== 'Milestone Max Alternatives') {
+                    if (layer.id !== 'Projects' && (layerConfig.includesProjects || layer.name !== 'Milestone Max Alternatives')) {
                         this.widgets.layerControl._removeLayer(layer);
                     }
                 }, this);
@@ -486,18 +491,24 @@ define([
 
             //load in reverse order
             for (var i = layerConfig.length - 1; i >= 0; i--) {
-                var layerConfigItem = layerConfig[i];
+                var layer = null,
+                    layerConfigItem = layerConfig[i];
                 //ignore projects (for now) TODO still important to know the order
-                //also ignore projects loaded TODO better way of determining this
-                if (layerConfigItem.id === 'Projects' || layerConfigItem.name === 'Milestone Max Alternatives') {
-                    continue; // eslint-disable-line no-continue
-                    //continue is OK for now; eventually we'll just exclude from layerConfig when saving, or include them or something
+                if (layerConfigItem.id === 'Projects') {
+                    //don't load these for now--hard-coded in viewer.js
+                } else if (layerConfigItem.name = 'Milestone Max Alternatives' && layerConfigItem.projectAltId) {
+                    promises.push (this.addProjectToMap(layerConfigItem.projectAltId));
+                    if (layerConfigItem.visible === false) {
+                        layer.visible = false;
+                    }
+                } else {
+                    layer = this.constructLayer(layerConfigItem.id, layerConfigItem.definitionExpression);
                 }
-
-                var layer = this.constructLayer(layerConfigItem.id, layerConfigItem.definitionExpression);
-                promises.push(this.addLayer(layer));
-                if (layerConfigItem.visible === false) {
-                    layer.visible = false;
+                if (layer) {
+                    promises.push(this.addLayer(layer));
+                    if (layerConfigItem.visible === false) {
+                        layer.visible = false;
+                    }
                 }
             }
 
