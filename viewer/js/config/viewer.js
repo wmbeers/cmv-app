@@ -152,9 +152,10 @@ define([
                 splitter: true,
                 collapsible: true,
                 region: 'bottom',
-                style: 'height:200px;width:100%;', //have to set width if open is false, or it gets stuck collapsed
+                //style: 'height:200px;width:75%;', //have to set width if open is false, or it gets stuck collapsed; unfortunately setting the width presents other problems and the table doesn't resize properly.
+                style: 'height:200px',
                 content: '<div id="attributesContainer"></div>',
-                open: false
+                open: true //so we're stuck with keeping it open, then closing it after startup is complete.
             }/*,
             right: {
                   id: 'sidebarRight',
@@ -344,14 +345,14 @@ define([
                 path: 'gis/dijit/AttributesTable',
                 options: {
                     map: true,
-                    mapClickMode: true,
+                    mapClickMode: false, //TODO sort out weirdness where it tries to identify instead of select when this is true
 
                     // use a tab container for multiple tables or
                     // show only a single table
-                    useTabs: false,
+                    useTabs: false, //Note: nothing shows up if useTabs is set to true. If we really need that we'll have to sort out what's wrong with AttributesTable tab functionality.
 
                     // used to open the sidebar after a query has completed
-                    sidebarID: 'sidebarBottom'//,
+                    sidebarID: 'sidebarBottom'
 
                     //// optional tables to load when the widget is first instantiated
                     //tables: [

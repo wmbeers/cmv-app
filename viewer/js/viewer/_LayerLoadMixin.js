@@ -65,7 +65,17 @@ define([
                         geometry: app.map.extent //TODO should we be filtering by map extent?
                     },
                     idProperty: 'AUTOID' // TODO get this from the layer's fields property
-                }
+                },
+                toolbarOptions: {
+                    export: {
+                        show: false
+                    }
+                },
+                displaySourceGraphic: false //a new option I am adding to AttributesTable TODO make this do something
+                //note: tried the following, but it just uses default symbols
+                //symbolOptions: {
+                //    source: { point: null, polyline: null, polygon: null }
+                //}
             };
             topic.publish('attributesTable/addTable', tableOptions);
         },
