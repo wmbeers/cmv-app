@@ -40,7 +40,7 @@
 
         <div class="layerLoaderColumn">
             <!-- ko with: currentLayer -->
-            <h3 data-bind="text: fullName || name"></h3>
+            <h3 data-bind="text: longName || name"></h3>
             <div data-bind="visible: legend && legend.length > 0" style="margin-bottom: 1em">
                 <label>Symbols: </label>
                 <span data-bind="foreach: legend">

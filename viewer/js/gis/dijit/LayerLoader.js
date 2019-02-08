@@ -241,11 +241,11 @@ define([
                     var x = array.some(tokens, function (s) {
                         var name = String(l.name).toLowerCase(), 
                             description = String(l.description).toLowerCase(), 
-                            fullName = String(l.fullName).toLowerCase();
+                            longName = String(l.longName).toLowerCase();
 
                         return (name.indexOf(s) >= 0 ||
                             description.indexOf(s) >= 0 ||
-                            fullName.indexOf(s) >= 0);
+                            longName.indexOf(s) >= 0);
                     });
                     if (x) {
                         return true;
