@@ -33,12 +33,12 @@ function loadData () {
             name: 'Solid Waste',
             url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/12',
             type: 'feature',
-            sdeLayerName: 'sldwst'
+            layerName: 'sldwst'
         },
         'autoid = 228'
     );
 }
-//minimalist flavor, just using the sdeLayerName property; URL of map service is also supported
+//minimalist flavor, just using the layerName property; URL of map service is also supported
 function loadData2 () {
     mapWindow.app.addToMap('sldwst', 'autoid = 228');
 }

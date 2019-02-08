@@ -107,7 +107,7 @@ define([
                 if (category.layersDefs) {
                     for (var j = 0; j < category.layersDefs.length; j++) {
                         var l = category.layersDefs[j];
-                        if (l.url === sdeLayerNameOrUrl || l.sdeLayerName === sdeLayerNameOrUrl) {
+                        if (l.url === sdeLayerNameOrUrl || l.layerName === sdeLayerNameOrUrl) {
                             return l;
                         }
                     }
@@ -122,7 +122,7 @@ define([
             //if we make it this far, it's a problem
             topic.publish('viewer/handleError', {
                 source: 'LayerLoadMixin.getLayerDef',
-                error: 'Unable to find definition for category with name or layer with sdeLayerName or URL "' + sdeLayerNameOrUrl + '"'
+                error: 'Unable to find definition for category with name or layer with layerName or URL "' + sdeLayerNameOrUrl + '"'
             });
 
             return null; //just to shut up eslint
@@ -132,7 +132,7 @@ define([
             var layer = null;
 
             if (typeof layerDef === 'string' || typeof layerDef === 'number') {
-                //find layer by id, sdeLayerName, or url property
+                //find layer by id, layerName, or url property
                 layerDef = this.getLayerDef(layerDef);
                 if (!layerDef) {
                     return null; //error has already been handled in getLayerDef
@@ -244,12 +244,12 @@ define([
                     //we don't need this next block
                     if (layerDef.layers) {
                         for (var i = 0; i < layerDef.layers.length; i++) {
-                            //response.layers[i].sdeLayerName = layerDef.layers[i].sdeLayerName;
-                            layer.layerInfos[i].sdeLayerName = layerDef.layers[i].sdeLayerName;
+                            //response.layers[i].layerName = layerDef.layers[i].layerName;
+                            layer.layerInfos[i].layerName = layerDef.layers[i].layerName;
                         }
                     }
-                    if (layerDef.sdeLayerName) {
-                        layer.sdeLayerName = layerDef.sdeLayerName;
+                    if (layerDef.layerName) {
+                        layer.layerName = layerDef.layerName;
                     }
                     //todo: put this in config? Or have some default options if not in config?
                     var layerControlInfo = {
@@ -387,7 +387,7 @@ define([
                             url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Query_MMA_Dev/MapServer/0',
                             type: 'feature',
                             projectAltId: projectAltId, //used when saving to layerconfig
-                            sdeLayerName: null //only needed for metadata
+                            layerName: null //only needed for metadata
                         },
                         definitionQuery,
                         false, //prevents definitionExpression from overriding title TODO cleaner method of handling this

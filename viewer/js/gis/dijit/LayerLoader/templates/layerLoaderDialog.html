@@ -50,8 +50,8 @@
             <label>Description</label>
             <p data-bind="text: description"></p>
             <label data-bind="text: scaleText"></label>
-            <p data-bind="if: sdeLayerName">
-                <a data-bind="attr: {href: '/metadata/' + sdeLayerName + '.htm'}" target="_blank">View Complete Metadata</a>
+            <p data-bind="if: layerName">
+                <a data-bind="attr: {href: '/metadata/' + layerName + '.htm'}" target="_blank">View Complete Metadata</a>
             </p>
             <div class="buttonContainer buttonContainerRight">
                 <div data-bind="visible: !loaded(), click: loadLayer">

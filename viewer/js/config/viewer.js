@@ -79,14 +79,14 @@ define([
     topic.subscribe('layerControl/viewMetadata', function (event) {
         //using request instead of the direct href property so we can handle errors
         //there's probably a way to handle errors with dialog.show, but Dojo documentation isn't clear on that
-        request('/est/metadata/' + event.subLayer.sdeLayerName + '.htm', {
+        request('/est/metadata/' + event.subLayer.layerName + '.htm', {
             headers: {
                 'X-Requested-With': null
             }
         }).then(
             function (data) {
                 var dlg = new Dialog({
-                    id: event.subLayer.sdeLayerName + '_metadata',
+                    id: event.subLayer.layerName + '_metadata',
                     title: 'Metadata for ' + event.subLayer.name,
                     content: data
                 });
@@ -97,13 +97,13 @@ define([
                 //so make request to pub server
                 //using window.open to work around CORS issues
                 topic.publish('growler/growl', 'Fetching metadata for ' + event.subLayer.name);
-                window.open('https://etdmpub.fla-etat.org/est/metadata/' + event.subLayer.sdeLayerName + '.htm');
+                window.open('https://etdmpub.fla-etat.org/est/metadata/' + event.subLayer.layerName + '.htm');
             });
 
         //var dlg = new Dialog({
-        //    id: event.subLayer.sdeLayerName + '_metadata',
+        //    id: event.subLayer.layerName + '_metadata',
         //    title: 'Metadata for ' + event.subLayer.name,
-        //    href: '/est/metadata/' + event.subLayer.sdeLayerName + '.htm'
+        //    href: '/est/metadata/' + event.subLayer.layerName + '.htm'
         //});
         //dlg.show();
     });
