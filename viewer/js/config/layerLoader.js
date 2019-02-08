@@ -3,7 +3,7 @@
  * For now, it's hard-coded because those tables are incomplete. Much of the content is just the results of 
  * querying the service info via AGS REST. So far, all we need are the following:
  * mapService name, URL, and type
- * layer layerIndex, name, fullName, description, sdeLayerName
+ * layer layerIndex, name, longName, description, sdeLayerName
  */
 define({
 
@@ -740,7 +740,7 @@ define({
             'name': 'FDEP Dry Cleaning Program Sites',
             'source': 'FDEP',
             'description': 'FDEP Dry Cleaning Program Sites - October 2018',
-            'fullName': 'FDEP Dry Cleaning Program Sites - October 2018',
+            'longName': 'FDEP Dry Cleaning Program Sites - October 2018',
             'type': 'feature',
             'sdeLayerName': 'dryclean',
             'minScale': 250000,
@@ -976,7 +976,7 @@ define({
             'type': 'feature',
             'description': 'FDEP Hazardous Waste Facilities - October 2018',
             'source': 'FDEP',
-            'fullName': 'FDEP Hazardous Waste Facilities - October 2018',
+            'longName': 'FDEP Hazardous Waste Facilities - October 2018',
             'sdeLayerName': 'chaz',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -1351,7 +1351,7 @@ define({
             'type': 'feature',
             'description': 'FDEP Institutional Controls Registry Sites in Florida - August 2018',
             'source': 'FDEP',
-            'fullName': 'FDEP Institutional Controls Registry Sites in Florida - August 2018',
+            'longName': 'FDEP Institutional Controls Registry Sites in Florida - August 2018',
             'sdeLayerName': 'icr_sites',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -1670,7 +1670,7 @@ define({
             'type': 'feature',
             'description': 'FDEP Large Quantity Generators of Hazardous Waste - October 2018',
             'source': 'FDEP',
-            'fullName': 'FDEP Large Quantity Generators of Hazardous Waste - October 2018',
+            'longName': 'FDEP Large Quantity Generators of Hazardous Waste - October 2018',
             'sdeLayerName': 'lqgs',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -1874,7 +1874,7 @@ define({
             'type': 'feature',
             'description': 'FDEP Off-Site Contamination Notices',
             'source': 'FDEP',
-            'fullName': 'FDEP Off-Site Contamination Notices',
+            'longName': 'FDEP Off-Site Contamination Notices',
             'sdeLayerName': 'noticing_fdep',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -2228,7 +2228,7 @@ define({
             'type': 'feature',
             'description': 'This coverage includes all identified petroleum program contaminated discharge sites where cleanup is ongoing or complete. Discharge cleanup sites may be eligible or ineligible for state funding assistance. More than one discharge site may be present at a current or former petroleum storage tank facility.',
             'source': 'FDEP',
-            'fullName': 'FDEP Petroleum Contamination Monitoring (PCTS) Discharges from STCM - October 2018',
+            'longName': 'FDEP Petroleum Contamination Monitoring (PCTS) Discharges from STCM - October 2018',
             'sdeLayerName': 'pcts',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -2735,7 +2735,7 @@ define({
             'type': 'feature',
             'description': 'FDEP Storage Tank Contamination Monitoring (STCM) - October 2018',
             'source': 'FDEP',
-            'fullName': 'FDEP Storage Tank Contamination Monitoring (STCM) - October 2018',
+            'longName': 'FDEP Storage Tank Contamination Monitoring (STCM) - October 2018',
             'sdeLayerName': 'stcm',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -3178,7 +3178,7 @@ define({
             'type': 'feature',
             'description': 'FDEP Treaters, Storers, and Disposers of Hazardous Waste - October 2018',
             'source': 'FDEP',
-            'fullName': 'FDEP Treaters, Storers, and Disposers of Hazardous Waste - October 2018',
+            'longName': 'FDEP Treaters, Storers, and Disposers of Hazardous Waste - October 2018',
             'sdeLayerName': 'tsds',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -3389,7 +3389,7 @@ define({
             'type': 'feature',
             'description': 'FDEP Wastewater Facilities - October 2018',
             'source': 'FDEP',
-            'fullName': 'FDEP Wastewater Facilities - October 2018',
+            'longName': 'FDEP Wastewater Facilities - October 2018',
             'sdeLayerName': 'wafr',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -3766,7 +3766,7 @@ define({
             'type': 'feature',
             'description': 'FDOH Biomedical Waste Facilities in Florida - March 2018',
             'source': 'FDOH',
-            'fullName': 'FDOH Biomedical Waste Facilities in Florida - March 2018',
+            'longName': 'FDOH Biomedical Waste Facilities in Florida - March 2018',
             'sdeLayerName': 'biomed_waste',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -4054,7 +4054,7 @@ define({
             'type': 'feature',
             'description': 'This shapefile contains onsite sewage treatment and disposal systems inspected by the Department of Health. This is an update to the septic_oct10 layer.',
             'source': 'FDOH',
-            'fullName': 'FDOH Onsite Sewage Locations in Florida - June 2012',
+            'longName': 'FDOH Onsite Sewage Locations in Florida - June 2012',
             'sdeLayerName': 'septic',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -4288,7 +4288,7 @@ define({
             'type': 'feature',
             'description': 'DERM Contaminated Sites in Miami Dade County - February 2018',
             'source': 'DERM',
-            'fullName': 'DERM Contaminated Sites in Miami Dade County - February 2018',
+            'longName': 'DERM Contaminated Sites in Miami Dade County - February 2018',
             'sdeLayerName': 'miami_dade_derm',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -4520,7 +4520,7 @@ define({
             'type': 'feature',
             'description': 'FDEP Solid Waste Facilities - September 2018',
             'source': 'FDEP',
-            'fullName': 'FDEP Solid Waste Facilities - September 2018',
+            'longName': 'FDEP Solid Waste Facilities - September 2018',
             'sdeLayerName': 'sldwst',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -4882,7 +4882,7 @@ define({
             'type': 'feature',
             'description': 'The State-Funded cleanup program is designed to address sites where there are no viable responsible parties; the site poses an imminent hazard; and, the site does not qualify for Superfund or is a low priority for EPA. Remediation efforts are triggered when a Florida Dept. of Environmental Protection District Office requests adoption of a site for state-funded cleanup. Funding for these remedial efforts comes from the Water Quality Assurance Trust Fund. Remedial activity may include contamination assessments, risk assessments, feasibility studies, design and construction of treatment systems, operation and maintenance of the installed treatment systems, and removal of contaminated media when necessary.',
             'source': 'FDEP',
-            'fullName': 'FDEP State Funded Cleanup Sites in Florida - July 2018',
+            'longName': 'FDEP State Funded Cleanup Sites in Florida - July 2018',
             'sdeLayerName': 'state_cleanup_sites',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -5169,7 +5169,7 @@ define({
             'type': 'feature',
             'description': 'This data set contains locations of properties targeted for EPA Brownfields grant assistance from the Assessment, Cleanup and Redevelopment Exchange System (ACRES) database. ACRES stores information reported by EPA Brownfields grant recipients on brownfields properties assessed or cleaned up with grant funding as well as information on Targeted Brownfields Assessments performed by EPA Regions. A brownfield is a property, the expansion, redevelopment, or reuse of which may be complicated by the presence or potential presence of a hazardous substance, pollutant, or contaminant. Additional Information is available at the EPA website: https://www.epa.gov/brownfields/brownfields-grantee-reporting-using-assessment-cleanup-and-redevelopment-exchange-system.',
             'source': 'USEPA',
-            'fullName': 'US EPA Assessment Cleanup and Redevelopment Exchange System (ACRES) for Brownfields Grantee Reporting in Florida - April 2018',
+            'longName': 'US EPA Assessment Cleanup and Redevelopment Exchange System (ACRES) for Brownfields Grantee Reporting in Florida - April 2018',
             'sdeLayerName': 'epaacres',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -5466,7 +5466,7 @@ define({
             'type': 'feature',
             'description': 'US EPA National Pollutant Discharge Elimination System (NPDES) in Florida - April 2018  ',
             'source': 'USEPA',
-            'fullName': 'US EPA National Pollutant Discharge Elimination System (NPDES) in Florida - April 2018  ',
+            'longName': 'US EPA National Pollutant Discharge Elimination System (NPDES) in Florida - April 2018  ',
             'sdeLayerName': 'epanpdes',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -5770,7 +5770,7 @@ define({
             'type': 'feature',
             'description': 'FDEP Superfund/National Priority List Site Boundaries - 2007 (Areas) ',
             'source': 'FDEP',
-            'fullName': 'FDEP Superfund/National Priority List Site Boundaries - 2007 (Areas) ',
+            'longName': 'FDEP Superfund/National Priority List Site Boundaries - 2007 (Areas) ',
             'sdeLayerName': 'epanpl',
             'geometryType': 'esriGeometryPolygon',
             'sourceSpatialReference': {
@@ -6025,7 +6025,7 @@ define({
             'type': 'feature',
             'description': 'US EPA Regulated Air Emissions Facilities (ICIS-AIR) in Florida - April 2018',
             'source': 'USEPA',
-            'fullName': 'US EPA Regulated Air Emissions Facilities (ICIS-AIR) in Florida - April 2018',
+            'longName': 'US EPA Regulated Air Emissions Facilities (ICIS-AIR) in Florida - April 2018',
             'sdeLayerName': 'epaair',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -6329,7 +6329,7 @@ define({
             'type': 'feature',
             'description': 'US EPA Resource Conservation and Recovery Act (RCRA) Regulated Facilities in Florida - April 2018',
             'source': 'USEPA',
-            'fullName': 'US EPA Resource Conservation and Recovery Act (RCRA) Regulated Facilities in Florida - April 2018',
+            'longName': 'US EPA Resource Conservation and Recovery Act (RCRA) Regulated Facilities in Florida - April 2018',
             'sdeLayerName': 'eparcra',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -6633,7 +6633,7 @@ define({
             'type': 'feature',
             'description': 'US EPA Regulated Superfund Sites in Florida - April 2018',
             'source': 'USEPA',
-            'fullName': 'US EPA Regulated Superfund Sites in Florida - April 2018',
+            'longName': 'US EPA Regulated Superfund Sites in Florida - April 2018',
             'sdeLayerName': 'epasuperfund',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -6951,7 +6951,7 @@ define({
             'type': 'feature',
             'description': 'US EPA Toxic Release Inventory (TRI) - Basic Facility Information in Florida - 2016 ',
             'source': 'USEPA',
-            'fullName': 'US EPA Toxic Release Inventory (TRI) - Basic Facility Information in Florida - 2016 ',
+            'longName': 'US EPA Toxic Release Inventory (TRI) - Basic Facility Information in Florida - 2016 ',
             'sdeLayerName': 'epatri',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -7233,7 +7233,7 @@ define({
             'type': 'feature',
             'description': 'FDEP Waste Cleanup Responsible Party Sites - Closed - October 2018',
             'source': 'USEPA',
-            'fullName': 'FDEP Waste Cleanup Responsible Party Sites - Closed - October 2018',
+            'longName': 'FDEP Waste Cleanup Responsible Party Sites - Closed - October 2018',
             'sdeLayerName': 'wcu_closed',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -7635,7 +7635,7 @@ define({
             'type': 'feature',
             'description': 'FDEP Waste Cleanup Responsible Party Sites - Inactive - October 2018',
             'source': 'USEPA',
-            'fullName': 'FDEP Waste Cleanup Responsible Party Sites - Inactive - October 2018',
+            'longName': 'FDEP Waste Cleanup Responsible Party Sites - Inactive - October 2018',
             'sdeLayerName': 'wcu_inactive',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -8037,7 +8037,7 @@ define({
             'type': 'feature',
             'description': 'FDEP Waste Cleanup Responsible Party Sites - Open - October 2018',
             'source': 'FDEP',
-            'fullName': 'FDEP Waste Cleanup Responsible Party Sites - Open - October 2018',
+            'longName': 'FDEP Waste Cleanup Responsible Party Sites - Open - October 2018',
             'sdeLayerName': 'wcu_open',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -8446,7 +8446,7 @@ define({
             'type': 'feature',
             'description': 'US EPA Ocean Dredged Material Disposal Sites (ODMDS) in Florida - 2018',
             'source': 'USEPA',
-            'fullName': 'US EPA Ocean Dredged Material Disposal Sites (ODMDS) in Florida - 2018',
+            'longName': 'US EPA Ocean Dredged Material Disposal Sites (ODMDS) in Florida - 2018',
             'sdeLayerName': 'epadrdg',
             'geometryType': 'esriGeometryPolygon',
             'sourceSpatialReference': {
@@ -8661,7 +8661,7 @@ define({
             'type': 'feature',
             'description': 'FDEP Brownfield Areas in Florida - February 2018',
             'source': 'FDEP',
-            'fullName': 'FDEP Brownfield Areas in Florida - February 2018',
+            'longName': 'FDEP Brownfield Areas in Florida - February 2018',
             'sdeLayerName': 'brownfields_areas',
             'geometryType': 'esriGeometryPolygon',
             'sourceSpatialReference': {
@@ -8903,7 +8903,7 @@ define({
             'type': 'feature',
             'description': 'FDEP National Pollutant Discharge Elimination System Stormwater Permits',
             'source': 'FDEP',
-            'fullName': 'FDEP National Pollutant Discharge Elimination System Stormwater Permits',
+            'longName': 'FDEP National Pollutant Discharge Elimination System Stormwater Permits',
             'sdeLayerName': 'npdes_stormwater',
             'geometryType': 'esriGeometryPolygon',
             'sourceSpatialReference': {
@@ -9099,7 +9099,7 @@ define({
             'type': 'feature',
             'description': 'County Commission approved Historic Structures - Highlands County',
             'source': 'Highlands County',
-            'fullName': 'County Commission approved Historic Structures - Highlands County',
+            'longName': 'County Commission approved Historic Structures - Highlands County',
             'sdeLayerName': 'c28_hist_prop',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -9294,7 +9294,7 @@ define({
             'type': 'feature',
             'description': 'BAR Historical Structure Locations in Florida - October 2018',
             'source': 'BAR',
-            'fullName': 'BAR Historical Structure Locations in Florida - October 2018',
+            'longName': 'BAR Historical Structure Locations in Florida - October 2018',
             'sdeLayerName': 'shpo_structures',
             'geometryType': 'esriGeometryPoint',
             'sourceSpatialReference': {
@@ -9630,7 +9630,7 @@ define({
             'type': 'feature',
             'description': 'BAR Historic Bridges in Florida - October 2018',
             'source': 'BAR',
-            'fullName': 'BAR Historic Bridges in Florida - October 2018',
+            'longName': 'BAR Historic Bridges in Florida - October 2018',
             'sdeLayerName': 'shpo_bridges',
             'geometryType': 'esriGeometryPolyline',
             'sourceSpatialReference': {
@@ -9916,7 +9916,7 @@ define({
             'type': 'feature',
             'description': 'State Historic Highways -  March 2015',
             'source': 'FDOT',
-            'fullName': 'State Historic Highways -  March 2015',
+            'longName': 'State Historic Highways -  March 2015',
             'sdeLayerName': 'shh',
             'geometryType': 'esriGeometryPolygon',
             'sourceSpatialReference': {
@@ -10156,7 +10156,7 @@ define({
             'type': 'feature',
             'description': 'BAR National Register of Historic Places in Florida - October 2018',
             'source': 'BAR',
-            'fullName': 'BAR National Register of Historic Places in Florida - October 2018',
+            'longName': 'BAR National Register of Historic Places in Florida - October 2018',
             'sdeLayerName': 'shpo_natl_register',
             'geometryType': 'esriGeometryPolygon',
             'sourceSpatialReference': {
@@ -10371,7 +10371,7 @@ define({
             'type': 'feature',
             'source': 'BAR',
             'description': 'BAR Areas With No Field Survey Project Boundary Present in Florida - October 2018',
-            'fullName': 'BAR Areas With No Field Survey Project Boundary Present in Florida - October 2018',
+            'longName': 'BAR Areas With No Field Survey Project Boundary Present in Florida - October 2018',
             'sdeLayerName': 'shpo_no_surveys',
             'geometryType': 'esriGeometryPolygon',
             'sourceSpatialReference': {
@@ -10524,7 +10524,7 @@ define({
             'type': 'feature',
             'source': 'BAR',
             'description': 'BAR Historic Cemeteries in Florida - October 2018',
-            'fullName': 'BAR Historic Cemeteries in Florida - October 2018',
+            'longName': 'BAR Historic Cemeteries in Florida - October 2018',
             'sdeLayerName': 'shpo_cemeteries',
             'geometryType': 'esriGeometryPolygon',
             'sourceSpatialReference': {
@@ -10796,7 +10796,7 @@ define({
             'type': 'feature',
             'description': 'BAR Resource Groups in Florida - October 2018',
             'source': 'BAR',
-            'fullName': 'BAR Resource Groups in Florida - October 2018',
+            'longName': 'BAR Resource Groups in Florida - October 2018',
             'sdeLayerName': 'shpo_res_groups',
             'geometryType': 'esriGeometryPolygon',
             'sourceSpatialReference': {
@@ -11096,7 +11096,7 @@ define({
             'type': 'feature',
             'description': 'BAR Field Survey Project Boundaries and Attributes in Florida - October 2018',
             'source': 'BAR',
-            'fullName': 'BAR Field Survey Project Boundaries and Attributes in Florida - October 2018',
+            'longName': 'BAR Field Survey Project Boundaries and Attributes in Florida - October 2018',
             'sdeLayerName': 'shpo_surveys',
             'geometryType': 'esriGeometryPolygon',
             'sourceSpatialReference': {
@@ -11346,7 +11346,7 @@ define({
             'type': 'feature',
             'description': 'BAR Archaeological Sites in Florida - October 2018',
             'source': 'BAR',
-            'fullName': 'BAR Archaeological Sites in Florida - October 2018',
+            'longName': 'BAR Archaeological Sites in Florida - October 2018',
             'sdeLayerName': 'shpo_all_sites',
             'geometryType': 'esriGeometryPolygon',
             'sourceSpatialReference': {
@@ -11690,7 +11690,7 @@ define({
             'type': 'feature',
             'description': 'This dataset represents areas of high archaeological site potential within Highlands County.',
             'source': 'Highlands County',
-            'fullName': 'High Archaeological Site Potential - Highlands County',
+            'longName': 'High Archaeological Site Potential - Highlands County',
             'sdeLayerName': 'c28_arc_site_pot',
             'geometryType': 'esriGeometryPolygon',
             'sourceSpatialReference': {
@@ -11843,7 +11843,7 @@ define({
             'type': 'feature',
             'description': 'National Historic Preservation Act - Florida Certified Local Governments - 2017',
             'source': 'Geoplan',
-            'fullName': 'National Historic Preservation Act - Florida Certified Local Governments - 2017',
+            'longName': 'National Historic Preservation Act - Florida Certified Local Governments - 2017',
             'sdeLayerName': 'clgbnd',
             'geometryType': 'esriGeometryPolygon',
             'sourceSpatialReference': {
@@ -12077,7 +12077,7 @@ define({
             "id": -1,
             "url": 'https://services.arcgis.com/LBbVDC0hKPAnLRpO/ArcGIS/rest/services/zillow_nbrhds/FeatureServer/0',
             "name": "Zillow Neighborhoods",
-            "fullName": "Zillow Neighborhoods",
+            "longName": "Zillow Neighborhoods",
             "description": "Zillow Neighborhoods",
             'source': 'Zillow',
             "type": "feature",
@@ -12309,7 +12309,7 @@ define({
             "currentVersion": 10.61,
             "id": -2,
             "name": "Zillow Neighborhood SDR",
-            'fullName': 'Zillow Neighborhood SDR',
+            'longName': 'Zillow Neighborhood SDR',
             'description': 'Zillow Neighborhood Sociocultural Data Report',
             'source': 'Geoplan',
             "type": "feature",
@@ -47555,7 +47555,7 @@ define({
             id: -4,
             url: 'https://tiles.arcgis.com/tiles/LBbVDC0hKPAnLRpO/arcgis/rest/services/nwi_tile_package/VectorTileServer/',
             name: 'NWI (Vector Tile Test)',
-            fullName: 'National Wetlands Inventory (Vector Tile Test)',
+            longName: 'National Wetlands Inventory (Vector Tile Test)',
             description: 'National Wetlands Inventory (Vector Tile Test)',
             'source': 'BAR',
             type: 'vectortile',
