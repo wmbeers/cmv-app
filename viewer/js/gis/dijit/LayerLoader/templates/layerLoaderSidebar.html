@@ -13,7 +13,7 @@
 
     <h3>ETDM Projects</h3>
     <label>Project-Alternative ID</label>
-    <input type="text" data-dojo-attach-point="projectAltId" data-dojo-type="dijit/form/ValidationTextBox" dojo-attach-event="keydown: handleProjectKeyDown" />
+    <input type="text" data-dojo-attach-point="projectAltId" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-event="keyup: handleProjectKeyUp" data-dojo-props="regExp:'\\d+-{0,1}\\d{0,2}',intermediateChanges:true"/>
 
     <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus fa-fw', showLabel: false" data-dojo-attach-event="click: addProject">
         Add Project
@@ -21,6 +21,7 @@
 
     <hr />
     <div id="layerLoaderSideBarKO">
+        <h3>My Maps</h3>
         <div class="buttonContainer">
             <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-save fa-fw'" data-dojo-attach-event="click: showSaveMapDialog">
                 Save

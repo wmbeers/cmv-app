@@ -148,7 +148,7 @@ define([
                     this.handleSearch();
                 }
             },
-            handleProjectKeyDown: function (event) {
+            handleProjectKeyUp: function (event) {
                 if (event.keyCode === 13) {
                     this.addProject();
                 }

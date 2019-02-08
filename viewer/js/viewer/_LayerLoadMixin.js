@@ -16,6 +16,7 @@ define([
     'esri/request',
     'esri/tasks/ProjectParameters',
     'esri/tasks/query',
+    'esri/tasks/QueryTask',
     'esri/geometry/Extent',
     'esri/renderers/SimpleRenderer'
 ], function (
@@ -36,6 +37,7 @@ define([
     esriRequest,
     ProjectParameters,
     Query,
+    QueryTask,
     Extent,
     SimpleRenderer
 ) {
@@ -355,22 +357,8 @@ define([
 
         //TODO: support adding draft projects to map for editing
         addProjectToMap: function (projectAltId) {
-            ////TODO just set this in the map service rather than having to code in js
-            //currently it's the right color, but the width is too narrow
-            var renderer = new SimpleRenderer({
-                'type': 'simple',
-                'symbol': {
-                    'type': 'esriSFS',
-                    'style': 'esriSFSSolid',
-                    'color': [255, 255, 0, 180],
-                    'outline': {
-                        'type': 'esriSLS',
-                        'style': 'esriSLSSolid',
-                        'color': [255, 255, 0, 255],
-                        'width': 3
-                    }
-                }
-            });
+            var self = this; //so we don't lose track buried down in callbacks
+            //figure out if we're zooming to a project or just a specific alt
             var definitionQuery;
             if (projectAltId.indexOf('-') > 0) {
                 definitionQuery = 'alt_id = \'' + projectAltId + '\'';
@@ -378,21 +366,66 @@ define([
                 definitionQuery = 'alt_id like \'' + projectAltId + '-%\'';
             }
 
-            var projectLayer = this.constructLayer(
-                {
-                    name: 'Project # ' + projectAltId,
-                    id: 'project_' + projectAltId.replace('-', '_'),
-                    url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Query_MMA_Dev/MapServer/0',
-                    type: 'feature',
-                    projectAltId: projectAltId, //used when saving to layerconfig
-                    sdeLayerName: null //only needed for metadata
-                },
-                definitionQuery,
-                false, //prevents definitionExpression from overriding title TODO cleaner method of handling this
-                renderer
-            );
+            //validate the projectAltId
+            var query = new Query();
+            query.where = definitionQuery;
+            var queryTask = new QueryTask('https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Query_MMA_Dev/MapServer/0');
+            queryTask.executeForCount(query, function (count) {
+                if (count == 0) {
+                    //no features found
+                    topic.publish('growler/growl', {
+                        title: 'Invalid Project/Alt ID',
+                        message: 'No projects found with project/Alt ID ' + projectAltId,
+                        level: 'error'
+                    });
+                } else {
+                    //load it!
+                    var projectLayer = self.constructLayer(
+                        {
+                            name: 'Project # ' + projectAltId,
+                            id: 'project_' + projectAltId.replace('-', '_'),
+                            url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Query_MMA_Dev/MapServer/0',
+                            type: 'feature',
+                            projectAltId: projectAltId, //used when saving to layerconfig
+                            sdeLayerName: null //only needed for metadata
+                        },
+                        definitionQuery,
+                        false, //prevents definitionExpression from overriding title TODO cleaner method of handling this
+                        //todo just set this in the map service rather than having to code in js
+                        //currently it's the right color, but the width is too narrow
+                        new SimpleRenderer({
+                            'type': 'simple',
+                            'symbol': {
+                                'type': 'esriSFS',
+                                'style': 'esriSFSSolid',
+                                'color': [255, 255, 0, 180],
+                                'outline': {
+                                    'type': 'esriSLS',
+                                    'style': 'esriSLSSolid',
+                                    'color': [255, 255, 0, 255],
+                                    'width': 3
+                                }
+                            }
+                        })
+                    );
+                    //return deferred via addLayer method
+                    return self.addLayer(projectLayer);
+                }
+            }, function (e) {
+                topic.publish('viewer/handleError', {
+                    source: 'LayerLoadMixin.addProjectToMap',
+                    error: e
+                });
+            });
 
-            return this.addLayer(projectLayer);
+            //if we get this far, something went wrong (invalid projectAltId or some other error)
+            ////TODO just set this in the map service rather than having to code in js
+            //currently it's the right color, but the width is too narrow
+            var deferred = new Deferred();
+            window.setTimeout(function () {
+                deferred.cancel('Invalid project/alt ID');
+            }, 500);
+            return deferred;
         },
 
         zoomToLayer: function (layer) {
