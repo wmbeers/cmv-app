@@ -65,28 +65,6 @@ define([
             },
             postCreate: function () {
                 this.inherited(arguments);
-
-                //TEMPORARY!
-                //this will be a core part of the layerDef
-                this.layerDefs.forEach(function (layerDef) {
-                    var legendSource = null;
-                    if (layerDef.url.startsWith('https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste')) {
-                        legendSource = this.contamLayers;
-                    } else if (layerDef.url.startsWith('https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources')) {
-                        legendSource = this.histLayers;
-                    }
-
-                    if (legendSource) {
-                        var legendItem = legendSource.find(function (li) {
-                            //layerDef.url number after last slash
-                            var layerDefLayerId = layerDef.url.substr(layerDef.url.lastIndexOf('/') + 1);
-                            return li.layerId == layerDefLayerId; // eslint-disable-line eqeqeq
-                        });
-                        layerDef.legend = legendItem ? legendItem.legend : [];
-                    } else {
-                        layerDef.legend = [];
-                    }
-                }, this);
                 this._initializeDialogs();
             },
             startup: function () {
@@ -278,7 +256,7 @@ define([
                 this.layerDefs.forEach(function (layerDef) {
                     layerDef.loadLayer = function () {
                         var layer = app.constructLayer(layerDef);
-                        app.addLayer(layer);
+                        return app.addLayer(layer);
                     };
                     layerDef.removeLayer = function () {
                         if (layerDef.layer) {
@@ -304,7 +282,7 @@ define([
                     layerDef.loaded = ko.observable(false);
                 }, this);
 
-                //This is problematic because of the recursive call lang.hitch(this, '_processCategories', this.categories);
+                //This is problematic because of the recursive call: lang.hitch(this, '_processCategories', this.categories);
 
                 this._processCategories(this.categories, this.layerDefs);
 
@@ -352,7 +330,11 @@ define([
                             return l.id === layerId;
                         });
                     }, this);
-                    category.layerDefs.reverse();
+                    //category.layerDefs.reverse();
+                    //re-sort them by name
+                    category.layerDefs.sort(function (a, b) {
+                        return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+                    });
                     //category.showCategory = function () {
                     //    //handled by knockout
                     //    self.currentCategory = category;
