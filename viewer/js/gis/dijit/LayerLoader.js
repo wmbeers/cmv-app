@@ -16,6 +16,7 @@ define([
     'dojo/store/Memory',
     'dojo/text!./LayerLoader/templates/layerLoaderSidebar.html', // template for the widget in left panel, and some dialogs
     'dojo/text!./LayerLoader/templates/layerLoaderDialog.html', // template for the resource layer broswer dialog
+    'dojo/text!./LayerLoader/templates/searchResultsDialog.html', // template for the layer search results
 
     'dijit/form/Form',
     'dijit/form/FilteringSelect',
@@ -26,7 +27,7 @@ define([
     'xstyle/css!./LayerLoader/css/layerLoader.css'
 ],
     function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog, ConfirmDialog, ready, popup, lang, array, on, dom, domConstruct, 
-        topic, Memory, layerLoaderSidebarTemplate, layerLoaderDialogTemplate
+        topic, Memory, layerLoaderSidebarTemplate, layerLoaderDialogTemplate, searchResultsDialogTemplate
 ) {
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
             widgetsInTemplate: true,
@@ -215,7 +216,7 @@ define([
                 //TODO lucene or some more powerful search engine will be replacing this
                 var searchString = this.searchNode.displayedValue;
                 var tokens = searchString.toLowerCase().split(' ');
-                var matches = array.filter(this.layerDefs, function (l) {
+                this.layerSearchResults(array.filter(this.layerDefs, function (l) {
                     var x = array.some(tokens, function (s) {
                         var name = String(l.name).toLowerCase(), 
                             description = String(l.description).toLowerCase(), 
@@ -229,12 +230,14 @@ define([
                         return true;
                     }
                     return false; //not really necessary, but prevents a consistent-return eslint error
-                });
-                var ul = domConstruct.toDom('<ul class="layerList"></ul>');
-                matches.forEach(function (layerDef) {
-                    this._constructLayerLink(layerDef, ul);
-                }, this);
-                this.searchResultsDialog.set('content', ul);
+                }));
+
+
+                //var ul = domConstruct.toDom('<ul class="layerList"></ul>');
+                //matches.forEach(function (layerDef) {
+                //    this._constructLayerLink(layerDef, ul);
+                //}, this);
+                //this.searchResultsDialog.set('content', ul);
 
                 this.searchResultsDialog.show();
             },
@@ -253,6 +256,7 @@ define([
                     style: 'width: 90%; height: 75%'
                 });
 
+                //post-process layerDefs
                 this.layerDefs.forEach(function (layerDef) {
                     layerDef.loadLayer = function () {
                         var layer = app.constructLayer(layerDef);
@@ -288,6 +292,7 @@ define([
 
                 //apply knockout bindings
                 ko.applyBindings(this, dom.byId('layerLoaderDialog'));
+
                 //bindings appear to muck this up and set it to the last one
                 this.currentCategory(this.categories[0]);
 
@@ -319,8 +324,13 @@ define([
                 //search results dialog (content added in search handler)
                 this.searchResultsDialog = new Dialog({
                     id: 'layerloader_search_dialog',
-                    title: 'Search Results'
+                    title: 'Search Results',
+                    content: searchResultsDialogTemplate
                 });
+
+                //apply knockout bindings to search results
+                ko.applyBindings(this, dom.byId('searchResultsDialog'));
+
             },
             _processCategories: function (categories, layerDefs) {
                 //post-process categories to cross-reference layers and knockoutify
@@ -356,6 +366,7 @@ define([
                     this.layersDialog.hide();
                     this.searchResultsDialog.hide();
                 }));
-            }
+            },
+            layerSearchResults: ko.observableArray()
         });
     });

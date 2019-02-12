@@ -1,0 +1,38 @@
+<div id="searchResultsDialog">
+    <div data-bind="visible: layerSearchResults().length > 0">
+        <div data-bind="foreach: layerSearchResults">
+            <strong data-bind="text: longName || name"></strong>
+            <div data-bind="visible: legend && legend.length > 0" style="margin-bottom: 1em">
+            <label>Symbols: </label>
+            <span data-bind="foreach: legend">
+                <img data-bind="attr: {src: 'data:image/png;base64, ' + imageData, alt: label}" style="vertical-align: bottom" /> &nbsp;
+            </span>
+            </div>
+            <label>Description</label>
+            <p data-bind="text: description"></p>
+            <label data-bind="text: scaleText"></label>
+            <p data-bind="if: layerName">
+                <a data-bind="attr: {href: '/metadata/' + layerName + '.htm'}" target="_blank">View Complete Metadata</a>
+            </p>
+            <div class="buttonContainer buttonContainerRight">
+                <div data-bind="visible: !loaded(), click: loadLayer">
+                    <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus-square fa-fw'">
+                        Add to Map
+                    </div>
+                </div>
+                <div data-bind="visible: loaded(), click: removeLayer">
+                    <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-minus-square fa-fw'">
+                        Remove from Map
+                    </div>
+                </div>
+            </div>
+            <hr />
+        </div>
+    </div>
+    
+    <div data-bind="visible: layerSearchResults().length == 0">
+        <div style="width: 500px; font-style: italic">
+            No matches found.
+        </div>
+    </div>
+</div>
