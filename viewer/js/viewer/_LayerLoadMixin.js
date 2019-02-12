@@ -370,14 +370,16 @@ define([
             var query = new Query();
             query.where = definitionQuery;
             var queryTask = new QueryTask('https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Query_MMA_Dev/MapServer/0');
+            var deferred = new Deferred();
             queryTask.executeForCount(query, function (count) {
-                if (count == 0) {
+                if (count === 0) {
                     //no features found
                     topic.publish('growler/growl', {
                         title: 'Invalid Project/Alt ID',
                         message: 'No projects found with project/Alt ID ' + projectAltId,
                         level: 'error'
                     });
+                    deferred.cancel('Invalid project/alt ID');
                 } else {
                     //load it!
                     var projectLayer = self.constructLayer(
@@ -408,23 +410,22 @@ define([
                             }
                         })
                     );
-                    //return deferred via addLayer method
-                    return self.addLayer(projectLayer);
+                    //resolve deferred via addLayer method
+                    //todo how to handle error?
+                    self.addLayer(projectLayer).then(
+                        function (l) {
+                            deferred.resolve(l);
+                        });
                 }
+
             }, function (e) {
                 topic.publish('viewer/handleError', {
                     source: 'LayerLoadMixin.addProjectToMap',
                     error: e
                 });
+                deferred.cancel('Invalid project/alt ID');
             });
 
-            //if we get this far, something went wrong (invalid projectAltId or some other error)
-            ////TODO just set this in the map service rather than having to code in js
-            //currently it's the right color, but the width is too narrow
-            var deferred = new Deferred();
-            window.setTimeout(function () {
-                deferred.cancel('Invalid project/alt ID');
-            }, 500);
             return deferred;
         },
 
