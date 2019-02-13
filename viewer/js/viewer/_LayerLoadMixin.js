@@ -18,7 +18,9 @@ define([
     'esri/tasks/query',
     'esri/tasks/QueryTask',
     'esri/geometry/Extent',
-    'esri/renderers/SimpleRenderer'
+    'esri/renderers/SimpleRenderer',
+    'esri/geometry/coordinateFormatter',
+    'esri/geometry/webMercatorUtils'
 ], function (
     declare,
     lang,
@@ -39,7 +41,9 @@ define([
     Query,
     QueryTask,
     Extent,
-    SimpleRenderer
+    SimpleRenderer,
+    coordinateFormatter,
+    webMercatorUtils
 ) {
 
     return declare(null, {
@@ -47,12 +51,8 @@ define([
         startup: function () {
             //subscribe to topics
             topic.subscribe('layerControl/openAttributeTable', lang.hitch(this, 'openAttributeTable'));
-
-            //topic.subscribe('layerControl/openAttributeTable', lang.hitch(this, function (args) {
-            //    debugger;
-            //    //this.togglePane(args.pane, args.show, args.suppressEvent);
-            //}));
-
+            //load the coordinateFormatter
+            coordinateFormatter.load();
         },
 
         openAttributeTable: function (layerControlItem) {
@@ -81,7 +81,7 @@ define([
             };
             topic.publish('attributesTable/addTable', tableOptions);
         },
-
+        // Get a layer definition by numeric id (relates back to objectid of t_rest_services_mxd), the 
         getLayerDef: function (sdeLayerNameOrUrl) {
             var categories = this.widgets.layerLoader.categories;
             var layerDefs = this.widgets.layerLoader.layerDefs;
@@ -497,7 +497,7 @@ define([
                     url: layer.url, //TODO this will change if we support uploaded shapefiles
                     name: layer._name || layer.id,
                     visible: layer.visible,
-                    id: layer.id, 
+                    id: layer.id,
                     definitionExpression: layer.getDefinitionExpression ? layer.getDefinitionExpression() : null
                 };
                 if (layer.layerDef) {
@@ -532,7 +532,7 @@ define([
                 if (layerConfigItem.id === 'Projects') {
                     //don't load these for now--hard-coded in viewer.js
                 } else if (layerConfigItem.name === 'Milestone Max Alternatives' && layerConfigItem.projectAltId) {
-                    promises.push (this.addProjectToMap(layerConfigItem.projectAltId));
+                    promises.push(this.addProjectToMap(layerConfigItem.projectAltId));
                     if (layerConfigItem.visible === false) {
                         layer.visible = false;
                     }
@@ -554,6 +554,63 @@ define([
             }
 
             return deferred;
+        },
+
+        zoomToMgrsPoint: function (mgrs, zoomLevel) {
+            var point = coordinateFormatter.fromMgrs(mgrs, null, 'automatic');
+            var deferred = new Deferred();
+            if (!point) {
+                //something went awry in converting from Mgrs
+                deferred.reject();
+                return deferred;
+            }
+            //infer zoomLevel from length of string
+            if (zoomLevel === 'infer') {
+                switch (mgrs.replace(/\s/g, '').length) {
+                case 5:
+                    //precision 0, 100km
+                    zoomLevel = 11;
+                    break;
+                case 7:
+                    //precision 1, 10km
+                    zoomLevel = 13;
+                    break;
+                case 9:
+                    //precision 2, 1km
+                    zoomLevel = 15;
+                    break;
+                case 11:
+                    //precision 3, 100m
+                    zoomLevel = 17;
+                    break;
+                case 13:
+                    //precision 4, 10m
+                    zoomLevel = 19;
+                    break;
+                case 15:
+                    //precision 5, 1m
+                    zoomLevel = 21;
+                    break;
+                case 17:
+                    //precision off the scale < 1m
+                    zoomLevel = 23;
+                    break;
+                default:
+                    zoomLevel = 13; //punt
+                    break;
+                }
+            }
+
+            return (zoomLevel ? app.map.centerAndZoom(point, zoomLevel) : app.map.centerAt(point));
+        },
+
+        convertPointToMgrs: function (point) {
+            //point must be in wgs84
+            if (point.spatialReference.isWebMercator()) {
+                point = webMercatorUtils.webMercatorToGeographic(point);
+            }
+            var mgrs = coordinateFormatter.toMgrs(point, 'automatic', 5, true);
+            return mgrs;
         }
     });
 });

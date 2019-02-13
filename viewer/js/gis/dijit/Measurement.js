@@ -15,6 +15,7 @@ define([
             this.inherited(arguments);
             this.measure = new Measurement({
                 map: this.map,
+                advancedLocationUnits: esriConfig.defaults.geometryService ? true : false,
                 defaultAreaUnit: this.defaultAreaUnit,
                 defaultLengthUnit: this.defaultLengthUnit
             }, domConstruct.create('div')).placeAt(this.domNode);
