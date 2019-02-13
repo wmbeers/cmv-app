@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>Map Test</title>
     <script src="js/externalTest.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 </head>
 <body>
     <h3>Basic Tests</h3>
@@ -18,6 +19,27 @@
     </button>
 
     <hr />
+
+    <h3>Speed Tests</h3>
+    <button onclick="testLayerDrawSpeed()">
+        Test Layer Draw Speed
+    </button>
+    <button onclick="cancelTest()">
+        Cancel Test
+    </button>
+    <div>
+        <pre id="drawSpeedResults">
+        </pre>
+    </div>
+    <hr />
+
+    <h3>MGRS Tests</h3>
+    <label>MGRS <input type="text" id="mgrs" name="mgrs" /></label>
+    <label>Zoom Level <input type="text" id="zoomLevel" name="zoomLevel" /></label>
+    <label><input type="checkbox" id="inferZoom" />Infer Zoom Level</label>
+    <br />
+    <button onclick="zoomToMgrsPoint()">Zoom To</button>
+
     <h3>Resource Data</h3>
     <label>Layer Name <input type="text" id="layerName" name="layerName" /></label><br />
     <label>Feature ID <input type="text" id="autoId" name="autoId" /></label><br />

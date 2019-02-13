@@ -26,9 +26,137 @@ function showMap (callback) {
     }
 }
 
+//globals for testLayerDrawSpeed
+var cancel = false,
+    i = 0, //index for centers
+    l = 0, //index for layers
+    z = 7, //index for zoom levels
+    ld = null, //current layerDef
+    timer = null, //current timer
+    updateEndListener = null; //listener for update end used to time how long it took the draw and call the next centerAndZoom iteration
+
+function writeResultLine(line) {
+    document.getElementById('drawSpeedResults').innerText += '\n' + line;
+}
+
+function cancelTest() {
+    cancel = true;
+}
+
+function testLayerDrawSpeed() {
+    document.getElementById('drawSpeedResults').innerText = 'id,layerName,definitionQuery,centerName,zoomLevel,duration,visibleAtScale';
+    cancel = false;
+    i = 0;
+    l = 0;
+    z = 7;
+    ld = null;
+    timer = null;
+
+    showMap(function () {
+        var app = mapWindow.app,
+            map = app.map;
+        
+        app.layers[0].setVisibility(false); //Hide Projects layer
+
+        var centers = [
+            {
+                "name": 'Pensacola',
+                center: {
+                    spatialReference: { wkid: 102100, latestWkid: 3857 },
+                    x: -9710341.20227474,
+                    y: 3558894.6072282605,
+                },
+                "type": 'Urban'
+            },
+            {
+                "name": 'Everglades',
+                center: {
+                    spatialReference: { wkid: 102100, latestWkid: 3857 },
+                    x: -9010346.207235985,
+                    y: 2918653.048481843,
+                    "type": 'Unpopulated Area'
+                }
+            }
+        ];
+
+        function wrapUp() {
+            if (updateEndListener) updateEndListener.remove();
+            //REPORT
+           
+            app.widgets.layerLoader.layerDefs.forEach(function(layerDef) {
+               if (layerDef.drawTimes) {
+                   layerDef.drawTimes.forEach(function (drawTime) {
+                       console.log(layerDef.id + ',' + layerDef.definitionQuery + ',' + layerDef.layerName + ',' + drawTime.centerName + ',' + drawTime.zoomLevel + ',' + drawTime.duration + ',' + drawTime.visibleAtScale)
+                   })
+               } 
+            });
+        }
+
+        function centerAndZoom() {
+            if (cancel) {
+                wrapUp();
+                return;
+            }
+            if (z > 23) {
+                //no more zoom levels, on to the next center
+                z = 7;
+                i++;
+                console.log("Moving to next center");
+            }
+            if (i >= centers.length) {
+                //no more centers, on to the next layer
+                l++;
+                i = 0;
+                if (l > app.widgets.layerLoader.layerDefs.length) {
+                    //done!
+                    console.log('done');
+                    wrapUp();
+
+                    return;
+                }
+                ld.removeLayer();
+                console.log("moving to next layer");
+                loadLayer();
+                return;
+            }
+            console.log('l: ' + l + ' i:' + i + ' z:' + z);
+            timer = {
+                zoomLevel: z,
+                centerName: centers[i].name,
+                startTime: new moment()
+            };
+            map.centerAndZoom(centers[i].center, z);
+        }
+
+        function loadLayer() {
+            ld = mapWindow.app.widgets.layerLoader.layerDefs[l];
+            console.log('Loading ' + ld.layerName);
+            ld.drawTimes = [];
+            ld.loadLayer().then(function(a) {
+                console.log('Loaded ' + a.layerName);
+                centerAndZoom();
+            });
+        }
+
+        updateEndListener = map.on('update-end', function () {
+            timer.visibleAtScale = ld.layer.visibleAtMapScale;
+            timer.endTime = new moment();
+            timer.duration = timer.endTime.diff(timer.startTime);
+            console.log(timer.duration);
+            ld.drawTimes.push(timer);
+            writeResultLine(ld.id + ',' + ld.layerName + ',' + timer.centerName + ',' + timer.zoomLevel + ',' + timer.duration + ',' + timer.visibleAtScale)
+            z++;
+            centerAndZoom();
+        });
+        //load first layer and start
+        loadLayer();
+          
+    });
+}
+
 //examples of how to load a layer filtered to a specific feature by autoId in an already opened map
 function loadData () {
-    mapWindow.app.addToMap(
+    mapWindow.app.addLayer(
         {
             name: 'Solid Waste',
             url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/12',
@@ -40,7 +168,7 @@ function loadData () {
 }
 //minimalist flavor, just using the layerName property; URL of map service is also supported
 function loadData2 () {
-    mapWindow.app.addToMap('sldwst', 'autoid = 228');
+    mapWindow.app.addLayer('sldwst', 'autoid = 228');
 }
 
 //examples of how to open the map and load a layer in one step
@@ -74,4 +202,16 @@ function showProject () {
         );
     });
 }
+
+function zoomToMgrsPoint() {
+    showMap(function () {
+        var mgrs = document.getElementById('mgrs').value,
+            zoomLevelText = document.getElementById('zoomLevel').value,
+            inferZoom = document.getElementById('inferZoom').checked,
+            zoomLevel = inferZoom ? 'infer' : zoomLevelText;
+        mapWindow.app.zoomToMgrsPoint(mgrs, zoomLevel).then(function () { console.log('done'); });
+    });
+}
+
+
 
