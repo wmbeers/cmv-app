@@ -211,7 +211,49 @@ define([
 
             return layer;
         },
-        //layer has to be built with constructLayer, so that the fully-formed layerDef object is added to it
+
+        addCategory: function (category, includeSubCategories) {
+            var promises = [], //array of promises to be resolved when layers are loaded
+                layerDefs = category.layerDefs.slice(0).reverse(); //temporary cloned array (not a deep clone) of layerDefs of the category, cloned so we can reverse the sort
+
+            //include sub-categories (and their sub-categories, ad infinitum)
+            if (includeSubCategories) {
+                //eslint-disable-next-line no-inner-declarations
+                function recurse (c) { 
+                    c.categories.forEach(function (subCategory) {
+                        var subLayerDefs = subCategory.layerDefs.slice(0).reverse();
+                        layerDefs = layerDefs.concat(subLayerDefs);
+                    });
+                }
+                recurse(category);
+            }
+
+            //construct layers for layerDefs
+            layerDefs.forEach(function (layerDef) {
+                if (!layerDef.layer) {
+                    this.constructLayer(layerDef);
+                }
+            }, this);
+
+            layerDefs.forEach(function (layerDef) {
+                promises.push(this.addLayer(layerDef.layer));
+            }, this);
+
+            //if (promises.length > 0) {
+            //    all(promises).then(function (layers) {
+            //        //currently not doing anything with this, but if you want to have something else happen when all layers are loaded, this is where you would do it.
+            //        //or you could move this "if" block into whatever is calling addCategory
+            //    });
+            //}
+            return promises;
+        },
+
+        /**
+         * Adds a layer to the map
+         * @param  {Object} layer An instance of a subclass of the base class esri/layers/Layer (.e.g FeatureLayer, ArcGisDynamicMapServiceLayer)
+         * the layer object must be created with the constructLayer method and have the added layerDef object added to it.
+         * @return {Promise}  A Promise that will be resolved after the layer is loaded in the map
+         */
         addLayer: function (layer) {
             var deferred = new Deferred();
             var layerDef = layer.layerDef;

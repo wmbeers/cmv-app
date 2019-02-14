@@ -15,57 +15,68 @@
 
         <div class="layerLoaderColumn">
             <!-- ko with: currentCategory -->
-                <h3 data-bind="text: name"></h3>
-                <!--<p data-bind="html: description"></p>-->
-                <div data-bind="if: layerDefs && layerDefs.length > 0">
-                    <h4>Layers</h4>
-                    <ul class="plain-list" data-bind="foreach: layerDefs">
-                        <li>
-                            <span data-bind="css: {selectedItem: $root.currentLayer() == $data}, text: name, event: {click: function() {$root.currentLayer($data);}}"></span>
-                        </li>
-                    </ul>
+            <h3 data-bind="text: name"></h3>
+            <!--<p data-bind="html: description"></p>-->
+            <div data-bind="if: layerDefs && layerDefs.length > 0">
+                <h4>Layers</h4>
+                <ul class="plain-list" data-bind="foreach: layerDefs">
+                    <li>
+                        <span data-bind="css: {selectedItem: $root.currentLayer() == $data}, text: name, event: {click: function() {$root.currentLayer($data);}}"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div data-bind="if: categories && categories.length > 0">
+                <h4>Sub-topics</h4>
+                <ul class="plain-list" data-bind="foreach: categories">
+                    <li>
+                        <span data-bind="text: name, event: {click: function() {$root.currentCategory($data);}}"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="buttonContainer buttonContainerRight">
+                <div data-bind="visible: layerDefs && layerDefs.length > 0, click: loadCategory">
+                    <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus-square fa-fw'">
+                        Add all to Map
+                    </div>
                 </div>
-                <div data-bind="visible: layerDefs.length === 0" style="font-style: italic">
-                    Pardon our dust: no layers have been defined for this topic.
+                <div data-bind="visible: categories && categories.length > 0, click: loadCategoryRecursive">
+                    <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus-square fa-fw'">
+                        Add all to Map + Sub-topics
+                    </div>
                 </div>
-                <div data-bind="if: categories && categories.length > 0">
-                    <h4>Sub-topics</h4>
-                    <ul class="plain-list" data-bind="foreach: categories">
-                        <li>
-                            <span data-bind="text: name, event: {click: function() {$root.currentCategory($data);}}"></span>
-                        </li>
-                    </ul>
-                </div>
+            </div>
             <!-- /ko -->
         </div>
 
         <div class="layerLoaderColumn">
             <!-- ko with: currentLayer -->
-            <h3 data-bind="text: longName || name"></h3>
-            <div data-bind="visible: legend && legend.length > 0" style="margin-bottom: 1em">
-                <label>Symbols: </label>
-                <span data-bind="foreach: legend">
-                    <img data-bind="attr: {src: 'data:image/png;base64, ' + imageData, alt: label}" style="vertical-align: bottom" /> &nbsp;
-                </span>
-            </div>
-            <label>Description</label>
-            <p data-bind="text: description"></p>
-            <label data-bind="text: scaleText"></label>
-            <p data-bind="if: layerName">
-                <a data-bind="attr: {href: '/metadata/' + layerName + '.htm'}" target="_blank">View Complete Metadata</a>
-            </p>
-            <div class="buttonContainer buttonContainerRight">
-                <div data-bind="visible: !loaded(), click: loadLayer">
-                    <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus-square fa-fw'">
-                        Add to Map
+                <h3 data-bind="text: longName || name"></h3>
+                <div data-bind="visible: legend && legend.length > 0" style="margin-bottom: 1em">
+                    <label>Symbols: </label>
+                    <span data-bind="foreach: legend">
+                        <img data-bind="attr: {src: 'data:image/png;base64, ' + imageData, alt: label}" style="vertical-align: bottom" /> &nbsp;
+                    </span>
+                </div>
+                <label>Description</label>
+                <p data-bind="text: description"></p>
+                <label data-bind="text: scaleText"></label>
+                <p data-bind="if: layerName">
+                    <a data-bind="attr: {href: '/metadata/' + layerName + '.htm'}" target="_blank">View Complete Metadata</a>
+                </p>
+                <div class="buttonContainer buttonContainerRight">
+                    <div data-bind="visible: !loaded(), click: loadLayer">
+                        <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus-square fa-fw'">
+                            Add to Map
+                        </div>
+                    </div>
+                    <div data-bind="visible: loaded(), click: removeLayer">
+                        <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-minus-square fa-fw'">
+                            Remove from Map
+                        </div>
                     </div>
                 </div>
-                <div data-bind="visible: loaded(), click: removeLayer">
-                    <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-minus-square fa-fw'">
-                        Remove from Map
-                    </div>
-                </div>
-            </div>
             <!-- /ko -->
         </div>
     </section>

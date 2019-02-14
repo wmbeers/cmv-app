@@ -232,20 +232,10 @@ define([
                     return false; //not really necessary, but prevents a consistent-return eslint error
                 }));
 
-
-                //var ul = domConstruct.toDom('<ul class="layerList"></ul>');
-                //matches.forEach(function (layerDef) {
-                //    this._constructLayerLink(layerDef, ul);
-                //}, this);
-                //this.searchResultsDialog.set('content', ul);
-
                 this.searchResultsDialog.show();
             },
             showCategories: function () {
                 this.layerBrowserDialog.show();
-            },
-            listAllLayers: function () {
-                this.layersDialog.show();
             },
             _initializeDialogs: function () {
                 //layer browser dialog
@@ -286,40 +276,14 @@ define([
                     layerDef.loaded = ko.observable(false);
                 }, this);
 
-                //This is problematic because of the recursive call: lang.hitch(this, '_processCategories', this.categories);
-
-                this._processCategories(this.categories, this.layerDefs);
+                //start the chain of post-processing categories to add knockout observables and functions
+                this._processCategories(this);
 
                 //apply knockout bindings
                 ko.applyBindings(this, dom.byId('layerLoaderDialog'));
 
                 //bindings appear to muck this up and set it to the last one
                 this.currentCategory(this.categories[0]);
-
-
-                //layers dialog
-                var ul = domConstruct.toDom('<ul class="layerList"></ul>');
-                this.layersDialog = new Dialog({
-                    id: 'layerloader_layers_dialog',
-                    title: 'Select Layer',
-                    content: ul
-                });
-
-                //sort layerDefs by name (we'll do this server-side eventually)
-                this.layerDefs.sort(function (a, b) {
-                    if (a.name === b.name) {
-                        return 0;
-                    }
-                    if (a.name > b.name) {
-                        return 1;
-                    }
-                    return -1;
-                });
-
-                //add layerDefs to all-layers list
-                this.layerDefs.forEach(function (layerDef) {
-                    this._constructLayerLink(layerDef, ul);
-                }, this);
 
                 //search results dialog (content added in search handler)
                 this.searchResultsDialog = new Dialog({
@@ -332,41 +296,42 @@ define([
                 ko.applyBindings(this, dom.byId('searchResultsDialog'));
 
             },
-            _processCategories: function (categories, layerDefs) {
-                //post-process categories to cross-reference layers and knockoutify
-                categories.forEach(function (category) {
-                    category.layerDefs = category.layerIds.map(function (layerId) {
-                        return layerDefs.find(function (l) {
-                            return l.id === layerId;
-                        });
+            //Post-process categories to cross-reference layers and knockoutify
+            _processCategories: function () {
+                var root = this; // eslint-disable-line consistent-this
+
+                //internal function to add layerDefs and functions; recursively called, starting
+                //with the root model (this LayerLoader), then each root-level category, then subcategories
+                function processCategories (parent) {
+                    parent.categories.forEach(function (category) {
+                        category.layerDefs = category.layerIds.map(function (layerId) {
+                            return root.layerDefs.find(function (l) {
+                                return l.id === layerId;
+                            });
+                        }, this);
+
+                        category.allLayerDefs = [];
+
+                        category.loadCategory = function () {
+                            app.addCategory(category);
+                            root.layerBrowserDialog.hide();
+                        };
+
+                        category.loadCategoryRecursive = function () {
+                            app.addCategory(category, true);
+                            root.layerBrowserDialog.hide();
+                        };
+
+                        if (category.categories && category.categories.length > 0) {
+                            processCategories(category);
+                        }
                     }, this);
-                    //category.layerDefs.reverse();
-                    //re-sort them by name
-                    category.layerDefs.sort(function (a, b) {
-                        return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
-                    });
-                    //category.showCategory = function () {
-                    //    //handled by knockout
-                    //    self.currentCategory = category;
-                    //};
-                    //console.log(category.name + (category.categories ? category.categories.length : 'null'));
-                    if (category.categories && category.categories.length > 0) {
-                        this._processCategories(category.categories, layerDefs);
-                    }
-                }, this);
+                }
+
+                processCategories(this);
             },
             currentCategory: ko.observable(null),
             currentLayer: ko.observable(null),
-            _constructLayerLink: function (layerDef, targetNode) {
-                var li = domConstruct.create('li', null, targetNode);
-                var a = domConstruct.create('a', {'href': '#', 'innerHTML': layerDef.name, 'title': layerDef.description}, li);
-                on(a, 'click', lang.hitch(this, function () {
-                    var layer = app.constructLayer(layerDef);
-                    app.addLayer(layer);
-                    this.layersDialog.hide();
-                    this.searchResultsDialog.hide();
-                }));
-            },
             layerSearchResults: ko.observableArray()
         });
     });
