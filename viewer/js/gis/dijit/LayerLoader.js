@@ -322,9 +322,26 @@ define([
                             root.layerBrowserDialog.hide();
                         };
 
+                        category.loadService = function () {
+                            if (category.serviceURL) {
+                                var categoryLayerDef = {
+                                    type: 'dynamic',
+                                    url: category.serviceURL,
+                                    name: category.name
+                                };
+                                var mapServiceLayer = app.constructLayer(categoryLayerDef);
+                                app.addLayer(mapServiceLayer);
+                                root.layerBrowserDialog.hide();
+                            } else {
+                                //this shouldn't happen
+                                //TODO
+                            }
+                        };
+
                         if (category.categories && category.categories.length > 0) {
                             processCategories(category);
                         }
+
                     }, this);
                 }
 

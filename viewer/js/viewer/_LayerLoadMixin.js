@@ -359,18 +359,21 @@ define([
                     topic.publish('identify/addLayerInfos', [layerControlInfo]);
                     app.legendLayerInfos.push(layerControlInfo);
 
-                    if (layer.getDefinitionExpression()) { //TODO there might be some pre-defined layers with definition expressions assigned in map service. None yet, but if there are we need some other way to handle deciding when to zoom
+                    if (layer.getDefinitionExpression && layer.getDefinitionExpression()) { //TODO there might be some pre-defined layers with definition expressions assigned in map service. None yet, but if there are we need some other way to handle deciding when to zoom
                         //zoom to layer
                         app.zoomToLayer(layer);
                         //TODO? is it possible after zooming to the defined features (which, as far our documented requirements go, will be just one)
                         //it's still not visible? if so, need a callback handler after zooming
                         //with visibleAtMapScale check, like below
                     }
+                    //TODO Ruth would prefer not to see these at all;
+                    //particularly when a bunch of layers are loaded at once. Maybe best to put this in the all-resolved?
                     if (!layer.visibleAtMapScale) {
                         topic.publish('growler/growl', {
                             title: '',
                             message: layerDef.name + ' loaded, but is not visible at the current map scale.',
-                            level: 'warning'
+                            level: 'warning',
+                            timeout: 3000
                         });
                     } else {
                         topic.publish('growler/growl', layerDef.name + ' loaded.');

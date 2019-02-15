@@ -35,6 +35,7 @@ ul.layerList {
 
 #layerLoaderDialog section ul {
 	list-style: none;
+	padding-inline-start: 20px; /* less indented */
 }
 
 #layerLoaderDialog section ul li span {

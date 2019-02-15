@@ -217,8 +217,10 @@ define([
                 min = layer.minScale,
                 max = layer.maxScale;
             domClass.remove(node, 'layerControlCheckIconOutScale');
+            domAttr.set(node, 'title', '');
             if ((min !== 0 && scale > min) || (max !== 0 && scale < max)) {
                 domClass.add(node, 'layerControlCheckIconOutScale');
+                domAttr.set(node, 'title', 'Layer not visible at the current map scale');
             }
         },
         _scaleRangeChange: function () {
