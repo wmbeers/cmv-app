@@ -235,7 +235,17 @@ define([
                 this.searchResultsDialog.show();
             },
             showCategories: function () {
+                //resize to work around Dojo's auto-sizing limitations
+                //it expects the content to have a fixed size, but we need it to be at least somewhat 
+                //dynamic with regard to the size of the window
+                var width = window.innerWidth * 0.85,
+                    height = window.innerHeight * 0.7,
+                    content = document.getElementById('layerLoaderDialog');
+
+                content.setAttribute('style', 'width: ' + width + 'px; height: ' + height + 'px;');
+
                 this.layerBrowserDialog.show();
+                
             },
             _initializeDialogs: function () {
                 //layer browser dialog
