@@ -276,6 +276,8 @@ define([
             // clear the buffer graphic(s)
             this.own(topic.subscribe(this.topicID + '/clearBufferGraphics', lang.hitch(this, 'clearBufferGraphics')));
 
+            this.own(topic.subscribe(this.topicID + '/refreshTableExtent', lang.hitch(this, 'refreshTableExtentGrid')));
+
         },
 
         setMapClickMode: function (mode) {

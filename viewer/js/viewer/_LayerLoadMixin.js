@@ -73,6 +73,10 @@ define([
                         show: false
                     }
                 },
+                growlOptions: {
+                    loading: true,
+                    results: true
+                },
                 displaySourceGraphic: false //a new option I am adding to AttributesTable TODO make this do something
                 //note: tried the following, but it just uses default symbols
                 //symbolOptions: {

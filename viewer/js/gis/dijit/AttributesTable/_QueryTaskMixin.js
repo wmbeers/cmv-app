@@ -585,6 +585,11 @@ define([
             }
 
             return deferred.promise;
+        },
+
+        refreshTableExtentGrid: function () {
+            this.queryOptions.queryParameters.geometry = this.map.extent;
+            this.executeQueryTask(this);
         }
 
     });
