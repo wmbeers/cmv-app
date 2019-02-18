@@ -9,10 +9,7 @@
 
     <section>
         <div class="layerLoaderColumn">
-            <div data-bind="foreach: categories">
-                <h4 data-bind="css: {selectedItem: $root.currentCategory() == $data}, text: name, event: {click: function() {$root.currentCategory($data); $root.currentLayer(null)}}"></h4>
-                <ul class="plain-list" data-bind="template: {foreach: categories, name: 'categoryTemplate'}"></ul>
-            </div>
+            <ul class="plain-list" data-bind="template: {foreach: categories, name: 'categoryTemplate'}"></ul>
         </div>
 
         <div class="layerLoaderColumn">
