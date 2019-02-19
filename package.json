@@ -7,7 +7,7 @@
     "homepage": "https://cmv.io/",
     "repository": "https://github.com/cmv/cmv-app/",
     "dependencies": {
-        "eslint": "~5.0.0",
+        "eslint": "~5.14.0",
         "grunt": "1.0.x",
         "grunt-contrib-clean": "~2.0.0",
         "grunt-contrib-compress": "~1.4.1",
@@ -22,7 +22,7 @@
         "grunt-postcss": "~0.9.0",
         "grunt-stylelint": "~0.10.1",
         "body-parser": "~1.18.0",
-        "stylelint": "~9.9.0",
+        "stylelint": "~9.10.0",
         "stylelint-config-standard": "~18.2.0",
         "proxypage": "*"
     },
