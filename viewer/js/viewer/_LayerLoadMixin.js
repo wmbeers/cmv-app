@@ -408,7 +408,7 @@ define([
         addProjectToMap: function (projectAltId) {
             var self = this; //so we don't lose track buried down in callbacks
             //figure out if we're zooming to a project or just a specific alt
-            var definitionQuery;
+            var definitionQuery = '';
             if (projectAltId.indexOf('-') > 0) {
                 definitionQuery = 'alt_id = \'' + projectAltId + '\'';
             } else {
