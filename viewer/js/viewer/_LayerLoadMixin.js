@@ -62,9 +62,9 @@ define([
                 queryOptions: {
                     queryParameters: {
                         url: layerControlItem.layer.url,
-                        maxAllowableOffset: 100, // TODO this is used for generalizing geometries. At this setting, they polygons are highly generalized
+                        maxAllowableOffset: 100, // TODO this is used for generalizing geometries. At this setting, the polygons are highly generalized
                         where: layerControlItem.layer.getDefinitionExpression() || '1=1',
-                        geometry: app.map.extent //TODO should we be filtering by map extent?
+                        geometry: app.map.extent 
                     },
                     idProperty: 'AUTOID' // TODO get this from the layer's fields property
                 },
