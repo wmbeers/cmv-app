@@ -93,7 +93,7 @@ define([
                         self.savedMapsDijit.value = null;
                         self.savedMapsDijit.displayedValue = null;
                         self.savedMapsDijit.item = null;
-                        dojo.byId('savedMapsDijit').value = null;
+                        dom.byId('savedMapsDijit').value = null;
                     }
                 });
 
