@@ -264,6 +264,11 @@ define([
         // open the sidebar pane containing this widget (if any)
         openPane: function () {
             this.togglePane('block');
+            //fix bug with useTabs that causes the tab container to have 0 height
+            if (this.useTabs) {
+                domStyle.set(this.tabContainer.domNode, 'height', this.sidebarPane.domNode.offsetHeight - 10 + 'px');
+                this.resizeChildren();
+            }
         },
 
         // close the sidebar pane containing this widget (if any)

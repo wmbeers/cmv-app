@@ -349,7 +349,7 @@ define([
 
                     // use a tab container for multiple tables or
                     // show only a single table
-                    useTabs: false, //Note: nothing shows up if useTabs is set to true. If we really need that we'll have to sort out what's wrong with AttributesTable tab functionality.
+                    useTabs: true, //Note: nothing shows up if useTabs is set to true. If we really need that we'll have to sort out what's wrong with AttributesTable tab functionality.
 
                     // used to open the sidebar after a query has completed
                     sidebarID: 'sidebarBottom'
