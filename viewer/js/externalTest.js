@@ -43,6 +43,62 @@ function cancelTest() {
     cancel = true;
 }
 
+var updateStartHandler,
+    updateEndHandler;
+
+//call showMap first, add layers, run this to set up handlers
+function testMapDrawSpeed() {
+    var app = mapWindow.app,
+        map = app.map,
+        drawStart = new moment(); //will change on update-start
+
+    var updateStartHandler = map.on('update-start', function () {
+        drawStart = new moment();
+    });
+
+    var updateEndHandler = map.on('update-end', function () {
+        var drawEnd = new moment(),
+            duration = drawEnd.diff(drawStart);
+        writeResultLine(duration + 'ms');
+    });
+}
+
+function stopMapDrawSpeed() {
+    updateEndHandler.remove();
+    updateStartHandler.remove();
+}
+
+var centers = [
+    {
+        "name": 'Jacksonville',
+        center: {
+            spatialReference: { wkid: 102100, latestWkid: 3857 },
+            x: -9085521.075514013, 
+            y: 3547635.492378052
+        },
+        "type": 'Urban'
+    },
+
+    {
+        "name": 'Pensacola',
+        center: {
+            spatialReference: { wkid: 102100, latestWkid: 3857 },
+            x: -9710341.20227474,
+            y: 3558894.6072282605,
+        },
+        "type": 'Urban'
+    },
+    {
+        "name": 'Everglades',
+        center: {
+            spatialReference: { wkid: 102100, latestWkid: 3857 },
+            x: -9010346.207235985,
+            y: 2918653.048481843,
+            "type": 'Unpopulated Area'
+        }
+    }
+];
+
 function testLayerDrawSpeed() {
     document.getElementById('drawSpeedResults').innerText = 'id,layerName,definitionQuery,centerName,zoomLevel,duration,visibleAtScale';
     cancel = false;
@@ -57,27 +113,6 @@ function testLayerDrawSpeed() {
             map = app.map;
         
         app.layers[0].setVisibility(false); //Hide Projects layer
-
-        var centers = [
-            {
-                "name": 'Pensacola',
-                center: {
-                    spatialReference: { wkid: 102100, latestWkid: 3857 },
-                    x: -9710341.20227474,
-                    y: 3558894.6072282605,
-                },
-                "type": 'Urban'
-            },
-            {
-                "name": 'Everglades',
-                center: {
-                    spatialReference: { wkid: 102100, latestWkid: 3857 },
-                    x: -9010346.207235985,
-                    y: 2918653.048481843,
-                    "type": 'Unpopulated Area'
-                }
-            }
-        ];
 
         function wrapUp() {
             if (updateEndListener) updateEndListener.remove();
