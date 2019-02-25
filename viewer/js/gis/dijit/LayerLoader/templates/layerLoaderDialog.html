@@ -1,6 +1,6 @@
 <div id="layerLoaderDialog">
     <script type="text/html" id="categoryTemplate">
-        <li>
+        <li data-bind="css: {emptyCategory: layerDefs.length === 0 && categories.length === 0}">
             <span data-bind="css: {selectedItem: $root.currentCategory() == $data}, text: name, event: {click: function() {$root.currentCategory($data); $root.currentLayer(null)}}"></span>
             <ul class="plain-list" data-bind="template: {foreach: categories, name: 'categoryTemplate'}"></ul>
         </li>
@@ -33,7 +33,7 @@
                     </ul>
                 </div>
 
-                <div data-bind="visible: layerDefs.length === 0 && categories.length ===0" style="font-style: italic">
+                <div data-bind="visible: layerDefs.length === 0 && categories.length === 0" class="emptyCategory">
                     Pardon our dust: no layers or sub-topics have been defined for this topic yet.
                 </div>
 

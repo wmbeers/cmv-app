@@ -54,3 +54,7 @@ span.selectedItem {
     text-align: right;
 }
 
+.emptyCategory {
+    font-style: italic;
+    color: gray;
+}
