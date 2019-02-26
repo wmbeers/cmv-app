@@ -54,47 +54,6 @@ define([
             //load the coordinateFormatter
             coordinateFormatter.load();
 
-            //pan test
-            this.mapDeferred.then(lang.hitch(this, '_panTest'));
-        },
-
-        _panTest: function () {
-            this.lastGoodExtent = null;
-            this.exceededBox = false;
-            //todo put this in config or something
-            this.maxExtent = new Extent({
-                spatialReference: { wkid: 102100, latestWkid: 3857 },
-                xmax: -7876324.68983052,
-                xmin: -10779708.772213884,
-                ymax: 4210940.138141289,
-                ymin: 2234584.3348002974
-            });
-            on(this.map, 'pan-start', function (delta) {
-                console.log('pan-start delta: ' + delta.extent.xmin);
-                app.exceededBox = false;
-                app.lastGoodExtent = delta.extent;
-            });
-            on(this.map, 'pan', function (delta) {
-                //is it outside of the box?
-                if (app.maxExtent.contains(delta.extent)) {
-                    //we're good
-                    console.log('pan ok');
-                    app.lastGoodExtent = delta.extent;
-                    app.exceededBox = false;
-                } else {
-                    //no bueno
-                    console.log('here be dragons!');
-                    app.exceededBox = true;
-                }
-            });
-            on(this.map, 'pan-end', function (delta) {
-                console.log('pan-end delta: ' + delta.extent.xmin);
-                if (app.exceededBox && app.lastGoodExtent) {
-                    console.log('snapping back to last good');
-                    //snap back to last good
-                    this.setExtent(app.lastGoodExtent);
-                }
-            });
         },
 
         openAttributeTable: function (layerControlItem) {
