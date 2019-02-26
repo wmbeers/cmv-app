@@ -57,14 +57,30 @@ define([
         },
 
         openAttributeTable: function (layerControlItem) {
+            //featureLayer loaded individually
+            var url = layerControlItem.layer.url,
+                title = layerControlItem.layer.name,
+                topicId = layerControlItem.layer.id,
+                definitionExpression = '1=1';
+
+            //is this a dynamic map service layer or feature layer?
+            if (layerControlItem.subLayer) {
+                url += '/' + layerControlItem.subLayer.id;
+                title = layerControlItem.subLayer.name;
+                topicId += '_' + layerControlItem.subLayer.id;
+                //todo pick up subLayer definitionExpression. Not sure how this is done or if it can be done...
+            } else if (layerControlItem.layer.getDefinitionExpression && layerControlItem.layer.getDefinitionExpression()) {
+                definitionExpression = layerControlItem.getDefinitionExpression();
+            }
+
             var tableOptions = {
-                title: layerControlItem.layer.name,
-                topicID: layerControlItem.layer.id,
+                title: title,
+                topicID: topicId,
                 queryOptions: {
                     queryParameters: {
-                        url: layerControlItem.layer.url,
+                        url: url,
                         maxAllowableOffset: 100, // TODO this is used for generalizing geometries. At this setting, the polygons are highly generalized
-                        where: layerControlItem.layer.getDefinitionExpression() || '1=1',
+                        where: definitionExpression,
                         geometry: app.map.extent 
                     },
                     idProperty: 'AUTOID' // TODO get this from the layer's fields property
@@ -322,7 +338,7 @@ define([
                                 label: 'Open Attribute Table',
                                 topic: 'openAttributeTable',
                                 iconClass: 'fa fa-table fa-fw'
-                            }]
+                            }],
                             //Note: the following is what's documented on the CMV site, but doesn't work, 
                             //see below for the correct way discovered via trial-and-error
                             // gives all dynamic layers the subLayerMenu items
@@ -338,22 +354,22 @@ define([
                             //    }]
                             //},
                             //TODO finish working on menus
-                            //subLayerMenu: [
-                            //    //{
-                            //    //    label: 'Query Layer...',
-                            //    //    iconClass: 'fa fa-search fa-fw',
-                            //    //    topic: 'queryLayer'
-                            //    //},
-                            //    {
-                            //        label: 'Open Attribute Table',
-                            //        topic: 'openTable',
-                            //        iconClass: 'fa fa-table fa-fw'
-                            //    },
-                            //    {
-                            //        label: 'View Metadata',
-                            //        topic: 'viewMetadata',
-                            //        iconClass: 'fa fa-info-circle fa-fw'
-                            //    }]
+                            subLayerMenu: [
+                                //{
+                                //    label: 'Query Layer...',
+                                //    iconClass: 'fa fa-search fa-fw',
+                                //    topic: 'queryLayer'
+                                //},
+                                {
+                                    label: 'Open Attribute Table',
+                                    topic: 'openAttributeTable',
+                                    iconClass: 'fa fa-table fa-fw'
+                                },
+                                {
+                                    label: 'View Metadata',
+                                    topic: 'viewMetadata',
+                                    iconClass: 'fa fa-info-circle fa-fw'
+                                }]
                         },
                         layer: layer,
                         title: layerDef.title,

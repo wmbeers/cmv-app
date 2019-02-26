@@ -38,22 +38,35 @@
                 </div>
 
                 <div class="buttonContainer buttonContainerRight">
-                    <div data-bind="visible: serviceURL && serviceURL !== '', click: loadService">
-                        <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus-square fa-fw'">
+                    <!-- ko if: serviceURL && serviceURL !== '' -->
+                        <div data-bind="click: loadService" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus-square fa-fw'">
                             Add Service to Map
                         </div>
-                    </div>
-                    <div data-bind="visible: layerDefs && layerDefs.length > 0, click: loadCategory">
-                        <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus-square fa-fw'">
-                            Add Individual Layers to Map
+                    <!-- /ko -->
+                    <!-- ko if: layerDefs && layerDefs.length > 0 -->
+                        <div data-bind="click: loadCategory" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus-square fa-fw'">
+                            Add Layers to Map Individually
                         </div>
-                    </div>
+                    <!-- /ko -->
+                    <!--this is just asking for trouble
                     <div data-bind="visible: categories && categories.length > 0, click: loadCategoryRecursive">
                         <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus-square fa-fw'">
                             Add all to Map + Sub-topics
                         </div>
-                    </div>
+                    </div> -->
                 </div>
+                <div>
+                    <p data-bind="visible: serviceURL && serviceURL !== ''">
+                        Use the Add Service to Map button to add all layers in this topic to the map as a single "dynamic" map service.
+                        This will draw faster and generally perform better than adding layers individually to the map.
+                    </p>
+                    <p data-bind="visible: layerDefs && layerDefs.length > 0">
+                        Use the Add Layers to Map Individually button to add all layers in this topic to the map as individual layers.
+                        For multiple, dense layers, this will likely draw significantly slower, but will allow you to change the order
+                        of the layers shown in the map and interact with specific layers directly.
+                    </p>
+                </div>
+
             <!-- /ko -->
         </div>
 
