@@ -134,9 +134,9 @@ define([
             sliderStyle: 'small',
             lods: [
                 {
-                    "level": 6,
-                    "resolution": 2445.98490512499,
-                    "scale": 9244648.868618
+                    'level': 6,
+                    'resolution': 2445.98490512499,
+                    'scale': 9244648.868618
                 },
                 {
                     'level': 7,
@@ -214,14 +214,14 @@ define([
                     'scale': 282.124294
                 },
                 {
-                    "level": 22,
-                    "resolution": 0.03732276770595208,
-                    "scale": 141.062147
+                    'level': 22,
+                    'resolution': 0.03732276770595208,
+                    'scale': 141.062147
                 },
                 {
-                    "level": 23,
-                    "resolution": 0.01866138385297604,
-                    "scale": 70.5310735
+                    'level': 23,
+                    'resolution': 0.01866138385297604,
+                    'scale': 70.5310735
                 }
             ]
             /*,
