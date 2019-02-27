@@ -290,7 +290,7 @@ define([
                     };
 
                     layerDef.isSelected = ko.pureComputed(function () {
-                        return root.currentLayer() == layerDef;
+                        return root.currentLayer() === layerDef;
                     });
                     layerDef.loaded = ko.observable(false);
                 }, this);
@@ -347,7 +347,7 @@ define([
                         };
 
                         category.isSelected = ko.pureComputed(function () {
-                            return root.currentCategory() == category;
+                            return root.currentCategory() === category;
                         });
 
                         category.loadService = function () {
