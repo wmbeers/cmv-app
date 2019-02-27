@@ -78,7 +78,7 @@
                 <div data-bind="visible: legendSymbols && legendSymbols.length > 0" style="margin-bottom: 1em">
                     <label>Symbols: </label>
                     <span data-bind="foreach: legendSymbols">
-                        <img data-bind="attr: {src: 'data:image/png;base64, ' + imageData, alt: label}" style="vertical-align: bottom" /> &nbsp;
+                        <img data-bind="attr: {src: 'data:image/png;base64, ' + imageData, alt: label, title: label || ($parent.name + ' symbol')}" style="vertical-align: bottom" /> &nbsp;
                     </span>
                 </div>
                 <label>Description</label>
