@@ -44,13 +44,13 @@ define({
                 "name": "2000 Demographic Densities",
                 "categories": [],
                 "layerIds": [
-                  134,
-                  140,
                   139,
-                  138,
-                  137,
+                  140,
+                  134,
+                  135,
                   136,
-                  135
+                  137,
+                  138
                 ],
                 "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_2000/MapServer"
               },
@@ -59,11 +59,11 @@ define({
                 "categories": [],
                 "layerIds": [
                   141,
-                  145,
-                  146,
                   142,
                   143,
-                  144
+                  144,
+                  145,
+                  146
                 ],
                 "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_2010/MapServer"
               },
@@ -71,12 +71,12 @@ define({
                 "name": "2017 Demographic Densities",
                 "categories": [],
                 "layerIds": [
-                  152,
-                  151,
-                  150,
-                  149,
-                  148,
                   147,
+                  148,
+                  149,
+                  150,
+                  151,
+                  152,
                   153
                 ],
                 "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_2017/MapServer"
@@ -92,18 +92,18 @@ define({
                 "name": "2000 Demographic Distribution",
                 "categories": [],
                 "layerIds": [
+                  177,
+                  178,
+                  179,
+                  180,
+                  181,
                   182,
                   183,
                   184,
                   185,
                   186,
                   187,
-                  188,
-                  177,
-                  178,
-                  179,
-                  180,
-                  181
+                  188
                 ],
                 "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2000/MapServer"
               },
@@ -111,17 +111,17 @@ define({
                 "name": "2010 Demographic Distribution",
                 "categories": [],
                 "layerIds": [
-                  165,
-                  156,
                   154,
                   155,
-                  164,
-                  163,
-                  166,
-                  167,
-                  168,
+                  156,
                   161,
-                  162
+                  162,
+                  163,
+                  164,
+                  166,
+                  165,
+                  167,
+                  168
                 ],
                 "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2010/MapServer"
               },
@@ -129,18 +129,18 @@ define({
                 "name": "2017 Demographic Distribution",
                 "categories": [],
                 "layerIds": [
-                  174,
+                  169,
+                  170,
                   157,
                   158,
                   159,
+                  160,
+                  171,
                   172,
                   173,
-                  176,
+                  174,
                   175,
-                  169,
-                  170,
-                  171,
-                  160
+                  176
                 ],
                 "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2017/MapServer"
               }
@@ -181,12 +181,12 @@ define({
                 "name": "2017 Demographic Vehicles",
                 "categories": [],
                 "layerIds": [
+                  229,
                   217,
                   218,
                   219,
                   220,
-                  221,
-                  229
+                  221
                 ],
                 "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_2017/MapServer"
               }
@@ -201,14 +201,14 @@ define({
                 "name": "2000 Demographic Percentages",
                 "categories": [],
                 "layerIds": [
+                  193,
+                  194,
+                  195,
                   196,
                   197,
                   198,
                   199,
-                  200,
-                  193,
-                  194,
-                  195
+                  200
                 ],
                 "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_2000/MapServer"
               },
@@ -216,13 +216,13 @@ define({
                 "name": "2010 Demographic Percentages",
                 "categories": [],
                 "layerIds": [
+                  189,
                   190,
                   191,
                   192,
-                  189,
+                  206,
                   207,
-                  208,
-                  206
+                  208
                 ],
                 "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_2010/MapServer"
               },
@@ -230,14 +230,14 @@ define({
                 "name": "2017 Demographic Percentages",
                 "categories": [],
                 "layerIds": [
+                  209,
+                  210,
+                  211,
+                  201,
                   202,
                   203,
                   204,
-                  205,
-                  201,
-                  209,
-                  210,
-                  211
+                  205
                 ],
                 "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_2017/MapServer"
               }
@@ -259,10 +259,10 @@ define({
         "name": "Farmland",
         "categories": [],
         "layerIds": [
-          298,
-          299,
+          296,
           297,
-          296
+          298,
+          299
         ],
         "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Farmlands/MapServer"
       },
@@ -273,20 +273,20 @@ define({
             "name": "Community Points",
             "categories": [],
             "layerIds": [
-              317,
+              312,
+              313,
+              314,
+              315,
               316,
-              300,
-              301,
-              302,
+              317,
               318,
               319,
               320,
               321,
               322,
-              312,
-              313,
-              314,
-              315
+              300,
+              301,
+              302
             ],
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer"
           },
@@ -300,12 +300,20 @@ define({
               326,
               327,
               328,
+              333,
               329,
               330,
-              331,
-              333
+              331
             ],
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Polys/MapServer"
+          },
+          {
+            "name": "Zillow Test",
+            "categories": [],
+            "layerIds": [
+              43000
+            ],
+            "serviceURL": ""
           }
         ],
         "layerIds": [],
@@ -340,18 +348,16 @@ define({
         "name": "Archaeological and Historical Resources",
         "categories": [],
         "layerIds": [
-          110,
-          118,
-          117,
-          108,
-          109,
-          119,
-          111,
-          112,
-          113,
-          114,
-          115,
-          116
+          715,
+          716,
+          717,
+          712,
+          713,
+          714,
+          718,
+          719,
+          720,
+          721
         ],
         "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer"
       },
@@ -362,13 +368,13 @@ define({
             "name": "Trails",
             "categories": [],
             "layerIds": [
-              262,
               260,
               261,
-              266,
+              262,
               263,
               264,
-              265
+              265,
+              266
             ],
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Trails/MapServer"
           }
@@ -403,9 +409,9 @@ define({
             "categories": [],
             "layerIds": [
               332,
-              700,
               701,
               702,
+              700,
               703,
               704,
               705,
@@ -447,12 +453,12 @@ define({
             "name": "ARC Lands",
             "categories": [],
             "layerIds": [
-              133,
-              130,
+              128,
               129,
-              132,
+              130,
               131,
-              128
+              132,
+              133
             ],
             "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/ARC_Lands/MapServer"
           },
@@ -460,6 +466,12 @@ define({
             "name": "Conservation",
             "categories": [],
             "layerIds": [
+              686,
+              687,
+              688,
+              689,
+              690,
+              691,
               692,
               693,
               694,
@@ -467,13 +479,7 @@ define({
               696,
               697,
               698,
-              699,
-              686,
-              687,
-              688,
-              689,
-              690,
-              691
+              699
             ],
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer"
           },
@@ -481,21 +487,21 @@ define({
             "name": "CLIP V4",
             "categories": [],
             "layerIds": [
-              248,
-              247,
-              245,
-              249,
-              250,
-              251,
-              252,
-              253,
-              254,
+              246,
               255,
+              245,
+              258,
               256,
               257,
-              258,
               259,
-              246
+              247,
+              250,
+              251,
+              248,
+              252,
+              253,
+              249,
+              254
             ],
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/CLIP_V4/MapServer"
           },
@@ -594,21 +600,12 @@ define({
             "name": "Waste",
             "categories": [],
             "layerIds": [
-              25,
               1,
               2,
               3,
               4,
               5,
               6,
-              22,
-              23,
-              24,
-              27,
-              7,
-              8,
-              9,
-              10,
               11,
               12,
               13,
@@ -620,7 +617,16 @@ define({
               19,
               20,
               21,
-              26
+              22,
+              23,
+              24,
+              25,
+              7,
+              8,
+              9,
+              10,
+              26,
+              27
             ],
             "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer"
           }
@@ -635,27 +641,27 @@ define({
             "name": "RCI",
             "categories": [],
             "layerIds": [
-              269,
-              283,
-              282,
-              281,
-              280,
-              279,
-              278,
-              277,
-              276,
-              287,
-              286,
-              285,
               267,
               268,
-              284,
+              269,
               270,
               271,
               272,
               273,
               274,
-              275
+              275,
+              276,
+              277,
+              278,
+              279,
+              280,
+              281,
+              282,
+              283,
+              284,
+              285,
+              286,
+              287
             ],
             "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI/MapServer"
           },
@@ -663,9 +669,9 @@ define({
             "name": "Roadways",
             "categories": [],
             "layerIds": [
-              305,
-              304,
               303,
+              304,
+              305,
               306,
               307,
               308,
@@ -677,14 +683,14 @@ define({
             "name": "Utilities",
             "categories": [],
             "layerIds": [
-              295,
-              294,
-              293,
-              292,
+              288,
+              289,
               290,
               291,
-              288,
-              289
+              292,
+              295,
+              293,
+              294
             ],
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer"
           }
@@ -726,12 +732,12 @@ define({
     "layerName": "DRYCLEAN",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
+    "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "e450e1d536a9660381b09d1a1ce14e8c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAVNJREFUOI211E8ow2Ecx/H3U1tN++NE6sdEclztpLlISdlwmiU3qSVSLhTlwpzYcjDt4ODgsKwclIOUoigOc+CkMSctf3Zgaqf9HERtP/v9nmz73J7PU6/n+/TUY6LKMdUUVFXVA9T/w7kTQjxowI8csYKKS1YRgMMOwBIQ0oDxI5TjG/mx3K0w7f9F0YAv75gTGXnQZgG1pDN8lG4bzHshmYLlpPEhhuBKAJ6zMDEI4SR8VgpmXqHTCVNRY0wKjJ5AYg7cLXD4ViG4MwB9XXB2DWP94PNAaE8f/hNccEFwGNJPEFiHi9x3v9EDsRm4vIXJfUnwYBQ6nLC6C9uPxXuzp7B1DpERuFqEcFwCVBohn4egD4Llb4a1DqwWCdC/Cd52EEJHA+6z0GTX9howXYBoSh/7ybgR6Gojt2bCIcdBcwOYS0YqWg71CkUWK5fafrDVyBcwKU4dcntIfwAAAABJRU5ErkJggg==",
+        "url": "2511e8cd7bc2b5b59ae30082068c0984",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAkhJREFUOI2l1E9IFGEcxvHvrAMVI7IIdqpmQk1sFdnATCtROlh6MEEJwqCsll1FwkqsjaUxa23Rci9by26W5BJEkBRpRB26KP0BZbHsoIGTnhKshEEJajqMBwnZHdwX3sP78vB53/f3vrwiFtvFNs739nE7WU60gr19g6OtnQAwACymDM7Nc31iArGxEVcsxs2UwXicqoAf4nE8kCL4+iV1vk62jDyDqsNsA3KB6Q2DmiZddjXpSBK4Pdj2jtMeCuPaEDg9zabOq/oen9cc7y+Dp0McA9zAX8vgmeMUKLtQvZeo3ppFmiyb84oM23eQXnOEH4rM41CYHv47/lows0uVvN/m9ROTcbJKKxDq601EEMyAIECwF9usRsboGGeLnZzOy2MOkXAsRgRYFAEGH3A3dAeXT9VtAT8EboAkrV8GQYCditnrarFF+5E7vHQ7nXQdqqBDBGg8SXNpCS8mP+P98JGS6lrSXE1mzeQ1OwQwDNA0GB2DyH04UMry4ACvFJkrByuZEldXNYBhYNj4yeZ4A+6pL7T4A+SkS3Crx0QNAy60w68l/lSUS+OdPr27qoahhJci2FkBgkBwaZHs1nPMaBooCsxq8H2BZfUadodD/71eSRI+m4xMvj56yMzoGDmKYh6zqJARh4N1saQgwO58Qu5W+o7WQjSKUZCLmiifFCzKJVxZTm+0n7TCIhai9/iUEijYWRl6wvu6Bsq6VGkQ9IR5S79NoQP/vmKe+1TdnyxrCczOZ6Slmci7U4k/V8vg6jv1WMn+A/z6stDEqmhiAAAAAElFTkSuQmCC",
         "contentTYpe": "image/png",
         "height": 20,
         "width": 20
@@ -748,12 +754,12 @@ define({
     "layerName": "CHAZ",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
+    "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "2511e8cd7bc2b5b59ae30082068c0984",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAkhJREFUOI2l1E9IFGEcxvHvrAMVI7IIdqpmQk1sFdnATCtROlh6MEEJwqCsll1FwkqsjaUxa23Rci9by26W5BJEkBRpRB26KP0BZbHsoIGTnhKshEEJajqMBwnZHdwX3sP78vB53/f3vrwiFtvFNs739nE7WU60gr19g6OtnQAwACymDM7Nc31iArGxEVcsxs2UwXicqoAf4nE8kCL4+iV1vk62jDyDqsNsA3KB6Q2DmiZddjXpSBK4Pdj2jtMeCuPaEDg9zabOq/oen9cc7y+Dp0McA9zAX8vgmeMUKLtQvZeo3ppFmiyb84oM23eQXnOEH4rM41CYHv47/lows0uVvN/m9ROTcbJKKxDq601EEMyAIECwF9usRsboGGeLnZzOy2MOkXAsRgRYFAEGH3A3dAeXT9VtAT8EboAkrV8GQYCditnrarFF+5E7vHQ7nXQdqqBDBGg8SXNpCS8mP+P98JGS6lrSXE1mzeQ1OwQwDNA0GB2DyH04UMry4ACvFJkrByuZEldXNYBhYNj4yeZ4A+6pL7T4A+SkS3Crx0QNAy60w68l/lSUS+OdPr27qoahhJci2FkBgkBwaZHs1nPMaBooCsxq8H2BZfUadodD/71eSRI+m4xMvj56yMzoGDmKYh6zqJARh4N1saQgwO58Qu5W+o7WQjSKUZCLmiifFCzKJVxZTm+0n7TCIhai9/iUEijYWRl6wvu6Bsq6VGkQ9IR5S79NoQP/vmKe+1TdnyxrCczOZ6Slmci7U4k/V8vg6jv1WMn+A/z6stDEqmhiAAAAAElFTkSuQmCC",
+        "url": "e51dd4ca1a0471d552c4a5b4572a4a6d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAUpJREFUOI1jYaAyYBk1kC4G8luEltvxCohz7t62/ArD09PXyDbQvXhJvIK2bRGvqKweAwMjg5ZryutHN06uWl/nWs7AwPCVJAM98+f5Kpv7T+Lg5OGDibFy8ooqG7pkBzftZVlb55xBkoEiysZpMMP+//3L8O//XwZmFjYGBgYGBkl1s0gRh4zpbw7MuEi0gexcvDow9qU9ixh2T0liKFz/k4GZhY2Bg4uHz9LMwWozKQYy/Pv/B8YUltVgcM2Zx8DEyAwV+c/w5/ffP9i04TTw26d35wQklVQYGBgYZLQsGWS0LOFyn98+f/P+2fV1JBn49undel5BUVteMXlJZPGf37/+e/PkRv+JlS1vSTJwZ3/EDf+qzW7fPn3oZucVsGRmYuL89fvHzW9vHk9dW+M8E5c+vOlwY5vvFQYGBk98akgykBwwaiDlAAAzjGfTde5j4AAAAABJRU5ErkJggg==",
         "contentTYpe": "image/png",
         "height": 20,
         "width": 20
@@ -770,12 +776,12 @@ define({
     "layerName": "ICR_SITES",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
+    "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "e51dd4ca1a0471d552c4a5b4572a4a6d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAUpJREFUOI1jYaAyYBk1kC4G8luEltvxCohz7t62/ArD09PXyDbQvXhJvIK2bRGvqKweAwMjg5ZryutHN06uWl/nWs7AwPCVJAM98+f5Kpv7T+Lg5OGDibFy8ooqG7pkBzftZVlb55xBkoEiysZpMMP+//3L8O//XwZmFjYGBgYGBkl1s0gRh4zpbw7MuEi0gexcvDow9qU9ixh2T0liKFz/k4GZhY2Bg4uHz9LMwWozKQYy/Pv/B8YUltVgcM2Zx8DEyAwV+c/w5/ffP9i04TTw26d35wQklVQYGBgYZLQsGWS0LOFyn98+f/P+2fV1JBn49undel5BUVteMXlJZPGf37/+e/PkRv+JlS1vSTJwZ3/EDf+qzW7fPn3oZucVsGRmYuL89fvHzW9vHk9dW+M8E5c+vOlwY5vvFQYGBk98akgykBwwaiDlAAAzjGfTde5j4AAAAABJRU5ErkJggg==",
+        "url": "97890fc2050098c51f7a2fffb998d2d1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAiJJREFUOI2l1N9L1WccB/DX0cNx8cj4Mk7eZB5kxqBFbMFS+nEpQizIi2hsDC9a0o9dFRLpzYlSi6IfF1JzQkoMii4a2xT6B8KxiBUljBXCKW/04A6MB+tA2UUGFaEH/cBz9+b1fB4+D5+0CuuQcHhAPLdULl0JNmrN58dMncYwZlcMTimdvE/6G6HzmnhqxeA9sS0veCgewMrAX2nvZdUNiXaxHuvw77LBQsge64gEGXuFqr/FriE6lwXepuZinNvUJQEtEr+zh7gfLysGv2VDo5A/zY7VVDfIgAYZa6htE/5bK14f4oz3nv82+ElPCN1PY/x+gtVbSLVLNMhILQRSOKWuqqD88Tj7vhT3NvGkWrh8TRzEbBp+kr00pNjZG2NVXnBcIix09X6lkJORU+dr5aphpVxe7N/Iie3C0TR0Kh7crPGPCdPdd8Tm3WJ1h6wWNe90CPMoKBv33IiiZuYGhVv1kp4dpibSC7fOMzmK0RIf3Zfd/w+Hzio11aJPndQC1m3a/7zYGlbd7Yn6d3GT6PX5wFASnlG8gAtPNH7aZfpRQVlORkHZDHM/iklrjOWKp/ym1pp8/LPso3HPm3IyxpVsYKyVD2JLgvAZA0cUz+9UY0ScX0d+sfyS4EbFy9s4e0Wpej0zIzxYEZjw7Bfhz+/ELT0hXBXjovmKts16dX1fmfytN8a+pbIVgV+YHPtBdvAvxUWXa8Xg639aPFBJ9hVvLq5+fohBcwAAAABJRU5ErkJggg==",
         "contentTYpe": "image/png",
         "height": 20,
         "width": 20
@@ -792,12 +798,12 @@ define({
     "layerName": "LQGS",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
+    "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "97890fc2050098c51f7a2fffb998d2d1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAiJJREFUOI2l1N9L1WccB/DX0cNx8cj4Mk7eZB5kxqBFbMFS+nEpQizIi2hsDC9a0o9dFRLpzYlSi6IfF1JzQkoMii4a2xT6B8KxiBUljBXCKW/04A6MB+tA2UUGFaEH/cBz9+b1fB4+D5+0CuuQcHhAPLdULl0JNmrN58dMncYwZlcMTimdvE/6G6HzmnhqxeA9sS0veCgewMrAX2nvZdUNiXaxHuvw77LBQsge64gEGXuFqr/FriE6lwXepuZinNvUJQEtEr+zh7gfLysGv2VDo5A/zY7VVDfIgAYZa6htE/5bK14f4oz3nv82+ElPCN1PY/x+gtVbSLVLNMhILQRSOKWuqqD88Tj7vhT3NvGkWrh8TRzEbBp+kr00pNjZG2NVXnBcIix09X6lkJORU+dr5aphpVxe7N/Iie3C0TR0Kh7crPGPCdPdd8Tm3WJ1h6wWNe90CPMoKBv33IiiZuYGhVv1kp4dpibSC7fOMzmK0RIf3Zfd/w+Hzio11aJPndQC1m3a/7zYGlbd7Yn6d3GT6PX5wFASnlG8gAtPNH7aZfpRQVlORkHZDHM/iklrjOWKp/ym1pp8/LPso3HPm3IyxpVsYKyVD2JLgvAZA0cUz+9UY0ScX0d+sfyS4EbFy9s4e0Wpej0zIzxYEZjw7Bfhz+/ELT0hXBXjovmKts16dX1fmfytN8a+pbIVgV+YHPtBdvAvxUWXa8Xg639aPFBJ9hVvLq5+fohBcwAAAABJRU5ErkJggg==",
+        "url": "8c1745be8c6cdf72e2896859c7aeee4c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAASZJREFUOI3t0TtLA0EUhuH3bBY7C0G0082inZUgCKnEziqiggiaRhArkXghja2Fl8VKgljkB/gbUtopYmOVHay1sPOSzLEwhrCsLhuDWPhVM+djHmZ3XLoc9x/8HbC2pVP+oVS7BopSrpV0wt+Xpx+DpqiTCqO8kgcqqcFwR4dF6WsNLKsAAstmW29a4zoNP5DbRFBfUFzOgfFINa2W6+b6UTIsAcmgfyL3pqA5209ZYCXmq67EYc47EBPTxf9DryLPQCEsag+w2FYZeSDX7GOT9Chjkf2QM0gvkB40GzqiH+ClWtbEYQ+Yb7yRB87S39BlVizHDLCbLUkdWAiLuk6GmY5Aa7nwA6m1z7JHcmo2taqoCKKpwCj2GS+Qu6/OfAt2mr8PvgMl71ljmiWNXQAAAABJRU5ErkJggg==",
         "contentTYpe": "image/png",
         "height": 20,
         "width": 20
@@ -814,29 +820,7 @@ define({
     "layerName": "NOTICING_FDEP",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "8c1745be8c6cdf72e2896859c7aeee4c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAASZJREFUOI3t0TtLA0EUhuH3bBY7C0G0082inZUgCKnEziqiggiaRhArkXghja2Fl8VKgljkB/gbUtopYmOVHay1sPOSzLEwhrCsLhuDWPhVM+djHmZ3XLoc9x/8HbC2pVP+oVS7BopSrpV0wt+Xpx+DpqiTCqO8kgcqqcFwR4dF6WsNLKsAAstmW29a4zoNP5DbRFBfUFzOgfFINa2W6+b6UTIsAcmgfyL3pqA5209ZYCXmq67EYc47EBPTxf9DryLPQCEsag+w2FYZeSDX7GOT9Chjkf2QM0gvkB40GzqiH+ClWtbEYQ+Yb7yRB87S39BlVizHDLCbLUkdWAiLuk6GmY5Aa7nwA6m1z7JHcmo2taqoCKKpwCj2GS+Qu6/OfAt2mr8PvgMl71ljmiWNXQAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 6,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/5",
-    "name": "FDEP Petroleum Contamination Monitoring Sites",
-    "description": "This coverage includes all identified petroleum program contaminated discharge sites where cleanup is ongoing or complete. Discharge cleanup sites may be eligible or ineligible for state funding assistance. More than one discharge site may be present at a current or former petroleum storage tank facility.",
-    "longName": "FDEP Petroleum Contamination Monitoring Sites",
-    "type": "feature",
-    "layerName": "PCTS",
-    "minScale": 250000,
-    "maxScale": 0,
-    "legend": [
+    "legendSymbols": [
       {
         "layerId": 0,
         "label": "ELIGIBLE DISCHARGES OPEN",
@@ -876,6 +860,28 @@ define({
     ]
   },
   {
+    "id": 6,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/5",
+    "name": "FDEP Petroleum Contamination Monitoring Sites",
+    "description": "This coverage includes all identified petroleum program contaminated discharge sites where cleanup is ongoing or complete. Discharge cleanup sites may be eligible or ineligible for state funding assistance. More than one discharge site may be present at a current or former petroleum storage tank facility.",
+    "longName": "FDEP Petroleum Contamination Monitoring Sites",
+    "type": "feature",
+    "layerName": "PCTS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "cb0c1215a8f27ced40c6e29e06074886",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAZhJREFUOI3V1L9LVlEYB/DPWzq8nkCKW4KO/YIKaivoH1DUcCjahaAhqKkaisQioqAiGhqk/oGiWoKgoFCagiBBSaQGeYPymEQ8kBDa8CqYvD8oGuq7XO45537u91lOi7+clv8OvLP65QjtB1LatSmiY5Efn/n4lIkXfF917HhdsCiKEeikNJzz+cf0zUWUCkziC13X2LOY0nBvufwMcs71G+acX8MITybpuYItq/Y/VUcoH4q4PBsxXeJ+s5HdLYpT73PuOY11a/Y6cA7XKbVzb4nnJeYbga2vcr5wqwa2kvU4gUtsuMgxXG0EdvfTWq6DraSMgxjncEMwpbR/d0RbEw9sxwSda9d/ASNiYYa3W9nbDPyGed41BFNKLwcjzt5AW/UDs8gosBkbl9dvo6/6aNhw9ANTA+xr1vAoM2d41BDEUlEUgznnseWSNbODhbGurl6VylIzUM75TUqpOyIeqE65FpurpNQflcp4rZ/VvBwiYhQ7U0onI2IA2zCNh1PcFPG1XvtGt818RAxhqMGZ3wL/KP8++BOWQoRwnxsDMAAAAABJRU5ErkJggg==",
+        "contentTYpe": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
     "id": 22,
     "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/17",
     "name": "USEPA Regulated Air Emissions Facilities",
@@ -885,12 +891,12 @@ define({
     "layerName": "EPAAFS",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
+    "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "0b21bc1454bfddaf59baf36f48180f34",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAANlJREFUOI3t0CGLAkEYxvH/ixsEFcS7b2C0atRosAsuHFjEtLDaDHYxiKt+BAX3MHmf4LJgtxkuCRt3m+dcMIjHDtzoFcGnzfswv3kZi3+O9QQfEHzvvBaRoAKEJ8Xa9jjcDPouM0XgoM5ngeHSpWlP+DAGfZcWgvNrnBVhsepQqHt8mW0otDVN5ghvwMAMhJz+rdQLRLGdFhTYKsjHdYpoo7unBU8JevJNDUhfY3zaHitj0B6x97uUlGIqUAZCJDWXZNQ/u4YgQGPMDqheJvH/9mfwljzB+/MDj9ox1rDbE3sAAAAASUVORK5CYII=",
+        "url": "25772f9eb2176689d3d0cf619dff4666",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAVBJREFUOI3t0j1oFFEUxfHfjNmFuBYWA3Ft4haWBsN0KYUUAROwsbdJlULQ1o8hooiVYOPUAW3SOOksLcRiLSwsBJE0Wz3SDUSz7FhMRJRkZgN28ZTn3fN/917ujH+smf/AWj9cTDpJvy0cojBsBSZVkgahCEIr0MSaWNEIDEKKvu0PXPpWm1XE85XfRdd2uXVFTy8tlc1AB3Z0sFSwf57BXSYDtm7+GoFnr8BsNFuUyuaRdY1M5PqP1r3bYX7w5/uLj1x4TCUP8RQ7BGOZjnWLW3zaZOFe7S9/Z/UJDI1lR0WPBnaNepNeVp57/cD4BvtXa//+W85uQ65rND0QZVw+VLluMUu9f8rGHkt36u4i+XG55sOuZM58fmNul9tfib/UXoOagbFCZejyRnr4Qf733Z0MCAfWdLxUGSVRkgehsbwdWC9/Fdpg0wFPqFMI/AmR5WG7YBw+pQAAAABJRU5ErkJggg==",
         "contentTYpe": "image/png",
         "height": 20,
         "width": 20
@@ -907,12 +913,12 @@ define({
     "layerName": "EPARCRA",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
+    "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "348c08b48039ddf363b0808137bd0c83",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAMNJREFUOI3t0LEKQWEYxvH/K1kOJdyB0cpwEqPBNSiLTC7AYJeVS2AzcQWKk1J2m8GkjM7qNRxJ8sl3WNR5xufp/fX1xflx4hH4h+Aqp0U5URU4K8zKyDE06KEjTnQANKgGHtosI3Nr0ENbEGAPSQOTJVqoIAfbF7YNfSoGDaBvC2aMi0MW//X0DtwC+VeD+GxMR0YwBt0L1IHk07RwYWoNush+jZYuMAQqwBmHccKnJ4hagzd0B9TuheHfPgbDJAK/zxVLUinWImKMuQAAAABJRU5ErkJggg==",
+        "url": "a022441c59e8772f016ff03c3be79613",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAU5JREFUOI3t0iFIA1Ecx/HvnXeT8+qBm2VgmM1yQVAxDkS3aLMuiGBwZr2gGASLxQsbiM3miYKCcW1ZsAzBTRgP22OwjT3DrUy33Q1s+qvv//+8///xDH45xj/YT3vOccxUVLMQWjUSdBzlCkEgBJEg9PKgB2NBIXCB1E3miiSVocwHK2y9bmPbuFIyHoTOHZjc17Pspi/Q6A6cKqZ5ePMAsCwtkHKwewiYaEDPL8tkIdsqsmCdDpy+tIqU5SygfCH06DcM0/XALJSaGxynrzF4D2fvzlNqrgNUw5qfGQEmGrbd856kfZhrHbBq7QFQkfs8yxkAP9wkNghS6kegNs9ry+5iZg1FgrP6Un86zR/VF/GxlVdj6vbxc4c2BnV0QA1dNSaoB6CqJyLj9i/wv/+7CUGATh7MSyDlOJovxPjqGGCiAeQAorCY4GT5g+AX/lpqoG+V+mkAAAAASUVORK5CYII=",
         "contentTYpe": "image/png",
         "height": 20,
         "width": 20
@@ -929,12 +935,12 @@ define({
     "layerName": "EPASUPERFUND",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
+    "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "bd8649f7f10532129002af50272bf8f9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAATdJREFUOI3t0T1Lw3AQx/GvbVKR4CAEHQpKQTOIi0JB6CRuThUVRNAugjiJxAe6uDr4EJykiENfgK+ho4OgiCCSwRQhi0Swwx+rjYlLC9pWa2MRB2+6ux/3WU6ixSX9g78DKtramDB3cy0Dwc9AOg7bhR+D6qA+6rgMoL0kMck2D2obfarid1VGR3iL5XZeHV6/rOzb791X2zauGoPSs+88SsfIjFQl447wLsr9gxIJzwHfAK8P7iCVQFMzwEJNXuIcOTQlrJ18TVYXBCBbxCSFpkeA2XdBHstJQLZY/67xU4aq5l7iPZ2cEQCMrfSXwdOo8JbsSGgLmWkKpSRw1DzYIU0qT96+sLo3bdIuMENMX4bwRDDQ9U6EZdx+2Fl7h0RXc0Ab4DcHmlVYpWzj5tObL8GA9ffBN2MAW29frh9SAAAAAElFTkSuQmCC",
+        "url": "8f155e66225ebd89ce93a84258aef1a6",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jYaAyYKGZgUktu99TYtC8428uMGyNdERxYV6mzQXyDdzAwMBASy+PGjhq4KiBowZiNXDe8TcXYEUQWWBrpCOKgTABSgEABLMTHQ7cpB8AAAAASUVORK5CYII=",
         "contentTYpe": "image/png",
         "height": 20,
         "width": 20
@@ -951,12 +957,12 @@ define({
     "layerName": "EPATRI",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
+    "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "05f0d73cf6d86a1a5f06069c2760211a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAANZJREFUOI3t0LEOwVAUxvF/bztIkAjewGhlZDR4BolFTIZKDQa7GJo2PAKbiScwS+w2g0li1FGPRSJpStyySHzjObm/++VYfDnWH/xB0LaLFcs6169XLiKsfJ9TYnAwYCZy7omAUgBMHIe267LWBh2Hjgi9yDgHLGybsu9z1ALDkO69VTRZ06QFjLVApcg/20G6AEHs5lXDnVKU4naGEWyfvXvVcAg0gUzko43nsdQGXZdDv0/VNJmKUAMuhpGep1LBCBBtEMDz2AONxyT+bm+DSfIHP88NHLI3+T7n73MAAAAASUVORK5CYII=",
+        "url": "56ec9c0b263492b7121c51589213d539",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEBJREFUOI1jYVAr/s9ARcBCTcOGqoG3ehlJMgEtDujgQt8VpMX6zdMEDNwcMdi9PGog5QaOwGRDYfk4FGOZQgAAUWUS+QR93soAAAAASUVORK5CYII=",
         "contentTYpe": "image/png",
         "height": 20,
         "width": 20
@@ -973,12 +979,12 @@ define({
     "layerName": "WCU_CLOSED",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
+    "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "68d309f954682cd99f59bbc1878b0902",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAXBJREFUOI1jYaAyYBk1ECvY/euFlCubxDOqGLj333Pf+1c4F+7+9UKHGEOxGrjz2+vW/wwMXgwMDAy/fzAwvH7CIiirwnx2x7fXLxgYGBiYWf7NdGUTn0G0gddPc8SwcvyX+/eXYRcn93/TV0+YGW5dYL/EyfVf+dZFNmXn8M+mDAwMxBuoYvTb+s551sd6tt/W/vrOuOn1U5YpOpZfq948Z+tW0WNgYGL6V0uSl314hZ7MufRx89vnrDMFBP+2MjAwMPxnYDJ+dJPd0dDha7oTI+6wxBkpKXr8fhMOff4vYPHbi4GBgeHpXfY2aZVf150YxWfh0oPXQAYGBgYh6b/Vj25wtP77x8Dw/iWzsLbl90R86gkaGKcs0Na7/0v6qR3sciktHxY5M0lupshABgYGBlXD78U/vjKu5uH/PYmQWqIM5Ob78/P/P4bnjoySZ6lioDOT5OaG1V9eEGMYUQYyMDAwNITynKaqgaSAwW8gAB/9fW3/VUmeAAAAAElFTkSuQmCC",
+        "url": "2d27c761a9e005b0c6ce19222e551d92",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAqRJREFUOI2l1FtIk2EYB/D/ty3nNufWjjgVWZubZY4Kp7kwrVhhYVBdKIEESaJ2F4VpEUKlRlLeZOJFZN5YMDrMA161i1GWYbDFwB36kJxrR5W5k5FfF1JQmPvQ5/rPj+d9H56HBZoV7FVekV4lH6TLsehgVqu+mD/iuJeqx1P2CCLbBqX+1B1GMsaKa3lNQKxn26CIDJ8IlGnAn4+0bBucfnvwDO+VnTN6fR/q71ryUhdRyH4C15bBnd/j7d4KFZY5LHgrVQyRJ3oNIJu2BJregS2dDB+w1u0BAMyWyFE1s1BHAc0EsEYbXOzM3ZuQCjr5Y4GTP7IymO4cLgDAncOFQcDOirVJFiMC/nOem7z/7/P/gKl6iMLVyo7MULQh078kDe8WE5+P7Ic7hwuKWM9QBPCspZSh9sWztXb/Jc4Cr3H5FucbRSQGOLOxQfYIIiwAcJp0j9csnibJJ5IRKNPgdWMhljkb/wZFAC4FFy6FEoLD+Qyj2VUg++jsXpPwbgd7ZW0sANCctbWai2tGC8hQh3w2VF7XY2F6K1Rw6uR/dQgABAWofXFobH7kvvdgJV+YIGt0k2EZ+4ahctqx3gYBqhYTYwDGupcuZOq/zjXnkbHLh1441BXsDAw360AR61jDgA3M5OrPYJF4xn66pLv82NRLwPv/obQLh5IA+gD09QdqVef7Z9xqXxwuBRdqXxw7VqKJqeqQ0Gj0rtKe8u9qlZk9R016t8bmV7sUSmjtfkQVsnGjMbQhlhYEgHkl75FhyPEwuyofuVYPlRQLOzfLp1+9XQUDJcq53uNmFzMh5wRFN71ftgW2C4eSpyb0H4pM04ZQqXIYCG2ap3Vt5pSSrkIO743YQnaly9ICa7UT485q3aDmnG3T40obBAFKA1sLnegvkXf8LukMLOoAAAAASUVORK5CYII=",
         "contentTYpe": "image/png",
         "height": 20,
         "width": 20
@@ -995,117 +1001,7 @@ define({
     "layerName": "WCU_INACTIVE",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "25772f9eb2176689d3d0cf619dff4666",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAVBJREFUOI3t0j1oFFEUxfHfjNmFuBYWA3Ft4haWBsN0KYUUAROwsbdJlULQ1o8hooiVYOPUAW3SOOksLcRiLSwsBJE0Wz3SDUSz7FhMRJRkZgN28ZTn3fN/917ujH+smf/AWj9cTDpJvy0cojBsBSZVkgahCEIr0MSaWNEIDEKKvu0PXPpWm1XE85XfRdd2uXVFTy8tlc1AB3Z0sFSwf57BXSYDtm7+GoFnr8BsNFuUyuaRdY1M5PqP1r3bYX7w5/uLj1x4TCUP8RQ7BGOZjnWLW3zaZOFe7S9/Z/UJDI1lR0WPBnaNepNeVp57/cD4BvtXa//+W85uQ65rND0QZVw+VLluMUu9f8rGHkt36u4i+XG55sOuZM58fmNul9tfib/UXoOagbFCZejyRnr4Qf733Z0MCAfWdLxUGSVRkgehsbwdWC9/Fdpg0wFPqFMI/AmR5WG7YBw+pQAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 9,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/23",
-    "name": "FDEP Waste Cleanup (Open) Responsible Party Sites",
-    "description": "This data set reflects OPEN Waste Cleanup (Responsible Party) sites. Cleanup of the site as tracked by the District Waste Cleanup Section remains to be done, a cleanup phase is progressing, or the site is subject to a monitoring plan. This set does not include sites awaiting action as a result of a case referral, e.g., to EPA or State Cleanup/Superfund. Sites that have completed remediation and are awaiting a copy of a county clerk \"filed\" stamp for recording of any institutional controls are still considered OPEN. Sites where EPA has assumed the role of lead agency but the site is not on the National Priorities List are still overseen by the district are included in the list of OPEN sites.",
-    "longName": "FDEP Waste Cleanup (Open) Responsible Party Sites",
-    "type": "feature",
-    "layerName": "WCU_OPEN",
-    "minScale": 250000,
-    "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "a022441c59e8772f016ff03c3be79613",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAU5JREFUOI3t0iFIA1Ecx/HvnXeT8+qBm2VgmM1yQVAxDkS3aLMuiGBwZr2gGASLxQsbiM3miYKCcW1ZsAzBTRgP22OwjT3DrUy33Q1s+qvv//+8///xDH45xj/YT3vOccxUVLMQWjUSdBzlCkEgBJEg9PKgB2NBIXCB1E3miiSVocwHK2y9bmPbuFIyHoTOHZjc17Pspi/Q6A6cKqZ5ePMAsCwtkHKwewiYaEDPL8tkIdsqsmCdDpy+tIqU5SygfCH06DcM0/XALJSaGxynrzF4D2fvzlNqrgNUw5qfGQEmGrbd856kfZhrHbBq7QFQkfs8yxkAP9wkNghS6kegNs9ry+5iZg1FgrP6Un86zR/VF/GxlVdj6vbxc4c2BnV0QA1dNSaoB6CqJyLj9i/wv/+7CUGATh7MSyDlOJovxPjqGGCiAeQAorCY4GT5g+AX/lpqoG+V+mkAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 10,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/24",
-    "name": "USEPA Ocean Dredged Material Disposal Sites",
-    "description": "This dataset represents Ocean Dredged Material Disposal Sites (ODMDS) designated by the EPA for dredged material disposal under section 102 of the Marine Protection, Research, and Sanctuaries Act (MPRSA). In the United States, uncontaminated dredged material is the primary material disposed into the ocean today. Dredged material is sediment excavated or otherwise removed from the bottoms of the navigable waters of the United States to maintain navigation channels and docks. In October 1972, Congress enacted the Marine Protection, Research and Sanctuaries Act (MPRSA), sometimes referred to as the Ocean Dumping Act, declaring that it is the policy of the United States to regulate the dumping of all materials which would adversely affect human health, welfare or amenities, or the marine environment, ecological systems or economic potentialities. EPA is responsible for designating and managing ocean dumping sites under the Marine Protection, Research and Sanctuaries Act (MPRSA). For further information, visit: https://www.epa.gov/ocean-dumping/ocean-disposal-sites.",
-    "longName": "USEPA Ocean Dredged Material Disposal Sites",
-    "type": "feature",
-    "layerName": "EPADRDG",
-    "minScale": 250000,
-    "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "8f155e66225ebd89ce93a84258aef1a6",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jYaAyYKGZgUktu99TYtC8428uMGyNdERxYV6mzQXyDdzAwMBASy+PGjhq4KiBowZiNXDe8TcXYEUQWWBrpCOKgTABSgEABLMTHQ7cpB8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 11,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/6",
-    "name": "FDEP Storage Tank Contamination Monitoring",
-    "description": "Regulated Facilities from STCM (Storage Tank Contamination Monitoring).This coverage includes facilities with registered above-ground or underground storage tanks. This dataset contains both currently and previously regulated facilities. It also contains facilities registered with DEP for the purpose of tracking on-site petroleum contamination.",
-    "longName": "FDEP Storage Tank Contamination Monitoring",
-    "type": "feature",
-    "layerName": "STCM",
-    "minScale": 250000,
-    "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "cb0c1215a8f27ced40c6e29e06074886",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAZhJREFUOI3V1L9LVlEYB/DPWzq8nkCKW4KO/YIKaivoH1DUcCjahaAhqKkaisQioqAiGhqk/oGiWoKgoFCagiBBSaQGeYPymEQ8kBDa8CqYvD8oGuq7XO45537u91lOi7+clv8OvLP65QjtB1LatSmiY5Efn/n4lIkXfF917HhdsCiKEeikNJzz+cf0zUWUCkziC13X2LOY0nBvufwMcs71G+acX8MITybpuYItq/Y/VUcoH4q4PBsxXeJ+s5HdLYpT73PuOY11a/Y6cA7XKbVzb4nnJeYbga2vcr5wqwa2kvU4gUtsuMgxXG0EdvfTWq6DraSMgxjncEMwpbR/d0RbEw9sxwSda9d/ASNiYYa3W9nbDPyGed41BFNKLwcjzt5AW/UDs8gosBkbl9dvo6/6aNhw9ANTA+xr1vAoM2d41BDEUlEUgznnseWSNbODhbGurl6VylIzUM75TUqpOyIeqE65FpurpNQflcp4rZ/VvBwiYhQ7U0onI2IA2zCNh1PcFPG1XvtGt818RAxhqMGZ3wL/KP8++BOWQoRwnxsDMAAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 12,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/7",
-    "name": "FDEP Treaters, Storers, and Disposers of Hazardous Waste",
-    "description": "Treaters, Storers and Disposers of Hazardous Waste are facilities regulated under the federal Resource Conservation and Recovery Act (RCRA) and applicable state regulations for Treating, Storing, and/ or Disposing of hazardous waste. They are either conducting those hazardous waste activities under permits issued by the Department of Environmental Protection, or are facilities that may be undergoing corrective action or site remediation under civil or judicial orders.",
-    "longName": "FDEP Treaters, Storers, and Disposers of Hazardous Waste",
-    "type": "feature",
-    "layerName": "TSDS",
-    "minScale": 250000,
-    "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "2d27c761a9e005b0c6ce19222e551d92",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAqRJREFUOI2l1FtIk2EYB/D/ty3nNufWjjgVWZubZY4Kp7kwrVhhYVBdKIEESaJ2F4VpEUKlRlLeZOJFZN5YMDrMA161i1GWYbDFwB36kJxrR5W5k5FfF1JQmPvQ5/rPj+d9H56HBZoV7FVekV4lH6TLsehgVqu+mD/iuJeqx1P2CCLbBqX+1B1GMsaKa3lNQKxn26CIDJ8IlGnAn4+0bBucfnvwDO+VnTN6fR/q71ryUhdRyH4C15bBnd/j7d4KFZY5LHgrVQyRJ3oNIJu2BJregS2dDB+w1u0BAMyWyFE1s1BHAc0EsEYbXOzM3ZuQCjr5Y4GTP7IymO4cLgDAncOFQcDOirVJFiMC/nOem7z/7/P/gKl6iMLVyo7MULQh078kDe8WE5+P7Ic7hwuKWM9QBPCspZSh9sWztXb/Jc4Cr3H5FucbRSQGOLOxQfYIIiwAcJp0j9csnibJJ5IRKNPgdWMhljkb/wZFAC4FFy6FEoLD+Qyj2VUg++jsXpPwbgd7ZW0sANCctbWai2tGC8hQh3w2VF7XY2F6K1Rw6uR/dQgABAWofXFobH7kvvdgJV+YIGt0k2EZ+4ahctqx3gYBqhYTYwDGupcuZOq/zjXnkbHLh1441BXsDAw360AR61jDgA3M5OrPYJF4xn66pLv82NRLwPv/obQLh5IA+gD09QdqVef7Z9xqXxwuBRdqXxw7VqKJqeqQ0Gj0rtKe8u9qlZk9R016t8bmV7sUSmjtfkQVsnGjMbQhlhYEgHkl75FhyPEwuyofuVYPlRQLOzfLp1+9XQUDJcq53uNmFzMh5wRFN71ftgW2C4eSpyb0H4pM04ZQqXIYCG2ap3Vt5pSSrkIO743YQnaly9ICa7UT485q3aDmnG3T40obBAFKA1sLnegvkXf8LukMLOoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 13,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/8",
-    "name": "FDEP Wastewater Facilities",
-    "description": "Statewide coverage of Wastewater Facility Regulation (WAFR) Facilities. This dataset includes facilities whose current operating status is Active, Closed but Monitored, or Under Construction. Also included are un-permitted facilities for which a permit is required. These facilities are regulated by the following Florida Department of Environmental Protection programs - \"Industrial Wastewater Program\", \"Domestic Wastewater Program\", \"Phosphate Management Wastewater Program\", \"Power Plant Management Wastewater Program.\"",
-    "longName": "FDEP Wastewater Facilities",
-    "type": "feature",
-    "layerName": "WAFR",
-    "minScale": 250000,
-    "maxScale": 0,
-    "legend": [
+    "legendSymbols": [
       {
         "layerId": 0,
         "label": "NPDES Surface Water Discharge",
@@ -1127,6 +1023,116 @@ define({
     ]
   },
   {
+    "id": 9,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/23",
+    "name": "FDEP Waste Cleanup (Open) Responsible Party Sites",
+    "description": "This data set reflects OPEN Waste Cleanup (Responsible Party) sites. Cleanup of the site as tracked by the District Waste Cleanup Section remains to be done, a cleanup phase is progressing, or the site is subject to a monitoring plan. This set does not include sites awaiting action as a result of a case referral, e.g., to EPA or State Cleanup/Superfund. Sites that have completed remediation and are awaiting a copy of a county clerk \"filed\" stamp for recording of any institutional controls are still considered OPEN. Sites where EPA has assumed the role of lead agency but the site is not on the National Priorities List are still overseen by the district are included in the list of OPEN sites.",
+    "longName": "FDEP Waste Cleanup (Open) Responsible Party Sites",
+    "type": "feature",
+    "layerName": "WCU_OPEN",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2a04728ba17a021573edc19981c5b63b",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAATtJREFUOI3d1L1LAgEcxvHv+cKBBQ2WSxC5dC7pdOBLqDQE6hB4g9JdRMIhLQ2ZgtkcSPQHOAoitwQeiJvr4Sj0J4RLuDq0REMEEV3mCwQ+4/PAh9/0c7HkuFYGdABvSwM1jWarxQ3wvDAoy2vxWm1yEAxyV6lwuijo0LTJdSDAriDg6HQ2w5Y1HswNKgq6qhIFkCR28vlx1bI4nhfcUBTyXi/ezyKXI9Lvc2KatGcGCwWq2SyRr53Px5aicGaaPAKvs4B7msahKCJ+HxSFaK/HpWFw/2ewVOI2mUT+afN4WFdV0oZBE3iZCvr9pHUdWRBsbgdSKWLFIuVGg/I00K3rXEgSAXsOnE7c5+fEut3t/dFo9GQLhsNchULEh8PfuI+IIpFEYvTQbnNkCw4G1DMZ6tM5+6zO+/o/8B0/yUfGpnzp7AAAAABJRU5ErkJggg==",
+        "contentTYpe": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/24",
+    "name": "USEPA Ocean Dredged Material Disposal Sites",
+    "description": "This dataset represents Ocean Dredged Material Disposal Sites (ODMDS) designated by the EPA for dredged material disposal under section 102 of the Marine Protection, Research, and Sanctuaries Act (MPRSA). In the United States, uncontaminated dredged material is the primary material disposed into the ocean today. Dredged material is sediment excavated or otherwise removed from the bottoms of the navigable waters of the United States to maintain navigation channels and docks. In October 1972, Congress enacted the Marine Protection, Research and Sanctuaries Act (MPRSA), sometimes referred to as the Ocean Dumping Act, declaring that it is the policy of the United States to regulate the dumping of all materials which would adversely affect human health, welfare or amenities, or the marine environment, ecological systems or economic potentialities. EPA is responsible for designating and managing ocean dumping sites under the Marine Protection, Research and Sanctuaries Act (MPRSA). For further information, visit: https://www.epa.gov/ocean-dumping/ocean-disposal-sites.",
+    "longName": "USEPA Ocean Dredged Material Disposal Sites",
+    "type": "feature",
+    "layerName": "EPADRDG",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "da2edf941607a9627e4e29aa8d4f3d90",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAUFJREFUOI3d1L1LAgEcxvGvbwi94GA1dGC2qIsFwdHd+RYGgjYEHaGkEQUSLQ2VgdUcSPQHNAohLkFCtNUotxkGQlND3BKuDi3REEFEl/kCQc/4PPDhN/2s9DnWfwOagde+gRmF4nmVA+CpZ1D0DIYPl1vBKRfH+2VWewXNGbm15xNwmyTMl/URqdpoal2Dqkg2HUYB8I7jSonNfLXBYregQ50l5RzG+VEkg8g3dVYqNUodgxsh8ksy8uduzMGoKrFWqXEBvHQCejIRonYb9q+DqqBc19gua5z8GtyNczTnR/xuG7AzlA6RKGsUgee24CQksjFEk8ngdiA+Q2AzSu7sllw70JZNsuUV8BlzYLFgW58ncPUg+HVdvzcEJYGdaTfhu8efuPfYrciRCf20pBMzBDWdwkKBQnvOOP/nff0d+AY+4Eb4guQNwwAAAABJRU5ErkJggg==",
+        "contentTYpe": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/6",
+    "name": "FDEP Storage Tank Contamination Monitoring",
+    "description": "Regulated Facilities from STCM (Storage Tank Contamination Monitoring).This coverage includes facilities with registered above-ground or underground storage tanks. This dataset contains both currently and previously regulated facilities. It also contains facilities registered with DEP for the purpose of tracking on-site petroleum contamination.",
+    "longName": "FDEP Storage Tank Contamination Monitoring",
+    "type": "feature",
+    "layerName": "STCM",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "26a01cf63a0aefcc9bd59768f4d6a9a3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAATFJREFUOI3t0T9Lw0AYx/HvU0oUioPSJa1oB906CYLQScTFSVHrIVQXQXwFbr4EVyniIA4G/7yGjm6KuDhJENI4xMEhILHNOVi1ltiSWsTBZ7p7ftyH5+6S9LiS/+DvgFbKmVZ+ttIzUJCyhTupMJ9+DJ6knSntMQ7hPHAYGzzjYfQlHQ6+77XHRmPK0nG6ev0xdZ/UlWPedARraJ3wOAAmWqKZhMdVY/2oU+Eq0BlUmPdH2AUDowysRdzqUggXV/xhOyKLfsMSuWdg3aJqCKimyA4ICo08stp+ikC+pTUi9A8A8cFT3LEQnQcudFY2xQl3QJaMt9/ejw3W0QuSYnfID7ZnnVwNWLaobgFzXYEJOC/6mbvmniKzZ+FWQAuIjgUW+Yp9oubtd2fagt3W3wdfAY86V4OYwQ1mAAAAAElFTkSuQmCC",
+        "contentTYpe": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/7",
+    "name": "FDEP Treaters, Storers, and Disposers of Hazardous Waste",
+    "description": "Treaters, Storers and Disposers of Hazardous Waste are facilities regulated under the federal Resource Conservation and Recovery Act (RCRA) and applicable state regulations for Treating, Storing, and/ or Disposing of hazardous waste. They are either conducting those hazardous waste activities under permits issued by the Department of Environmental Protection, or are facilities that may be undergoing corrective action or site remediation under civil or judicial orders.",
+    "longName": "FDEP Treaters, Storers, and Disposers of Hazardous Waste",
+    "type": "feature",
+    "layerName": "TSDS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "e6fa57bdb2820b2e0046d1bb4da1aa23",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAANdJREFUOI3tzrFKw1AUxvE/3AvJUENpH8EtQqYGzlLHDj5DwUWc+gAO7uLaPoJuneoTCFkOBskWunVwcu+QDIe6FxK41UXoN37n8DvH88fxZ/AfglmWTZxz11EU7du23VRV9X0ymOf5ClgAmBne+2cRuVXVt2BQRO7MbHFUD83sNU3Tq7quv0I/vO/oL5IkmQNPQaCZjXqOjbsGfR9+Apcdxz6CwTiOH5qmuQEGR6P3sizXwWBRFDsRyc1sCUyBvXPuRVUfgUMwCKCqW2DWtxMEnpIz+Pv8AAr4QE9pmOHfAAAAAElFTkSuQmCC",
+        "contentTYpe": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/8",
+    "name": "FDEP Wastewater Facilities",
+    "description": "Statewide coverage of Wastewater Facility Regulation (WAFR) Facilities. This dataset includes facilities whose current operating status is Active, Closed but Monitored, or Under Construction. Also included are un-permitted facilities for which a permit is required. These facilities are regulated by the following Florida Department of Environmental Protection programs - \"Industrial Wastewater Program\", \"Domestic Wastewater Program\", \"Phosphate Management Wastewater Program\", \"Power Plant Management Wastewater Program.\"",
+    "longName": "FDEP Wastewater Facilities",
+    "type": "feature",
+    "layerName": "WAFR",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "e51dd4ca1a0471d552c4a5b4572a4a6d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAUpJREFUOI1jYaAyYBk1kC4G8luEltvxCohz7t62/ArD09PXyDbQvXhJvIK2bRGvqKweAwMjg5ZryutHN06uWl/nWs7AwPCVJAM98+f5Kpv7T+Lg5OGDibFy8ooqG7pkBzftZVlb55xBkoEiysZpMMP+//3L8O//XwZmFjYGBgYGBkl1s0gRh4zpbw7MuEi0gexcvDow9qU9ixh2T0liKFz/k4GZhY2Bg4uHz9LMwWozKQYy/Pv/B8YUltVgcM2Zx8DEyAwV+c/w5/ffP9i04TTw26d35wQklVQYGBgYZLQsGWS0LOFyn98+f/P+2fV1JBn49undel5BUVteMXlJZPGf37/+e/PkRv+JlS1vSTJwZ3/EDf+qzW7fPn3oZucVsGRmYuL89fvHzW9vHk9dW+M8E5c+vOlwY5vvFQYGBk98akgykBwwaiDlAAAzjGfTde5j4AAAAABJRU5ErkJggg==",
+        "contentTYpe": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
     "id": 14,
     "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer/9",
     "name": "FDOH Biomedical Waste",
@@ -1136,12 +1142,12 @@ define({
     "layerName": "BIOMED_WASTE",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
+    "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "2a04728ba17a021573edc19981c5b63b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAATtJREFUOI3d1L1LAgEcxvHv+cKBBQ2WSxC5dC7pdOBLqDQE6hB4g9JdRMIhLQ2ZgtkcSPQHOAoitwQeiJvr4Sj0J4RLuDq0REMEEV3mCwQ+4/PAh9/0c7HkuFYGdABvSwM1jWarxQ3wvDAoy2vxWm1yEAxyV6lwuijo0LTJdSDAriDg6HQ2w5Y1HswNKgq6qhIFkCR28vlx1bI4nhfcUBTyXi/ezyKXI9Lvc2KatGcGCwWq2SyRr53Px5aicGaaPAKvs4B7msahKCJ+HxSFaK/HpWFw/2ewVOI2mUT+afN4WFdV0oZBE3iZCvr9pHUdWRBsbgdSKWLFIuVGg/I00K3rXEgSAXsOnE7c5+fEut3t/dFo9GQLhsNchULEh8PfuI+IIpFEYvTQbnNkCw4G1DMZ6tM5+6zO+/o/8B0/yUfGpnzp7AAAAABJRU5ErkJggg==",
+        "url": "64a3edc8be1a6447a7908910fabfbbdf",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAOFJREFUOI3t0LFKw1AUxvF/bi4SSAtFfYOOrnW0W1uiryC4SKcMkTp0cBeHkNA+Qrt1SouIuDgL7m4dOhU6JpvNdXMISfCmLoV+4/m4v3s4kn+OPIB7CHqnTktuaG8hVsgoZLGuDN5zNVYbXAUIANKnAc6Nz8tcGxzg3CpwM+MGiKlH5yzkbaUFpoi+yK/qJkfXwKMWKOC4qMMWJyT5VcmGfApo5nVGkn4UvSvZUA7h+xKoZT56D3ieaYM+0fKO3rmJHCm4AGLDFhMrsR4ApQ0CBLx+Ad3fQcHd/gxWyQHcPT/O4TH276NCgwAAAABJRU5ErkJggg==",
         "contentTYpe": "image/png",
         "height": 20,
         "width": 20
@@ -1158,12 +1164,12 @@ define({
     "layerName": "SEPTIC",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
+    "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "da2edf941607a9627e4e29aa8d4f3d90",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAUFJREFUOI3d1L1LAgEcxvGvbwi94GA1dGC2qIsFwdHd+RYGgjYEHaGkEQUSLQ2VgdUcSPQHNAohLkFCtNUotxkGQlND3BKuDi3REEFEl/kCQc/4PPDhN/2s9DnWfwOagde+gRmF4nmVA+CpZ1D0DIYPl1vBKRfH+2VWewXNGbm15xNwmyTMl/URqdpoal2Dqkg2HUYB8I7jSonNfLXBYregQ50l5RzG+VEkg8g3dVYqNUodgxsh8ksy8uduzMGoKrFWqXEBvHQCejIRonYb9q+DqqBc19gua5z8GtyNczTnR/xuG7AzlA6RKGsUgee24CQksjFEk8ngdiA+Q2AzSu7sllw70JZNsuUV8BlzYLFgW58ncPUg+HVdvzcEJYGdaTfhu8efuPfYrciRCf20pBMzBDWdwkKBQnvOOP/nff0d+AY+4Eb4guQNwwAAAABJRU5ErkJggg==",
+        "url": "85cfad0dcfc3509e72a8fbac1f1a65d1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAANpJREFUOI3t0LFqAlEQheH/uEIaA5I8gkUWbZNSy0BEyQsIwipWPoBF+pBW67UxXSqTxdo6kPZiZ5Eq/bY61gnrwtU0gqecGb4Zpsg/p3gGTxBMXHwrqWEoDWTzhzD6ORhMXDxBGhoAxsZ4SVzcbVV7797gh5v2EcM/5TLS63wV1x7D3rffhdIALKtzGZg6wLMXKOxq7zK43tfI++EXUMlexqc3aIVgpO2mCZR+1WHZCqM3b7B9010v3PRuK8ZAHUiFZhdB+oSyn5sLAjSr0Qq4z5vxAg/JGTw+O3ocNPfD6DxNAAAAAElFTkSuQmCC",
         "contentTYpe": "image/png",
         "height": 20,
         "width": 20
@@ -1180,12 +1186,12 @@ define({
     "layerName": "MIAMI_DADE_DERM",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
+    "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "26a01cf63a0aefcc9bd59768f4d6a9a3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAATFJREFUOI3t0T9Lw0AYx/HvU0oUioPSJa1oB906CYLQScTFSVHrIVQXQXwFbr4EVyniIA4G/7yGjm6KuDhJENI4xMEhILHNOVi1ltiSWsTBZ7p7ftyH5+6S9LiS/+DvgFbKmVZ+ttIzUJCyhTupMJ9+DJ6knSntMQ7hPHAYGzzjYfQlHQ6+77XHRmPK0nG6ev0xdZ/UlWPedARraJ3wOAAmWqKZhMdVY/2oU+Eq0BlUmPdH2AUDowysRdzqUggXV/xhOyKLfsMSuWdg3aJqCKimyA4ICo08stp+ikC+pTUi9A8A8cFT3LEQnQcudFY2xQl3QJaMt9/ejw3W0QuSYnfID7ZnnVwNWLaobgFzXYEJOC/6mbvmniKzZ+FWQAuIjgUW+Yp9oubtd2fagt3W3wdfAY86V4OYwQ1mAAAAAElFTkSuQmCC",
+        "url": "05b77dc52f725c1412ad10b10fed0516",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIBJREFUOI1jYaAyYKGZgVXSxf8pNaztaS8jC7oAPg1V0sX/camBOYiFWA0wCwmpwXAhpYZiRAqlhmKNZUoMxZlsyDUUbzokxVCiDCTHUKJyCjGGEu1CUg0lKS+TnLCJcQFJCZtYb5GUsCk1lOycgksdRhji4+MCyIbCDSQmjREDAItNo8U+7/xzAAAAAElFTkSuQmCC",
         "contentTYpe": "image/png",
         "height": 20,
         "width": 20
@@ -1202,12 +1208,12 @@ define({
     "layerName": "SLDWST",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
+    "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "e6fa57bdb2820b2e0046d1bb4da1aa23",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAANdJREFUOI3tzrFKw1AUxvE/3AvJUENpH8EtQqYGzlLHDj5DwUWc+gAO7uLaPoJuneoTCFkOBskWunVwcu+QDIe6FxK41UXoN37n8DvH88fxZ/AfglmWTZxz11EU7du23VRV9X0ymOf5ClgAmBne+2cRuVXVt2BQRO7MbHFUD83sNU3Tq7quv0I/vO/oL5IkmQNPQaCZjXqOjbsGfR9+Apcdxz6CwTiOH5qmuQEGR6P3sizXwWBRFDsRyc1sCUyBvXPuRVUfgUMwCKCqW2DWtxMEnpIz+Pv8AAr4QE9pmOHfAAAAAElFTkSuQmCC",
+        "url": "0b21bc1454bfddaf59baf36f48180f34",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAANlJREFUOI3t0CGLAkEYxvH/ixsEFcS7b2C0atRosAsuHFjEtLDaDHYxiKt+BAX3MHmf4LJgtxkuCRt3m+dcMIjHDtzoFcGnzfswv3kZi3+O9QQfEHzvvBaRoAKEJ8Xa9jjcDPouM0XgoM5ngeHSpWlP+DAGfZcWgvNrnBVhsepQqHt8mW0otDVN5ghvwMAMhJz+rdQLRLGdFhTYKsjHdYpoo7unBU8JevJNDUhfY3zaHitj0B6x97uUlGIqUAZCJDWXZNQ/u4YgQGPMDqheJvH/9mfwljzB+/MDj9ox1rDbE3sAAAAASUVORK5CYII=",
         "contentTYpe": "image/png",
         "height": 20,
         "width": 20
@@ -1224,12 +1230,12 @@ define({
     "layerName": "STATE_CLEANUP_SITES",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
+    "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "e51dd4ca1a0471d552c4a5b4572a4a6d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAUpJREFUOI1jYaAyYBk1kC4G8luEltvxCohz7t62/ArD09PXyDbQvXhJvIK2bRGvqKweAwMjg5ZryutHN06uWl/nWs7AwPCVJAM98+f5Kpv7T+Lg5OGDibFy8ooqG7pkBzftZVlb55xBkoEiysZpMMP+//3L8O//XwZmFjYGBgYGBkl1s0gRh4zpbw7MuEi0gexcvDow9qU9ixh2T0liKFz/k4GZhY2Bg4uHz9LMwWozKQYy/Pv/B8YUltVgcM2Zx8DEyAwV+c/w5/ffP9i04TTw26d35wQklVQYGBgYZLQsGWS0LOFyn98+f/P+2fV1JBn49undel5BUVteMXlJZPGf37/+e/PkRv+JlS1vSTJwZ3/EDf+qzW7fPn3oZucVsGRmYuL89fvHzW9vHk9dW+M8E5c+vOlwY5vvFQYGBk98akgykBwwaiDlAAAzjGfTde5j4AAAAABJRU5ErkJggg==",
+        "url": "348c08b48039ddf363b0808137bd0c83",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAMNJREFUOI3t0LEKQWEYxvH/K1kOJdyB0cpwEqPBNSiLTC7AYJeVS2AzcQWKk1J2m8GkjM7qNRxJ8sl3WNR5xufp/fX1xflx4hH4h+Aqp0U5URU4K8zKyDE06KEjTnQANKgGHtosI3Nr0ENbEGAPSQOTJVqoIAfbF7YNfSoGDaBvC2aMi0MW//X0DtwC+VeD+GxMR0YwBt0L1IHk07RwYWoNush+jZYuMAQqwBmHccKnJ4hagzd0B9TuheHfPgbDJAK/zxVLUinWImKMuQAAAABJRU5ErkJggg==",
         "contentTYpe": "image/png",
         "height": 20,
         "width": 20
@@ -1246,12 +1252,12 @@ define({
     "layerName": "EPAACRES",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
+    "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "64a3edc8be1a6447a7908910fabfbbdf",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAOFJREFUOI3t0LFKw1AUxvF/bi4SSAtFfYOOrnW0W1uiryC4SKcMkTp0cBeHkNA+Qrt1SouIuDgL7m4dOhU6JpvNdXMISfCmLoV+4/m4v3s4kn+OPIB7CHqnTktuaG8hVsgoZLGuDN5zNVYbXAUIANKnAc6Nz8tcGxzg3CpwM+MGiKlH5yzkbaUFpoi+yK/qJkfXwKMWKOC4qMMWJyT5VcmGfApo5nVGkn4UvSvZUA7h+xKoZT56D3ieaYM+0fKO3rmJHCm4AGLDFhMrsR4ApQ0CBLx+Ad3fQcHd/gxWyQHcPT/O4TH276NCgwAAAABJRU5ErkJggg==",
+        "url": "bd8649f7f10532129002af50272bf8f9",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAATdJREFUOI3t0T1Lw3AQx/GvbVKR4CAEHQpKQTOIi0JB6CRuThUVRNAugjiJxAe6uDr4EJykiENfgK+ho4OgiCCSwRQhi0Swwx+rjYlLC9pWa2MRB2+6ux/3WU6ixSX9g78DKtramDB3cy0Dwc9AOg7bhR+D6qA+6rgMoL0kMck2D2obfarid1VGR3iL5XZeHV6/rOzb791X2zauGoPSs+88SsfIjFQl447wLsr9gxIJzwHfAK8P7iCVQFMzwEJNXuIcOTQlrJ18TVYXBCBbxCSFpkeA2XdBHstJQLZY/67xU4aq5l7iPZ2cEQCMrfSXwdOo8JbsSGgLmWkKpSRw1DzYIU0qT96+sLo3bdIuMENMX4bwRDDQ9U6EZdx+2Fl7h0RXc0Ab4DcHmlVYpWzj5tObL8GA9ffBN2MAW29frh9SAAAAAElFTkSuQmCC",
         "contentTYpe": "image/png",
         "height": 20,
         "width": 20
@@ -1268,12 +1274,12 @@ define({
     "layerName": "EPANPDES",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
+    "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "85cfad0dcfc3509e72a8fbac1f1a65d1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAANpJREFUOI3t0LFqAlEQheH/uEIaA5I8gkUWbZNSy0BEyQsIwipWPoBF+pBW67UxXSqTxdo6kPZiZ5Eq/bY61gnrwtU0gqecGb4Zpsg/p3gGTxBMXHwrqWEoDWTzhzD6ORhMXDxBGhoAxsZ4SVzcbVV7797gh5v2EcM/5TLS63wV1x7D3rffhdIALKtzGZg6wLMXKOxq7zK43tfI++EXUMlexqc3aIVgpO2mCZR+1WHZCqM3b7B9010v3PRuK8ZAHUiFZhdB+oSyn5sLAjSr0Qq4z5vxAg/JGTw+O3ocNPfD6DxNAAAAAElFTkSuQmCC",
+        "url": "05f0d73cf6d86a1a5f06069c2760211a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAANZJREFUOI3t0LEOwVAUxvF/bztIkAjewGhlZDR4BolFTIZKDQa7GJo2PAKbiScwS+w2g0li1FGPRSJpStyySHzjObm/++VYfDnWH/xB0LaLFcs6169XLiKsfJ9TYnAwYCZy7omAUgBMHIe267LWBh2Hjgi9yDgHLGybsu9z1ALDkO69VTRZ06QFjLVApcg/20G6AEHs5lXDnVKU4naGEWyfvXvVcAg0gUzko43nsdQGXZdDv0/VNJmKUAMuhpGep1LBCBBtEMDz2AONxyT+bm+DSfIHP88NHLI3+T7n73MAAAAASUVORK5CYII=",
         "contentTYpe": "image/png",
         "height": 20,
         "width": 20
@@ -1290,12 +1296,12 @@ define({
     "layerName": "EPANPL",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
+    "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "05b77dc52f725c1412ad10b10fed0516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIBJREFUOI1jYaAyYKGZgVXSxf8pNaztaS8jC7oAPg1V0sX/camBOYiFWA0wCwmpwXAhpYZiRAqlhmKNZUoMxZlsyDUUbzokxVCiDCTHUKJyCjGGEu1CUg0lKS+TnLCJcQFJCZtYb5GUsCk1lOycgksdRhji4+MCyIbCDSQmjREDAItNo8U+7/xzAAAAAElFTkSuQmCC",
+        "url": "68d309f954682cd99f59bbc1878b0902",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAXBJREFUOI1jYaAyYBk1ECvY/euFlCubxDOqGLj333Pf+1c4F+7+9UKHGEOxGrjz2+vW/wwMXgwMDAy/fzAwvH7CIiirwnx2x7fXLxgYGBiYWf7NdGUTn0G0gddPc8SwcvyX+/eXYRcn93/TV0+YGW5dYL/EyfVf+dZFNmXn8M+mDAwMxBuoYvTb+s551sd6tt/W/vrOuOn1U5YpOpZfq948Z+tW0WNgYGL6V0uSl314hZ7MufRx89vnrDMFBP+2MjAwMPxnYDJ+dJPd0dDha7oTI+6wxBkpKXr8fhMOff4vYPHbi4GBgeHpXfY2aZVf150YxWfh0oPXQAYGBgYh6b/Vj25wtP77x8Dw/iWzsLbl90R86gkaGKcs0Na7/0v6qR3sciktHxY5M0lupshABgYGBlXD78U/vjKu5uH/PYmQWqIM5Ob78/P/P4bnjoySZ6lioDOT5OaG1V9eEGMYUQYyMDAwNITynKaqgaSAwW8gAB/9fW3/VUmeAAAAAElFTkSuQmCC",
         "contentTYpe": "image/png",
         "height": 20,
         "width": 20
@@ -1312,17 +1318,7 @@ define({
     "layerName": "REVIEWED_FEATURE_AREAS_100",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "00953cc7989d04e5d91fc222d198628a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgfUM9ZsoMaiRofEgAwNDL4oL/Rj8DlJgIAMDAy29PGrgqIGjBo4aiNXARobGg7AiiEzQi2IgTIBSAABuswqPfj8zhgAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 68,
@@ -1334,17 +1330,7 @@ define({
     "layerName": "REVIEWED_FEATURE_AREAS_200",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "2d5f658ba83e43fa1ead8ea9a651e1dd",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgdMZpi+mxKBMhszDDAwMs1BcGMIQcpgCAxkYGGjp5VEDRw0cNXDUQKwGZjJkHoYVQWSCWSgGwgQoBQCdsQopmSN8TwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 69,
@@ -1356,17 +1342,7 @@ define({
     "layerName": "REVIEWED_FEATURE_AREAS_1320",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "f339f116f049228d8f273fdc8f56d2b5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgUu4lzRTYlDM15hTDAwMm1FcGPA14BQlhjIw0NLLowaOGjhq4KiBWA2ElmeUgM0oBsIEKAUACQMLjU05SFYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 70,
@@ -1378,17 +1354,7 @@ define({
     "layerName": "REVIEWED_FEATURE_AREAS_2640",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "c08c412b70d32e84373a72f98075f827",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgWtE1hRQYlD89/gLX79+PYDiQr/vfhcoMZSBgZZeHjVw1MBRA0cNxGpg/Pd4ioqur1+/HkAxECZAKQAAJcUUdwOgwtYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 26,
@@ -1400,12 +1366,12 @@ define({
     "layerName": "BROWNFIELDS_AREAS",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
+    "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "56ec9c0b263492b7121c51589213d539",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEBJREFUOI1jYVAr/s9ARcBCTcOGqoG3ehlJMgEtDujgQt8VpMX6zdMEDNwcMdi9PGog5QaOwGRDYfk4FGOZQgAAUWUS+QR93soAAAAASUVORK5CYII=",
+        "url": "f77006b8084a9c0591a914d9df02bb4e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE1JREFUOI1jYaAyYKGZgRMmdl6jxKC7d54cnjx5cjqKC63sDA5TYCADAwMtvTxq4KiBowaOGojVwLt3nhyGFUHkgMmTJ6ejGAgToBQAAJJzFpYiA4cFAAAAAElFTkSuQmCC",
         "contentTYpe": "image/png",
         "height": 20,
         "width": 20
@@ -1422,17 +1388,7 @@ define({
     "layerName": "NPDES_STORMWATER",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "f77006b8084a9c0591a914d9df02bb4e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE1JREFUOI1jYaAyYKGZgRMmdl6jxKC7d54cnjx5cjqKC63sDA5TYCADAwMtvTxq4KiBowaOGojVwLt3nhyGFUHkgMmTJ6ejGAgToBQAAJJzFpYiA4cFAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 28,
@@ -1444,17 +1400,7 @@ define({
     "layerName": "DRAFT_POINTS",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "2fa9a046f28bd9638488536e0a3a46be",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 29,
@@ -1466,17 +1412,7 @@ define({
     "layerName": "DRAFT_SEGMENTS",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "2fa9a046f28bd9638488536e0a3a46be",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 30,
@@ -1488,17 +1424,7 @@ define({
     "layerName": "DRAFT_POLYGONS",
     "minScale": 500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "2fa9a046f28bd9638488536e0a3a46be",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 31,
@@ -1510,26 +1436,7 @@ define({
     "layerName": "DRAFT_TERMINI",
     "minScale": 800000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "Begin Point",
-        "url": "c79ad8ae88ecd2016a8daddee72639bf",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jYaAyYBk1cAgZeIbhTN5/hv98OKTPmjKYbifJQAYGhjJGBkZpbBL/Gf7PZGBgINlAssCogUPJQBMGExmqGkguGDWQcgAA3NcKtnEFjH8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "End Point",
-        "url": "d64bef3eb42eb023a598bccd4e807030",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYBk1kIHh/+lybgZGSWI0f2VguMnAaDIdv4EMjLFfGRi0iXTQXgYGBkIGUgZGDRw1cIQYyGiiQ10DKQSD30AA7VoIhE1G4tkAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 32,
@@ -1541,53 +1448,7 @@ define({
     "layerName": "DRAFT_POINTS",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "Editing",
-        "url": "4b29624a4349ef50e6c0c3896a7dc471",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAQtJREFUOI3t07FKw1AUxvF/bouiZxAkiJjJRcFBdzdfIHUUNwsRlA5ddRacRVAhgy9RqOQF3Jx1dxGuHYSDXZI4FEEkaU/FTb/xcu6PDw6nyS+n+Q9+yd4cLBxC0BLJI9WGhzyD+Uu4GEwJHq2KFH1V1qFE1QHlGrhtGHZEklg1vTeCyaxI0RthlQlVXQ+SLUifLQ3bqmzUYJ9ZBHcKHBvARgzlBA+AXSOYR+As4DKjwWJSQ29sOPiO1TXMwO0YwLuqx6qlXAEdIBqDDSE4M4LpWxgmsfeuDyxV/HmHYB9uHq0N8T59gINNkZkTVVrACvAKZODO4fqprvqY07t9UaULdOtnpgJ/lj8IfgDYnkfTuUX8KgAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Ready for GIS Analysis",
-        "url": "3b1e69291020ab35ee7f66d2f1a01497",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAASVJREFUOI3t1DFLw0AYgOH3Li3iKiJiJxcFB92lcEkha3V2dHCQDq46C/4AwV9SqCTQkFDq5qy7i1A7uCjp4edQlVIbc4KDgi/ccnAPN9x3FX64yj/4Ua/Xm7fWHgA7QA0YKKUiz/PO6/X68FtglmWr1toOsD6xvSYi29baVpIkzSAIrpzAfr8/l+d5ewqbbFEp1U7TdMsYc1cK5nm+D2wUYO8tiMgJcFgKKqWaIlLiAbDrBIpIzUUDluM41mEYvnwJAgNHcDiNFYEREJRpInI5a/8TOBqNLqrVaovx2yvqGTh1AsMwfEzTtCkiHWBpxpknpdSe7/s3TiCAMea62+1uaq2PGU/KCvAgIpHW+swYc1t09cLRazQa98DR23LuD/82vwZ8BWJqYCrN1B60AAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "GIS analysis Complete",
-        "url": "778becae2c234a1fd3483494352bf865",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAQxJREFUOI3t07FLQlEUx/HvETPkbiEhObUUONje1uD6bG6r4SXxBteaA1fBCHl/h6C8/oC25tpbgpdDcDEcPA1GgXl912iz33i498PvDCfPHyf/D35FY4ooIdAAUwGboiTk6ErIaCVQY3ZRMwC7P5tYgD2EQ6ZEGptAQnvvBWqHTdT0v7G5CCXU9rXHgTR5zm5Y5Axs1bXSZ7YQroCLbFAI0AxulmM/UKl4cVDWO3JSZ7ochNQTHM1jLjABjjI5Zbho/BMscMuECJau/o5w7QXKKW/aKwVIOgC2F/wZAydyzqNfQ0Ca6YPeUGPDXIJtADvAK5AgtCXkyVXdeXoS8QK2BbRcb1YCf5s1BD8AIehFHxx1CVMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "FIHS Consistency Review",
-        "url": "4dda173c46d0e5521030511b38334c84",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAO1JREFUOI3t0yFLw0EYwOHnlYHIv8kQccmiYNBu8wtsZqPBIAtWzYIfQPCTDCb7AjazdoswF4RDk2eQLej+7iY2/cXj7uG9g2v45Rr/4KQsL+EIHZWWZIgBLkOM5gKzvK7Sl2yCBDawi26ucjtS3BSBWV5U6U2wrzUlvSzvhHgomfBQslWDjVvGGY5LwPYMbNx+KdgqBFezvBDibRY4LARHn7E6cIC9AvB62uI08Apd31/9FedFYIjn3MxtQ32sTDnzgoMQd6UTimHcZnlb5VTSwRqefDzHRYj7utFrv16IR8kJTur2zAX+tD8IvgM7Fzp3Jj2nfgAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "ETDM QA/QC",
-        "url": "91ccd4344e80ccbae915c65e4e372b69",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAASFJREFUOI3t1LFLw0AUgPHvNamliIuIiJ1cFDpUOggiODi4ts5uOsQiGVx1FlwFRUr+jkIl3TWTgkPR3UWoRVwMavoclCA1bU5wUPCDWx7cj7vhzuaHs//BOA/NaxkHmypQADoKfibLkXMm3W+B3rLOaEgTmPs0nhVY6r3geotacQI5NwIP0ZyGNPqwOIEJjWjUizpfa8ttKphfYBMoJl8oblxG2QO2U0GxqGiUwr23ZgRqRMGIg6kWmllFekNBoGMIdvuxZNDCJ2IlTVM4TZp/AUfGOHl+wIWhVw/FYt8I3GjJY72kFcnRBCYT9jxhsb4VyLURCFC7kovjspayNru8UsVmGrjHwhc4cAK5GXT0gU/PvZQ7YOdjGfeHf5tfA74Boi9LHbVUAaMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 33,
@@ -1599,53 +1460,7 @@ define({
     "layerName": "DRAFT_SEGMENTS",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "Editing",
-        "url": "b3f83b1c9d44758d94024f632e5d8942",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC5JREFUOI1jYaAyYBk1cNRAigxM/0+ZUTMZ0QykDhhSBkLCgIoGUgeMGjgSDAQA6lQC60shsYQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Ready for GIS Analysis",
-        "url": "4d6c94020f728555359354705b63f663",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNRACgw8cODAf0oMcnBwYEQxkFpgCBkICwOqGUgtMGrgSDAQAMfXBRJzUz6TAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "GIS Analysis Complete",
-        "url": "006efe4b67758f7a13fd5962cef63242",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNRACgz8P5PhPyUGMaYzMKIYSC0whAyEhQHVDKQWGDVwJBgIAEFMA7rfGiDQAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "FIHS Consistency Review",
-        "url": "8549686f12f5596d65c941f5e699f45b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNRACgz8z/D/PyUGMTIwMqIYSC0whAyEhQHVDKQWGDVwJBgIAFuIA1TF5h66AAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "ETDM QA/QC",
-        "url": "648e75a81112e0249d2fe29430013147",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNRACgycafr/PyUGpZ9mZEQxkFpgCBkICwOqGUgtMGrgSDAQAMomBYVsHsqDAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 34,
@@ -1657,53 +1472,7 @@ define({
     "layerName": "DRAFT_POLYGONS",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "Editing",
-        "url": "71abdd45d3b77580817dc81b76c2f392",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGVJREFUOI1jYWBgYGBgSI9koAqYuZyFeoYxMDAwpEeywJgtqfZWlBhVM/vgMQYGBgYWQgpJBRgGulhaHyPFgD3Hj6L4jPYuHDVw1MBRA4kxED1vUmwgpQBuIKw8o4KBM5dTswoAALJFFDFNvZXrAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Ready for GIS Analysis",
-        "url": "ef2713686194b1259a4809945779ca82",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGdJREFUOI1jYWBgYNi/f38kAxWAo6PjchZqGcbAAHEYC4zD8oXfihLD/vB8PMbAwMDAQkghqQDDQNbXwsdIMeC36FsUn9HehaMGjho4aiAxBqLnTYoNpBTADYSVZxQb6OjouJyaVQAAH1wb3Wi2kTwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "GIS Analysis Complete",
-        "url": "7ea052edd7fa5b9f426677e42327b6d2",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGdJREFUOI1jYWBgYPg/kyGSgQqAMZ1hOQu1DGNggDiMBcZ5wzjFihLDRP7nHGNgYGBgIaSQVIBh4F0W32OkGKD8ZzOKz2jvwlEDRw0cNZAYA9HzJsUGUgrgBsLKM4oNZExnWE7NKgAAvgAXk4FIeQUAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "FIHS Consistency Review",
-        "url": "626f9b7d9969a8f9dfb1ff2cb0b833e3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGdJREFUOI1jYWBgYPjP8D+SgQqAkYFxOQu1DGNggDiMBcZ5k/rVihLDRGZzH2NgYGBgIaSQVIBh4F3Lt8dIMUD5uDCKz2jvwlEDRw0cNZAYA9HzJsUGUgrgBsLKM4oNZGRgXE7NKgAAZUYWXz09A1EAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "ETDM QA/QC",
-        "url": "76f59bb88e362e9f2dac5632a94a14fd",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGdJREFUOI1jYWBgYJhp+D+SgQog/TzjchZqGcbAAHEYC4wjYvPVihLD3hzhPsbAwMDAQkghqQDDQGnDt8dIMeDpeWEUn9HehaMGjho4aiAxBqLnTYoNpBTADYSVZxQbmH6ecTk1qwAAaI4a9b5RiqMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 35,
@@ -1715,17 +1484,7 @@ define({
     "layerName": "DRAFT_ALTERNATIVES",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "fae6f045daf0de5c57ba707910b5c4e1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jOTnvwTIGKgIWahqGYqCAPIcVJQZ9ePjjGIqB1AKjBqICNSfxY9jEb+17iTMCh7iXR6CB+GKTLAPJASPZQFh5RjUDqQUA2C8RiKRfL+4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 36,
@@ -1737,17 +1496,7 @@ define({
     "layerName": "DRAFT_FEATURE_AREAS_100",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "81ce7271d44a45cd4010093732e9747f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgQsYFmyixKAEhoSDDAwMvSgujGeIP0iBgQwMDLT08qiBowaOGjhqIFYDExgSDsKKIDJBL4qBMAFKAQCW5AnrH7341QAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 37,
@@ -1759,17 +1508,7 @@ define({
     "layerName": "DRAFT_FEATURE_AREAS_200",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "2d5f658ba83e43fa1ead8ea9a651e1dd",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgdMZpi+mxKBMhszDDAwMs1BcGMIQcpgCAxkYGGjp5VEDRw0cNXDUQKwGZjJkHoYVQWSCWSgGwgQoBQCdsQopmSN8TwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 38,
@@ -1781,17 +1520,7 @@ define({
     "layerName": "DRAFT_FEATURE_AREAS_500",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "3bd68ab52d7bfb09bf5ddbcdba848b7f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgfMZ5k+mxKBEhsRjDAwMy1FcGMgQeIwCAxkYGGjp5VEDRw0cNXDUQKwGJjIkHoMVQWSC5SgGwgQoBQAy7woTzgj6iwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 39,
@@ -1803,17 +1532,7 @@ define({
     "layerName": "DRAFT_FEATURE_AREAS_1320",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "f339f116f049228d8f273fdc8f56d2b5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgUu4lzRTYlDM15hTDAwMm1FcGPA14BQlhjIw0NLLowaOGjhq4KiBWA2ElmeUgM0oBsIEKAUACQMLjU05SFYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 40,
@@ -1825,17 +1544,7 @@ define({
     "layerName": "DRAFT_FEATURE_AREAS_2640",
     "minScale": 500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "c08c412b70d32e84373a72f98075f827",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgWtE1hRQYlD89/gLX79+PYDiQr/vfhcoMZSBgZZeHjVw1MBRA0cNxGpg/Pd4ioqur1+/HkAxECZAKQAAJcUUdwOgwtYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 41,
@@ -1847,17 +1556,7 @@ define({
     "layerName": "DRAFT_FEATURE_AREAS_5280",
     "minScale": 500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "c105fb5502481f85533a55fa9648dd59",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgZulN8dQYlDiz8Trb968OYviQp+fPtcpMZSBgZZeHjVw1MBRA0cNxGpg4s9EioquN2/enEUxECZAKQAAP5IUbevxeFEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 42,
@@ -1869,17 +1568,7 @@ define({
     "layerName": "DRAFT_ANALYSIS_AREAS_100",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "9bd1848bc3ac0fbe595cb0a2bf887729",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFFJREFUOI1jYaAyYGFgYGA4x3AukhqGGTEYLWdB4ltRaN4xBgaoC9EFyQBwx6AbSDEYNXDUwFEDh6eBlBZhKAaSW3RhGmjEYLScGoYxMDAwAABo8wdcaLKJ1QAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 43,
@@ -1891,17 +1580,7 @@ define({
     "layerName": "DRAFT_ANALYSIS_AREAS_200",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "256690bc75c99019768adaf657b76ffc",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGB4zfDalxqGiTKIbmaB87gZzCgy7SvDKQYGqAvRBUkGSI5hwaeOHDBq4KiBowYORwMpLcJQDCS36MJmoCiD6GZqGMbAwMAAAL5JCi7TwcZ0AAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 44,
@@ -1913,17 +1592,7 @@ define({
     "layerName": "DRAFT_ANALYSIS_AREAS_500",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "97ad7537002c093c0c99d90392e66b0a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGD4wP3BgRqGCXwVOMAC53EyGFBk2neGCwwMUBeiC5IMkBzDgk8dOWDUwFEDRw0cjgZSWoShGEhu0YXNQIGvAgeoYRgDAwMDALvJDCYOtyLeAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 45,
@@ -1935,17 +1604,7 @@ define({
     "layerName": "DRAFT_ANALYSIS_AREAS_1320",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "90398305a7137e2be19f9c261695a823",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGD4JvLNmBqGcb3hOssC57EzaFJk2k+G6wwMUBeiC5IMkBzDgk8dOWDUwFEDRw0cjgZSWoShGEhu0YXNQK43XGepYRgDAwMDALiaDB4qJNmJAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 46,
@@ -1957,17 +1616,7 @@ define({
     "layerName": "DRAFT_ANALYSIS_AREAS_5280",
     "minScale": 500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "03c6720fc93a15d65da37e8e92933e74",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE9JREFUOI3t1L0JACAMhNEvkB0E959NcAptRPzpTCrJdUnxuOoU5yhAo2UPTJCiy52MXoXR8Hw+ZJY5QXMCDDDAP0HrhG3g63TdoCDFAwPoXG0HOcscPf0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 47,
@@ -1979,17 +1628,7 @@ define({
     "layerName": "DRAFT_ANALYSIS_AREAS_2640",
     "minScale": 500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "1f577e297979195d47d27da4e03aa0ee",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFhJREFUOI1jYaAyYGFgYGD4yfBTjRqGsTOw32KBcRgZGBUoMew/w/8HDAxQF6ILkgqQHcOCUxWZYNTAUQNHDRyGBlJahKEYSG7RhdVAdgb2W9QwjIGBgQEAB4UNOV0E1hoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 48,
@@ -2001,26 +1640,7 @@ define({
     "layerName": "ETAT_REVIEW_POINTS",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "AN Review",
-        "url": "a00f9149d3db04218f8abb53a35ad42a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAO1JREFUOI3t0yFLg0EYwPHfyUDkmgwRTRYFg3abX2AzGw0GWbBqFvwAgp9kMNkXsJm1W4TXBeFBk69BtqB79SY2/cfj7sdzB9fyy7X+wUk1CzhEV86rIioMcZEYzQTWrMl5IGIDRMA6dtCrc+6kiOsisGZezv0J9rm2iH7NduK+ZMIDEZsN2LhFnOKoBOx8g43bKwVXC8HlmrnE63dgVQiOPmJN4BC7BeDVtMVp4CV6vr76C86KwMRT3W53VNUAS1POPGM/cVs6oVRVNzVbcj4R0cUKHr0/x3nirmn0xq+XeBBxjOOmPTOBP+0Pgm/3Wj017gBcLwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "ETAT Review",
-        "url": "a00f9149d3db04218f8abb53a35ad42a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAO1JREFUOI3t0yFLg0EYwPHfyUDkmgwRTRYFg3abX2AzGw0GWbBqFvwAgp9kMNkXsJm1W4TXBeFBk69BtqB79SY2/cfj7sdzB9fyy7X+wUk1CzhEV86rIioMcZEYzQTWrMl5IGIDRMA6dtCrc+6kiOsisGZezv0J9rm2iH7NduK+ZMIDEZsN2LhFnOKoBOx8g43bKwVXC8HlmrnE63dgVQiOPmJN4BC7BeDVtMVp4CV6vr76C86KwMRT3W53VNUAS1POPGM/cVs6oVRVNzVbcj4R0cUKHr0/x3nirmn0xq+XeBBxjOOmPTOBP+0Pgm/3Wj017gBcLwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 49,
@@ -2032,26 +1652,7 @@ define({
     "layerName": "ETAT_REVIEW_SEGMENTS",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "AN Review",
-        "url": "6fbba9b3b2225fdfb6a66e9f9a46c67b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI3t0rEJADAQQtEvuP/KlyJkgWCRgFdZPRTOhM8FC16CA5PABHIKg10sP1mg6OQTEiB88zYF3wIXh/cIUShNGbgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "ETAT Review",
-        "url": "6fbba9b3b2225fdfb6a66e9f9a46c67b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI3t0rEJADAQQtEvuP/KlyJkgWCRgFdZPRTOhM8FC16CA5PABHIKg10sP1mg6OQTEiB88zYF3wIXh/cIUShNGbgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 50,
@@ -2063,26 +1664,7 @@ define({
     "layerName": "ETAT_REVIEW_POLYGONS",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "AN Review",
-        "url": "cdcc3c0e77a8dd9509c647a4222ad428",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEdJREFUOI1j+c/AsIyBioCFmoahGtjdbUWRSaWlx1ANpBIYNRANlJQcwyre04MzAoe6l0eggXhikzwDyQAj2kBoeUY9A6kEAJz/Cvig3s0oAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "ETAT Review",
-        "url": "cdcc3c0e77a8dd9509c647a4222ad428",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEdJREFUOI1j+c/AsIyBioCFmoahGtjdbUWRSaWlx1ANpBIYNRANlJQcwyre04MzAoe6l0eggXhikzwDyQAj2kBoeUY9A6kEAJz/Cvig3s0oAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 51,
@@ -2094,26 +1676,7 @@ define({
     "layerName": "ETAT_REVIEW_ALTERNATIVES",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "AN Review",
-        "url": "cdcc3c0e77a8dd9509c647a4222ad428",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEdJREFUOI1j+c/AsIyBioCFmoahGtjdbUWRSaWlx1ANpBIYNRANlJQcwyre04MzAoe6l0eggXhikzwDyQAj2kBoeUY9A6kEAJz/Cvig3s0oAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "ETAT Review",
-        "url": "cdcc3c0e77a8dd9509c647a4222ad428",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEdJREFUOI1j+c/AsIyBioCFmoahGtjdbUWRSaWlx1ANpBIYNRANlJQcwyre04MzAoe6l0eggXhikzwDyQAj2kBoeUY9A6kEAJz/Cvig3s0oAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 52,
@@ -2125,17 +1688,7 @@ define({
     "layerName": "ETAT_REVIEW_FEATURE_AREAS_100",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "00953cc7989d04e5d91fc222d198628a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgfUM9ZsoMaiRofEgAwNDL4oL/Rj8DlJgIAMDAy29PGrgqIGjBo4aiNXARobGg7AiiEzQi2IgTIBSAABuswqPfj8zhgAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 53,
@@ -2147,17 +1700,7 @@ define({
     "layerName": "ETAT_REVIEW_ANALYSIS_100",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "9bd1848bc3ac0fbe595cb0a2bf887729",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFFJREFUOI1jYaAyYGFgYGA4x3AukhqGGTEYLWdB4ltRaN4xBgaoC9EFyQBwx6AbSDEYNXDUwFEDh6eBlBZhKAaSW3RhGmjEYLScGoYxMDAwAABo8wdcaLKJ1QAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 54,
@@ -2169,17 +1712,7 @@ define({
     "layerName": "ETAT_REVIEW_ANALYSIS_200",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "256690bc75c99019768adaf657b76ffc",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGB4zfDalxqGiTKIbmaB87gZzCgy7SvDKQYGqAvRBUkGSI5hwaeOHDBq4KiBowYORwMpLcJQDCS36MJmoCiD6GZqGMbAwMAAAL5JCi7TwcZ0AAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 55,
@@ -2191,17 +1724,7 @@ define({
     "layerName": "ETAT_REVIEW_ANALYSIS_500",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "97ad7537002c093c0c99d90392e66b0a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGD4wP3BgRqGCXwVOMAC53EyGFBk2neGCwwMUBeiC5IMkBzDgk8dOWDUwFEDRw0cjgZSWoShGEhu0YXNQIGvAgeoYRgDAwMDALvJDCYOtyLeAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 56,
@@ -2213,17 +1736,7 @@ define({
     "layerName": "ETAT_REVIEW_ANALYSIS_1320",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "90398305a7137e2be19f9c261695a823",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGD4JvLNmBqGcb3hOssC57EzaFJk2k+G6wwMUBeiC5IMkBzDgk8dOWDUwFEDRw0cjgZSWoShGEhu0YXNQK43XGepYRgDAwMDALiaDB4qJNmJAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 57,
@@ -2235,17 +1748,7 @@ define({
     "layerName": "ETAT_REVIEW_ANALYSIS_2640",
     "minScale": 500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "1f577e297979195d47d27da4e03aa0ee",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFhJREFUOI1jYaAyYGFgYGD4yfBTjRqGsTOw32KBcRgZGBUoMew/w/8HDAxQF6ILkgqQHcOCUxWZYNTAUQNHDRyGBlJahKEYSG7RhdVAdgb2W9QwjIGBgQEAB4UNOV0E1hoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 58,
@@ -2257,17 +1760,7 @@ define({
     "layerName": "ETAT_REVIEW_ANALYSIS_5280",
     "minScale": 500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "03c6720fc93a15d65da37e8e92933e74",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE9JREFUOI3t1L0JACAMhNEvkB0E959NcAptRPzpTCrJdUnxuOoU5yhAo2UPTJCiy52MXoXR8Hw+ZJY5QXMCDDDAP0HrhG3g63TdoCDFAwPoXG0HOcscPf0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 59,
@@ -2279,17 +1772,7 @@ define({
     "layerName": "REVIEWED_SEGMENTS",
     "minScale": 800000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "2fa9a046f28bd9638488536e0a3a46be",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 60,
@@ -2301,17 +1784,7 @@ define({
     "layerName": "REVIEWED_POLYGONS",
     "minScale": 800000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "2fa9a046f28bd9638488536e0a3a46be",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 61,
@@ -2323,26 +1796,7 @@ define({
     "layerName": "REVIEWED_TERMINI",
     "minScale": 800000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "Begin Point",
-        "url": "c79ad8ae88ecd2016a8daddee72639bf",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jYaAyYBk1cAgZeIbhTN5/hv98OKTPmjKYbifJQAYGhjJGBkZpbBL/Gf7PZGBgINlAssCogUPJQBMGExmqGkguGDWQcgAA3NcKtnEFjH8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "End Point",
-        "url": "d64bef3eb42eb023a598bccd4e807030",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYBk1kIHh/+lybgZGSWI0f2VguMnAaDIdv4EMjLFfGRi0iXTQXgYGBkIGUgZGDRw1cIQYyGiiQ10DKQSD30AA7VoIhE1G4tkAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 62,
@@ -2354,62 +1808,7 @@ define({
     "layerName": "REVIEWED_POINTS",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "TBD",
-        "url": "d26d5c933eefefff8dc3152f39028c99",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAO9JREFUOI3t06FKg1EYBuDnk4HI32SIuGRRMGi3eQOb2WgwyMKqZsELELySwWQ3YDNrtwi/C8KPJo9hTEH3uzOx6Rs/znl4zwen4ZfT+Affk5IlHKFD0aIqMcRFhNFcYErWKQZUm+NJBRvYRTeloh1RXWeBKVmk6H9gX9Kk6qdkJ8J9TsNDqq0abJJlnOI4B2zPwCbZzwVbmeBqShYivM4Cy0xw9BmrA4fYywCvpg2ngZfo+v7pLzjLAiM8pdRsUw6wMuXOMw4i3OY2FFHepGSb4oSqgzU8Gq/jPMJdXfXarxfhgaqHXt2ZucCf5g+CbzhZOnf63lkOAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Review Complete",
-        "url": "736e28a4625498e625b330f0a0347a80",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAS5JREFUOI3t1LFLQlEUx/HvfYqHNgmJ6A3yFoWGwrWtf0CbGxsawqG1SNMMWoOgv0Qw/AfacpOaHOwNycsgedh7g7chI6in7wYNBf3gLgfOh3OGc5P8cJL/4EeOWXBwdkd6VBJLbDQemrar3AvqDL8F5o5yjo/fCgnzogT0WxnFhqOc8qA2KPo1/9oMPEf8J78J5KMaQh1m0qSb2Up2vdvo3seCmWFmB8XqrJWmWRwnxofAXiwoSoox2PukW0YgYJuAwDJgAZO5YKADT5SYgMPPWCQoStrAZiynuIoqfwHdiXtpW3aZ+au/oDk1AmnwHFSDIoqWIEsRPWNg2627t2Yg4J14N4VKYa1v9Q8EKQErwCPQTiVSZ71q727W6DNPr9PoPAD702ecv/zb/BbwFSqOV7CsCu3cAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Dispute Resolution In Progress",
-        "url": "255e151d841026754e77ad25dd6e50b8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAQ5JREFUOI3t07ErhHEYB/DPzyviHZQuyU0WykBWdQNlPUYZDQYZbmVW/gDlL1G4GxUmVnYDOjeoNxd5X4MYuHMv2fiOT7/fp+8zPN1+Od3/4HuyJX2urWKBuEhSR9WjnXCs8S0wKxl1G++TjL9OEhjDjB7r2XxcDrXkJBeY0SuK96Rv2KcUPCV72bypUHPVueGcFWky0QZ7y6CmTax1Bp+URR04iCzmAyPFHBwMZ3QF0q9B6jnBxkesNdilKjWbAzxoNWy18q7UOl+s/qyp31YuMNTcZ6VCWVTfx1CLPw8iy+HQRb6GCEf1s2zapIF4g2QBI7hDVdN2OHXZrnzb0wvnbkgqqLR78y3wp/mD4AtwC0Yr1W9QiwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Summary Report Complete",
-        "url": "f4bdfdea9dfe12c7788429079212ed0d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAATFJREFUOI3t1L1LAzEYgPEnl+LXIkgRsZOLgoPiKnRQ6Np2FEdBB+ngJFS8fnhqwUkQ/EsK1XYU1ElX3R1UahUXj2ubOPgtd14EBwUfyPJCfiRDEuGHi/yDr83k892XeAsIUkAMVB2oerpr57BYbHwLjG+sDl03vQow8ja1hoHJDuFlEoXlZK2wdWQGbs93ytt2WYn32IeiTWQ5YdvjNce5CAWn76JzSjAagL3U58rWCrAYCjYtkZRKh3ggIW0ESqVjodpTA4AFqC9BoG4INj5jvqClqSrBlAG45zf0uXJkV8lWBgi8ehvcHs26EVhznPt4LpuUFhWg32fPg9TM7hdLZ0YgwMFa6WTCtsd6ZSsLpIBB4AZN1ZWidJzbPA86feDTO3WcK2DpeRn3h3+bXwM+AqeqV1d4kYYmAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Work Program",
-        "url": "994315024b885530a38fd94c22a8f71e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAATpJREFUOI3t1LFLw0AUx/HfPQPRSRARMZOLgsVkd3PI4GDiKI6CDtKhOFTi4qIUOwmC/4iF2GTXTWiloLhJF6EWqkNjwfcc2jpo2kRwUPALtxzchzuOOw0/nPYPfnSwXhsbfeFtsLgKygCjIYRAb9Hp7mWm+S3wyK3NjrTefEDNA6o7SZhTwFJnnLNFu+rkQ/MqFXiyda9H9Xapi8U2yZoqFeyK5YVWPRF8fYg2QWph0JF6TSiN9gHsJIJCcBKwfmupQMUwhFKB0yFCsmHzUJBJGqp/EcMiND9jsSCxCoSwnAiyXMRNfwF15rOIKAvAGMJFwjhMBeZC6/l45cYRwAcwFbOmLSwbXtm8TQUCwJ6/eF1crZrSgSdQLggzAJ5ACMBU8MqZu0FbH/j08ufmI4Bcb6TuD/82vwZ8B8YbYHU6nlrKAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Location Design Concept Acceptance (LDCA)",
-        "url": "f0af1de37765f09b97dfac3c4544e7cb",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAATxJREFUOI3t1L1LQlEcxvHv73R7m4KIiJxaEhpqb2twCOp6pSUagxrCoSlQoogsoSkI+i8iQcH07rU11xougQmWkL14TkPaUF7vDRoKeuAsPzgfnsPhHIsfjvUPfmRxO9P/0KNWtTZRhJCGsjIUq6/m6HzHqXwLjO5lx6rG5DEmjLzPFIwjTA90Szyyn7HdpHMRCFw5POkt1XQOCHuUGLK05CLp3JSbmCv5gjc1a1nBhNeRmhm0Go0ksOYLKrB9sFacQKCGkAoGjoCrIKI7NzSUWxfRKQqpfMbaN1RSVMbM+IEac9Zu/hWsvxyrPiuOIdTBq+suSQUC3d2F+9lUxgbJA8Nt9jxqZKmQsK8CgQD5Tedy/uB08vlJEohEFYwCdwopat1IF7Zi117VPZ9ediN2C6w3V+D84d/m14Bv36tfbLmzwt8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 63,
@@ -2421,71 +1820,7 @@ define({
     "layerName": "REVIEWED_SEGMENTS",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "TBD",
-        "url": "9d8469223c447c5f447b839f3ba6075e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD5JREFUOI3t0rEJADAQQtEv3P4rmyJkgWCRgFdZPRRuCN8ULHgJ2jiBSWhSGOxi+ckSik4+IQHCN29T8C1wAcXdDFFTzyiHAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Review Complete",
-        "url": "85c8c5c2bb736e3ce95d31fa8ed6fc12",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYBk1cNRAMg2Urpf+Tw3DnjY+ZWShlmEMDBCHUd/LTxufMlLVyzAGNQxkYBgyyWbUwMFlIAC/XxBRaZREOgAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Dispute Resolution In Progress",
-        "url": "443cd1c2e78c38145caa5cccf85443cf",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYBk1cNRAMg3878DwnxqGMR5gYGShlmEMDBCHUd/LjAcYGKnqZRiDGgYyMAyZZDNq4OAyEABh6wxRJl6eEQAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Summary Report Complete",
-        "url": "81c58be8d935864ed05d3fc1b6e2581e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYBk1cNRAMg10aKj8Tw3DDjS0M7JQyzAGBojDqO/lAw3tjFT1MoxBDQMZGIZMshk1cHAZCAC1YhBRZBI6IwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Work Program",
-        "url": "8e082b708d7c5bf7bac7ff6655babd21",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYBk1cNRAMg3s8Lz8nxqGVWzXZWShlmEMDBCHUd/LFdt1GanqZRiDGgYyMAyZZDNq4OAyEAB80BBRaKiVxAAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Location Design Concept Acceptance (LDCA)",
-        "url": "9648ff82ca70f9db4d2bd1507e3bca28",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYBk1cNRAMg30bNn4nxqGba/xZ2ShlmEMDBCHUd/L22v8GanqZRiDGgYyMAyZZDNq4OAyEAA2AhBRlKbV7wAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Analysis Complete",
-        "url": "a5a04292ed3498e61a61586c071a4e4d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADlJREFUOI1jYaAyYBk1cNRAsg1M/08d42YyslDPMAYGBob0/7Tw8kxGKnsZwqCOgUMo2YwaOJgMBABksAhRRNsDjwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 64,
@@ -2497,17 +1832,7 @@ define({
     "layerName": "REVIEWED_POINTS",
     "minScale": 800000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "2fa9a046f28bd9638488536e0a3a46be",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 65,
@@ -2519,62 +1844,7 @@ define({
     "layerName": "REVIEWED_POLYGONS",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "TBD",
-        "url": "45e429e012542884801efd9035e0535f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE1JREFUOI1jYaAyYKGZgUuWxD+gxKATJ3iPTZkyJQrFhdHRC4+Rb2AOAwMDLb08auCogaMGjhqI1cATJ3iPwYogcsCUKVOiUAyECVAKALUeE/UTIwrMAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Review Complete",
-        "url": "52deb333d9f115a083495eb388129681",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jka6XXsZARcBCTcNQDCzWK7aixKDeS73HUAykFhg1EBUUBhUewybev64fZwQOcS+PQAPxxSZZBpIDRrKBsPKMagZSCwAANEcOZCpX5acAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Dispute Resolution In Progress",
-        "url": "b88f64afff13c2b5e427b2cd8fa33dc4",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1j+W/LsIyBioCFmoahGhjWbUWRSatKj6EaSCUwaiAayCk5hlV8Sg/OCBzqXh6BBuKJTfIMJAOMaAOh5Rn1DKQSAABA5wtyMlXbeQAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Summary Report Complete",
-        "url": "c538b49e10d052db90d55331514450ed",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jsW2oXMZARcBCTcNQDAzTNbSixKBVl88fQzGQWmDUQFSQExR6DJv4lHWrcUbgEPfyCDQQX2ySZSA5YCQbCCvPqGYgtQAAxm8PZrU8RYIAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Work Program",
-        "url": "9467b3940a8e0cda1b91f9e4adb1c923",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1j6fC8vIyBioCFmoahGKjpx2tFiUHXN30+hmIgtcCogajAL0P+GDbxTTMe4ozAIe7lEWggvtgky0BywEg2EFaeUc1AagEACocQQmTPKY4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Location Design Concept Acceptance (LDCA)",
-        "url": "bdad03cdc76a825f178685df2e17e7de",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1j8WzZuIyBioCFmoahGOinI2FFiUGbrrw4hmIgtcCogaggw9/sGDbxGRtP4YzAIe7lEWggvtgky0BywEg2EFaeUc1AagEA5RsP9sBrafgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 66,
@@ -2586,71 +1856,7 @@ define({
     "layerName": "REVIEWED_ALTERNATIVES",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "TBD",
-        "url": "45e429e012542884801efd9035e0535f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE1JREFUOI1jYaAyYKGZgUuWxD+gxKATJ3iPTZkyJQrFhdHRC4+Rb2AOAwMDLb08auCogaMGjhqI1cATJ3iPwYogcsCUKVOiUAyECVAKALUeE/UTIwrMAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Review Complete",
-        "url": "52deb333d9f115a083495eb388129681",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jka6XXsZARcBCTcNQDCzWK7aixKDeS73HUAykFhg1EBUUBhUewybev64fZwQOcS+PQAPxxSZZBpIDRrKBsPKMagZSCwAANEcOZCpX5acAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Dispute Resolution In Progress",
-        "url": "b88f64afff13c2b5e427b2cd8fa33dc4",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1j+W/LsIyBioCFmoahGhjWbUWRSatKj6EaSCUwaiAayCk5hlV8Sg/OCBzqXh6BBuKJTfIMJAOMaAOh5Rn1DKQSAABA5wtyMlXbeQAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Summary Report Complete",
-        "url": "c538b49e10d052db90d55331514450ed",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jsW2oXMZARcBCTcNQDAzTNbSixKBVl88fQzGQWmDUQFSQExR6DJv4lHWrcUbgEPfyCDQQX2ySZSA5YCQbCCvPqGYgtQAAxm8PZrU8RYIAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Work Program",
-        "url": "9467b3940a8e0cda1b91f9e4adb1c923",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1j6fC8vIyBioCFmoahGKjpx2tFiUHXN30+hmIgtcCogajAL0P+GDbxTTMe4ozAIe7lEWggvtgky0BywEg2EFaeUc1AagEACocQQmTPKY4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Location Design Concept Acceptance (LDCA)",
-        "url": "bdad03cdc76a825f178685df2e17e7de",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1j8WzZuIyBioCFmoahGOinI2FFiUGbrrw4hmIgtcCogaggw9/sGDbxGRtP4YzAIe7lEWggvtgky0BywEg2EFaeUc1AagEA5RsP9sBrafgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Currently Draft",
-        "url": "2e7046a6b7286513c85098070e6d3966",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jYWBIX8ZARcBCTcNQDOzutrKixKDS0mPHUAykFhg1EBWUlMQdwybe07MIZwQOcS+PQAPxxSZZBpIDRrKBsPKMagZSCwAADa0NyGpIqn4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 89,
@@ -2662,17 +1868,7 @@ define({
     "layerName": "ELIMINATED_FEATURE_AREAS_2640",
     "minScale": 500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "c08c412b70d32e84373a72f98075f827",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgWtE1hRQYlD89/gLX79+PYDiQr/vfhcoMZSBgZZeHjVw1MBRA0cNxGpg/Pd4ioqur1+/HkAxECZAKQAAJcUUdwOgwtYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 90,
@@ -2684,17 +1880,7 @@ define({
     "layerName": "ELIMINATED_FEATURE_AREAS_5280",
     "minScale": 500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "c105fb5502481f85533a55fa9648dd59",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgZulN8dQYlDiz8Trb968OYviQp+fPtcpMZSBgZZeHjVw1MBRA0cNxGpg4s9EioquN2/enEUxECZAKQAAP5IUbevxeFEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 91,
@@ -2706,17 +1892,7 @@ define({
     "layerName": "ELIMINATED_ANALYSIS_AREAS_100",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "9bd1848bc3ac0fbe595cb0a2bf887729",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFFJREFUOI1jYaAyYGFgYGA4x3AukhqGGTEYLWdB4ltRaN4xBgaoC9EFyQBwx6AbSDEYNXDUwFEDh6eBlBZhKAaSW3RhGmjEYLScGoYxMDAwAABo8wdcaLKJ1QAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 92,
@@ -2728,17 +1904,7 @@ define({
     "layerName": "ELIMINATED_ANALYSIS_AREAS_200",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "256690bc75c99019768adaf657b76ffc",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGB4zfDalxqGiTKIbmaB87gZzCgy7SvDKQYGqAvRBUkGSI5hwaeOHDBq4KiBowYORwMpLcJQDCS36MJmoCiD6GZqGMbAwMAAAL5JCi7TwcZ0AAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 93,
@@ -2750,17 +1916,7 @@ define({
     "layerName": "ELIMINATED_FEATURE_AREAS_1320",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "f339f116f049228d8f273fdc8f56d2b5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgUu4lzRTYlDM15hTDAwMm1FcGPA14BQlhjIw0NLLowaOGjhq4KiBWA2ElmeUgM0oBsIEKAUACQMLjU05SFYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 94,
@@ -2772,17 +1928,7 @@ define({
     "layerName": "ELIMINATED_ANALYSIS_AREAS_500",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "97ad7537002c093c0c99d90392e66b0a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGD4wP3BgRqGCXwVOMAC53EyGFBk2neGCwwMUBeiC5IMkBzDgk8dOWDUwFEDRw0cjgZSWoShGEhu0YXNQIGvAgeoYRgDAwMDALvJDCYOtyLeAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 107,
@@ -2794,109 +1940,59 @@ define({
     "layerName": "REVIEWED_ANALYSIS_AREAS_5280",
     "minScale": 500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "03c6720fc93a15d65da37e8e92933e74",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE9JREFUOI3t1L0JACAMhNEvkB0E959NcAptRPzpTCrJdUnxuOoU5yhAo2UPTJCiy52MXoXR8Hw+ZJY5QXMCDDDAP0HrhG3g63TdoCDFAwPoXG0HOcscPf0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
-    "id": 108,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/0",
-    "name": "County Commission approved Historic Structures - Highlands County",
-    "description": "This layer represents the location of 10 historic structures approved for local listing by the Highlands County Board of County Commissioners. These locations and the recorder numbers (represented by the 'ID' attribute) are based on a historic resources survey conducted in 1994 by Historic Property Associates, Inc. entitled \"Historic Properties Survey of Highlands County and the City of Lake Placid\". ",
-    "longName": "County Commission approved Historic Structures - Highlands County",
+    "id": 719,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/7",
+    "name": "SHPO Survey Areas",
+    "description": "This data set contains cultural resource field survey project boundaries and basic survey attributes as recorded at the Florida Master Site File.",
+    "longName": "SHPO Survey Areas",
     "type": "feature",
-    "layerName": "C28_HIST_PROP",
+    "layerName": "SHPO_SURVEYS",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "75f1b1f532441df6e2e7d2a83324e590",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jYaAyYBk1cAgZ+P9ESh4DAwMfVklGhrOM5nO2k2QgAwNDGQMDgzR22xhmMjAwkGwgWWDUwKFkIKPFHBmqGkguGDWQcgAAWzQJIjzztnwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
-    "id": 109,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/1",
-    "name": "Historic Structures",
-    "description": "This dataset contains historic structure locations and attributes as recorded at the Florida Master Site File.",
-    "longName": "Historic Structures",
+    "id": 720,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/8",
+    "name": "High Archaeological Site Potential - Highlands County",
+    "description": "This dataset represents areas of high archaeological site potential within Highlands County.",
+    "longName": "High Archaeological Site Potential - Highlands County",
     "type": "feature",
-    "layerName": "SHPO_STRUCTURES",
+    "layerName": "C28_ARC_SITE_POT",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "7725192ad6abf62eb04b417343357438",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEtJREFUOI1jYaAyYBk1cAgZ+P8EQx4DAwMfVklGhrOM5gzbSTKQgYGhjIGBQRq7bQwzGRhIN5AsMGrgUDKQ0YJBhqoGkgtGDaQcAAADtQeGn1jIzQAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
-    "id": 110,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/2",
-    "name": "State Historic Bridges",
-    "description": "This data set contains historic bridge locations and basic bridge attributes as recorded at the Florida Master Site File.",
-    "longName": "State Historic Bridges",
+    "id": 721,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/9",
+    "name": "National Historic Preservation Act Certified Local Governments",
+    "description": "This dataset contains 2017 National Historic Preservation Act Certified Local Governments information for the State of Florida. This dataset contains fields denoting the physical location and contact information for Florida Certified Local Governments based on data taken from the Florida Division of Historical Resources. City boundary data has been derived from the 2015 Parcel Derived City Limits FGDL layer: PAR_CITYLM_2015.shp, while the County boundary data has been derived from the US Census Bureau FGDL layer: CNTBND_SEP15.shp. This is an update to the FGDL layer CLGBND_MAR11.shp.",
+    "longName": "National Historic Preservation Act Certified Local Governments",
     "type": "feature",
-    "layerName": "SHPO_BRIDGES",
+    "layerName": "CLGBND",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 722,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Historic_Resources_S/MapServer/0",
+    "name": "Archaeological and Historic Sites",
+    "description": "This data set contains archaeological site boundaries and basic site attributes as recorded at the Florida Master Site File.",
+    "longName": "Archaeological and Historic Sites",
+    "type": "feature",
+    "layerName": "SHPO_ALL_SITES",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "0cab20705cb3f2aadf2d2d4d2db15090",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYBk1cNRAMg2cyTDzPzUMS2dIZ2ShlmEMDBCHUd/L6QzpjFT1MoxBDQMZGIZMshk1cHAZCABFsgxR+Em8PgAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
-    "id": 111,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/3",
-    "name": "State Historical Highways",
-    "description": "This dataset contains the current State Historic Highways as designated by the State Legislature and stipulated in the Laws of Florida.",
-    "longName": "State Historical Highways",
-    "type": "feature",
-    "layerName": "SHH",
-    "minScale": 250000,
-    "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "41216acc5ccf4a020fd253d4648bff29",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgQ0NDf8pNayhoYGRdi4cNXDUwFEDRw0cGgY2NDQwohgIE6AUAAA4WwdT4pyLowAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 112,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/4",
+    "id": 723,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Historic_Resources_S/MapServer/1",
     "name": "SHPO National Register Sites",
     "description": "This data set contains the locations and basic attributes of sites, buildings, objects, structures, and districts listed on the National Register of Historic Places (NRHP).",
     "longName": "SHPO National Register Sites",
@@ -2904,61 +2000,7 @@ define({
     "layerName": "SHPO_NATL_REGISTER",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "69843647c9edfc264e9e9fe67435fb13",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgRmL3RdTYtCM2J2HGRgYZqG40DpK6zAFBjIwMNDSy6MGjho4auCogVgNnBG78zCsCCITzEIxECZAKQAA6w0N1Fu/pMIAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 113,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/5",
-    "name": "SHPO No Survey Present",
-    "description": "This data set contains all the areas in florida where no field survey was recorded. This layer is based on a erase with SHPO_SURVEYS and the State of Florida boundary.",
-    "longName": "SHPO No Survey Present",
-    "type": "feature",
-    "layerName": "SHPO_NO_SURVEYS",
-    "minScale": 250000,
-    "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "92b527115f3e2cdd1aa8e967eb477456",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGZgf+XixRQZtT3C4yRXw+woAtSZigtvTxq4KiBowaOGojDQMqKLsbIrwdQDIQJUAoAwesN/ZM1+xkAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 114,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/6",
-    "name": "Historic Cemeteries",
-    "description": "This dataset contains historic cemetery boundaries and basic cemetery attributes as recorded at the Florida Master Site File.",
-    "longName": "Historic Cemeteries",
-    "type": "feature",
-    "layerName": "SHPO_CEMETERIES",
-    "minScale": 250000,
-    "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "d28e6476b0080b8adc1c11c253ef018e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHhJREFUOI2tlDsSACEIQ8MM978y27KDSiKmssAnn6DjsRwAIhAvYGYwfwHK+gHNYKfgCMQqJlfozIX8YBdTMpxCSw+n0OVQJtDtlBUoBbyFtj5koHSGN1B6U1iotHqysZkMJGOzZUnGnkJLyavzSZKxb+RA/w8q+gCvxlSBQp7bCAAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 95,
@@ -2970,17 +2012,7 @@ define({
     "layerName": "ELIMINATED_ANALYSIS_AREAS_2640",
     "minScale": 500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "1f577e297979195d47d27da4e03aa0ee",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFhJREFUOI1jYaAyYGFgYGD4yfBTjRqGsTOw32KBcRgZGBUoMew/w/8HDAxQF6ILkgqQHcOCUxWZYNTAUQNHDRyGBlJahKEYSG7RhdVAdgb2W9QwjIGBgQEAB4UNOV0E1hoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 96,
@@ -2992,17 +2024,7 @@ define({
     "layerName": "ELIMINATED_ANALYSIS_AREAS_5280",
     "minScale": 500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "03c6720fc93a15d65da37e8e92933e74",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE9JREFUOI3t1L0JACAMhNEvkB0E959NcAptRPzpTCrJdUnxuOoU5yhAo2UPTJCiy52MXoXR8Hw+ZJY5QXMCDDDAP0HrhG3g63TdoCDFAwPoXG0HOcscPf0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 97,
@@ -3014,17 +2036,7 @@ define({
     "layerName": "ETAT_REVIEW_POINTS",
     "minScale": 800000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "2fa9a046f28bd9638488536e0a3a46be",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 98,
@@ -3036,17 +2048,7 @@ define({
     "layerName": "ETAT_REVIEW_SEGMENTS",
     "minScale": 800000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "2fa9a046f28bd9638488536e0a3a46be",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 99,
@@ -3058,17 +2060,7 @@ define({
     "layerName": "ELIMINATED_ANALYSIS_AREAS_1320",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "90398305a7137e2be19f9c261695a823",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGD4JvLNmBqGcb3hOssC57EzaFJk2k+G6wwMUBeiC5IMkBzDgk8dOWDUwFEDRw0cjgZSWoShGEhu0YXNQK43XGepYRgDAwMDALiaDB4qJNmJAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 100,
@@ -3080,17 +2072,7 @@ define({
     "layerName": "ETAT_REVIEW_POLYGONS",
     "minScale": 800000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "2fa9a046f28bd9638488536e0a3a46be",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 101,
@@ -3102,26 +2084,7 @@ define({
     "layerName": "ETAT_REVIEW_TERMINI",
     "minScale": 800000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "Begin Point",
-        "url": "c79ad8ae88ecd2016a8daddee72639bf",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jYaAyYBk1cAgZeIbhTN5/hv98OKTPmjKYbifJQAYGhjJGBkZpbBL/Gf7PZGBgINlAssCogUPJQBMGExmqGkguGDWQcgAA3NcKtnEFjH8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "End Point",
-        "url": "d64bef3eb42eb023a598bccd4e807030",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYBk1kIHh/+lybgZGSWI0f2VguMnAaDIdv4EMjLFfGRi0iXTQXgYGBkIGUgZGDRw1cIQYyGiiQ10DKQSD30AA7VoIhE1G4tkAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 102,
@@ -3133,17 +2096,7 @@ define({
     "layerName": "REVIEWED_FEATURE_AREAS_500",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "3bd68ab52d7bfb09bf5ddbcdba848b7f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgfMZ5k+mxKBEhsRjDAwMy1FcGMgQeIwCAxkYGGjp5VEDRw0cNXDUQKwGJjIkHoMVQWSC5SgGwgQoBQAy7woTzgj6iwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 103,
@@ -3155,17 +2108,7 @@ define({
     "layerName": "REVIEWED_ANALYSIS_AREAS_200",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "256690bc75c99019768adaf657b76ffc",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGB4zfDalxqGiTKIbmaB87gZzCgy7SvDKQYGqAvRBUkGSI5hwaeOHDBq4KiBowYORwMpLcJQDCS36MJmoCiD6GZqGMbAwMAAAL5JCi7TwcZ0AAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 104,
@@ -3177,17 +2120,7 @@ define({
     "layerName": "REVIEWED_ANALYSIS_AREAS_500",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "97ad7537002c093c0c99d90392e66b0a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGD4wP3BgRqGCXwVOMAC53EyGFBk2neGCwwMUBeiC5IMkBzDgk8dOWDUwFEDRw0cjgZSWoShGEhu0YXNQIGvAgeoYRgDAwMDALvJDCYOtyLeAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 105,
@@ -3199,17 +2132,7 @@ define({
     "layerName": "REVIEWED_ANALYSIS_AREAS_1320",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "90398305a7137e2be19f9c261695a823",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGD4JvLNmBqGcb3hOssC57EzaFJk2k+G6wwMUBeiC5IMkBzDgk8dOWDUwFEDRw0cjgZSWoShGEhu0YXNQK43XGepYRgDAwMDALiaDB4qJNmJAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 106,
@@ -3221,17 +2144,7 @@ define({
     "layerName": "REVIEWED_ANALYSIS_AREAS_2640",
     "minScale": 500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "1f577e297979195d47d27da4e03aa0ee",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFhJREFUOI1jYaAyYGFgYGD4yfBTjRqGsTOw32KBcRgZGBUoMew/w/8HDAxQF6ILkgqQHcOCUxWZYNTAUQNHDRyGBlJahKEYSG7RhdVAdgb2W9QwjIGBgQEAB4UNOV0E1hoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 71,
@@ -3243,17 +2156,7 @@ define({
     "layerName": "REVIEWED_FEATURE_AREAS_5280",
     "minScale": 500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "c105fb5502481f85533a55fa9648dd59",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgZulN8dQYlDiz8Trb968OYviQp+fPtcpMZSBgZZeHjVw1MBRA0cNxGpg4s9EioquN2/enEUxECZAKQAAP5IUbevxeFEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 72,
@@ -3265,17 +2168,7 @@ define({
     "layerName": "REVIEWED_ANALYSIS_AREAS_100",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "9bd1848bc3ac0fbe595cb0a2bf887729",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFFJREFUOI1jYaAyYGFgYGA4x3AukhqGGTEYLWdB4ltRaN4xBgaoC9EFyQBwx6AbSDEYNXDUwFEDh6eBlBZhKAaSW3RhGmjEYLScGoYxMDAwAABo8wdcaLKJ1QAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 73,
@@ -3287,17 +2180,7 @@ define({
     "layerName": "ETAT_REVIEW_FEATURE_AREAS_200",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "2d5f658ba83e43fa1ead8ea9a651e1dd",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgdMZpi+mxKBMhszDDAwMs1BcGMIQcpgCAxkYGGjp5VEDRw0cNXDUQKwGZjJkHoYVQWSCWSgGwgQoBQCdsQopmSN8TwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 74,
@@ -3309,17 +2192,7 @@ define({
     "layerName": "ETAT_REVIEW_FEATURE_AREAS_500",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "3bd68ab52d7bfb09bf5ddbcdba848b7f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgfMZ5k+mxKBEhsRjDAwMy1FcGMgQeIwCAxkYGGjp5VEDRw0cNXDUQKwGJjIkHoMVQWSC5SgGwgQoBQAy7woTzgj6iwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 75,
@@ -3331,17 +2204,7 @@ define({
     "layerName": "ETAT_REVIEW_FEATURE_AREAS_1320",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "f339f116f049228d8f273fdc8f56d2b5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgUu4lzRTYlDM15hTDAwMm1FcGPA14BQlhjIw0NLLowaOGjhq4KiBWA2ElmeUgM0oBsIEKAUACQMLjU05SFYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 76,
@@ -3353,17 +2216,7 @@ define({
     "layerName": "ETAT_REVIEW_FEATURE_AREAS_2640",
     "minScale": 500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "c08c412b70d32e84373a72f98075f827",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgWtE1hRQYlD89/gLX79+PYDiQr/vfhcoMZSBgZZeHjVw1MBRA0cNxGpg/Pd4ioqur1+/HkAxECZAKQAAJcUUdwOgwtYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 77,
@@ -3375,17 +2228,7 @@ define({
     "layerName": "ETAT_REVIEW_FEATURE_AREAS_5280",
     "minScale": 500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "c105fb5502481f85533a55fa9648dd59",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgZulN8dQYlDiz8Trb968OYviQp+fPtcpMZSBgZZeHjVw1MBRA0cNxGpg4s9EioquN2/enEUxECZAKQAAP5IUbevxeFEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 78,
@@ -3397,17 +2240,7 @@ define({
     "layerName": "ELIMINATED_POINTS",
     "minScale": 800000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "2fa9a046f28bd9638488536e0a3a46be",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 79,
@@ -3419,17 +2252,7 @@ define({
     "layerName": "ELIMINATED_SEGMENTS",
     "minScale": 800000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "2fa9a046f28bd9638488536e0a3a46be",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 80,
@@ -3441,17 +2264,7 @@ define({
     "layerName": "ELIMINATED_POLYGONS",
     "minScale": 800000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "2fa9a046f28bd9638488536e0a3a46be",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 81,
@@ -3463,26 +2276,7 @@ define({
     "layerName": "ELIMINATED_TERMINI",
     "minScale": 800000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "Begin Point",
-        "url": "c79ad8ae88ecd2016a8daddee72639bf",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jYaAyYBk1cAgZeIbhTN5/hv98OKTPmjKYbifJQAYGhjJGBkZpbBL/Gf7PZGBgINlAssCogUPJQBMGExmqGkguGDWQcgAA3NcKtnEFjH8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "End Point",
-        "url": "d64bef3eb42eb023a598bccd4e807030",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYBk1kIHh/+lybgZGSWI0f2VguMnAaDIdv4EMjLFfGRi0iXTQXgYGBkIGUgZGDRw1cIQYyGiiQ10DKQSD30AA7VoIhE1G4tkAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 82,
@@ -3494,17 +2288,7 @@ define({
     "layerName": "ELIMINATED_POINTS",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "Eliminated",
-        "url": "0f486c1a3bea0a865e7f8475992a42e9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAASdJREFUOI3t1D9LAzEcxvFvwmFwUqSIeIPc0oKD4urm0MHBO0dxFHSQDq46C74AwTdi4Wy766ab6CRob1DOQi1H7Q2JS6ug909wUPCBLD/IhyeExOKHY/2D7zFsjOP0duhpD4UNOgTZJOgeC8473wJN2XOIuj4xFdRoKsvAMs5EzTxVXRG1LgqBhm1F1K4DlcQKMSUmrbqZqy6K61Y7v2HpfgvkfNqRhpmibx0Au/mgkm4ONmq6XgxE2yCLkDMGpACdDQ5k+HERWZGdz1gyqHQT5Eo+qM+Spl/BQJ9gyxpgZ2ivoA8LgYLWixmsuoCPYjphTx/0pggaN8UaAiL0L83S2gIP8T4KD+Qs8AyyyZg+EneN27TqqU9PXJ0+AnvDVTh/+Lf5NeAb3RFRJxMkEcgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 83,
@@ -3516,17 +2300,7 @@ define({
     "layerName": "ELIMINATED_SEGMENTS",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "Eliminated",
-        "url": "d23cf60d99dd69f4681a5a0f0f3f8ba8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYBk1cNRAMg38L+35nxqGMT7dzshCLcMYGCAOo76XGZ9uZ6Sql2EMahjIwDBkks2ogYPLQAADsxBRdGEl1QAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 84,
@@ -3538,17 +2312,7 @@ define({
     "layerName": "ELIMINATED_POLYGONS",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "Eliminated",
-        "url": "90b2a30e00b7f4ebe23e16d1e562cafe",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1j+S/tuYyBioCFmoahGljsZ0WRSb2bjqEaSCUwaiAaKMw4hlW8fwbOCBzqXh6BBuKJTfIMJAOMaAOh5Rn1DKQSAABP6QvA6PpXYwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 85,
@@ -3560,17 +2324,7 @@ define({
     "layerName": "ELIMINATED_ALTERNATIVES",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "90b2a30e00b7f4ebe23e16d1e562cafe",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1j+S/tuYyBioCFmoahGljsZ0WRSb2bjqEaSCUwaiAaKMw4hlW8fwbOCBzqXh6BBuKJTfIMJAOMaAOh5Rn1DKQSAABP6QvA6PpXYwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 86,
@@ -3582,17 +2336,7 @@ define({
     "layerName": "ELIMINATED_FEATURE_AREAS_100",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "00953cc7989d04e5d91fc222d198628a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgfUM9ZsoMaiRofEgAwNDL4oL/Rj8DlJgIAMDAy29PGrgqIGjBo4aiNXARobGg7AiiEzQi2IgTIBSAABuswqPfj8zhgAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 87,
@@ -3604,17 +2348,7 @@ define({
     "layerName": "ELIMINATED_FEATURE_AREAS_200",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "2d5f658ba83e43fa1ead8ea9a651e1dd",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgdMZpi+mxKBMhszDDAwMs1BcGMIQcpgCAxkYGGjp5VEDRw0cNXDUQKwGZjJkHoYVQWSCWSgGwgQoBQCdsQopmSN8TwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 88,
@@ -3626,17 +2360,7 @@ define({
     "layerName": "ELIMINATED_FEATURE_AREAS_500",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "3bd68ab52d7bfb09bf5ddbcdba848b7f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgfMZ5k+mxKBEhsRjDAwMy1FcGMgQeIwCAxkYGGjp5VEDRw0cNXDUQKwGJjIkHoMVQWSC5SgGwgQoBQAy7woTzgj6iwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 142,
@@ -3648,71 +2372,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "ffa9698c13add278ab2da872915d41ca",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/O7/hPiUFMhh6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA2c0EzX31PVsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "2041440ff30fb6dab7a32a870103c64d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9npv+nxCDG9JmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAB5oFUxVnzOMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 10.0",
-        "url": "a360bcfed3979e1325f514b999477e72",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/TTf9TYhDjzNOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKcgFt92kn74AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 20.0",
-        "url": "afc9d675543ebeb9d240c07691dc7834",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWdMGf5TYpDJaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYFwEURuNcoQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "20.01 - 40.0",
-        "url": "944b2e250b0b6b4afcdef3e1fbf8e773",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNNGf5TYlD6aQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAchcEhL2N1LgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "40.01 - 65.0",
-        "url": "e1a407a1170aa6870d59dd942a71717a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgemmDP8pMWjmaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg3kEtkU6v0QAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 143,
@@ -3724,163 +2384,67 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 2.0",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "a7e0d0de6f7836bfe12f6d16c841534a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+//9PiUEmjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwo4EiB5cX5AAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 6.0",
-        "url": "7a15b8a0baa96cfdc151f0aee721b370",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen///+nxKCZjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5asE7ZP4q+kAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "6.01 - 10.0",
-        "url": "aec3bd4fb5f194f4a5296b2340887731",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgWf+/6fIJBNGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCABi3A4cUTDVBAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 40.0",
-        "url": "6bcb21956ee922f09f051311c18be88b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTNn/qfIpPR0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAEzpBCD/8FGwAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
-    "id": 115,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/7",
-    "name": "SHPO Resource Groups",
-    "description": "This data set contains resource group locations and attributes as recorded at the Florida Master Site File (FMSF). Resource groups are historical districts, archaeological districts or building complexes. Individual resources contributing to the resource group are usually (but are not always) separately listed in the Florida Master Site File.",
-    "longName": "SHPO Resource Groups",
+    "id": 712,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/3",
+    "name": "State Historical Highways",
+    "description": "This dataset contains the current State Historic Highways as designated by the State Legislature and stipulated in the Laws of Florida.",
+    "longName": "State Historical Highways",
     "type": "feature",
-    "layerName": "SHPO_RES_GROUPS",
+    "layerName": "SHH",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "3f9a6f3f0c388fd6a97f9194fa719acd",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGxJREFUOI1jYaAyYKGZgbtWFfyn1DC3sAmMLOgCyPxdqwr+o4uhA5gamINwepkUw5DFsBpIrmFYDaTEMAwDKTUMw0BKDcMwkFLDiDaQWMOIMpDYcCXKwNGETZSaIZawiSkTcamBWcSCLkApAAAQJHxRiETHzQAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
-    "id": 116,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/8",
-    "name": "SHPO Survey Areas",
-    "description": "This data set contains cultural resource field survey project boundaries and basic survey attributes as recorded at the Florida Master Site File.",
-    "longName": "SHPO Survey Areas",
+    "id": 713,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/4",
+    "name": "SHPO No Survey Present",
+    "description": "This data set contains all the areas in florida where no field survey was recorded. This layer is based on a erase with SHPO_SURVEYS and the State of Florida boundary.",
+    "longName": "SHPO No Survey Present",
     "type": "feature",
-    "layerName": "SHPO_SURVEYS",
+    "layerName": "SHPO_NO_SURVEYS",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "5ed2f38032e6911b24616f9fec43d004",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jYaAyYKGZgcX7/QsoMWjztj0XbnV/PYDiQgM7tQsUGMjAwEBLL48aOGrgqIGjBmI1cPO2PRdgRRA54Fb31wMoBsIEKAUA9xsXKB4bNg0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
-    "id": 117,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/9",
-    "name": "Archaeological and Historic Sites",
-    "description": "This data set contains archaeological site boundaries and basic site attributes as recorded at the Florida Master Site File.",
-    "longName": "Archaeological and Historic Sites",
+    "id": 714,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/5",
+    "name": "Historic Cemeteries",
+    "description": "This dataset contains historic cemetery boundaries and basic cemetery attributes as recorded at the Florida Master Site File.",
+    "longName": "Historic Cemeteries",
     "type": "feature",
-    "layerName": "SHPO_ALL_SITES",
+    "layerName": "SHPO_CEMETERIES",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "7747ff406bf5d8758f4e57ccd32e92ef",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgY8fS/+n1DBZ2aeMtHPhqIGjBo4aOGrg0DBQVvYpI4qBMAFKAQAUUAaRX8Q7BQAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
-    "id": 118,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/10",
-    "name": "High Archaeological Site Potential - Highlands County",
-    "description": "This dataset represents areas of high archaeological site potential within Highlands County.",
-    "longName": "High Archaeological Site Potential - Highlands County",
+    "id": 715,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/0",
+    "name": "County Commission approved Historic Structures - Highlands County",
+    "description": "This layer represents the location of 10 historic structures approved for local listing by the Highlands County Board of County Commissioners. These locations and the recorder numbers (represented by the 'ID' attribute) are based on a historic resources survey conducted in 1994 by Historic Property Associates, Inc. entitled \"Historic Properties Survey of Highlands County and the City of Lake Placid\". ",
+    "longName": "County Commission approved Historic Structures - Highlands County",
     "type": "feature",
-    "layerName": "C28_ARC_SITE_POT",
+    "layerName": "C28_HIST_PROP",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "9e807a6ae34d2a7448d530719e04a922",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJxJREFUOI2tk9ENgCAMRK9Jp3EHtiFhJhK2YQfXwQ81AQXaKv0kry/G3jEWDwNAKT6ukBGlwAbeAcgSVAsdUdpmcCk+EqXQe+8J82jhHqIUJIatCxLz+od/pd2j/JEOr2yRqoRG6Y4rUmIONVJU+VQFWynVCy3SpikrpKamaKTmpkjcp6bMuEZYh7TO1mye3OzKoqzHMXB+vnJZnAOWwYitNFhJogAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
-    "id": 119,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/11",
-    "name": "National Historic Preservation Act Certified Local Governments",
-    "description": "This dataset contains 2017 National Historic Preservation Act Certified Local Governments information for the State of Florida. This dataset contains fields denoting the physical location and contact information for Florida Certified Local Governments based on data taken from the Florida Division of Historical Resources. City boundary data has been derived from the 2015 Parcel Derived City Limits FGDL layer: PAR_CITYLM_2015.shp, while the County boundary data has been derived from the US Census Bureau FGDL layer: CNTBND_SEP15.shp. This is an update to the FGDL layer CLGBND_MAR11.shp.",
-    "longName": "National Historic Preservation Act Certified Local Governments",
+    "id": 716,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/1",
+    "name": "Historic Structures",
+    "description": "This dataset contains historic structure locations and attributes as recorded at the Florida Master Site File.",
+    "longName": "Historic Structures",
     "type": "feature",
-    "layerName": "CLGBND",
-    "minScale": 500000,
+    "layerName": "SHPO_STRUCTURES",
+    "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "a85fe56b9719062b5d1c2323030f4d71",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGBJREFUOI1jYaAyYGFgYGDIz88/Qw3DJk6caMIC4zBy8GhSYtj/H1+uMzBAXQgD7Gr618kx7Oeti3DHsOBTSA4YNXDUwFEDh6GByKUGxQbCyjOqGDhx4kQTahjGwMDAAAAhDRTHu9XQKwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 120,
@@ -3892,17 +2456,7 @@ define({
     "layerName": "DRAFT_ALTERNATIVES",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "b34ebc050c44b8da7773f9ede7f7f61b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE9JREFUOI1jYaAyYKGZgVOm5H+lxKDbtxmuT5w40QTFhdnZLNfJNbCg4A8DAwMtvTxq4KiBowaOGojVwNu3Ga7DiiBywMSJE01QDIQJUAoAvZkTFRUBDAYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 121,
@@ -3914,17 +2468,31 @@ define({
     "layerName": "MILESTONE_MAX_ALTERNATIVES",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "282bee925a272de9dbad607b1b426820",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGZgf//F3+l0KzrjIy9JuguvE6hoTT08qiBowaOGjhqIC4DKSq6GBl7TVAMhAlQCgBYxAiFw8ufewAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
+  },
+  {
+    "id": 717,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/2",
+    "name": "State Historic Bridges",
+    "description": "This data set contains historic bridge locations and basic bridge attributes as recorded at the Florida Master Site File.",
+    "longName": "State Historic Bridges",
+    "type": "feature",
+    "layerName": "SHPO_BRIDGES",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 718,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer/6",
+    "name": "SHPO Resource Groups",
+    "description": "This data set contains resource group locations and attributes as recorded at the Florida Master Site File (FMSF). Resource groups are historical districts, archaeological districts or building complexes. Individual resources contributing to the resource group are usually (but are not always) separately listed in the Florida Master Site File.",
+    "longName": "SHPO Resource Groups",
+    "type": "feature",
+    "layerName": "SHPO_RES_GROUPS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": null
   },
   {
     "id": 144,
@@ -3936,71 +2504,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "328ef735922ceb54a865fc1de88b6dff",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//M/ynxCBGRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIACTEDVHAdUUMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 10.0",
-        "url": "62606aa051d764c91753a98417895f8e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nMvynxCDGdAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIALEEDusWnCLAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 20.0",
-        "url": "4f3ad950373857a348c1a8bafa3b13aa",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfSGf5TYpDJTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIATywEHyB+H0UAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "20.01 - 40.0",
-        "url": "924c04fc312b5a5f7376d3ea2dcb9c20",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPTGf5TYlD6TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYOcEUpvemfMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "40.01 - 75.0",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 145,
@@ -4012,80 +2516,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "4aac6323d12fdc33b5c3d877555d12d9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//p/+nxCBGxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5HsE7X1alrgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 10.0",
-        "url": "5e67378c7229b80d2143bb3fab3166a3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nnvlPiUGM6SaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7nDp6UQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 20.0",
-        "url": "75286bb0005a579ad69d3f0c7a7dc528",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfS//+nxCCTmYyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9s4FIOmpJGcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "20.01 - 40.0",
-        "url": "0bf8fd236ee9ca27f271ae5a4b6b20c1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNN//+nxKD004yMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGcgFhYqxwNEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "40.01 - 80.0",
-        "url": "0b4e6cd5e1ac4996677435de802f431c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgekM6f8pMWgmw0xGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAcLAEhIda6BsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "80.01 - 200.0",
-        "url": "112a30234655ce822aa96a79b2c7583d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgXMY5vynxKAUhhRGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIATEAEGhBRu5AAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 134,
@@ -4097,53 +2528,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 10.0",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 30.0",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 135,
@@ -4155,53 +2540,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 2.0",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "a7e0d0de6f7836bfe12f6d16c841534a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+//9PiUEmjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwo4EiB5cX5AAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 6.0",
-        "url": "7a15b8a0baa96cfdc151f0aee721b370",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen///+nxKCZjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5asE7ZP4q+kAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "6.01 - 10.0",
-        "url": "aec3bd4fb5f194f4a5296b2340887731",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgWf+/6fIJBNGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCABi3A4cUTDVBAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 40.0",
-        "url": "6bcb21956ee922f09f051311c18be88b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTNn/qfIpPR0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAEzpBCD/8FGwAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 128,
@@ -4213,17 +2552,7 @@ define({
     "layerName": "SOR_SFWMD",
     "minScale": 800000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "9fa8e7fa798c6f6dadcbdc9f6af8a7d0",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYGFgYGAItP3/nxqGrT/MyMhCDYOQAYqB6w8zMpJjCLIPaevCUQNHDRw1cHgYSI1ykTYuJLccxAYACeQMUQonqJ4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 129,
@@ -4235,17 +2564,7 @@ define({
     "layerName": "SOR_SJWMD",
     "minScale": 800000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "a84369a6b291081d774d8c708b399df0",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYGFgYGDwb///nxqGbaxkZGShhkHIAMXAjZWMjOQYguxD2rpw1MBRA0cNHB4GUqNcpI0LyS0HsQEAObQMUTXWA4IAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 130,
@@ -4257,17 +2576,7 @@ define({
     "layerName": "GC_PARKSBND_STATE",
     "minScale": 500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "46219239bf24c1b9866daceaba0a0bd6",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJNJREFUOI21lEsOgDAIRDHhrp6pp62bEikyQK2yKxlehk/K9HHwf8BGfZt20sE2Mb0b9Sln3zo3DDEEeMVSGGieDqV1CytqflwKUd5yQYOXYuflARxN3LIuQI71TFMgchpAc2DmUDQlhxqCoOFhI5jE8mFX2ls67MoCklh3+OqwswVofXjY9k/0/kiUG9AbuDE3HRcGtmTJcs748QAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 131,
@@ -4279,53 +2588,7 @@ define({
     "layerName": "WMDL",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "<all other values>",
-        "url": "98b62438771214ba96ea3a63d6150609",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgatWrfpPqWFhYWGMtHPhqIGjBo4aOGrg0DAwLCyMEcVAmAClAAALkQZXOB9MdwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "DISTRICT OWNED LAND",
-        "url": "94c9ccda0104604d7a314d62d56afe86",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgatWrfpPqWFhYWGMKC4MFbEj27DVbw4xMDDQ0sujBo4aOGrgqIE4DYQVQeSAsLAwRhQDYQKUAgDUAguwWJ1jZQAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "DISTRICT OWNED EASEMENT",
-        "url": "94c9ccda0104604d7a314d62d56afe86",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgatWrfpPqWFhYWGMKC4MFbEj27DVbw4xMDDQ0sujBo4aOGrgqIE4DYQVQeSAsLAwRhQDYQKUAgDUAguwWJ1jZQAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "POTENTIAL DISTRICT LAND",
-        "url": "7882616ddcb11108e5613080a3ab5160",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgatWrfpPqWFhYWGMKC4M1bxKtmGrr2szMDDQ0sujBo4aOGrgqIE4DYQVQeSAsLAwRhQDYQKUAgCZeQsEl4OzXQAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "POTENTIAL DISTRICT EASEMENT",
-        "url": "7882616ddcb11108e5613080a3ab5160",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgatWrfpPqWFhYWGMKC4M1bxKtmGrr2szMDDQ0sujBo4aOGrgqIE4DYQVQeSAsLAwRhQDYQKUAgCZeQsEl4OzXQAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 132,
@@ -4337,17 +2600,7 @@ define({
     "layerName": "FL_FOREVER",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "980d0f1ee1d68361e6e0db3ac71678c8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nmv6nxCDG9NOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGJgFhaiezG4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 133,
@@ -4359,17 +2612,7 @@ define({
     "layerName": "FLMA_STATE",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "06608dd551f5c91d18ca31eeed5ad818",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGBYxTDzPzUMC2NIZ2ShhkHIAMXAMIZ0RnIMQfYhbV1IdQP/Tz9DVuSszjyL3UDGTJORFoYj0MDRZEO5gdQoF2njQnLLQWwAAArlGZeFx4zMAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 260,
@@ -4381,17 +2624,7 @@ define({
     "layerName": "GFBT",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "1b3ce702018bf50c205ae6839dfc0257",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAOlJREFUOI3t0CFOQ0EQxvH/Y9dyBZpUIOtGogiCosozNJiKmh6AIxSDb9IDlKSieQdAVZIRewoI6ArSZpdBgCJd0iUYAp+dyW++jOeH4//BXwbKQs5jFQce33KVe1i/rmehDreAFYPSyARj5D9WkqWOr/ypNHKmPb3MoVtBaaTGGG29ZPRlIUutdboz6MwNEylXHrfnhsDuYCK1sxqQLD/P/fAZOPzCfCoF58BRljPmRaDu61RW0gOOP88i8T64cFPW8ISod9qVlVxhDKg4iMRHj5+FTbjmgpcy8B3dKDoGxtmdIvCb+YPgGwQhSlUyXSMFAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 136,
@@ -4403,71 +2636,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "328ef735922ceb54a865fc1de88b6dff",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//M/ynxCBGRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIACTEDVHAdUUMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 10.0",
-        "url": "62606aa051d764c91753a98417895f8e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nMvynxCDGdAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIALEEDusWnCLAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 20.0",
-        "url": "4f3ad950373857a348c1a8bafa3b13aa",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfSGf5TYpDJTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIATywEHyB+H0UAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "20.01 - 40.0",
-        "url": "924c04fc312b5a5f7376d3ea2dcb9c20",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPTGf5TYlD6TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYOcEUpvemfMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "40.01 - 75.0",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 137,
@@ -4479,80 +2648,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "4aac6323d12fdc33b5c3d877555d12d9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//p/+nxCBGxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5HsE7X1alrgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 10.0",
-        "url": "5e67378c7229b80d2143bb3fab3166a3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nnvlPiUGM6SaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7nDp6UQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 20.0",
-        "url": "75286bb0005a579ad69d3f0c7a7dc528",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfS//+nxCCTmYyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9s4FIOmpJGcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "20.01 - 40.0",
-        "url": "0bf8fd236ee9ca27f271ae5a4b6b20c1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNN//+nxKD004yMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGcgFhYqxwNEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "40.01 - 80.0",
-        "url": "0b4e6cd5e1ac4996677435de802f431c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgekM6f8pMWgmw0xGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAcLAEhIda6BsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "80.01 - 200.0",
-        "url": "112a30234655ce822aa96a79b2c7583d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgXMY5vynxKAUhhRGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIATEAEGhBRu5AAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 138,
@@ -4564,71 +2660,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "269e86e54f96344362d81884f21b021d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+z/xPiUEmjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7rDl8YQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "4ed2feb88aa9f0076621f7847dcb90a3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTP/p/+nxKB0xpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUACAAFU5vGQX8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 6.0",
-        "url": "b5b9ede611ffb3da16d86dd1f93686f9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen/Tf9TYtBMxtOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKmAFt0NlUIEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "6.01 - 10.0",
-        "url": "db78d8268813b4631a95963628e82a14",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTMZ/lNkUjoDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAIKOArmqP8lxAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "a4a24b63bfff663882dfac8aa503882d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgabpDP8pMej0TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg6sEtlscd8cAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "7d75e17e5a90cd93c6981607881fe1af",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYM/yky6TQDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAKTuAx1BemcyAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 139,
@@ -4640,53 +2672,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "2e87d515959441d953e150b21ca2722b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdd//fpPiUGabGyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwiYEh53uzdcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "15696a867e6eb8451c01995abd1a6669",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPP/P9PiUHpJoyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5dEE7pmdn8oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 10.0",
-        "url": "f3077dc825120596548aa2c13c993933",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgaYz//+nxKDT6YyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGiwFhX8rAi0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 20.0",
-        "url": "f29fbdacae42ad19cef1d4782ce374b9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenp6f8pMWjmzJmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUATaIGHbGkRQ8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 140,
@@ -4698,71 +2684,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "ffa9698c13add278ab2da872915d41ca",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/O7/hPiUFMhh6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA2c0EzX31PVsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "2041440ff30fb6dab7a32a870103c64d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9npv+nxCDG9JmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAB5oFUxVnzOMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 10.0",
-        "url": "a360bcfed3979e1325f514b999477e72",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/TTf9TYhDjzNOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKcgFt92kn74AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 20.0",
-        "url": "afc9d675543ebeb9d240c07691dc7834",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWdMGf5TYpDJaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYFwEURuNcoQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "20.01 - 40.0",
-        "url": "944b2e250b0b6b4afcdef3e1fbf8e773",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNNGf5TYlD6aQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAchcEhL2N1LgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "40.01 - 65.0",
-        "url": "e1a407a1170aa6870d59dd942a71717a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgemmDP8pMWjmaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg3kEtkU6v0QAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 141,
@@ -4774,53 +2696,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "2e87d515959441d953e150b21ca2722b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdd//fpPiUGabGyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwiYEh53uzdcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "15696a867e6eb8451c01995abd1a6669",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPP/P9PiUHpJoyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5dEE7pmdn8oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 10.0",
-        "url": "f3077dc825120596548aa2c13c993933",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgaYz//+nxKDT6YyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGiwFhX8rAi0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 20.0",
-        "url": "f29fbdacae42ad19cef1d4782ce374b9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenp6f8pMWjmzJmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUATaIGHbGkRQ8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 156,
@@ -4832,71 +2708,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 25",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "26 - 100",
-        "url": "ffa9698c13add278ab2da872915d41ca",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/O7/hPiUFMhh6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA2c0EzX31PVsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "2041440ff30fb6dab7a32a870103c64d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9npv+nxCDG9JmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAB5oFUxVnzOMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "a360bcfed3979e1325f514b999477e72",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/TTf9TYhDjzNOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKcgFt92kn74AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "afc9d675543ebeb9d240c07691dc7834",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWdMGf5TYpDJaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYFwEURuNcoQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "944b2e250b0b6b4afcdef3e1fbf8e773",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNNGf5TYlD6aQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAchcEhL2N1LgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 5000",
-        "url": "e1a407a1170aa6870d59dd942a71717a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgemmDP8pMWjmaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg3kEtkU6v0QAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 157,
@@ -4908,71 +2720,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 25",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "26 - 100",
-        "url": "ffa9698c13add278ab2da872915d41ca",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/O7/hPiUFMhh6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA2c0EzX31PVsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "2041440ff30fb6dab7a32a870103c64d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9npv+nxCDG9JmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAB5oFUxVnzOMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "a360bcfed3979e1325f514b999477e72",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/TTf9TYhDjzNOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKcgFt92kn74AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "afc9d675543ebeb9d240c07691dc7834",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWdMGf5TYpDJaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYFwEURuNcoQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "944b2e250b0b6b4afcdef3e1fbf8e773",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNNGf5TYlD6aQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAchcEhL2N1LgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 5000",
-        "url": "e1a407a1170aa6870d59dd942a71717a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgemmDP8pMWjmaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg3kEtkU6v0QAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 158,
@@ -4984,53 +2732,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 250",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 6000",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 159,
@@ -5042,71 +2744,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 100",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "328ef735922ceb54a865fc1de88b6dff",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//M/ynxCBGRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIACTEDVHAdUUMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "62606aa051d764c91753a98417895f8e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nMvynxCDGdAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIALEEDusWnCLAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "4f3ad950373857a348c1a8bafa3b13aa",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfSGf5TYpDJTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIATywEHyB+H0UAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 5000",
-        "url": "924c04fc312b5a5f7376d3ea2dcb9c20",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPTGf5TYlD6TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYOcEUpvemfMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5001 - 10000",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 147,
@@ -5118,53 +2756,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "2e87d515959441d953e150b21ca2722b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdd//fpPiUGabGyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwiYEh53uzdcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "15696a867e6eb8451c01995abd1a6669",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPP/P9PiUHpJoyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5dEE7pmdn8oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 10.0",
-        "url": "f3077dc825120596548aa2c13c993933",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgaYz//+nxKDT6YyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGiwFhX8rAi0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 20.0",
-        "url": "f29fbdacae42ad19cef1d4782ce374b9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenp6f8pMWjmzJmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUATaIGHbGkRQ8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 148,
@@ -5176,71 +2768,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "ffa9698c13add278ab2da872915d41ca",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/O7/hPiUFMhh6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA2c0EzX31PVsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "2041440ff30fb6dab7a32a870103c64d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9npv+nxCDG9JmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAB5oFUxVnzOMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 10.0",
-        "url": "a360bcfed3979e1325f514b999477e72",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/TTf9TYhDjzNOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKcgFt92kn74AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 20.0",
-        "url": "afc9d675543ebeb9d240c07691dc7834",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWdMGf5TYpDJaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYFwEURuNcoQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "20.01 - 40.0",
-        "url": "944b2e250b0b6b4afcdef3e1fbf8e773",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNNGf5TYlD6aQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAchcEhL2N1LgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "40.01 - 65.0",
-        "url": "e1a407a1170aa6870d59dd942a71717a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgemmDP8pMWjmaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg3kEtkU6v0QAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 149,
@@ -5252,53 +2780,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 10.0",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 30.0",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 150,
@@ -5310,53 +2792,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 2.0",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "a7e0d0de6f7836bfe12f6d16c841534a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+//9PiUEmjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwo4EiB5cX5AAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 6.0",
-        "url": "7a15b8a0baa96cfdc151f0aee721b370",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen///+nxKCZjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5asE7ZP4q+kAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "6.01 - 10.0",
-        "url": "aec3bd4fb5f194f4a5296b2340887731",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgWf+/6fIJBNGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCABi3A4cUTDVBAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 40.0",
-        "url": "6bcb21956ee922f09f051311c18be88b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTNn/qfIpPR0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAEzpBCD/8FGwAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 151,
@@ -5368,71 +2804,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "328ef735922ceb54a865fc1de88b6dff",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//M/ynxCBGRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIACTEDVHAdUUMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 10.0",
-        "url": "62606aa051d764c91753a98417895f8e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nMvynxCDGdAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIALEEDusWnCLAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 20.0",
-        "url": "4f3ad950373857a348c1a8bafa3b13aa",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfSGf5TYpDJTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIATywEHyB+H0UAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "20.01 - 40.0",
-        "url": "924c04fc312b5a5f7376d3ea2dcb9c20",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPTGf5TYlD6TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYOcEUpvemfMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "40.01 - 75.0",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 152,
@@ -5444,80 +2816,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "4aac6323d12fdc33b5c3d877555d12d9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//p/+nxCBGxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5HsE7X1alrgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 10.0",
-        "url": "5e67378c7229b80d2143bb3fab3166a3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nnvlPiUGM6SaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7nDp6UQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 20.0",
-        "url": "75286bb0005a579ad69d3f0c7a7dc528",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfS//+nxCCTmYyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9s4FIOmpJGcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "20.01 - 40.0",
-        "url": "0bf8fd236ee9ca27f271ae5a4b6b20c1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNN//+nxKD004yMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGcgFhYqxwNEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "40.01 - 80.0",
-        "url": "0b4e6cd5e1ac4996677435de802f431c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgekM6f8pMWgmw0xGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAcLAEhIda6BsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "80.01 - 200.0",
-        "url": "112a30234655ce822aa96a79b2c7583d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgXMY5vynxKAUhhRGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIATEAEGhBRu5AAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 153,
@@ -5529,71 +2828,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "269e86e54f96344362d81884f21b021d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+z/xPiUEmjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7rDl8YQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "4ed2feb88aa9f0076621f7847dcb90a3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTP/p/+nxKB0xpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUACAAFU5vGQX8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 6.0",
-        "url": "b5b9ede611ffb3da16d86dd1f93686f9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen/Tf9TYtBMxtOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKmAFt0NlUIEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "6.01 - 10.0",
-        "url": "db78d8268813b4631a95963628e82a14",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTMZ/lNkUjoDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAIKOArmqP8lxAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "a4a24b63bfff663882dfac8aa503882d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgabpDP8pMej0TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg6sEtlscd8cAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "7d75e17e5a90cd93c6981607881fe1af",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYM/yky6TQDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAKTuAx1BemcyAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 154,
@@ -5605,53 +2840,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 1500",
-        "url": "799a87fb3ebcb8f4495d22cb6270cc80",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/ePfxPiUFMQvKMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwTYEhcPZT6MAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1501 - 4500",
-        "url": "e8152dc37e889b0ed31ccae29b81a847",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/OLv1PiUFMxtGMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA4PIE4gZuhmYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4501 - 9000",
-        "url": "51c0669a5cd5fc97a01217b285e77d06",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/WZP6nxCCmkOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAAL0FP5oQ3RwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "9001 - 16000",
-        "url": "c3901a92c1e75219a54124ab016ab678",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf86tP5TYhBTxTVGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAIoYFolv85dwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "16001 - 45000",
-        "url": "7506f7306131a52f85224d1b3af890b3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZga8yGf5TYpDYdAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIARA4D/2b6+K4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 146,
@@ -5663,71 +2852,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "269e86e54f96344362d81884f21b021d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+z/xPiUEmjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7rDl8YQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "4ed2feb88aa9f0076621f7847dcb90a3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTP/p/+nxKB0xpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUACAAFU5vGQX8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 6.0",
-        "url": "b5b9ede611ffb3da16d86dd1f93686f9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen/Tf9TYtBMxtOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKmAFt0NlUIEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "6.01 - 10.0",
-        "url": "db78d8268813b4631a95963628e82a14",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTMZ/lNkUjoDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAIKOArmqP8lxAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "a4a24b63bfff663882dfac8aa503882d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgabpDP8pMej0TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg6sEtlscd8cAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "7d75e17e5a90cd93c6981607881fe1af",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYM/yky6TQDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAKTuAx1BemcyAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 155,
@@ -5739,71 +2864,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 25",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "26 - 50",
-        "url": "2e87d515959441d953e150b21ca2722b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdd//fpPiUGabGyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwiYEh53uzdcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "15696a867e6eb8451c01995abd1a6669",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPP/P9PiUHpJoyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5dEE7pmdn8oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 500",
-        "url": "f3077dc825120596548aa2c13c993933",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgaYz//+nxKDT6YyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGiwFhX8rAi0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "bcdd8fa7af2de732ca8a3a1f2cf7ab74",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgen//1Nk0kxGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCADtvA+zRLgQAAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "ab313847887ab4573a63531f258ba951",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYz/1Nk0ul0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAG9JBITHVKrXAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 5000",
-        "url": "f29fbdacae42ad19cef1d4782ce374b9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenp6f8pMWjmzJmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUATaIGHbGkRQ8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 164,
@@ -5815,53 +2876,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 25000",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "25001 - 50000",
-        "url": "a7e0d0de6f7836bfe12f6d16c841534a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+//9PiUEmjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwo4EiB5cX5AAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50001 - 75000",
-        "url": "7a15b8a0baa96cfdc151f0aee721b370",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen///+nxKCZjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5asE7ZP4q+kAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75001 - 125000",
-        "url": "aec3bd4fb5f194f4a5296b2340887731",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgWf+/6fIJBNGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCABi3A4cUTDVBAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "125001 - 250001",
-        "url": "6bcb21956ee922f09f051311c18be88b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTNn/qfIpPR0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAEzpBCD/8FGwAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 165,
@@ -5873,53 +2888,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 50",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 150",
-        "url": "a7e0d0de6f7836bfe12f6d16c841534a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+//9PiUEmjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwo4EiB5cX5AAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "151 - 400",
-        "url": "7a15b8a0baa96cfdc151f0aee721b370",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen///+nxKCZjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5asE7ZP4q+kAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "401 - 1000",
-        "url": "aec3bd4fb5f194f4a5296b2340887731",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgWf+/6fIJBNGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCABi3A4cUTDVBAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2000",
-        "url": "6bcb21956ee922f09f051311c18be88b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTNn/qfIpPR0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAEzpBCD/8FGwAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 172,
@@ -5931,53 +2900,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 25000",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "25001 - 50000",
-        "url": "a7e0d0de6f7836bfe12f6d16c841534a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+//9PiUEmjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwo4EiB5cX5AAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50001 - 75000",
-        "url": "7a15b8a0baa96cfdc151f0aee721b370",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen///+nxKCZjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5asE7ZP4q+kAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75001 - 125000",
-        "url": "aec3bd4fb5f194f4a5296b2340887731",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgWf+/6fIJBNGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCABi3A4cUTDVBAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "125001 - 250001",
-        "url": "6bcb21956ee922f09f051311c18be88b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTNn/qfIpPR0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAEzpBCD/8FGwAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 173,
@@ -5989,44 +2912,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "1 - 2",
-        "url": "b29d1a47012eee467b1db0051a2024f3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgW+vzfpPiUHCWmmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA54AE9e4/T40AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 3",
-        "url": "2c3e0fad4b181d8111a3724d5717b498",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRdXuf+nxCD9sJ2MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAHKAFkAisN6MAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "3.01 - 5",
-        "url": "a91156c2878c3456a9a5ca94ff6f5bb4",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgX2Fav8pMaio/xYjioHUAqMGjho4auCogXQ2EFaeUc1AagEAUroGLd3NQ5AAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 20",
-        "url": "a92a9882342b912866471e9ed5baf74e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgYm+iv8pMWj+5vuMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAcHIGg0eurkYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 174,
@@ -6038,53 +2924,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 50",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 150",
-        "url": "a7e0d0de6f7836bfe12f6d16c841534a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+//9PiUEmjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwo4EiB5cX5AAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "151 - 400",
-        "url": "7a15b8a0baa96cfdc151f0aee721b370",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen///+nxKCZjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5asE7ZP4q+kAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "401 - 1000",
-        "url": "aec3bd4fb5f194f4a5296b2340887731",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgWf+/6fIJBNGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCABi3A4cUTDVBAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2000",
-        "url": "6bcb21956ee922f09f051311c18be88b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTNn/qfIpPR0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAEzpBCD/8FGwAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 175,
@@ -6096,71 +2936,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 250",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "4aac6323d12fdc33b5c3d877555d12d9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//p/+nxCBGxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5HsE7X1alrgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "5e67378c7229b80d2143bb3fab3166a3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nnvlPiUGM6SaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7nDp6UQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 5000",
-        "url": "75286bb0005a579ad69d3f0c7a7dc528",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfS//+nxCCTmYyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9s4FIOmpJGcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5001 - 10000",
-        "url": "0bf8fd236ee9ca27f271ae5a4b6b20c1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNN//+nxKD004yMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGcgFhYqxwNEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10001 - 15000",
-        "url": "0b4e6cd5e1ac4996677435de802f431c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgekM6f8pMWgmw0xGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAcLAEhIda6BsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 166,
@@ -6172,44 +2948,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "1 - 2",
-        "url": "b29d1a47012eee467b1db0051a2024f3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgW+vzfpPiUHCWmmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA54AE9e4/T40AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 3",
-        "url": "2c3e0fad4b181d8111a3724d5717b498",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRdXuf+nxCD9sJ2MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAHKAFkAisN6MAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "3.01 - 5",
-        "url": "a91156c2878c3456a9a5ca94ff6f5bb4",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgX2Fav8pMaio/xYjioHUAqMGjho4auCogXQ2EFaeUc1AagEAUroGLd3NQ5AAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 20",
-        "url": "a92a9882342b912866471e9ed5baf74e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgYm+iv8pMWj+5vuMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAcHIGg0eurkYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 167,
@@ -6221,71 +2960,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 250",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "4aac6323d12fdc33b5c3d877555d12d9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//p/+nxCBGxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5HsE7X1alrgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "5e67378c7229b80d2143bb3fab3166a3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nnvlPiUGM6SaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7nDp6UQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 5000",
-        "url": "75286bb0005a579ad69d3f0c7a7dc528",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfS//+nxCCTmYyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9s4FIOmpJGcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5001 - 10000",
-        "url": "0bf8fd236ee9ca27f271ae5a4b6b20c1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNN//+nxKD004yMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGcgFhYqxwNEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10001 - 15000",
-        "url": "0b4e6cd5e1ac4996677435de802f431c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgekM6f8pMWgmw0xGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAcLAEhIda6BsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 168,
@@ -6297,62 +2972,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 50",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 250",
-        "url": "269e86e54f96344362d81884f21b021d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+z/xPiUEmjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7rDl8YQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "b5b9ede611ffb3da16d86dd1f93686f9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen/Tf9TYtBMxtOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKmAFt0NlUIEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "db78d8268813b4631a95963628e82a14",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTMZ/lNkUjoDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAIKOArmqP8lxAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2000",
-        "url": "a4a24b63bfff663882dfac8aa503882d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgabpDP8pMej0TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg6sEtlscd8cAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2001 - 5000",
-        "url": "7d75e17e5a90cd93c6981607881fe1af",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYM/yky6TQDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAKTuAx1BemcyAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 169,
@@ -6364,53 +2984,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 1500",
-        "url": "799a87fb3ebcb8f4495d22cb6270cc80",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/ePfxPiUFMQvKMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwTYEhcPZT6MAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1501 - 4500",
-        "url": "e8152dc37e889b0ed31ccae29b81a847",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/OLv1PiUFMxtGMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA4PIE4gZuhmYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4501 - 9000",
-        "url": "51c0669a5cd5fc97a01217b285e77d06",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/WZP6nxCCmkOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAAL0FP5oQ3RwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "9001 - 16000",
-        "url": "c3901a92c1e75219a54124ab016ab678",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf86tP5TYhBTxTVGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAIoYFolv85dwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "16001 - 45000",
-        "url": "7506f7306131a52f85224d1b3af890b3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZga8yGf5TYpDYdAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIARA4D/2b6+K4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 170,
@@ -6422,71 +2996,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 25",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "26 - 50",
-        "url": "2e87d515959441d953e150b21ca2722b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdd//fpPiUGabGyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwiYEh53uzdcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "15696a867e6eb8451c01995abd1a6669",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPP/P9PiUHpJoyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5dEE7pmdn8oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 500",
-        "url": "f3077dc825120596548aa2c13c993933",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgaYz//+nxKDT6YyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGiwFhX8rAi0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "bcdd8fa7af2de732ca8a3a1f2cf7ab74",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgen//1Nk0kxGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCADtvA+zRLgQAAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "ab313847887ab4573a63531f258ba951",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYz/1Nk0ul0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAG9JBITHVKrXAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 5000",
-        "url": "f29fbdacae42ad19cef1d4782ce374b9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenp6f8pMWjmzJmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUATaIGHbGkRQ8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 171,
@@ -6498,62 +3008,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 1000",
-        "url": "799a87fb3ebcb8f4495d22cb6270cc80",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/ePfxPiUFMQvKMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwTYEhcPZT6MAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "ec19ca5974ecdbe1a4aa28aeefb39cec",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/uHv5PiUFMyraMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA0UAEtHgAewYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 5000",
-        "url": "e8152dc37e889b0ed31ccae29b81a847",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/OLv1PiUFMxtGMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA4PIE4gZuhmYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5001 - 10000",
-        "url": "51c0669a5cd5fc97a01217b285e77d06",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/WZP6nxCCmkOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAAL0FP5oQ3RwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10001 - 15000",
-        "url": "c3901a92c1e75219a54124ab016ab678",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf86tP5TYhBTxTVGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAIoYFolv85dwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15001 - 20000",
-        "url": "fc528335a6640f60396b8ecabc801b91",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/SRf5TYhDTzDeMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUANVgF2UreWvsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 160,
@@ -6565,62 +3020,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 250",
-        "url": "d31cfe56cd41ce8490d204a7bea8d781",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgZ8+fvxPiUF8/PyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAvuoEfmjRLdoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "86a5d8f0993363783c820605df57617c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfOnPlPiUEmJiaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5WsE7soevtwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "356212d41d697cbf5c63d3bade4ca802",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdu2bftPiUFeXl6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA/BsFMJroYWsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "0b78bef345b8cd7965a25623e2cad7b7",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnzvxPiUHp6emMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGhIFhzHeCecAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 5000",
-        "url": "f29fbdacae42ad19cef1d4782ce374b9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenp6f8pMWjmzJmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUATaIGHbGkRQ8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5001 - 35000",
-        "url": "d9c8186963e7debc4b7ce8853274bb4b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgenp/ykyaeZMRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAG8XBITPlZdwAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 161,
@@ -6632,71 +3032,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 100",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "328ef735922ceb54a865fc1de88b6dff",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//M/ynxCBGRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIACTEDVHAdUUMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "62606aa051d764c91753a98417895f8e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nMvynxCDGdAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIALEEDusWnCLAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "4f3ad950373857a348c1a8bafa3b13aa",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfSGf5TYpDJTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIATywEHyB+H0UAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 5000",
-        "url": "924c04fc312b5a5f7376d3ea2dcb9c20",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPTGf5TYlD6TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYOcEUpvemfMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5001 - 10000",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 162,
@@ -6708,62 +3044,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 250",
-        "url": "d31cfe56cd41ce8490d204a7bea8d781",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgZ8+fvxPiUF8/PyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAvuoEfmjRLdoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "86a5d8f0993363783c820605df57617c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfOnPlPiUEmJiaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5WsE7soevtwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "356212d41d697cbf5c63d3bade4ca802",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdu2bftPiUFeXl6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA/BsFMJroYWsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "0b78bef345b8cd7965a25623e2cad7b7",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnzvxPiUHp6emMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGhIFhzHeCecAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 5000",
-        "url": "f29fbdacae42ad19cef1d4782ce374b9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenp6f8pMWjmzJmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUATaIGHbGkRQ8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5001 - 35000",
-        "url": "d9c8186963e7debc4b7ce8853274bb4b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgenp/ykyaeZMRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAG8XBITPlZdwAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 163,
@@ -6775,62 +3056,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 1000",
-        "url": "799a87fb3ebcb8f4495d22cb6270cc80",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/ePfxPiUFMQvKMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwTYEhcPZT6MAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "ec19ca5974ecdbe1a4aa28aeefb39cec",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/uHv5PiUFMyraMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA0UAEtHgAewYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 5000",
-        "url": "e8152dc37e889b0ed31ccae29b81a847",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/OLv1PiUFMxtGMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA4PIE4gZuhmYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5001 - 10000",
-        "url": "51c0669a5cd5fc97a01217b285e77d06",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/WZP6nxCCmkOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAAL0FP5oQ3RwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10001 - 15000",
-        "url": "c3901a92c1e75219a54124ab016ab678",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf86tP5TYhBTxTVGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAIoYFolv85dwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15001 - 20000",
-        "url": "fc528335a6640f60396b8ecabc801b91",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/SRf5TYhDTzDeMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUANVgF2UreWvsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 186,
@@ -6842,53 +3068,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 50",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 150",
-        "url": "a7e0d0de6f7836bfe12f6d16c841534a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+//9PiUEmjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwo4EiB5cX5AAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "151 - 400",
-        "url": "7a15b8a0baa96cfdc151f0aee721b370",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen///+nxKCZjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5asE7ZP4q+kAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "401 - 1000",
-        "url": "aec3bd4fb5f194f4a5296b2340887731",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgWf+/6fIJBNGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCABi3A4cUTDVBAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2000",
-        "url": "6bcb21956ee922f09f051311c18be88b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTNn/qfIpPR0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAEzpBCD/8FGwAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 187,
@@ -6900,71 +3080,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 250",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "4aac6323d12fdc33b5c3d877555d12d9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//p/+nxCBGxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5HsE7X1alrgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "5e67378c7229b80d2143bb3fab3166a3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nnvlPiUGM6SaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7nDp6UQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 5000",
-        "url": "75286bb0005a579ad69d3f0c7a7dc528",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfS//+nxCCTmYyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9s4FIOmpJGcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5001 - 10000",
-        "url": "0bf8fd236ee9ca27f271ae5a4b6b20c1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNN//+nxKD004yMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGcgFhYqxwNEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10001 - 15000",
-        "url": "0b4e6cd5e1ac4996677435de802f431c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgekM6f8pMWgmw0xGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAcLAEhIda6BsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 188,
@@ -6976,62 +3092,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 50",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 250",
-        "url": "269e86e54f96344362d81884f21b021d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+z/xPiUEmjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7rDl8YQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "b5b9ede611ffb3da16d86dd1f93686f9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen/Tf9TYtBMxtOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKmAFt0NlUIEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "db78d8268813b4631a95963628e82a14",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTMZ/lNkUjoDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAIKOArmqP8lxAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2000",
-        "url": "a4a24b63bfff663882dfac8aa503882d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgabpDP8pMej0TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg6sEtlscd8cAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2001 - 5000",
-        "url": "7d75e17e5a90cd93c6981607881fe1af",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYM/yky6TQDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAKTuAx1BemcyAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 189,
@@ -7043,71 +3104,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 5.0",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "269e86e54f96344362d81884f21b021d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+z/xPiUEmjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7rDl8YQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "4ed2feb88aa9f0076621f7847dcb90a3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTP/p/+nxKB0xpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUACAAFU5vGQX8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "b5b9ede611ffb3da16d86dd1f93686f9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen/Tf9TYtBMxtOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKmAFt0NlUIEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "db78d8268813b4631a95963628e82a14",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTMZ/lNkUjoDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAIKOArmqP8lxAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "a4a24b63bfff663882dfac8aa503882d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgabpDP8pMej0TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg6sEtlscd8cAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "7d75e17e5a90cd93c6981607881fe1af",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYM/yky6TQDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAKTuAx1BemcyAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 176,
@@ -7119,62 +3116,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 50",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 250",
-        "url": "269e86e54f96344362d81884f21b021d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+z/xPiUEmjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7rDl8YQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "b5b9ede611ffb3da16d86dd1f93686f9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen/Tf9TYtBMxtOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKmAFt0NlUIEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "db78d8268813b4631a95963628e82a14",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTMZ/lNkUjoDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAIKOArmqP8lxAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2000",
-        "url": "a4a24b63bfff663882dfac8aa503882d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgabpDP8pMej0TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg6sEtlscd8cAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2001 - 5000",
-        "url": "7d75e17e5a90cd93c6981607881fe1af",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYM/yky6TQDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAKTuAx1BemcyAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 177,
@@ -7186,53 +3128,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 1500",
-        "url": "799a87fb3ebcb8f4495d22cb6270cc80",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/ePfxPiUFMQvKMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwTYEhcPZT6MAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1501 - 4500",
-        "url": "e8152dc37e889b0ed31ccae29b81a847",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/OLv1PiUFMxtGMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA4PIE4gZuhmYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4501 - 9000",
-        "url": "51c0669a5cd5fc97a01217b285e77d06",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/WZP6nxCCmkOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAAL0FP5oQ3RwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "9001 - 16000",
-        "url": "c3901a92c1e75219a54124ab016ab678",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf86tP5TYhBTxTVGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAIoYFolv85dwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "16001 - 45000",
-        "url": "7506f7306131a52f85224d1b3af890b3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZga8yGf5TYpDYdAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIARA4D/2b6+K4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 178,
@@ -7244,71 +3140,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 25",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "26 - 50",
-        "url": "2e87d515959441d953e150b21ca2722b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdd//fpPiUGabGyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwiYEh53uzdcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "15696a867e6eb8451c01995abd1a6669",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPP/P9PiUHpJoyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5dEE7pmdn8oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 500",
-        "url": "f3077dc825120596548aa2c13c993933",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgaYz//+nxKDT6YyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGiwFhX8rAi0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "bcdd8fa7af2de732ca8a3a1f2cf7ab74",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgen//1Nk0kxGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCADtvA+zRLgQAAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "ab313847887ab4573a63531f258ba951",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYz/1Nk0ul0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAG9JBITHVKrXAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 5000",
-        "url": "f29fbdacae42ad19cef1d4782ce374b9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenp6f8pMWjmzJmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUATaIGHbGkRQ8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 179,
@@ -7320,71 +3152,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 25",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "26 - 100",
-        "url": "ffa9698c13add278ab2da872915d41ca",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/O7/hPiUFMhh6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA2c0EzX31PVsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "2041440ff30fb6dab7a32a870103c64d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9npv+nxCDG9JmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAB5oFUxVnzOMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "a360bcfed3979e1325f514b999477e72",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/TTf9TYhDjzNOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKcgFt92kn74AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "afc9d675543ebeb9d240c07691dc7834",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWdMGf5TYpDJaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYFwEURuNcoQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "944b2e250b0b6b4afcdef3e1fbf8e773",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNNGf5TYlD6aQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAchcEhL2N1LgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 5000",
-        "url": "e1a407a1170aa6870d59dd942a71717a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgemmDP8pMWjmaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg3kEtkU6v0QAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 180,
@@ -7396,53 +3164,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 250",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 6000",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 181,
@@ -7454,71 +3176,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 100",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "328ef735922ceb54a865fc1de88b6dff",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//M/ynxCBGRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIACTEDVHAdUUMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "62606aa051d764c91753a98417895f8e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nMvynxCDGdAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIALEEDusWnCLAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "4f3ad950373857a348c1a8bafa3b13aa",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfSGf5TYpDJTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIATywEHyB+H0UAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 5000",
-        "url": "924c04fc312b5a5f7376d3ea2dcb9c20",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPTGf5TYlD6TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYOcEUpvemfMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5001 - 10000",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 182,
@@ -7530,62 +3188,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 250",
-        "url": "d31cfe56cd41ce8490d204a7bea8d781",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgZ8+fvxPiUF8/PyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAvuoEfmjRLdoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "86a5d8f0993363783c820605df57617c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfOnPlPiUEmJiaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5WsE7soevtwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "356212d41d697cbf5c63d3bade4ca802",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdu2bftPiUFeXl6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA/BsFMJroYWsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "0b78bef345b8cd7965a25623e2cad7b7",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnzvxPiUHp6emMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGhIFhzHeCecAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 5000",
-        "url": "f29fbdacae42ad19cef1d4782ce374b9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenp6f8pMWjmzJmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUATaIGHbGkRQ8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5001 - 35000",
-        "url": "d9c8186963e7debc4b7ce8853274bb4b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgenp/ykyaeZMRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAG8XBITPlZdwAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 183,
@@ -7597,62 +3200,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 1000",
-        "url": "799a87fb3ebcb8f4495d22cb6270cc80",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/ePfxPiUFMQvKMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwTYEhcPZT6MAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "ec19ca5974ecdbe1a4aa28aeefb39cec",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/uHv5PiUFMyraMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA0UAEtHgAewYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 5000",
-        "url": "e8152dc37e889b0ed31ccae29b81a847",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/OLv1PiUFMxtGMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA4PIE4gZuhmYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5001 - 10000",
-        "url": "51c0669a5cd5fc97a01217b285e77d06",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/WZP6nxCCmkOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAAL0FP5oQ3RwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10001 - 15000",
-        "url": "c3901a92c1e75219a54124ab016ab678",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf86tP5TYhBTxTVGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAIoYFolv85dwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15001 - 20000",
-        "url": "fc528335a6640f60396b8ecabc801b91",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/SRf5TYhDTzDeMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUANVgF2UreWvsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 184,
@@ -7664,53 +3212,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 25000",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "25001 - 50000",
-        "url": "a7e0d0de6f7836bfe12f6d16c841534a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+//9PiUEmjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwo4EiB5cX5AAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50001 - 75000",
-        "url": "7a15b8a0baa96cfdc151f0aee721b370",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen///+nxKCZjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5asE7ZP4q+kAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75001 - 125000",
-        "url": "aec3bd4fb5f194f4a5296b2340887731",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgWf+/6fIJBNGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCABi3A4cUTDVBAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "125001 - 250001",
-        "url": "6bcb21956ee922f09f051311c18be88b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTNn/qfIpPR0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAEzpBCD/8FGwAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 185,
@@ -7722,44 +3224,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "1 - 2",
-        "url": "b29d1a47012eee467b1db0051a2024f3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgW+vzfpPiUHCWmmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA54AE9e4/T40AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 3",
-        "url": "2c3e0fad4b181d8111a3724d5717b498",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRdXuf+nxCD9sJ2MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAHKAFkAisN6MAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "3.01 - 5",
-        "url": "a91156c2878c3456a9a5ca94ff6f5bb4",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgX2Fav8pMaio/xYjioHUAqMGjho4auCogXQ2EFaeUc1AagEAUroGLd3NQ5AAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 20",
-        "url": "a92a9882342b912866471e9ed5baf74e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgYm+iv8pMWj+5vuMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAcHIGg0eurkYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 196,
@@ -7771,71 +3236,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "3d84236372e54320b0851cac08bec072",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgU6uIv8pMWjf7jeMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAgmQGt76CtaMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "439ab76d003b4131126c5cc7b31e7e6c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgYGB/v8pMWj9+o2MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAZQAGYXS9KpcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 197,
@@ -7847,71 +3248,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 2",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 5.0",
-        "url": "a7e0d0de6f7836bfe12f6d16c841534a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+//9PiUEmjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwo4EiB5cX5AAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "7a15b8a0baa96cfdc151f0aee721b370",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen///+nxKCZjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5asE7ZP4q+kAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 20.0",
-        "url": "aec3bd4fb5f194f4a5296b2340887731",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgWf+/6fIJBNGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCABi3A4cUTDVBAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "20.01 - 50.0",
-        "url": "6bcb21956ee922f09f051311c18be88b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTNn/qfIpPR0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAEzpBCD/8FGwAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "67545eec0e3c00728001f4bc57673052",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6czCxLtmG5fx8zMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAEJ8NEughbEkAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "97bafbb90836c3250a94455f7e2d1c8d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgaGhof8pMWj16tWMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAYDIGU/87hcsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 202,
@@ -7923,71 +3260,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 2.0",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 5.0",
-        "url": "a7e0d0de6f7836bfe12f6d16c841534a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+//9PiUEmjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwo4EiB5cX5AAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "7a15b8a0baa96cfdc151f0aee721b370",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen///+nxKCZjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5asE7ZP4q+kAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 20.0",
-        "url": "aec3bd4fb5f194f4a5296b2340887731",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgWf+/6fIJBNGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCABi3A4cUTDVBAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "20.01 - 50.0",
-        "url": "6bcb21956ee922f09f051311c18be88b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTNn/qfIpPR0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAEzpBCD/8FGwAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "67545eec0e3c00728001f4bc57673052",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6czCxLtmG5fx8zMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAEJ8NEughbEkAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "97bafbb90836c3250a94455f7e2d1c8d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgaGhof8pMWj16tWMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAYDIGU/87hcsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 203,
@@ -7999,71 +3272,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 5",
-        "url": "b69dde22319403fc4b2eca4506cdfd95",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgb+u//tPiUFsmkyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwKcEg88KAo0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "fccd2e07b12339caa9591b18f6f4e1f1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgd+X/vtPiUGc0UyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA0uIEuDcC4pEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "d177f36fb80974ff73ca333ecf80245d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZga9Mf/6nxCCx0+yMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA/5oFOguGzN4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "c8bf71127eb8ce174f249a4a246a7545",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgecZHvynxCBDBgVGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAI2kDo9RBBkAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "d071e175a1e6fe83a29580af3c753493",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgV0MU/9TYlAZQzYjioHUAqMGjho4auCogXQ2EFaeUc1AagEAVOMEMy94OOcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "afad78319ae01204dbe44218b53f8c19",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTEMKf8pMWgJwxxGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAdYgEkjHFj+MAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "7725d1d1c39a24d67c19e0c4080fff84",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWoMKf8pMegWwxxGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAiE4EyFJMAUIAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 204,
@@ -8075,71 +3284,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "328ef735922ceb54a865fc1de88b6dff",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//M/ynxCBGRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIACTEDVHAdUUMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "62606aa051d764c91753a98417895f8e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nMvynxCDGdAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIALEEDusWnCLAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "4f3ad950373857a348c1a8bafa3b13aa",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfSGf5TYpDJTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIATywEHyB+H0UAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "924c04fc312b5a5f7376d3ea2dcb9c20",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPTGf5TYlD6TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYOcEUpvemfMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 205,
@@ -8151,71 +3296,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0.000000 - 6.957288",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "6.957289 - 16.226071",
-        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "16.226072 - 27.655889",
-        "url": "4aac6323d12fdc33b5c3d877555d12d9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//p/+nxCBGxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5HsE7X1alrgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "27.655890 - 41.708543",
-        "url": "5e67378c7229b80d2143bb3fab3166a3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nnvlPiUGM6SaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7nDp6UQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "41.708544 - 59.231449",
-        "url": "75286bb0005a579ad69d3f0c7a7dc528",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfS//+nxCCTmYyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9s4FIOmpJGcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "59.231450 - 80.370370",
-        "url": "0bf8fd236ee9ca27f271ae5a4b6b20c1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNN//+nxKD004yMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGcgFhYqxwNEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "80.370371 - 100.000000",
-        "url": "0b4e6cd5e1ac4996677435de802f431c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgekM6f8pMWgmw0xGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAcLAEhIda6BsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 198,
@@ -8227,71 +3308,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 5",
-        "url": "b69dde22319403fc4b2eca4506cdfd95",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgb+u//tPiUFsmkyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwKcEg88KAo0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "fccd2e07b12339caa9591b18f6f4e1f1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgd+X/vtPiUGc0UyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA0uIEuDcC4pEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "d177f36fb80974ff73ca333ecf80245d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZga9Mf/6nxCCx0+yMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA/5oFOguGzN4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "c8bf71127eb8ce174f249a4a246a7545",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgecZHvynxCBDBgVGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAI2kDo9RBBkAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "d071e175a1e6fe83a29580af3c753493",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgV0MU/9TYlAZQzYjioHUAqMGjho4auCogXQ2EFaeUc1AagEAVOMEMy94OOcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "afad78319ae01204dbe44218b53f8c19",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTEMKf8pMWgJwxxGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAdYgEkjHFj+MAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "7725d1d1c39a24d67c19e0c4080fff84",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWoMKf8pMegWwxxGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAiE4EyFJMAUIAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 199,
@@ -8303,71 +3320,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "328ef735922ceb54a865fc1de88b6dff",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//M/ynxCBGRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIACTEDVHAdUUMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "62606aa051d764c91753a98417895f8e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nMvynxCDGdAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIALEEDusWnCLAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "4f3ad950373857a348c1a8bafa3b13aa",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfSGf5TYpDJTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIATywEHyB+H0UAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "924c04fc312b5a5f7376d3ea2dcb9c20",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPTGf5TYlD6TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYOcEUpvemfMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 200,
@@ -8379,71 +3332,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0.000000 - 6.957288",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "6.957289 - 16.226071",
-        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "16.226072 - 27.655889",
-        "url": "4aac6323d12fdc33b5c3d877555d12d9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//p/+nxCBGxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5HsE7X1alrgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "27.655890 - 41.708543",
-        "url": "5e67378c7229b80d2143bb3fab3166a3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nnvlPiUGM6SaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7nDp6UQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "41.708544 - 59.231449",
-        "url": "75286bb0005a579ad69d3f0c7a7dc528",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfS//+nxCCTmYyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9s4FIOmpJGcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "59.231450 - 80.370370",
-        "url": "0bf8fd236ee9ca27f271ae5a4b6b20c1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNN//+nxKD004yMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGcgFhYqxwNEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "80.370371 - 100.000000",
-        "url": "0b4e6cd5e1ac4996677435de802f431c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgekM6f8pMWgmw0xGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAcLAEhIda6BsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 201,
@@ -8455,71 +3344,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "3d84236372e54320b0851cac08bec072",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgU6uIv8pMWjf7jeMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAgmQGt76CtaMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "439ab76d003b4131126c5cc7b31e7e6c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgYGB/v8pMWj9+o2MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAZQAGYXS9KpcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 190,
@@ -8531,71 +3356,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 5.0",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "2e87d515959441d953e150b21ca2722b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdd//fpPiUGabGyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwiYEh53uzdcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "15696a867e6eb8451c01995abd1a6669",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPP/P9PiUHpJoyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5dEE7pmdn8oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "f3077dc825120596548aa2c13c993933",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgaYz//+nxKDT6YyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGiwFhX8rAi0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "bcdd8fa7af2de732ca8a3a1f2cf7ab74",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgen//1Nk0kxGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCADtvA+zRLgQAAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "ab313847887ab4573a63531f258ba951",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYz/1Nk0ul0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAG9JBITHVKrXAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "f29fbdacae42ad19cef1d4782ce374b9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenp6f8pMWjmzJmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUATaIGHbGkRQ8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 191,
@@ -8607,71 +3368,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 5.0",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "ffa9698c13add278ab2da872915d41ca",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/O7/hPiUFMhh6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA2c0EzX31PVsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "2041440ff30fb6dab7a32a870103c64d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9npv+nxCDG9JmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAB5oFUxVnzOMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "a360bcfed3979e1325f514b999477e72",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/TTf9TYhDjzNOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKcgFt92kn74AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "afc9d675543ebeb9d240c07691dc7834",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWdMGf5TYpDJaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYFwEURuNcoQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "944b2e250b0b6b4afcdef3e1fbf8e773",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNNGf5TYlD6aQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAchcEhL2N1LgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "e1a407a1170aa6870d59dd942a71717a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgemmDP8pMWjmaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg3kEtkU6v0QAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 192,
@@ -8683,71 +3380,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 2.0",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 5.0",
-        "url": "a7e0d0de6f7836bfe12f6d16c841534a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+//9PiUEmjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwo4EiB5cX5AAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "7a15b8a0baa96cfdc151f0aee721b370",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen///+nxKCZjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5asE7ZP4q+kAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 20.0",
-        "url": "aec3bd4fb5f194f4a5296b2340887731",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgWf+/6fIJBNGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCABi3A4cUTDVBAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "20.01 - 50.0",
-        "url": "6bcb21956ee922f09f051311c18be88b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTNn/qfIpPR0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAEzpBCD/8FGwAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "67545eec0e3c00728001f4bc57673052",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6czCxLtmG5fx8zMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAEJ8NEughbEkAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "97bafbb90836c3250a94455f7e2d1c8d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgaGhof8pMWj16tWMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAYDIGU/87hcsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 193,
@@ -8759,71 +3392,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 5.0",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "269e86e54f96344362d81884f21b021d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+z/xPiUEmjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7rDl8YQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "4ed2feb88aa9f0076621f7847dcb90a3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTP/p/+nxKB0xpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUACAAFU5vGQX8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "b5b9ede611ffb3da16d86dd1f93686f9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen/Tf9TYtBMxtOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKmAFt0NlUIEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "db78d8268813b4631a95963628e82a14",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTMZ/lNkUjoDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAIKOArmqP8lxAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "a4a24b63bfff663882dfac8aa503882d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgabpDP8pMej0TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg6sEtlscd8cAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "7d75e17e5a90cd93c6981607881fe1af",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYM/yky6TQDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAKTuAx1BemcyAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 194,
@@ -8835,71 +3404,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 5.0",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "2e87d515959441d953e150b21ca2722b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdd//fpPiUGabGyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwiYEh53uzdcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "15696a867e6eb8451c01995abd1a6669",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPP/P9PiUHpJoyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5dEE7pmdn8oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "f3077dc825120596548aa2c13c993933",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgaYz//+nxKDT6YyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGiwFhX8rAi0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "bcdd8fa7af2de732ca8a3a1f2cf7ab74",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgen//1Nk0kxGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCADtvA+zRLgQAAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "ab313847887ab4573a63531f258ba951",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYz/1Nk0ul0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAG9JBITHVKrXAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "f29fbdacae42ad19cef1d4782ce374b9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenp6f8pMWjmzJmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUATaIGHbGkRQ8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 195,
@@ -8911,71 +3416,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 5.0",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "ffa9698c13add278ab2da872915d41ca",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/O7/hPiUFMhh6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA2c0EzX31PVsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "2041440ff30fb6dab7a32a870103c64d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9npv+nxCDG9JmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAB5oFUxVnzOMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "a360bcfed3979e1325f514b999477e72",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/TTf9TYhDjzNOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKcgFt92kn74AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "afc9d675543ebeb9d240c07691dc7834",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWdMGf5TYpDJaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYFwEURuNcoQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "944b2e250b0b6b4afcdef3e1fbf8e773",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNNGf5TYlD6aQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAchcEhL2N1LgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "e1a407a1170aa6870d59dd942a71717a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgemmDP8pMWjmaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg3kEtkU6v0QAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 216,
@@ -8987,71 +3428,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 25",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "26 - 50",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 1500",
-        "url": "2968ad5e8eacfe604ae65e3ea715b1b3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWFv8pMejEiROMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAfhoGqgM7uSoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 217,
@@ -9063,71 +3440,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 50",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 5000",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5001 - 20000",
-        "url": "2968ad5e8eacfe604ae65e3ea715b1b3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWFv8pMejEiROMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAfhoGqgM7uSoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 218,
@@ -9139,71 +3452,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 50",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 3000",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "3001 - 6000",
-        "url": "2968ad5e8eacfe604ae65e3ea715b1b3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWFv8pMejEiROMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAfhoGqgM7uSoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 219,
@@ -9215,71 +3464,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 50",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 1500",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1501 - 2000",
-        "url": "2968ad5e8eacfe604ae65e3ea715b1b3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWFv8pMejEiROMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAfhoGqgM7uSoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 206,
@@ -9291,71 +3476,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 5",
-        "url": "b69dde22319403fc4b2eca4506cdfd95",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgb+u//tPiUFsmkyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwKcEg88KAo0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "fccd2e07b12339caa9591b18f6f4e1f1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgd+X/vtPiUGc0UyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA0uIEuDcC4pEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "d177f36fb80974ff73ca333ecf80245d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZga9Mf/6nxCCx0+yMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA/5oFOguGzN4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "c8bf71127eb8ce174f249a4a246a7545",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgecZHvynxCBDBgVGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAI2kDo9RBBkAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "d071e175a1e6fe83a29580af3c753493",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgV0MU/9TYlAZQzYjioHUAqMGjho4auCogXQ2EFaeUc1AagEAVOMEMy94OOcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "afad78319ae01204dbe44218b53f8c19",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTEMKf8pMWgJwxxGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAdYgEkjHFj+MAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "7725d1d1c39a24d67c19e0c4080fff84",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWoMKf8pMegWwxxGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAiE4EyFJMAUIAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 207,
@@ -9367,71 +3488,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "328ef735922ceb54a865fc1de88b6dff",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//M/ynxCBGRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIACTEDVHAdUUMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "62606aa051d764c91753a98417895f8e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nMvynxCDGdAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIALEEDusWnCLAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "4f3ad950373857a348c1a8bafa3b13aa",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfSGf5TYpDJTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIATywEHyB+H0UAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "924c04fc312b5a5f7376d3ea2dcb9c20",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPTGf5TYlD6TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYOcEUpvemfMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 208,
@@ -9443,71 +3500,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0.000000 - 6.957288",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "6.957289 - 16.226071",
-        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "16.226072 - 27.655889",
-        "url": "4aac6323d12fdc33b5c3d877555d12d9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//p/+nxCBGxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5HsE7X1alrgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "27.655890 - 41.708543",
-        "url": "5e67378c7229b80d2143bb3fab3166a3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nnvlPiUGM6SaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7nDp6UQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "41.708544 - 59.231449",
-        "url": "75286bb0005a579ad69d3f0c7a7dc528",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfS//+nxCCTmYyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9s4FIOmpJGcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "59.231450 - 80.370370",
-        "url": "0bf8fd236ee9ca27f271ae5a4b6b20c1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNN//+nxKD004yMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGcgFhYqxwNEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "80.370371 - 100.000000",
-        "url": "0b4e6cd5e1ac4996677435de802f431c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgekM6f8pMWgmw0xGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAcLAEhIda6BsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 209,
@@ -9519,71 +3512,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 5.0",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "269e86e54f96344362d81884f21b021d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+z/xPiUEmjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7rDl8YQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "4ed2feb88aa9f0076621f7847dcb90a3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTP/p/+nxKB0xpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUACAAFU5vGQX8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "b5b9ede611ffb3da16d86dd1f93686f9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen/Tf9TYtBMxtOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKmAFt0NlUIEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "db78d8268813b4631a95963628e82a14",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTMZ/lNkUjoDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAIKOArmqP8lxAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "a4a24b63bfff663882dfac8aa503882d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgabpDP8pMej0TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg6sEtlscd8cAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "7d75e17e5a90cd93c6981607881fe1af",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYM/yky6TQDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAKTuAx1BemcyAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 210,
@@ -9595,71 +3524,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 5.0",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "2e87d515959441d953e150b21ca2722b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdd//fpPiUGabGyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwiYEh53uzdcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "15696a867e6eb8451c01995abd1a6669",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPP/P9PiUHpJoyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5dEE7pmdn8oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "f3077dc825120596548aa2c13c993933",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgaYz//+nxKDT6YyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGiwFhX8rAi0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "bcdd8fa7af2de732ca8a3a1f2cf7ab74",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgen//1Nk0kxGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCADtvA+zRLgQAAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "ab313847887ab4573a63531f258ba951",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYz/1Nk0ul0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAG9JBITHVKrXAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "f29fbdacae42ad19cef1d4782ce374b9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenp6f8pMWjmzJmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUATaIGHbGkRQ8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 211,
@@ -9671,71 +3536,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 5.0",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "ffa9698c13add278ab2da872915d41ca",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/O7/hPiUFMhh6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA2c0EzX31PVsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "2041440ff30fb6dab7a32a870103c64d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9npv+nxCDG9JmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAB5oFUxVnzOMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "a360bcfed3979e1325f514b999477e72",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/TTf9TYhDjzNOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKcgFt92kn74AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "afc9d675543ebeb9d240c07691dc7834",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWdMGf5TYpDJaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYFwEURuNcoQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "944b2e250b0b6b4afcdef3e1fbf8e773",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNNGf5TYlD6aQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAchcEhL2N1LgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "e1a407a1170aa6870d59dd942a71717a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgemmDP8pMWjmaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg3kEtkU6v0QAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 212,
@@ -9747,71 +3548,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 50",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 5000",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5001 - 20000",
-        "url": "2968ad5e8eacfe604ae65e3ea715b1b3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWFv8pMejEiROMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAfhoGqgM7uSoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 213,
@@ -9823,71 +3560,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 50",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 3000",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "3001 - 6000",
-        "url": "2968ad5e8eacfe604ae65e3ea715b1b3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWFv8pMejEiROMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAfhoGqgM7uSoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 214,
@@ -9899,71 +3572,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 50",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 1500",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1501 - 2000",
-        "url": "2968ad5e8eacfe604ae65e3ea715b1b3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWFv8pMejEiROMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAfhoGqgM7uSoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 215,
@@ -9975,62 +3584,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 25",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "26 - 50",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 220,
@@ -10042,62 +3596,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 25",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "26 - 50",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 221,
@@ -10109,62 +3608,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 25",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "26 - 50",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 75",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "76 - 100",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 150",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "151 - 300",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 222,
@@ -10176,62 +3620,7 @@ define({
     "layerName": "CENBLKGRP_2000",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 25",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "26 - 50",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 75",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "76 - 100",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 150",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "151 - 300",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 223,
@@ -10243,71 +3632,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 25",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "26 - 50",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 1500",
-        "url": "2968ad5e8eacfe604ae65e3ea715b1b3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWFv8pMejEiROMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAfhoGqgM7uSoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 224,
@@ -10319,71 +3644,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 50",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 5000",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5001 - 20000",
-        "url": "2968ad5e8eacfe604ae65e3ea715b1b3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWFv8pMejEiROMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAfhoGqgM7uSoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 225,
@@ -10395,71 +3656,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 50",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 3000",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "3001 - 6000",
-        "url": "2968ad5e8eacfe604ae65e3ea715b1b3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWFv8pMejEiROMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAfhoGqgM7uSoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 226,
@@ -10471,71 +3668,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 50",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 1500",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1501 - 2000",
-        "url": "2968ad5e8eacfe604ae65e3ea715b1b3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWFv8pMejEiROMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAfhoGqgM7uSoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 227,
@@ -10547,62 +3680,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 25",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "26 - 50",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 228,
@@ -10614,62 +3692,7 @@ define({
     "layerName": "CENBLKGRP_2010",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 25",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "26 - 50",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 75",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "76 - 100",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 150",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "151 - 300",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 229,
@@ -10681,71 +3704,7 @@ define({
     "layerName": "CENACS_2017",
     "minScale": 100000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 25",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "26 - 50",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 1500",
-        "url": "2968ad5e8eacfe604ae65e3ea715b1b3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWFv8pMejEiROMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAfhoGqgM7uSoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 250,
@@ -10757,80 +3716,7 @@ define({
     "layerName": "CLIPV4_SURFWTR",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0",
-        "url": "98fb6d62c20377d8d861e56ede28766f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jugsZKTDsPwMDjb08auCogaMGjhqI00BKykRGdAMpKQvhAABd0QNSDPGCHwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 1 - Highest",
-        "url": "464090a42af3ef2c950510ff57957e0b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADhJREFUOI1jYaAyYKGlgf+pYB4jmgt9KTBrMwMDA429PGrgqIGjBo4aiMvAzZSYxYhuICMlpsEAAEX8AwY77KxJAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 2",
-        "url": "f1b780af26a2d82e2d55a7a5d15f6cca",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADlJREFUOI1jYaAyYKGlgf+pYB4jqgulG8g36ilEL029PGrgqIGjBo4aiMNAaBFEJmBEN5CREtNgAADWqgS4bZgV9wAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 3",
-        "url": "f4da812f47d0102528a16c78b0bbb09b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jqgt9N5Nv1GZfBgYGGnt51MBRA0cNHDUQh4HQIohMwIhuICMlpsEAALQlBFM7NSQsAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 4",
-        "url": "f5065da038be39159759c29e59bfef45",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtNZ24m26TT6b4MDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEANPIF0nmZ6boAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 5",
-        "url": "622e9dd167ed5f6cc50cd1ba89456813",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigsbzjwj26QGEykGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAA9/MFIX91IykAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 6",
-        "url": "823dbb723b6196e9b73eb1058e0f10f1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jigs3/yffTF9GRgYGBhp7edTAUQNHDRw1ELuBsCKITMCIbiBFpsEAAMwxBKKZ+mMlAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 7",
-        "url": "00b89c6ad5fed230fd6606195bb2cd35",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jiguf/X9GtklSjFIMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAwvUEiFNi8TAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 251,
@@ -10842,62 +3728,7 @@ define({
     "layerName": "CLIPV4_SHCA",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0",
-        "url": "98fb6d62c20377d8d861e56ede28766f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jugsZKTDsPwMDjb08auCogaMGjhqI00BKykRGdAMpKQvhAABd0QNSDPGCHwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 1 (Highest)",
-        "url": "e95fa80baabf3aaaf6654f9d83e0df3b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigt9pck3afNTCE1TL48aOGrgqIGjBmI3EFYEkQkY0Q1kpMg4KAAA62UE62kaJfsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 2",
-        "url": "626dcc7de22959597b6cdb5006ff8837",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigsbTMk3qeE0hKapl0cNHDVw1MBRA7EbCCuCyASM6AYyUmQcFAAA0LoEnhgubdIAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 3",
-        "url": "e730d30f5c3c337f0950bce61a843610",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigs3p5Nvku9MCE1TL48aOGrgqIGjBmI3EFYEkQkY0Q1kpMg4KAAArc8EOUNWQrgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 4",
-        "url": "e99f7f49e6232e3919a9af26d2560517",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGlgf+pYB4jigv/bzYl3yTf0wwMDDT28qiBowaOGjhqIHYDYUUQmYAR3UBGSkyDAQAQmgVsAitcKwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 5",
-        "url": "796ca467cac857c18911869da2c407d2",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGlgf+pYB4jigv/P0sn3ySpmQwMDDT28qiBowaOGjhqIHYDYUUQmYAR3UBGSkyDAQDuBQUH7Q4MHAAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 252,
@@ -10909,62 +3740,7 @@ define({
     "layerName": "CLIPV4_PRIO",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0",
-        "url": "98fb6d62c20377d8d861e56ede28766f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jugsZKTDsPwMDjb08auCogaMGjhqI00BKykRGdAMpKQvhAABd0QNSDPGCHwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 5",
-        "url": "796ca467cac857c18911869da2c407d2",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGlgf+pYB4jigv/P0sn3ySpmQwMDDT28qiBowaOGjhqIHYDYUUQmYAR3UBGSkyDAQDuBQUH7Q4MHAAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 4",
-        "url": "b5c4235dda604d8447802c56e718755c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigs33DQl26QA9dMMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAHwEFlYNODG0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 3",
-        "url": "d933033ec446968b285ea565bd311745",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jiguDl2mRbdLaqGsMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAVJsGMN0If9sAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 2",
-        "url": "cfdbe322912180f859b47779b869dc9d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigu507XINunrzGsMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAg0sGt+nnQiwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 1 - Highest",
-        "url": "a5c0c9001b2e8dcdcc605b5dceb86138",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigsVHazINun+gWMMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAg50GuBnp+6YAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 253,
@@ -10976,62 +3752,7 @@ define({
     "layerName": "CLIPV4_SRFWTRRP",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0",
-        "url": "98fb6d62c20377d8d861e56ede28766f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jugsZKTDsPwMDjb08auCogaMGjhqI00BKykRGdAMpKQvhAABd0QNSDPGCHwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 5",
-        "url": "752f7a7c08a31d95c2f1a3d71751a4a4",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jigvP3CXfTBNlRgYGBhp7edTAUQNHDRw1ELuBsCKITMCIbiBFpsEAAM8wBKtVz6y7AAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 4",
-        "url": "428b7f938ff793be1c19c610eb832428",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jiguXbSXfzChvRgYGBhp7edTAUQNHDRw1ELuBsCKITMCIbiBFpsEAAOomBPm49Bd1AAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 3",
-        "url": "2adde40f472e42ef5819e9a638c16ca2",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigu9I26SbdLWFeoMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEANroF1zG7BVEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 2",
-        "url": "f982d436723ebe64024835d0eaa87dfc",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvV1GaSbdKtW+kMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAaocGbuxR1l4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 1 - Highest",
-        "url": "91d46c3ce671dab9a134f1bb6609aedb",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigu5GSLINukrwwoGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAA67cE8NW8dHwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 254,
@@ -11043,62 +3764,7 @@ define({
     "layerName": "CLIPV4_BIDIVRP",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0",
-        "url": "98fb6d62c20377d8d861e56ede28766f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jugsZKTDsPwMDjb08auCogaMGjhqI00BKykRGdAMpKQvhAABd0QNSDPGCHwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 5",
-        "url": "55e942f0037bda811efb3e780a1ecb4a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGlgf+pYB4jigv/P00n3yTpmQwMDDT28qiBowaOGjhqIHYDYUUQmYAR3UBGSkyDAQDuXQUIUXxzNQAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 4",
-        "url": "22e7d29408bebdbe5b68a84f3128a8dc",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGlgf+pYB4jigv/zzAl36SM0wwMDDT28qiBowaOGjhqIHYDYUUQmYAR3UBGSkyDAQAZ4gWHdjl+1wAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 3",
-        "url": "b0b6d710e7b8b7fa48b75069dd0cc2b0",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigufxuiRbZL0kksMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAOe0F5PiiDD8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 2",
-        "url": "f688aa9286be733886bd5fa307e0cd83",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigs3iYiQbZLfmzcMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAbT4GeR78E5IAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 1",
-        "url": "2d58ab912f331ff05f23915b60e51b12",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvTGUTINmkmwxsGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAA4tcE2I0onrUAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 255,
@@ -11110,53 +3776,7 @@ define({
     "layerName": "CLIPV4_PRIVATE_P1P2",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0",
-        "url": "98fb6d62c20377d8d861e56ede28766f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jugsZKTDsPwMDjb08auCogaMGjhqI00BKykRGdAMpKQvhAABd0QNSDPGCHwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 1 - Private Wetlands",
-        "url": "67163d87d31eea77f986fd586f6984b6",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jqgsdTMk36sBpBgYGGnt51MBRA0cNHDUQh4HQIohMwIhuICMlpsEAAONvBN49s2EpAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 1 - Private Natural, Seminatural Uplands",
-        "url": "4879c3cc09b983393ee1dc4415d693d5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jiguz80XINmnqxDcMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAZqUGZf9Ij8wAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 2 - Private Wetlands",
-        "url": "cfdbe322912180f859b47779b869dc9d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigu507XINunrzGsMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAg0sGt+nnQiwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 2 - Private Natural, Seminatural Uplands",
-        "url": "67012a755784c1281cccc0815941e90f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtLp3KTbVJ39lcGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAWSoGPu3dtg8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 256,
@@ -11168,71 +3788,7 @@ define({
     "layerName": "CLIPV4_FLDPLN",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0",
-        "url": "98fb6d62c20377d8d861e56ede28766f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jugsZKTDsPwMDjb08auCogaMGjhqI00BKykRGdAMpKQvhAABd0QNSDPGCHwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 1 (Highest)",
-        "url": "291c4564159ae55e93087da0fdf84268",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jqgulI8g36ukKBgYGGnt51MBRA0cNHDUQh4HQIohMwIhuICMlpsEAAORCBOBQpgvtAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 2",
-        "url": "d2d81b0dd09afeb4be7e6199d323a096",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtF3HvINunNzhIGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAadwGbI0ShJoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 3",
-        "url": "0b020b279fce808bde70acb9fecb7c28",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtN68+QbdLpRhMGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAANWMF08tHVv0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 4",
-        "url": "084cb5687ad9e723b13290f99e3e4228",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigsTt34i26T53nwMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEABp0FSxCxrkIAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 5",
-        "url": "98b42e2f0e7d44914b398b4c5a13e09a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtX3fhEtklhGnwMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEA4SUE3wIB0n4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 6",
-        "url": "6eeda596020e59373ab105abb2bd3069",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvP3X1KtklGytIMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEA11QEwwurajIAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 257,
@@ -11244,62 +3800,7 @@ define({
     "layerName": "CLIPV4_PHRICH",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0",
-        "url": "98fb6d62c20377d8d861e56ede28766f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jugsZKTDsPwMDjb08auCogaMGjhqI00BKykRGdAMpKQvhAABd0QNSDPGCHwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1 Species",
-        "url": "0473991321e11af1836b84cb22a76bc4",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigu90+vJNmnrzEYGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAUCgGIgOKVaoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2-4 Species",
-        "url": "9dae69cc0b44ae9af239621366477433",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigvTN5Fv0kw/CE1TL48aOGrgqIGjBmI3EFYEkQkY0Q1kpMg4KAAArnMEOvhPmCsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5-6 Species",
-        "url": "b62368e266fb9bf585a0774b17bfefdf",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigvPPCPfJBMpCE1TL48aOGrgqIGjBmI3EFYEkQkY0Q1kpMg4KAAAeXYDoeCXkkcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "7 Species",
-        "url": "c8bfc140fdd6ba5cb8aafa81914ba3e0",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jiguf1ZNvklQjhKapl0cNHDVw1MBRA7EbCCuCyASM6AYyUmQcFAAAk9QD7hVL7RYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "8-13 Species",
-        "url": "7bf146e12dbb727c7093300ace0388f9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigs3SUuTbZLf06cMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAaHUGazSOss8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 258,
@@ -11311,98 +3812,7 @@ define({
     "layerName": "CLIPV4_LSINTEG",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "1 - Lowest Integrity",
-        "url": "fca53e76341570f3a5f078bf36b8936c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jiguLwy3INql35QkGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAX+EGUWZccjwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10 - Highest Integrity",
-        "url": "7db0a361fbc981940537212cb065d9f6",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jqgtN9cg36vQlBgYGGnt51MBRA0cNHDUQh4HQIohMwIhuICMlpsEAAOmYBPDtnubzAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2",
-        "url": "745dc1af5967add0e07989d79b6119ea",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jiguXtXuTbVJU5VYGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAANzEF26hGoN4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "3",
-        "url": "7ebf25481e7ab3a3901fc2b1bc13a96f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvP7Ksi2yQTpzYGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAABxoFT+O7oJYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4",
-        "url": "6a26384f4d67e879c7501cdc7f149247",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigt//d9PtklsjI4MDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAyUIEm28z/vIAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5",
-        "url": "843a7c0ef06a44b5b885d5852cbdb93a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigv33ZxBtklO6hkMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEA+G8FJFO+W/oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "6",
-        "url": "cf9d78c6b129bf074032abade8a796b4",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvLNieRbVKX7zwGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAMPAFyJ32PmkAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "7",
-        "url": "375ccc6a47e238d9952296e3e984d2d2",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigstehzINulEyQEGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAX3QGT2MZoV4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "8",
-        "url": "cc79f3ea0efae874f53eaf6d572e34df",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigulI2zJNunpisMMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAfG4Go+FZPHsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "9",
-        "url": "a1338b92ff2fdb4c48b842c5efaef95a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigu5I2zJNunrisMMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAgf4Gs1gRDyoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 259,
@@ -11414,53 +3824,7 @@ define({
     "layerName": "CLIPV4_NATCOM",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0",
-        "url": "98fb6d62c20377d8d861e56ede28766f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jugsZKTDsPwMDjb08auCogaMGjhqI00BKykRGdAMpKQvhAABd0QNSDPGCHwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 1 - Highest",
-        "url": "68943ccd2168b85ba5aa4a8fd871e54f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigs3m5qSbZLv6dMMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAVlYGNmNdwhgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 2",
-        "url": "d21192eaa99fbacfc4fb6d2a2d00187f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigsLVpBv0oQICE1TL48aOGrgqIGjBmI3EFYEkQkY0Q1kpMg4KAAArsIEO3cxsdsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 3",
-        "url": "a51b0b356a8d56673bcb412d053d7139",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigtvHiffJHVLCE1TL48aOGrgqIGjBmI3EFYEkQkY0Q1kpMg4KAAAf5kDsxHknDcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 4",
-        "url": "9766cf30298a9132b0bf0fa892b33c45",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jqgvVisk36lYvAwMDjb08auCogaMGjhqIw0BoEUQmYEQ3kJES02AAANdNBLqiEBBqAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 261,
@@ -11472,17 +3836,7 @@ define({
     "layerName": "TRAIL_PRIO",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "d97053c1a543f9c11ad0564daa3c7f41",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg//8M/6lhGCMjAyNtXMjIyMBIVQOpCUYNHDWQDAAAdmEDVPjlPH4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 262,
@@ -11494,17 +3848,7 @@ define({
     "layerName": "PD_PRIO",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "7eaebe19a36c088ee99f87b93405439b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAACtJREFUOI1jYaAyYBk1cNTAwWPg///UMY6RkVYuZGSksoHUA6MGjhpIBgAA/JgCUzKg288AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 246,
@@ -11516,62 +3860,7 @@ define({
     "layerName": "CLIPV4_FEGN",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0",
-        "url": "98fb6d62c20377d8d861e56ede28766f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jugsZKTDsPwMDjb08auCogaMGjhqI00BKykRGdAMpKQvhAABd0QNSDPGCHwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 1 - Critical Linkages",
-        "url": "99a89b9127c08ea1e40db91d6c88af6a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jqgu9pck3autTBgYGGnt51MBRA0cNHDUQh4HQIohMwIhuICMlpsEAAOh9BO0ZwCQYAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 2",
-        "url": "e6d64730a638a0614c1524cfca115a0f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigul66XJNulp41MGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAepQGnok8gSYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 3",
-        "url": "3883eee1f0a865a6430a6e78b732351d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvTN5mSbdJMv9MMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEARcoGBa0H+usAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 4",
-        "url": "846d74ceac7d7ef1d85879c8b3fe8246",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigs3nfEm2yQ/k60MDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAG00Fird6iEMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 5",
-        "url": "f043bff8f05835025529f10b67ed2e6c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigufPp1JtknS0ukMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEA5mkE8EcXDgsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 247,
@@ -11583,71 +3872,7 @@ define({
     "layerName": "CLIPV4_FNAIHAB",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0",
-        "url": "98fb6d62c20377d8d861e56ede28766f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jugsZKTDsPwMDjb08auCogaMGjhqI00BKykRGdAMpKQvhAABd0QNSDPGCHwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 1 - Highest",
-        "url": "46b7e06a3ae747f9c95f207825ec3cc7",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigt9GaTJNmkzw1MGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAA6YAE60p3GP0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 2",
-        "url": "5b8ace928e319de6136b989e3684ce9c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigt7GBTJNqmE4T4DAwONvTxq4KiBowaOGojdQFgRRCZgRDeQkRLTYAAA0Y8EpiELb+wAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 3",
-        "url": "31711d8525b7b17a47eed2b43a496010",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvPKNqSbZLJ/cMMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAUc0GKfDkzfEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 4",
-        "url": "4fdcf10fb0904dde5f38f606017ad7ee",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigufxaSTbZLUkpkMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAJjUFqniWVCkAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 5",
-        "url": "b44f1777ab5912ae84d88689d5d0edff",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGlgf+pYB4jigv/z5xJvknp6QwMDDT28qiBowaOGjhqIHYDYUUQmYAR3UBGSkyDAQD3fwUi+tMS6AAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 6",
-        "url": "d47cb5d60c86ad4cb2fd17793c3d6800",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGlgf+pYB4jigv/H99PvkmWjgwMDDT28qiBowaOGjhqIHYDYUUQmYAR3UBGSkyDAQDaxQTOe8gHWwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 248,
@@ -11659,71 +3884,7 @@ define({
     "layerName": "CLIPV4_WETLAND",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0",
-        "url": "98fb6d62c20377d8d861e56ede28766f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jugsZKTDsPwMDjb08auCogaMGjhqI00BKykRGdAMpKQvhAABd0QNSDPGCHwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 1 - Highest",
-        "url": "ec69aea4a7360d9b0dfcb31f7ef77d8d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jqgu1HMg36toBBgYGGnt51MBRA0cNHDUQh4HQIohMwIhuICMlpsEAAOdCBOn3Akg+AAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 2",
-        "url": "790f14ee148658c5ef3901c134f68c85",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtFEgvJNunN/H4GBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAahkGbXkeD8QAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 3",
-        "url": "e1da5375c55aae2b731cb9ffd3b983c3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtNly4l26TT0dEMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEANZQF1Adau+AAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 4",
-        "url": "4b1536837685d3701b9000f350e0c080",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigsTbxwm26T5GrYMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEACo4FV5C52hEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 5",
-        "url": "5459df9840434c758ebc84e9a9b60b89",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigtXrCDfpIgICE1TL48aOGrgqIGjBmI3EFYEkQkY0Q1kpMg4KAAAm0oEA4O+8bkAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 6",
-        "url": "5a79bf082d664e09368a464cb2b8cb5a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigsLvck3qX8rhKapl0cNHDVw1MBRA7EbCCuCyASM6AYyUmQcFAAAzmEEl3WfJQYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 249,
@@ -11735,62 +3896,7 @@ define({
     "layerName": "CLIPV4_LNDSCPRP",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0",
-        "url": "98fb6d62c20377d8d861e56ede28766f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jugsZKTDsPwMDjb08auCogaMGjhqI00BKykRGdAMpKQvhAABd0QNSDPGCHwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 5",
-        "url": "4feb91929d5f06655105496896ffd157",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jigtf/W8g2yQxRohemnp51MBRA0cNHDUQu4GwIohMwIhuICMlpsEAAOQ7BOpnDR/iAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 4",
-        "url": "ce8e165f98603b84dce1faf1ed88b4ea",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigsn3fQm26Q89a0MDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAIfUFnQrOhB0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 3",
-        "url": "8c4a481cf9f0a7d1cc189ecf6ee7ac2b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigttl2mRbdLhqGsMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAXEEGRqnq1hUAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 2",
-        "url": "a91d8fbd2bf5f5dee516d039de4223cb",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigu506XJNunrzKcMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAiGQGxs0MGzoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 1",
-        "url": "33409e627dd8e5a5ee6a3a5ede92179a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jqgsdFMk36sB9BgYGGnt51MBRA0cNHDUQh4HQIohMwIhuICMlpsEAAOo7BPIH+7zSAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 245,
@@ -11802,71 +3908,7 @@ define({
     "layerName": "CLIPV4_RECHARGE",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0",
-        "url": "98fb6d62c20377d8d861e56ede28766f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jugsZKTDsPwMDjb08auCogaMGjhqI00BKykRGdAMpKQvhAABd0QNSDPGCHwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 1 - Highest",
-        "url": "be39e8f4cee3957aa5ef962197bc5008",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigsdGELJNukAw2oGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAA2k8EvjFhb0oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 2",
-        "url": "0e31f7a09f7284a7248f678752390f18",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtjuFeRbdKSr2EMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAW0IGQpkxc/gAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 3",
-        "url": "8b1d972123bc1dc73df21e2413320ff8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigt7bC+TbVLJYV0GBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAK3MFt5kMcMYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 4",
-        "url": "01320c63cfd6a99000cd663ba39b9751",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jiguXNj0i26ToOjkGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAABfEFSjkf+EAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 5",
-        "url": "f0b37ce9b7ac7d59ce3d3dd1ecd7d546",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jigtv7yLfTFU3RgYGBhp7edTAUQNHDRw1ELuBsCKITMCIbiBFpsEAANYBBL/KYTi1AAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 6",
-        "url": "b4ce27aa04131ac224bc779c9dad4676",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jigs/PyXfTF5pRgYGBhp7edTAUQNHDRw1ELuBsCKITMCIbiBFpsEAAL7hBHyH8bwqAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 293,
@@ -11878,17 +3920,7 @@ define({
     "layerName": "ANTREG",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "39313d83e841bee0cdd2ad332ad7c388",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAK5JREFUOI3tzj0KwkAQhuF31hVE9BiewFIrr+ABBCGQQhDscoNUVhZKwICVtWDrRawEy7SCP5Cxs5Cw6GqhkOnmg3nms3x5bAn+KahjGlyoyZzsI1AjqmRMORMCVgN2wEASjn4NMyIMo8du6JGzBrp+oKFfkHV0SEuW7N8HhRtakCtXv4bKCmg/pVtJOfiBC2YE1KkQojSBDScmrhMnKJCTEAOx8/HLDT2mBH8QvAOx9CQM27oyhwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 294,
@@ -11900,17 +3932,7 @@ define({
     "layerName": "POWERLINES",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "95a5b3b53427d0481bfc28814b1cd2f8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYBk1cNTAYWvgf4b//6lhGCMDIyMLjEENAxkYhkwYjho4zA0EAIJRA1QSNZufAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 295,
@@ -11922,17 +3944,7 @@ define({
     "layerName": "TVBCST",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "98a53b047c2bdca45797ca0903f278a2",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAOlJREFUOI3t0rFKxEAQxvF/lnR5BwMpLH2Dq6zUSq3E5oqD4apUV+QBtLFKIyypI4Q8haVvcY2H11xzLBfksrGIgkgWsmIj+sEUy8CP2WFCfjjhP/jLQEEugCkQW+wzUBYUD0DnDQpyD8w/3gp1BJwIcqbR1y50EBTk8jP2JVeCPGq0Hg0GBLPO/SssdgaMB9uoTZRRTlChEldvEFRGrYFDpxjxgvEAA4Kqo5u4PGts5TVhTKyXLM+B44H205btnReYke1T0tOGZkF/hwfAiohyYza3NfXOCwTIyV+Bm/fq49jbKPC7+YPgG1AtPkGbzKJtAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 296,
@@ -11944,44 +3956,7 @@ define({
     "layerName": "PRIMEFARM_LU",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "NRCS: Prime farmland",
-        "url": "cf4ed45a921b8a59108c16e81ce100f8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgSJNIospMehN3ZvDDAwMs1BcKOUldZgCAxkYGGjp5VEDRw0cNXDUQKwGvql7cxhWBJEJZqEYCBOgFAAAg3EPiyZu19oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "NRCS: Local importance",
-        "url": "9d1a0e40018e90341bae18b7be0986e7",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgb25JYspMah4cs9hBgaGWSgu9HdwPkyBgQwMDLT08qiBowaOGjhqIFYDiyf3HIYVQWSCWSgGwgQoBQCn9Q2TfhcnhwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "NRCS: Unique importance",
-        "url": "8cd97efae3132b5f6c70103e73cbfe70",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgUu6GBZTYlBMGcNhBgaGWSgujPZlOEyBgQwMDLT08qiBowaOGjhqIFYDY8oYDsOKIDLBLBQDYQKUAgCgIAopK4RDaAAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "NRCS: Prime farmland if drained",
-        "url": "8ddf7427c40fed977e182731985319a7",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgRkiIospMWjGmzeHGRgYZqG40FZK6jAFBjIwMNDSy6MGjho4auCogVgNnPHmzWFYEUQmmIViIEyAUgAA2a8PzMeMwUMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 297,
@@ -11993,44 +3968,7 @@ define({
     "layerName": "SV_PRIMEFARM",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "All areas are prime farmland",
-        "url": "9392f8ea8f7371ee35d60bae59d10d1b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE9JREFUOI1jYaAyYKGZgUldSS8oMYjrEdfpKVOm+KK48Lzj+dPkGmi90JqBgYGWXh41cNTAUQNHDcRqINcjrtOwIogcMGXKFF8UA2EClAIAqwoQ/NsHH8MAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Farmland of local importance",
-        "url": "a978f0184e375b5ffc005f7a64714fc6",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFBJREFUOI1jYaAyYKGZgRPrml9QYtDtdy9PT5kyxRfFhV56JqfJNXDiga0MDAy09PKogaMGjho4aiBWA2+/e3kaVgSRA6ZMmeKLYiBMgFIAAHwrFWPuR1ZcAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Farmland of unique importance",
-        "url": "a30ab80510b4571a2e666f6f92a16d81",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE5JREFUOI1jYaAyYKGZgfP7El9QYtDZe9ynp0yZ4oviwgTP+afJNnBqDgMDAy29PGrgqIGjBo4aiNXAs/e4T8OKIHLAlClTfFEMhAlQCgCBABOTpD0f1wAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Prime farmland if drained",
-        "url": "263a6ef6d1f86fc5063c1c2e3c7039c9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE9JREFUOI1jYaAyYKGZgbVJSS8oMeg9F9fpKVOm+KK4UOPMidPkGnjczomBgYGWXh41cNTAUQNHDcRq4HsurtOwIogcMGXKFF8UA2EClAIAB5cRRpjagVkAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 298,
@@ -12042,17 +3980,7 @@ define({
     "layerName": "LU_GEN_AG",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "e3d8572821bd973af471df555ddbe90d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC7cIr+FbMN8HvowMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAyCYMPp+UBfIAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 299,
@@ -12064,62 +3992,7 @@ define({
     "layerName": "LU_AGRICULTURE_NOV18",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "Cropland and Pastureland",
-        "url": "75a8825f3a7a9fb16f539d01e8c91b3d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC70ncRGtmGb834xMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAA/48M4KE4MXAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Tree Crops",
-        "url": "a97b9af743f5b8f55b7990f721de3d35",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC7k65hMtmGfKnIZGBho6eVRA0cNHDVw1ECcBsKKIHLA5MmTGVEMhAlQCgDo+wycw2xLlgAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Feeding Operations",
-        "url": "78c64656f29da1c7a98f0dc94fd0fa56",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI3t1KENADAIRFFIWPfSWZobuFUIRA0Ux5eIFzCYfM7aQACnipHUsCEX0xg2RKTz5AEHHHDAJ+gvKBNJDaAPql3DVgwwHUF4hAAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Nurseries and Vineyards",
-        "url": "128bed0d25982850730d59c59fafff91",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6Ut55MtmEPj+YyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAA/YoM2PM1sXcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Specialty Farms",
-        "url": "041dad6f7249cd94725536e5a7144660",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC7cIreFbMN8HvkwMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAyH4MP0VBBzAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Rural Open Lands",
-        "url": "d53759819ecbcaad51fde3b67d990d31",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6c93Yy2YYlCecyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAlDMLp7/q9xQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 263,
@@ -12131,17 +4004,7 @@ define({
     "layerName": "MU_OPPS",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "944e8cf0210ba92dd62a977b478cb985",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg//T0/9QwjHHmTEbauJBx5kxGqhpITTBq4KiBZAAA8b0FhTrdMisAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 264,
@@ -12153,17 +4016,7 @@ define({
     "layerName": "PD_OPPS",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "1f03d1ba06d9581f7668945e05386821",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/5mm/6lhGGP6aUbauJAx/TQjVQ2kJhg1cNRAMgAA8YsFhf3H0g8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 265,
@@ -12175,17 +4028,7 @@ define({
     "layerName": "EXISTING_TRAILS",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "c6aedb943db9f1c8360fa4a639c2d690",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/KSb/6lhWOI8dUbauDBxnjojVQ2kJhg1cNRAMgAA0YAFeHGlsRkAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 266,
@@ -12197,17 +4040,7 @@ define({
     "layerName": "SUNTRAILNETWORK",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "a64559c3bfbdc2b0cc73e6ebf4b13750",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgf+nN/6lhGONTX0bauJDxqS8jVQ2kJhg1cNRAMgAA8gkFhbaTkHgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 300,
@@ -12219,17 +4052,7 @@ define({
     "layerName": "GC_SCHOOLS",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "fb8dfd23ef54bbbb9314bc16a7fa5ac7",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAAB8AAAAUCAYAAAB1aeb6AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAn9JREFUSIntlUtIlFEUx38T36gzx9ExddTGMB+YNU2ZqCVpZEGbsCihghYRgdCyglbRvk20dNE+qUWQ0EpkhMQoUfOVmY6vRFHRaeLOU2daXJ1Z9FjFuPFs/t8995zzu/ec7+Mz2EUz9uC7Bp/voCiGMzsVwDhp0YB/ZtbVxpbx7aU87R1Xj9b9vlSwMRtQU8mUt4NaY8yr7kc2heaalLAJhOB1NxX3rnHJCAQxF+eDNQMmF2DUq2g8LjhyIBoFzxDE49B8Er4uKMqdgiUd+kYUDW5h3Q/d/QqnA067BJMJBicVU9+h6YRQmAsfxxT1LgE0JxQGyLMmXrhAEDrfK25dFGaXFI4c4V0fVJXA5pZiZUMYnwFnvsKSLngGoMENHV2K6+eFgUmYWgR7JnyehqtN8KJT8fCm0DsM9a7fu5CAmw3wB4SJeaip1L6JOcWVswJIIqFvRMi0JgsEw5Bnh2NlunOhsKLuMGRnCsUOhQr9fQRJuBke34bZZXj+Snhy588JhbkKmyQPE4lojcdhnwlMJghval8sBqa/s5PwNR/0DCoaq4XodnKZE6YXIRKF3O0PsfQA5NiSBQr2w+Iq9E9AdQVkCbzpAWc+zC+D1QIxYOOnAsBmTR48Ac+z6/n2DivaLuuAljOCZ0jfqMIJ7nIhI03HX6jV2toMnkE4WKAoKdIjqncpPozC3RZdp9ENn77o57oqlYTbbRIc9WLJSAO7TTh1VG8srmp1l2ld8elbrfv12umQ7RihtkrrTk6OTfvCUV2nuEAoZqeOYM9SEF/zGUcOWR5A8NnckrL8Yzz/zcwGsdZz0qV+qLdG6Y21dqA9FeCk6dbv/o9lD55q+wXzAdOeJXayXgAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 31
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 301,
@@ -12241,17 +4064,7 @@ define({
     "layerName": "GC_SOCIALSERVICE",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "09b31efbc93dbc5ceacc9b5962ee3464",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAATtJREFUOI3t1DFIQkEcx/Hvu3th4hYRkVNLQkPtQUOBQ0PapgQOBTWEgzQotrQEkhAEQUtDREvimPDKt9fWXHtLoA7BQ0V915A0lM93QUNBP7jlD/fh9x/uTH445j/4kf1kMhgy69uKXhxXhnGpAdURnJPdq7vGt8Cj1OJ0V9Ut5RIB+T4UzAALHULpYiIay5bsey3weItA2xmtABGPEuNKUikkovP5kv3sC7ad5U1g1mulfsaEFHvAji+okDHDRwMwcNe0QAPCGh4KJm0QUXCHgoheDVfqmI3P2GAQqsCSb0MhbgbNv4CBoDxtO6QZvnpLSQ60wMyZ/XqYWonR6VoIJgbcaRqI9fzF7aMWCJC7tB6KG6tzqtnKI4gDUwbUXajSMQu5svXkVd3z6WXPr1+ATP9o5w//Nr8GfAOab1iXUWvU4wAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 302,
@@ -12263,17 +4076,7 @@ define({
     "layerName": "GC_VETERANS",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "58cb6a4af1cf2e778b872108d0235767",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAQlJREFUOI3t0z9LAzEYgPHnPQoi2UoRe28XFwUH3d38AldnRwcH6dBVZ6EfQPCTFCr9Am7Oul8ownmDEMx0cah/wPa8VNz0GV+SH0kgLX651j/4UZ6zniScAn0wCq4AplXFVa9HuRJoLVsiZgJuZz5xANvAQZIwsNZkqu42CixL1rw3409soY6IG1vLvip5I+g9J+B26670VluEC+CsEQSyBuy9o1hQI8HNEEhEqJrAIhIsv2J14BQ4jABvlg0XwBC4FmHA91f3IlxGgao8z2adLIRiAmws2fMSAsdpyn0UCNDtFnfWsidizsH1gRR4Yv4cI1Ue6o5e+/VUeQQ3BIZ1a1YCf9ofBF8BDWtGpaXGERwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 303,
@@ -12285,53 +4088,7 @@ define({
     "layerName": "FDOT_WP_CST",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "2019",
-        "url": "51ff101711a59f39f9a3fc6b27e99053",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgL1OR/9QwjO30G0bauJDt9BtGqhpITTBq4KiBZAAAUHsGD92TeDEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2020",
-        "url": "5d27beefb4363a2d4cbda6e223922786",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNTAwWRg4vfi/5QYNJ+zlxHFQGoBuIEwG6hmILXAqIGjBpIBAOxVBYcqaupXAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2021",
-        "url": "06e78d0e0760496e9492208522bbef83",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgSsyH/9QwbM4SAUbauHDOEgFGqhpITTBq4KiBZAAAPK8Foj1aO/QAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2022",
-        "url": "fa8eb7d39a0c69c392ff3fac6b3eec8d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg2YMX/6lhWJeCBCNtXNilIMFIVQOpCUYNHDWQDAAA010FFKwP7EQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2023",
-        "url": "81d9efd65813237fca9c4990b25febd1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/1UM/6lhGGMYAyNtXMgYxsBIVQOpCUYNHDWQDAAATpcDqaTdEy0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 304,
@@ -12343,53 +4100,7 @@ define({
     "layerName": "FDOT_WP_DSB",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "2019",
-        "url": "51ff101711a59f39f9a3fc6b27e99053",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgL1OR/9QwjO30G0bauJDt9BtGqhpITTBq4KiBZAAAUHsGD92TeDEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2020",
-        "url": "5d27beefb4363a2d4cbda6e223922786",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNTAwWRg4vfi/5QYNJ+zlxHFQGoBuIEwG6hmILXAqIGjBpIBAOxVBYcqaupXAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2021",
-        "url": "06e78d0e0760496e9492208522bbef83",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgSsyH/9QwbM4SAUbauHDOEgFGqhpITTBq4KiBZAAAPK8Foj1aO/QAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2022",
-        "url": "fa8eb7d39a0c69c392ff3fac6b3eec8d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg2YMX/6lhWJeCBCNtXNilIMFIVQOpCUYNHDWQDAAA010FFKwP7EQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2023",
-        "url": "81d9efd65813237fca9c4990b25febd1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/1UM/6lhGGMYAyNtXMgYxsBIVQOpCUYNHDWQDAAATpcDqaTdEy0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 305,
@@ -12401,53 +4112,7 @@ define({
     "layerName": "FDOT_WP_ENV",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "2019",
-        "url": "51ff101711a59f39f9a3fc6b27e99053",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgL1OR/9QwjO30G0bauJDt9BtGqhpITTBq4KiBZAAAUHsGD92TeDEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2020",
-        "url": "5d27beefb4363a2d4cbda6e223922786",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNTAwWRg4vfi/5QYNJ+zlxHFQGoBuIEwG6hmILXAqIGjBpIBAOxVBYcqaupXAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2021",
-        "url": "06e78d0e0760496e9492208522bbef83",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgSsyH/9QwbM4SAUbauHDOEgFGqhpITTBq4KiBZAAAPK8Foj1aO/QAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2022",
-        "url": "fa8eb7d39a0c69c392ff3fac6b3eec8d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg2YMX/6lhWJeCBCNtXNilIMFIVQOpCUYNHDWQDAAA010FFKwP7EQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2023",
-        "url": "81d9efd65813237fca9c4990b25febd1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/1UM/6lhGGMYAyNtXMgYxsBIVQOpCUYNHDWQDAAATpcDqaTdEy0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 306,
@@ -12459,53 +4124,7 @@ define({
     "layerName": "FDOT_WP_PDE",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "2019",
-        "url": "51ff101711a59f39f9a3fc6b27e99053",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgL1OR/9QwjO30G0bauJDt9BtGqhpITTBq4KiBZAAAUHsGD92TeDEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2020",
-        "url": "5d27beefb4363a2d4cbda6e223922786",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNTAwWRg4vfi/5QYNJ+zlxHFQGoBuIEwG6hmILXAqIGjBpIBAOxVBYcqaupXAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2021",
-        "url": "06e78d0e0760496e9492208522bbef83",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgSsyH/9QwbM4SAUbauHDOEgFGqhpITTBq4KiBZAAAPK8Foj1aO/QAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2022",
-        "url": "fa8eb7d39a0c69c392ff3fac6b3eec8d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg2YMX/6lhWJeCBCNtXNilIMFIVQOpCUYNHDWQDAAA010FFKwP7EQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2023",
-        "url": "81d9efd65813237fca9c4990b25febd1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/1UM/6lhGGMYAyNtXMgYxsBIVQOpCUYNHDWQDAAATpcDqaTdEy0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 267,
@@ -12517,71 +4136,7 @@ define({
     "layerName": "AADT",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0 - 15,000",
-        "url": "4e8cc7d4e46be07b910212895b70779f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAACxJREFUOI1jYaAyYBk1cNTA4WvgbYb/VDFNlYGRBcagioEMQycMRw0c3gYCALclAnehdTe+AAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15,001 - 30,000",
-        "url": "0f658a5b1ceb1c08415d8206a69ba2b8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAClJREFUOI1jYaAyYBk1cNTAYWzg///UMY6RkQXGoI6BQygMRw0c1gYCAFqYAlP+i9Z7AAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30,001 - 50,000",
-        "url": "cea4e2f5b535ff70406c0da7eb1b2d00",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgOUPDf2oY1snQwEgbF3YyNDBS1UBqglEDRw0kAwAAEmMEWwAGOeUAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50,001 - 70,000",
-        "url": "ecfe830469786b0693679df99ddf70ee",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgf4b//6lhGCMDIyNtXMjIwMhIVQOpCUYNHDWQDAAAdWADVHf3GYUAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "70,001 - 110,000",
-        "url": "8a710fa80d1f7fdb36caec8c50b86f51",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/x6G/9QwjLGEgZE2LmQsYWCkqoHUBKMGjhpIBgAAmuEDxzvxCBcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "110,001 - 160,000",
-        "url": "59397ab17451bdde01f4bb37b5967140",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADBJREFUOI3tzsEJAAAIw8AU3H9l3UEq+GgGOFKYq4ABv4AN7cAEujkUyAo6Cxhw0QD+mgJTAnjFcQAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "> 160,000",
-        "url": "7de962067ff71e599061843d69a2d05f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADRJREFUOI1jYaAyYBk1cNRAygz8T6FZjMgGUmoYzAxGmnmZkYHKXoYLUAqGVrIZNXCQGAgAQUQEUsaxbygAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 268,
@@ -12593,17 +4148,7 @@ define({
     "layerName": "BIKE_LANE",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "6d3aab9733d22fc610e1ece7cdf447ca",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD5JREFUOI1jYaAyYBk1cJAauPh/8X9qGBbL2MvIQi3DGBggDhsiYTjCDIxl7GWkarKBMahhIAPDkAjDkWcgAAo5EFH37XPTAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 269,
@@ -12615,17 +4160,7 @@ define({
     "layerName": "BIKE_SLOT",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "87864e64d704088eea894c41b13f0e09",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD5JREFUOI1jYaAyYBk1cJAa6F3M8J8ahm3tZWBkoZZhDAwQhw2RMBxhBm7tZWCkarKBMahhIAPDkAjDkWcgAAv2DFG/l8RBAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 270,
@@ -12637,17 +4172,7 @@ define({
     "layerName": "BRIDGES",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "f629c9e81ff912898d90469d87428e8a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgcQaG/9QwzJKBgZE2LrRkYGCkqoHUBKMGjhpIBgAAjUkCi31YT0YAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 271,
@@ -12659,17 +4184,7 @@ define({
     "layerName": "FACCROSS",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "9d8469223c447c5f447b839f3ba6075e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD5JREFUOI3t0rEJADAQQtEv3P4rmyJkgWCRgFdZPRRuCN8ULHgJ2jiBSWhSGOxi+ckSik4+IQHCN29T8C1wAcXdDFFTzyiHAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 272,
@@ -12681,17 +4196,7 @@ define({
     "layerName": "FDOT_LOCALNAMES",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "fb4c05e17b2aaf36861e97d02862aead",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYBk1cNTAYWugv7//f2oYtnHjRkYWGIMaBjIwDJkwHDVwmBsIAOgEBmUZ3xzkAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 273,
@@ -12703,134 +4208,7 @@ define({
     "layerName": "FUNCLASS",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "01 - Principal Arterial-Interstate RURAL",
-        "url": "0acd07ee1ceabbe34509def6a4c75f74",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD5JREFUOI1jYaAyYBk1cNRAcg0s//efKqZ1MjGyUM0wBgYGhvJ//2ng5U4mRup6GcqgioEMQyfZjBo4qAwEAL6JDFEmuocbAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "02 - Principal Arterial-Expressway RURAL",
-        "url": "e38636350dd466e92ed9ab6e50a16223",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYBk1cNRAMg08kyv9nxqGmUx+yshCLcMYGCAOo76XTSY/ZaSql2EMahjIwDBkks2ogYPLQADnsRBRWPIb5AAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "04 - Principal Arterial-Other RURAL",
-        "url": "b79de5910a8b126630befa6cfa108e09",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD5JREFUOI3t0jEKACAMQ9HfkvsfWR3EC0gGhXTK9EigwnwKGPASHDAdWEPJhcEu5p/cUNbJJzhA+OZtAr4FLoYaCFEuiuocAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "06 - Minor Arterial RURAL",
-        "url": "7059319fb25962842e466a5709f27800",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD5JREFUOI1jYaAyYBk1cNRAcg08zvCfKqZZMjCyUM0wBgYGhuMM/2ngZUsGRup6GcqgioEMQyfZjBo4qAwEABufCFFVAPIDAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "07 - Major Collector RURAL",
-        "url": "473a8af80dcf3903524f04013d1acc2c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYBk1cNRAMg1MYUj5Tw3D5jDMYWShlmEMDBCHUd/LcxjmMFLVyzAGNQxkYBgyyWbUwMFlIACAIQxRWbhTNAAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "08 - Minor Collector RURAL",
-        "url": "5973717176fc9b3a4850df72dd1bb6b9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYBk1cNRAMg38d5vhPzUMY1JlYGShlmEMDBCHUd/LTKoMjFT1MoxBDQMZGIZMshk1cHAZCACA7AxRWvISVAAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "09 - Local RURAL",
-        "url": "5ea1c658dd5956f4e7963900e2b4c146",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYBk1cNRAMg1MSUn5Tw3D5syZw8hCLcMYGCAOo76X58yZw0hVL8MY1DCQgWHIJJtRAweXgQCdKRBRlV3euwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "11 - Principal Arterial-Interstate URBAN",
-        "url": "579e1c587dbfe6ccc13a5664252b7a4b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC5JREFUOI1jYaAyYBk1cNTAQWNg+b//VDGtk4mRRi7sZGKkroFUBKMGjhpIBgAA0NAD3XdEv4AAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "12 - Principal Arterial-Freeway and Expressway URBAN",
-        "url": "e5011a4aec79f92dfe57745b21fee6e0",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgxQzp/9QwTH/GU0bauFB/xlNGqhpITTBq4KiBZAAAJXAF/sIw38oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "14 - Principal Arterial-Other URBAN",
-        "url": "ef8022de46f6c2b1700d169894e3705b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgPwaG/9QwjImBgZE2LmRiYGCkqoHUBKMGjhpIBgAAATUCVGhuX0oAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "16 - Minor Arterial URBAN",
-        "url": "5a464df3e48586ce5a5d7270ecae0c70",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC5JREFUOI1jYaAyYBk1cNTAQWPgcYb/VDHNkoGRRi60ZGCkroFUBKMGjhpIBgAAjBACi5t9aDEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "17 - Major Collector URBAN",
-        "url": "48e3ac837399c74f9b34ad045e9a4a49",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgCkPKf2oYNodhDiNtXDiHYQ4jVQ2kJhg1cNRAMgAAid8EiujaXMAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "18 - Minor Collector (Fed Aid) URBAN",
-        "url": "3853fa403409d7a7b4c8f8c8eae3a5be",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgv9sM/6lhGJMqAyNtXMikysBIVQOpCUYNHDWQDAAA1HkDeSuBipAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "19 - Local URBAN",
-        "url": "6bcc191564bd846e185f3c17c26e625c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgSkrKf2oYNmfOHEbauHDOnDmMVDWQmmDUwFEDyQAAi94GJumDVlMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 274,
@@ -12842,17 +4220,7 @@ define({
     "layerName": "MAJHWYS",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "11eca2cc3c15ab3aa394a85b7f120274",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYBk1cNTAYWtgvx7Df2oYVniJgZEFxqCGgQwMQyYMRw0c5gYCALQ6BJXj7tcNAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 275,
@@ -12864,17 +4232,7 @@ define({
     "layerName": "MAJRDS",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "b89565dfa1b2da314aace92725372235",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYBk1cNTAYWvgxBqG/9QwLL+FgZEFxqCGgQwMQyYMRw0c5gYCAOi5BEVHJuV8AAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 276,
@@ -12886,71 +4244,7 @@ define({
     "layerName": "NHS",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "Interstate",
-        "url": "7eaebe19a36c088ee99f87b93405439b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAACtJREFUOI1jYaAyYBk1cNTAwWPg///UMY6RkVYuZGSksoHUA6MGjhpIBgAA/JgCUzKg288AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "STRAHNET Route",
-        "url": "8a2e5a993d477db4205a89f9c0ff94b9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC5JREFUOI1jYaAyYBk1cNTAQWPgP4b/VDGNiYGRRi5kYmCkroFUBKMGjhpIBgAAADMCVOjaf0cAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "STRAHNET Connector",
-        "url": "50d5442a1ff1c2d777761dba15b91be3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADBJREFUOI1jYaAyYBk1cNTAwWqgdzHDf3Sxrb0MjMTI08eFyK4hVX6IRsqogcPMQACsUQjXNgMLBgAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Unbuilt",
-        "url": "e2c85179b64e66ae316b434c44d84da1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYBk1cNRACgz8/5/hPyUGMTIyMKIYSC0AN5CRkcoG/qfIwwgHIbuQKm4cQslm1MDBYyAAAaQFVpQliqcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Other Principal Arterials",
-        "url": "59397ab17451bdde01f4bb37b5967140",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADBJREFUOI3tzsEJAAAIw8AU3H9l3UEq+GgGOFKYq4ABv4AN7cAEujkUyAo6Cxhw0QD+mgJTAnjFcQAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Intermodal Connector",
-        "url": "c2f39597a2cb35e95f37a7bb5f4adf8c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNTAwWbgCoaW/zB2BEMNI6l82rsQZgu5fAwDqQFGDRw1kAwAANovD6UyY230AAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "MAP-21 Principal Arterials",
-        "url": "ef077705c53e491b95a50ba0d4b070f6",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYBk1cNTAYWvgigKG/9QwLGICAyMLjEENAxkYhkwYjho4zA0EAMypBDrtR2FfAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 277,
@@ -12962,62 +4256,7 @@ define({
     "layerName": "NUMBER_OF_LANES",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "1",
-        "url": "7bb2fae5d83208dfae2793479a0c447a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYBk1cNTAYWtgc/2u/9QwrLbRjZEFxqCGgQwMQyYMRw0c5gYCANm4BZYJRu1aAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2",
-        "url": "2a7a9b4a8be3e807fb2c8bc213e8e4a3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAACxJREFUOI1jYaAyYBk1cNTA4WvgrX//qWKaGhMjC4xBFQMZhk4Yjho4vA0EAOHxA3rGF1kQAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "3",
-        "url": "918b394608ae4694ad2583719af441de",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWKg567W/9QwbLtbNSNtXLjdrZqRqgZSE4waOGogGQAAohcFyodGsOcAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4",
-        "url": "d66c077f2301402d8170d24773a3793e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg5vVV/6lhmG9gGyNtXOgb2MZIVQOpCUYNHDWQDAAAy/cFdupjCSsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5",
-        "url": "f39657b03f7f6b57305ac820bafbfb23",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYBk1cNRAMg2s/nfmPzUMa2UyYWShlmEMDBCHUd/LrUwmjFT1MoxBDQMZGIZMshk1cHAZCACo3BBReTTyewAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "6",
-        "url": "5bf4a564a49841bf125ce927d6b4196f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYBk1cNRAMg383NH9nxqG8VaUMrJQyzAGBojDqO9l3opSRqp6GcaghoEMDEMm2YwaOLgMBAAzeRBRUY8E4AAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 278,
@@ -13029,17 +4268,7 @@ define({
     "layerName": "RAIL_CROSS",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "03a7a8995f27ffe5c09337d53ba1ee75",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFNJREFUOI1jYaAyYBk1cNRAOPiPxGak1MD/XWoITtkthv/4DCVkIIphDAwMDF1q+A0d+pHCWHYLIwwZGCgIQ7ihyHx8ion1Ml5DyDGQaDBqIOUAAAMiEKLMLFVoAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 279,
@@ -13051,35 +4280,7 @@ define({
     "layerName": "RCI_FEDAID",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "National Highway System",
-        "url": "eeea05c728ecff611382339e7858f4a1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYBk1cNTAYWvggRTP/9QwzGHOdkYWGIMaBjIwDJkwHDVwmBsIAKH+BeVjpnBTAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Surface Transportation Program",
-        "url": "519503c70be19f4c75cc3d03d272f051",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYBk1cNTAYWvg/+sM/6lhGKMmAyMLjEENAxkYhkwYjho4zA0EAOkKA3xOu58sAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Federal Aid None",
-        "url": "f656c4d9fdb3822b2a3d9ec219b1009b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYBk1cNTAYWvg3u3Z/6lhmLPnVEYWGIMaBjIwDJkwHDVwmBsIAIAuBXOkMv5HAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 280,
@@ -13091,17 +4292,7 @@ define({
     "layerName": "RCI_OFF",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "a438820cdc869c7eaa8182322f42cb45",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYBk1cNTAYWvgRYaL/6lhmD6DPiMLjEENAxkYhkwYjho4zA0EAGxUA7CuxyBnAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 281,
@@ -13113,17 +4304,7 @@ define({
     "layerName": "RCI_ON",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "5327cfd380dfbc38a97460163c93c39d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYBk1cNTAYWtgA0PDf2oY1sDQwAgzkJEaBjIwDJkwHDVwmBsIAAhoBFIAYYhsAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 282,
@@ -13135,17 +4316,7 @@ define({
     "layerName": "RCI_RAIL_XING",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "5093a918b951c0913f2fe8cc01195d3c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAylJREFUOI2t1H9olWUUwPHve3+8u3dHQ9abVLtF05lXN0ZZWGaDmZHRUvHHXI0lBDGq3evglmRBJVrQHzIYS6jZD4lRbZcKUqOF4y5CqSVY28zJsjHY+uXbsvR49+Puffvjuq27u4lE59/zPJ/nec45PD7+5/DNlXDB6D4o6/oGNTIxTjEGgmud9+XYX4dDVv3y7fbJqwZPNEnZR79p/Nq/sG5bLHi9k5mkNTYmhX1DdnXry9IbvkXLSx7npyuCiQZin3eyr+p+MTye7MNME4oKhJFRwvEEp4/tl/LVtXp0VvCbN9jQ3Cb7Gj9RY4EID6+evRyOAx9/qbz4DmZqQo90vcuyyZtOgaeaMLsH+eDpzRg6IkQaFMhGHQda2pUX3oLoJth2n5in+oOfgR3OAH9ViS3KJzeYAzurALJRx4HWduX5A2ksulUw/TA/aC/94T3r9uXb7ZNT4LnhYM31eUmGzsFs6EOrIJ5Qdh2AyEaofgDs83CNwOKQ0DNgx4DHpkCf3w71DsDFpHDhEhQtykQrvxdaOqB2I0QrhEPHlCU3KW2dULlWSI1ad4M9/WTDEB+u0jeo6AisKhaCOfDsI3CiF1o6lNKS9DNzTMCFMwMwNg6mHzDsBRk1NGDCBd/6e4VvT0PATNfs0HGlqx8sga+64ItO2FAKhgFby4TmNsXnBVw0A0yldLggXxZKAEpLlOSocPi48tyb6QY8sR4a4sKOxnRNV4QFjwfW3iEkR8HrpycDnDffigf8dm1uQHAcobU93YDoJohuEUxzuqY7GpXGOqHgBshfCP2/wJKQvA46Dd56o/3Sd2fkqRXL8Hx4dHrOJkcDMrsfbVCMy93/42+1y+poy7hhYRXDiXp2v31Y97zanI1NxsyRekXFfXClVBiomwECrInp3iOvUVy3RbbVbiYLm4lKQNx7ivSZO2vomBq/mYvLd1GZqKen+yy7l96MZ15uNvj7n3B2SC9Vr+PRu57k03/nZv2+1sR074/vs7/vZ2vPhYt2hdcreQZ4HVdTqXFr8Lq8ZFNJiPqiGsZm7p3zgy2sYhjsCBAhPWKXw55ry5XB/xr/AE/gMEHKgTGhAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 283,
@@ -13157,35 +4328,7 @@ define({
     "layerName": "RDACCESS",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "1 - Full Access Control",
-        "url": "5240264c93c5481d4a24895c6234df33",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD5JREFUOI1jYaAyYBk1cCQZ+H8Vw39KDGIMY2BEMZBaAG4gYxiVDaQWQA5DigDMhzQNQ0aqGkgtMGrgIDQQAKdnBgBHHhtYAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2 - Partial Access Control",
-        "url": "f07c087ba628de445cee26584c9572e1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cCQZ+H8Vw39KDGIMY2BEMZBaYNRAKhoIiyWqGUgtMGrgIDQQAPJWA6lieCLKAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "3 - No Access Control",
-        "url": "0a224e3a668738a21a76886d4b97ff2c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNTAwWTg/1UM/ykxiDGMgRHFQGoBuIEwG6hmILXAqIGjBpIBAEP3A6myZtFzAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 284,
@@ -13197,17 +4340,7 @@ define({
     "layerName": "SHARED_PATH",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "24fee398831272256dce440b0cd42105",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI3tkSEOAEAIw0rC/7+8U2ewwxCoRDRLSZrJE24SSsgRRRAA6YrqoEEN24Q/ZttT6sFlQMMT2jycRwxRKGEKSgAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 285,
@@ -13219,53 +4352,7 @@ define({
     "layerName": "SIDEWALK_BARRIER",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0: No barrier",
-        "url": "6392c3b8cdc2f7950452aae1279baef9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYBk1cCQZeHTbn/+UGGTtxcLIwMDAwEKpQegOGkJhSDUDYYFJtUhBF6AUDIEwHDWQYgAA08wQUU8Y8KoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1: On-street parking lane",
-        "url": "85761fb976dc6bf458b6c2faf4f30606",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYBk1cCQZuPvVn/+UGOQqxsLIwMDAwEKpQegOGkJhSDUDYYFJtUhBF6AUDIEwHDWQYgAAVfUQUf/T7ucAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2: Trees, planters, utility, etc.",
-        "url": "5513eb19efa85fb6667cce6631260a5f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYBk1cCQZ+OfP5v8UGcTiy8jAwMDAQqlB6A4aQmFINQNhgUm1SEEXoBQMgTAcNZBiAAB07xBRV6JcIQAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "3: Both 1 and 2",
-        "url": "d74e8756e0212e4a9774f8f293e020a6",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYBk1cCQZ+OfC3v8UGWTgzMjAwMDAQqlB6A4aQmFINQNhgUm1SEEXoBQMgTAcNZBiAAALnRBRzsZrxgAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4: Guardrail, etc.",
-        "url": "f1a929ba4fb0f0ffbad98844ef2bea98",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYBk1cCQZuO3P7v+UGOTF4srIwMDAwEKpQegOGkJhSDUDYYFJtUhBF6AUDIEwHDWQYgAAtNIQUeEpAO4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 286,
@@ -13277,17 +4364,7 @@ define({
     "layerName": "SIDEWALK_SEP",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "84dc686734bea7eea5cd5ae564cdfa09",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgmTNn/lPDMBMTE0bauNDExISRqgZSE4waOGogGQAAckkE7jaFi1cAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 287,
@@ -13299,17 +4376,7 @@ define({
     "layerName": "WILDLIFE_CROSSING",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "d264cba71487c46232092a7508fea664",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFNJREFUOI1jYaAyYBk1cNRAOPiPxGak1MD/hWsRnP5ghv/4DCVkIIphDAwMDIVr8Rs69COFsT8YIwwZGCgIQ7ihyHx8ion1Ml5DyDGQaDBqIOUAAJRQEDQhHtmFAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 288,
@@ -13321,17 +4388,7 @@ define({
     "layerName": "ELECTRIC_SUBSTAT",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "0672bfd8cd93260dfc74d2d2742fd93a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAANVJREFUOI3t0zFKA0EUBuDvYdBi1WoRG+/gDewCdhZaWwm2HsBGyA0ikjIWaeIBxCvY6A3SBWEaiyllLLJFEAy6LIjia4b3Fx9/Ma+n4+n9g78WLCfEtCOwrGNIeSBeOwD1sYMjjFuC5RRXWMNWEw4pA6gqtzm7JN6+CMa4qspLzibYbsJNbOAi57j+ZkNyjnvKGe6W4gGfYyvBZg6a9wn7S3sbsAQOcU6MFl/HDaUmUpuGu3XtOKV4XqwxpTzWtb2UtAFjnpL5h2yWktmKEn/nln8QfAdltTXIR3iI1wAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 289,
@@ -13343,17 +4400,7 @@ define({
     "layerName": "EPAEGRID",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "379e6cba65110e9101a2627a9282ef2d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEdJREFUOI1jYaAyYBk1cIgYmMqQupeJm0kap66vDD9nMszUJ9pAZgZm5f9f/8vjcchPklxICRg1cMQaOINhhgJVDaQEjEADAQx1CtUsUZPnAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 290,
@@ -13365,17 +4412,7 @@ define({
     "layerName": "AMTOW",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "eb4447e9034424f640167f51e79d772d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE5JREFUOI1jYaAyYBk1cIgZ+D9FS5aBXYwZU9eBZ4wTGX6RbCADM/dphj9fxTHE/+mZMjBcOkO6gWSAUQNpbCDjzNMSVDWQHDBq4CA0EACHQQyuh0NsggAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 291,
@@ -13387,17 +4424,7 @@ define({
     "layerName": "FMTOW",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "eb4447e9034424f640167f51e79d772d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE5JREFUOI1jYaAyYBk1cIgZ+D9FS5aBXYwZU9eBZ4wTGX6RbCADM/dphj9fxTHE/+mZMjBcOkO6gWSAUQNpbCDjzNMSVDWQHDBq4CA0EACHQQyuh0NsggAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 292,
@@ -13409,17 +4436,7 @@ define({
     "layerName": "CELLUR",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "5f86cd860271b5fa32c28f96e5c6a7ba",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAMdJREFUOI1jYaAyYBk1cIgaWMnAwNrOwPCbWgYyvrFg2BjPwRC18ADDB4oNTDdkiGT4y+DJ8ZG7ioHhaxlFBsYzMHAwsDC0Q1R+zU3SYpgy7xrDI7IN5DBlKGZgYJCDcdn4GFoYGBjiyDIw3pBBgoGBoQJZ7P9fhuh0Q5G+meffXCDZQE4Ghpb/DAw8aMJMDCxvuhgYGNxIMjDTUFrvH8vTRBx6XFMNud1mn/+6i2gDp59/eomBgYEZlysYGL7ilBkmWW94GQgAdY0qp2bVVBkAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 318,
@@ -13431,17 +4448,7 @@ define({
     "layerName": "GC_HOSPITALS",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "2d7adffbd2e6136d7f3e07172172b56c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAShJREFUOI1jYaAyYBlaBu4/etWBh5NdlVjNP378/mZrpbkUp4HPnn7YdfjkI1ZiDdRUEWY4fe7uX1Mj5RVYDXz95ivrjKNvGHa22DHIywkzXLz8hCG8+zRcPtFEiKE8z56BgYGBIaF4G8OvX/8ZXB21uHC6EAYUFUQZVJUlGT58/IYiLiDAzqCuKs3AwMDAwMvFhNXVQyyW0YGRviLDp93JcD4TE3ZvEm3gnz//GL5/+4lQzMrCwM3FTr6Bl64+ZLDI3QnnF7pIMvQ1B5NvIDlgiBo4c+FxBlFhToaHTz6hiB+/+I6hc+J2BgYGBoZrL38yyIpxYehFMVBORuBlf6yaGIyvpijI0K8oiNUlJaEqDCJC3L8/fvx2D6eBQX5mEvi8QwwY/JECAFhKTqlS2SZcAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 319,
@@ -13453,17 +4460,7 @@ define({
     "layerName": "GC_LASERS",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "123ddbeeb6cd8220a259424c539c5837",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAARpJREFUOI3t0zFLw0AYgOH3jhaRbFJE7OSi4KC7m0PXVCi0ScYODtKhq86CP0DwL1w7FDoUKukPcHPW3UWIHYSjgYOcg9bBNuYqbvqOH3cP9w1X4pcr/YOfDYesz2acCkEdvCroBIizjOsoYroSqBQ7aeqNhdB77xMNsAscSUmn3/f8VkvfOYGDAWvGeCOYYwtVrNUjpTgMQ54KQWNog97PW+mjDSG4AM4KQcAvwOaduIJVR3BrMkHWamRFYOIITr9ieWAMHBdpQnC7bL4AlsvcGEOH71dPreXSCWw0eO31Kj4kY2BzyZ0ZEAUBD04gQBAk90pxIKV3bq2uA9vACxBLyVWzyWPe03O/XhjyDLoLdPPOrAT+tD8IvgHTIE2PfHqX+gAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 320,
@@ -13475,17 +4472,7 @@ define({
     "layerName": "GC_LAWENFORCE",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "e6a69cfe95d7dca5fc04778b37e80bcb",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAABBFJREFUSImNlX1Mm1UUxn99uWWlfAwXgvLhGsB1sRLMEgS3GDcEQ0zUkGg2PnSa6GS4mNp0YYI6gmQgBEIgRBlsmS6bayCGgUxhWWSby6Yzo8lCaiSBSROBhAob2tnB29Y/SkvfQnHPX/c89+Z57rn3nnMFG8Fg3ApiLzJ5QBaQAMjRMO2ECZb5jtjI89xumAknIcIKy+p6ZG8xEBE67QQ9oEfNS7iW2tGbTxAt12Jtm/1/A4O5GNlzHLxxG2an1DiIUyol7XAZd5oHwxsYTCZkWkBSPZOqofFoET3fXqdz2A5AgkbijcI0ui9M4pS9ABhfTefN0jzqGvvi+q3z/aSZjNxp7VhrYDAX+8RRPauLwtJdgU6XTN7ubI7N38P1YIn4zbFotRrqjt7n3uI/aLUaHon3JXqiI4lI03Gp9+ZcG2mH//Bn4jMwGLf6jkVSAZzpLEenSw54b9myWZFoTIyWmBitgktIiKe9+R16n/9cQu0+yw7jdqxtsz4DWTQAgTN3OO6SkZ76kFewisnJP1dGUhxOqQaoEOgrdeAuDl44dOkWuTmZgdjleoA3RCxSrSYiQlJwA9/fDA7fJavqM4FYLkaWFCsvXp2gpno1bmg+xxe9NhwuD/tyE5l2OBmduk/1W0/z4Qevo43S4HZ76Ls0ESwj+HupSCBLeaGpLi97FHHtJ28TpTlLVbeVro5DxMZq6Ru4wmuVg+Rk6yl4IQev18v4vKwUUvOKADIJQWlRViiF5Lt/AFQqFZFq5QsXIoIje7fT2PN7gIuGDIGv/BXYmfvkGgM/TEe6WLjrom/0LxoO7GDXztXN5O/OUhg4IXndVrFtmy6sQd2nZcTFxaDRbEIIZRd5ypAWulwIwAGkBLNRUZvWCHtXnlH0OjXgR/Ra3iGAsVADh2OBx1MfC8TDF28wNDIOQN/5KxTkZ5Oa8ugag7m5hVDqtkCoLiN7C4PZCz/8zMEDRYE4JTWR1vqSoAw162bQN3BNSQhGBLJ0DtzHgEAtVDRf44n0JArycwHINGSsKxiM/sGrVHbeCqbcIPcIxpum0JstQGnw7Ivv99JVOUtZSSFa7fo7BnA6/+XkV4MY238JmVFZsLXZfa9IyFXI0ssgKf6A95p+4sszv/LRoT08tyuL5OTEwJzdPsOPl0dpP3UD67QrRNyziPBUg7+b2trsGMzlyHwDqIKXWqdd7Pt4CBiiZn8m+0sKOPn1MPWW38Il5UVI5dha7asGALYWCwZTErLUEmriR+3pMWpPj4UTXhH3mLG1WvyEstBsra0YzDMrf8PDfpkr8Cyu7NwSzK6tZFuLBYPxOrLUABQT9LrCKQMWhKfKfywbG4DvTqAMfWU1wlOC7N2Dryn6+5YDGEN4RpDVFsabpsK5/wf3HlR/VSHcmQAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 24,
-        "width": 24
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 321,
@@ -13497,17 +4484,7 @@ define({
     "layerName": "GC_PARKS",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "1e2645c55cc39f3ee3b12d7d5606e5b0",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAA9dJREFUOI2VlH9M1HUYx1/fu295HiCCnIYaSpogEs3I4Q+mcBSShpiRAYbMWjjnBEuHKZTgj9K1geGyNgzHBKVoDqx1JlKiVPyUQJB1yuC4SAVE4Dg54e777Z+4cQnN3n999rw/z+vzPM/2eUQmkCzLzkAEECBJkqtCobACd4EyQRDqJsoTxwHNMJlNh28abvqX1uo8Lt74fkZLf6mzk8LDtHzWemPsqoSV5iHzkFqlPgcUCoIgTwgcGBx4rdV461DG2TSfqq6vlWM9s9TjUmo86Veaf9IPsB2OKHRaH/r6almWdwqC0PcIsKe3e/u1ltrUxEKt50TtjJEy9ULMKxcb4luOJ+V8JcvyO6NQEeD+4P3gW236DxMLtTMeA2ZX+e3TC3dkw4mdudmyLCcIgiCLAIMmU86O/Pj/BRsLPV8eadigfeNNoFA0dLYnlNdffrbXqmfdM8msDlzz2DBjVwdHyt9l7w8bX45YbjYBhaJNsm7N+/WEEuCO6S/a7rQ5JE2ZPIXolzaib/+DiutXHbzOe8bRo/K6vsFFlmV/0fRg0NswVAlAdXcR1d1FDkmnEyo5V1ZESGAYuuslNPfpxq22qOLsnKCAZSHi8MjDKRO1FL1gNxr36cTnLSVDyueDqP3E540PrO4smw14ijbJphoNLpseg7dmvv1SQvjbfHH+OAAHL23lx10tpGlPMWAeAGDY+pAv61IAuDdscJEkaZKoVCgtgBpgpa8Wv7n+AHg95YXhtoHi1iwArLKZU7ocUjbto6apGptkY8RmRbzmhFU284LHmkGFQnFXVE2abBoFHr2SCFdgtmoJBTtLOFqc7tBWfvNBov+MoU5fw4na3Q5e2KLwbqBRNFseVMYtSos603zIbqau+5ir9eW0mEofmdXn3x1jX+x+cq8dwSL12OPBz4d0AT+J9Ter0l4Nioo803xIAbDYPYoFXj6szYwdd/ilxhyiO2JICc3kQNlmAEJnbbFppnrUCIIwIm7bkNz0S33F5aSgz7TZVcno+2p5P3e7w+v/1t5vt+HpPA8AUXAiJTpV7+oyNQ3++csrvgmObNzye3tHz3ua4tYsGno7J4QB9Fr19PbpAciJu3DX3W1akiAI/XYgn/BA91zxkjjt5pq50701x35L+k8gwEzVYjI35XR5ambucnNxuzQat6+vPXHphj370+eUR/5cUuBbFXaxVqcoaPoUq2x2APk4a4kPTrQF+r54Q612estzmmfjWN9xY2cwtCojNPxw3kcLVwaEHVi7NGqFZdjiKtlsKoVSaZn0xJP9k1VqvSxLWfOenl8yXuV/A1vYjhBoU4n6AAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 322,
@@ -13519,17 +4496,7 @@ define({
     "layerName": "GC_RELIGION",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "cee618eefd8e50dff29bb23b15aa5a3b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAWNJREFUOI3d0a9LQ2EUxvHvPfduMu6KcgXBPLTYRBAEk4wxZNisChoE0bmVKWbLhGHSIAaH/8AQFC1WjQaDmEQEuWu+Krqda1kYiHe/TD7xPed8eOB1+OM43R7mveREzY9WS1Qeegazw5kxnj4LNqrrzKyXuHjsCZQnXa3zumgTH7Tc6AqGQk+ghUaE+FGARGy4bZ61BebIuJarU0VTOW90jACZxrgzMO8lJ4L3WjkwJHJuemfXnG6F7f8K7oDz4s5uB75u4nIPXGEoZEmP1lGkEzBHasRHymJ0HEANJ4GnZ7YvNwJzHTXMkloGKQExwAAfNvr2hfMFWgWxQAfaBgXZA/oALCRfpLIPgA+At0Z6yIHntsHmBK5u5Ex63kIOA2rXIAdANOwm/JcNCSBRRy8DjzvbZzp0vyXYRf4JKDCp704/aOeghSzVUfvHplEUFn68x/QWEwIWqRy3rNEcv0XDXvMNLUVwRP7LWtEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 323,
@@ -13541,17 +4508,7 @@ define({
     "layerName": "GC_CEMETERYBND",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "7b1a06d61caa450a954020d021788b36",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADBJREFUOI1jYaAyYKGbgf//M/xnZGRgJFWOfi4cNXDUwFEDRw2kj4G4yjtCclR3IQBO3AZXf7NGAQAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 324,
@@ -13563,17 +4520,7 @@ define({
     "layerName": "GC_COMMUNITYCENTERBND",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "0fc63c45e8af6495bfc7abbae6317d8d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIxJREFUOI21k0EOwCAIBCHhUf7/5K/oycTAYgFbTroxy44EoY9LfjPUSXprxoNYrLCbr3ukoSAOWSfpbsyDGGno7Az3BytNpKG0MCFqYE1P5f4QmUQ6auQSRone8EPDCDOLHw6lgw//sIv/mrCLfzXl1FA6mEfDCmZp9TKY5dWrrl2InNGsvpqKFW7rAYoxun1yaXlvAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 325,
@@ -13585,17 +4532,7 @@ define({
     "layerName": "GC_CORRECTIONALBND",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "9baaa50a926ac023b3b1a899c0217d6a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAERJREFUOI1jYaAyYKGZgcXeDP8pNax3KwMjC7oAsgXIfGSATQ7mINp5edTAUQNHDRw1EKeB6GUivjISXQ5WnLGgC1AKAO9rFA6Z4X9TAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 326,
@@ -13607,17 +4544,7 @@ define({
     "layerName": "GC_CULTURECENTERBND",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "2c039e453f8b2ebf5f44b54accab8632",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFJJREFUOI1jYaAyYKGdgSta/lNsWkQNIwu6AMOKlv8METWMKBYRw4c6CNVAmCvRXUsCn8YupAKgsYGjYUi5gaNhSLmBgz8MKXEh1BKEgci2UgAAm/aGLlHfdgEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 327,
@@ -13629,17 +4556,7 @@ define({
     "layerName": "GC_GOLFBND",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "eafdf18321f27b6534c1766561fa030c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAI9JREFUOI21k9ENwCAIREvimk7hHE7hoPTLxMChgC1fejHHPQnl+bjKb4aDG9+aVepUpLCaz7uloSAKeXDj1bhSJ6ShszJcH8w0lobSwoSogTTdlfpDZGLpqJFKaCU64ZuGFqYX3xxKBh/+YRb/mDCLfzVl11AymFvDCGZo9TyY4dWLrp2J7NGkPpsWKdzWC66/AUhmoAv+AAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 328,
@@ -13651,17 +4568,7 @@ define({
     "layerName": "GC_HOSPITALSBND",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "705fb3223d5d014672ce4cae3d0fe8ce",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHhJREFUOI21k1EOgDAIQ13CrTz/zoU/Go0ItlT52wJvHRRbPg77D+jTZdpYh90vygKfnubsggwuOB58yYkKRWgcigh9nrIAzW3ThNY+ZKAQsAHFNgWBwgpJKLfLtLGRb1HGRntFGVuE9jclyYs9rM5ZXKAnEPAYEhsFTGIV16Y/kgAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 329,
@@ -13673,17 +4580,7 @@ define({
     "layerName": "GC_RELIGIONBND",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "09ecdfb187211403f20f32cea158a3fc",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJRJREFUOI21kt0NwCAIhGnCFF2sM7qYa+gTDUE5sFbfIMfn8cP08+NjwEK17cIeui+2CR0Xqk3nbKxzYog9wKxYCpFmcCg/WWFWc24pRHHLGY27FDuvGWCmgS3rAs+xnmkI9FwgaAiMHIom5VBDPCg8bA9mW0tvOdPe0mFnFhC9ZYefDjtaAOpocIhilBPoC9yZm34d+zCVN4ODbhEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 330,
@@ -13695,17 +4592,7 @@ define({
     "layerName": "GC_SCHOOLSBND",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "97252bdb2485a69675a12daca522b8b6",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIdJREFUOI21k1EKwDAIQyN4/yu7r0LR2Knd/GpDiXkVFR+X/mZogN2aCSDqhd183TONBQnIBthuLIAwjZ2D4f5gpck0lpYmZA286anCHzKTTGeNQsIs0Rt+aphhVvHToUzw6R9O8V8TTvGvplwaygTzaNjBbK1eBbO9et21S5ErmtdXU/XCbT24P3pt5pfYLAAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 331,
@@ -13717,17 +4604,7 @@ define({
     "layerName": "GC_CIVICCENTERBND",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "01351060698f936e77d40e568b866374",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAItJREFUOI21k1EOwCAIQyHhip7SQ7IvEwPFAW58aWNKnwShj0t+M9RBemvGk1issJuve6ShIA5ZB+luzJMYaejsDPcHK02kobQwIWpgTU/l/hCZRDpq5BJGid7wQ8MIM4sfDqWDD/+wi/+asIt/NeXUUDqYR8MKZmn1Mpjl1auuXYic0ay+mooVbusBC8HAx0TPL8UAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 332,
@@ -13739,17 +4616,7 @@ define({
     "layerName": "CSTHAZ",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "de46d6187333bc43d28c39a2dce90e75",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE5JREFUOI1jYaAyYIEx/jMw/MenkJGBgZEkAykBMMcwMjAwwg0k1gWEAFVcOGrgUDAQOR2RYwiyviHi5VED6WMgseUlCzKHGoBoFxJrKQDDRQhZblEyVwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 333,
@@ -13761,17 +4628,7 @@ define({
     "layerName": "GC_PARKSBND",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "f35433f7a3b70bd40e2a1952e9a9b687",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJRJREFUOI21kksOwCAIRGnCoTxKj+hReitd0UxQPtbqDjI8hw/Tz4+PAUultgt7brpYJzAulRrmdIw5McQWYFYshZ5mcCg/aWFWc24pRHHLGY25FD2vGWCmcVvGAssxzjQEWi48aAiMHIom5RAhFtQ9bAumW0tvOdPe0mFnFhC9ZYefDjtagNfR4NCLvZxAX+DO3PB1Cx6cvOHZ7L4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 334,
@@ -13783,17 +4640,7 @@ define({
     "layerName": "CH_GULF_STURGEON_L",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "d84972958a97f43ddad77728a3c4d4d4",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWKgQ+f//9Qw7EA5IyNtXHignJGRqgZSE4waOGogGQAA/8sFing0PkUAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 335,
@@ -13805,17 +4652,7 @@ define({
     "layerName": "CH_MUSSELS8",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "d06d9e535ba243b7b9d6c4362fc43161",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC5JREFUOI1jYaAyYBk1cNTAQWPgipb/VDEtooaRRi6MqGGkroFUBKMGjhpIBgAAiggEJsG32AoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 336,
@@ -13827,17 +4664,7 @@ define({
     "layerName": "CH_MUSSELS",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "d06d9e535ba243b7b9d6c4362fc43161",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC5JREFUOI1jYaAyYBk1cNTAQWPgipb/VDEtooaRRi6MqGGkroFUBKMGjhpIBgAAiggEJsG32AoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 641,
@@ -13849,17 +4676,7 @@ define({
     "layerName": "CH_FL_LEAFWING",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "28b7299b921d2b17bc656fcf33d3b845",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIlJREFUOI29k9ENwCAIRGniYCzS6VzEzeyXiSLQg9jyhRc97wUtdLjKL4aVuRMR3a1dnqbp3yeszH3cNnpNk/1mqCFJs1mTe82EWlotySuyhzmvYWQPM4JvDkUeRvEXQwTT0jdDFNPTF8MIJpQwgwkNJYNpJoxihr5eBNNNmMFUDa1Dmg4/7BP1ADBBB1LHqGUQAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 642,
@@ -13871,17 +4688,7 @@ define({
     "layerName": "CH_FL_BRICKELLB",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "67b7a2821059b408b06a3215e8d0eb8f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIlJREFUOI29k9ENwCAIRGniYCzS6VzEzeyXiSLQg9jyhRc97wUtdLjKL4ZcuRMRtbtdnqbp3yfkyn3cNnpNk/1mqCFJs1mTe82EWlotySuyhzmvYWQPM4JvDkUeRvEXQwTT0jdDFNPTF8MIJpQwgwkNJYNpJoxihr5eBNNNmMFUDa1Dmg4/7BP1ADkmB1Ktr+XjAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 643,
@@ -13893,17 +4700,7 @@ define({
     "layerName": "CH_CS_TWORT",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "23217ca5ff33bc1f3258b8517025b016",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIhJREFUOI29k9ENwCAIRGniFgxrOqxz2C8TRaAHseULL3reC1rocJVfDLlyJyJqd7s8TdO/T8iV+7ht9Jom+81QQ5Jmsyb3mgm1tFqSV2QPc17DyB5mBN8cijyM4i+GCKalb4YopqcvhhFMKGEGExpKBtNMGMUMfb0Ippswg6kaWoc0HX7YJ+oBBPIRNDDTHzwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 644,
@@ -13915,17 +4712,7 @@ define({
     "layerName": "CH_CARTERS_FLAX",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "23217ca5ff33bc1f3258b8517025b016",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIhJREFUOI29k9ENwCAIRGniFgxrOqxz2C8TRaAHseULL3reC1rocJVfDLlyJyJqd7s8TdO/T8iV+7ht9Jom+81QQ5Jmsyb3mgm1tFqSV2QPc17DyB5mBN8cijyM4i+GCKalb4YopqcvhhFMKGEGExpKBtNMGMUMfb0Ippswg6kaWoc0HX7YJ+oBBPIRNDDTHzwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 645,
@@ -13937,17 +4724,7 @@ define({
     "layerName": "CH_BARTRAMS_SHS",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "23217ca5ff33bc1f3258b8517025b016",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIhJREFUOI29k9ENwCAIRGniFgxrOqxz2C8TRaAHseULL3reC1rocJVfDLlyJyJqd7s8TdO/T8iV+7ht9Jom+81QQ5Jmsyb3mgm1tFqSV2QPc17DyB5mBN8cijyM4i+GCKalb4YopqcvhhFMKGEGExpKBtNMGMUMfb0Ippswg6kaWoc0HX7YJ+oBBPIRNDDTHzwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 646,
@@ -13959,17 +4736,7 @@ define({
     "layerName": "CH_STSAWFISH",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "cfea23d111610cdb0377ad71e3a7674f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAI1JREFUOI29k9ENwCAIRGniHp3BtTqQa3UGJ7FfJopAD2LLF170vBc00eZKvxiWmhsR0XXeh6VJ+vcJS82t39Z7SeP9YighcbNR43vVhFJaKckrsoU5rmFkC9ODrw6FH0bxJ0MEU9MXQxTT0idDDyaUMIIJDSWCqSb0Yrq+ngfTTBjBFA21Q5IOP+wd9QBqivtQFkpwFgAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 647,
@@ -13981,17 +4748,7 @@ define({
     "layerName": "CH_ACROPORA",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "865769ed6796e92736550b3ed4400709",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIxJREFUOI29k0EOwCAIBGnizUf0nX2B7/QRPduTiSLQhdhywo2uO0ETba70i2EtuRERndd9WJqkf5+wltz6bb2XNN4vhhISNxs1vldNKKWVkrwiW5jjGka2MD346lD4YRR/MkQwNX0xRDEtfTL0YEIJI5jQUCKYakIvpuvreTDNhBFM0VA7JOnww95RD9d+ACJ5CBWAAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 648,
@@ -14003,17 +4760,7 @@ define({
     "layerName": "CH_PIPL_FL_FNL",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "23217ca5ff33bc1f3258b8517025b016",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIhJREFUOI29k9ENwCAIRGniFgxrOqxz2C8TRaAHseULL3reC1rocJVfDLlyJyJqd7s8TdO/T8iV+7ht9Jom+81QQ5Jmsyb3mgm1tFqSV2QPc17DyB5mBN8cijyM4i+GCKalb4YopqcvhhFMKGEGExpKBtNMGMUMfb0Ippswg6kaWoc0HX7YJ+oBBPIRNDDTHzwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 649,
@@ -14025,17 +4772,7 @@ define({
     "layerName": "CH_RIGHTWHALE",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "f260a869291f54f1a6288de312186000",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIVJREFUOI29k8ENwCAMA12JKbr/bKxBX0gQnNRBtHkFC4xPgYLDVX4xrEADgBu4Io3p3yesQOu39Z5ptl8MGZI1GzW7103I0rIkr8gR5riWkSPMDL47FHtYxZ8MFUxPXwxVzEifDDOYUsIdTGkoO5huwixm6utlMMOEO5jU0DvEdPlhn6gHylZwvus+G8EAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 650,
@@ -14047,17 +4784,7 @@ define({
     "layerName": "CH_SNAIL_KITE",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "6eec49591993a99b3e9aa2454ce8af0e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIVJREFUOI29k0EOACEIA2vio/b/J3/FnkwUC4JxlxM2WjtBKy5X/cVQGgQAyoPiaUz/PqE0SL+t90zT/WLIkLTZqOm9ZkKWliXZInuY4zqM7GFm8M2h6MNR/Mkwgmnpi2EU09MnwwxmKOEJZmgoJ5hmwixm6utlMN2EJ5jU0DrE9PDDvlEviMmqhyqD1roAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 651,
@@ -14069,17 +4796,7 @@ define({
     "layerName": "CH_GULF_STURGEON_P",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "7a3930d3b538b4de996ca80ecb889d77",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIZJREFUOI29k1EKwCAMQzPwrp6pp3Vf21xNSxSxXzXYkEe1YHOVM4ZmDQBQ65VqRD+Q0Ky9KZ6eab4fDBmSN+s1fzdMyNKSJFF9hhlmf5aRM8xIJ/jxUvywiP83VDAjfTBUMTMdfikqppRwBVNaygJmnHAWc+rrTWDmCRcwuWE0xHT5YW+oG00Ht+pkFZMjAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 652,
@@ -14091,17 +4808,7 @@ define({
     "layerName": "CH_CS_SPARROW",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "3310647085915406c35be6bd833d2866",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIZJREFUOI29k9ENwCAIRDFxJPefgJ3ol4niQYHY8oUXPe8F7XS5+i+GzCJERGO05mlI/z4hs8i8bfZI0/1hiJC02arpvWZClBYleUX2MNd1GNnDzOCbQ9GHo/ibYQTT0g/DKKanb4YZzFDCCmZoKBVMM2EWM/X1MphuwgomNLQOIT38sG/UA8Rk5dfNVAZlAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 653,
@@ -14113,17 +4820,7 @@ define({
     "layerName": "CH_CROCODILE",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "404b7d24bd00cb04c031518aa8eda3e4",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIpJREFUOI29k9EJwCAMRFNwC+ms0lmlc9gvQWOSXoJtvuKh5z2iiTZX+sUw19KIiO7zOixN0r9PmGtp/bbeSxrvF0MJiZuNGt+rJpTSSklekS3McQ0jW5gefHUo/DCKPxkimJq+GKKYlj4ZejChhBFMaCgRTDWhF9P19TyYZsIIpmioHZJ0+GHvqAfJ6v8t8qk55AAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 654,
@@ -14135,17 +4832,7 @@ define({
     "layerName": "CH_SABM",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "dd9b870ebb39f4830321cd354a63ddf5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIhJREFUOI29kzEOwCAMA12JD7L1iWx9Ip2QIDghQbSZggXGp0DC4Uq/GJaMCgD3g8vSmP59wpJR222tZ5rsJ0OGJM16Te5VE7K0LMkS2cLs125kCzOCrw5FHvbiD4YeTE2fDL2Ylj4YRjBdCXcwXUPZwVQTRjFDXy+CaSbcwaSG2iGmux/2iXoBIOG9Ccm1WiEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 655,
@@ -14157,17 +4844,7 @@ define({
     "layerName": "CH_PKBM",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "a23f514ec73bc79adc407dd2dce5e7ac",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAINJREFUOI29k1EKwCAMQyd4/yt3H2NY0jZLt2F/rEFDHtV5/Fxzk6HZtY7BtajvSGi2Utx9pmEfDDMkNPMani0TZmljkqqcIcP0exkZkTCRhk+Ggpc1fDBUMCs9GKqYTA9DUTGlhG8wpaH0MUnCLmbr6+mYDwl99b4dGFaXMl1+2N/rBPFhbn/BlSF1AAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 656,
@@ -14179,17 +4856,7 @@ define({
     "layerName": "CH_CHBM",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "040c46e2ff9e2b8793cc7a19329c1ca4",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIhJREFUOI29k9ENwCAIRGniFg5LHLZz2C8TRaAHseULL3reC1rocJVfDJlrJyJq7b48TdO/T8hc+7ht9Jom+81QQ5Jmsyb3mgm1tFqSV2QPc17DyB5mBN8cijyM4i+GCKalb4YopqcvhhFMKGEGExpKBtNMGMUMfb0Ippswg6kaWoc0HX7YJ+oBWfQIOIIRLNsAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 657,
@@ -14201,17 +4868,7 @@ define({
     "layerName": "CH_RICE_RAT",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "9a938c9faeada42e0ba79e7088f4ef6c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIxJREFUOI29k0EOwCAIBGniX/qhnnxgT37I19iTiSLQhdhywo2uO0ETba70i2EtuRERndd9WJqkf5+wltz6bb2XNN4vhhISNxs1vldNKKWVkrwiW5jjGka2MD346lD4YRR/MkQwNX0xRDEtfTL0YEIJI5jQUCKYakIvpuvreTDNhBFM0VA7JOnww95RD4JO9l9i9eOKAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 658,
@@ -14223,17 +4880,7 @@ define({
     "layerName": "CH_MANATEE",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "0fdf7a4bec9ad3b240565dbc66a627b7",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIxJREFUOI29k9ENwCAIRGnib+fodE7T6ZzDAeyXiSLQg9jyhRc97wVNtLnSL4a51EZEdF/nYWmS/n3CXGrrt/Ve0ni/GEpI3GzU+F41oZRWSvKKbGGOaxjZwvTgq0Phh1H8yRDB1PTFEMW09MnQgwkljGBCQ4lgqgm9mK6v58E0E0YwRUPtkKTDD3tHPSGY7klj2tajAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 659,
@@ -14245,17 +4892,7 @@ define({
     "layerName": "CH_FLSA",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "c0036ca0a86cb727b11ae53afda9d5c2",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIxJREFUOI29k0EOwCAIBGniL3xbr32UV9/Wd9iTiSLQhdhywo2uO0ETba70i2EtuRERndd9WJqkf5+wltz6bb2XNN4vhhISNxs1vldNKKWVkrwiW5jjGka2MD346lD4YRR/MkQwNX0xRDEtfTL0YEIJI5jQUCKYakIvpuvreTDNhBFM0VA7JOnww95RD7XEAo9z1HR/AAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 307,
@@ -14267,53 +4904,7 @@ define({
     "layerName": "FDOT_WP_PLN",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "2019",
-        "url": "51ff101711a59f39f9a3fc6b27e99053",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgL1OR/9QwjO30G0bauJDt9BtGqhpITTBq4KiBZAAAUHsGD92TeDEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2020",
-        "url": "5d27beefb4363a2d4cbda6e223922786",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNTAwWRg4vfi/5QYNJ+zlxHFQGoBuIEwG6hmILXAqIGjBpIBAOxVBYcqaupXAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2021",
-        "url": "06e78d0e0760496e9492208522bbef83",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgSsyH/9QwbM4SAUbauHDOEgFGqhpITTBq4KiBZAAAPK8Foj1aO/QAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2022",
-        "url": "fa8eb7d39a0c69c392ff3fac6b3eec8d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg2YMX/6lhWJeCBCNtXNilIMFIVQOpCUYNHDWQDAAA010FFKwP7EQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2023",
-        "url": "81d9efd65813237fca9c4990b25febd1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/1UM/6lhGGMYAyNtXMgYxsBIVQOpCUYNHDWQDAAATpcDqaTdEy0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 308,
@@ -14325,53 +4916,7 @@ define({
     "layerName": "FDOT_WP_PE",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "2019",
-        "url": "51ff101711a59f39f9a3fc6b27e99053",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgL1OR/9QwjO30G0bauJDt9BtGqhpITTBq4KiBZAAAUHsGD92TeDEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2020",
-        "url": "5d27beefb4363a2d4cbda6e223922786",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNTAwWRg4vfi/5QYNJ+zlxHFQGoBuIEwG6hmILXAqIGjBpIBAOxVBYcqaupXAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2021",
-        "url": "06e78d0e0760496e9492208522bbef83",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgSsyH/9QwbM4SAUbauHDOEgFGqhpITTBq4KiBZAAAPK8Foj1aO/QAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2022",
-        "url": "fa8eb7d39a0c69c392ff3fac6b3eec8d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg2YMX/6lhWJeCBCNtXNilIMFIVQOpCUYNHDWQDAAA010FFKwP7EQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2023",
-        "url": "81d9efd65813237fca9c4990b25febd1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/1UM/6lhGGMYAyNtXMgYxsBIVQOpCUYNHDWQDAAATpcDqaTdEy0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 309,
@@ -14383,53 +4928,7 @@ define({
     "layerName": "FDOT_WP_ROW",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "2019",
-        "url": "51ff101711a59f39f9a3fc6b27e99053",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgL1OR/9QwjO30G0bauJDt9BtGqhpITTBq4KiBZAAAUHsGD92TeDEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2020",
-        "url": "5d27beefb4363a2d4cbda6e223922786",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNTAwWRg4vfi/5QYNJ+zlxHFQGoBuIEwG6hmILXAqIGjBpIBAOxVBYcqaupXAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2021",
-        "url": "06e78d0e0760496e9492208522bbef83",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgSsyH/9QwbM4SAUbauHDOEgFGqhpITTBq4KiBZAAAPK8Foj1aO/QAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2022",
-        "url": "fa8eb7d39a0c69c392ff3fac6b3eec8d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg2YMX/6lhWJeCBCNtXNilIMFIVQOpCUYNHDWQDAAA010FFKwP7EQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2023",
-        "url": "81d9efd65813237fca9c4990b25febd1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/1UM/6lhGGMYAyNtXMgYxsBIVQOpCUYNHDWQDAAATpcDqaTdEy0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 310,
@@ -14441,44 +4940,7 @@ define({
     "layerName": "GREENLINKS_PRIO",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0",
-        "url": "609621a36014ddbcc2a41166e852f5e3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jigv//yffTEZGRgYGBhp7edTAUQNHDRw1ELuBsCKITMCIbiBFpsEAALHFBFbqKcrOAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 1",
-        "url": "4f160b4194f6e2163bedbce75c0481c8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigvVisk36VYvhKapl0cNHDVw1MBRA7EbCCuCyASM6AYyUmQcFAAA2rQEuh/h3hIAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 2",
-        "url": "3b7abe031ef57216fcda60efe2b80ecc",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigu9n5Fv0lYpCE1TL48aOGrgqIGjBmI3EFYEkQkY0Q1kpMg4KAAApk8EIldHk+kAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 3",
-        "url": "b5d14d4eb80cff40689c76086d479a80",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jiguvH5pHtkmadkkMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEA9ZwFHNr52rMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 311,
@@ -14490,44 +4952,7 @@ define({
     "layerName": "GREENLINKS_RCLIP",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "0",
-        "url": "609621a36014ddbcc2a41166e852f5e3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jigv//yffTEZGRgYGBhp7edTAUQNHDRw1ELuBsCKITMCIbiBFpsEAALHFBFbqKcrOAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 1",
-        "url": "4f160b4194f6e2163bedbce75c0481c8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigvVisk36VYvhKapl0cNHDVw1MBRA7EbCCuCyASM6AYyUmQcFAAA2rQEuh/h3hIAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 2",
-        "url": "43427280520330cc91f77a1c6702b675",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigtnPCPfpAwpCE1TL48aOGrgqIGjBmI3EFYEkQkY0Q1kpMg4KAAAi4oD1W+fTLQAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority 3",
-        "url": "4fb37a720b849de898c1c371ee8bde91",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jiguvX59HtkmamkkMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEA7mQFB2PkQUMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 312,
@@ -14539,17 +4964,7 @@ define({
     "layerName": "GC_CORRECTIONAL",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "176d25299abf4c63c999810be1a953be",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAqlJREFUOI29lN9Lk1EYxz/vu9dfITp0/mLKyuaFYCtRmBcWpS57GYKUEUEYXXQhdd0/EF3VbdClBF2IEYtqm74iI7wIBGezoUINvZH0zZD5g7nNnS5OYfNt0YX03HwP53vOh+c5z+HROObQ/hswGBTeEye4X12Np6gIh6oiUinM9XVi2SyPdV359E9AwxCaqvKipYXBxUWKYzFQVenlcjgbGzl3+jTXw2ExfuWKcvuvQMMQxZrGB4eD9nAYBgagvj7/wuoqBIOU+XwMT0+LUz09yoWCQJuN8aoq2hMJuHv3z0/hcsHICIyOQnc350Mh8VzXlWEL8N070ed24zcMaG6Ghw+hpgZMUyrA+jrU1Un1+2FqCvr7uR4KiSe6rsTygHY79+bmsF27BpWVkE7D5cswOSkVIBQCXZfa2QkOB6ysUKqqPABuHQW2JxIS9nvs7MDiIhwcwP5+vnfyJMzMgMeDx1KyplH7q5tHo7UVMhmIRKyezQYlJTgsQEAVQi6EkCWDzOzzZ9jehtpauZfNyjOKcsi1ALNZvgmBEySguRk2NiCZhPJysNshGoW1Nel9+QJuN+RykE6zaQEmk3wsLsaZSslM3ryRF5qaDv9iQwN8/QrxuPyjpglVVWCaLFiAW1uMer3ogQCKywXz87C3J7M1TXkmGoW2NojF4OxZmJ2Fvj4y8ThPLUBdV8YjETHidHIpk4FHj6wNGBqSevMmTExARwcsLxP2+5X3f2oKmQxXy8qYFQJ3IACDg1BSkg/d3YWXL+HMGUgmWVBVhn7384A+n7JlGMKrabzq6uLC69co2ezhcBACSkuht5fc0hIGMOjzKemCwJ/Q78DFUEjccLm4U1GBR9OoVlVIp9nY3OTj/DzPBgaUt9ZH+cs81HVlDBgr5BeKY5/YPwDQoe4ItEiRIwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 313,
@@ -14561,17 +4976,7 @@ define({
     "layerName": "GC_CULTURECENTER",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "43d6efbe94f8787cb3ed76244624bb18",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAhRJREFUOI3F1M9r02AYB/BvTF6zJUuZIXZlAzVQ32JMOzKYCIIiCqKgEydYx4YgDLyo4N+hePHgSU9iPewgVEGvmzIvUlYJ+nYwyowuJdQWCW2ndR4ssV1lrZ3ge3of3uf9vL9fAf+4CP8FnLasE+VS6Y5GyMRDxvLbAqcM4+7b1dWbB1SVyxSLuauGceWBbT/+a3AWCK1R+ipXKJiTpokBQrBHVcmzbPbRJUrPPGFspmtwhtLjmWIxHQGk84kEBJ4HAEQUBcnxce5lLjd9WteP7B0aOnR/cdHbEpwyjNsL+fytk5RyUU1rG0wmBGdjMbxeWdHfLC9/TCYSF1JLS8/bwFkgtKbrC5lCIZ4cG8NgX1+AfCqV8AOAwPOIKAoEnsfRaBQfPE98wVg6aRj3UrZ9owXMaNrnwfV16bJpYichAbYBwPV9OOUy9ofDiChK0BbTNKiiyM1ls9cnKI09ZexUAJYrFWnSssBtWuI710XKtiEDmHccXLMs6E1bsVtRcC4ex3vXPdgyQ6G/vw0DgEq1CgDwG/H3er0tZ0dTveM9DMlySyxL0pb5HUFVFFvi5sPqCdwlSdAAeAAOj4xAajqwnkDC8zhGKeYYw2g43Cm9u89hdHgYX3wf+/5w0XsCvwH4Wqtho14HGs9wW+AAIbhoWd2k/gbznoe0bXfVaXOp1mpQGy8oAH2Am3ecnkAAgPfr0/kJiN+aZAzEtp0AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 314,
@@ -14583,17 +4988,7 @@ define({
     "layerName": "GC_FIRESTAT",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "9169b72dc77880e6efb8ac5f9b6a2b53",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAi5JREFUOI2t1F9oV2Ucx/HXgU0YD+jFRix/NzJQoS53ZSSDgpyjhUEIuxnRVSOJKGcy0xAVU6wRohdJQ7DEIuwmgiKEYiyIyhtXYAy8+eEmB5LgG7QujhfnbDu/n/2aRt+bc57vn/fz+fJ8n6fL/2xd6yUUPItx9OM3fX3nsjz/+aGBBdtxHC/U3Dvl+XiR0rSIdzOW1gUWpe8qRivXIuZwF5vxpIhJ7C9SOpNFHOgILBjA03gRX+C8lO5gWESvlH7Q0/O2PH8GgyKOFCkdyyIOd1L4OD7ARuzCFREjq9EIIt6S0sks4vmCz0WMFryX8XsLsCDDG9XyF3yMEWwtw7pBSg0R3xT8gevYI6XXVSrrCl/CEH6U0rKI0VrsWzRWVZZ2BI9hUsSbRaPxSdZs3qgDX60UfI3nrG8JOzCLYc3mPrxcB26rFCxiZ1vx0GrLnMSe6n8zbtfr68BFbMEm3GkDrrXcaku1zZdagSldFjGFJ3AWr/wDoG5/4Rqmq/WlVmDECYwpx2V/lfxUR1xKp0QM4xF8mvFlCzDjz6K8ah9iAnvxGeaxoYYqpHRWxFH8VPmmVoLtgz2Hj3AQ71RtDyjnsVdKt/T0XJHnj+I17MZMxkIn4ILyZblYfSfwFb7Hr+iX5xcwWOXftXbi9wMz/i7o1mic1mzO4lClrrx+a0P9nfIwbmQsdwSuQDWb85gvuCylQyLGlO/hTbyfMdNe1xHYBo9qlKb+Le+Bgf/F7gFmM7E/4uk3SAAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 315,
@@ -14605,17 +5000,7 @@ define({
     "layerName": "GC_GOVBUILD",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "5b354a1391fc2626d37fb327d1cf13b2",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAgxJREFUOI3VlD9ok0EYh5/3rqHlu4+WQhwFcXQQ/yCEVB3EIp3qUkkc1Kk6O7q6iW4itBRBKCa1INLFoegiSkqFDmI7CCJIoJVPq9IjofG71+GLrUFSKTrou9yPg3vu4XdwPfzl6fm/gZNgB4puWAOnSMmR44u2/Ex5kZVdASuH84ekt3Ee/CDBz4Gbw/o7psXp1HKhWuCaGl7SoFpeYq0rsFJkRAI3SJP9wEPF1RWGxPiYQDO17iqAQp3gx6SXm9UC8/Yrl8eWef8LUAKLQIQlUsN9E/xehQkCjzTlolj/BNijqTtjYEMtQxjerS9vW3YASzWSmaKb1uBHyy94PA/mY4EJDFPlGivVY25WrT9YXvRPZw/wJu3nutj83XGSza4dasABMcCHEZxdB23hALA+FrKc9merNBvxjo+ixjsJGdDWiYkASwQghlhDljWXd9JKSK3fGSg/GUpMrAEkzWxCYMvQNBtOLZCyM5DsQASIbORjjZJtw+yiCCDkvJMAYn8HTImxyL1RorDWyLozzoFHwGnbUFrEWFDT7rcr0LrX4Af61ritxvcRWJDgj1YKTClsCLxq5wGBBeBTV2ClwCXB7wuwqjBIALIMkFf4/CMDKKxK4OyDgnt7ruafdwCrJ/JHaCVXNOtqVxPwtybh5DhsbgFLz5KleTi+S9bWlOBbhyGgw+3NP5l//4P9Dn85yLCpC8lvAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 316,
@@ -14627,17 +5012,7 @@ define({
     "layerName": "GC_HEALTH",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "81c6c8b6877cce731e05d69d11924010",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAK9JREFUOI3VjjEKwkAURGcxlVNZR9DGytbes+gVFHIJPYE3sfAmghapDcJYKbHRsNkYI+sq5MEW83d4TITARO0W5nE8RpqOigN5MdLWW4gsmwFYFFk6Ahj6Cz1omTAHDqVfqef0+5UOOTfS7qUQwKBhQKfSkbq1C0PwYyG5LmVpCmBiXc4gN05nXys00tLOObmCZAtPbuf9wgD8XXh7vCfXr4RGSgAkzbs+FPoQXHgHa0wuwAVO+/4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 317,
@@ -14649,17 +5024,7 @@ define({
     "layerName": "GC_HOA",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "02831b87cf43ceafe580ee8546e35b3f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAASdJREFUOI3t1D9LA0EQh+F318Q/XCdBxFQ2Biy0t7OwvQiCJiktLCSFlXBBFDEasBIEv8JpIVgEIucHsLNOehvhTCFZcnJ6axFF0Jy3goWCP5hmYB5mit0UP5zUP/iei50RuoNriChvIbIKfNAe0dMxpd3290B3f9IKdEMJnQOB6nWnQMwh02Xr7MBWK5VrM/D8aMgKO3UFuZglMkpHddzaLEXnNhkMO6sKpuNOes0o4rkCrCeDYCdgb1k0BbOG4DhXSBaIEkDtgzAB2x+xGFB6oOcTOcFlv/ZnMB2cEA6XQX91eoAeqJqBS3sPmdOq7UMDGOsz0wVKFJymGQj4ha0b3MMZSz46Sos8MAHcAx4yqrG83YpbPf7pFTfvFGzQK+P85d/mt4AvXYRSc2SG+tMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 692,
@@ -14671,17 +5036,7 @@ define({
     "layerName": "NWRFLA",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "1a3782d7eb5b42ec99964e978f714cb3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEdJREFUOI1jYaAyYKGZgf8ZGP5TahgjAwMjC7oANoX/GRj+45JDdxDtvDxq4CA1EF9aJDadjqbDUQMpNZCSdAhLVizoApQCAMW7Ek2gWnzmAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 693,
@@ -14693,17 +5048,7 @@ define({
     "layerName": "AQUAP",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "6265d7894e19eb17f0bde3358cd295f0",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJNJREFUOI21lMENwCAMA4vESOzETOzETvRTJCB2mkCbF1jVxW4U4vVxxf+ApbZjWk4hrsIE73emASMycqltAucUoIbOAjh+0N0wDbmFDlGDFaqU/IcIwnTQSDpkjt7iUyCLaYzPh7ITXwAtMTVddbgZ/2zKpqFsxNSBnpiu1bPEdK+ec+0wEL2L7K0c9adpXIXTugH4Sb/ZXI6hiAAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 694,
@@ -14715,17 +5060,7 @@ define({
     "layerName": "FLMA",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "5cb7271ce32b5a5c96408ee3d3c7697c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFpJREFUOI1jYaAyYGFgYGBYxTDzP6UGhTGkM8INpAZYxTDzfxhDOiOKgTBbyDEMxqaaC0cNHCoG/p9+hqwEvjrzLHYDGTNNRtPhsDeQGuUi1VyIUsCSWw5iAwB2jRUyk8VN1QAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 695,
@@ -14737,17 +5072,7 @@ define({
     "layerName": "FWCMAS",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "5ae1a7e52ceb151c44222d46affdcebb",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1MENwCAIBdBv4krO5EzMxFD2ZKNiCwR7KzcNPjn8kHG4MgDUghaFiJFu8ETVgkaMNIH9l7VJg8bz44RWjBhpRLegB1vvBRjBBBjFBBjFBBjFzKAVM4EeTAX/YJt6vg12f/AGaj3H9uG0YD050+oC5CZXh5JBHksAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 696,
@@ -14759,17 +5084,7 @@ define({
     "layerName": "FLMA",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "c0af6d86b853d7e2534575e2b21a7fa8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJhJREFUOI21VNsNwCAIhISR7P4D1J3oR2NDLS+t8qXkOO+EQLA4aBth5YP/khU8kfqEvFcGLgho3WWuCSKLQCu+C30MaQXtrNvyMfuaAhBbzmA+luU5aoqGcS3LAkux/NOQ0FLhkYaEkcKGSSmUJBapfNAlXDLYGXtDg51pQBTDCqcGO2qA56hT+N6JchyiXFt9D2G/C2fjAk+nlm6Qv59mAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 697,
@@ -14781,17 +5096,7 @@ define({
     "layerName": "PUBLIC_PINELANDS",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "e1a407a1170aa6870d59dd942a71717a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgemmDP8pMWjmaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg3kEtkU6v0QAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 698,
@@ -14803,17 +5108,7 @@ define({
     "layerName": "RLSABND",
     "minScale": 500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "e535266605c229883016d208e2940953",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE5JREFUOI1jYaAyYKGZgcX5dw5QYtCMOcoHvn5lbEBxoZdHP9mGzpgzhYGBgZZeHjVw1MBRA0cNxGrgjDnKB2BFEDng61fGBhQDYQKUAgBTWhOvuSb7MAAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 699,
@@ -14825,26 +5120,7 @@ define({
     "layerName": "TNCERC",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "Area of Conservation Interest",
-        "url": "86ba28156f8e9d589edd742e2e98d257",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6srJxMtmHt7bkMDAy09PKogaMGjho4aiBOA2FFEDlg8uTJjCgGwgQoBQDI8AxAnD0U3AAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority Conservation Area",
-        "url": "d864b6aa25062832f87f7ec6ed1e5b68",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC60njyZbMOO5uYyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAA1Y4MZD4s9yIAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 700,
@@ -14856,17 +5132,7 @@ define({
     "layerName": "MARINAS",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "ec6206ca94d76b4e77930c7a3a024bf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAArVJREFUOI2tlN1LU3EYxz97tXFyTTzzbdkyTYtcZO9phhVGaWFFF9FN0G0QRSBpA+8yiJLoL+gmuoheoMKgdyyyRm+EvVitpSuzY23KrzU92+li1XZ0E4meu+f5Pr/P73uew+8x85/DPIlmkCRpvcjbUY9c4kC1mKXoYFgEzn2RbdFORVGeTRkolW+rE/m1XlG2rYwZs91/6gJAO64onx7USr5jb4X/0nGgb3JgVfNBUdZ0AFe1628tOgzhAOTOA5NFxlXTKIpWDXP/qFP2d3QoiuJLD6zy7qJiq5eCJQ5dvf8uzFwD/V3gXvt7IEY7Na07FTQDivcQ8HE8cBp5C45MgAEYzaBpgGmCQnVLI8ojBf+lfTqgVH2yXZRsdCd7Nei7B/EYxOPQfQJm1ULgDuTMAXtx0umi/XNdo77KYDD4IulwhnMd01LNGaB4dTK12vV5arhqlgZDbAaSQGHNKU7fPYUwW2Tc24voOZU6Q0s2AGoUzFlTA8XGQIsn+rOc2ZD6U4xaDDDTexGs02F2PZismWFhP7zthKJlULgUUGN6oPozxNiPfIwWcHpgNAw2Z3qYFk9cVrAY1J+JPOT/pgeORnqIRfMp3QTBbnDXZXZnMMJ0F3x9CQUeCPX2SYPnLwodMHd+M58fd1Oy3ojVBhEFbHJm6NBrcLjBlg89Z18JIe7rHZ7x+Gi61slwoIHCFTDwBMQA5JTrZxkdgcFnkGWH3IXQ1xWUww9bld+y/umt3NBE1+UXQAUFVYn5fH8DkTCoAgK3QZKhaHnikgFfiODdNuX5mQxvucWg0q5V8vDGBYbeNTBzhRG5cuLnRobgw60PjPTv5cHhq6nSxG3TYlCBLex+t4j3149htHiwZjmIG0wwNsKP7wEpFrkibu5pA2Ljj2desKdLnwL16SSR8dDkG/uf4hfJHO1T+DP7qgAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 701,
@@ -14878,17 +5144,7 @@ define({
     "layerName": "ACPORT",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "15ece8943a161af846c0cbef7d8bb5a6",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAQNJREFUOI3t0CFLw0EYB+DnthWZFhkLBoNRs2yoRWHNpFgNFrVaxaoggvo5bIpJGAsik4EfQYtgWTDsj0HdGTZ0gtMxhkXfdPzu5bkflzHgyfyDvwPGmnGP7kNJcyCg1+yaYRWSymBAVqSSPPoDYzU7QzIGglExmRTlYlX5Yyt3G4r1m94appM7TfuiWfE9zeOkfT6Vrq/23DBMe4g185qORZsdV03sKNgLoeOpHxu20Od4ZVfKBkI7bhhx0A37FgQpS23sDBOY0lDCeX8gi9gKRYfx0pCMI9FyX2C8kCG3HYr1GoQ5T1iP19kFkq4Nuv9hyQst7FNeSMpf7f8I9jt/EHwDlgJGQ1U+HKkAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 702,
@@ -14900,17 +5156,7 @@ define({
     "layerName": "BOAT_RAMPS",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "9ab309c4054d62b0d9f56bf2d4dffb0f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAhdJREFUOI21lM9rE1EQxz/Zbn5gSK0ajLEpG0vTUm3RtDaUtniQXtST4sGDJy+KoOjNi1UvHhT9CwTxoAcPgggKCkGwSotaY6LVJrbNtuRH02KpsrJJ06wHbci6adJA/cI7zHsznzdv5jEiGyzxvwNlWdbWGyxJkqkisBZYqX8pWCw9/Jxa4sqrKG+z+aowv0Xkar+PfZ4GZFnWVqG6DG+8+bYuGMCHXJ7Lw1GenAjo9nXAmJrniMNGj7uBm7E5FO1PBYZaXNyazBTtVYWXVwwXGZoyqmR5cDjARUx8klM4bFaeR6YNsLVkAC4UNO4GQxwNtNG3excAzTudDLR6CI7PcDuaYqGwNrzsP/yYXuTCnRec3rGZ413NpBcV7DYzl44NcF7NEYmnCY7LXJ9IVwaelLah5PI47VYed0gIgomvye90eV08Gpskv1Kgv12i9+/a8nS0MnCw3cOgv5UfikosOU84Psd2xyYAzhzcy+svM5y6/5J6sY4DXifnQjJyh7v6k+vtNrp9TXT7mgBQ1BzvY7PYLCJnAy2IdQIPQ9PVazidWSI8ldQ5mEWBNo+LTq+bPZKG1SwyMZthf+NW7s3/rAy8NhYn8W7K4NQoCCQKBZ2dpXyndUCfTSTxK2dwKoWV2j1WY8WKO5IkmZ6NRDR1OMqIulz29lL5LSJDfb5ibNkMD/V2mmqdOP+OMEPO5WZcLdrwif0bl4LDM1X/gY8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 703,
@@ -14922,17 +5168,7 @@ define({
     "layerName": "REEFNM",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "6ade4d7feebe94f326aae33177655401",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAALRJREFUOI3tzq8KwlAUx/Gv28AwVg0OfATbQLCJWA2+gGVhvoDgC5gNpu0J7OKf4AssLPgMK6LNC4Z770yCGC54MRj2a+fHOR+Ox4/j1WANQtKlXbkMJf4lK8QR0NZg0vP7WokdELgI4ohTmjMClBWolVgCwWt2YBBHTNKcjRUIhJ+FI+mYDoxgA/YVzN4q6REeoLQDmy3mjxs+ijFw1bBYF+XZ+sPVljswNe18BdqkBv8QfAL+QSqmHzt/ZAAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 704,
@@ -14944,17 +5180,7 @@ define({
     "layerName": "ARTREF",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "39e248e8c9988c750e9ef54932721948",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAfpJREFUOI3tlF9IU3EUxz/Oe510W0GuTSr7IxvBrMHWMKHdGkV/wAh8GFlPEdHfhyAQ6qUokgIhkIgICSofkv4QBItFFMqFEESH1h4ck6IHyxpua/tttumtB0uCVrtCT9H37ZzvOR/OgcOR+MuS/gN/VVvLarZPPFQyVboIO/10dX2ZP/BM0Mq6T9d5vfQYuZzE+vcukbJM8rhQQYdaz3K5nVHbQc735I0BN354wB5tC1pTrfWJvS3xI+8cryeQvYM3soFHAQkIGgNOyR2MuZ2o/f58Tr0KQAWV7Eh044t4ibriFGcuG1+59UWInq2HwX1D7NR8TCtQ87EaWdiJuuK8qmllnzZoCKjcC8TE2jSQhEKlCV0BWcyaRQW+SmZc2bsMe1Bii7Mi2Ov9I1DYpxZRm7KXnBzAlqmbq02a4+VX7rNso88CJpMDNd3O5jcN6N89WaAMrRhicOEpoU8nKEjF8sCzz6JcaXawafwcjZEGBjxvWZlaxmeLQCcndmleFjRdJFzXwqX7ifJAQFkjbovGiIcR9xia9TT7U93MkGdgyQlM7muo/X4mqm8Buw0BRZrjSki9KZIc4V1Ves54vuqpYi4cYlS9ICblo6V6S5/Ngd5hAT4ATjY7iNkzZGUdQOx9GQbCJft+C/xZnaE4ndhmA61s+b/wvuapb221qvYudWaSAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 705,
@@ -14966,107 +5192,7 @@ define({
     "layerName": "CGATON",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "<all other values>",
-        "url": "3d8c2cf5839ade5faf5a44230002af9c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFNJREFUOI3t0bEJACAMRNEvuKeTWDmJk8YuqIWKsRFyVa55hCTyONFBBzXSzcEKSqFqySRZoTtwwAAKdYn+/5SQSfMNwXBDRftu2fAIuQGP46A9DYnTEC7VQ1giAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Unnumbered Daybeacon",
-        "url": "a1f49b16da80e5dce3d7444f86db62e1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAG1JREFUOI1jYaAyYBk1kGYGShCh9xUDA8M/ogw8fPjwPjU1NQ5cJr19+5ZBS0vLioGB4QVRBkpISAiJiYmJ4zKQmZn5Fy65oRspowZSaOCjR4/YmJmZcWp6//49E0kGOjs7C5HsNHwGUgJGoIEAgLwSTjgEuuEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Even-numbered Daybeacon",
-        "url": "8944561157a4f29456ba20b6ed55cab5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAANlJREFUOI3t06FrAnEYxvGvcpON1/gr/g3CrQgHjqEcQ9C1lQkyuDVvMIPHLAa5sHLaNFw2mPYvzLL/ZMF09V2TWRVU1FkmPvF54cNTXosjxzqD/xR0RW6nql9HAW3IvaqO8iLtoernn0Efug7Yc9XWEKbA78Fg3RjnJkkeAApQ6cBTBONDwdR9kgQGcgAZuCyDF8EH8LM36EOjCLXl7hpKPZGXUHWwL5itgncFsjIZ0nfwGMIEmO0MNkVCo+p+r7ldqBbe4L0PzzuDsWoQQ7Bh/dacyOudFrgAEaoy22L7jggAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Odd-numbered Daybeacon",
-        "url": "6e4d1a478e0557803ebc030f193fabda",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGtJREFUOI1jYaAyYBk1kGYGShCh9xUDA8M/ogxUq2fYxyHNwIHTqM8MDJeKGawYGBheEGUghxCDEBcfgzgu834yMPzCJTd0I2XUQAoN/PGagY2ZEbemn18YmEgy8FYLgxCpLsNrICVgBBoIAN3hDtN/QdQBAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Unnumbered, Lighted Buoy",
-        "url": "1e7a9062f94d074fd34f29924c07c3f9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAkpJREFUOI3d0b9Pk0Ecx/H3PTz8SBGKDW3TEjQpDhiXIkaJrTIoFUg7UQQTN2JMY+Lgn+DMUAdGJh1oUk1Io408i0lj6KZhEBJTJbHYiuQhD00Lj8DzOEj51QKGOHnJDXf3udc33zuZfzzk/xtUFOXM1tZW08DAQO7UYCKRCKyurj7IZrM3otGoIxKJ3AH+Hkwmk+2FQuFRLpcLZbPZDlVV67u6ugiHw5RKJT0YDCr788eCiqLUxWKxxeHhYcnn8+FyuRBCALC8vIzdbv96+M4B8Dn5ljqMoNlIp4DtfOqz4/atPikQCFQUm5+fx+VyvT4SjLE0BsY40CKKf/YWnuY5F2rn5xUd+4X6AxfT6bTp9XonqoJTfH8MPDt8mGGOS4ke3s2q3EydxdnZAICu62iaVuzv769seYpch8Ac39sy0VDZZAMZmRpqMVcg/URj8FUdtQ0SmUwGj8fzseIdAFk0Gg8pilqAX+iss0YTNiQkrjJIiTUsNKMnDRZSeUrN34jH4/j9/qmqIEXRU16U0GjBsXvopB2VPHOkWOQT5yec693htkRvb+9kKBSaqQ6CZa9ZoyJgw4kbD9cYREyLtyPT7pFq0H4wA3QfFTAwsOJAIKCRLxSP40A2MeMCcRdAogYwAbEbKKBipbXcQ/x4DuRR3PEYufeAr5lWNFYw2AZAIGHBWi4QGym2zZ4IgjANloYkxBuBuGzFXi03s0HN2EnYDgj3aPvxEvX6JhsRAfeBi8A28AHMSRvuF32Iyh87CgQYwqYD0Z156vEbFOPFVItOl1AAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Even-numbered, Lighted Buoy",
-        "url": "ef46574a758573f85260cc2d9986112a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAg1JREFUOI3d0t9rzlEYAPDPefeati/bDNualLgw2RVCJG5QIkWM8mMlJOXSlQt/wAoXUmpu5mLLXPlRuFlJLiSSpDSbi/1Qb2/26jsb9n5deGe2dyxy5dS5OOd5zufpOeek/eOR/r/BG8yJmdvMwF+DbWzLcnyQTVeoOcJ2fwJeZ/FwFJ1+z67+OF6WZXYjdmGY0WYe/Jz/W/Aqpbfp3R3HqTWoRSjEMpgfRT3ieNKZSWCbwapS+Z1JpCEwNlR2p2ZL5nxqs76iYm9Qx52p+z/ADn3HyLegKhSKvosr1LvmgyeqnJt08CnJ8ji+PC3Yrv8MLk0NdnthpRNearRSqXnOgs/IER+lpwhsN7AsSFomthJDsr4YkZZWYpYEr+2z1l0luvRiSRQ9n3p/kA5R/qQ4zPpeedQnOXNVS0lZa4dhOeUqfDVbjz1yutzGurKy9mlBcVg/vhg2pErNj2CtxbIGvfBQr1fq+NTArY20Hs5k7hdphTssn2g2X5RQrVa9pdbZIQj3mlxomg76GezG6l8l5OVVqhEEIm8VdzkZTCSdQdgPKSVITHxfPsqqtGC8h87fc6QPqO/sMPAIGyssMCQjbwwEKeUqxwt0NMWLHs8IEpK8vr0p4W4QVlVaOF3e/RElx2bCCiAHLXp/U3bDFyOnAoewAmN4RtJarf76VqH4xX4Fwl7Vo7hYmH89vgHDc59RwvqGAwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Odd-numbered, Lighted Buoy",
-        "url": "fd844d7c71989d4fce34dbc07aa43c04",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAkBJREFUOI3dkk1IVFEUx3/3+WaG5qUzPewZMwilBNqHUEGW0rIEqRZJWdAqqYggN9WmFhFBiwaqRUuDqIWCEhQjNC0Swlq4mJiFiwF7WpgfDINPffNl814LZ9T5UEladeAu7jn/8zv8z70y/zjk/xzYzfYmN5WRx0xtGbjnNqcyJlfTMU4kP6EttNEGfwHcd4/a34vKTXOOM3Mxs55FXJ46UI6DniGtP+HjWv3GwG6cs8OMqy2mpDVArRcQy6XsPLi8ig5mQUsB8DXTXifWaVuhQUB25EdQe3fwgaQ2TZbMMn6CcwfB4vwKsI/JLrACgFfkhrreVnHl0Esm6kcI77pf0BiPYqt7zRdlgb38ugU8Ly6OEeFs+Bq7oweQHzoZ8d9dtrsEyQRm9BF6CbCXqXqBHVhN2RjEWSKFjEwFDjCh+dV5oncGMRxDpGdAq1G+6UX7A5CFYl3HFA6ADGmSzFOJioTEUdpJMI+bKhwRF42j5wi5h5j4AlrDtt7iB1m2bIpj+UsCAy/aSrGGWuJME+Ez44wiBUkarbzX9tOjB2KhElpuh+5Vs1aJQKUGH3U0046IiA8Dkaed5UBrgWPAkfUEFhYeNAQCFL6XcVkItLH7BeICgEQFYLPye4EF4nioznvo3xgH8kV8/X1MDQOtVVRjEMMiC4BAwo0nP6Cv0/R/3RQIwraY7JAQgwJx2MPOcrpQioquzWA5IFzCPzNAvGWJ1A0Bl4FGIAuEwe5R8b05iSh9sfWAAB2oaeBZ7mw5/gB517SOH9Ep/AAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Light",
-        "url": "29124439544f97c054c8583f7655a867",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABgAAAAVCAYAAABc6S4mAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIlJREFUOI211M0JwCAMhuFPcAoXc0YXcw09CSGg+TWn9vK8jaWtSJ6BuTpaOfc1E+bXHa2kBCjOJxx44QNzhQIv/Iw7oMHd70CLA44NLLg5IOEUNgc8uDrwwm+wKeCB1QH+9FpYFaC4FRYDGfg1QP+GXpgHQucsBcQvMxr4OhVAwcctzgZpZ85nA94INP7V1GHKAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 21,
-        "width": 24
-      },
-      {
-        "layerId": 0,
-        "label": "Unnumbered, Unlighted Buoy",
-        "url": "46032cfad7cd846fa1a234b491c73d0b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAbNJREFUOI3t1D2r2lAcBvDnxgxFfCtIcJCgIG0/gSUUHHLJIlgotXZw0E1KQTsIQie536CF0o76DSwRh4YuRReXDr60VIMhRqkvw42COkTTpfdylfiK433gDOc8/H8cOHBInDnkPXhwSqXSo2Aw+OdkUBAE52QyeTsYDF6Iovi42Wz+BeA9CiwWi+HRaBSXJImpVqsOv99PMAyDXq+Hdrv93WhmK5jL5b62Wq3nLMsiEonAbDbfdjzPw+12fzoK7HQ6z9LpNCwWy9r5arWCJEmzRCLx82BQEARHuVx+uIkBQLfbBU3Tv7ddxBCcTqdvGIYhjLp6vQ6KogqHgheZTOapoijxUChkOFCpVHSWZT/vBbPZLBWNRj96vd6XJpOJHI/HUFUVdrsdmqZBlmXUajWQJHnNcdx4LxgOh698Pt/rm73T6YQsy8jn8+j3+zOPx/OLoqhCIBD4sg1bA61W6+VmSdM0XC7Xu1Qq9WEXYgjquq5tlsvlEovFYuuL7gRVVeUBPLlbKopSjsVi304Ch8Ph+0aj8cBms70iCMI8n89/iKKYBKCfBHIcpwFI/l8n5+z/4T+NbaEemSq+7wAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Even-numbered, Unlighted Buoy",
-        "url": "18126bf96996d499ed0602b70332c1a9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAYlJREFUOI3t1E8ow2Ecx/G336bwtEWT0lr51cKFWhTCSbsqmdAOc0VJu6xILTcXocTFhQO70W7KRS5Oc9n8qfnXftGiLD3mYH4OKH79llmOvvUcnufT99X36anHyh+X9R8suDahfhjOiga3oPpRiPE76LuUsiEBt4D6K3Dd6fTda9rINXTEoNIjpdIK3ADnsGfWkxdcgJ2kpvV2Ab1A+ZdsF3DB8q/AK+gcA4Th/BVIwVMIYgWDG1B5BFVGDEADnEKcIKXpIKbgsxCjLVIqZtkp4IBtU80ELAmFQm33icRIczRq2nAIereUKz+C4XC4xu/3L6mq2m+xWKw3sRhybg4RiZDj/aoJoBQehuDuR9Dn88263e7Bz32tx8PF9DRrkQi38OQS4tgB2+1SrubDvoE2m63HGKpNTdTNz0/OBIOL+R4hL6jr+osxzOVyvDocJwVJRjCTyUSBxq9hKpU6CAQCu0WB6XR6Kh6Pl9nt9gFFUSqy2ex+MpmcAPSiQK/X+wJMfKyi68//wzesmHuEk0uuZQAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Odd-numbered, Unlighted Buoy",
-        "url": "6abf4f6a709b04b2125fdbc953ab606a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAahJREFUOI3t1D9IG1EAx/Fv74KkHvmjtkpxOjg1CCnt1IrdJIOLIkYcMsRNRAjFVoPtEgqlFEqhgrRTdzfFTXARB3HRobGiiYLEP5wa7oaXM9XkXFqU9IIxOPqDNzx+/D7Lg+fijuO6ByuO+pbW3S9sVQ2+nORR1lJGhUmfcSTa/hxwBKi3AtsnmsOmuT+U1+lIpfDXtwipMQC+U7AOWXTalAWbh5kzD/Z7fEFQOkGuuer0VcjXM30r0NDpbO8F2V1S2GAckxM/WascHMf/MEXdfxiQPwH/Y2VTIBynjmDruTJCQEhOndgDxceso+YAPojH4y9SZxtDO0/mHQfZDWztqfh+I5hIJBojkciUqqr9siy71rfXmF7/zK/iDBQhdwxne0ANxsonTm4Ew+HwB03TBv/dn7U8J1Z8T/fHGYwsOX+T8lvxMasFxI+y2nXQ4/F0lZbBtiBvXn19PTY89q3cI5QFbdu+KC0LhQIN7obNiqRS0DTNeSBwvcxkMsvRaHShKlDX9XfJZNLt9XoHJEmqtSxrKZ1OxwC7KjAUCl0Asb+n6tz5f3gJf82LcEwg5AUAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 660,
@@ -15078,17 +5204,7 @@ define({
     "layerName": "CH_JSEAGRASS",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "388f4e4b4efa57381dc1848ca4031eb8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJBJREFUOI21k9ENwCAIREviEC7g/gO5gFvQLxMDhwK2fOnFHPcklOfjKr8Zch98a0atUpHCaj7vloaCKGTug1djapWQhs7KcH0w01gaSgsTogbSdFfqD5GJpaNGKqGV6IRvGlqYXnxzKBl8+IdZ/GPCLP7VlF1DyWBuDSOYodXzYIZXL7p2JrJHk/psWqRwWy9aWffDQFN7rgAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 661,
@@ -15100,17 +5216,7 @@ define({
     "layerName": "CA_SKINK",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 662,
@@ -15122,17 +5228,7 @@ define({
     "layerName": "CA_AC_PLANTS",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 663,
@@ -15144,17 +5240,7 @@ define({
     "layerName": "CA_ASM_SNAKE",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 664,
@@ -15166,17 +5252,7 @@ define({
     "layerName": "CA_BONNETED_BAT",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 665,
@@ -15188,17 +5264,7 @@ define({
     "layerName": "CA_CARACARA",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 666,
@@ -15210,17 +5276,7 @@ define({
     "layerName": "CA_COTTON_MOUSE",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 667,
@@ -15232,17 +5288,7 @@ define({
     "layerName": "CA_CROCODILE",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 668,
@@ -15254,17 +5300,7 @@ define({
     "layerName": "CA_CS_SPARROW",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 669,
@@ -15276,17 +5312,7 @@ define({
     "layerName": "CA_FLGH_SPARROW",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 670,
@@ -15298,17 +5324,7 @@ define({
     "layerName": "CA_KEY_DEER",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 671,
@@ -15320,17 +5336,7 @@ define({
     "layerName": "CA_LK_RABBIT",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 672,
@@ -15342,17 +5348,7 @@ define({
     "layerName": "CA_LWR_PLANTS",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 673,
@@ -15364,17 +5360,7 @@ define({
     "layerName": "CA_MANATEE",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 674,
@@ -15386,17 +5372,7 @@ define({
     "layerName": "CA_MDK_PLANTS",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 675,
@@ -15408,17 +5384,7 @@ define({
     "layerName": "CA_OK_GOURD",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 676,
@@ -15430,17 +5396,7 @@ define({
     "layerName": "CA_PANTHER",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 677,
@@ -15452,17 +5408,7 @@ define({
     "layerName": "CA_PIP_PLOVER",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 678,
@@ -15474,17 +5420,7 @@ define({
     "layerName": "CA_RCW",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 679,
@@ -15496,17 +5432,7 @@ define({
     "layerName": "CA_ROSEATE_TERN",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 680,
@@ -15518,17 +5444,7 @@ define({
     "layerName": "CA_SCHAUS",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 681,
@@ -15540,17 +5456,7 @@ define({
     "layerName": "CA_SCRUB_JAY",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 682,
@@ -15562,17 +5468,7 @@ define({
     "layerName": "CA_SNAIL_KITE",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 683,
@@ -15584,17 +5480,7 @@ define({
     "layerName": "CA_STOCK_IS_SNAIL",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 684,
@@ -15606,17 +5492,7 @@ define({
     "layerName": "CA_SW_PLANTS",
     "minScale": 7500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "392f6d7c1896f0db1c3d513f04064e11",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 685,
@@ -15628,17 +5504,7 @@ define({
     "layerName": "IPAC_SPECIES",
     "minScale": 0,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "6719c01bc9aa5b6f92bb56dcc90cc3f2",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFdJREFUOI1jYaAyYIHSm6lkni/MQIaq0nRTSkxq6555moEB4UIGBgYGhuLC5NPkGNbbPxfuGBZ8CskBowaOGjhq4DA0ELnUoNhAWHlGLQN9qWEYAwMDAwAabw4BRXQFGwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 686,
@@ -15650,17 +5516,7 @@ define({
     "layerName": "FFS_FACILITIES",
     "minScale": 500000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "47e9438896e11ac49ef4bf8c0551efeb",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAQZJREFUOI3tlDFLglEUhp8DosPFQbibkEttTkIQOIWbU1FBBNkSSL/ArZ/gKiIN/oB+g2NbES1NIsHdbkPDBQfjNPghIp/Z9yUO4jud+77w3Jd74GZYszI74GaAasyxhDBYGxDoKhwKfP0bqNYe4f0BcAL0EwMVSlhbmBne30bTtVr7OvNzuW9x7u0vDRXvH4DKgl/D+5do/sSYK2A1UOBDoQp0gUbMhc/AmYQwisni31BgDNwoZIHLuWgEVKM8VquWUl447wF50gAV9iPgE8ViE+fugXOm2+6laXiKMW1CaIlzE+BC4Q6opwU+SgjDeUOgozBQEAFNBBQYLvHffymxLb9NEv0A1CtDQy38UL4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 687,
@@ -15672,17 +5528,7 @@ define({
     "layerName": "MPA",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "47a82fc3087e4e91eb2a2c5e3bc8b3c8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAG5JREFUOI1jYaAyYKGhgen/KTduJiMLugAyT1q6/v/Tp42MDHgAQg3EQTi9TJphCIDVQHINw2ogJYZhGEipYRgGUmoYhoGUGka0gcQaRpSBxIfrC8IGjiZsotQMuYSNv0yEJA1caiBFHwu6AKUAAI83eWd1VGlgAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 688,
@@ -15694,17 +5540,7 @@ define({
     "layerName": "STPARK",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "84323f49a080af3705ab744c8d47aa0a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJpJREFUOI21VEEOwCAIKwmP2v9P81Xu4EwQQUU3TtpIbW2Q8XHxb4T5Rj4lowvEGgCAnAs5Udl7mMSRlEJ5oDbVtYV169che2RVjYdZak2F1gWadFTtG4pmSeLh1kWdQk/RzP40FN28at8NJWzfSnnF5ggfKty1f5TyUig7Nl2FUZuh0VuxGR696Nj1hMn4Fx0MaPH69bEGTusBmZi7jAp3SOYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 689,
@@ -15716,26 +5552,7 @@ define({
     "layerName": "NPS_PROJECTS",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "LWCF",
-        "url": "006bd0f844d2a455e9f8f8af3cd0a456",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJZJREFUOI21VEEOwCAIqwmP3hP8tTssJgyLCm6csIHaSlDwcchvhK2inZKVC0UsAAAND3nBc/YwjaMahbqgN/WcYSwfCHVBV+NhTC1VyC6wpLN4v6Fq1iQezi4aFHqKVvZdQs/mrn13KBn79A2z9pcKs/aPprw1lIzNKWHEZmj1dmyGVy+6diNhVd+RUc6aNd6/PrHAadwNW33l1lsrgwAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Other",
-        "url": "d6722fafa981b2c963438ed67b7c2c89",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAItJREFUOI21k1EOwCAIQyHh0B7BW7MvEwPFAW58aWNKnwShj0t+M9RJemvGg1issJuve6ShIA5ZJ+luzIMYaejsDPcHK02kobQwIWpgTU/l/hCZRDpq5BJGid7wQ8MIM4sfDqWDD/+wi/+asIt/NeXUUDqYR8MKZmn1Mpjl1auuXYic0ay+mooVbusBSEe9/YIF9ooAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 690,
@@ -15747,17 +5564,7 @@ define({
     "layerName": "NPS",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "6f6598b881e93e90dba476f989811ffb",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJBJREFUOI29lMsRwCAIRHHGkuzJmuzJnszJjFkX0UTDEdw3/MTLZvPHgClL+QqLQVyXYQzi0JeyFOZvYzWhB1ATVQHGmW+6hwjVsl4aSluaVs25Kc/Y1pIRoA3Kj0SWn0G7tcEHox1sNRSIUAvGoLSHKzA0ClzNcAhsIbNQtYdMbEH/PQ7WTWRx/Ns38M1EmV30DHVpc5xJuQAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 691,
@@ -15769,17 +5576,7 @@ define({
     "layerName": "NMARSA",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "Florida Keys National Marine Sanctuary",
-        "url": "de3a4a996953684f3df4fe2f5e5f9f03",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgab/Z/6n1LDTjOmMLOgC2BSa/p/5H5ccuoNo5+VRAwepgfjSIrHpdDQdjhpIqYGUpENYsmJBF6AUAADrqiHp4CsEOQAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 706,
@@ -15791,206 +5588,7 @@ define({
     "layerName": "SENSHR",
     "minScale": 800000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "10A/10D: Salt- and brackish- water marsh/Scrub-shrub wetlands",
-        "url": "0861eb0b4e36d8d30108d1dcdc27b34e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYBk1cCQZuIKB4T8lBkUwMDAyMDAwsFBqELqDhlAYUs1AWGBSLVLQBSgFQyAMRw2kGAAAtAAIUQ85LgAAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10A: Salt- and brackish- water marsh",
-        "url": "c69de603141de3f326f554e0258ec639",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYBk1cCQZ+IyB4T8lBkkxMDAyMDAwsFBqELqDhlAYUs1AWGBSLVLQBSgFQyAMRw2kGAAAdB0IUdFFPBYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10B: Freshwater marsh",
-        "url": "57bc82359418f1f3e1407005c276f212",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI3tkSEOAEAIw0rC/7/MqTPYzRCoRDRLSczkCTcJC0oRBQRAqqI+aFBDm/DHtD2lH1QGNDyhzAPBjghRjIleuAAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10C: Swamps",
-        "url": "896a271ea14f567623bc829d880f0124",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYBk1cCQZ+L++/j8lBjE2NjIyMDAwsFBqELqDhlAYUs1AWGBSLVLQBSgFQyAMRw2kGAAAWdMQUQHClWYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10D: Scrub-shrub wetlands",
-        "url": "dcff338c3b8af6f64d2cc6bca7b423fc",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYBk1cCQZ+H/fvv+UGMTo5MTIwMDAwEKpQegOGkJhSDUDYYFJtUhBF6AUDIEwHDWQYgAA4DAQUSfyk9MAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "9A: Sheltered tidal flats; Mud flats",
-        "url": "c7df1e8ced193cd7c5d12b8a193c66d2",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYBk1cCQZeLYz/T8lBhmXz2RkYGBgYKHUIHQHDaEwpJqBsMCkWqSgC1AKhkAYjhpIMQAAk4QQUaEzIIoAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "9B: Vegetated low banks",
-        "url": "1a5ae440d339d8729628438b22d24749",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYBk1cCQZ+HVR1X9KDOKOa2NkYGBgYKHUIHQHDaEwpJqBsMCkWqSgC1AKhkAYjhpIMQAAl8cQUe9JC7IAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "9C: Hypersaline tidal flats",
-        "url": "50176562c27103f25d618427c4b8fa66",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYBk1cCQZeH3DvP+UGKQZkMTIwMDAwEKpQegOGkJhSDUDYYFJtUhBF6AUDIEwHDWQYgAA1bsQUSFsY5IAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "8A: Sheltered rocky shores and sheltered scarps in bedrock, mud, or clay",
-        "url": "da437796e670dab260a4d2140fa819fb",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYBk1cCQZ+GwGw39KDJLKYGBkYGBgYKHUIHQHDaEwpJqBsMCkWqSgC1AKhkAYjhpIMQAAD7gMUT4+onMAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "8B: Sheltered solid man-made structures",
-        "url": "9bcb273127f7d3343b5c51ca019d42e6",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYBk1cCQZ+H8Vw39KDGIMY2BkYGBgYKHUIHQHDaEwpJqBsMCkWqSgC1AKhkAYjhpIMQAAlOsMUVbEtHYAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "8C: Sheltered riprap",
-        "url": "0f47c946913f01628060f4d2fb971d4d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYBk1cCQZ+P9y/X9KDGLUbWRkYGBgYKHUIHQHDaEwpJqBsMCkWqSgC1AKhkAYjhpIMQAAXhYQUYYc6EwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "7: Exposed tidal flats; Sand flats",
-        "url": "d238f89966e0f1db9915261459c8c330",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYBk1cCQZ+OwZw39KDJKSYmBkYGBgYKHUIHQHDaEwpJqBsMCkWqSgC1AKhkAYjhpIMQAAAWUMUdlh3Y4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "6A: Gravel beaches",
-        "url": "ce3d3b4962709f856caaee8e4afbbdb2",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYBk1cCQZePn/vv+UGKTL6MTIwMDAwEKpQegOGkJhSDUDYYFJtUhBF6AUDIEwHDWQYgAAIUwQUSo3MUwAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "6B: Exposed riprap",
-        "url": "0294ec108b6022f06c6312b3dbd360b0",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYBk1cCQZGPqf4T8lBq1mZGBkYGBgYKHUIHQHDaEwpJqBsMCkWqSgC1AKhkAYjhpIMQAAjY8MUV3s3NgAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5: Mixed sand and gravel beaches",
-        "url": "32b0cd40949a45b5204bb9a2487dea74",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYBk1cCQZaLGC4T8lBp2IYGBkYGBgYKHUIHQHDaEwpJqBsMCkWqSgC1AKhkAYjhpIMQAAJiwMUdwkYeEAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4: Coarse-grained sand beaches",
-        "url": "2cdc679298ee42987bcca01b0fe5ac1d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADhJREFUOI1jYaAyYBk1cEQZuKLlP0UmRdQwQgyk1CA0Bw2lMKSagdDApF6koAlQCoZCGI4aSCkAAAmnDFG8Pz46AAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "3A: Fine- to medium- grained sand beaches",
-        "url": "d61b371d7aedab1a49cffca7423174ab",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADhJREFUOI1jYaAyYBk1cEQZWPD/P0UmTWBkhBhIqUFoDhpKYUg1A6GBSb1IQROgFAyFMBw1kFIAANkyDFGrB7CxAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "3B: Scarps and steep slopes in sand",
-        "url": "08f8eb6859de09cda2eb351f991de072",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADhJREFUOI1jYaAyYBk1cEQZ6LviP0UmbY5ghBhIqUFoDhpKYUg1A6GBSb1IQROgFAyFMBw1kFIAAF85DFHw5pbYAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2A: Exposed wave-cut platforms in bedrock, mud, or clay",
-        "url": "1f12df2f4bace02a44dda7af42d6ccbd",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYBk1cCQZWNX39T8lBrUVcTMyMDAwsFBqELqDhlAYUs1AWGBSLVLQBSgFQyAMRw2kGAAAWdMQUSBkD04AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2B: Exposed scarps and steep slopes in clay",
-        "url": "5898b2f755bd20c9894fd801f0a92c14",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYBk1cCQZmF5+9j8lBs3sNGZkYGBgYKHUIHQHDaEwpJqBsMCkWqSgC1AKhkAYjhpIMQAAW8IQUXn7Vn4AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1A: Exposed rocky shores; Exposed rocky banks",
-        "url": "e4bb2ddcdd49b10f982b53b931423f72",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYBk1cCQZuJLh2X9KDApnkGJkYGBgYKHUIHQHDaEwpJqBsMCkWqSgC1AKhkAYjhpIMQAAQGEMUZSm5K8AAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1B: Exposed, solid man-made structures",
-        "url": "2e87540f66cba5ebcf84bded74b364fb",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYBk1cCQZ6M1Q/J8Sg7Yy9DIyMDAwsFBqELqDhlAYUs1AWGBSLVLQBSgFQyAMRw2kGAAAuMsMUYbYhRkAAAAASUVORK5CYII=",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 707,
@@ -16002,17 +5600,7 @@ define({
     "layerName": "CBRS",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "be28adb6c19b36fd46a2670514d32a3c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIFJREFUOI2tlFEOABEMREfiSs7kTM7kUPbLZgXbGTVfjfBaOhVxWREAckLzgkpFeIE3lBNaqQgDsGexDq3WexyZA9+E1p6pQi90ekMvdNkUD3TbZQVKAU+hpg8ZKF3hCZSeFBYqjZ5sbKYCydjstSRje6HTlVfxnyRjKxo+WNa0jB6L9m8GOzvjGAAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 708,
@@ -16024,17 +5612,7 @@ define({
     "layerName": "CORALN",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "a6663b085e51590838ade4a75381347c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIpJREFUOI21k1EOwCAIQ2fiwTg6N3NfJgZaBdz40saUPgn9+bj6b4aqOm7NRKR1K6zm8840FMQhq+pYjUWkIQ2dneH6YKZhGkoLE6IG1nRX7g+RCdNRI5eQJTrhU0OGGcWnQ6ngwz+s4h8TVvGvphwaSgVza5jBTK1eBDO9etm1o8gRzeqzabfCbb0ls/7f1YVMfQAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 709,
@@ -16046,17 +5624,7 @@ define({
     "layerName": "CORALT",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "3e9d95d21af32eba8b7a655f738e5402",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgYmFIv8pNWx+/xtG2rlw1MBRA0cNHDVwaBg4v/8NI4qBMAFKAQBufwiHvs3LaAAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 710,
@@ -16068,17 +5636,7 @@ define({
     "layerName": "CORALP",
     "minScale": 250000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "e0f166663e09d811f9100700f67c0326",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJJJREFUOI21k8ENACEIBM/EcnzbgVXbgW/78V4mBhYFvOOlG7PsSIjPxxV/M2y9jFuznGqIVFjN513SUBCG3HoZq3FONSANnZnh+mCmkTSUFiZEDajprtgfIhNJR41YQinRCV80lDC1+OJQPPjwD734x4Re/Kspq4biwdwaWjBNq6fBNK+ede1EZI1G9dk0UuG2XkadBAQ/YB2CAAAAAElFTkSuQmCC",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 711,
@@ -16090,17 +5648,115 @@ define({
     "layerName": "SLA",
     "minScale": 800000,
     "maxScale": 0,
-    "legend": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "7ca5194460aa7ace6bded67ee72f7070",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADBJREFUOI1jYaAyYKGdgWop/yk27dYcRhq6cNTAUQNHDRw1cGgYeGsOI6qBUAFKAQCKOwY/INEuPgAAAABJRU5ErkJggg==",
-        "contentTYpe": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
+  },
+  {
+    "id": 1000,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/rci_gaming/MapServer/0",
+    "name": "RCI_GAMING",
+    "description": "",
+    "longName": "RCI_GAMING",
+    "type": "feature",
+    "layerName": "",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 42000,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/ARC_Lands_DQ/MapServer/0",
+    "name": "South Florida WMD Save Our Rivers Lands",
+    "description": "The Florida Legislature enacted the program known as \"Save Our Rivers (SOR)\", and created the Water Management Lands Trust Find. The SOR act enables the water management districts to acquire lands necessary for water management, water supply, and the conservation and protection of water resources.",
+    "longName": "South Florida WMD Save Our Rivers Lands",
+    "type": "feature",
+    "layerName": "",
+    "minScale": 800000,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 42001,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/ARC_Lands_DQ/MapServer/1",
+    "name": "St. Johns WMD Save Our Rivers Lands",
+    "description": "The Florida Legislature enacted the program known as \"Save Our Rivers (SOR)\", and created the Water Management Lands Trust Find. The SOR act enables the water management districts to acquire lands necessary for water management, water supply, and the conservation and protection of water resources.",
+    "longName": "St. Johns WMD Save Our Rivers Lands",
+    "type": "feature",
+    "layerName": "",
+    "minScale": 800000,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 42002,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/ARC_Lands_DQ/MapServer/2",
+    "name": "State Owned Florida Parks and Recreational Facilities (Polygons)",
+    "description": "This dataset contains 2018 Parks and Recreational Facilities boundary information for the State of Florida. This parks layer focuses mainly on county and locally owned parks, for state and federally owned parks please use the Florida Natural Areas Inventory; Florida Managed Lands (FLMA) layer available on FGDL. This dataset is a combination of parks and recreational facility locations from over 65 different sources. The data contains selected fields denoting the name, physical address, and other facility information for parks located in Florida. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of parks in Florida. Park locations that have been verified are marked with the letter V in the FLAG field. Please Note: Campground, Boat Ramp and Trailhead boundary information is often generalized and not exact.",
+    "longName": "State Owned Florida Parks and Recreational Facilities (Polygons)",
+    "type": "feature",
+    "layerName": "",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 42003,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/ARC_Lands_DQ/MapServer/3",
+    "name": "Water Management District Owned Lands",
+    "description": "This data set contains water management district owned lands for the state of Florida. Potential acquisitions are also included for South Florida, St. John's River, and Southwest Florida water management districts. This data is available by district for each respective water management district. This dataset was compiled from those datasets at the University of Florida GeoPlan Center.",
+    "longName": "Water Management District Owned Lands",
+    "type": "feature",
+    "layerName": "",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 42004,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/ARC_Lands_DQ/MapServer/4",
+    "name": "Florida Forever",
+    "description": "FLORIDA FOREVER BOT PROJECTS (layer name FFBOT): This is a polygon data layer for Florida Forever Board of Trustees (BOT) projects (formerly known as CARL projects). This data layer is site-based and contains boundaries of all Florida Forever BOT projects approved by the State's Acquisition and Restoration Council as of April 22, 2016. These lands have been proposed for acquisition because of outstanding natural resources, opportunity for natural resource-based recreation, or historical and archaeological resources. However, these areas may not be currently managed for their resource value. Portions of these projects may have already been acquired by the State and/or its acquisition partners.",
+    "longName": "Florida Forever",
+    "type": "feature",
+    "layerName": "",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 42005,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/ARC_Lands_DQ/MapServer/5",
+    "name": "State Owned Florida Managed Areas (FNAI)",
+    "description": "FLORIDA CONSERVATION LANDS (layer name FLMA): This is a polygon data layer for public (and some private) lands that the Florida Natural Areas Inventory (FNAI) has identified as having natural resource value and that are being managed at least partially for conservation purposes. The term \"Managed Area\" refers to a managed conservation land.",
+    "longName": "State Owned Florida Managed Areas (FNAI)",
+    "type": "feature",
+    "layerName": "",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 43000,
+    "url": "https://services.arcgis.com/LBbVDC0hKPAnLRpO/ArcGIS/rest/services/zillow_neighborhood_sdr_reports_2019/FeatureServer/0",
+    "name": "zillow_neighborhood_sdr",
+    "description": "",
+    "longName": "zillow_neighborhood_sdr",
+    "type": "feature",
+    "layerName": "",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 9000,
+    "url": "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/sw_parcels_2017_V2/FeatureServer/0",
+    "name": "parcels_2017v2",
+    "description": "This dataset contains 2017 parcel boundaries with each parcel's associated tax information from the Florida Department of Revenue's tax database. This feature class contains parcel polygons and associated parcel attribute information. Attributes include PARCELID, ALTKEY, Section, Township, Range, owner name, owner mailing address, site address, most recent sales info, valuation, land use codes, building details, legal description, and more. This is an update to the FGDL data layer PARCELS_2015.",
+    "longName": "parcels_2017v2",
+    "type": "feature",
+    "layerName": "",
+    "minScale": 12218,
+    "maxScale": 0,
+    "legendSymbols": null
   }
 ],
 });

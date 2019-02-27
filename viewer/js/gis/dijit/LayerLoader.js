@@ -258,6 +258,8 @@ define([
 
                 //post-process layerDefs
                 this.layerDefs.forEach(function (layerDef) {
+                    var root = this; // eslint-disable-line consistent-this
+
                     layerDef.loadLayer = function () {
                         var layer = app.constructLayer(layerDef);
                         return app.addLayer(layer);
@@ -282,6 +284,13 @@ define([
                             scaleText = 'Visible when zoomed out beyond 1:' + maxScale;
                         }
                         return scaleText;
+                    });
+                    layerDef.select = function () {
+                        root.currentLayer(layerDef);
+                    };
+
+                    layerDef.isSelected = ko.pureComputed(function () {
+                        return root.currentLayer() == layerDef;
                     });
                     layerDef.loaded = ko.observable(false);
                 }, this);
@@ -331,6 +340,15 @@ define([
                             app.addCategory(category, true);
                             root.layerBrowserDialog.hide();
                         };
+
+                        category.select = function () {
+                            root.currentCategory(category);
+                            root.currentLayer(category.layerDefs.length > 0 ? category.layerDefs[0] : null);
+                        };
+
+                        category.isSelected = ko.pureComputed(function () {
+                            return root.currentCategory() == category;
+                        });
 
                         category.loadService = function () {
                             if (category.serviceURL) {

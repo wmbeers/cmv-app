@@ -38,7 +38,11 @@ ul.layerList {
 	padding-inline-start: 20px; /* less indented */
 }
 
-#layerLoaderDialog section ul li span {
+ul.unindented {
+    padding-inline-start: 0px !important; /* not indented */
+}
+
+.selectableItem {
 	border-radius: 5px;
     cursor: pointer;
 	display: block;
@@ -57,4 +61,8 @@ span.selectedItem {
 .emptyCategory {
     font-style: italic;
     color: gray;
+}
+
+.tip {
+    font-size: small;
 }
