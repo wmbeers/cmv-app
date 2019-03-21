@@ -20,7 +20,8 @@ define([
     'esri/geometry/Extent',
     'esri/renderers/SimpleRenderer',
     'esri/geometry/coordinateFormatter',
-    'esri/geometry/webMercatorUtils'
+    'esri/geometry/webMercatorUtils'//,
+    //note: 'jquery' // we don't need jquery, just an example of how to reference it
 ], function (
     declare,
     lang,
@@ -43,7 +44,8 @@ define([
     Extent,
     SimpleRenderer,
     coordinateFormatter,
-    webMercatorUtils
+    webMercatorUtils//,
+    //jquery //we don't need jquery
 ) {
 
     return declare(null, {
@@ -53,7 +55,7 @@ define([
             topic.subscribe('layerControl/openAttributeTable', lang.hitch(this, 'openAttributeTable'));
             //load the coordinateFormatter
             coordinateFormatter.load();
-
+            //just a test of whether jquery works: jquery("#subHeaderTitleSpan").html('Yo');
         },
 
         openAttributeTable: function (layerControlItem) {
@@ -148,7 +150,8 @@ define([
 
             return null; //just to shut up eslint
         },
-
+        // Construct a layer based on a layerDef; layerDef might just be the ID of a layerDef contained in the config, 
+        // a layer name, or a URL
         constructLayer: function (layerDef, definitionExpression, includeDefinitionExpressionInTitle, renderer) {
             var layer = null;
 
@@ -162,7 +165,8 @@ define([
 
             //test if it's already in the map by url and definitionExpression
             if (array.some(this.layers, function (l) {
-                if (l.url === layerDef.url && l.getDefinitionExpression && l.getDefinitionExpression() === definitionExpression) {
+                // eslint-disable-next-line no-eq-null, eqeqeq
+                if (l.url === layerDef.url && (l.getDefinitionExpression == null || l.getDefinitionExpression() === definitionExpression)) {
                     //assign reference
                     layer = l;
                     //Make it visible
@@ -564,10 +568,12 @@ define([
                     name: layer._name || layer.id,
                     visible: layer.visible,
                     id: layer.id,
+                    type: layer.layerDef ? layer.layerDef.type : null,
                     definitionExpression: layer.getDefinitionExpression ? layer.getDefinitionExpression() : null
                 };
                 if (layer.layerDef) {
-                    x.id = layer.layerDef.id; //for layers loaded via layerLoader
+                    x.id = layer.layerDef.id; //for layers loaded via layerLoader--doesn't apply to map services
+                    x.name = layer.layerDef.name;
                     if (layer.name === 'Milestone Max Alternatives') {
                         //special case for our project/alt layers
                         x.projectAltId = layer.layerDef.projectAltId;
@@ -603,7 +609,7 @@ define([
                         layer.visible = false;
                     }
                 } else {
-                    layer = this.constructLayer(layerConfigItem.id, layerConfigItem.definitionExpression);
+                    layer = this.constructLayer(layerConfigItem, layerConfigItem.definitionExpression);
                 }
                 if (layer) {
                     promises.push(this.addLayer(layer));

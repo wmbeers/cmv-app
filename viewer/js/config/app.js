@@ -15,12 +15,15 @@
                 location: path + 'js/config'
             }, {
                 name: 'proj4js',
-                location: '//cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15'
+                location: '//cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15' //TODO copy locally and don't use CDN
             }, {
                 name: 'flag-icon-css',
-                location: '//cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.8.0'
+                location: '//cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.8.0' //TODO copy locally and don't use CDN
             }
-        ]
+        ], 
+        paths: {
+            jquery: 'https://code.jquery.com/jquery-3.3.1.slim.min' //TODO copy locally and don't use CDN
+        }
     };
 
     require(window.dojoConfig, [

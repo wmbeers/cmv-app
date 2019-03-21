@@ -18,7 +18,19 @@ define({
       },
       {
         "name": "Land Use Changes",
-        "categories": [],
+        "categories": [
+          {
+            "name": "Land Use",
+            "categories": [],
+            "layerIds": [
+              1690,
+              1691,
+              1692,
+              1693
+            ],
+            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Land_Use/MapServer"
+          }
+        ],
         "layerIds": [],
         "serviceURL": null
       },
@@ -149,52 +161,6 @@ define({
             "serviceURL": null
           },
           {
-            "name": "Vehicles",
-            "categories": [
-              {
-                "name": "2000 Demographic Vehicles",
-                "categories": [],
-                "layerIds": [
-                  216,
-                  212,
-                  213,
-                  214,
-                  215,
-                  222
-                ],
-                "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_2000/MapServer"
-              },
-              {
-                "name": "2010 Demographic Vehicles",
-                "categories": [],
-                "layerIds": [
-                  223,
-                  224,
-                  225,
-                  226,
-                  227,
-                  228
-                ],
-                "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_2010/MapServer"
-              },
-              {
-                "name": "2017 Demographic Vehicles",
-                "categories": [],
-                "layerIds": [
-                  229,
-                  217,
-                  218,
-                  219,
-                  220,
-                  221
-                ],
-                "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_2017/MapServer"
-              }
-            ],
-            "layerIds": [],
-            "serviceURL": null
-          },
-          {
             "name": "Percentages",
             "categories": [
               {
@@ -244,6 +210,52 @@ define({
             ],
             "layerIds": [],
             "serviceURL": null
+          },
+          {
+            "name": "Vehicles",
+            "categories": [
+              {
+                "name": "2000 Demographic Vehicles",
+                "categories": [],
+                "layerIds": [
+                  216,
+                  212,
+                  213,
+                  214,
+                  215,
+                  222
+                ],
+                "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_2000/MapServer"
+              },
+              {
+                "name": "2010 Demographic Vehicles",
+                "categories": [],
+                "layerIds": [
+                  223,
+                  224,
+                  225,
+                  226,
+                  227,
+                  228
+                ],
+                "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_2010/MapServer"
+              },
+              {
+                "name": "2017 Demographic Vehicles",
+                "categories": [],
+                "layerIds": [
+                  229,
+                  217,
+                  218,
+                  219,
+                  220,
+                  221
+                ],
+                "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_2017/MapServer"
+              }
+            ],
+            "layerIds": [],
+            "serviceURL": null
           }
         ],
         "layerIds": [],
@@ -267,26 +279,33 @@ define({
         "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Farmlands/MapServer"
       },
       {
-        "name": "Community",
+        "name": "Community and SCE",
         "categories": [
           {
             "name": "Community Points",
             "categories": [],
             "layerIds": [
-              312,
-              313,
-              314,
-              315,
-              316,
-              317,
-              318,
-              319,
-              320,
-              321,
-              322,
-              300,
-              301,
-              302
+              730,
+              989,
+              732,
+              733,
+              734,
+              735,
+              736,
+              961,
+              962,
+              963,
+              964,
+              965,
+              966,
+              967,
+              968,
+              969,
+              970,
+              971,
+              972,
+              973,
+              974
             ],
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer"
           },
@@ -306,6 +325,19 @@ define({
               331
             ],
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Polys/MapServer"
+          },
+          {
+            "name": "Community",
+            "categories": [],
+            "layerIds": [
+              1019,
+              1020,
+              1021,
+              1022,
+              1023,
+              1024
+            ],
+            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Community/MapServer"
           },
           {
             "name": "Zillow Test",
@@ -362,6 +394,15 @@ define({
         "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer"
       },
       {
+        "name": "Archaeological and Historical Resources - Secure",
+        "categories": [],
+        "layerIds": [
+          722,
+          723
+        ],
+        "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Historic_Resources_S/MapServer"
+      },
+      {
         "name": "Recreation Areas",
         "categories": [
           {
@@ -387,6 +428,17 @@ define({
         "categories": [],
         "layerIds": [],
         "serviceURL": null
+      },
+      {
+        "name": "Year Built",
+        "categories": [],
+        "layerIds": [
+          1001,
+          1002,
+          1003,
+          1004
+        ],
+        "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Year_Built/MapServer"
       }
     ],
     "layerIds": [],
@@ -430,19 +482,138 @@ define({
       },
       {
         "name": "Floodplains",
-        "categories": [],
+        "categories": [
+          {
+            "name": "Flood Zones",
+            "categories": [],
+            "layerIds": [
+              975,
+              976,
+              977,
+              978,
+              979
+            ],
+            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM/MapServer"
+          }
+        ],
         "layerIds": [],
         "serviceURL": null
       },
       {
-        "name": "Water Quality and Quantity",
+        "name": "Geology",
         "categories": [],
+        "layerIds": [
+          1657,
+          1658,
+          1659,
+          1660,
+          1661
+        ],
+        "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Geology/MapServer"
+      },
+      {
+        "name": "Soils",
+        "categories": [],
+        "layerIds": [
+          990
+        ],
+        "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Soils/MapServer"
+      },
+      {
+        "name": "Water Quality and Quantity",
+        "categories": [
+          {
+            "name": "Aquifers",
+            "categories": [],
+            "layerIds": [
+              1662,
+              1663,
+              1664,
+              1665,
+              1666,
+              1667,
+              1668,
+              1669,
+              1670
+            ],
+            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Aquifers/MapServer"
+          },
+          {
+            "name": "Elevation",
+            "categories": [],
+            "layerIds": [
+              1005,
+              1006,
+              1007,
+              994,
+              995,
+              999
+            ],
+            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Topo/MapServer"
+          },
+          {
+            "name": "National Hydrography Dataset (24K)",
+            "categories": [],
+            "layerIds": [
+              1304,
+              1305,
+              1306
+            ],
+            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/NHD24/MapServer"
+          },
+          {
+            "name": "National Hydrography Dataset (100K)",
+            "categories": [],
+            "layerIds": [
+              1307,
+              1308,
+              1309
+            ],
+            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/NHD100/MapServer"
+          },
+          {
+            "name": "Springs",
+            "categories": [],
+            "layerIds": [
+              1684,
+              1685,
+              1686,
+              1687,
+              1688,
+              1689
+            ],
+            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Springs/MapServer"
+          },
+          {
+            "name": "Wells",
+            "categories": [],
+            "layerIds": [
+              1301,
+              1299,
+              1300,
+              1302,
+              1303
+            ],
+            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Wells/MapServer"
+          }
+        ],
         "layerIds": [],
         "serviceURL": null
       },
       {
         "name": "Wetlands and Surface Waters",
-        "categories": [],
+        "categories": [
+          {
+            "name": "Mitigation",
+            "categories": [],
+            "layerIds": [
+              991,
+              992,
+              993
+            ],
+            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Mitigation/MapServer"
+          }
+        ],
         "layerIds": [],
         "serviceURL": null
       },
@@ -568,6 +739,19 @@ define({
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Critical_Habitat/MapServer"
           },
           {
+            "name": "FNAI Likely Element Occurrence (Secure)",
+            "categories": [],
+            "layerIds": [
+              1013,
+              1016,
+              1014,
+              1017,
+              1015,
+              1018
+            ],
+            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/FNAI_FLEO_S/MapServer"
+          },
+          {
             "name": "Green Links",
             "categories": [],
             "layerIds": [
@@ -575,6 +759,31 @@ define({
               311
             ],
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/GreenLinks/MapServer"
+          },
+          {
+            "name": "Species Occurrence",
+            "categories": [],
+            "layerIds": [
+              1281,
+              1282,
+              1283,
+              1284,
+              1285,
+              1286,
+              1287,
+              1288,
+              1289,
+              1290,
+              1291,
+              1292,
+              1293,
+              1294,
+              1295,
+              1296,
+              1297,
+              1298
+            ],
+            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Species_Occurrence/MapServer"
           }
         ],
         "layerIds": [],
@@ -666,6 +875,16 @@ define({
             "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI/MapServer"
           },
           {
+            "name": "RCI Basemap",
+            "categories": [],
+            "layerIds": [
+              1010,
+              1011,
+              1012
+            ],
+            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI_Base/MapServer"
+          },
+          {
             "name": "Roadways",
             "categories": [],
             "layerIds": [
@@ -716,7 +935,19 @@ define({
   },
   {
     "name": "Special Designations",
-    "categories": [],
+    "categories": [
+      {
+        "name": "Water Resource Designations",
+        "categories": [],
+        "layerIds": [
+          1310,
+          1311,
+          1312,
+          1313
+        ],
+        "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Water_Resource_Designations/MapServer"
+      }
+    ],
     "layerIds": [],
     "serviceURL": null
   }
@@ -2916,6 +3147,28 @@ define({
         "label": "",
         "url": "69843647c9edfc264e9e9fe67435fb13",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgRmL3RdTYtCM2J2HGRgYZqG40DpK6zAFBjIwMNDSy6MGjho4auCogVgNnBG78zCsCCITzEIxECZAKQAA6w0N1Fu/pMIAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 984,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM_FEMA/MapServer/4",
+    "name": "Special Flood Hazard Areas",
+    "description": "This dataset contains information about the flood hazards within the study area. These zones are used by the Federal Emergency Management Agency (FEMA) to designate the Special Flood Hazard Area (SFHA) and for insurance rating purposes. These data are the flood hazard areas that are or will be depicted on the Flood Insurance Rate Map (FIRM). There is one polygon for each contiguous flood zone designated. This information is required for all draft Digital Flood Insurance Rate Maps. The Digital Flood Insurance Rate Map (DFIRM) Database depicts flood risk information and supporting data used to develop the risk data. The primary risk classifications used are the 1-percent-annual-chance flood event (100 year), the 0.2-percent-annual-chance flood event (500 year), and areas of minimal flood risk. The DFIRM Database is derived from Flood Insurance Studies (FISs), previously published Flood Insurance Rate Maps (FIRMs), flood hazard analyses performed in support of the FISs and FIRMs, and new mapping data, where available. The FISs and FIRMs are published by FEMA. ",
+    "longName": "Special Flood Hazard Areas",
+    "type": "feature",
+    "layerName": "DFIRM_FLDHAZ",
+    "minScale": 24000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Regulatory Floodway",
+        "url": "1b157af7fe8be5a0f233b6aa33503feb",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGpJREFUOI3N0bENwCAMRNEU7liQcTxOFqRPFQkTgu+MC355kl9juZKTI8C7FB232pqGwBnWR4EeRoEIBoMoBoEI9j7EBVlsCUawXzCKTcEd7APuYgbMwAyYgcEgikEgg7kgixkwcrwEs3oAf3YzE2acXAUAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -12216,21 +12469,21 @@ define({
     ]
   },
   {
-    "id": 300,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/11",
-    "name": "Public and Private Schools (Points)",
-    "description": "This dataset contains 2017 Private and Public School Information for the State of Florida. It is a combination of schools and educational facility addresses from various sources, including the Florida Department of Education, the U.S. Department of Education National Center for Education Statistics, and other sources listed below. The data contains selected fields denoting the physical address, school number, district, and contact information for schools located in Florida. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of schools. School locations that have been verified are marked with the letter V in the FLAG field.",
-    "longName": "Public and Private Schools (Points)",
+    "id": 993,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Mitigation/MapServer/2",
+    "name": "Mitigation Bank Service Areas",
+    "description": "This is a statewide layer representing Mitigation Bank Service Areas identified in Mitigation Bank Permits issued under Ch. 373.4136, Florida Statutes by DEP or a Water Management District. Each Mitigation Bank Permit identifies a geographic area served by the permitted mitigation bank. Mitigation banking is a practice in which an environmental enhancement and preservation project is conducted by a public agency or private entity (banker) to provide mitigation for unavoidable wetland impacts within a defined region (mitigation service area-this data layer). The bank is the site itself, and is represented by the Mitigation Banks data layer, also available in MapDirect. For more information on mitigation banking, go to https://floridadep.gov/water/submerged-lands-environmental-resources-coordination/content/mitigation-and-mitigation-banking.",
+    "longName": "Mitigation Bank Service Areas",
     "type": "feature",
-    "layerName": "GC_SCHOOLS",
-    "minScale": 250000,
+    "layerName": "MGBANK_SERVAREA",
+    "minScale": 800000,
     "maxScale": 0,
     "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "81c6c8b6877cce731e05d69d11924010",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAK9JREFUOI3VjjEKwkAURGcxlVNZR9DGytbes+gVFHIJPYE3sfAmghapDcJYKbHRsNkYI+sq5MEW83d4TITARO0W5nE8RpqOigN5MdLWW4gsmwFYFFk6Ahj6Cz1omTAHDqVfqef0+5UOOTfS7qUQwKBhQKfSkbq1C0PwYyG5LmVpCmBiXc4gN05nXys00tLOObmCZAtPbuf9wgD8XXh7vCfXr4RGSgAkzbs+FPoQXHgHa0wuwAVO+/4AAAAASUVORK5CYII=",
+        "url": "49e01c6a74d49f28e1a6fec05593eff9",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgfn5+b6UGjZx4sTNKC6cEDmRbMMKluczMDDQ0sujBo4aOGrgqIE4DYQVQeSAiRMnbkYxECZAKQAABwoNo/9lK6UAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -12238,21 +12491,21 @@ define({
     ]
   },
   {
-    "id": 301,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/12",
-    "name": "Social Services (Geocoded)",
-    "description": "This dataset contains 2016 Social Services Information for the State of Florida. It contains information for a variety of organizations that may provide tangible assistance or work in the advocacy realm. Address information was derived from a variety of online data sources including state and private webpages. The various categories of social services in this dataset include adoption, children's services, orphanages, job training, natural disaster, paratransit, access/benefits eligibility, food assistance, homeless services, housing assistance, legal services, handicapped and protective services. This dataset contains fields denoting the physical address as well as contact information for social services facilities located in Florida. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of social services facilities in Florida. Note - see \"Data Lineage Summary\" section for information about Social Services data that may be present in other layers.",
-    "longName": "Social Services (Geocoded)",
+    "id": 994,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Topo/MapServer/3",
+    "name": "2 ft. Contours (CDM)",
+    "description": "This data set represents the 2-foot contour component of a digital terrain model (DTM) for the Florida Division of Emergency Management's (FDEM) Project Management and Technical Services for Mapping within Coastal Florida, encompassing Duval County, Florida. The complete digital terrain model is comprised of mass points, 2-D and 3-D breakline features, 1-foot and 2-foot contours, ground control, vertical test points, and a footprint of the data set, in the ESRI ArcGIS File Geodatabase format. In accordance with the Baseline Specifications 0.9, the following breakline features are contained within the database: closed water bodies (lakes, reservoirs, etc) as 2-D or 3-D polygons; linear hydrographic features (streams, shorelines, canals, swales, embankments, etc) as 3-D breaklines; coastal shorelines as 2-D or 3-D linear features; edge of pavement road features as 3-D breaklines; soft features (ridges, valleys, etc.) as 3-D breaklines; low confidence areas as 2-D polygons; island features as 2-D or 2D polygons; overpasses and bridges as 3-D breaklines. Contours were generated from a gridded DEM: 2-foot contours meet National Map Accuracy Standards, with 1-foot contours for visualization purposes. The LiDAR masspoints are delivered in the LAS file format based on the FDEM's 5,000' by 5,000' grid. Breakline features were captured to develop a hydrologically correct DTM. Bare earth LiDAR masspoint data display a vertical accuracy of at least 0.3-feet root mean square error (RMSE) in open unobscured areas.",
+    "longName": "2 ft. Contours (CDM)",
     "type": "feature",
-    "layerName": "GC_SOCIALSERVICE",
-    "minScale": 250000,
+    "layerName": "TOPO2FT_CDM",
+    "minScale": 24000,
     "maxScale": 0,
     "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "02831b87cf43ceafe580ee8546e35b3f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAASdJREFUOI3t1D9LA0EQh+F318Q/XCdBxFQ2Biy0t7OwvQiCJiktLCSFlXBBFDEasBIEv8JpIVgEIucHsLNOehvhTCFZcnJ6axFF0Jy3goWCP5hmYB5mit0UP5zUP/iei50RuoNriChvIbIKfNAe0dMxpd3290B3f9IKdEMJnQOB6nWnQMwh02Xr7MBWK5VrM/D8aMgKO3UFuZglMkpHddzaLEXnNhkMO6sKpuNOes0o4rkCrCeDYCdgb1k0BbOG4DhXSBaIEkDtgzAB2x+xGFB6oOcTOcFlv/ZnMB2cEA6XQX91eoAeqJqBS3sPmdOq7UMDGOsz0wVKFJymGQj4ha0b3MMZSz46Sos8MAHcAx4yqrG83YpbPf7pFTfvFGzQK+P85d/mt4AvXYRSc2SG+tMAAAAASUVORK5CYII=",
+        "url": "b90416f9666cc15102f2b95809252787",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYBk1cNTAYWvg5IaY/9QwLLdhCSMLjEENAxkYhkwYjho4zA0EAJ0oBePk87YJAAAAAElFTkSuQmCC",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -12260,21 +12513,21 @@ define({
     ]
   },
   {
-    "id": 302,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/13",
-    "name": "Veteran Organizations and Facilities (Points)",
-    "description": "This dataset contains 2013 Veteran Organizations and Facilities Information for the State of Florida. Veteran facility addresses were obtained from various online directories. This dataset contains fields denoting the physical address, and contact information for veteran facilities located in Florida. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of Veterans facilities. Veterans facility locations that have been verified are marked with the letter V in the FLAG field.",
-    "longName": "Veteran Organizations and Facilities (Points)",
+    "id": 995,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Topo/MapServer/4",
+    "name": "2 ft. Contours (Woolpert)",
+    "description": "This data set is one component of a digital terrain model (DTM) for the Florida Division of Emergency Management's (FDEM) Project Management and Technical Services for Mapping within Coastal Florida (Contract 07-HS-34-14-00-22-469), encompassing the entire coastline of Florida. The dataset is comprised of 2-foot contours. Contours were generated from a gridded DEM: 2-foot contours meet National Map Accuracy Standards Bare earth LiDAR masspoint data display a vertical accuracy of at least 0.3-feet root mean square error (RMSE) in open unobscured areas.",
+    "longName": "2 ft. Contours (Woolpert)",
     "type": "feature",
-    "layerName": "GC_VETERANS",
-    "minScale": 250000,
+    "layerName": "TOPO2FT_WOOLPERT",
+    "minScale": 24000,
     "maxScale": 0,
     "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "2d7adffbd2e6136d7f3e07172172b56c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAShJREFUOI1jYaAyYBlaBu4/etWBh5NdlVjNP378/mZrpbkUp4HPnn7YdfjkI1ZiDdRUEWY4fe7uX1Mj5RVYDXz95ivrjKNvGHa22DHIywkzXLz8hCG8+zRcPtFEiKE8z56BgYGBIaF4G8OvX/8ZXB21uHC6EAYUFUQZVJUlGT58/IYiLiDAzqCuKs3AwMDAwMvFhNXVQyyW0YGRviLDp93JcD4TE3ZvEm3gnz//GL5/+4lQzMrCwM3FTr6Bl64+ZLDI3QnnF7pIMvQ1B5NvIDlgiBo4c+FxBlFhToaHTz6hiB+/+I6hc+J2BgYGBoZrL38yyIpxYehFMVBORuBlf6yaGIyvpijI0K8oiNUlJaEqDCJC3L8/fvx2D6eBQX5mEvi8QwwY/JECAFhKTqlS2SZcAAAAAElFTkSuQmCC",
+        "url": "b90416f9666cc15102f2b95809252787",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYBk1cNTAYWvg5IaY/9QwLLdhCSMLjEENAxkYhkwYjho4zA0EAJ0oBePk87YJAAAAAElFTkSuQmCC",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -12458,7 +12711,7 @@ define({
   {
     "id": 306,
     "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/WorkProgram/MapServer/3",
-    "name": "P D and E (2019-2023)",
+    "name": "PD&E (2019-2023)",
     "description": "This data set contains the FDOT Adopted Work Program (2019 - 2023) roadways designated as in the Project Development and Environment phase. These are projects where multiple alternatives are being evaluated. This data was created based on linear referencing, using the five year work program spreadsheet in conjunction with RCI Basemap Roads.",
     "longName": "P D and E (2019-2023)",
     "type": "feature",
@@ -13428,21 +13681,21 @@ define({
     ]
   },
   {
-    "id": 318,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/6",
-    "name": "Hospitals (Points)",
-    "description": "This dataset contains 2017 Hospital Facility Information for the State of Florida. It is a combination of hospital facility addresses from different sources. The data contains selected fields denoting the name, physical address, and other facility information for hospitals located in Florida. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of hospitals in Florida. Hospital locations that have been verified are marked with the letter V in the FLAG field.",
-    "longName": "Hospitals (Points)",
+    "id": 985,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM_FEMA/MapServer/5",
+    "name": "Other Areas of Flood Hazard",
+    "description": "This dataset contains information about the flood hazards within the study area. These zones are used by the Federal Emergency Management Agency (FEMA) to designate the Special Flood Hazard Area (SFHA) and for insurance rating purposes. These data are the flood hazard areas that are or will be depicted on the Flood Insurance Rate Map (FIRM). There is one polygon for each contiguous flood zone designated. This information is required for all draft Digital Flood Insurance Rate Maps. The Digital Flood Insurance Rate Map (DFIRM) Database depicts flood risk information and supporting data used to develop the risk data. The primary risk classifications used are the 1-percent-annual-chance flood event (100 year), the 0.2-percent-annual-chance flood event (500 year), and areas of minimal flood risk. The DFIRM Database is derived from Flood Insurance Studies (FISs), previously published Flood Insurance Rate Maps (FIRMs), flood hazard analyses performed in support of the FISs and FIRMs, and new mapping data, where available. The FISs and FIRMs are published by FEMA.",
+    "longName": "Other Areas of Flood Hazard",
     "type": "feature",
-    "layerName": "GC_HOSPITALS",
-    "minScale": 250000,
+    "layerName": "DFIRM_FLDHAZ",
+    "minScale": 24000,
     "maxScale": 0,
     "legendSymbols": [
       {
         "layerId": 0,
-        "label": "",
-        "url": "f946fee7fb41ce97095a04857d179a51",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAV9JREFUOI3t0z9Lw0AYgPHnapMipfa04hIsBEFEqg6KCH4El+Ja0UQXh3wCBXF0dS1iq6LYQT+Am2sXqYNCl0ohLlYblVL/Jg5uEiXSLoLP+t79eDm4MG0u/A/6luu9Hxc93qxRlqttAUXE6+eVGaA1MEs9rmpiU6gkPYVkXnPyHuLEtOMHLW34m3zBbc0ZEjBm2rKAjZHXnDSwbtjSANjTHwbeFXfaKMvdQKCIMiEaWEDBb/7+4o4AK8DP4D63sTe9I+M1mESlb0d3lunkzLv/nGe5USO6sujCmAC5ozvLKFwulOWpL/g0qsRCj64lVBEHL+GCRZMtAVcAUUKRF7AExIBuF6wQHAH+4NJ51zWQyg06c6KBZdpyCmB3uJ50m2ItQ+KRCqm85qRR2TArMhXoDb82f9FdBapBzv7Vv3xHWUQ4/vbWMxWiHAYGzZosAsXvPKMmS9QoBd+whdoOfgCaY2hy+uJMMAAAAABJRU5ErkJggg==",
+        "label": "Area with Reduced Flood Risk Due to Levee",
+        "url": "33baeebc70c21839e2c82db3924a1dea",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAKFJREFUOI211L0JgDAQhuEr0ogTBPewdhzBzCCHnb2C46R2D3ECsbUx4PmXT6Nvl4M8pLko+jj1G1iUDaOX0mjM9rN+1ratDIsXtpXxokMXMxHZI1jLFyKt2G0wiGAwiGIQiGBJPnFREntBFNueL8E32CX4FjsFQ7ADGIoJcF0nG4IJ0BeCwSCKQeATzAs+xQTYz9q6L8jl1gnJfX1qPwhtAVP0RTiFgy77AAAAAElFTkSuQmCC",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -13450,21 +13703,39 @@ define({
     ]
   },
   {
-    "id": 319,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/7",
-    "name": "Laser Facilities (Geocoded)",
-    "description": "This dataset contains locations of facilities in Florida that have lasers on site for 2016. This dataset is based on information received from the Florida Department of Health's Bureau of Radiation Control, current up to May 2016. This dataset contains fields denoting the physical address and the specific laser information for that site. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of laser facilities in Florida. Laser facility locations that have been verified are marked with the letter V in the FLAG field.",
-    "longName": "Laser Facilities (Geocoded)",
+    "id": 986,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM_FEMA/MapServer/6",
+    "name": "Special Flood Hazard Areas",
+    "description": "This dataset contains information about the flood hazards within the study area. These zones are used by the Federal Emergency Management Agency (FEMA) to designate the Special Flood Hazard Area (SFHA) and for insurance rating purposes. These data are the flood hazard areas that are or will be depicted on the Flood Insurance Rate Map (FIRM). There is one polygon for each contiguous flood zone designated. This information is required for all draft Digital Flood Insurance Rate Maps. The Digital Flood Insurance Rate Map (DFIRM) Database depicts flood risk information and supporting data used to develop the risk data. The primary risk classifications used are the 1-percent-annual-chance flood event (100 year), the 0.2-percent-annual-chance flood event (500 year), and areas of minimal flood risk. The DFIRM Database is derived from Flood Insurance Studies (FISs), previously published Flood Insurance Rate Maps (FIRMs), flood hazard analyses performed in support of the FISs and FIRMs, and new mapping data, where available. The FISs and FIRMs are published by FEMA.",
+    "longName": "Special Flood Hazard Areas",
     "type": "feature",
-    "layerName": "GC_LASERS",
-    "minScale": 250000,
+    "layerName": "DFIRM_FLDHAZ",
+    "minScale": 24000,
     "maxScale": 0,
     "legendSymbols": [
       {
         "layerId": 0,
-        "label": "",
-        "url": "176d25299abf4c63c999810be1a953be",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAqlJREFUOI29lN9Lk1EYxz/vu9dfITp0/mLKyuaFYCtRmBcWpS57GYKUEUEYXXQhdd0/EF3VbdClBF2IEYtqm74iI7wIBGezoUINvZH0zZD5g7nNnS5OYfNt0YX03HwP53vOh+c5z+HROObQ/hswGBTeEye4X12Np6gIh6oiUinM9XVi2SyPdV359E9AwxCaqvKipYXBxUWKYzFQVenlcjgbGzl3+jTXw2ExfuWKcvuvQMMQxZrGB4eD9nAYBgagvj7/wuoqBIOU+XwMT0+LUz09yoWCQJuN8aoq2hMJuHv3z0/hcsHICIyOQnc350Mh8VzXlWEL8N070ed24zcMaG6Ghw+hpgZMUyrA+jrU1Un1+2FqCvr7uR4KiSe6rsTygHY79+bmsF27BpWVkE7D5cswOSkVIBQCXZfa2QkOB6ysUKqqPABuHQW2JxIS9nvs7MDiIhwcwP5+vnfyJMzMgMeDx1KyplH7q5tHo7UVMhmIRKyezQYlJTgsQEAVQi6EkCWDzOzzZ9jehtpauZfNyjOKcsi1ALNZvgmBEySguRk2NiCZhPJysNshGoW1Nel9+QJuN+RykE6zaQEmk3wsLsaZSslM3ryRF5qaDv9iQwN8/QrxuPyjpglVVWCaLFiAW1uMer3ogQCKywXz87C3J7M1TXkmGoW2NojF4OxZmJ2Fvj4y8ThPLUBdV8YjETHidHIpk4FHj6wNGBqSevMmTExARwcsLxP2+5X3f2oKmQxXy8qYFQJ3IACDg1BSkg/d3YWXL+HMGUgmWVBVhn7384A+n7JlGMKrabzq6uLC69co2ezhcBACSkuht5fc0hIGMOjzKemCwJ/Q78DFUEjccLm4U1GBR9OoVlVIp9nY3OTj/DzPBgaUt9ZH+cs81HVlDBgr5BeKY5/YPwDQoe4ItEiRIwAAAABJRU5ErkJggg==",
+        "label": "A",
+        "url": "288892a12da7df6c884e704bc9a68789",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgSuf+VJkUrjUZlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAGkKBHUSNKjbAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "AE",
+        "url": "288892a12da7df6c884e704bc9a68789",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgSuf+VJkUrjUZlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAGkKBHUSNKjbAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "V",
+        "url": "288892a12da7df6c884e704bc9a68789",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgSuf+VJkUrjUZlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAGkKBHUSNKjbAAAAAElFTkSuQmCC",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -13472,65 +13743,30 @@ define({
     ]
   },
   {
-    "id": 320,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/8",
-    "name": "Law Enforcement Facilities (Points)",
-    "description": "This dataset contains 2012 Law Enforcement facilities Information for the State of Florida. It is a combination of 42 Sources including existing County and City specific point datasets, and Law Enforcement addresses from (1) the Florida Department of Law Enforcement, (2) the Florida Highway Patrol, (3) the Yellow Pages online, and (4) Super Pages online. The data contains selected fields denoting the physical address, number, regions, and contact information for Law Enforcement Facilities and Agencies located in Florida. Law Enforcement Facilities and Agencies in this dataset consist of FDLE, Federal, Highway Patrol, Law Enforcement, Police, and Sheriff facilities. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of law enforcement facilities. Law enforcement locations that have been verified are marked with the letter V in the FLAG field.",
-    "longName": "Law Enforcement Facilities (Points)",
+    "id": 987,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM_FEMA/MapServer/7",
+    "name": "Flood Hazard",
+    "description": "This dataset contains information about the flood hazards within the study area. These zones are used by the Federal Emergency Management Agency (FEMA) to designate the Special Flood Hazard Area (SFHA) and for insurance rating purposes. These data are the flood hazard areas that are or will be depicted on the Flood Insurance Rate Map (FIRM). There is one polygon for each contiguous flood zone designated. This information is required for all draft Digital Flood Insurance Rate Maps. The Digital Flood Insurance Rate Map (DFIRM) Database depicts flood risk information and supporting data used to develop the risk data. The primary risk classifications used are the 1-percent-annual-chance flood event (100 year), the 0.2-percent-annual-chance flood event (500 year), and areas of minimal flood risk. The DFIRM Database is derived from Flood Insurance Studies (FISs), previously published Flood Insurance Rate Maps (FIRMs), flood hazard analyses performed in support of the FISs and FIRMs, and new mapping data, where available. The FISs and FIRMs are published by FEMA.",
+    "longName": "Flood Hazard",
     "type": "feature",
-    "layerName": "GC_LAWENFORCE",
-    "minScale": 250000,
+    "layerName": "DFIRM_FLDHAZ",
+    "minScale": 24000,
     "maxScale": 0,
     "legendSymbols": [
       {
         "layerId": 0,
-        "label": "",
-        "url": "43d6efbe94f8787cb3ed76244624bb18",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAhRJREFUOI3F1M9r02AYB/BvTF6zJUuZIXZlAzVQ32JMOzKYCIIiCqKgEydYx4YgDLyo4N+hePHgSU9iPewgVEGvmzIvUlYJ+nYwyowuJdQWCW2ndR4ssV1lrZ3ge3of3uf9vL9fAf+4CP8FnLasE+VS6Y5GyMRDxvLbAqcM4+7b1dWbB1SVyxSLuauGceWBbT/+a3AWCK1R+ipXKJiTpokBQrBHVcmzbPbRJUrPPGFspmtwhtLjmWIxHQGk84kEBJ4HAEQUBcnxce5lLjd9WteP7B0aOnR/cdHbEpwyjNsL+fytk5RyUU1rG0wmBGdjMbxeWdHfLC9/TCYSF1JLS8/bwFkgtKbrC5lCIZ4cG8NgX1+AfCqV8AOAwPOIKAoEnsfRaBQfPE98wVg6aRj3UrZ9owXMaNrnwfV16bJpYichAbYBwPV9OOUy9ofDiChK0BbTNKiiyM1ls9cnKI09ZexUAJYrFWnSssBtWuI710XKtiEDmHccXLMs6E1bsVtRcC4ex3vXPdgyQ6G/vw0DgEq1CgDwG/H3er0tZ0dTveM9DMlySyxL0pb5HUFVFFvi5sPqCdwlSdAAeAAOj4xAajqwnkDC8zhGKeYYw2g43Cm9u89hdHgYX3wf+/5w0XsCvwH4Wqtho14HGs9wW+AAIbhoWd2k/gbznoe0bXfVaXOp1mpQGy8oAH2Am3ecnkAAgPfr0/kJiN+aZAzEtp0AAAAASUVORK5CYII=",
+        "label": "0.2% Annual Chance Flood Hazard",
+        "url": "d878202c4ef93c22087a7e21a12171b7",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgc9mMvhSYpBUOsNmFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAcL4EhY8Tu/oAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
-      }
-    ]
-  },
-  {
-    "id": 321,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/9",
-    "name": "Parks and Recreational Facilities (Points)",
-    "description": "This dataset contains 2018 Parks and Recreational Facilities location information for the State of Florida. This parks layer focuses mainly on county and locally owned parks, for state and federally owned parks please use the Florida Natural Areas Inventory; Florida Managed Lands (FLMA) layer available on FGDL. This dataset is a combination of parks and recreational facility locations from over 65 different sources. The data contains selected fields denoting the name, physical address, and other facility information for parks located in Florida. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of parks in Florida. Park locations that have been verified are marked with the letter V in the FLAG field.",
-    "longName": "Parks and Recreational Facilities (Points)",
-    "type": "feature",
-    "layerName": "GC_PARKS",
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
+      },
       {
         "layerId": 0,
-        "label": "",
-        "url": "9169b72dc77880e6efb8ac5f9b6a2b53",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAi5JREFUOI2t1F9oV2Ucx/HXgU0YD+jFRix/NzJQoS53ZSSDgpyjhUEIuxnRVSOJKGcy0xAVU6wRohdJQ7DEIuwmgiKEYiyIyhtXYAy8+eEmB5LgG7QujhfnbDu/n/2aRt+bc57vn/fz+fJ8n6fL/2xd6yUUPItx9OM3fX3nsjz/+aGBBdtxHC/U3Dvl+XiR0rSIdzOW1gUWpe8qRivXIuZwF5vxpIhJ7C9SOpNFHOgILBjA03gRX+C8lO5gWESvlH7Q0/O2PH8GgyKOFCkdyyIOd1L4OD7ARuzCFREjq9EIIt6S0sks4vmCz0WMFryX8XsLsCDDG9XyF3yMEWwtw7pBSg0R3xT8gevYI6XXVSrrCl/CEH6U0rKI0VrsWzRWVZZ2BI9hUsSbRaPxSdZs3qgDX60UfI3nrG8JOzCLYc3mPrxcB26rFCxiZ1vx0GrLnMSe6n8zbtfr68BFbMEm3GkDrrXcaku1zZdagSldFjGFJ3AWr/wDoG5/4Rqmq/WlVmDECYwpx2V/lfxUR1xKp0QM4xF8mvFlCzDjz6K8ah9iAnvxGeaxoYYqpHRWxFH8VPmmVoLtgz2Hj3AQ71RtDyjnsVdKt/T0XJHnj+I17MZMxkIn4ILyZblYfSfwFb7Hr+iX5xcwWOXftXbi9wMz/i7o1mic1mzO4lClrrx+a0P9nfIwbmQsdwSuQDWb85gvuCylQyLGlO/hTbyfMdNe1xHYBo9qlKb+Le+Bgf/F7gFmM7E/4uk3SAAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 322,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/10",
-    "name": "Religious Centers (Points)",
-    "description": "This dataset contains 2015 Religious Center Facility information for the State of Florida. It contains a combination of churches, temples, synagogues, mosques, chapels, centers and other types of religious facilities, from data sources including; county specific religious locations, and SuperPages religious address locations, etc. This dataset contains fields denoting the location, and other information for religious facilities located in Florida. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of religious facilities. Religious Center locations that have been verified are marked with the letter V in the FLAG field.",
-    "longName": "Religious Centers (Points)",
-    "type": "feature",
-    "layerName": "GC_RELIGION",
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "5b354a1391fc2626d37fb327d1cf13b2",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAgxJREFUOI3VlD9ok0EYh5/3rqHlu4+WQhwFcXQQ/yCEVB3EIp3qUkkc1Kk6O7q6iW4itBRBKCa1INLFoegiSkqFDmI7CCJIoJVPq9IjofG71+GLrUFSKTrou9yPg3vu4XdwPfzl6fm/gZNgB4puWAOnSMmR44u2/Ex5kZVdASuH84ekt3Ee/CDBz4Gbw/o7psXp1HKhWuCaGl7SoFpeYq0rsFJkRAI3SJP9wEPF1RWGxPiYQDO17iqAQp3gx6SXm9UC8/Yrl8eWef8LUAKLQIQlUsN9E/xehQkCjzTlolj/BNijqTtjYEMtQxjerS9vW3YASzWSmaKb1uBHyy94PA/mY4EJDFPlGivVY25WrT9YXvRPZw/wJu3nutj83XGSza4dasABMcCHEZxdB23hALA+FrKc9merNBvxjo+ixjsJGdDWiYkASwQghlhDljWXd9JKSK3fGSg/GUpMrAEkzWxCYMvQNBtOLZCyM5DsQASIbORjjZJtw+yiCCDkvJMAYn8HTImxyL1RorDWyLozzoFHwGnbUFrEWFDT7rcr0LrX4Af61ritxvcRWJDgj1YKTClsCLxq5wGBBeBTV2ClwCXB7wuwqjBIALIMkFf4/CMDKKxK4OyDgnt7ruafdwCrJ/JHaCVXNOtqVxPwtybh5DhsbgFLz5KleTi+S9bWlOBbhyGgw+3NP5l//4P9Dn85yLCpC8lvAAAAAElFTkSuQmCC",
+        "label": "1% Annual Chance Flood with Depth Less Than 1 Foot",
+        "url": "d878202c4ef93c22087a7e21a12171b7",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgc9mMvhSYpBUOsNmFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAcL4EhY8Tu/oAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -14536,35 +14772,13 @@ define({
     ]
   },
   {
-    "id": 312,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/0",
-    "name": "Correctional Facilities (Points)",
-    "description": "This dataset contains 2017 Law Enforcement Correctional Facilities Information for the State of Florida. It is a combination of sources including existing County, District, and State specific point datasets, and facility addresses from (1) the Florida Department of Law Enforcement, (2) the Florida Department of Corrections, (3) the Florida Department of Juvenile Justice, (4) Federal Bureau of Prisons, and (5) Facilities individual websites online. The data contains selected fields denoting the physical address, number, regions, and contact information for Law Enforcement Correctional Facilities and Agencies located in Florida. Law Enforcement Correctional Facilities and Agencies in this dataset consist of Major Correctional Facilities (Prisons), Jails, Road Prisons, Work Release Centers, Work Camps, Juvenile Facilities, Federal Facilities and other correctional facilities. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of correctional facilities. Correctional facility locations that have been verified are marked with the letter V in the FLAG field.",
-    "longName": "Correctional Facilities (Points)",
-    "type": "feature",
-    "layerName": "GC_CORRECTIONAL",
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "c0aeeaa2eb58bd54c0021993f05a46fc",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAOFJREFUOI3tzztKA1EYhuH3H6Y5DGIzi0kdL7iK1JKATkpXIIigQgiSRnAHXprswKzDdiCJOB4v4GczVhlnzqBNwLc88D98J+aPi9cf1ATHS3KN3AkR0qffw3iNsuK0NagJDp/cCrYxv4PcDUYPWALtwHLZnWCrfNoE32v6USVYgQW3ApbYvaBbc5foPO1Ylj/UgoEYQCz8VBfprh3ms5/BIt038x8N2HePEgcaM7A+i0owGuZnGnPFezJv9txllOWjlemBa4L7B9cBtD4LHRcbjZdPxVsQCGBHPLeeVgf+pi97AVA1GF+sFwAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 313,
+    "id": 989,
     "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/1",
-    "name": "Cultural Centers (Points)",
-    "description": "This dataset contains 2015 Cultural Centers and related Cultural Association Facility Information for the State of Florida. A cultural center is an organization, building or complex that promotes culture and arts. This dataset defines culture centers as; aquariums & zoological facilities, arboreta & botanical gardens, dinner theaters, drive-ins, historical places & services, libraries, motion picture theaters, museums and art galleries, performing arts centers, performing arts theaters, planetariums, studios and art galleries, and theater producers stage facilities. This layer is a combination of cultural centers and related cultural association addresses from online sources including; Art-Collecting.com, Association of Zoos and Aquariums, Florahome USA, Florida Artists Registry.com, Florida Association of Museums, Florida Department of Emergency Management - HSIP, Florida Department of State - Division of Library and Information Services, USA Zoos, and Yellowbook.com. This dataset contains fields denoting the physical address, and contact information for culture and related cultural association facilities located in Florida. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of cultural facilities. Culture Center locations that have been verified are marked with the letter V in the FLAG field.",
-    "longName": "Cultural Centers (Points)",
+    "name": "FDOH Group Care Facilities",
+    "description": "This dataset contains group care facilities inspected by the Florida Department of Health. The facilities included in this dataset can be broken into three broader categories: Residential Child Caring Agency, Public & Private Schools, and Residential Group Care Facilities. A Residential child-caring agency is a Department of Children and Families (DCF) licensed residential facility or agency which provides staffed 24-hour care for children in residential facilities. Various types of residential child-caring agencies include, but are not limited to, maternity homes, runaway shelters, group homes that are administered by an agency, emergency shelters that are not in private residences, and wilderness camps. Residential child-caring agencies do not include hospitals, boarding schools, summer or recreation camps, nursing homes, or facilities operated by a governmental agency for the training, treatment, or secure care of delinquent youth, or facilities licensed under Florida Statutes (FS) 393.067 or s. 394.875 or chapter 397. Public & Private Schools include any school facility such as a charter school, college/university, private charter school, private school, public school, and vocational school. There is no state licensing of schools or educational facilities in Florida. There may be local county government fees assessed or permits issued through the local county health department in relation to physical plant, environmental health or sanitary standards. The Department of Education (DOE) operates the public school system and oversees charter schools in Florida through local county school boards. Any school facility is required to get a satisfactory group care environmental health inspection from the local county health department prior to opening or operating in Florida. Residential Group Care Facilities include assisted living facility, adult family-care home, short-term residential treatment center, residential treatment facility, home for special services, transitional living facility, crisis stabilization unit, hospice, and intermediate care facility for persons with developmental disabilities. The Department of Health (DOH) does not license various residential group care facilities. Licensing is done by one of two state agencies referred to as the primary licensing agency. The two primary licensing agencies for residential group care facilities that DOH regulates are the Agency for Health Care Administration (AHCA) and the Department of Children and Families (DCF).",
+    "longName": "FDOH Group Care Facilities",
     "type": "feature",
-    "layerName": "GC_CULTURECENTER",
+    "layerName": "GROUPCARE",
     "minScale": 250000,
     "maxScale": 0,
     "legendSymbols": [
@@ -14580,21 +14794,84 @@ define({
     ]
   },
   {
-    "id": 314,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/2",
-    "name": "Fire Stations (Points)",
-    "description": "This dataset contains 2018 Fire Department and Rescue Station facilities information for the State of Florida. It is a combination of fire department and rescue station addresses from 60 different sources. This dataset contains fields denoting the physical address and contact information for fire and rescue stations located in Florida. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of fire and rescue stations. Fire and rescue station locations that have been verified are marked with the letter V in the FLAG field.",
-    "longName": "Fire Stations (Points)",
+    "id": 990,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Soils/MapServer/0",
+    "name": "Specific Soils (SSURGO)",
+    "description": "This data set is a digital soil survey and generally is the most detailed level of soil geographic data developed by the National Cooperative Soil Survey. The information was prepared by digitizing maps, by compiling information onto a planimetric correct base and digitizing, or by revising digitized maps using remotely sensed and other information. This data set replaces the SSOILS data in previous versions of FGDL.",
+    "longName": "Specific Soils (SSURGO)",
     "type": "feature",
-    "layerName": "GC_FIRESTAT",
+    "layerName": "NRCS_SOILS",
     "minScale": 250000,
     "maxScale": 0,
     "legendSymbols": [
       {
         "layerId": 0,
-        "label": "",
-        "url": "30b5ce11706da27ca6e5d02572097f08",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAQdJREFUOI3t0yFLQ1EYgOFnQxE5TYaISxYFg3abwToFQZ3RYJCFVc2CP0DwL0yDYBhM5g+wmbVbhKtBODgYbBZnUK/3Tmz6xsP5Hs4XzohfbuQffO+C8Rd2C6wKoSzGBO0ex9s8DQU2mOmE0CrEOAdihFksFamdhVDZjPE6F3jOWDeEpgH2uVI/xmaDxSr3mWCXHTHOp6301kSBA+xlgqhkYIPW8oLlnODUFcUVellgkhN8+oilgW0sZ2kFLr86/wSOctKl5vvVO30Oc4HrPJ+WShVJ0sLkFzMv2N7iNhcIW0ly02ChGMJ+P8ZVTOMR7SJHG9ylPT3161V5EGMd9bQ7Q4E/7Q+Cr8mLRsGbNnJhAAAAAElFTkSuQmCC",
+        "label": "Unclassified drainage",
+        "url": "bfb14bfb63d233d7afbed256256053e3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC7U+TWZbMOusOUyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAt10MDM2zIOEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Excessive",
+        "url": "db5cd4ceb44f544474f5ed2c7198f06c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPPMPynxKB0EwZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAPi8D7SVux+QAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Moderately Well",
+        "url": "8443549e35fb2428ff68098751400e2b",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6cHB9PtmG5CxcyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAA2oIMdIpcC2UAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Poor",
+        "url": "d34ee6083c01e8a05769962971dfed1a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6Ms4wj27BFxxcxMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAA+lYM0ISwgL4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Somewhat Excessive",
+        "url": "24d871da505c2ec0ca6dad96a3b0b0a9",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6MnxRPtmEL8xYyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAA2w4MdX0mqHUAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Somewhat Poor",
+        "url": "462a4d8c2cfdfc40c8adc6d9c27c3822",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC7U+TWJbMOusOUxMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAt7QMDZ5/d9wAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Very Poor",
+        "url": "821eded8f9ee231e18e0c9074f617ab1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6caG5OtmH5J08yMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAA9owMxsP6+fcAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Well",
+        "url": "954636d587bcaa9c438d48d1e92025f5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI3t1KENADAIRFFIWPc6TG/gViEQNVAcXyJewGDyOWsDAZwqRlLDhtxMY1gQkc6TBxxwwAGfoL+gTCQ1gD6odgG3TgwNo63s2AAAAABJRU5ErkJggg==",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -14602,43 +14879,21 @@ define({
     ]
   },
   {
-    "id": 315,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/3",
-    "name": "Government Building",
-    "description": "This dataset contains locations of Local, State, and Federal Government Buildings within the State of Florida, current to 2013. This dataset contains fields denoting the physical address, facility type, and contact information for various types of government buildings. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of government buildings in Florida. Government building locations that have been verified are marked with the letter V in the FLAG field.",
-    "longName": "Government Building",
+    "id": 991,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Mitigation/MapServer/0",
+    "name": "Mitigation Property managed by NWFWMD",
+    "description": "This data set contains boundaries for mitigation property managed by the Northwest Florida Water Management District.",
+    "longName": "Mitigation Property managed by NWFWMD",
     "type": "feature",
-    "layerName": "GC_GOVBUILD",
+    "layerName": "NWFWMD_MITSITES",
     "minScale": 250000,
     "maxScale": 0,
     "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "81f2bd077f49e8ae95c7a54a04cf863b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAABKVJREFUSIntl3tsFFUUh7/Krgu00EZ5KYIZLGsNpNYHNSJpSgiICEjRGEDBBGtDBJoQMTQULIIQDAqkYEIoMcR/aCpKwdIAgZSXNCloS2kNqdJBKJR2I7Z0293Z2Xuvf8x2y7DbR4LRYDzJZGbOPfd+53cfc+84+BfN8T/8gYdrmqbucVXpuv7cPwKv3RygvuFxRr80ieu1V5m5uSqlp/j7grvd7nWmaeZ1eQK28hlDApSiKV3XY/oMd7vd6aZplnUHHQSsTQqQHN9u818/AErdpO5cEX4JGSPgtWEBlneTQARc07TKnTt2pMTvWkyz36DRB81+aOrwMVdLoCVg0GrATS8kx7u6NCvwBcEIgiHBL8EXNPBLyNUMNkZJIJrylKnTplGxqzvdXbbvSgutQWgzIGViGs80VeOX4A8aGBJ8AgzTumcOb2PPPQnY4Jqmqfr6euqLs0j9voGSGUN7zyBkSwtKMdvv8F3GU/iFpdwvwG+CX/jwA485XaBpZbquT7bB3W73uoULFnDr2DIA6g6u7DO4oNaLWZmDHKAx75iH/LSh+E3wCR8+QkMhYKyjhUZzWHqEctM081bnZNN8aq317m1mZqmHgsmW+rHxA6KCt/7sxaxajRAK8eevBM6uIPu0h5zUOPzBkPqgdQWAFGczaFb3O6Cru++cs6ut3Ls4/DxphItW+0oir8KLqM5FSYkUMnRX3D6xnM0VXhaPi7MmYSg+NjaBPeVXcDqdJCYmKkcnOHAxN0KVCHTwQZmHjS9Hjn32aQ/i0hqkEEihUFIhhUJKiRSC5tIlfF3rpfFWE8TA9bNF3Cov5Mz6qWTta0DX9RiHrusxY8aMUZcPzI/arUGjPcL33gkPsvYTpJAIoUIJSKQUyKBESYWQkobi94GHOXL4JzILKuDN5RzPTQu3Y5vtgyd+gajaTcfVC2Hfjzvnk1vuofLtJwB4/dsrqF/yUFKGLoWUhBSrcNe7hiXzSOoyrhYuBGByfjFl2XNsIiLW+QtnRnN8lAV/MauQU1/O5nT+ItKKGqyAG4WI0BhLoVCOBOJSV9vaKKn5nZ0nL3Ik1UoKYH3/cxxauYWBrn7dw3X9GoyynlccrWHbR4c4umE6xTlT6Gj3M2/JFJASZ8omSqt13kjWmPHVD5QuncXQT79hfEIs6U+P4mh5JSybjRQWvKH6JLH9nd0r77i8F7U1i/piS/nBS3Vse3W8rYKSEhEU9APm7ChCFayiJDMd48Z5PHmLwnF501OteHHvLtsNPHi7JvyRAahfOTeigjWxrAZVwSoAHnINwjVygi1OeJtQwkBKSV2Twf6atnBZ5ye2xy31wu55tLd12Hyda/puM//4DVQQ55CksK9f3PBwsvtr2ujTrtabda7pu835aGJEnHHjPK6RE8ITLpqF4UkZ+/j43fFkTBrdC1zYlAdbr6HMDptqIDwMsz6v6hne2SUfbtDZEjqH5c5P4tknB0fCJTY1jviuZPO3b2d7fn74vbsTjA1+t3VWyNykhw+En72lMfChEFwIVEj5K8+Po7HF12dYr/BoibyzpSuRNYcPhkpLejyZ3jc8WiJ/p/13fhoeKPhfZpB2Bl3lYGUAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 31,
-        "width": 31
-      }
-    ]
-  },
-  {
-    "id": 316,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/4",
-    "name": "Healthcare Facilities (Geocoded)",
-    "description": "This dataset contains 2014 Health Care Facility Information for the State of Florida. It is a combination of health care facilities (Abortion Clinic, Dialysis Clinic, Medical Doctor, Nursing Home, Osteopath, State Laboratory/Clinic, and Surgical Center/Walk-In Clinic) from the Florida Department of Health. The data contains selected fields denoting the name, physical address, and other facility information for health care facilities located in Florida. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of Health Care in Florida. Health Care Facility locations that have been verified are marked with the letter V in the FLAG field. Please Note: Hospitals are no longer located in the GC_HEALTH_AUG14 layer, instead hospital locations can be found in the GC_HOSPITALS_FEB13 layer.",
-    "longName": "Healthcare Facilities (Geocoded)",
-    "type": "feature",
-    "layerName": "GC_HEALTH",
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "3a29543feac897b23f80c14a7987449d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAQ9JREFUOI3t0zFLw0AUwPH/awIit5UiYicXBQfd3RxcU0HQtqODg3ToamfBDyD4FaKD4FCoxA/g5qy7ixA7CEetNH0OEgebNFdx0//4uPvxbjifX87/B7/Sa+YZcgjUEFMFGwMRI86kSX8mUEOWeTc9xK5+TizACrCJT0svTSD79s4J1CvmSEwXUmyiCmK7GrIhDZ6KN0w4ALuWg6WV8egAR8UgBAVY2o4rWHUEF/WWkmwzng4qMeIE9r9j2aAQAVsO4E3WcBL0OCehxfSnvzHmxAmUXV71ohJQinvAQsadAdCUOg9uGwJSj+81ZB3PHIOtAUvACxABp7LHY97quV9PGjyDbQPtvDMzgT/tD4IfUoFDEBsRHqYAAAAASUVORK5CYII=",
+        "url": "e7ee90a9585b547026d570ee403c0337",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6cFD2ZbMPyluYyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAyo8MRUa4aW4AAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -14646,21 +14901,21 @@ define({
     ]
   },
   {
-    "id": 317,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/5",
-    "name": "Homeowner and Condominium Associations (Geocoded)",
-    "description": "This dataset contains 2017 registered Condominiums by county in the State of Florida. The layer was derived from the Florida Department of Business & Professional Regulation's condominium database. The database consists of approved, acknowledged, and recorded condominium projects and their managing entities. Terminated, rejected, or withdrawn projects are not included. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of condominiums in Florida. Please note that this dataset contains a high number of features with coincident spatial locations. Many condominiums were broken up into specific buildings or units within a community and were given the same address information. As a result, these points were geocoded on top of each other. Keep this data coincidence in mind when using this layer.",
-    "longName": "Homeowner and Condominium Associations (Geocoded)",
+    "id": 992,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Mitigation/MapServer/1",
+    "name": "Mitigation Banks",
+    "description": "This is a statewide layer representing mitigation banks permitted under Ch. 373.4136, Florida Statutes. Florida mitigation bank information is important for wetland permit reviewers and developers that may need mitigation options. The layer can also serve to enhance information on conservation lands. Mitigation Banks may be permitted by DEP or a Water Management District, but are used by both agencies, creating the need for a statewide layer. Mitigation banking is a practice in which an environmental enhancement and preservation project is conducted by a public agency or private entity (banker) to provide mitigation for unavoidable wetland impacts within a defined region (represented in the Mitigation Banks Service Area layer). The bank is the site itself (this data layer), and the currency sold by the banker to the impact permittee is a credit, which represents the wetland ecological value equivalent to the complete restoration of one acre. The number of potential credits permitted for the bank and the credit debits required for impact permits are determined by the permitting agencies, and this information is provided in the data layer table. For more information on mitigation banking, go to https://floridadep.gov/water/submerged-lands-environmental-resources-coordination/content/mitigation-and-mitigation-banking.",
+    "longName": "Mitigation Banks",
     "type": "feature",
-    "layerName": "GC_HOA",
+    "layerName": "MGBANK",
     "minScale": 250000,
     "maxScale": 0,
     "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "0fbf68d3e04042a7572da8e78a95cf98",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAASlJREFUOI3t1LFKA0EUheH/7gREQVeCiJjKxoCF9na+wMZS7BRWUFLYKiYmRrBVBBW28CUCkbxAOmvtbYS4mggqqHstDBa6yY5goeCBaQbm49ziToofTuof/MjCdrvfRVciJYdDBqWJUh8QOTwoD4XfAle3WhPPaC2CLAIoAJMIsw+ieb/U8oKS27AC/f2w7+WWqkA2toIyAlT9wv1MUBm8Sm4YppYRneo2UidpTLQJrCWDol4C9l5UmbcDIWMDCoyBOiBRb1BpIjYk4WcsHhTqwJxFxbO4669g9HqEY/L0Hv3JqO5agUEl3faLLQ+hBozGvHlUZPGk7F7YNQSCHfd8qXA3bRzZAHIC4wo3BuqO0b3jonvZrXrX1TutDF8D651jnT/82/wa8A3jDlLGUsMzQAAAAABJRU5ErkJggg==",
+        "url": "e7ee90a9585b547026d570ee403c0337",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6cFD2ZbMPyluYyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAyo8MRUa4aW4AAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -15788,6 +16043,386 @@ define({
     ]
   },
   {
+    "id": 975,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM/MapServer/0",
+    "name": "FEMA DFIRM Panel Areas",
+    "description": "This dataset contains information about the FIRM Panel areas. The spatial entities representing FIRM panels are polygons. The polygon for the FIRM panel corresponds to the panel neatlines. Panel boundaries are generally derived from USGS DOQQ boundaries. As a result, the panels are generally rectangular. FIRM panels must not overlap or have gaps within a study. In situations where a portion of a panel lies outside the jurisdiction being mapped, the user must refer to the S_Pol_Ar table to determine the portion of the panel area where the FIRM Database shows the effective flood hazard data for the mapped jurisdiction. This information is needed for the FIRM Panel Index and the following tables in the FIS report: Listing of NFIP Jurisdictions, Levees, Incorporated Letters of Map Change, and Coastal Barrier Resources System Information. The Digital Flood Insurance Rate Map (DFIRM) Database depicts flood risk information and supporting data used to develop the risk data. The primary risk classifications used are the 1-percent-annual-chance flood event (100 year), the 0.2-percent-annual-chance flood event (500 year), and areas of minimal flood risk. The DFIRM Database is derived from Flood Insurance Studies (FISs), previously published Flood Insurance Rate Maps (FIRMs), flood hazard analyses performed in support of the FISs and FIRMs, and new mapping data, where available. The FISs and FIRMs are published by FEMA.",
+    "longName": "FEMA DFIRM Panel Areas",
+    "type": "feature",
+    "layerName": "DFIRM_PANEL",
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "9143e58a0ced35478307b4957e795497",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEFJREFUOI1jYaAyYGFgYGBgiHn2nyqmLZFiZKGKQUgA1cAlUoxkmYLkQxq7cNTAUQNHDRweBlKhXKSRC8ktB7EAAIFiCVFABrJCAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 976,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM/MapServer/1",
+    "name": "Base Flood Elevation (BFE) Lines",
+    "description": "This dataset contains information about the Base Flood Elevations (BFE) within a study area. BFE lines indicate the rounded whole-foot water surface elevation of the 1-percent-annual-chance flood. The spatial elements representing BFE features are lines extending from Special Flood Hazard Area (SFHA) boundary to SFHA boundary. The BFE lines will have no visible gaps or overshoots between the SFHA boundary and the end of the BFE line at the publication scale of the DFIRM. However, the ends of the BFE lines are not necessarily snapped precisely to the SFHA boundary. Each BFE is represented by a single line. The Base Flood Elevation (BFE) information is required for any digital data where BFE lines will be shown on the corresponding Flood Insurance Rate Map (FIRM). Normally if there are any riverine AE zones, BFE lines are required. While BFE lines are depicted as wavy lines on the hardcopy FIRM, they should be primarily straight lines in the spatial data, although they may bend consistent with procedures described in Volume 1 of these Guidelines. The Digital Flood Insurance Rate Map (DFIRM) Database depicts flood risk information and supporting data used to develop the risk data. The primary risk classifications used are the 1-percent-annual-chance flood event (100 year), the 0.2-percent-annual-chance flood event (500 year), and areas of minimal flood risk. The DFIRM Database is derived from Flood Insurance Studies (FISs), previously published Flood Insurance Rate Maps (FIRMs), flood hazard analyses performed in support of the FISs and FIRMs, and new mapping data, where available. The FISs and FIRMs are published by FEMA. ",
+    "longName": "Base Flood Elevation (BFE) Lines",
+    "type": "feature",
+    "layerName": "DFIRM_BFE",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "7de962067ff71e599061843d69a2d05f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADRJREFUOI1jYaAyYBk1cNRAygz8T6FZjMgGUmoYzAxGmnmZkYHKXoYLUAqGVrIZNXCQGAgAQUQEUsaxbygAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 977,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM/MapServer/2",
+    "name": "DFIRM 100 Year Floodplain",
+    "description": null,
+    "longName": "DFIRM 100 Year Floodplain",
+    "type": "feature",
+    "layerName": "DFIRM_100",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0",
+        "url": "98fb6d62c20377d8d861e56ede28766f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jugsZKTDsPwMDjb08auCogaMGjhqI00BKykRGdAMpKQvhAABd0QNSDPGCHwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "100 YEAR FLOODPLAIN",
+        "url": "5916a0aa59bb122ae8c1112e66700085",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jqgvnPSDfqCQFBgYGGnt51MBRA0cNHDUQh4HQIohMwIhuICMlpsEAAIkCA9XPeQtVAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 978,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM/MapServer/3",
+    "name": "DFIRM (SFHA) 100 Year Flood Zones",
+    "description": null,
+    "longName": "DFIRM (SFHA) 100 Year Flood Zones",
+    "type": "feature",
+    "layerName": "DFIRM_100_FLOODZONES",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0",
+        "url": "98fb6d62c20377d8d861e56ede28766f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jugsZKTDsPwMDjb08auCogaMGjhqI00BKykRGdAMpKQvhAABd0QNSDPGCHwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "AE",
+        "url": "6992b50694f8c41fe9fcdf24aa0a2c5c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigsdHlwg26QDCgYMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEADtwFY0ht67cAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "A",
+        "url": "a93595fd0471dcee055e189c9d1a604d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvDZy4m26SV6bEMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEALpAFwAZn7EEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "AH",
+        "url": "b36a5f6ea340f3ea39de58b8083c4a24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jigudwsk3c99KRgYGBhp7edTAUQNHDRw1ELuBsCKITMCIbiBFpsEAAC1JBbvM3XZZAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "VE",
+        "url": "5916a0aa59bb122ae8c1112e66700085",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jqgvnPSDfqCQFBgYGGnt51MBRA0cNHDUQh4HQIohMwIhuICMlpsEAAIkCA9XPeQtVAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "V",
+        "url": "f89631c910399e14ac33fae03ffaaeed",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigvbGcrJNqmSoZOBgYHGXh41cNTAUQNHDcRuIKwIIhMwohvISIlpMAAAthIEVdYU5qQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "AO",
+        "url": "4b53f4380a303e890b5fe971ad774aeb",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jigubD5JvZq09IwMDA429PGrgqIGjBo4aiN1AWBFEJmBEN5Ai02AAAPIxBRBAH2QSAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 979,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM/MapServer/4",
+    "name": "DFIRM 500 Year Floodplain",
+    "description": null,
+    "longName": "DFIRM 500 Year Floodplain",
+    "type": "feature",
+    "layerName": "DFIRM_500",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0",
+        "url": "98fb6d62c20377d8d861e56ede28766f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jugsZKTDsPwMDjb08auCogaMGjhqI00BKykRGdAMpKQvhAABd0QNSDPGCHwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "500 YEAR FLOODPLAIN",
+        "url": "6992b50694f8c41fe9fcdf24aa0a2c5c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigsdHlwg26QDCgYMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEADtwFY0ht67cAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 980,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM_FEMA/MapServer/0",
+    "name": "DFIRM Panel",
+    "description": "This dataset contains information about the FIRM Panel areas. The spatial entities representing FIRM panels are polygons. The polygon for the FIRM panel corresponds to the panel neatlines. Panel boundaries are generally derived from USGS DOQQ boundaries. As a result, the panels are generally rectangular. FIRM panels must not overlap or have gaps within a study. In situations where a portion of a panel lies outside the jurisdiction being mapped, the user must refer to the S_Pol_Ar table to determine the portion of the panel area where the FIRM Database shows the effective flood hazard data for the mapped jurisdiction. This information is needed for the FIRM Panel Index and the following tables in the FIS report: Listing of NFIP Jurisdictions, Levees, Incorporated Letters of Map Change, and Coastal Barrier Resources System Information. The Digital Flood Insurance Rate Map (DFIRM) Database depicts flood risk information and supporting data used to develop the risk data. The primary risk classifications used are the 1-percent-annual-chance flood event (100 year), the 0.2-percent-annual-chance flood event (500 year), and areas of minimal flood risk. The DFIRM Database is derived from Flood Insurance Studies (FISs), previously published Flood Insurance Rate Maps (FIRMs), flood hazard analyses performed in support of the FISs and FIRMs, and new mapping data, where available. The FISs and FIRMs are published by FEMA.",
+    "longName": "DFIRM Panel",
+    "type": "feature",
+    "layerName": "DFIRM_PANEL",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "9143e58a0ced35478307b4957e795497",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEFJREFUOI1jYaAyYGFgYGBgiHn2nyqmLZFiZKGKQUgA1cAlUoxkmYLkQxq7cNTAUQNHDRweBlKhXKSRC8ktB7EAAIFiCVFABrJCAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 981,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM_FEMA/MapServer/1",
+    "name": "Base Floodline Elevation",
+    "description": "This dataset contains information about the Base Flood Elevations (BFE) within a study area. BFE lines indicate the rounded whole-foot water surface elevation of the 1-percent-annual-chance flood. The spatial elements representing BFE features are lines extending from Special Flood Hazard Area (SFHA) boundary to SFHA boundary. The BFE lines will have no visible gaps or overshoots between the SFHA boundary and the end of the BFE line at the publication scale of the DFIRM. However, the ends of the BFE lines are not necessarily snapped precisely to the SFHA boundary. Each BFE is represented by a single line. The Base Flood Elevation (BFE) information is required for any digital data where BFE lines will be shown on the corresponding Flood Insurance Rate Map (FIRM). Normally if there are any riverine AE zones, BFE lines are required. While BFE lines are depicted as wavy lines on the hardcopy FIRM, they should be primarily straight lines in the spatial data, although they may bend consistent with procedures described in Volume 1 of these Guidelines. The Digital Flood Insurance Rate Map (DFIRM) Database depicts flood risk information and supporting data used to develop the risk data. The primary risk classifications used are the 1-percent-annual-chance flood event (100 year), the 0.2-percent-annual-chance flood event (500 year), and areas of minimal flood risk. The DFIRM Database is derived from Flood Insurance Studies (FISs), previously published Flood Insurance Rate Maps (FIRMs), flood hazard analyses performed in support of the FISs and FIRMs, and new mapping data, where available. The FISs and FIRMs are published by FEMA. ",
+    "longName": "Base Floodline Elevation",
+    "type": "feature",
+    "layerName": "DFIRM_BFE",
+    "minScale": 10000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "7de962067ff71e599061843d69a2d05f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADRJREFUOI1jYaAyYBk1cNRAygz8T6FZjMgGUmoYzAxGmnmZkYHKXoYLUAqGVrIZNXCQGAgAQUQEUsaxbygAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 982,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM_FEMA/MapServer/2",
+    "name": "Base Floodline Elevation - Labels",
+    "description": "This dataset contains information about the Base Flood Elevations (BFE) within a study area. BFE lines indicate the rounded whole-foot water surface elevation of the 1-percent-annual-chance flood. The spatial elements representing BFE features are lines extending from Special Flood Hazard Area (SFHA) boundary to SFHA boundary. The BFE lines will have no visible gaps or overshoots between the SFHA boundary and the end of the BFE line at the publication scale of the DFIRM. However, the ends of the BFE lines are not necessarily snapped precisely to the SFHA boundary. Each BFE is represented by a single line. The Base Flood Elevation (BFE) information is required for any digital data where BFE lines will be shown on the corresponding Flood Insurance Rate Map (FIRM). Normally if there are any riverine AE zones, BFE lines are required. While BFE lines are depicted as wavy lines on the hardcopy FIRM, they should be primarily straight lines in the spatial data, although they may bend consistent with procedures described in Volume 1 of these Guidelines. The Digital Flood Insurance Rate Map (DFIRM) Database depicts flood risk information and supporting data used to develop the risk data. The primary risk classifications used are the 1-percent-annual-chance flood event (100 year), the 0.2-percent-annual-chance flood event (500 year), and areas of minimal flood risk. The DFIRM Database is derived from Flood Insurance Studies (FISs), previously published Flood Insurance Rate Maps (FIRMs), flood hazard analyses performed in support of the FISs and FIRMs, and new mapping data, where available. The FISs and FIRMs are published by FEMA. ",
+    "longName": "Base Floodline Elevation - Labels",
+    "type": "feature",
+    "layerName": "DFIRM_BFE",
+    "minScale": 10000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2fa9a046f28bd9638488536e0a3a46be",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 983,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM_FEMA/MapServer/3",
+    "name": "Special Flood Hazard Lines",
+    "description": "This dataset contains information about the flood hazards within the study area. These zones are used by the Federal Emergency Management Agency (FEMA) to designate the Special Flood Hazard Area (SFHA) and for insurance rating purposes. These data are the flood hazard areas that are or will be depicted on the Flood Insurance Rate Map (FIRM). There is one polygon for each contiguous flood zone designated. This information is required for all draft Digital Flood Insurance Rate Maps. The Digital Flood Insurance Rate Map (DFIRM) Database depicts flood risk information and supporting data used to develop the risk data. The primary risk classifications used are the 1-percent-annual-chance flood event (100 year), the 0.2-percent-annual-chance flood event (500 year), and areas of minimal flood risk. The DFIRM Database is derived from Flood Insurance Studies (FISs), previously published Flood Insurance Rate Maps (FIRMs), flood hazard analyses performed in support of the FISs and FIRMs, and new mapping data, where available. The FISs and FIRMs are published by FEMA.",
+    "longName": "Special Flood Hazard Lines",
+    "type": "feature",
+    "layerName": "DFIRM_FLDHAZ",
+    "minScale": 24000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "4363639a77a810433fd17ecbe85db62d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGZgf////9PqWGMjIyMLOgC5BoGcxDtvDxq4KiBowaOGojTQErKRFjRx4IuQCkAAFjYDFV2mWXbAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 730,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/0",
+    "name": "FDOH Mobile Home and RV Parks",
+    "description": "This dataset contains mobile home and RV facilities inspected by the Florida Department of Health. This program includes approximately 5,500 mobile home parks, lodging and recreational vehicle parks, and recreational camps in Florida. The objective of this program is to minimize the risk of injury and illness in this residential environment. The objective is accomplished through routine inspections of these parks and camps ensuring the residents' risks for disease from an environmental origin are minimized. Mobile homes, lodging and recreational vehicle parks, and recreational camps are licensed annually by the Department of Health through Florida's 67 county health departments, in accordance with Chapter 64E-15, Florida Administrative Code (F.A.C.). The county health departments provide direct services in the operational aspect of the program through routine inspections, plan reviews, educational programs, and enforcement actions.",
+    "longName": "FDOH Mobile Home and RV Parks",
+    "type": "feature",
+    "layerName": "MHRV",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "c0aeeaa2eb58bd54c0021993f05a46fc",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAOFJREFUOI3tzztKA1EYhuH3H6Y5DGIzi0kdL7iK1JKATkpXIIigQgiSRnAHXprswKzDdiCJOB4v4GczVhlnzqBNwLc88D98J+aPi9cf1ATHS3KN3AkR0qffw3iNsuK0NagJDp/cCrYxv4PcDUYPWALtwHLZnWCrfNoE32v6USVYgQW3ApbYvaBbc5foPO1Ylj/UgoEYQCz8VBfprh3ms5/BIt038x8N2HePEgcaM7A+i0owGuZnGnPFezJv9txllOWjlemBa4L7B9cBtD4LHRcbjZdPxVsQCGBHPLeeVgf+pi97AVA1GF+sFwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 732,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/2",
+    "name": "FDOH Migrant Labor Camps",
+    "description": "This dataset contains migrant labor camp facilities inspected by the Florida Department of Health. The objective of this program is to reduce the risk of communicable disease transmission and injury among migrant farm workers by establishing comprehensive and uniform procedures for permitting and inspecting migrant housing.",
+    "longName": "FDOH Migrant Labor Camps",
+    "type": "feature",
+    "layerName": "MIGRANT",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "30b5ce11706da27ca6e5d02572097f08",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAQdJREFUOI3t0yFLQ1EYgOFnQxE5TYaISxYFg3abwToFQZ3RYJCFVc2CP0DwL0yDYBhM5g+wmbVbhKtBODgYbBZnUK/3Tmz6xsP5Hs4XzohfbuQffO+C8Rd2C6wKoSzGBO0ex9s8DQU2mOmE0CrEOAdihFksFamdhVDZjPE6F3jOWDeEpgH2uVI/xmaDxSr3mWCXHTHOp6301kSBA+xlgqhkYIPW8oLlnODUFcUVellgkhN8+oilgW0sZ2kFLr86/wSOctKl5vvVO30Oc4HrPJ+WShVJ0sLkFzMv2N7iNhcIW0ly02ChGMJ+P8ZVTOMR7SJHG9ylPT3161V5EGMd9bQ7Q4E/7Q+Cr8mLRsGbNnJhAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 733,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/3",
+    "name": "Assisted Housing (Points)",
+    "description": "This dataset contains 2013 Assisted Housing Inventory for the State of Florida compiled by the University of Florida's Shimberg Center. Assisted Rental Housing addresses were gathered from the Florida Housing Data Clearinghouse. The Assisted Housing Inventory (AHI) is a database of multifamily rental developments in the state of Florida that receive assistance under federal, state, and local government funding programs to offer affordable housing units. This dataset contains fields denoting the physical address and other selected attributes for assisted rental units located in Florida. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of assisted rental housing. Assisted Housing locations that have been verified are marked with the letter V in the FLAG field.",
+    "longName": "Assisted Housing (Points)",
+    "type": "feature",
+    "layerName": "GC_ASSISTED_HOUSING",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "81f2bd077f49e8ae95c7a54a04cf863b",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAABKVJREFUSIntl3tsFFUUh7/Krgu00EZ5KYIZLGsNpNYHNSJpSgiICEjRGEDBBGtDBJoQMTQULIIQDAqkYEIoMcR/aCpKwdIAgZSXNCloS2kNqdJBKJR2I7Z0293Z2Xuvf8x2y7DbR4LRYDzJZGbOPfd+53cfc+84+BfN8T/8gYdrmqbucVXpuv7cPwKv3RygvuFxRr80ieu1V5m5uSqlp/j7grvd7nWmaeZ1eQK28hlDApSiKV3XY/oMd7vd6aZplnUHHQSsTQqQHN9u818/AErdpO5cEX4JGSPgtWEBlneTQARc07TKnTt2pMTvWkyz36DRB81+aOrwMVdLoCVg0GrATS8kx7u6NCvwBcEIgiHBL8EXNPBLyNUMNkZJIJrylKnTplGxqzvdXbbvSgutQWgzIGViGs80VeOX4A8aGBJ8AgzTumcOb2PPPQnY4Jqmqfr6euqLs0j9voGSGUN7zyBkSwtKMdvv8F3GU/iFpdwvwG+CX/jwA485XaBpZbquT7bB3W73uoULFnDr2DIA6g6u7DO4oNaLWZmDHKAx75iH/LSh+E3wCR8+QkMhYKyjhUZzWHqEctM081bnZNN8aq317m1mZqmHgsmW+rHxA6KCt/7sxaxajRAK8eevBM6uIPu0h5zUOPzBkPqgdQWAFGczaFb3O6Cru++cs6ut3Ls4/DxphItW+0oir8KLqM5FSYkUMnRX3D6xnM0VXhaPi7MmYSg+NjaBPeVXcDqdJCYmKkcnOHAxN0KVCHTwQZmHjS9Hjn32aQ/i0hqkEEihUFIhhUJKiRSC5tIlfF3rpfFWE8TA9bNF3Cov5Mz6qWTta0DX9RiHrusxY8aMUZcPzI/arUGjPcL33gkPsvYTpJAIoUIJSKQUyKBESYWQkobi94GHOXL4JzILKuDN5RzPTQu3Y5vtgyd+gajaTcfVC2Hfjzvnk1vuofLtJwB4/dsrqF/yUFKGLoWUhBSrcNe7hiXzSOoyrhYuBGByfjFl2XNsIiLW+QtnRnN8lAV/MauQU1/O5nT+ItKKGqyAG4WI0BhLoVCOBOJSV9vaKKn5nZ0nL3Ik1UoKYH3/cxxauYWBrn7dw3X9GoyynlccrWHbR4c4umE6xTlT6Gj3M2/JFJASZ8omSqt13kjWmPHVD5QuncXQT79hfEIs6U+P4mh5JSybjRQWvKH6JLH9nd0r77i8F7U1i/piS/nBS3Vse3W8rYKSEhEU9APm7ChCFayiJDMd48Z5PHmLwnF501OteHHvLtsNPHi7JvyRAahfOTeigjWxrAZVwSoAHnINwjVygi1OeJtQwkBKSV2Twf6atnBZ5ye2xy31wu55tLd12Hyda/puM//4DVQQ55CksK9f3PBwsvtr2ujTrtabda7pu835aGJEnHHjPK6RE8ITLpqF4UkZ+/j43fFkTBrdC1zYlAdbr6HMDptqIDwMsz6v6hne2SUfbtDZEjqH5c5P4tknB0fCJTY1jviuZPO3b2d7fn74vbsTjA1+t3VWyNykhw+En72lMfChEFwIVEj5K8+Po7HF12dYr/BoibyzpSuRNYcPhkpLejyZ3jc8WiJ/p/13fhoeKPhfZpB2Bl3lYGUAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 31,
+        "width": 31
+      }
+    ]
+  },
+  {
+    "id": 734,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/4",
+    "name": "Community Centers (Points)",
+    "description": "This dataset contains 2015 Community Center and Fraternal Association Facility Information for the State of Florida. This dataset contains fields denoting the physical address, and contact information for community and related community oriented association facilities based on data found Online. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of community centers in Florida. Community Center locations that have been verified are marked with the letter V in the FLAG field.",
+    "longName": "Community Centers (Points)",
+    "type": "feature",
+    "layerName": "GC_COMMUNITYCENTER",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "3a29543feac897b23f80c14a7987449d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAQ9JREFUOI3t0zFLw0AUwPH/awIit5UiYicXBQfd3RxcU0HQtqODg3ToamfBDyD4FaKD4FCoxA/g5qy7ixA7CEetNH0OEgebNFdx0//4uPvxbjifX87/B7/Sa+YZcgjUEFMFGwMRI86kSX8mUEOWeTc9xK5+TizACrCJT0svTSD79s4J1CvmSEwXUmyiCmK7GrIhDZ6KN0w4ALuWg6WV8egAR8UgBAVY2o4rWHUEF/WWkmwzng4qMeIE9r9j2aAQAVsO4E3WcBL0OCehxfSnvzHmxAmUXV71ohJQinvAQsadAdCUOg9uGwJSj+81ZB3PHIOtAUvACxABp7LHY97quV9PGjyDbQPtvDMzgT/tD4IfUoFDEBsRHqYAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 735,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/5",
+    "name": "Civic Centers (Geocoded)",
+    "description": "This dataset contains 2011 Civic Center Facility Information for the State of Florida. This dataset contains fields denoting the physical address and contact information for civic center facilities based on data taken from the Yellow Pages, Super Pages Online, Florida Theme Parks, Florida Water Parks, Florida Amusement Parks, World Stadiums - Florida, Go Fox - Florida Venues, and Ticketmaster. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of civic centers in Florida.",
+    "longName": "Civic Centers (Geocoded)",
+    "type": "feature",
+    "layerName": "GC_CIVICCENTER",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "0fbf68d3e04042a7572da8e78a95cf98",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAASlJREFUOI3t1LFKA0EUheH/7gREQVeCiJjKxoCF9na+wMZS7BRWUFLYKiYmRrBVBBW28CUCkbxAOmvtbYS4mggqqHstDBa6yY5goeCBaQbm49ziToofTuof/MjCdrvfRVciJYdDBqWJUh8QOTwoD4XfAle3WhPPaC2CLAIoAJMIsw+ieb/U8oKS27AC/f2w7+WWqkA2toIyAlT9wv1MUBm8Sm4YppYRneo2UidpTLQJrCWDol4C9l5UmbcDIWMDCoyBOiBRb1BpIjYk4WcsHhTqwJxFxbO4669g9HqEY/L0Hv3JqO5agUEl3faLLQ+hBozGvHlUZPGk7F7YNQSCHfd8qXA3bRzZAHIC4wo3BuqO0b3jonvZrXrX1TutDF8D651jnT/82/wa8A3jDlLGUsMzQAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
     "id": 724,
     "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/ARC_Lands_DQ/MapServer/0",
     "name": "South Florida WMD Save Our Rivers Lands",
@@ -15952,6 +16587,226 @@ define({
         "contentType": "image/png",
         "height": 20,
         "width": 20
+      }
+    ]
+  },
+  {
+    "id": 736,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/6",
+    "name": "Cemeteries (Points)",
+    "description": "This dataset contains 2015 cemetery location information for the State of Florida. It is a combination of cemeteries and other types of burial ground locations from approximately 24 different data sources including; Florida counties, parcel centroids, the U.S. Board on Geographic Names (GNIS), Florida Division of Historical Resources (SHPO) cemetery centroids, SuperPage cemetery address locations, and more. This dataset contains fields denoting the location, and other information for cemeteries located in Florida. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of cemeteries in Florida. Cemetery locations that have been verified are marked with the letter V in the FLAG field.",
+    "longName": "Cemeteries (Points)",
+    "type": "feature",
+    "layerName": "GC_CEMETERY",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "f946fee7fb41ce97095a04857d179a51",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAV9JREFUOI3t0z9Lw0AYgPHnapMipfa04hIsBEFEqg6KCH4El+Ja0UQXh3wCBXF0dS1iq6LYQT+Am2sXqYNCl0ohLlYblVL/Jg5uEiXSLoLP+t79eDm4MG0u/A/6luu9Hxc93qxRlqttAUXE6+eVGaA1MEs9rmpiU6gkPYVkXnPyHuLEtOMHLW34m3zBbc0ZEjBm2rKAjZHXnDSwbtjSANjTHwbeFXfaKMvdQKCIMiEaWEDBb/7+4o4AK8DP4D63sTe9I+M1mESlb0d3lunkzLv/nGe5USO6sujCmAC5ozvLKFwulOWpL/g0qsRCj64lVBEHL+GCRZMtAVcAUUKRF7AExIBuF6wQHAH+4NJ51zWQyg06c6KBZdpyCmB3uJ50m2ItQ+KRCqm85qRR2TArMhXoDb82f9FdBapBzv7Vv3xHWUQ4/vbWMxWiHAYGzZosAsXvPKMmS9QoBd+whdoOfgCaY2hy+uJMMAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 961,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/7",
+    "name": "Correctional Facilities (Points)",
+    "description": "This dataset contains 2017 Law Enforcement Correctional Facilities Information for the State of Florida. It is a combination of sources including existing County, District, and State specific point datasets, and facility addresses from (1) the Florida Department of Law Enforcement, (2) the Florida Department of Corrections, (3) the Florida Department of Juvenile Justice, (4) Federal Bureau of Prisons, and (5) Facilities individual websites online. The data contains selected fields denoting the physical address, number, regions, and contact information for Law Enforcement Correctional Facilities and Agencies located in Florida. Law Enforcement Correctional Facilities and Agencies in this dataset consist of Major Correctional Facilities (Prisons), Jails, Road Prisons, Work Release Centers, Work Camps, Juvenile Facilities, Federal Facilities and other correctional facilities. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of correctional facilities. Correctional facility locations that have been verified are marked with the letter V in the FLAG field.",
+    "longName": "Correctional Facilities (Points)",
+    "type": "feature",
+    "layerName": "GC_CORRECTIONAL",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "176d25299abf4c63c999810be1a953be",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAqlJREFUOI29lN9Lk1EYxz/vu9dfITp0/mLKyuaFYCtRmBcWpS57GYKUEUEYXXQhdd0/EF3VbdClBF2IEYtqm74iI7wIBGezoUINvZH0zZD5g7nNnS5OYfNt0YX03HwP53vOh+c5z+HROObQ/hswGBTeEye4X12Np6gIh6oiUinM9XVi2SyPdV359E9AwxCaqvKipYXBxUWKYzFQVenlcjgbGzl3+jTXw2ExfuWKcvuvQMMQxZrGB4eD9nAYBgagvj7/wuoqBIOU+XwMT0+LUz09yoWCQJuN8aoq2hMJuHv3z0/hcsHICIyOQnc350Mh8VzXlWEL8N070ed24zcMaG6Ghw+hpgZMUyrA+jrU1Un1+2FqCvr7uR4KiSe6rsTygHY79+bmsF27BpWVkE7D5cswOSkVIBQCXZfa2QkOB6ysUKqqPABuHQW2JxIS9nvs7MDiIhwcwP5+vnfyJMzMgMeDx1KyplH7q5tHo7UVMhmIRKyezQYlJTgsQEAVQi6EkCWDzOzzZ9jehtpauZfNyjOKcsi1ALNZvgmBEySguRk2NiCZhPJysNshGoW1Nel9+QJuN+RykE6zaQEmk3wsLsaZSslM3ryRF5qaDv9iQwN8/QrxuPyjpglVVWCaLFiAW1uMer3ogQCKywXz87C3J7M1TXkmGoW2NojF4OxZmJ2Fvj4y8ThPLUBdV8YjETHidHIpk4FHj6wNGBqSevMmTExARwcsLxP2+5X3f2oKmQxXy8qYFQJ3IACDg1BSkg/d3YWXL+HMGUgmWVBVhn7384A+n7JlGMKrabzq6uLC69co2ezhcBACSkuht5fc0hIGMOjzKemCwJ/Q78DFUEjccLm4U1GBR9OoVlVIp9nY3OTj/DzPBgaUt9ZH+cs81HVlDBgr5BeKY5/YPwDQoe4ItEiRIwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 962,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/8",
+    "name": "Cultural Centers (Points)",
+    "description": "This dataset contains 2015 Cultural Centers and related Cultural Association Facility Information for the State of Florida. A cultural center is an organization, building or complex that promotes culture and arts. This dataset defines culture centers as; aquariums & zoological facilities, arboreta & botanical gardens, dinner theaters, drive-ins, historical places & services, libraries, motion picture theaters, museums and art galleries, performing arts centers, performing arts theaters, planetariums, studios and art galleries, and theater producers stage facilities. This layer is a combination of cultural centers and related cultural association addresses from online sources including; Art-Collecting.com, Association of Zoos and Aquariums, Florahome USA, Florida Artists Registry.com, Florida Association of Museums, Florida Department of Emergency Management - HSIP, Florida Department of State - Division of Library and Information Services, USA Zoos, and Yellowbook.com. This dataset contains fields denoting the physical address, and contact information for culture and related cultural association facilities located in Florida. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of cultural facilities. Culture Center locations that have been verified are marked with the letter V in the FLAG field.",
+    "longName": "Cultural Centers (Points)",
+    "type": "feature",
+    "layerName": "GC_CULTURECENTER",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "43d6efbe94f8787cb3ed76244624bb18",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAhRJREFUOI3F1M9r02AYB/BvTF6zJUuZIXZlAzVQ32JMOzKYCIIiCqKgEydYx4YgDLyo4N+hePHgSU9iPewgVEGvmzIvUlYJ+nYwyowuJdQWCW2ndR4ssV1lrZ3ge3of3uf9vL9fAf+4CP8FnLasE+VS6Y5GyMRDxvLbAqcM4+7b1dWbB1SVyxSLuauGceWBbT/+a3AWCK1R+ipXKJiTpokBQrBHVcmzbPbRJUrPPGFspmtwhtLjmWIxHQGk84kEBJ4HAEQUBcnxce5lLjd9WteP7B0aOnR/cdHbEpwyjNsL+fytk5RyUU1rG0wmBGdjMbxeWdHfLC9/TCYSF1JLS8/bwFkgtKbrC5lCIZ4cG8NgX1+AfCqV8AOAwPOIKAoEnsfRaBQfPE98wVg6aRj3UrZ9owXMaNrnwfV16bJpYichAbYBwPV9OOUy9ofDiChK0BbTNKiiyM1ls9cnKI09ZexUAJYrFWnSssBtWuI710XKtiEDmHccXLMs6E1bsVtRcC4ex3vXPdgyQ6G/vw0DgEq1CgDwG/H3er0tZ0dTveM9DMlySyxL0pb5HUFVFFvi5sPqCdwlSdAAeAAOj4xAajqwnkDC8zhGKeYYw2g43Cm9u89hdHgYX3wf+/5w0XsCvwH4Wqtho14HGs9wW+AAIbhoWd2k/gbznoe0bXfVaXOp1mpQGy8oAH2Am3ecnkAAgPfr0/kJiN+aZAzEtp0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 963,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/9",
+    "name": "Fire Stations (Points)",
+    "description": "This dataset contains 2018 Fire Department and Rescue Station facilities information for the State of Florida. It is a combination of fire department and rescue station addresses from 60 different sources. This dataset contains fields denoting the physical address and contact information for fire and rescue stations located in Florida. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of fire and rescue stations. Fire and rescue station locations that have been verified are marked with the letter V in the FLAG field.",
+    "longName": "Fire Stations (Points)",
+    "type": "feature",
+    "layerName": "GC_FIRESTAT",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "9169b72dc77880e6efb8ac5f9b6a2b53",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAi5JREFUOI2t1F9oV2Ucx/HXgU0YD+jFRix/NzJQoS53ZSSDgpyjhUEIuxnRVSOJKGcy0xAVU6wRohdJQ7DEIuwmgiKEYiyIyhtXYAy8+eEmB5LgG7QujhfnbDu/n/2aRt+bc57vn/fz+fJ8n6fL/2xd6yUUPItx9OM3fX3nsjz/+aGBBdtxHC/U3Dvl+XiR0rSIdzOW1gUWpe8qRivXIuZwF5vxpIhJ7C9SOpNFHOgILBjA03gRX+C8lO5gWESvlH7Q0/O2PH8GgyKOFCkdyyIOd1L4OD7ARuzCFREjq9EIIt6S0sks4vmCz0WMFryX8XsLsCDDG9XyF3yMEWwtw7pBSg0R3xT8gevYI6XXVSrrCl/CEH6U0rKI0VrsWzRWVZZ2BI9hUsSbRaPxSdZs3qgDX60UfI3nrG8JOzCLYc3mPrxcB26rFCxiZ1vx0GrLnMSe6n8zbtfr68BFbMEm3GkDrrXcaku1zZdagSldFjGFJ3AWr/wDoG5/4Rqmq/WlVmDECYwpx2V/lfxUR1xKp0QM4xF8mvFlCzDjz6K8ah9iAnvxGeaxoYYqpHRWxFH8VPmmVoLtgz2Hj3AQ71RtDyjnsVdKt/T0XJHnj+I17MZMxkIn4ILyZblYfSfwFb7Hr+iX5xcwWOXftXbi9wMz/i7o1mic1mzO4lClrrx+a0P9nfIwbmQsdwSuQDWb85gvuCylQyLGlO/hTbyfMdNe1xHYBo9qlKb+Le+Bgf/F7gFmM7E/4uk3SAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 964,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/10",
+    "name": "Government Building",
+    "description": "This dataset contains locations of Local, State, and Federal Government Buildings within the State of Florida, current to 2013. This dataset contains fields denoting the physical address, facility type, and contact information for various types of government buildings. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of government buildings in Florida. Government building locations that have been verified are marked with the letter V in the FLAG field.",
+    "longName": "Government Building",
+    "type": "feature",
+    "layerName": "GC_GOVBUILD",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "5b354a1391fc2626d37fb327d1cf13b2",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAgxJREFUOI3VlD9ok0EYh5/3rqHlu4+WQhwFcXQQ/yCEVB3EIp3qUkkc1Kk6O7q6iW4itBRBKCa1INLFoegiSkqFDmI7CCJIoJVPq9IjofG71+GLrUFSKTrou9yPg3vu4XdwPfzl6fm/gZNgB4puWAOnSMmR44u2/Ex5kZVdASuH84ekt3Ee/CDBz4Gbw/o7psXp1HKhWuCaGl7SoFpeYq0rsFJkRAI3SJP9wEPF1RWGxPiYQDO17iqAQp3gx6SXm9UC8/Yrl8eWef8LUAKLQIQlUsN9E/xehQkCjzTlolj/BNijqTtjYEMtQxjerS9vW3YASzWSmaKb1uBHyy94PA/mY4EJDFPlGivVY25WrT9YXvRPZw/wJu3nutj83XGSza4dasABMcCHEZxdB23hALA+FrKc9merNBvxjo+ixjsJGdDWiYkASwQghlhDljWXd9JKSK3fGSg/GUpMrAEkzWxCYMvQNBtOLZCyM5DsQASIbORjjZJtw+yiCCDkvJMAYn8HTImxyL1RorDWyLozzoFHwGnbUFrEWFDT7rcr0LrX4Af61ritxvcRWJDgj1YKTClsCLxq5wGBBeBTV2ClwCXB7wuwqjBIALIMkFf4/CMDKKxK4OyDgnt7ruafdwCrJ/JHaCVXNOtqVxPwtybh5DhsbgFLz5KleTi+S9bWlOBbhyGgw+3NP5l//4P9Dn85yLCpC8lvAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 965,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/11",
+    "name": "Healthcare Facilities (Geocoded)",
+    "description": "This dataset contains 2014 Health Care Facility Information for the State of Florida. It is a combination of health care facilities (Abortion Clinic, Dialysis Clinic, Medical Doctor, Nursing Home, Osteopath, State Laboratory/Clinic, and Surgical Center/Walk-In Clinic) from the Florida Department of Health. The data contains selected fields denoting the name, physical address, and other facility information for health care facilities located in Florida. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of Health Care in Florida. Health Care Facility locations that have been verified are marked with the letter V in the FLAG field. Please Note: Hospitals are no longer located in the GC_HEALTH_AUG14 layer, instead hospital locations can be found in the GC_HOSPITALS_FEB13 layer.",
+    "longName": "Healthcare Facilities (Geocoded)",
+    "type": "feature",
+    "layerName": "GC_HEALTH",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "81c6c8b6877cce731e05d69d11924010",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAK9JREFUOI3VjjEKwkAURGcxlVNZR9DGytbes+gVFHIJPYE3sfAmghapDcJYKbHRsNkYI+sq5MEW83d4TITARO0W5nE8RpqOigN5MdLWW4gsmwFYFFk6Ahj6Cz1omTAHDqVfqef0+5UOOTfS7qUQwKBhQKfSkbq1C0PwYyG5LmVpCmBiXc4gN05nXys00tLOObmCZAtPbuf9wgD8XXh7vCfXr4RGSgAkzbs+FPoQXHgHa0wuwAVO+/4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 966,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/12",
+    "name": "Homeowner and Condominium Associations (Geocoded)",
+    "description": "This dataset contains 2017 registered Condominiums by county in the State of Florida. The layer was derived from the Florida Department of Business & Professional Regulation's condominium database. The database consists of approved, acknowledged, and recorded condominium projects and their managing entities. Terminated, rejected, or withdrawn projects are not included. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of condominiums in Florida. Please note that this dataset contains a high number of features with coincident spatial locations. Many condominiums were broken up into specific buildings or units within a community and were given the same address information. As a result, these points were geocoded on top of each other. Keep this data coincidence in mind when using this layer.",
+    "longName": "Homeowner and Condominium Associations (Geocoded)",
+    "type": "feature",
+    "layerName": "GC_HOA",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "02831b87cf43ceafe580ee8546e35b3f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAASdJREFUOI3t1D9LA0EQh+F318Q/XCdBxFQ2Biy0t7OwvQiCJiktLCSFlXBBFDEasBIEv8JpIVgEIucHsLNOehvhTCFZcnJ6axFF0Jy3goWCP5hmYB5mit0UP5zUP/iei50RuoNriChvIbIKfNAe0dMxpd3290B3f9IKdEMJnQOB6nWnQMwh02Xr7MBWK5VrM/D8aMgKO3UFuZglMkpHddzaLEXnNhkMO6sKpuNOes0o4rkCrCeDYCdgb1k0BbOG4DhXSBaIEkDtgzAB2x+xGFB6oOcTOcFlv/ZnMB2cEA6XQX91eoAeqJqBS3sPmdOq7UMDGOsz0wVKFJymGQj4ha0b3MMZSz46Sos8MAHcAx4yqrG83YpbPf7pFTfvFGzQK+P85d/mt4AvXYRSc2SG+tMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 967,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/13",
+    "name": "Hospitals (Points)",
+    "description": "This dataset contains 2017 Hospital Facility Information for the State of Florida. It is a combination of hospital facility addresses from different sources. The data contains selected fields denoting the name, physical address, and other facility information for hospitals located in Florida. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of hospitals in Florida. Hospital locations that have been verified are marked with the letter V in the FLAG field.",
+    "longName": "Hospitals (Points)",
+    "type": "feature",
+    "layerName": "GC_HOSPITALS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2d7adffbd2e6136d7f3e07172172b56c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAShJREFUOI1jYaAyYBlaBu4/etWBh5NdlVjNP378/mZrpbkUp4HPnn7YdfjkI1ZiDdRUEWY4fe7uX1Mj5RVYDXz95ivrjKNvGHa22DHIywkzXLz8hCG8+zRcPtFEiKE8z56BgYGBIaF4G8OvX/8ZXB21uHC6EAYUFUQZVJUlGT58/IYiLiDAzqCuKs3AwMDAwMvFhNXVQyyW0YGRviLDp93JcD4TE3ZvEm3gnz//GL5/+4lQzMrCwM3FTr6Bl64+ZLDI3QnnF7pIMvQ1B5NvIDlgiBo4c+FxBlFhToaHTz6hiB+/+I6hc+J2BgYGBoZrL38yyIpxYehFMVBORuBlf6yaGIyvpijI0K8oiNUlJaEqDCJC3L8/fvx2D6eBQX5mEvi8QwwY/JECAFhKTqlS2SZcAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 968,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/14",
+    "name": "Laser Facilities (Geocoded)",
+    "description": "This dataset contains locations of facilities in Florida that have lasers on site for 2016. This dataset is based on information received from the Florida Department of Health's Bureau of Radiation Control, current up to May 2016. This dataset contains fields denoting the physical address and the specific laser information for that site. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of laser facilities in Florida. Laser facility locations that have been verified are marked with the letter V in the FLAG field.",
+    "longName": "Laser Facilities (Geocoded)",
+    "type": "feature",
+    "layerName": "GC_LASERS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "123ddbeeb6cd8220a259424c539c5837",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAARpJREFUOI3t0zFLw0AYgOH3jhaRbFJE7OSi4KC7m0PXVCi0ScYODtKhq86CP0DwL1w7FDoUKukPcHPW3UWIHYSjgYOcg9bBNuYqbvqOH3cP9w1X4pcr/YOfDYesz2acCkEdvCroBIizjOsoYroSqBQ7aeqNhdB77xMNsAscSUmn3/f8VkvfOYGDAWvGeCOYYwtVrNUjpTgMQ54KQWNog97PW+mjDSG4AM4KQcAvwOaduIJVR3BrMkHWamRFYOIITr9ieWAMHBdpQnC7bL4AlsvcGEOH71dPreXSCWw0eO31Kj4kY2BzyZ0ZEAUBD04gQBAk90pxIKV3bq2uA9vACxBLyVWzyWPe03O/XhjyDLoLdPPOrAT+tD8IvgHTIE2PfHqX+gAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 969,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/15",
+    "name": "Law Enforcement Facilities (Points)",
+    "description": "This dataset contains 2012 Law Enforcement facilities Information for the State of Florida. It is a combination of 42 Sources including existing County and City specific point datasets, and Law Enforcement addresses from (1) the Florida Department of Law Enforcement, (2) the Florida Highway Patrol, (3) the Yellow Pages online, and (4) Super Pages online. The data contains selected fields denoting the physical address, number, regions, and contact information for Law Enforcement Facilities and Agencies located in Florida. Law Enforcement Facilities and Agencies in this dataset consist of FDLE, Federal, Highway Patrol, Law Enforcement, Police, and Sheriff facilities. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of law enforcement facilities. Law enforcement locations that have been verified are marked with the letter V in the FLAG field.",
+    "longName": "Law Enforcement Facilities (Points)",
+    "type": "feature",
+    "layerName": "GC_LAWENFORCE",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "e6a69cfe95d7dca5fc04778b37e80bcb",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAABBFJREFUSImNlX1Mm1UUxn99uWWlfAwXgvLhGsB1sRLMEgS3GDcEQ0zUkGg2PnSa6GS4mNp0YYI6gmQgBEIgRBlsmS6bayCGgUxhWWSby6Yzo8lCaiSBSROBhAob2tnB29Y/SkvfQnHPX/c89+Z57rn3nnMFG8Fg3ApiLzJ5QBaQAMjRMO2ECZb5jtjI89xumAknIcIKy+p6ZG8xEBE67QQ9oEfNS7iW2tGbTxAt12Jtm/1/A4O5GNlzHLxxG2an1DiIUyol7XAZd5oHwxsYTCZkWkBSPZOqofFoET3fXqdz2A5AgkbijcI0ui9M4pS9ABhfTefN0jzqGvvi+q3z/aSZjNxp7VhrYDAX+8RRPauLwtJdgU6XTN7ubI7N38P1YIn4zbFotRrqjt7n3uI/aLUaHon3JXqiI4lI03Gp9+ZcG2mH//Bn4jMwGLf6jkVSAZzpLEenSw54b9myWZFoTIyWmBitgktIiKe9+R16n/9cQu0+yw7jdqxtsz4DWTQAgTN3OO6SkZ76kFewisnJP1dGUhxOqQaoEOgrdeAuDl44dOkWuTmZgdjleoA3RCxSrSYiQlJwA9/fDA7fJavqM4FYLkaWFCsvXp2gpno1bmg+xxe9NhwuD/tyE5l2OBmduk/1W0/z4Qevo43S4HZ76Ls0ESwj+HupSCBLeaGpLi97FHHtJ28TpTlLVbeVro5DxMZq6Ru4wmuVg+Rk6yl4IQev18v4vKwUUvOKADIJQWlRViiF5Lt/AFQqFZFq5QsXIoIje7fT2PN7gIuGDIGv/BXYmfvkGgM/TEe6WLjrom/0LxoO7GDXztXN5O/OUhg4IXndVrFtmy6sQd2nZcTFxaDRbEIIZRd5ypAWulwIwAGkBLNRUZvWCHtXnlH0OjXgR/Ra3iGAsVADh2OBx1MfC8TDF28wNDIOQN/5KxTkZ5Oa8ugag7m5hVDqtkCoLiN7C4PZCz/8zMEDRYE4JTWR1vqSoAw162bQN3BNSQhGBLJ0DtzHgEAtVDRf44n0JArycwHINGSsKxiM/sGrVHbeCqbcIPcIxpum0JstQGnw7Ivv99JVOUtZSSFa7fo7BnA6/+XkV4MY238JmVFZsLXZfa9IyFXI0ssgKf6A95p+4sszv/LRoT08tyuL5OTEwJzdPsOPl0dpP3UD67QrRNyziPBUg7+b2trsGMzlyHwDqIKXWqdd7Pt4CBiiZn8m+0sKOPn1MPWW38Il5UVI5dha7asGALYWCwZTErLUEmriR+3pMWpPj4UTXhH3mLG1WvyEstBsra0YzDMrf8PDfpkr8Cyu7NwSzK6tZFuLBYPxOrLUABQT9LrCKQMWhKfKfywbG4DvTqAMfWU1wlOC7N2Dryn6+5YDGEN4RpDVFsabpsK5/wf3HlR/VSHcmQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 24,
+        "width": 24
       }
     ]
   },
@@ -16277,8 +17132,5835 @@ define({
     ]
   },
   {
+    "id": 970,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/16",
+    "name": "Florida Parks and Recreational Facilities (Points)",
+    "description": "This dataset contains 2018 Parks and Recreational Facilities location information for the State of Florida. This parks layer focuses mainly on county and locally owned parks, for state and federally owned parks please use the Florida Natural Areas Inventory; Florida Managed Lands (FLMA) layer available on FGDL. This dataset is a combination of parks and recreational facility locations from over 65 different sources. The data contains selected fields denoting the name, physical address, and other facility information for parks located in Florida. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of parks in Florida. Park locations that have been verified are marked with the letter V in the FLAG field.",
+    "longName": "Florida Parks and Recreational Facilities (Points)",
+    "type": "feature",
+    "layerName": "GC_PARKS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "1e2645c55cc39f3ee3b12d7d5606e5b0",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAA9dJREFUOI2VlH9M1HUYx1/fu295HiCCnIYaSpogEs3I4Q+mcBSShpiRAYbMWjjnBEuHKZTgj9K1geGyNgzHBKVoDqx1JlKiVPyUQJB1yuC4SAVE4Dg54e777Z+4cQnN3n999rw/z+vzPM/2eUQmkCzLzkAEECBJkqtCobACd4EyQRDqJsoTxwHNMJlNh28abvqX1uo8Lt74fkZLf6mzk8LDtHzWemPsqoSV5iHzkFqlPgcUCoIgTwgcGBx4rdV461DG2TSfqq6vlWM9s9TjUmo86Veaf9IPsB2OKHRaH/r6almWdwqC0PcIsKe3e/u1ltrUxEKt50TtjJEy9ULMKxcb4luOJ+V8JcvyO6NQEeD+4P3gW236DxMLtTMeA2ZX+e3TC3dkw4mdudmyLCcIgiCLAIMmU86O/Pj/BRsLPV8eadigfeNNoFA0dLYnlNdffrbXqmfdM8msDlzz2DBjVwdHyt9l7w8bX45YbjYBhaJNsm7N+/WEEuCO6S/a7rQ5JE2ZPIXolzaib/+DiutXHbzOe8bRo/K6vsFFlmV/0fRg0NswVAlAdXcR1d1FDkmnEyo5V1ZESGAYuuslNPfpxq22qOLsnKCAZSHi8MjDKRO1FL1gNxr36cTnLSVDyueDqP3E540PrO4smw14ijbJphoNLpseg7dmvv1SQvjbfHH+OAAHL23lx10tpGlPMWAeAGDY+pAv61IAuDdscJEkaZKoVCgtgBpgpa8Wv7n+AHg95YXhtoHi1iwArLKZU7ocUjbto6apGptkY8RmRbzmhFU284LHmkGFQnFXVE2abBoFHr2SCFdgtmoJBTtLOFqc7tBWfvNBov+MoU5fw4na3Q5e2KLwbqBRNFseVMYtSos603zIbqau+5ir9eW0mEofmdXn3x1jX+x+cq8dwSL12OPBz4d0AT+J9Ter0l4Nioo803xIAbDYPYoFXj6szYwdd/ilxhyiO2JICc3kQNlmAEJnbbFppnrUCIIwIm7bkNz0S33F5aSgz7TZVcno+2p5P3e7w+v/1t5vt+HpPA8AUXAiJTpV7+oyNQ3++csrvgmObNzye3tHz3ua4tYsGno7J4QB9Fr19PbpAciJu3DX3W1akiAI/XYgn/BA91zxkjjt5pq50701x35L+k8gwEzVYjI35XR5ambucnNxuzQat6+vPXHphj370+eUR/5cUuBbFXaxVqcoaPoUq2x2APk4a4kPTrQF+r54Q612estzmmfjWN9xY2cwtCojNPxw3kcLVwaEHVi7NGqFZdjiKtlsKoVSaZn0xJP9k1VqvSxLWfOenl8yXuV/A1vYjhBoU4n6AAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 971,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/17",
+    "name": "Religious Centers (Points)",
+    "description": "This dataset contains 2015 Religious Center Facility information for the State of Florida. It contains a combination of churches, temples, synagogues, mosques, chapels, centers and other types of religious facilities, from data sources including; county specific religious locations, and SuperPages religious address locations, etc. This dataset contains fields denoting the location, and other information for religious facilities located in Florida. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of religious facilities. Religious Center locations that have been verified are marked with the letter V in the FLAG field.",
+    "longName": "Religious Centers (Points)",
+    "type": "feature",
+    "layerName": "GC_RELIGION",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "cee618eefd8e50dff29bb23b15aa5a3b",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAWNJREFUOI3d0a9LQ2EUxvHvPfduMu6KcgXBPLTYRBAEk4wxZNisChoE0bmVKWbLhGHSIAaH/8AQFC1WjQaDmEQEuWu+Krqda1kYiHe/TD7xPed8eOB1+OM43R7mveREzY9WS1Qeegazw5kxnj4LNqrrzKyXuHjsCZQnXa3zumgTH7Tc6AqGQk+ghUaE+FGARGy4bZ61BebIuJarU0VTOW90jACZxrgzMO8lJ4L3WjkwJHJuemfXnG6F7f8K7oDz4s5uB75u4nIPXGEoZEmP1lGkEzBHasRHymJ0HEANJ4GnZ7YvNwJzHTXMkloGKQExwAAfNvr2hfMFWgWxQAfaBgXZA/oALCRfpLIPgA+At0Z6yIHntsHmBK5u5Ex63kIOA2rXIAdANOwm/JcNCSBRRy8DjzvbZzp0vyXYRf4JKDCp704/aOeghSzVUfvHplEUFn68x/QWEwIWqRy3rNEcv0XDXvMNLUVwRP7LWtEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 972,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/18",
+    "name": "Public and Private Schools (Points)",
+    "description": "This dataset contains 2017 Private and Public School Information for the State of Florida. It is a combination of schools and educational facility addresses from various sources, including the Florida Department of Education, the U.S. Department of Education National Center for Education Statistics, and other sources listed below. The data contains selected fields denoting the physical address, school number, district, and contact information for schools located in Florida. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of schools. School locations that have been verified are marked with the letter V in the FLAG field.",
+    "longName": "Public and Private Schools (Points)",
+    "type": "feature",
+    "layerName": "GC_SCHOOLS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "fb8dfd23ef54bbbb9314bc16a7fa5ac7",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAAB8AAAAUCAYAAAB1aeb6AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAn9JREFUSIntlUtIlFEUx38T36gzx9ExddTGMB+YNU2ZqCVpZEGbsCihghYRgdCyglbRvk20dNE+qUWQ0EpkhMQoUfOVmY6vRFHRaeLOU2daXJ1Z9FjFuPFs/t8995zzu/ec7+Mz2EUz9uC7Bp/voCiGMzsVwDhp0YB/ZtbVxpbx7aU87R1Xj9b9vlSwMRtQU8mUt4NaY8yr7kc2heaalLAJhOB1NxX3rnHJCAQxF+eDNQMmF2DUq2g8LjhyIBoFzxDE49B8Er4uKMqdgiUd+kYUDW5h3Q/d/QqnA067BJMJBicVU9+h6YRQmAsfxxT1LgE0JxQGyLMmXrhAEDrfK25dFGaXFI4c4V0fVJXA5pZiZUMYnwFnvsKSLngGoMENHV2K6+eFgUmYWgR7JnyehqtN8KJT8fCm0DsM9a7fu5CAmw3wB4SJeaip1L6JOcWVswJIIqFvRMi0JgsEw5Bnh2NlunOhsKLuMGRnCsUOhQr9fQRJuBke34bZZXj+Snhy588JhbkKmyQPE4lojcdhnwlMJghval8sBqa/s5PwNR/0DCoaq4XodnKZE6YXIRKF3O0PsfQA5NiSBQr2w+Iq9E9AdQVkCbzpAWc+zC+D1QIxYOOnAsBmTR48Ac+z6/n2DivaLuuAljOCZ0jfqMIJ7nIhI03HX6jV2toMnkE4WKAoKdIjqncpPozC3RZdp9ENn77o57oqlYTbbRIc9WLJSAO7TTh1VG8srmp1l2ld8elbrfv12umQ7RihtkrrTk6OTfvCUV2nuEAoZqeOYM9SEF/zGUcOWR5A8NnckrL8Yzz/zcwGsdZz0qV+qLdG6Y21dqA9FeCk6dbv/o9lD55q+wXzAdOeJXayXgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 31
+      }
+    ]
+  },
+  {
+    "id": 973,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/19",
+    "name": "Social Services (Geocoded)",
+    "description": "This dataset contains 2016 Social Services Information for the State of Florida. It contains information for a variety of organizations that may provide tangible assistance or work in the advocacy realm. Address information was derived from a variety of online data sources including state and private webpages. The various categories of social services in this dataset include adoption, children's services, orphanages, job training, natural disaster, paratransit, access/benefits eligibility, food assistance, homeless services, housing assistance, legal services, handicapped and protective services. This dataset contains fields denoting the physical address as well as contact information for social services facilities located in Florida. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of social services facilities in Florida. Note - see \"Data Lineage Summary\" section for information about Social Services data that may be present in other layers.",
+    "longName": "Social Services (Geocoded)",
+    "type": "feature",
+    "layerName": "GC_SOCIALSERVICE",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "09b31efbc93dbc5ceacc9b5962ee3464",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAATtJREFUOI3t1DFIQkEcx/Hvu3th4hYRkVNLQkPtQUOBQ0PapgQOBTWEgzQotrQEkhAEQUtDREvimPDKt9fWXHtLoA7BQ0V915A0lM93QUNBP7jlD/fh9x/uTH445j/4kf1kMhgy69uKXhxXhnGpAdURnJPdq7vGt8Cj1OJ0V9Ut5RIB+T4UzAALHULpYiIay5bsey3weItA2xmtABGPEuNKUikkovP5kv3sC7ad5U1g1mulfsaEFHvAji+okDHDRwMwcNe0QAPCGh4KJm0QUXCHgoheDVfqmI3P2GAQqsCSb0MhbgbNv4CBoDxtO6QZvnpLSQ60wMyZ/XqYWonR6VoIJgbcaRqI9fzF7aMWCJC7tB6KG6tzqtnKI4gDUwbUXajSMQu5svXkVd3z6WXPr1+ATP9o5w//Nr8GfAOab1iXUWvU4wAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 974,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer/20",
+    "name": "Veteran Organizations and Facilities (Points)",
+    "description": "This dataset contains 2013 Veteran Organizations and Facilities Information for the State of Florida. Veteran facility addresses were obtained from various online directories. This dataset contains fields denoting the physical address, and contact information for veteran facilities located in Florida. This data is meant to be used for planning purposes only and is not intended to represent a 100% inventory of Veterans facilities. Veterans facility locations that have been verified are marked with the letter V in the FLAG field.",
+    "longName": "Veteran Organizations and Facilities (Points)",
+    "type": "feature",
+    "layerName": "GC_VETERANS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "58cb6a4af1cf2e778b872108d0235767",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAQlJREFUOI3t0z9LAzEYgPHnPQoi2UoRe28XFwUH3d38AldnRwcH6dBVZ6EfQPCTFCr9Am7Oul8ownmDEMx0cah/wPa8VNz0GV+SH0kgLX651j/4UZ6zniScAn0wCq4AplXFVa9HuRJoLVsiZgJuZz5xANvAQZIwsNZkqu42CixL1rw3409soY6IG1vLvip5I+g9J+B26670VluEC+CsEQSyBuy9o1hQI8HNEEhEqJrAIhIsv2J14BQ4jABvlg0XwBC4FmHA91f3IlxGgao8z2adLIRiAmws2fMSAsdpyn0UCNDtFnfWsidizsH1gRR4Yv4cI1Ue6o5e+/VUeQQ3BIZ1a1YCf9ofBF8BDWtGpaXGERwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1003,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Year_Built/MapServer/2",
+    "name": "Fifty Year Mark",
+    "description": "This dataset contains parcels dissolved by the decade of the actual year built for each respective parcel polygon within the State of Florida. Actual Year Built for each parcel polygon represents the original year that the structure / building on the property was built. Effective Year Built represents the last date which the structure / building was updated / renovated, etc.",
+    "longName": "Fifty Year Mark",
+    "type": "feature",
+    "layerName": "YB_DECADES",
+    "minScale": 50000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Pre 1970",
+        "url": "d67138d0cf3a2100e3234ff0c95fcf2f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAERJREFUOI3t1CESAEAEhWFmXJfDeAfeTYKwhdX8UfiGQuhzMgaq6uliADht6I4yZqZENHnyggsuuOATjBdUCQAnMAbdLrenDA7ExpuwAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Post 1980",
+        "url": "954636d587bcaa9c438d48d1e92025f5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI3t1KENADAIRFFIWPc6TG/gViEQNVAcXyJewGDyOWsDAZwqRlLDhtxMY1gQkc6TBxxwwAGfoL+gTCQ1gD6odgG3TgwNo63s2AAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1970 - 1979",
+        "url": "10a19cc379644543d0af4c7fc645e137",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI3t1KENADAIRFFIWPc6TG/gViEQNVAcXyJewGDyOWsDAZwqRlLDhptMYwsQkc6TBxxwwAGfoL+gTCQ1gD6odgG3TwwNumdgJgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Parcels w/ no values",
+        "url": "4cf6c6123917b848cf559b764bb182cd",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC60tbUl27DDhw8zMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAD7UNDoICne8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1004,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Year_Built/MapServer/3",
+    "name": "Year Built by Decade",
+    "description": "This dataset contains parcels dissolved by the decade of the actual year built for each respective parcel polygon within the State of Florida. Actual Year Built for each parcel polygon represents the original year that the structure / building on the property was built. Effective Year Built represents the last date which the structure / building was updated / renovated, etc.",
+    "longName": "Year Built by Decade",
+    "type": "feature",
+    "layerName": "YB_DECADES",
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "1860 - 1869",
+        "url": "d391669d02d9be909930040f8991c9aa",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf8ZGP5TYhAjAwMjioHUAqMGjho4auCogXQ2EFaeUc1AagEAYH8CU17tvfIAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1870 - 1879",
+        "url": "66c4accacc362982c82f9fd990634a56",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6ctHMy2YbluecyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAqj8L5z4xTf4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1880 - 1889",
+        "url": "3518f8a555666353c0dd1f2741daceda",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6cdGcy2YblqeQyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAnjcLxGlZi08AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1890 - 1899",
+        "url": "c138ae3d93e84fc55ffbed10b67577bb",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI3t1CESACAIRFFwuC4exr2vmggEC0jjR8IbKAh9TspAVT1ZDAC7DddAGJtbiajy5AYbbLDBJ2gvKBIAdqANsl3pJwyein99rQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1900 - 1909",
+        "url": "30549c1c9a3c6e84f72b11ea71e486d4",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6cpDKZbMPy7uQyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAA3XcMfNJZTUYAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1910 - 1919",
+        "url": "1fc04130a3674d1072299bb2dc922019",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6c5DWZbMPytuUyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAA0GcMVrYoKpoAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1920 - 1929",
+        "url": "e6b2de151b1141d223b72acac638a64a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6cVDCZbMPyJuQyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAw1cMMH2tjDEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1930 - 1939",
+        "url": "d67138d0cf3a2100e3234ff0c95fcf2f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAERJREFUOI3t1CESAEAEhWFmXJfDeAfeTYKwhdX8UfiGQuhzMgaq6uliADht6I4yZqZENHnyggsuuOATjBdUCQAnMAbdLrenDA7ExpuwAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1940 - 1949",
+        "url": "c589762b74bfb3a8ce46b43084791203",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC4sbJ1MtmH91bkMDAy09PKogaMGjho4aiBOA2FFEDlg8uTJjCgGwgQoBQDHmAw86wu7BwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1950 - 1959",
+        "url": "b376a49aa400c370ec0647ba722da6a5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC70q5xMtmGb2nMZGBho6eVRA0cNHDVw1ECcBsKKIHLA5MmTGVEMhAlQCgDX4wxrBct3PAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1960 - 1969",
+        "url": "d08326330e71f22120cb34ed16ef6334",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC7Uy5lMtmGXpuQyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAA53sMmM1fkJAAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1970 - 1979",
+        "url": "335d1998146a7ce5e87b3e70b3b28244",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC4UjJ9MtmHvF+YyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAA9ggMwhFrJBIAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1980 - 1989",
+        "url": "b9f1454605ff4f2851cbe5cb76504598",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC78FTSZbMPY1uUyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAqX8L5vk05n4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1990 - 1999",
+        "url": "6ffb23ca53aa3bddb6579957df8752f5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC584DaZbMMUduUyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAtqkMDLraH3MAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2000 - 2009",
+        "url": "15f36772c27dd77b8e0610e34a0a30c8",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC48bT2ZbMNMj+YyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAwb4MLCM/5BQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2010 - 2019",
+        "url": "e73902f08334b6de034b0346dfcd03bd",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC5cLj+ZbMMiH+YyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAA1+IMbLzemgAAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1005,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Topo/MapServer/0",
+    "name": "5 ft. Contours",
+    "description": "This shapefile contains countywide 5-foot contour lines . This coverage does not include a 0-foot elevation.",
+    "longName": "5 ft. Contours",
+    "type": "feature",
+    "layerName": "TOPO5",
+    "minScale": 50000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "b90416f9666cc15102f2b95809252787",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYBk1cNTAYWvg5IaY/9QwLLdhCSMLjEENAxkYhkwYjho4zA0EAJ0oBePk87YJAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1006,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Topo/MapServer/1",
+    "name": "2 ft. Contours (MERRICK)",
+    "description": "LiDAR generated 2-foot contours for the Herbert Hoover Dike project.",
+    "longName": "2 ft. Contours (MERRICK)",
+    "type": "feature",
+    "layerName": "TOPO2FT_MERRICK",
+    "minScale": 24000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "b90416f9666cc15102f2b95809252787",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYBk1cNTAYWvg5IaY/9QwLLdhCSMLjEENAxkYhkwYjho4zA0EAJ0oBePk87YJAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1007,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Topo/MapServer/2",
+    "name": "2 ft. Contours (CH2M_HILL)",
+    "description": "This is a line dataset of elevation contours within the State of Florida Division of Emergency Management LiDAR Project Survey. This data was produced for Florida Division of Emergency Management. The contours represent an interval of two feet and are certified to meet or exceed National Map Accuracy Standards except those found within low confidence areas. The State of Florida Division of Emergency Management LiDAR Project Survey was collected under the guidance of a Professional Mapper/Surveyor.",
+    "longName": "2 ft. Contours (CH2M_HILL)",
+    "type": "feature",
+    "layerName": "TOPO2FT_CH2MHILL",
+    "minScale": 24000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "b90416f9666cc15102f2b95809252787",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYBk1cNTAYWvg5IaY/9QwLLdhCSMLjEENAxkYhkwYjho4zA0EAJ0oBePk87YJAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1008,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SWFWMD_Permits/MapServer/4",
+    "name": "SWFWMD Environmental Resource Permit Areas",
+    "description": "Environmental Resource Permit Project Activity Areas (PAA) and Total Land Areas (TLA) when PAA is not available. The PAA boundary is created by the District Reviewer staff to aid in locating the general vicinity of the project area. The TLA boundary is create by REG GIS staff using proof of legal control documents to aid in identifying permit associations. The areas of project activity and total land represented in this Geographic Information System are drawn for the sole use of the Southwest Florida Water Management District (\"District\"). These drawings and the data they contain are not legal documents, do not comprise the legal definition of the \"project area\" as referenced in 40D-4.021, F.A.C., and are not intended to represent or be used as such. To view the legal project area as submitted by the applicant or permittee, and as approved by the District, please contact the District office to which the project area information was submitted. This service is for the Open Data Download application for the Southwest Florida Water Management District.",
+    "longName": "SWFWMD Environmental Resource Permit Areas",
+    "type": "feature",
+    "layerName": "SW_ERP",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "1726b2da796ddd85859579ec6e38896f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jYaAyYKGZgSIiIi8oMejNmzenGRgYfFFcqKOjc5pcAw8cOMDAwEBLL48aOGrgqIGjBmI18M2bN6dhRRCZwBfFQJgApQAAX44PSTYF638AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1009,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SWFWMD_Permits/MapServer/5",
+    "name": "SWFWMD Dredge and Fill Permits",
+    "description": "Environmental Resource Permit (ERP) Dredge and Fill permit boundaries. The Records and Data Department maintain this layer.",
+    "longName": "SWFWMD Dredge and Fill Permits",
+    "type": "feature",
+    "layerName": "SW_DREDGE",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "de746e93af43b87894aa445bbd61be62",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgcHxpS8oMWjtwu7TDAwMviguDIrLP02BgQwMDLT08qiBowaOGjhqIFYD1y7sPg0rgsgEvigGwgQoBQAAkg4r7oy77AAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1020,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Community/MapServer/1",
+    "name": "Front Porch Communities",
+    "description": "This dataset contains the locations of Front Porch Communities. Front Porch Communities are neighborhoods, usually diverse and with a history of involvement in community-based efforts, that are eligible for and receive priority consideration for special community revitalization funds and grants from state, federal, and other sources.",
+    "longName": "Front Porch Communities",
+    "type": "feature",
+    "layerName": "FRONT_PORCH",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "f5d1e43ddabaa8dec71e1b945ff407fd",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgRYrGP5TatiJCAZGFnQBZAuQ+cgAmxzMQbTz8qiBowaOGjhqIE4D0ctEfGUkuhysOGNBF6AUAAAPQRQwlfxcMQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1021,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Community/MapServer/2",
+    "name": "HUD Enterprise Zones",
+    "description": "Introduced in 1993, the Empowerment Zone (EZ), Enterprise Community (EC), and Renewal Community (RC) Initiatives sought to reduce unemployment and generate economic growth through the designation of Federal tax incentives and award of grants to distressed communities. Local, Tribal, and State governments interested in participating in this program were required to present comprehensive plans that included the following principles: Strategic Visions for Change, Community-Based Partnerships, Economic Opportunities, and Sustainable Community Development. Communities selected to participate in this program embraced these principles and led projects that promoted economic development in their distressed communities. The EZ/EC initiative was implemented in the form of three competitions authorized by Congress in 1994 (round I), 1998 (round II), and 2001 (round III). The EC designation expired in 2004 and EZ and RC designations generally expired at the end of 2009. However, the Tax Relief, Unemployment Insurance Reauthorization, and Job Creation Act of 2010, Pub. L. No. 111-312 extended the Empowerment Zone and DC Enterprise Zone designations to December 31, 2011. Following the end of the first EZ designation extension on December 31, 2011, the American Taxpayer Relief Act (ATRA) of 2012, signed into law by President Obama on January 2, 2013, provided for an extension of the Empowerment Zone designations for Empowerment Zone Tax Credit purposes only until December 31, 2013. The ATRA of 2012 did not extend the designation of the DC Enterprise Zone. The third retroactive extension of the Empowerment Zone designation, for the purpose claiming EZ tax credits only, was the Tax Increase Prevention Act of 2014 (TIPA 2014). TIPA 2014 was signed into law by President Obama on December 19, 2014 and extended the EZ designation for the purpose of businesses and entities claiming EZ tax incentives until December 31, 2014. TIPA 2014 did not extend the designation of the DC Enterprise Zone.",
+    "longName": "HUD Enterprise Zones",
+    "type": "feature",
+    "layerName": "HUD_RCEZEC",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "91cf75443f22c82b32eae1c810d34337",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHVJREFUOI3t1DEOwCAIBdBv4iE9DKOH8ZZ2slGxBQLdyqbBJ8MPGcGVAaChdi9UQOkGI6qh9gJKCzh+2ZskaD4/TqjFCijN6BG0YPs9Az0YA70YA70YA72YGtRiKtCCieAfbFXPt8EeD95AqSdsHy4L1pIzqS6HfFinnGhqKgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1022,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Community/MapServer/3",
+    "name": "Waterfronts Florida Program Designated Communities",
+    "description": "This dataset contains areas representing the Waterfronts Florida Program. This program offers help to all coastal local governments in Florida to revitalize their working waterfronts by providing resources for planning. In addition, the Program designates selected communities to receive technical and limited financial assistance through the Waterfronts Florida Partnership Program.",
+    "longName": "Waterfronts Florida Program Designated Communities",
+    "type": "feature",
+    "layerName": "WATERFRONTS",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "fec7a85a16bef0054259c806bbc72e7d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC4MNcwi27DV56cxMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAA/CMM1daJTYUAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1023,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Community/MapServer/4",
+    "name": "Areas of Critical State Concern",
+    "description": "This data represents the state of Florida's areas of critical state concern. The Areas of Critical State Concern Program protects resources and public facilities of major statewide significance. Locations include: City of Apalachicola, City of Key West and the Florida Keys, The Green Swamp, and The Big Cypress Swamp.",
+    "longName": "Areas of Critical State Concern",
+    "type": "feature",
+    "layerName": "DCA_ACSC",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "bebadaed907cc156f17b78fada301a13",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC7MMjQk27Bp588zMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAACEQM+RSu/10AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1024,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Community/MapServer/5",
+    "name": "Zillow Neighborhoods",
+    "description": "This dataset contains neighborhood boundaries for available cities in Florida. This work is licensed under a Creative Commons Attribution-Share Alike 3.0 License.",
+    "longName": "Zillow Neighborhoods",
+    "type": "feature",
+    "layerName": "ZILLOW_NGHBRHD",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2571bae240daa1ede21073a146237603",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIZJREFUOI3NlMsNwCAMQ43ESN5/Au9EL61kNYEe+KjvFDlgIhKlYjHV4mZxGWhOyNfkECQ1ACAZNMfzoUJJmXH2Xpp/zNMKZ1hieFfXAJRtFTaSn3/WQxJI9rs8wzbDks3ZjOEy/tnlI3M41ZQzc/haVV3NGa6v18GwYE1zwje5YXYh04b5C0Y4NO5KtsfkAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1281,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Species_Occurrence/MapServer/0",
+    "name": "Caracara Observations",
+    "description": "This data set shows the locations where crested caracaras were observed in Florida from 1992-2009. The occurrence points include nests and observation locations. The crested caracara (Polyborus plancus audubonii) is a resident, diurnal, and non-migratory species that occurs in Florida as well as the southwestern U.S. and Central America. Only the Florida population, which is isolated from the remainder of the species, is listed as threatened under the Endangered Species Act. This large long-lived raptor breeds from September through June with the primary season being November through April. Caracaras prefer to nest in cabbage palms (Sabal palmetto) surrounded by open habitats with low ground cover and low density of tall or shrubby vegetation in Florida.",
+    "longName": "Caracara Observations",
+    "type": "feature",
+    "layerName": "CARACARA_OBS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "13f42575fc8287a69405038438a4039e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAYCAYAAAAPtVbGAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAABJJJREFUSImN1muMXGUZwPHfOXNmd3aH7XYv3a1sLwFLu2krCpZGmtIFgxgBayAx6qca4oUEJTFp/GCqtTGCxhijUWgwEmvkYgKJH6hA+IJcJHTFtgG2u6hU3Ivtstu9zs7szsw5fjhDp023tE9ycvI+z/M+/+fy5j0nUpPkCWtk8t8Qdm0XNHXQ2ESUIxNRDZFBRCUjqUbisWZBS1W4ch7zRBWBkqQwIR4fl0xM4pg2j0aQPOkjwp7jjLaLT5L/Mq3Xk1+TMoIMlUUqBcoFyrNUi2Rbsxpac8Sd4gpJlfIMs29RfDrNfmbzxgiE+XsZbde9n0/cy4rVLkvm32fuNKVZluZJYtbfSFMrxWme7SP38dtTSMOOz4na2fE9ooZLB1+Ypv8XzB1n9Z20b6Q8z4lv0n00hTStpOfrTB0v1irJdVh71+UBpoZ5fT9bv0XPfoKQ2dO88jC7XqZtTd23ZT1T/whTSGblOOHVlwScGuDIXnb9lpU9SPjvEQYO8qmf0r7ufP8wQ1xuSCFBOKcwUjfGFQYPMzdM58dY0cPEO/zrIXY+XANg8Dn+fYibHyLffmFSQYRKLqotE9XFunHoeebHWLuLyXcYfYmWq7j1j2mvoVpm6Jds/9nygLOVVBtrkDgvjOrGoQfo3UfXJq68dvkAI2/QsJrVW5a3I425VGuXpEl0Rd3Y9wTDr3H4C2x7kJ7rzt9cLvLmT2jbkQ7+opAMcakGSSp5DSvqxrZ16bM4w+njF0IyWXrv5+hu3r+bVRsuXkm8mE0hcXGFxnMgEgafZ2aQvh8vv3nDp2l8kWO/ou9BGvIX+gUZklImhVQX8rLNdePRxxh/hVt+Traprj81wMAfuOWBtE1rtzE7wjPbab+b7htZtSntQiZby3chqEEmcjK5VFmY5D+/4bZn6tktTHHiz7x7T7p+tZW2zVzRTc8NbHg9vWKG/0b/AcJmPnuQICAp1Y5UMh0JgzTA4jydd5LvSNejx+i/jy0H+PwsC2fSwc/9j6FDzBxk1wm6e+m4it7dHN52TsuiJEoIxCdD1UqqLC+QW1V3Gn6JrT9KZwC5lvTd3cvVN3F0O3//AbcdSls7e4r8znMGk48jL8iYqg0TFudo7qoBS4z9ni3PXjhUtT3X76F/iSO/5to9vPU71tzxQRmE+WoUfEYleXrzokAj0is6qh2Cd/9K5120dC8PIT0An7yHl3/Ic9107KX3jrr97EwyXdOWCmmk0hlarqQwwdvf5aanLg74QDJZdu7nzB7a1xM1ni1EslCDxIV/mhzocs2tgdIkzZ28+n02HWDVNZeGkH4mujaer6ssEbRWUki5/y9GxnZY+lqgNM6bj7DufjbvvjzAxWT2PcJsoVaJRwXT+7zxSNHWr3aYupmP9n34vfRhUi3z3msMfTuh+HYEwVecTv5U2GPkO48Z2RfL3lAy2JEIm2JhA8KAaiiphJJqIC6TLNWeYiAukSygEoqLgeRkKJ3IFJ17z97vwZc8lTzZMyQcvU/5xeuUdUh/g7LIoRENNd2CRFlgifwMhRnMIsESxnBE4PHgixPz/wcViZE77Gg1SwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 24,
+        "width": 25
+      }
+    ]
+  },
+  {
+    "id": 1288,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Species_Occurrence/MapServer/7",
+    "name": "FWC Wildlife Observations",
+    "description": "This point shapefile consists of the locations of species detected for the Florida Fish and Wildlife Conservation Commission (FWC) Wildlife Occurrence (WildObs) database in Florida. This spatial database contains attributes of wildlife observations that are the most commonly used by biologists. WildObs maintains records of species distributions throughout the state in a database with a standardized format for recording and managing incidental, casual, or short-term systematic observations of wildlife. This database is a repository for data from planned surveys, contracted projects, and casual observations. Designed to be useful to biologists, particularly those with the Nongame Wildlife Program, WildObs maintains species lists and assists biologists in monitoring wildlife populations in protected or managed areas. In particular, the attributes associated with this spatial dataset were selected from the WildObs database as the most commonly used characteristics for biologists.",
+    "longName": "FWC Wildlife Observations",
+    "type": "feature",
+    "layerName": "WILDOBS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "a6118c15869c9a57cb53ba8e13131ecc",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAZlJREFUOI2t1D2LE1EUxvH/yQTiTVCyMgpqo6B5Ib3CFlraaCGKgh/AxsYuylZqY0ArP8BWarNgoxvERrAVrCYTYmFA08gQC7kZR5KcLaJkJmbMJvGBae7c+d1nuHCy/OdkF21QjyNkCqfBFsH9xjhoSY1waVB9LiFuHdgEMmAmLxx3oG1eIbkHUu55C0H1MDjuNnAj5aw8cB2NrqpfqEvVPkkF1cPBOfESootpzWNxEPNYffJStQ/nN3QK9X1i04i5rz7vpWrfJUD1OAzm7lLYbxIxDbDnkg0z7hXg4AogwFntnDojpc+fpqBwfkVskvGPC0AMVI4h64jhcYj/suR+QbSOGCVBou46GhS7YONg0AT39orakFHvLcQbHuANP+kApRXAF1KjnwDlJEP1gzuI+xqWup4+HN2CgGRDQKo0tR3eA/Non9gAwmtSaX35s/DXcJCKbWi7+BWip8DGP7A2cFMq9mN8ce74kkrvmXbYZVy4BeYyUAYOQRgAH1Czwzh4LjVGs9+mzkMp8R1sY/LMxqbWXjixl80elr51wvuuNSsAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1289,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Species_Occurrence/MapServer/8",
+    "name": "Florida Invasive Plants",
+    "description": null,
+    "longName": "Florida Invasive Plants",
+    "type": "feature",
+    "layerName": "FNAIIP",
+    "minScale": 750000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "9b3278b8c37eaea359a43fc27740e442",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAABMdJREFUOI19lW1MU1cYx3+399629NKWVwELBXGADhVfmHNOhxhXdWQzy2JEIx+2SJbFfXBz2bJsH4zLZjaDLmZfjIuLmVt0y2bI4kt8w8l8mxoUHMHJi4AChSK05dLetvd2H5ApSvx/PCfP7+T8n/9zjsQztK3+rdxgb7ha02IlAkaazW4OJKba7pit4hlJDp3cOrdWnaxOmmyxatfiilF/dE/rxd78pEyFhEQzJgnCIzH6O/s80bC+eWpBcnjntXU1suz4ZkvJvsCzoObV7885IpvFlaWrc0RREiZsRkJRpuQ5kM0ive1D1oaTnZ/NeNlVVXNtQ8XW0p9vTQZNWrqx8FTpG9NL7SmWCbDBe0FarvRQu6OB6r3LwNBRnDZmLcuhsa7bXVCadbnm2oZF4+BxqDSvwnX41erZc62KPAHobfdz/qcWZAU2fbcMm92CqzCZSFhHkkXmefJoOHlXeX6J6+i3N6tnbynZFxiDKnzkqZ6ba1VkaRyUke9kNKhx/UQbRYuzUP0hUrIVRMk05pNVBEAA5pTn0Hiu273AI30MfC4BKYtem1aWmm0vAggOhtB1A4CuJh+eTSVcPdrKi2sKab3eQ+FC11ONlcwiGXlOBrpHt9bcWLNDAtYtrZwRBojHoeufAYpfcRMeiWJPsSKZRYqXuBFMAq6itKeA45pakEzT2S5rarbbIwHz0t2OIoDhPhV3cQYAQ94RUnMcADjSE+ho7Ofm6Q4qNpciW8SnoIIAggR6VC+XgAiCMBUg4FNxz5oCwMiQRlZ+MgCqXyMWNSguy8XQDUBEU6MEh8LYnGZs9rG0OFKtjAyNTpeAOGABMEkiwsNoiqaHXQDutwxRsDCT0YBGPA5nDjTS3+5HHdJY/vYsFGcCGflOEhItaCOGQ1IUJQLxPhDyJvMqqulYHTKCAPG4wan9N8iblUU0EmPVe/Pxtg2TP88JgB4zwMSApKqqDGITGHmGrhMJRTEnPMpqb/swmdOSiEV0vO1+yjfOpafVR9GibGwOM8+9kEk8PuZpKKDhyEhokBRFiehR/ZgoC6+nupwMdAVwFaUiPMxjTItitop0NPXjLk5HtoikZydhSzIjyRKPj3LgQZjc+Rk/SKqq1v2y/S/n+i+W+hKTLWmdt3y4isBqk4mEokgWmbgRJ6oayBaRga4gtbuvALBp94oJNukx7nxaevieBBxvOH5/X+U2tgsiexKTZTQ1iiPNhn8gDMDg/RHSc+0EB0M0X+ym6qsy6g42TfC+7XqfnpJhfRfGZt9QFOXH7cv/WLHtzzW/5sxMX9v6t5eCRZn0tA2hOCw86AuQX5LJ9RN3Wbp2JiZRoHhJ7qNr+0J4uwd/P7qzuW4ciqqq54AFX79z8sQn+z1kFjjXdjcPMuxVGe5VGQ1q+L1h0rIVBNOYhzkzUwEYDWr6xSN3Lp3d21w5fsjjT1+Nr9H34bay2ttvbi850Hi6syor32mSEiRMokhY1Wiu99F8qYeX1hSQlm3H2+H/98KhlluXf+vYCBiTQQF2Aa8c3Hrxg2mL07ZUri/WJau8CvTZIGQCmqHHe29f6h6sO9AcvlrfcQgf3z+Z7ae+E1VVzwP1/TdD5V+uPOZRVfWuoiitY3n+XxeAWiD0ZD3Afzy24js8IIwBAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 21,
+        "width": 21
+      }
+    ]
+  },
+  {
+    "id": 1290,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Species_Occurrence/MapServer/9",
+    "name": "Florida Scrub-Jay Observations",
+    "description": "This dataset plots the locations of all Florida Scrub-Jays in 1992-1993 including the size (numbers) of individual families wherever possible. Participants in this project revisited known Florida Scrub-Jay localities to determine their current status; searched new, previously unsurveyed scrub patches for the presence of Florida Scrub-Jays; and compiled and attempted to confirm all existing information on recent Florida Scrub-Jay localities. Information was compiled from reliable , published or unpublished Florida Scrub-Jay surveys.",
+    "longName": "Florida Scrub-Jay Observations",
+    "type": "feature",
+    "layerName": "SCRUBJAY",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "36e5d73ac59326f1789ffe854c67501d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAYCAYAAAAPtVbGAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAABUNJREFUSImNlmuMVOUZx3/vuc2Zndmd2ZlhR9gVqiLXYgMKCVhYJTW21dBoYrSfaExbTbwkTUg/NFQkTb2kaZo2VYmNRppabUKTJvVS0y+Kt7pEVwzCgm0J7o1d9jKXM3NmzuV9+mF2d6AsyPPxPJf/8/yfy3kt5uWV0b6UqX7cA1uSBvmEImmhXBOsGAzABKxIxIzBGtN0dEKcNZQHeJYiAho1kalJzeQUTCN8Si540QLg1fGlvYYcHRVyp4H7XINNWZu+lIllgKkUzVioRZpaKFRCwY+EjKPsjGO4WihEIsQayqHmWDXmr3UNwLpSYpUFkFLy4KiQ21e0eXBjhqu6bK5EznkRE9WISiPGCwQtwtYVHWSSJiU/pv+NSb6RNL5rAWxLGN/JmfCzm/M4lvrK4KV6zG8GZjlajblzqcOqnIMXah44UWOw6JJJmmSTJj/qczk6G/oWgKvI37XcvSKA4dmAff8q8fCGNPt6OzAUTFRCnnt3hnd3dNPX3WZhRafJJ7OhYQFkLTVpwLVfBXD8bIM9H5X5Q3+O3qyNAANf1jnwucfTW7tZnnMusDeVItQ4FoChqI548YIy0sLrJ6oMezEbCg69XRanpgKe/aLOc9u76c22sv3HUJWD/67z7K15cinroqQsQxEJbksjSFPLgvKtkx5jXsyOq11OTYccHm1wTafJn24rkE2aAISx8NuTNX61ObMoAIBpQCySsAA0pCzV7scTQzX2rk2xusflhmXJRQN8PFLnKttg/dLF9fOVBPN0CSTTdhvklf4cH474fO/1CZ68McPGvgsD+aHmqc88tnVbGJeZFVNBQ6QFEgmpLsdYUC7POSzPOZQbmqMTzYtAbFPx6NoUuwar3H2uycolicUrMaGpsS0AX0vX+SACvDVUZagS8cv+/KI07FyZ5u2Ewe8GKzx5S57Uef7tShQNwbQA6lpSHefR9fJgifcmAn69s0DSbjsfP9vgj8c9nri1gKHgpqs7GClHbPn7BHfnbbYWE6wutFiwzVa8OigLYCrGdecWcboW8czpBq/dXljIbrYe87cTVe7/jw9A5r1p1uVsimmTzX1JPro+zTkv4oNhn/1HynQYcODbPSgFDS2tZSxpWRgur6m5s2CTnxvLT0d9Hhoos//raSq7epipx/ihZrwacXCoxoFyhRP93awpulyTd9i1Juam1ybb1CrEAlGn9bgRtY4m9VCzxG1TdHjY5xcb0uxcmQag023tyZoibL82xZbBMo8dKXPwdoekbXC2EvHNlLngn1JKW/zzjMmMgzUXt9rU9HS0jBqh5qWxgDfXd17U1PkB2L0pS3Bklt8PlNh9QycvHKtyR58LgAJSitjitq9F6w6NN4EEQMnXdMw1+53/1rirYFPsvPTpNxTcf2OWxw9PU3xzij15izvWtpNqCK2e9JiUaoEUAWb8mGVdFlNexE+PeRzakbskwLzYpmLf9jy7ZwJWdDskzrvmdeZAapovjs8EPd8CNd3UFGLh5+/PsH91iusvsWj/L46lWNVzoW0QCxlFZAEcieSNseHmth9u0mrSj3n+swaPrkiya33XFQFcSs6UI2xFrTWnWl4smWrv8x+X/B9s6MrfMhvQf136snfpchLGwodn6jxyqi4+fN4C+X7vRO0vY7t/Mtx8ee9IU2+2VCM/VJOkobSjwFCoWDAiwYgFFYoQaAgEfBHVEKgLRCKGr1GnBYPWcM0WlOxp/wjuXXao99Xxk6OiH3o7ZCOh5Gk9g2zABUmAcua+1YEQCFJQrkEZqACCIgDGgAEM+89T9yzx/gdYziY+L0yotwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 24,
+        "width": 25
+      }
+    ]
+  },
+  {
+    "id": 1291,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Species_Occurrence/MapServer/10",
+    "name": "Florida Species Observations",
+    "description": "This dataset contains point locations of plant and/or animal species. The UF GeoPlan Center compiled this dataset from various sources. This dataset is intended for use in the FDOT's Efficient Transportation Decision Making Process (ETDM) Process.",
+    "longName": "Florida Species Observations",
+    "type": "feature",
+    "layerName": "SPECIES_OBS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "0b2169a9cee9e672bba82c306b7f5d42",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAaNJREFUOI2t1L9Lm0Ecx/H3XYJgHoym6ODzhOJgdeiuILQd5eGpQ6i0xT/ApUu3VJy0SwN18g/oVO1QcLDxQbIIgU5Cp5Sii9Q8D0VCMoRTjPF5HPyVR/KQX/3ADXfcve6O475R/nOirSak/jFSv9TGPaGGPH/4ZNAv/f6W5Kxj0HR4KSFd85hBKAkgRYmq4NRy+dGHsbqlO4WW4Nsi/VXJF+BNyF4x4HUN55XpkrZ11sLBApGqZAuYDTt5QyISPpsuMVvnY1PQSpBuE7uLhBXT1fK2rvYC4EyRR8CHTrCbiCgqA0wHwIQgBQx0AeLBlOXwJGtweH9lwfNusAb0BTSCMNoLiECH4KPUevGkz/lD8KgXEHG9/g70fGwpeNclV6945AKgfcGu1acdgJroVPN8Nn8mKQdAxqjjqvdAFhDtYhLKNcHybT/wU7I6tuWwhOBTm95p3dfmc4Y6bgoCZA0ypktRwjqQCLe0P9C/YBulX42jTcuXrfP12V924hEWEcwBkxLiHpQk7APftytqg6fq8uHa0HqYf0wFyNy0ttOyYneaKzD6dloLg/HOAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1292,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Species_Occurrence/MapServer/11",
+    "name": "Panama City Crayfish",
+    "description": "This data set represents locations where Panama City crayfish (Procambarus econfinae) were observed during field surveys from 1999 through 2012. The Keppner's field surveys on St. Joe lands from April 2003 through June 2004 are included in this shapefile as well as the extended surveys done by FWC in Spring 2012. Panama City crayfish are listed as Species of Special Concern by the state of Florida. The state is currently preparing a new management plan for the crayfish. ",
+    "longName": "Panama City Crayfish",
+    "type": "feature",
+    "layerName": "PC_CRAYFISH",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "05e6efb24b652f34736d52d405ebe365",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAABDVJREFUOI19lFtQlGUYx3/Lvrt88LYLLNuibLGsGjCMUGg0eMCGqbRSM0UrnbypMSfLJifLMuuCi5xpBi2ubKTM0amcTSjFnBUrjfAwXjAeWlMzNIQ4rOAuvO66frBdrAssks/l+zz/3/ccP8E9rPObPFdbD6vCkdsPYzDZrVILOjK4JM36z0km36H7FqLG04nxHr/7wD2/byBS09iiJj14vxlrqgmTgODNfi5dY24oEnljam5euL9Oq74dzfrUVtkYvBfUXLXSWa8PRuZNnyKNBTnaGLdGkRs6e3X+7Q1pe5vVh3On6yuDdaXzrUtOnRsPmv72Itm4eLZ8tGpnO8ufMKOZIXdCIjhyW+dyR4Cauhtsed2F91Qgp7xYPxGsKy2Lg+NQsaJc7nn3BdcjJ/8M4TmmmF3cz7SHbHe1xiQEHdfhYItiVlM3axdns7fpuny6VBzo3ftUka2yMSgAJKzfsNzpsqQKUdfUDYAz04LNMrZ8MBigNF8CsGmXn1efdfDcjDT2nwzkLJ0l3gM2CcC28hn5uHuilh+Nwu4jsYGW5pvoCeiEIzqhMPQEFDarxJIiyHFolBdKmnwKf0DHlaWR5zTzd1f4nYH9bBbAi68tcIXjWSybKfEcU5iEoLNHx+UQzNjoo9UPV3bm0XVDBwQuBzT5wJISq2BqroV9x69r7qzCuQIomZIt8uPlrV7owHOslS9/6mZaXjJHT9+i1R/zfdHQzoIyB9saetl9RPHZajs2qzbcFpOAW7qoEEAEyI5DHyuw0FztpuFEN/XNIWq9I/u92aM4erqVQrdkz0YnT5ZkJvQ7K92MPxCeHJ9+8mhnSrKJt5a4MAvBt94zCWdTszaPydkaF9rCmMZsuSXVRPAmVgFggM4o5AL039RJSRZILaZYMU+y/U62EpiQITAmgSNd0NmrM8E2QtYHwWgQPQIwRKOcxRCDpmoCS+rI15dXONjubQWg+k0nVhmD2NMEQ0OJmQaUIjuTFgEMqlt4pcZCAGNSYmDxpBTsEvwKKkrSEnxJY2K7+2BmQdoOAXjXfN5h37kh2w/YGWNmk6BksqTxjMI87u8nZuGITkTnkqXSd00AB+tP+Hd9NeSoMiaJmvEEf3WoO8L/hzb/ERp8wCFXQ+z2h6SU2zMqfWXB+hIPDC4bHTwQ0of3tLc/hNNuuQvY1adzuaO/bn2t/9c4FKXUEWDa81Ut+374uITR4CtdoWHxhbYIRe5E4I0BfXDHwe7jn3j8L8XfRndpyy8trJu4uOX0te8LfzcaxUfhiG6v9nQPB6zd2k55URpZGTHZxbbwxW0H2s/VetXLwNB4UICtSDknY6lv1aIy+/ubX3FkzilOX2O3MDHdiijMSdeFUW87/w/nvz50NclzQNX7oXZsO+6ap1LqN6Dp8NlQxeF1VwuUUg13XFFGbqsZ+BEIjdUD/AfwPo4m2/QhNQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 21,
+        "width": 21
+      }
+    ]
+  },
+  {
+    "id": 1293,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Species_Occurrence/MapServer/12",
+    "name": "Rare and Imperiled Fish in Florida Species",
+    "description": "This data set contains point locations of rare and imperiled fish collections compiled from various sources.",
+    "longName": "Rare and Imperiled Fish in Florida Species",
+    "type": "feature",
+    "layerName": "LISTED_FISH",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "04a2dabe43f4e351f1db2d5a27d8eddf",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAA0xJREFUOI2VlVtMFFcAhr/ZHfbi2aVkFRCExYgLQgqIukKNaKgBgkRN0xBNtUE0Bom+GIw2wfqgIdpG20hsiKlGjQ9V0RqNuGnxUot4qVo1EEhdMUhcVDBe0EOBLawPwyq621X/ZJKZyfzf+ec/Z86ohNKOawni6cMV0tuXAcoYYbb0SGukG6PpDGbj75QkymA2NSisbGcRvc+raWmcICNiQFhBryJ7X8CD9nwG+lYRn9QndrVulwb1e0odPaGgBhZUHMNkKiB9lh41LHBAewrgg/t3TPKqq5K0nK/H1bQWecpTmoNBI8hbVs/ML6YRPjpkK6BAnAOiE+Dv03ZPStblcTWt2X6wH6rinHeIovLJmC3vAY5QmAGmF8Jfp4QnY3Yde91plDp6hqFirZi/OkGaLcE7DhlagSl5cPO0XTjnrpOwQQVs5CyYLaPsyaHdPhjygU4XPHH0BGRXRwX727aowEKmFxjo6oAoe6BhoB/uNcOVkzA2EeYs1tK9q/hkuF5vIjI+XwUyhcMZI/dVQtZ8SM0Chk3PuqC6HDwtb8w6HUzMBEsEWEdrKf016PXg9eaqwIBUlFgmz4EdpVBcCXHJ0OmGpoa3gQCHNo+4EFC4FDJzwZ4Kn0TCiyeJ/okxEufQzmqrQlf7liS4ftKOL9dDymfQ9zLcD32Ip238R9ACdfQ7WLQRkezsVgGF/7wtnP9lPDlfQX4JPO7UqvgQJc3Q1uqkLHj6CGk03VCBQa7Vd1OwHJKc2kTYYmCTC2yx0N4E25ZogPTPITMfIuMh3AZWG5itb1bDvRZwTN2rAr9x82wUZduKUBgDgBoG0cNt2FNh3UGQz2BSNhiMwRMP9CMGvW65MvW+Cri4UXcAtm4CtTrgYaMZEjPeX8M/VwelLbYMtG9/SAjxs1yZls2u1lqg+MPKHKHn3fCo/Vdqq875oUgp/wCmsH35CSr28FHg3p5Bzh++RN3ORf5bIzeQH7h9cQ1l025Rc+UCiv7b1x3/nx7cvc2ZA800HFwCDAWDAvwoBLNk+acrSM/7hmVVozBb8kBJA8YC/cLn66TT3SbPHdHR4DoGj3e/O1bAViel/BNoEG0Xc6nMLZRSdgAdgA9g+KfUCBwH/g32Aq8AlucDpWbolTUAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 21,
+        "width": 21
+      }
+    ]
+  },
+  {
+    "id": 1294,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Species_Occurrence/MapServer/13",
+    "name": "Red Cockaded Woodpecker",
+    "description": "This shapefile contains location information on the Red Cockaded Woodpecker collected by various state and federal agencies including the Florida Fish and Wildlife Conservation Commission. There is no attribute data for these RCW locations. Data were compiled by requesting information from a variety of federal, state, and local biologists, RCW researchers, and area managers who provided the information they had on hand. None of the data were collected in any standardized format nor under any certain protocol. Similar data, e.g., date recorded, location accuracy level, active/inactive status, were not collected or maintained between sites. The data set includes locations of active and inactive nest trees and centroids of cluster locations. The best description of those data would be as general locations of where RCWs have previously occurred. We urge caution against their use as definitive representation of RCW occurrence.",
+    "longName": "Red Cockaded Woodpecker",
+    "type": "feature",
+    "layerName": "RC_WOODPECKER",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "d5d89e1a47a40fc8d94c889fadafe8f3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAYCAYAAAAPtVbGAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAABGVJREFUSImllV1IVGkYx3/nzBmd8WQjjk1tE0ZRJkZFkYLSF9HNbmHYVXdG1CZYQSBdhGURfRERRR9iFBW13RR0UVvdmUWRUSm01rYXEumUNtpoc5yvc+bsxTPjwU0r2AcO533f532e//P9amTIhhno+u8EAhV4vX5yc71omgeXS8OyVMAFaJimC8vSCIXyyM+3KCiIAlE0zQTiGEaY/v5+wuEBoAO4pGUAfiEY7KS3t5Dubti4EZYsgRkzQNPA5YJEAgxDvuFhiMXA53Pj83lIp4swTbAsGBqC16/h1i2xvqysRANA1+vo7S2kqQnq6mDaNH6KPn+Gvj4BjUYhnYbKSvD5IBKBlSth0aLfBKSq6lcKC2HPHsjJ+bHySAROnoTOTli3DkpKBGTbNnj1SkAKCmDrVujsjAmIx+OnpubnAD58gKYm2L5d/qoq3pw/D48eSYizNHMmvHypCkhBQT+qOvuHAF1d0NAAFy5AMAi2De3t0NwMx45BcfHY+y4XpFI5AqKqX+npcZimCXfvitULFojCd+/g3DmxOBiUe/fvw5Urcl5Y+K1Rmgam6dEyW5tEwmE+eAChEKxYIcrb2mDWLLh2TWINkErBqVNw/Pj4AFlPLCtXQNJpHU1zmIcPQ2MjzJsHCxeOr+DFC6nC+fPH52c9SSYz4bJtL5MmOcwbN+DpU1i/Ho4cgcWLxwrHYnD0KFRVSeInIpcL4vEMiGnqTJ7sMIuL5RsakjL9L4jbDTt3QnU1bNgAc+ZM7Eki4dYylk0eA2Lbkpe3b+HQofGFV6+G1lY4fVq81fWJPHEJyMiITl6ew7x+HR4/hhMnwOt1zru64OpVyZmqwtKl0NMDFRXiUWWl5LG4WLwV3YqAhMMePB45HBiAs2fhzh3Hui9f4PZt2LxZ9j4flJXB1KlQXg7PnsmIefIEDhyAvDzpHUWBeDzTjJGIhqKIgmhURoXfL/uODqivF+HhYRgclMR//Cg90twMb95AaamUeXW1eOiE1tZsUOjuVjHNrHswZYpzqa0NDh6UHADk58u/tBSWL5dQ7dsngF4vfPoEy5Y58rqe1pB3gtE++foVAgFZx+Nw+TLcu/dtUrMytbWQTMKZM7K+eBHWrhW+ooCuW5oCpl1WlgByM6FjtAgePoSaGon9RKSqkqv9++VeQ4MDIoZmchIIRDAM0TQ4CNOnQzgMu3fDzZsTA2TJ7ZaJXFsrkzc31+GNjGRADOMfuroCrFmjMDAARUWwd68ke+7cH4OAPBMlJWPPkknw+UwBef78T0KhKrZsUejvh5YWp6P/D71/D263kZ2Kl4hEGmlpibFpk59Vq+Tp/N5c+h6lUjL7duywicX+0gAU6LMNo5Zdu67T2JimvDyO32/j9abJyQFVVbAsFdNUsSyFVEpCkUxCLKYQj0vpm6ZKLCYtAQrwhaKihtH5rsBNOxj8m97eelpbFwN+pLzdgAepvpzM2QiQApLo+hCGMQQMAzaQBEJAO/CHEg5H/wW7eZnTGalASwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 24,
+        "width": 25
+      }
+    ]
+  },
+  {
+    "id": 1010,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI_Base/MapServer/0",
+    "name": "Mileposts",
+    "description": "This dataset contains mile post markers derived from the Florida Department of Transportation Roads Characteristics inventory (RCI) dataset. This dataset is designed for use with the ETDM project and is associated with the other layers RCIROADS and ROADIDS.",
+    "longName": "Mileposts",
+    "type": "feature",
+    "layerName": "MILEPOSTS",
+    "minScale": 200000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "1d0ceab2b453c7d4c9f608b9588bdaa2",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAALFJREFUOI1jYaAyYBk1cNRABoamx3pSfxmfuTAw8L5qlL6/i4GR4R/ZBtY94bb++//tdob/7LwMDL8Y6p+I7JO++sYtTZvhL1kGMv4Xa2dg+MWLEGF3esInHczA8HQVWQYyMPySxrCEkU0Onw68Bv5nYNvByPArC0noDwPDr51kG8j59375DxZpbob/DP4MDAxvGBgZqhplnl4m28BKBYYvDAxPE/CpIclAcsCogYPQQACoGC3N0ktSBQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1011,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI_Base/MapServer/1",
+    "name": "Roadway IDs",
+    "description": "This dataset contains Road ID points from the Florida Department of Transportation Roads Characteristics inventory (RCI) dataset. This dataset is designed for use with the ETDM project and is associated with the other layers RCIROADS and MILEPOSTS. It is used for labeling the roadway ids for the RCIROADS layer on the ArcIMS maps.",
+    "longName": "Roadway IDs",
+    "type": "feature",
+    "layerName": "ROADIDS",
+    "minScale": 200000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "b986ea9e4387b42d530e552690fc8756",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAALFJREFUOI3tzDsKwkAURuEzMCRFSCqxcIKkD7gBOxFbCzdg7QYEN+Be3ICPwk1I6hSZWEjsrAbj2IlYBBwsLPKXh3s/yY8nW7AFoRgUPXEWY0IuKlcHgXg4gzrQQ3u1W+vbEAO6o49ZlU1S0toJtF27xhC+gs8oUtGMko0TiEF9JuGJftNLM+ixw7B4K3cMe2ewzuulVDKw2ClQCcQqLuOTM5iQ3CiZN918BbqsBf8QfAKudi6CpkMPsAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1012,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI_Base/MapServer/2",
+    "name": "RCI Roads",
+    "description": "This dataset contains road segments from the Florida Department of Transportation Roads Characteristics inventory (RCI) dataset. This dataset is designed for use with the ETDM project and is associated with the other layers ROADIDS and MILEPOSTS.",
+    "longName": "RCI Roads",
+    "type": "feature",
+    "layerName": "RCIROADS",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "72e51dd7de58caa1fb2f3ca744316029",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYBk1cNTAYWtgvbT0f2oY1vj0KSMLjEENAxkYhkwYjho4zA0EAHYXBp2OeSsLAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1013,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/FNAI_FLEO_S/MapServer/0",
+    "name": "FNAI Documented Element Occurrence",
+    "description": "This is subset of FLEO_POLY where occurrences are documented. This is a polygon data layer locating the occurrences of endangered or rare plants and animals, high quality natural communities and other occurrences of natural resource interest in the Florida Natural Areas Inventory (FNAI) database. An \"Element\" is any exemplary or rare component of the natural environment, such as a species, plant community, bird rookery, spring, sinkhole, cave or other ecological feature. An \"Element Occurrence\" (EO) represents the locational record of an element and is a single extant habitat which sustains or otherwise contributes to the survival of a population or a distinct, self-sustaining example of a particular natural community. EO representations may have area added to account for uncertainty in the actual location of an observation (in the case of historical museum records for example). Please see additional supporting documentation for an explanation of proper interpretation of EO shapes. \r\n\r\nThis subset is created with the definition Query: OCCURRENCE = 'DOCUMENTED'",
+    "longName": "FNAI Documented Element Occurrence",
+    "type": "feature",
+    "layerName": "FLEO_POLY",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Endangered",
+        "url": "494d808b1bd88b24656a164e2a13250a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7MYBQl27AZ/18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgCHOQnbZQ+MWwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Threatened",
+        "url": "c1205b67dfe2f65aa262823fb89c9563",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7cIipKtmE+r18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgBl7Ql75OtXtAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Candidate Species",
+        "url": "239ec14fc820fa19e3f6c9540c5c7fe7",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC58HqtPtmGSiy8yMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgAynAjm423qrgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Not Currently Listed",
+        "url": "c0fa2a24892a0120e91a1c8fae272335",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgf////9PqWGMjIyMqC58nkG+aZIzGBgYaOnlUQNHDRw1cNRA3AZCiyByACMjIyOKgTABSgEAksIHCrt/iHUAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Threatened due to Similarity of Appearance",
+        "url": "c1205b67dfe2f65aa262823fb89c9563",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7cIipKtmE+r18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgBl7Ql75OtXtAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Species of Concern",
+        "url": "a0e75a9ee7cb8a5af3a057b9cedc48d5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgf////9PqWGMjIyMqC6cZUa+aWmnGBgYaOnlUQNHDRw1cNRA3AZCiyByACMjIyOKgTABSgEAvjgHiTS5hrgAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Non-essential Experimental Population",
+        "url": "29ff5960b1ff1562967924a680929b79",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGZgf////9PqWGMjIyMLGgCZBsGcw/tvDxq4KiBowaOGojTQEqKREZo2ceCLkApAACx1ApWoWPtcQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1014,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/FNAI_FLEO_S/MapServer/1",
+    "name": "FNAI Likely Element Occurrence",
+    "description": "This is subset of FLEO_POLY where occurrences are likely. This is a polygon data layer locating the occurrences of endangered or rare plants and animals, high quality natural communities and other occurrences of natural resource interest in the Florida Natural Areas Inventory (FNAI) database. An \"Element\" is any exemplary or rare component of the natural environment, such as a species, plant community, bird rookery, spring, sinkhole, cave or other ecological feature. An \"Element Occurrence\" (EO) represents the locational record of an element and is a single extant habitat which sustains or otherwise contributes to the survival of a population or a distinct, self-sustaining example of a particular natural community. EO representations may have area added to account for uncertainty in the actual location of an observation (in the case of historical museum records for example). Please see additional supporting documentation for an explanation of proper interpretation of EO shapes.\r\n\r\nThis subset is created with the definition Query: OCCURRENCE = 'LIKELY'",
+    "longName": "FNAI Likely Element Occurrence",
+    "type": "feature",
+    "layerName": "FLEO_POLY",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Endangered",
+        "url": "494d808b1bd88b24656a164e2a13250a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7MYBQl27AZ/18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgCHOQnbZQ+MWwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Threatened",
+        "url": "c1205b67dfe2f65aa262823fb89c9563",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7cIipKtmE+r18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgBl7Ql75OtXtAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Candidate Species",
+        "url": "239ec14fc820fa19e3f6c9540c5c7fe7",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC58HqtPtmGSiy8yMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgAynAjm423qrgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Not Currently Listed",
+        "url": "c0fa2a24892a0120e91a1c8fae272335",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgf////9PqWGMjIyMqC58nkG+aZIzGBgYaOnlUQNHDRw1cNRA3AZCiyByACMjIyOKgTABSgEAksIHCrt/iHUAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Threatened due to Similarity of Appearance",
+        "url": "c1205b67dfe2f65aa262823fb89c9563",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7cIipKtmE+r18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgBl7Ql75OtXtAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Species of Concern",
+        "url": "a0e75a9ee7cb8a5af3a057b9cedc48d5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgf////9PqWGMjIyMqC6cZUa+aWmnGBgYaOnlUQNHDRw1cNRA3AZCiyByACMjIyOKgTABSgEAvjgHiTS5hrgAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Non-essential Experimental Population",
+        "url": "29ff5960b1ff1562967924a680929b79",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGZgf////9PqWGMjIyMLGgCZBsGcw/tvDxq4KiBowaOGojTQEqKREZo2ceCLkApAACx1ApWoWPtcQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1015,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/FNAI_FLEO_S/MapServer/2",
+    "name": "FNAI Potential Element Occurrence",
+    "description": "This is subset of FLEO_POLY where occurrences are potentially located. This is a polygon data layer locating the occurrences of endangered or rare plants and animals, high quality natural communities and other occurrences of natural resource interest in the Florida Natural Areas Inventory (FNAI) database. An \"Element\" is any exemplary or rare component of the natural environment, such as a species, plant community, bird rookery, spring, sinkhole, cave or other ecological feature. An \"Element Occurrence\" (EO) represents the locational record of an element and is a single extant habitat which sustains or otherwise contributes to the survival of a population or a distinct, self-sustaining example of a particular natural community. EO representations may have area added to account for uncertainty in the actual location of an observation (in the case of historical museum records for example). Please see additional supporting documentation for an explanation of proper interpretation of EO shapes. \r\n\r\nThis subset is created with the definition Query: OCCURRENCE = 'LIKELY'",
+    "longName": "FNAI Potential Element Occurrence",
+    "type": "feature",
+    "layerName": "FLEO_POLY",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Endangered",
+        "url": "494d808b1bd88b24656a164e2a13250a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7MYBQl27AZ/18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgCHOQnbZQ+MWwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Threatened",
+        "url": "c1205b67dfe2f65aa262823fb89c9563",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7cIipKtmE+r18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgBl7Ql75OtXtAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Candidate Species",
+        "url": "239ec14fc820fa19e3f6c9540c5c7fe7",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC58HqtPtmGSiy8yMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgAynAjm423qrgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Not Currently Listed",
+        "url": "c0fa2a24892a0120e91a1c8fae272335",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgf////9PqWGMjIyMqC58nkG+aZIzGBgYaOnlUQNHDRw1cNRA3AZCiyByACMjIyOKgTABSgEAksIHCrt/iHUAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Threatened due to Similarity of Appearance",
+        "url": "c1205b67dfe2f65aa262823fb89c9563",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7cIipKtmE+r18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgBl7Ql75OtXtAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Species of Concern",
+        "url": "a0e75a9ee7cb8a5af3a057b9cedc48d5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgf////9PqWGMjIyMqC6cZUa+aWmnGBgYaOnlUQNHDRw1cNRA3AZCiyByACMjIyOKgTABSgEAvjgHiTS5hrgAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Non-essential Experimental Population",
+        "url": "29ff5960b1ff1562967924a680929b79",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGZgf////9PqWGMjIyMLGgCZBsGcw/tvDxq4KiBowaOGojTQEqKREZo2ceCLkApAACx1ApWoWPtcQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1282,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Species_Occurrence/MapServer/1",
+    "name": "FWC 1999 Wading Bird Rookery Surveys",
+    "description": "This dataset includes wading bird colony observations made by the Florida Fish and Wildlife Conservation Commission, as of 1999.",
+    "longName": "FWC 1999 Wading Bird Rookery Surveys",
+    "type": "feature",
+    "layerName": "WBROOK",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "1e4c4dcff3b0aef595ca20a544763166",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAABCFJREFUOI2NlW1QlFUUx38P+7AsLru+tKiwwSKI8mLguygSA6VmmzE6mcNYms6YTljmJH0w+tBMZRI6iNbYaDFKGYaOotmaZBIwRAKJb/my7CgIu5grysYzLMsuTx+cZXJ3ZTrf7pn/+d1zzz3nXpFhzNx0yWC1Wdc5+5ypMuhGajWOsbpw84jQEWeDBoQz46bGSYHixEDOsj17jfcf9pT8VlcTq4+IRBumQRRFHL29tN46v9Dp7MtLTkh02v5q3TE4IBfqU+Mdw0GVBZvzjwWHqBYtW5Kp6LRaKSwpZkpSIm+tfROAKQmJyMjcMJtVJ0ynPsjOyHzdes1ijEyMuxIIOipv7bqqFctemakb8xS2u138UHmMY6aTuNyux3YWEEiIn0SsIYaffjkTnT4nrcF6zZLmBXuh4vIlOYc3rc+bGhqq4nZ7GyqVivyNm2hq+ZMXnlsQsOZKpZKcxUaOm35UL8jMOtV50fyMPjXeIQKo1eotm/PeMWjCwkSAmGgDAB3WTmob6vli+86AUABBEDA+vwjT2aronBeN7wMFIjAmN2dZ5oQow2TfgItXL/P2ug2E63RPhHoznjghltvtbe/dbbFsE4EVa1aucgYSNzY3k5GePizQa0kJCZw6c1oVE2VYKALTJsTE+GUJcPH6FRZkZ/8vqIBAsBiMy9WfJQIuASHSV+TxuGlobKS5pYX+fhcKhYKUpGRGjxr9RPDY8HDud3fHeW8/xFegUIjo9Xq27dox5NPpdOzbuZu0GbMCQjVhYfT09mpFQEagC5kYX1H2vAzKKsqH1na7naWrcmk4/SuGqGg/qNvtIUgh3BMBZJnLAv7Q5S8vfQzqtXN1NbyR+5qfv+efHiLGjr8gqtVqz4Cr36RUhizxFc2aPoOKb8r4tPhzLly6NOQ/+fNpVueuREB4TH/PbmfWjJmloiRJVVu2bh1ZUrTDDvg15Pw5czl+oJyyiu9pu9PBvrJS6hsbaGtvHxoSgL5+J263x6xPiu8QAVOFqXL/rqKijwSE3X5n4lFzJ09OJGfxS0xLSWFv6T4+3llEybZCRoSGAnC+uckTOW78eng0+4NqtfpgZHL8dNvV1gpgeSCwLEOf00lG2jyy0jP46sDXNDSdJzsjk7v3/qa11Xy8YPsn57xQJEmqBqau2rDm6MG9pfiCZWTcHjcOh4ORGg1ajZb8jZuR5UEe9Dz0HDpyuL5wz65Xvfr/Pn3FVbW1706cnfrH9d8v1ImKoA+9Ne5+8IDop6OwddnQarQABAUFccNiMR8o/66l9NC3q4HBQFCAYuDZqJRJK42LjPlfflYYGqwMWdzWcWduSlJymLXLBgK3rt+8aSk/eoSjphOVdrt9v2+p/L4TSZJqgNrquuqspPmzswGLJEkDQCcQAdiAeqAS6AtU/38BBjeCo00KO5AAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 21,
+        "width": 21
+      }
+    ]
+  },
+  {
+    "id": 1283,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Species_Occurrence/MapServer/2",
+    "name": "FWC Bear Road Kills",
+    "description": "This dataset contains the locations of Florida black bear (Ursus americanus floridanus) roadkills within the state of Florida that are contained in a database maintained by the Florida Fish and Wildlife Conservation Commission (FWC). In this shapefile, we used only those records maintained by the FWC from which we could obtain a geographic coordinate.",
+    "longName": "FWC Bear Road Kills",
+    "type": "feature",
+    "layerName": "BEARRDKILL",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "cf2cf0b9487a26c0c1e07387029191e6",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAArZJREFUOI2V1G9ollUYBvDftsdaHjdsiNZecrUVRiKWVGRYYZTDRkiBJVYfFkpEFAyzf9bHiMIM+lqRQVF9cVosWWGNrCaERCFkrdKs9wUzsc3uNkdzfXif0dt8N9cNh8N5zrmu57r/ZqaxAVpKKW0cjliKeY0pDc2PGDiPPRkfLiCq4bJqH7fT8Qcv99FaiNCYPzwZoZ9Vwzy0mJFSSi+OR7xQYGg60nOeovtc2u+gblaVHy7GOL6j/r2ILTdzX6lQ6GguFg9UI537IB+t4+p508UENbgcrfiAhSuKxX2lQuG6CeIJ0mwt73Zx5ZyzEP7HLazBLtItxWJPkSUFhjJIPNqVUsuciKoxPpvq27CbhWtSekzE0xma7uKmiyMW/V/CSsWX4nDEpqM8l+Hu+1MaEf9Wx1/KyZidK4Hf8C1q0YJm1FXcX4Ee6ltYleGqVhb9jX68g+784fW4Bj/h/UnqLkED7sHyXOksjLIyw2hNRPNOPDIJ+EW+qtmhfP8m33sxH8dpy+AE9U9OAZ6pdeF5nKQxg1Mcj3KYZmSr0akcxwblXv0Tg6hJ6ViGmgXs30DzqzMk/RKPoyk/z81XERdGfJVhbJjeArdPgLajDYeVm7pROfubsBm/4Nn83UT24Riu5fUMvZ0sHSxXUQ2sUC6ntgrAiZy0CRvQowKAEYymNFCI+DXD7r2s701pa3vEZtiPGya5fD4eRh/WY92k+32MNUc8QLn3T6eUXmmPWP4zO2q5c6pYTlUhR3GIHVv4ZIJURPRhWSfdbzKGtVMRT7ZBxt6if2uF+MoBsu1jui7j64N8VsczmHYK/sD3r3HgDe7F6Wqk8JKUbrwoYmMHT2xjdgO3YgkuwKnxlEoH+fHtiNqddP/OGZV4xqiLiE+xty+llctYHRFHcEQ52fLB8zl2YbiaB/8AWYfaqZ/C5kcAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 21,
+        "width": 21
+      }
+    ]
+  },
+  {
+    "id": 1284,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Species_Occurrence/MapServer/3",
+    "name": "FWC Black Bear Nuisance Reports",
+    "description": "This shapefile contains the locations of conflict calls from the public regarding human-black bear (Ursus americanus floridanus) interactions in the state of Florida. This dataset includes only those reports that are associated with concurrent bear observations in the general vicinity of the caller. The data also were limited to those records obtained from the black bear database maintained by the Florida Fish and Wildlife Conservation Commission (FWC), and that were associated with a geographic coordinate.",
+    "longName": "FWC Black Bear Nuisance Reports",
+    "type": "feature",
+    "layerName": "BEARNUISANCE",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "d808551b09b618612184082f3b729ddb",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAA8NJREFUOI2VlFtM23UUxz9t/23/9A+rlK6QlsugCmpcoTgDUzdYDehEYpw3JFuiMWMP+jDDtizRPU0l0aFTX8w0mQ97MeoI02XBjougEV0m0kw2SwyX8UfWAZPLv/xLbz5wkUsl2/fxnN/5/M7vnN85AhvowuvlOQFlfn8oPFdITLAmi/ppS4qh36inVRc3f7+zsVlJFCckMr6921U1E1E/vjQQyLOlGJGSjAg6mFXDDA/OVqqRyGt32xS1vd7TGDHp3qs47p3eCGo48HBukyjyeGmOXSfotKu9ZrgnPYU4MBiYEdv7xt4scdr2tdV7qjyNbVcSQe+qcVu9T7gyt6VK+o2qggbItaWQaZHo9Aeyi7ekdbfVe0qXwEtQoSJf+nLfI/cVScaNgSulF7R47s2g9dqYtN2Zdt57rGJrxXHvtAAgwaGXHy3MkYz6hDXeMGstlOXb6PQHsj33ZxwB3hIAS6XLUeZIFQvuFLgy45w0idFbwfrO+qcbBODFPduy1JWH1Pkw8TiIRj2aRduEEmbg5hQawG42YdskotVpl/3O9BR+uDYm2i1ipQC4s1JNBdFojN+HJjn/xyht/nEAXA4Jly2JkX+gY2B8VXYOCaQkiSqXDXdWOtlWE3otRCLsEoB5wN56dZR3W/yrAn2ygk9O+L+RFUBR8LcNAAOcqnVjkYzcmlWdAsBUMCh+tAZ4p2po7uFQtZtgiE0CQDimnVDAfruAHbkSzxQ7cW5OxiQaUENRlHCUGTUMWm4KgMaaLF5+1uWwf+OTbwt6NaDwarIRsyQCoDdpSUHPjalZ0s3GHgGIqiFabGZD9VLQO9Uusq0m5Mkgs6pKsigyEVR53+vnlYccjCkhPr3YR0NNyXL3ASaDEYqy008LQMuRpl8K1RBxFiaQ4i1mkgx6siym5YDpRahZMvBcSR4df96AGLC4HkKRGNEY/WWN3hEBuOCTldpTe0tP1J3pPgzQNzLFg3nWVU/eZBKpdVv5dSjAU0U5VLkyV/l9w5PRzaJ0ABZmPyZJ0md1Z7q3XzxYflajYc/y9WtU53EltE/MqgyPT5z9pEtuX4KiKEoHUHz4q/6mky8VRONxnv+fHq3TTDAc/a73759Pd8s1S7aVC+SDHll+48kTcu+5g+U/6nTaY4B1PeY/DU0G/V9fvn7lW5+8l4UKr4MCfIgk7XzsZMf+HfnWo0crHjBJorYC2ApkAKE4jA4Ggn+d672u7fLJTePw+drL1q06RVE6ga7f5LldL3xxabeiKMPAMBBfcewnoBmYS/SCfwGgv1uovs681QAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 21,
+        "width": 21
+      }
+    ]
+  },
+  {
+    "id": 1285,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Species_Occurrence/MapServer/4",
+    "name": "FWC Eagle Nests",
+    "description": "Known bald eagle nesting territories within the state of Florida were surveyed by the Florida Fish and Wildlife Conservation Commission (FWC) during the 2016 nesting season with fixed-wing or rotary-wing aircraft. Nest locations were determined with the use of aircraft-based Global Positioning System (GPS) units. Accuracy of locations is estimated to be within 0.1 miles of the true location. Locations are given in longitude and latitude to hundredths of a minute. The Township, Range, and Section of each nest location are also provided. Township, Range, and Section were determined from the Public Land Survey System grid that includes Land Grant parcels. Yearly nest activity status is listed for the 1998 through 2016 nesting seasons. 'Y' denotes an active nest, 'N' denotes an inactive nest, 'U' denotes a nest that was visited but status was undetermined, '-' denotes an unobserved nest, and '*' denotes a nest that was not surveyed. New Survey Protocol: In 2008 the statewide bald eagle nesting territory survey protocol changed. The protocol change reduces annual statewide survey effort and increases the amount of information gained from the nests that are visited during the survey season. Nest productivity is now determined for a sub-sample of the nests that are surveyed annually. Nest activity and productivity information are critical to determining if the goals and objectives of the Bald Eagle Management Plan are being met.",
+    "longName": "FWC Eagle Nests",
+    "type": "feature",
+    "layerName": "EAGLE_NESTS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "ad5244a64a17667c0e8f506d49c04bfe",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYBliBqod2s/AwKBLkgkczLoMl6yfYzeQhUGQ4Q+DMEkG/vnDjNuFVACjBo4aOGog6QZeszOgroFUAIPfQACcWAi0NB69MAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1286,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Species_Occurrence/MapServer/5",
+    "name": "FWC Gopher Tortoise Relocation Sites",
+    "description": "This dataset is a point representation of the Florida Fish and Wildlife Conservation Commission Gopher Tortoise standard tortoise relocation permit recipient sites. The standard tortoise relocation permit is available for development projects which require the relocation of more than five tortoises on-site or relocation of any number of tortoises off-site. Off-site relocation of tortoises may require testing of tortoises for Upper Respiratory Tract Disease (URTD) at the discretion of the recipient site landowner",
+    "longName": "FWC Gopher Tortoise Relocation Sites",
+    "type": "feature",
+    "layerName": "GOPHER_TORTOISE",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "66a77ad7542e2b26c15351f2e38cec80",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAA55JREFUOI2FlX9M1GUcx1/A9zyOB65EQOUbAfZDizqEadFmGf3AzhuSf+A5RzldhkixKGumWf1Rq1zi0OJspeRKXdOiYLfb1QoSRTcXtykV3aU15x0wYIOj54DD4/rj28Ul1/n95/k8n+f7eX2e5/N+fijE+Ro95A77xJapcVkIZAij8KdlSY/ewPcGhW83zkfGilNiOas/xRIYYX9PB4vSVYnBCIoCgTFJ31nKguPU5hQwYfOJvclhuWeTij8edE7FTlp0elbdv5YkRRcjYwEQBu9vJJ9vlbtMj/CUzadaarK9PbGgNz9ew3cr1rMsLSNeUYAEUJdAVj64HNx61wrvOZtPLYmAI1BleSVfrK5nqSF1JjZ0Dfo8cFMmRCcaG4bWBuhugx1t8OtphOkxr73Zy72bVPwaVLB9Tb3INaRKhTD85AD/ILjawN0FJgs82wSRctg/hM5mzdanQNFqbcbLK8QrIF9TgPQH17EyM08ujiztnofB54a8QpinwvE3wdEEJRVw5WfoOKgBre+CMVOzF94OQ3/Kl44M8I4CWB/dLCaI2h36FMhfCtemoPcMjPSBqwXs782U4PljULBypn/L3dBtJzkzlzIFKFqwiMXXazE6ACffgvNfxtYqXdVW9a92CZCkg6kgpQoQJEFmRwcMX4WmavC6YgMBfvwM1myHFOOMz5gFY8PcFlFfHxmYDMDR3fGBAJ4ueHEJWF6G8nrNZ0iD8TGMEWg/kAdwuRt+ccYHAjy9D/4agQNWKNsKegOEpiAxSQwqaJW5GIH2dt0YmJEP8/Mh5NH6iUlaO+6HuQulSwFCkwGc+hTKR/rh9Oc3hppfgORUyMoDkTGzf0cH4Y77aFYA56FacpetZaJ1P8lyKD5QNUHxKs1OnQtVezQ7OAHTQeHZqsqrCuC44ORY6TMcfvUk265chEbr/0M3vA2GKMWLntBa9zlC6dmyGrSzPy2EONhYKUs+8nHizgeoNJnhguO/sKJyKNsG+YWzE40OwMAffHViF+0RKFLKDqB4bxWtz32MzlzHk+vegP7L8MEG2GyDIjPo5swGBkYJnTrKWfv7rI/4oq++BvcP1NeZ6Lb10p6QxO55OWQIFQrLYgN9v+NuP0RP5xGqgOlYUIB9AvFQTY7cYrKwY2MDKdad1OkNKMACYDIcFr6+Xi61H5eJnV/TwhCfXJ9s1nMipTwFdF7qEKWvF2OWUjoP1wIQ/ucPgDPAN8D47PnD36evMGRC4bpPAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 21,
+        "width": 21
+      }
+    ]
+  },
+  {
+    "id": 1287,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Species_Occurrence/MapServer/6",
+    "name": "FWC Panther Mortality",
+    "description": "The Florida panther (Puma concolor coryi) mortality database contains all known and documented mortalities including known or likely causes. This dataset reflects dead Florida panthers from Feburary 13, 1972 to December 20, 2017.",
+    "longName": "FWC Panther Mortality",
+    "type": "feature",
+    "layerName": "PANTHER_MORTALITY",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "3c296c2d610420ca741c991ae57e768f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAVlJREFUOI3d0TEvQ1EUwPH/oaa3Fg0TI4lIatBXDJJ+AKUSA1/AJAY2I4mYjCIWiUFjERaxSPsaiUQisYqQGqSJ6WoI7xheGuW9VB9vcqZ7z7n53XPujRFxxP4PqBSnhHQ+ElDjhSEqLAPRgFQlBySVYq+Qvvk7aMh5C5kG1poGlbMOiI1/O9MJ2gOApbNqnNuvZX0DORTsFx8ojD0qTjvoBtAW0Gkf6F5dpoLFjBgP84Eeam+q5VxidB9INJjuAmRSjH1Xnwx8QzF2QSklwc0DqYAj2yDztTF/BL1OUw+KcwDqB+NsScWPNQS90Gz9BhAAqmSB81CgUuoCdxhQLNYxLTvg7gJJDFlgKWSH7gTwBMyJSR95l5zYWNYqRhe0uzgg5fRV86BFAuMOCqP3tZSQecWwqDinlHUECAGa5xUh4waVBPtYuW4NqjX45WDss97/Hgr8bUQOfgBV6m4x+lx/5AAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1016,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/FNAI_FLEO_S/MapServer/0",
+    "name": "FNAI Documented Element Occurrence",
+    "description": "This is subset of FLEO_POLY where occurrences are documented. This is a polygon data layer locating the occurrences of endangered or rare plants and animals, high quality natural communities and other occurrences of natural resource interest in the Florida Natural Areas Inventory (FNAI) database. An \"Element\" is any exemplary or rare component of the natural environment, such as a species, plant community, bird rookery, spring, sinkhole, cave or other ecological feature. An \"Element Occurrence\" (EO) represents the locational record of an element and is a single extant habitat which sustains or otherwise contributes to the survival of a population or a distinct, self-sustaining example of a particular natural community. EO representations may have area added to account for uncertainty in the actual location of an observation (in the case of historical museum records for example). Please see additional supporting documentation for an explanation of proper interpretation of EO shapes. \r\n\r\nThis subset is created with the definition Query: OCCURRENCE = 'DOCUMENTED'",
+    "longName": "FNAI Documented Element Occurrence",
+    "type": "feature",
+    "layerName": "FLEO_POLY",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Endangered",
+        "url": "494d808b1bd88b24656a164e2a13250a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7MYBQl27AZ/18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgCHOQnbZQ+MWwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Threatened",
+        "url": "c1205b67dfe2f65aa262823fb89c9563",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7cIipKtmE+r18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgBl7Ql75OtXtAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Candidate Species",
+        "url": "239ec14fc820fa19e3f6c9540c5c7fe7",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC58HqtPtmGSiy8yMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgAynAjm423qrgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Not Currently Listed",
+        "url": "c0fa2a24892a0120e91a1c8fae272335",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgf////9PqWGMjIyMqC58nkG+aZIzGBgYaOnlUQNHDRw1cNRA3AZCiyByACMjIyOKgTABSgEAksIHCrt/iHUAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Threatened due to Similarity of Appearance",
+        "url": "c1205b67dfe2f65aa262823fb89c9563",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7cIipKtmE+r18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgBl7Ql75OtXtAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Species of Concern",
+        "url": "a0e75a9ee7cb8a5af3a057b9cedc48d5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgf////9PqWGMjIyMqC6cZUa+aWmnGBgYaOnlUQNHDRw1cNRA3AZCiyByACMjIyOKgTABSgEAvjgHiTS5hrgAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Non-essential Experimental Population",
+        "url": "29ff5960b1ff1562967924a680929b79",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGZgf////9PqWGMjIyMLGgCZBsGcw/tvDxq4KiBowaOGojTQEqKREZo2ceCLkApAACx1ApWoWPtcQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1017,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/FNAI_FLEO_S/MapServer/1",
+    "name": "FNAI Likely Element Occurrence",
+    "description": "This is subset of FLEO_POLY where occurrences are likely. This is a polygon data layer locating the occurrences of endangered or rare plants and animals, high quality natural communities and other occurrences of natural resource interest in the Florida Natural Areas Inventory (FNAI) database. An \"Element\" is any exemplary or rare component of the natural environment, such as a species, plant community, bird rookery, spring, sinkhole, cave or other ecological feature. An \"Element Occurrence\" (EO) represents the locational record of an element and is a single extant habitat which sustains or otherwise contributes to the survival of a population or a distinct, self-sustaining example of a particular natural community. EO representations may have area added to account for uncertainty in the actual location of an observation (in the case of historical museum records for example). Please see additional supporting documentation for an explanation of proper interpretation of EO shapes.\r\n\r\nThis subset is created with the definition Query: OCCURRENCE = 'LIKELY'",
+    "longName": "FNAI Likely Element Occurrence",
+    "type": "feature",
+    "layerName": "FLEO_POLY",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Endangered",
+        "url": "494d808b1bd88b24656a164e2a13250a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7MYBQl27AZ/18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgCHOQnbZQ+MWwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Threatened",
+        "url": "c1205b67dfe2f65aa262823fb89c9563",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7cIipKtmE+r18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgBl7Ql75OtXtAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Candidate Species",
+        "url": "239ec14fc820fa19e3f6c9540c5c7fe7",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC58HqtPtmGSiy8yMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgAynAjm423qrgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Not Currently Listed",
+        "url": "c0fa2a24892a0120e91a1c8fae272335",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgf////9PqWGMjIyMqC58nkG+aZIzGBgYaOnlUQNHDRw1cNRA3AZCiyByACMjIyOKgTABSgEAksIHCrt/iHUAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Threatened due to Similarity of Appearance",
+        "url": "c1205b67dfe2f65aa262823fb89c9563",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7cIipKtmE+r18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgBl7Ql75OtXtAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Species of Concern",
+        "url": "a0e75a9ee7cb8a5af3a057b9cedc48d5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgf////9PqWGMjIyMqC6cZUa+aWmnGBgYaOnlUQNHDRw1cNRA3AZCiyByACMjIyOKgTABSgEAvjgHiTS5hrgAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Non-essential Experimental Population",
+        "url": "29ff5960b1ff1562967924a680929b79",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGZgf////9PqWGMjIyMLGgCZBsGcw/tvDxq4KiBowaOGojTQEqKREZo2ceCLkApAACx1ApWoWPtcQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1018,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/FNAI_FLEO_S/MapServer/2",
+    "name": "FNAI Potential Element Occurrence",
+    "description": "This is subset of FLEO_POLY where occurrences are potentially located. This is a polygon data layer locating the occurrences of endangered or rare plants and animals, high quality natural communities and other occurrences of natural resource interest in the Florida Natural Areas Inventory (FNAI) database. An \"Element\" is any exemplary or rare component of the natural environment, such as a species, plant community, bird rookery, spring, sinkhole, cave or other ecological feature. An \"Element Occurrence\" (EO) represents the locational record of an element and is a single extant habitat which sustains or otherwise contributes to the survival of a population or a distinct, self-sustaining example of a particular natural community. EO representations may have area added to account for uncertainty in the actual location of an observation (in the case of historical museum records for example). Please see additional supporting documentation for an explanation of proper interpretation of EO shapes. \r\n\r\nThis subset is created with the definition Query: OCCURRENCE = 'LIKELY'",
+    "longName": "FNAI Potential Element Occurrence",
+    "type": "feature",
+    "layerName": "FLEO_POLY",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Endangered",
+        "url": "494d808b1bd88b24656a164e2a13250a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7MYBQl27AZ/18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgCHOQnbZQ+MWwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Threatened",
+        "url": "c1205b67dfe2f65aa262823fb89c9563",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7cIipKtmE+r18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgBl7Ql75OtXtAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Candidate Species",
+        "url": "239ec14fc820fa19e3f6c9540c5c7fe7",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC58HqtPtmGSiy8yMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgAynAjm423qrgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Not Currently Listed",
+        "url": "c0fa2a24892a0120e91a1c8fae272335",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgf////9PqWGMjIyMqC58nkG+aZIzGBgYaOnlUQNHDRw1cNRA3AZCiyByACMjIyOKgTABSgEAksIHCrt/iHUAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Threatened due to Similarity of Appearance",
+        "url": "c1205b67dfe2f65aa262823fb89c9563",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7cIipKtmE+r18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgBl7Ql75OtXtAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Species of Concern",
+        "url": "a0e75a9ee7cb8a5af3a057b9cedc48d5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgf////9PqWGMjIyMqC6cZUa+aWmnGBgYaOnlUQNHDRw1cNRA3AZCiyByACMjIyOKgTABSgEAvjgHiTS5hrgAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Non-essential Experimental Population",
+        "url": "29ff5960b1ff1562967924a680929b79",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGZgf////9PqWGMjIyMLGgCZBsGcw/tvDxq4KiBowaOGojTQEqKREZo2ceCLkApAACx1ApWoWPtcQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1019,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Community/MapServer/0",
+    "name": "FDCA Enterprise Zones",
+    "description": "This dataset contains 2015 Enterprise Zone Information for the State of Florida. An Enterprise Zone is a specific geographic area targeted for economic revitalizing. Enterprise Zones encourage economic growth and investment in distressed areas by offering tax advantages and incentives to businesses locating within the zone boundaries. Currently there are 65 state Enterprise Zones. The Florida Enterprise Zones Program was established in 1994 following legislation that repealed the existing federal government's Empowerment Zones and Enterprise Community Zones and established a new application and designation process. The program operates at both the state and federal levels, providing incentives that accommodate both rural and urban areas. Under the new application process, local governments are required to establish a strategic plan, form a local Enterprise Zone Development Agency, and submit a specific map showing the boundaries of the zone. The application process and zone activities are administered by the Governor's Office of Tourism, Trade, and Economic Development (OTTED), which also provides technical assistance and information. Please Note: The Florida Enterprise Zone Program is scheduled to expire on December 31st, 2015.",
+    "longName": "FDCA Enterprise Zones",
+    "type": "feature",
+    "layerName": "ENTERPRISE_ZONES",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "91cf75443f22c82b32eae1c810d34337",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHVJREFUOI3t1DEOwCAIBdBv4iE9DKOH8ZZ2slGxBQLdyqbBJ8MPGcGVAaChdi9UQOkGI6qh9gJKCzh+2ZskaD4/TqjFCijN6BG0YPs9Az0YA70YA70YA72YGtRiKtCCieAfbFXPt8EeD95AqSdsHy4L1pIzqS6HfFinnGhqKgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 996,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SWFWMD_Permits/MapServer/0",
+    "name": "SWFMWD Storm Water Permits",
+    "description": "Storm Water Management Permit points. Permit locations are represented as points. Maintained by Processing and Records staff and mapped to 1:24,000 USGS quadrangles.",
+    "longName": "SWFMWD Storm Water Permits",
+    "type": "feature",
+    "layerName": "SW_SWMPNT",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "523cadac08a06a9039c67ca629da1544",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAO9JREFUOI3t07FqAkEQgOF/9BBExULRIra2amOTwpdI+kCqiKaysgpBLCws5AQTBMGXSJk6YJVnCBIC11gseHhk0ggJkhVPxEIc2GaG+XaKGYcDh3MGjwQ2NIOQZMgHyPfe4EVdS/MoI+ASgCZfiD7gynN4sKW5uc8rkPmTzaM8ca8xXHHDgT6PG9hvKB1udMxUljuDCagZ62+ksykqHrztDBplhdhFlNV/afuEEV6MUraUP70C76FAE6Ob8Lk2UNwoBUCDtgShQPpizK1WidNDuAKSwCwbpeUNZGZr277YE1kAd+sHgLe14XRu+aTAH+eNO3cOsD2WAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 997,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SWFWMD_Permits/MapServer/1",
+    "name": "SWFMWD Well Construction Permits",
+    "description": "This data layer represents the locations of all well construction sites permitted within the District, including historical sites. The historical sites were obtained from the IBM databases. This service is for the Open Data Download application for the Southwest Florida Water Management District.",
+    "longName": "SWFMWD Well Construction Permits",
+    "type": "feature",
+    "layerName": "SW_WCP",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "7238a53af231f8b7c8ffdeed9d7f0fdb",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAOtJREFUOI3t07FqAkEQxvH/BBHEA4sTLVLbxjQ2FnZXGSt9CCGlDyASUqS2iOJjHF4jWAtWeYYgIlxjsaB43KQwhYgrngQLycI0+zG/mWI3xR+f1D94IzBQlwiHDN94El8NPvr6tBA+ianyAGxZMdYudRkmB30tLIQp4B7cFlEG+JqmIf1koNA7wg6zNyY6wpPNxWBWqBm1jsvltzyHMLsYNMrOyu23PJnbN4TAQNkSL8M0X4lAo7xnhZaB0lEUobziSZQIpCHGjLVCzAdCE3CAeV7ohC8yt7Wdf9h1WQPt3wIgPNtwP3/5rsAfeKk9Gg8nv74AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 998,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SWFWMD_Permits/MapServer/2",
+    "name": "SWFMWD Works of the District",
+    "description": "This data layer details the locations of permits required when an entity needs to connect to, withdraw water from, discharge water into, place construction within or across, or otherwise make use of a \"Work of the District\". A \"Work of the District\" is any lake, stream, other water body, control structure, or other facility owned and maintained by the District or adopted by the Governing Board. Maintained by Processing and Records staff and mapped to 1:24,000 USGS quadrangles.",
+    "longName": "SWFMWD Works of the District",
+    "type": "feature",
+    "layerName": "SW_WOD",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "ceb2b70363efbab7ae6a1f55d2e8c507",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAANZJREFUOI3t06EKwmAQwPH/B2KZYNjQsGxVi8XgS+hDCEYfQEQMZoOK72E0C0s+gwwRvmI4EBx+hi2M4aYTMYgHX7njft+FuwIfjsIf/BZobKAEHEDd3gZd19R9nwXQjlInMCNQqzdAU/F9toAdS1aBJZgiqHneCccJLB4TMGtQl5dBy6IjkvpZ2XFoas3uZVCEayoXxsN61oQbERop5aPW7HOBIkwti54ItUQpAAagglwgKBExLWAGdAn30HMchlorL63ryWKrM9CPHgBaZ3f8zC3/EngH8Ag3eB07t5gAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 999,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Topo/MapServer/5",
+    "name": "2 ft. Contours (PDS)",
+    "description": "Lidar generated 2-foot contours for North Florida.",
+    "longName": "2 ft. Contours (PDS)",
+    "type": "feature",
+    "layerName": "TOPO2FT_PDS",
+    "minScale": 24000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "5e40764aa272822016515196ed4650ad",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAACxJREFUOI1jYaAyYBk1cNTA4WvgQtP/VDEt/jQjC4xBFQMZhk4Yjho4vA0EAHFrBHw6Ey6vAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1000,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SWFWMD_Permits/MapServer/3",
+    "name": "SWFWMD Water Use Permit Boundaries",
+    "description": "Water Use Permit Boundaries. WUP boundaries are the best cartographic representation of the permit according to the District Permit Review staff. Maintained by the REG GIS staff. This service is for the Open Data Download application for the Southwest Florida Water Management District.",
+    "longName": "SWFWMD Water Use Permit Boundaries",
+    "type": "feature",
+    "layerName": "SW_WUP_BNDPERM",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "23f41625045ac8992250e09e83563900",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgba2pS8oMYiZ+fTpAwcO+LKgCkacJt9IiFbaeXnUwFEDRw0cNRCrgczMp0/DiiBywIEDB3xRDIQJUAoAGG0PxklWOdUAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1001,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Year_Built/MapServer/0",
+    "name": "Year Built (1973-1977)",
+    "description": "This dataset contains parcels with an actual year built range between 1973-1977 within the State of Florida. Actual Year Built for each parcel polygon represents the original year that the structure / building on the property was built. Effective Year Built represents the last date which the structure / building was updated / renovated, etc. The Florida Department of Transportation (FDOT), is committed to managing the cultural resources of Florida, both prehistoric and historic, that are potentially impacted by FDOT activities. Cultural resources include, but are not limited to, prehistoric and historic archeological sites of human occupation or burial and historic structures generally fifty years of age or older such as houses, buildings, or bridges.",
+    "longName": "Year Built (1973-1977)",
+    "type": "feature",
+    "layerName": "YB_CRA_40",
+    "minScale": 50000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "9d131fdc9a32cb8bf754bd8bb32b9f71",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6cZDGZbMPyTuQyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAA1pcMaAjGKXMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1002,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Year_Built/MapServer/1",
+    "name": "Year Built (1968-1972)",
+    "description": "This dataset contains parcels with an actual year built range between 1968-1972 within the State of Florida. Actual Year Built for each parcel polygon represents the original year that the structure / building on the property was built. Effective Year Built represents the last date which the structure / building was updated / renovated, etc. The Florida Department of Transportation (FDOT), is committed to managing the cultural resources of Florida, both prehistoric and historic, that are potentially impacted by FDOT activities. Cultural resources include, but are not limited to, prehistoric and historic archeological sites of human occupation or burial and historic structures generally fifty years of age or older such as houses, buildings, or bridges.",
+    "longName": "Year Built (1968-1972)",
+    "type": "feature",
+    "layerName": "YB_CRA_45",
+    "minScale": 50000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "10a19cc379644543d0af4c7fc645e137",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI3t1KENADAIRFFIWPc6TG/gViEQNVAcXyJewGDyOWsDAZwqRlLDhptMYwsQkc6TBxxwwAGfoL+gTCQ1gD6odgG3TwwNumdgJgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1295,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Species_Occurrence/MapServer/14",
+    "name": "Shorebird Breeding Survey 2016",
+    "description": "The Florida Shorebird Database (FSD) collects current occurrence information and reproductive data on 6 focal species of solitary nesting shorebirds (American Oystercatcher, Black-necked Stilt, Killdeer, Snowy Plover, Willet, Wilson’s Plover) and 14 species of colonial nesting seabirds (Black Skimmer, Bridled Tern, Brown Noddy, Brown Pelican, Caspian Tern, Gull-billed Tern, Laughing Gull, Least Tern, Magnificent Frigatebird, Masked Booby, Roseate Tern, Royal Tern, Sandwich Tern, Sooty Tern). These species nest on beaches and sometimes rooftops along the Florida coast. The FSD also collects occurrence data on wintering species of shorebirds and seabirds using coastal habitat in Florida. The FSD is managed by the Florida Fish and Wildlife Conservation Commission (FWC), and is maintained as a free online resource for information on Florida's shorebirds and seabirds.",
+    "longName": "Shorebird Breeding Survey 2016",
+    "type": "feature",
+    "layerName": "SHOREBIRDS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "85a24aba0e6d2f0e364712bf744a188d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAA4RJREFUOI2VlH9M1GUcx19f7ysSzx0RHCcgwiWgyzQircmR2hUoTtwqw1qzuVX0y7VyNdcqWj+2cpHpWGtLCtdyOmvzZkahSSolSFsRdSFwcfwYV5on6MEz77hf/fHtJtd9u9bzz7Pn8+P1/X7ez+fzqCRZbb0UnveIuoBflgJmo0n4srKlKy2NtukIx1YVIfXyVD1jwx7WX7pMY9cpFuTkSYwmMKgwNSkZdbMm4Gdr8Q34O4fEzmhIvm0rwZcMmvLkdhwp17C2+g4M6uzEDy5cDNEouF2kHv9CvlRu56GO4XnrbVaPUw+a8eATfF1Ty/JMczJRQFGgaCHMt8KpVgqW2TxnOobnrYiBY1B17UYOPryVm4UxOTCurBSo3ADHjiBuv9PT0uFiqa0EnwogBM8/+rQoFEapq/F//bW9GtqPUlC5QWwH+bIKZFbfx+r8Qrno/wIBIhGY8EL+9TA2Ip9rH+QtFbh/0xbhn7go2fcBZFmgphbSr9WHhIIQDIL/CvQ74fBBcPVB48fQ7yR1fiFrVKCswMqiE62wv0lLbPsSttXD4lK4NA4Dv8IvP0Hfz9DTBXJGdz5bDy/uAFM6DPZBIIBdBaZRZF6auBrY2w1194LZDF7vv5f+RiPcVaPpCpBpgYkJimIXMycYhIYmuGk5jLjhsY3JgTv2wOqqeJswgvSRrgIocG5OKtZbKzTnkjK4ZzM49ukD32mGCnuiPRwCxSAuqIASCHC2YAHWmFNRYNMW+P40eIbiE5+p1wcCTPrAkiu7VSA8NclxSw7rZgZYi6H5EPxwBs46wZIN+VZtTH2X9btj/AKU3sZeFTja8CrmN9/DC8QNaHqG1tj2au080AuZ2TDqToROB2A6JFw2qxxTga9OtvBJdDevKyqN+oVpKxLW9lmGRF93F+HcPPk4aLMfEUI0VZTIFZ1DfAbU6gFDQTAYtKafnRLv8/4JI24O7XqNEzEoUsqTwC1PPcLn738EM8Hn/4BwGIYGYFk5jF+EuTlXgVM+wo4DdDbv5oGYbeYD8m73N2yrXEJPaw/fGQzUK2CemwvjXrixTNt/H4O8fC1h+DcGPt2L07GfzUBEDwqwC8SqlcWybmUVL7yykzSTiaosM0ujkJNxHQGzRZwb7Md15ICc1daCw+vlw39KlfDUSSnbgW9/7BD2u8tZJ6UcBUaB6N8RAKeBw8CVBPGBvwCYpDdmZtpKmQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 21,
+        "width": 21
+      }
+    ]
+  },
+  {
+    "id": 1296,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Species_Occurrence/MapServer/15",
+    "name": "Short-tailed hawk and Swallow-tailed Kite Nests",
+    "description": "This layer contains the locations of swallow-tailed kite and short-tailed hawk nest locations in the state of Florida.",
+    "longName": "Short-tailed hawk and Swallow-tailed Kite Nests",
+    "type": "feature",
+    "layerName": "STHAWK_STKITE_NESTS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "21434e729de750ab606af32884b2e21f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAA9tJREFUOI2FlFFMU2cUx3+33ELH1ZaxBivEAmtkhCGFDebmyBZMZGsYWUxGQN2i0ZA9DOIQQhYZakbMwpJuxMiLxYw4NaAZiGaFyjYQ3PRlURghWIKQZiABsrWECwVK7x5IWZEOzuP/nO/3ne+c8x2RTWxuriTe5ZKLFxaWzYri10dFaWYNhu3DkqT+BZS7gmCVQ50TQ4l37ljyZmZ8FxyO0ZeNxu3odC8gimF4PF6ePBnLXVjwfWY2x3gVpdwKkd8IQs3sZtDw2tp9rRqN5r0jR+LD1Oqw59w60tN3ADAwMKW5cWOwymIxfaIo5XmCYB0IBY2qrMzoPHYsLTMmRtqsKgCkpsawe3c0ra1OY05OwkNFKX8zAA5AxaNHk5qrqt5O12ojtgQCeDxeOjqeYjbH0NU1JuXlmX5SlOo9glAzKwJIEhXV1dnxWm1EyBoH2+ysF7v9KadP9zA6KtPYeICiohRu3XIaCwtTKoEvRSD6+PG0d02mF1/ZCtjT46K01E5//39Nb2x8xOHDr5Kc/BIjI/+UK0r51yJQWFKS6d0K2NU1xv79P27Q6+reR60OIy1tBy0tQxqTKTpXBDKSkkJnuby8QlXVrxw6lEpPj2udLy1NwmbLx2xenQZBALVaxeKiL0cEloDYUFCVSsDt9lFT84DW1tE1/cyZLEpLX0evXz8lBoPE9PScKdCYDS3v7Byjs3OY8HBxHdBq3UdZ2V4EQbUhCa02Ao9nURuATgIJAWd39xi5uRvrB+D3ExII4PP5UalU0yIgAH8GoG63l5MnO0IeArh+vY+CghTi43UbfG63l127dI9EYEWWFx2SFJEPcPu2c93IWCxx2GwfEBGhYmpqnoqKn0lIaKC4OIVTp7JITtavxU5OzpOdbfxeBBwnTtzVNzXlz8jyov78+d/XghITJerrLcTFbQNAr4+kpCST9vZxbLZBKir2rsV6vT6WlvzDgmD9SwTam5udP1y7tvLV/fvjF5zO1SwlCVpaDpKYuP6ZGRkGJAna2g6SlBS9pt+751oxGjWfwurf90uSZBPFurdu3swbOHs2K/XKlUGamvLXNlKw7dy5jYmJEoJ3xLNncwwPz7SUlvZ2BaDIstwNvNbQ8LjWbi/6sKzsjY90Os3/NisY6HbPr1y61Pfg3LmHRQEteIF863CMl2m11scez+e9QDWgZxMbGvrbefHiHwP19f0fA/5QUIDvQHpHFOuKCwqSvmhoOBCp1WoOAHsAA7Do9zMxODg1cvlyn+rq1f7WmRkanr9sw6qTZbkH6LXbx3NiYxstsiy7ABegBIX9BrQBC6Fe8C9NcWhlJ6lJNAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 21,
+        "width": 21
+      }
+    ]
+  },
+  {
+    "id": 1297,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Species_Occurrence/MapServer/16",
+    "name": "Woodstork Nests",
+    "description": "This dataset contains wood stork nesting colonies active in Florida from 2008 to 2017. This dataset includes activity and counts.",
+    "longName": "Woodstork Nests",
+    "type": "feature",
+    "layerName": "WOODSTORK_NESTS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "46e354ff143694a63f915d7343ce618c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAQtJREFUOI3t07FKw1AUxvG/t1WRtk5BXJxdfYOCgxAuQgUzOyluEoJDBhehZFAJhYo4tkOXCE6XiIMv4FLfoFsR7uKQDkqvDini0tRoQRTPdPg4/DhnOEWmXMV/8JeCrsQJFdFUwAOYE9D017kN7nj6Njhrs/EKS88L1IDWl0BPsoPgGENhCBWRxk1PUk/bUntVJUd7MPwUeKZoebL0CElHwOIoLgPzBtxQJee5NkzR5MbbZBfD1XtoqIcxY7FMEMAYqqNzu8AagmrW/CRwpgA2hv3TmEtX4gi48B2sIELnBn2b5YGwthtKPwCEiuhwi/uXgbUCOj8YxPRB9z9mJ9f0QPcyrvorv/yj4Bs+Nkh/FvAPaQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1298,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Species_Occurrence/MapServer/17",
+    "name": "Sea Turtle Beach Survey",
+    "description": "The State of Florida, through the Florida Fish and Wildlife Conservation Commission's Fish and Wildlife Research Institute, coordinates the Statewide Nesting Beach Survey program (SNBS). The SNBS was initiated in 1979 under a cooperative agreement between FWC and the U.S. Fish and Wildlife Service. Its purpose is to document the total distribution, seasonality, and abundance of nesting by sea turtles in Florida. Three species of sea turtles, the loggerhead (Caretta caretta), the green turtle (Chelonia mydas), and the leatherback (Dermochelys coriacea), nest regularly on Florida's beaches. Two other species, Kemp’s ridley (Lepidochelys kempii) and the hawksbill (Eretmochelys imbricata) also nest but in very small numbers. All the species are listed as either Threatened or Endangered under the Endangered Species Act. Survey data are derived from observations of tracks and other nesting signs left on the beach by sea turtles. Species identifications and determinations of nesting vs. non-nesting emergences are based on the evaluation of visible features of the track and the nest. Data are gathered on more than 200 beaches through a network of permit holders consisting of private conservation groups, volunteers, consultants, academics, local governments, federal agencies, and the Florida Park Service. Nest density classifications of low, medium and high were developed for loggerheads, green turtles and leatherbacks according to quartile ranks. For loggerhead and green turtles, ranking was done within genetic subunits; ranks for leatherbacks were on a statewide basis. Hawksbill turtles and Kemp’s ridleys are denoted only as present or absent on individual beaches. Surveys in the SNBS program may vary with respect to start/stop dates, frequency, duration and beach length between years for a particular beach, as well as between beaches. Survey results are used by managers to evaluate and minimize impacts to turtles and their nests due to human activities such as coastal construction, beach renourishment, and recreation, as well as to identify important areas for enhanced protection or land acquisition.",
+    "longName": "Sea Turtle Beach Survey",
+    "type": "feature",
+    "layerName": "SEA_TURTLE_BCH",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "56619d2ec5145d64b052442c3020ef7e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgf4aj/6lhGCODNSNtXMjIYM1IVQOpCUYNHDWQDAAACLMDjsSvZjgAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1312,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Water_Resource_Designations/MapServer/2",
+    "name": "Outstanding Florida Waters - Other",
+    "description": "Outstanding Florida Waters, (OFW), are waters designated worthy of special protection because of their natural attributes. This special designation is applied to certain waters, and is intended to protect and maintain existing acceptable quality standards. The OFW layer is a GIS spatial dataset that represents the OFW boundaries throughout the state of Florida. This project involves adding new data to and modifying existing data within the OFW data layer for better accuracy and representation. Boundaries for Outstanding Florida Waters (OFWs) as described in Section 62-302.700, F.A.C. This layer includes all three types of OFWs: OFW Aquatic Preserves, Special OFWs, and Other OFWs.",
+    "longName": "Outstanding Florida Waters - Other",
+    "type": "feature",
+    "layerName": "OFW_OTHER",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "34506abbe932b27a8ec8eac6d4be94a5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGtJREFUOI1jYaAyYKGZgY+l6/9Tapjs00ZGFnQBZP5j6fr/6GLoAKYG5iCcXibFMGQxrAaSaxhWAykxDMNASg3DMJBSwzAMpNQwog0k1jCiDCQ2XIkycDRhE6VmiCVsYspEXGpgFrGgC1AKALlsfFFPsusiAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1313,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Water_Resource_Designations/MapServer/3",
+    "name": "Special Outstanding Florida Water",
+    "description": "Outstanding Florida Waters, (OFW), are waters designated worthy of special protection because of their natural attributes. This special designation is applied to certain waters, and is intended to protect and maintain existing acceptable quality standards. The OFW layer is a GIS spatial dataset that represents the OFW boundaries throughout the state of Florida. This project involves adding new data to and modifying existing data within the OFW data layer for better accuracy and representation. Boundaries for Outstanding Florida Waters (OFWs) as described in Section 62-302.700, F.A.C. This layer includes all three types of OFWs: OFW Aquatic Preserves, Special OFWs, and Other OFWs. This dataset contains boundaries for Outstanding Florida Waters as described in Section 62-302.700, F.A.C. that are designated as Special Water Outstanding Florida Waters categories. This is an update to the FGDL layer SPOWTR_OCT16. Outstanding Florida Waters, (OFW), are waters designated worthy of special protection because of their natural attributes. This special designation is applied to certain waters, and is intended to protect and maintain existing acceptable quality standards.",
+    "longName": "Special Outstanding Florida Water",
+    "type": "feature",
+    "layerName": "SPOWTR",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "a4c76d8fad7e32df69f2af0dde36747f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEFJREFUOI1jYaAyYGFgYGBgSJ/5nyqmzUxnZKGKQUgA1cCZ6YxkmYLkQxq7cNTAUQNHDRweBlKhXKSRC8ktB7EAAFWOCVEh+U/tAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1314,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/NWI_usfws/MapServer/0",
+    "name": "Wetlands",
+    "description": "This data set represents the extent, approximate location and type of wetlands and deepwater habitats in the United States and its Territories. These data delineate the areal extent of wetlands and surface waters as defined by Cowardin et al. (1979). The National Wetlands Inventory - Version 2, Surface Waters and Wetlands Inventory was derived by retaining the wetland and deepwater polygons that compose the NWI digital wetlands spatial data layer and reintroducing any linear wetland or surface water features that were orphaned from the original NWI hard copy maps by converting them to narrow polygonal features. Additionally, the data are supplemented with hydrography data, buffered to become polygonal features, as a secondary source for any single-line stream features not mapped by the NWI and to complete segmented connections. Wetland mapping conducted in WA, OR, CA, NV and ID after 2012 and most other projects mapped after 2015 were mapped to include all surface water features and are not derived data. The linear hydrography dataset used to derive Version 2 was the U.S. Geological Survey's National Hydrography Dataset (NHD). Specific information on the NHD version used to derive Version 2 and where Version 2 was mapped can be found in the 'comments' field of the Wetlands_Project_Metadata feature class. Certain wetland habitats are excluded from the National mapping program because of the limitations of aerial imagery as the primary data source used to detect wetlands. These habitats include seagrasses or submerged aquatic vegetation that are found in the intertidal and subtidal zones of estuaries and near shore coastal waters. Some deepwater reef communities (coral or tuberficid worm reefs) have also been excluded from the inventory. These habitats, because of their depth, go undetected by aerial imagery. By policy, the Service also excludes certain types of \"farmed wetlands\" as may be defined by the Food Security Act or that do not coincide with the Cowardin et al. definition. Contact the Service's Regional Wetland Coordinator for additional information on what types of farmed wetlands are included on wetland maps. This dataset should be used in conjunction with the Wetlands_Project_Metadata layer, which contains project specific wetlands mapping procedures and information on dates, scales and emulsion of imagery used to map the wetlands within specific project boundaries.",
+    "longName": "Wetlands",
+    "type": "feature",
+    "layerName": "NWIP_V2",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Estuarine and Marine Deepwater",
+        "url": "f0b2b9dd0b78b17023124addce8d3f84",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAERJREFUOI1jYaAyYKGdgRa27yky6cThCwwMDI6oLnT2vECBgQwMDDT18qiBowaOGjhqIFYDTxy+ACuCyASOqAZCBSgFAIiuC6CMeNA9AAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Estuarine and Marine Wetland",
+        "url": "eb76a9b3afb68f9d4293eacacd84d5b3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgXox3u8pMejSkq0XGBgYHFFcaJ4aeYECAxkYGGjp5VEDRw0cNXDUQKwGXlqy9QKsCCITOKIYCBOgFAAAJhQO6Y1m99sAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Freshwater Emergent Wetland",
+        "url": "c0a9d56542cfa3f99da94014e56e4f45",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgVYxDO8pMejYEoYLDAwMjigudEkTuUC+gW8YGBho6eVRA0cNHDVw1ECsBh5bwnABVgSRCRxRDIQJUAoAC7sNRzqnHREAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Freshwater Forested/Shrub Wetland",
+        "url": "8ec6db74d19cac824643f8735f665062",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGdgbbc7yky6fDXCwwMDI6oLvTUukC+gacZGBho6uVRA0cNHDVw1ECsBh7+egFWBJEJHFENhApQCgAj6Qu6IQF8bAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Freshwater Pond",
+        "url": "1772297d2f1fdfa5d9542c3cf6fb8361",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgXoOUe8pMejSgWUXGBgYHFFcaOmVeoECAxkYGGjp5VEDRw0cNXDUQKwGXjqw7AKsCCITOKIYCBOgFAAALycPAzdl0skAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Lake",
+        "url": "30bb42871b12b0839fd6490e2282d085",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGhgRbvKTPqxAUGBgZHFBeKMDhfINe4NwwnGBgYaOvlUQNHDRw1cNRArAaeuAArgsgEjmgGQgQoBQBtYwn60RQ3/AAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Other",
+        "url": "44efab4d802c2cfce709e2eb2a82e8db",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgaG2iu8pMWj14fsXGBgYHFFcGOtpcIECAxkYGGjp5VEDRw0cNXDUQKwGrj58/wKsCCITOKIYCBOgFAAATMkPMD/dIxsAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Riverine",
+        "url": "82c0ebd69ec2f4703bebaeb8c31cac70",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAERJREFUOI1jYaAyYKGdgQ5R7yky6cCyCwwMDI6oLvRLvUCBgQwMDDT18qiBowaOGjhqIFYDDyy7ACuCyASOqAZCBSgFAHofC1gGquwKAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1315,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer/9",
+    "name": "Alternatives",
+    "description": "This dataset contains all spatial features of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer contains polygons which are based on a 1 foot buffer of all features in the project alternatives. These polygons are used for visual purposes only. These project alternatives currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "Alternatives",
+    "type": "feature",
+    "layerName": "V3D_DRAFT_ALTERNATIVES",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "fae6f045daf0de5c57ba707910b5c4e1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jOTnvwTIGKgIWahqGYqCAPIcVJQZ9ePjjGIqB1AKjBqICNSfxY9jEb+17iTMCh7iXR6CB+GKTLAPJASPZQFh5RjUDqQUA2C8RiKRfL+4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1316,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer/12",
+    "name": "100 ft",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 100 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\100 ft",
+    "type": "feature",
+    "layerName": "V3D_DRAFT_FEATURE_AREAS_100",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "81ce7271d44a45cd4010093732e9747f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgQsYFmyixKAEhoSDDAwMvSgujGeIP0iBgQwMDLT08qiBowaOGjhqIFYDExgSDsKKIDJBL4qBMAFKAQCW5AnrH7341QAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1317,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer/13",
+    "name": "200 ft",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 200 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\200 ft",
+    "type": "feature",
+    "layerName": "V3D_DRAFT_FEATURE_AREAS_200",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2d5f658ba83e43fa1ead8ea9a651e1dd",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgdMZpi+mxKBMhszDDAwMs1BcGMIQcpgCAxkYGGjp5VEDRw0cNXDUQKwGZjJkHoYVQWSCWSgGwgQoBQCdsQopmSN8TwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1318,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer/14",
+    "name": "500 ft",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 500 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\500 ft",
+    "type": "feature",
+    "layerName": "V3D_DRAFT_FEATURE_AREAS_500",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "3bd68ab52d7bfb09bf5ddbcdba848b7f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgfMZ5k+mxKBEhsRjDAwMy1FcGMgQeIwCAxkYGGjp5VEDRw0cNXDUQKwGJjIkHoMVQWSC5SgGwgQoBQAy7woTzgj6iwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1319,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer/15",
+    "name": "1320 ft",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of a quarter mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\1320 ft",
+    "type": "feature",
+    "layerName": "V3D_DRAFT_FEATURE_AREAS_1320",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "f339f116f049228d8f273fdc8f56d2b5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgUu4lzRTYlDM15hTDAwMm1FcGPA14BQlhjIw0NLLowaOGjhq4KiBWA2ElmeUgM0oBsIEKAUACQMLjU05SFYAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1320,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer/23",
+    "name": "2640 ft",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of a half mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\2640 ft",
+    "type": "feature",
+    "layerName": "V3D_DRAFT_ANALYSIS_AREAS_2640",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "1f577e297979195d47d27da4e03aa0ee",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFhJREFUOI1jYaAyYGFgYGD4yfBTjRqGsTOw32KBcRgZGBUoMew/w/8HDAxQF6ILkgqQHcOCUxWZYNTAUQNHDRyGBlJahKEYSG7RhdVAdgb2W9QwjIGBgQEAB4UNOV0E1hoAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1328,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Eliminated_Dev/MapServer/8",
+    "name": "Polygons",
+    "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes polygon features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these polygons currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
+    "longName": "Features of the Alternative\\Polygons",
+    "type": "feature",
+    "layerName": "V3D_ELIM_POLYGONS",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Eliminated",
+        "url": "90b2a30e00b7f4ebe23e16d1e562cafe",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1j+S/tuYyBioCFmoahGljsZ0WRSb2bjqEaSCUwaiAaKMw4hlW8fwbOCBzqXh6BBuKJTfIMJAOMaAOh5Rn1DKQSAABP6QvA6PpXYwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1601,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Eliminated_Dev/MapServer/9",
+    "name": "Alternatives",
+    "description": "This dataset contains all spatial features of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer contains polygons which are based on a 1 foot buffer of all features in the project alternatives. These polygons are used for visual purposes only. These project alternatives currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
+    "longName": "Alternatives",
+    "type": "feature",
+    "layerName": "V3D_ELIM_ALTERNATIVES",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "90b2a30e00b7f4ebe23e16d1e562cafe",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1j+S/tuYyBioCFmoahGljsZ0WRSb2bjqEaSCUwaiAaKMw4hlW8fwbOCBzqXh6BBuKJTfIMJAOMaAOh5Rn1DKQSAABP6QvA6PpXYwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1602,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Eliminated_Dev/MapServer/12",
+    "name": "100 ft",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 100 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\100 ft",
+    "type": "feature",
+    "layerName": "V3D_ELIM_FEATURE_AREAS_100",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "00953cc7989d04e5d91fc222d198628a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgfUM9ZsoMaiRofEgAwNDL4oL/Rj8DlJgIAMDAy29PGrgqIGjBo4aiNXARobGg7AiiEzQi2IgTIBSAABuswqPfj8zhgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1603,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Eliminated_Dev/MapServer/13",
+    "name": "200 ft",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 200 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\200 ft",
+    "type": "feature",
+    "layerName": "V3D_ELIM_FEATURE_AREAS_200",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2d5f658ba83e43fa1ead8ea9a651e1dd",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgdMZpi+mxKBMhszDDAwMs1BcGMIQcpgCAxkYGGjp5VEDRw0cNXDUQKwGZjJkHoYVQWSCWSgGwgQoBQCdsQopmSN8TwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1604,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Eliminated_Dev/MapServer/14",
+    "name": "500 ft",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 500 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\500 ft",
+    "type": "feature",
+    "layerName": "V3D_ELIM_FEATURE_AREAS_500",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "3bd68ab52d7bfb09bf5ddbcdba848b7f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgfMZ5k+mxKBEhsRjDAwMy1FcGMgQeIwCAxkYGGjp5VEDRw0cNXDUQKwGJjIkHoMVQWSC5SgGwgQoBQAy7woTzgj6iwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1605,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Eliminated_Dev/MapServer/15",
+    "name": "1320 ft (.25 mile)",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of a quarter mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\1320 ft (.25 mile)",
+    "type": "feature",
+    "layerName": "V3D_ELIM_FEATURE_AREAS_1320",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "f339f116f049228d8f273fdc8f56d2b5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgUu4lzRTYlDM15hTDAwMm1FcGPA14BQlhjIw0NLLowaOGjhq4KiBWA2ElmeUgM0oBsIEKAUACQMLjU05SFYAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1321,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer/24",
+    "name": "5280 ft",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 1 mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\5280 ft",
+    "type": "feature",
+    "layerName": "V3D_DRAFT_ANALYSIS_AREAS_5280",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "03c6720fc93a15d65da37e8e92933e74",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE9JREFUOI3t1L0JACAMhNEvkB0E959NcAptRPzpTCrJdUnxuOoU5yhAo2UPTJCiy52MXoXR8Hw+ZJY5QXMCDDDAP0HrhG3g63TdoCDFAwPoXG0HOcscPf0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1322,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Eliminated_Dev/MapServer/2",
+    "name": "Point Labels",
+    "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on POINTID.",
+    "longName": "Features of the Alternative\\Labels\\Point Labels",
+    "type": "feature",
+    "layerName": "V3D_ELIM_POINTS",
+    "minScale": 800000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2fa9a046f28bd9638488536e0a3a46be",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1323,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Eliminated_Dev/MapServer/3",
+    "name": "Line Labels",
+    "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on SEGMENTID. ",
+    "longName": "Features of the Alternative\\Labels\\Line Labels",
+    "type": "feature",
+    "layerName": "V3D_ELIM_SEGMENTS",
+    "minScale": 800000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2fa9a046f28bd9638488536e0a3a46be",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1324,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Eliminated_Dev/MapServer/4",
+    "name": "Polygon Labels",
+    "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on AREAID.",
+    "longName": "Features of the Alternative\\Labels\\Polygon Labels",
+    "type": "feature",
+    "layerName": "V3D_ELIM_POLYGONS",
+    "minScale": 800000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2fa9a046f28bd9638488536e0a3a46be",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1325,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Eliminated_Dev/MapServer/5",
+    "name": "Termini",
+    "description": "This dataset contains points representing the beginning and end points of unique project alternatives for planned transportation projects within the Efficient Transportation Decision Making (ETDM) Process. The project alternatives associated with these points currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
+    "longName": "Features of the Alternative\\Termini",
+    "type": "feature",
+    "layerName": "V3D_ELIM_TERMINI",
+    "minScale": 800000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Begin Point",
+        "url": "c79ad8ae88ecd2016a8daddee72639bf",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jYaAyYBk1cAgZeIbhTN5/hv98OKTPmjKYbifJQAYGhjJGBkZpbBL/Gf7PZGBgINlAssCogUPJQBMGExmqGkguGDWQcgAA3NcKtnEFjH8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "End Point",
+        "url": "d64bef3eb42eb023a598bccd4e807030",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYBk1kIHh/+lybgZGSWI0f2VguMnAaDIdv4EMjLFfGRi0iXTQXgYGBkIGUgZGDRw1cIQYyGiiQ10DKQSD30AA7VoIhE1G4tkAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1326,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Eliminated_Dev/MapServer/6",
+    "name": "Points",
+    "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes point features of project alternatives and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these points currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
+    "longName": "Features of the Alternative\\Points",
+    "type": "feature",
+    "layerName": "V3D_ELIM_POINTS",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Eliminated",
+        "url": "0f486c1a3bea0a865e7f8475992a42e9",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAASdJREFUOI3t1D9LAzEcxvFvwmFwUqSIeIPc0oKD4urm0MHBO0dxFHSQDq46C74AwTdi4Wy766ab6CRob1DOQi1H7Q2JS6ug909wUPCBLD/IhyeExOKHY/2D7zFsjOP0duhpD4UNOgTZJOgeC8473wJN2XOIuj4xFdRoKsvAMs5EzTxVXRG1LgqBhm1F1K4DlcQKMSUmrbqZqy6K61Y7v2HpfgvkfNqRhpmibx0Au/mgkm4ONmq6XgxE2yCLkDMGpACdDQ5k+HERWZGdz1gyqHQT5Eo+qM+Spl/BQJ9gyxpgZ2ivoA8LgYLWixmsuoCPYjphTx/0pggaN8UaAiL0L83S2gIP8T4KD+Qs8AyyyZg+EneN27TqqU9PXJ0+AnvDVTh/+Lf5NeAb3RFRJxMkEcgAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1327,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Eliminated_Dev/MapServer/7",
+    "name": "Lines",
+    "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes line features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these segments currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
+    "longName": "Features of the Alternative\\Lines",
+    "type": "feature",
+    "layerName": "V3D_ELIM_SEGMENTS",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Eliminated",
+        "url": "d23cf60d99dd69f4681a5a0f0f3f8ba8",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYBk1cNRAMg38L+35nxqGMT7dzshCLcMYGCAOo76XGZ9uZ6Sql2EMahjIwDBkks2ogYPLQAADsxBRdGEl1QAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1299,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Wells/MapServer/1",
+    "name": "FDEP Well Inventory",
+    "description": "This dataset contains FDEP generalized well information system for the state of Florida.",
+    "longName": "FDEP Well Inventory",
+    "type": "feature",
+    "layerName": "DEPGWI",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Unknown Type",
+        "url": "27420c0fe9aa0eabd0ed2c0cf29704e2",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAA2BJREFUOI11lE9sG0UYxd/Mzq7XXv+L4piCakNDQW4JEHBxJRKInVZIoRyK4ECRUJULEgiOlahQKAWhgDhW6gEOUcShvcEBEQlQNolSpEaNFIGJSIEo2Ckobqp6/W/t9e4Mh2KTje13nP3eb+fN980w9NCnM3pSAFN3amLEqItQuQkWkGGHPKQY9tHFqm1/NP3myV/2+9j+hamZn4KyaHz/622eSsUYeSIuIahRKAywbMilKh/YLDivbuTJK1Nf6vrv2/JLVy+Oml2Bn88uHrlVrl8f0GjgrYwKv0pdP/N6gJAmIRaVkDzMiJ61xg9ErNz5SwvJ6XfTORdw+qsfwn8bzsrhiOQfPaqAknvr5ZrA3QqHzAhsR8CvEvQFKPwqxamkiuV1K/JHwVl97cJy/OrFUbMN5DbTIxpxwbZ3HVRMgUTs/yD5goOt2008NSiDEmD0qALDbEQC3ua3AE4wALh0ZXFsJW8Pv53xtmFcABvbNk4Me1yxY1EJ/xQdGFWOkEZBCTA+pODyvJk5/8WPjzMAaNjiw1ScQVNJ28i5wDOPyl36D9zfJ6H4HxAANJUg9SAjRk18wACgUOHHxhKKy8QkgqCPdNIAlEyBg/3uhg1GJejr1hgDgLt14Qt5aVdzB6zGYTuivbuWgj4KoyHCDADKDVClezqX7pQ48rsOnjzUWawwoNwEYwAQ8hBuNUFVpaOurXJNIJuzMTbUvciygYAMmwFA2EtMw+RaUJN6Ate2mnh6sHeMUpUjpBKDAcABDWubO85ILNIbGPQSBHo0CQA2Cw76feTavR0GyCfzN+3vjj0su0Znr7qdW0uVOsdK3haPDdCPGQBMnk7PfTar/6ZnG4kXk2p7uPeqWOUIa52TwAWgZy080k9X3pvMrLbvVDyqpG/82dhaXrfUvdevpb8KDsKHaAdsed3CbkWU/X71BWDP43BmYmRn9uul9M+37AVjtaGODymu+PsjV+sC81kLu1VeeSAoHT939tmSCwgAZ19+/vqVuWsP5QrWwmXdTKTiDIP3SQh5KRQZsJqAYXJs7jhYydlIDNC1aMjJnHtjvNhidDywZyZGdgAcmflmYaJY5u8vbfDhoim8RkPQgAe8TyW1qJ/eOH5QufDO688t7fd3AFuaPJ2eAzDX63sv/QtKYEnTPX8ZbAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Agricultural Supply Well",
+        "url": "26dff3359ef67c41f31bb3f541b94757",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAA1xJREFUOI2NVF9sU1Uc/m7vube7/7p2brvMCdJBgEoYdBsqMgWmMczwJDzAmy/yRGLMND6YgYyY+EKMiU88yIMmkhjeDE18kGnYSClwmzpSswgt01r6h/R2vbe3u39aH5oV7tqafY/f+Z3v/L7vnN8h6ILZq4vjDvHMrmrW4arh9OqmQwSWtjmOVn0C81utZs99fXbyj437yEbiw6uLPj9F/ZIq1F4NBSVq10gvRIEFw9CwLIfRdHMgk9VPPX5inPzku4Wb/zxunLh2cdLoKHj+x7uhQqkaZURWev/4y+A5xnWY10tDFFlskUWEdvdRMSU/FRi0Vj66sjj+zdk3VlyCn36/4C+UjDtbZV4Mj8qgqG5hNMFzDN46NAwlkev/O2vcO33h1rZrFyeNliDToG8GRHpTYuugKCA8KkPTM/0C7/wM4G0CAF9dv39k6ZF64OTx7V3FHqZU7Aj6O4oeDMu4Hkkf+/jKrX0EAKqm/UUo6AO3IbN15PM65mN5SAKDwUGhbZ3jCEIjEqVV7fMEAEoVc2J8b39HsUYduK0UAADReAEn3uFBedptDA8JiCWKRwgAaFWbl0S2s9V0CcWy2exUNfEwrWLnSKCtThRYGIbjb1peczwM8bQVrZkOoomnLi6aeIqtL/ngZWkXzzA0dNMhBAAEL6lbdt3Det1FS8kiambdxdXMOh4kixjbL7t4y3IgsLRNAEDiaaOimYIgPLuU1fIa4svljjEoy2XsCPrR6/O2OE03wXN0mQDACxIbz2S1w1vkZzf4V1qF7O+cK9B8Rs93mcnq8InMQtOyn/lSWVJvvLK7r/V0xvbLGOsq50bVsJBMVRrBfu8lAgAz0+HI7A/RP2Px/J43Xx/e9KQAQKMBxJQ8hgZ67lz64NC91ujJL3JHk8vltJLI9Wx2/BoNQEnkoFasis3T7wLPfQ7npkZzl2/cP/poRZ/Xbmd6DoZlcFzb79aCYdiIKTmUNEsb6ONemzszseoSBICZ98ai3/6a2J7715j/KZLas3fEh+EhEZLIgiEeWHYdFc1EJqshmVrFNpmPi5Ln2NyZCXVdo62Fc1OjOQChyxFlWletz5UHxQOVqsPpa7aH99J1kSfVgMTe3RcMXPjsVPj3jfu7epqZDkcARP43xA74D65mSHgyxgIfAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Ground Water level observation Well",
+        "url": "01c21543abc4b6af958420bec42ac072",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAArdJREFUOI2tlF9I01EUx79bkzmngrI0gyQ0N0uXk0TFKRoyQ6fYHwoTIqVFUJlRiqQ+TNCBYZGoJTXacrAQH3wwFPqhOCYLcy0tDStT0Bf9bTjUfkzZ2npoyX75c07owOXCued87vdezjkcBGAymSycIIg1AEEAXP5iOYEAGxvvZRAEEUjonsBgAEVqtfYiAPD5/GaKosYBDAHY3BdQIBBcDQsLa09Ll2yJTyYD6EVtXbV8mBi9YDSaugHUAugJCCiXn+kCG9fuVt/iRkcfhNP559vOlhYnnz9XgsXFpfmq23WtJEmKKIpq8Au8Ulles766dqO+seYALziYUX1s7JE4/Wv1evllReXCwsIsAB0jsKysjPfj67yqqenBrrC/xueHhHd0tlqL5ZfaAPTB+6c0YEqqsCEiIjQo+lCUX5iP0vicnKw5o9FUCKDfF8gBgC2HqygpORFut4eW6PG4vbsHbjcdml+Q57BYpjIoihrwBToBQKlU+VWUKpEyucXeVbcNNBiGCgDg3fjEqxAeL0YqzaRluFwuZKSfhvmDASwWm3Y2PDxKfv40PaJQVLxsbn48zgGA3NxCAgA02meTZrMlJi8vm1EhhxMENptF802YLejr7e/T6XoJ3ycDAIQJwqe6Hn0hSdoQFSXw+3wAWFmxwvx+kgtgcPtS3wCpNP+NRtv9Xf1Cm3C/pgpcLndXmGNzE0/au7Y2NjbuwKcNdxR22ilJvt1u//KorSNUcb2CUenKMonOzue/4IbaZrPR2m8HUCzOXJqcMSVFRkaMqFoexh8/kQiRSAgAGBszYWZ6FlNT0854UVy9TqNv+zefsZclSVmLAI6NmYiSuW9zN5dJawqAGJt19WPs0cODdvvPFp1G72DK9Tu+srNkAwAGDIYhGYC3SqUqHf9jwO7HAgJ665S1ZyCA34n29YMpqQGbAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Ground Water Quality Monitoring Well",
+        "url": "00029646fac5ccbe4cfce270b32471ed",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAnJJREFUOI2tlG1IU1EYx//37uqciYkVZArFpgiuvTu3LOiDLFPRL7X0gxWRfVlv0AsSK0JaVCCBxCRkSLY+ZBOCFkYNghAW5rbrC44iNSj9EEq0MHR17z19yI1uztsV+n85nMPz/M7/nPM8h4EMhR0n8pWfI4kv42yWA+CkYhk5wA2XD9q40xE5odLAGJAjVFjreX+/EwA2VZg8USSHqXj8mRlYXhcwZrcfJXRWF7W4uJG8YQEAVGtTA3kdO0AY5d2oAhctLHtfFjDmdHrJuykXkBSt0w21OxWN+yHMzs3wHbdvRfXWcsv4iFsSGDnZdoEMRV1rOQcAuqRYTXVd+8advXIsYjK9rWRZf0bgZEuLanlm7oYULCUqNzdfcfX8PN/u6YwBgdSdioBJq86NvgFZL//b6TYNv71kinDJOsTjj9PA0MpILf+oJ1IEQkCEv6C7zEtketYWAoJpYKHe9BMAhP4nko64I6cyLevAQFeoN7Wngcydm/sAQIhG+6BSFdG2SnEKz4E7fm7Njagq00PF4ebe756BYQYADHtrQwDA+ntGydhEEbXHLj6ppG9ACE8EzL7eUNphSrRa080PBOvI/AKoLZv/gVlRXl6CDg8NpqYioGF3zVPW3/Oef/CojHG1AcpsGUT+zJ9tuKpEGKO+hvuaiHPdvjxF6yFJp1R5qdccCIjabxVQp7N/Gp0Ma1FQ8JLv6tGgbAcojVocVLyVI+riSxavr3OVoUw7G7XVHwGUjoZDjZj+4CLzCwYARXRzE0tysgeVIxPXtV7fUqZcya4wVjuCAIJjr547hHuBFwvujqr/8sGuR7KAK3VKyYn9BY7X2OUGlOSEAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Industrial Supply Well",
+        "url": "a0c12832b748eb0bf6930a40200f0f18",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAv9JREFUOI2llE1IFGEYx/+z886s87Wttjqa9LEe0k1a2tTKsjSD0OhUHerWpU5BhEWHsA8l6CIRdPJQh4KE8BYudOgLNWy1ka0wOmRZ2zrrwm7uzI7tzLgdxCWtKcnf6eWF5/e+z8PzPAQOdN4drrOJq3NWM/dkDXuNnrOJwNIWx9Fpj8A8n5uzum6ebnqzPI4svzh1d9jjpajHkzNzOwJ+idpctQaiwIJhaJimzWh6rjQW1499njaOnr8z9PTr5/zhvmtNxh+Flx+MBmZS2RFGZKUjbRvBc8ySx9xuGqLIolwWEaguoSJKorW4zJw62ztcd+v07qklwgv3hrwzKePVepkXQ0EZFOVUjAV4jsG+xkooUdX3JW6MHb8yuKHvWpNREDJ5+mmxSK9ItghFAaGgDE2P+QTefgTgAAGAG/2vm99+TG872rapIJtWNSSShqOszMehXBZBUUBDSEZ/+NP+c72DWwkAZHPW1YDfA+6XmiWSBiLvUo7ChlqgXBYBABxHEKiSKC1rXSYAkMrk6utqfSvL04HKCgGRaLKZAICWtXhJZFclFAUWhmF7F1L+YbsY4lqVkGFo6DmbEAAQ3GTetOZdrJv+b6Fp2hBY2iIAIPG0kdFygiAw/4pzRNNz4Dn6OwGAtRI7Hotre8pl4b+FsbgOj8gMLaTsZa4rb9MDW6pLCq1T5uPQUOssKPNxhXPWMDExmcn7fe5uAgAd7aFw5/2R95HxRM3eXZWgqIUeW+yzv5HPAxElgYrSolfdJxvHCqMnr+NaJj58/6RE1aKVjl8+DyhRFemMmbF4+iDwy3I40xpUewZet3yc0p9pL2NFDSEZHPfbditgGBYiioqUZmqlJdzOrhP1s0uEANBxaPvI7SfRTeo349nD8GRNbZUHlRUiJJEFQ1wwrXlktBxicQ0Tk7PYIPPjouTa33WiPr3o+O0LZ1qDKoBAT1hp19PmJeVdclsma3P6D8vFu+l5kSfZYokd3eovvnLxWOjF8njHnDraQ2EA4b8W8Q/8BK2aFxBqg+qLAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Irrigation Well",
+        "url": "f6658d001da02902288203a80195386f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAA1pJREFUOI2NlF9P21YYxh8HO44T2wn5WwIlSNCoDJGwBDHRqGm7aWsroUlVd9Gr7o4vUbWdNu1L9G7dTTUJDW3VKLtpgcFG1CAKF1sZTCZtwhyU1LGTOLaD04sq6ULCxHN19Oo5v/OeR+c9JE7Q4k97cdMk7koVW6JcoZyqRpIMXa+zdkPi7dpSTbd8ffNWaPv4PvJ4YW4uy1sJ49fdV9zUeDhPjIVfw8nJoCgdhmGlSgrvE7K+L4Qd/835HzJP85JrZnaWV7sCnzzeGS28sawznMl9eWMFDqbcdhhDV8GzEs72ZRAbY4mlVPRjO13JPHp4EL91uy/TBpz/XnAVinQq1CexF+IbIIjGSWkAABxMGdeTa1hLx7xCzpV+8EAenJ3l1RaQ4synvVBPBWuKIBq4EN+AXJn2srrxGMAnJAD8tvjnpa1d58TtGysnwnaFYYwM7XWFJqe28HD+4pW5R/vjJABodeqr8fBhR2ZN5YsBeD1F5IsB+N1i1+uPnzskZIW+RwJAoWSbnJ7oPB0ATLMHuk7B7xbx+t8BmI0eWIijDl+oX8TqxrlLJADIFdrOc3JXYC4fRDCQAwAEAwfIiUEMnHnV4XNyCspVykUCgFrrsVgpvcNU0xjQVq3VkYU4Ak3pqGkMbLTa5qUoHapGkiQA2JkjUzesluOmfMGPweB+W83nEZHJhTrqhmEFQ9frJADwdk2VFd7Bs6WWQZJ74XZKXWPodUqQZDdcfLFVKyk8WIdRIgHA26tuCtlAYqDvfTYHeT+cXBlyme0KLSlsG1DI+uBy1FbfdchXv11/MfDLh2Ns6+mMjrzsCmoqGHi/rqgstnf8jZGz0jckAMQT0YXFn/f+WklFzl9N/n7qSQGARoPAUiqKwTNK6urnw+nW6Hnclct//+MV1tIx22nHr9EgsJaOoSTTCu1ofAb853OYTETEjeXNyy/3/c+eLE/bklNbJ05O85rLqQjeyEzZ41Y+ujYTltuAABBLTqw/X90aKhQdz7778eL5SPgQQ/0ieE6GldKhG1bICg8hG8D2jg+h/tKmg9CuXJsJt55Dxwc7mYiIAEbTqy+uy7L9zh+bwxNylWaqao+FsR2ZvEOrepy159GweD/x6QfLx/d3AJuKJ6ILABb+N8QuegvMClMZEh7EAQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Other Well",
+        "url": "4f11dae508a2b14ddc5975cfc8cda167",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAA3ZJREFUOI19lE1MXFUYhp9z5sydO38MCoOIgFprQrGaJjQ0EeRPY4K6qNGFNTENGxONLpvYGKzVGDQum3ShC0JctDtdGEnUMIDUpKRNGkW0/hAKZdIBJjIMcGfu3HuPi3GmwwB9lzff95z7vt/5juIAfTqa6NAwnN7RXZmcjmULqKgfJxYQG7UhObXtOB+NvPncr9V9qvrD8OjPNX6d//63Na+zs0WJp1p91IQlhgLbwb+57cUXVt1Xby6LV4a/TCT+uu1/6fL5bmtf4OdjU0dWsrmr8bCMvtVvEjHlrsOCAYiFfbQ0+Og4rERizh5orLeXzl6Y7Bh5t29pF3Dkqx9qkxl39nC9L9LdbiDFQWEUFTElL3aYzMzb9X+vutdfOzfTevl8t1UGeo5K1IdFpLvdYGXNxSpoQgHBQ3U+RAVca0imXXZsjakE3e0GGStfHw0WvgWeVQAXLk31zi47x97uDyIFWAWN6Rc0VcEAhIDG+yWLd4qHSgEDRw0uTlj9Z7/48UkFkHf0h52tirBZ7A4FirDbay7Ncd8u+66nWbzj8uiDimTaBSBsCjofViKzoz9QAKtb3vHeNqPcVLLZHN8NrYRJUawr6VCDj8S83asA/s3pUCx4d6Ilm7IC2lQnuZW6C6usA6gJSTJ5XasAsnmk4d9/mlJAU53kp98L9Nxj+oaCbAGlAGIB4dkFpGnsLXQ9za2US0+7wcr63kxLsh2I+nEUQG1QWBnLC9eEi5loXbRTnVl1pqU6gM1tj5gpMgqgMcyNhZTb1VJfBCbTbvlqVGZWDU2mXZr/71lYdakLiSvFP4yKTyb+dL47/pifsCnYsfUeWGWmJWiuoAHYynnMLjv6ibj8WAEMnewb/2ws8UdiLt/2QoeJqQRWQZNMuwduSq6gCfoFnobEnM3jdXL2vaH+6+XVa20w+q79k1+cmbfNe+2yEJRtehpm5m3Wt3Q2EjGfh4rH4dRgV2rs6+m+X1acycz1vDlw1Chvzn7azmkm5mzWt72tphrfiTOnn97cBQQ4/XLP1UvjVx5ZWrUnLyasts5WxaEHfMSCEsMPdgEylsdCymV2yaEtLm80xNz+M28MbJQYex7YU4NdKeDI6DeTgxtZ7/3pm96xDUsHM3ktowG8+0yx0xCR1040G+feef2Z6er+PcCShk72jQPjB3o+QP8BGhZ2pr/daZUAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Private Drinking Water Well",
+        "url": "30de34eeb0f39a418b1d1feee07bc044",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAA2FJREFUOI2NlE1sFGUYx/8z887Mztd2u7YO24m024OwEhrWFhVpBWpiWMOJj0RuXuREYkw1HkxBSky8EGPiiYMcNJHEcDNs4kFQaE1ZYJsFU+OBQnU6btvQpfO1nY9dD00XZj8M/9v75H1+8zz/53mHoIMmL80Mh4SeXLf8/Y4bdtleSCSOCQSBqcQl9tdqNZj66tToveY80hz44NJMPEFRPy+sVF/LpBXq5cEuyBIHlmXg+yFr2V6vbtjHH/3rHvv42+lr/zyqH7l8btRtCzzzw+3Mypozy8qccvRwP0SBjXyM5xnIModtqozMjiRVKC6Pd7/oL354cWb461NvLkaAn3w3nVhZc2+9pIpydkgFRXUyY1OiwOKtfRqKpXLP34Z7572zN7dfPjfqNoBsnbnWLTPPBdsSRQHZIRWWrfdIYvgTgLcJAHx55e6B+w8qe44dHmiBeV6IJcOC5fiQRRZ9KRkcx0Sge7MqruQfHvro4s3dBAAcL/g8k45DaPLs8WMX+Rs6qhu1RizGryA3piGZFBoxQSDIDCqU5QRnCACsmd7I8K6elsqaYQBQ3aghf0PHiVw6UqmWklAorR4gAGA5gajIXCRRN8wW2LPQJcPCQH9XIyZLHFw3TGy2vBHSLKEjSbYTtIVtyXL8yJllGdheSAgASDyp+UGN5vinLUhiy85HJItRv30/hMQxAQEARWRc0/IkSXp6SUspiPGrbduO8TT6UnK0YtuDKDBPCAC8oHBzumHt36ZKjQscxyA3prWZMo3cmBYZCADoho24zE5vtpxgvyjer1x9ZUcysjrJpIATuTR0w4TtBJBEAi2ltMAc18f8gllP9/DnCQBM5LL5ye9n/yzMLe8ce0OLLDfHMUj3Jzp6Wa8DheIyUr2xW+ff33en4bzaJxyc/+vJw2KpHHve51evA8VSGRXTNwOReQd45udwenyofOHq3YMPFu3r1u96bG9WhSB0nrTrBigUy1izfKs3Kbw+dXJkPQIEgIl3X5395pfSQHnJvf5jfmHnrsE4tJQMRebAEhp+UINpedANC/ML69iuinOyQh+aOjlS2WK0lHB6fKgMIHMhX8zZFf+z4h+re0wnFOyNgBZ5piaLxOlWuNu7091nPz2e/a05v2NPE7lsHkD+f01so/8A8uZPYZef4vQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Public Drinking Water Well",
+        "url": "2f3caf1c286acdf6f4699d8b5b5100b6",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAA5pJREFUOI11lE1sE0cYht/1/jg7u7YT184SQimOmoCLsOI4aUtJG0glhAsnQKjcuMAJqapo1UMVKEGVekFVpZ44lEMrFaniVrDUQyEVSRUMtuWAXDkQQxrHtRMRO96f4N319mDF4J+8l9XsN/PMO9988zHYQhPXZ0ImY5tYl/UDqma6lIrJCBxt8DxddArs1MaGMfn9udG55nVM84+z12ecnRT1R2Zl412/z0EN9LkgChxYloaum6ysVLzZnHLy+X/aiS9+mr6z9Nw6duPyqNYWePHXB/6VNXWWFTnH8SNvgfBsw2Z2Ow1R5LBNEuHf7aai8cJ4V7e++Nm1mdAP5z5YbAB++fN058qadv9NiYjBgASKanS+sqrC6yH1MeFZfLS/F/Fk3vNvTnv46aV7O29cHtXqQNai73SJdFuYquq4NbWEU2EfCHnlmqKAYECCrGQ9AjF/B/AxAwDf3YyNPVooDp44sqsFBgCp9AuYZu0bGpQaYhQFjAQl3Iw8O/T5tXv7GABQK8Y3fp8TfFPONt0l50sAgOR8Cf4Bd4NLAOB5Bv4+ByWrxkUGANbKleHQXk9bWDRWQNWqjasWEI0VMDLU3QLt7REQTa6OMQAgqwZxiFwDKJV+geR8qQ7b1JNlBQu5DAL9rga3osBB08zO2pFfmjaWsQGo3eatqSWYZmsuN1W1gES6hLmnJRwd2wGvh4BlaSgVk2EAQLAzVd2o2jg7Da+H4FTYt6VDALBRaHGo6yYEjjYYAHAQWivLFUEQakFCWIQGJfgH3IjGCniyrNRhb28X2uZQViogPF1iAOANB5fI5uQD2yShYRIhLEaGurGQy6Bq1Zy1gwFANqfAKbLTtSN3st/GHxVvv7Pb3VI6hLAI9LuQSJcQ6He1hamajlSmbPk89isMAFwIByMTv8z+E00U9nz4fm9LcfsH3Jh7WqvBZlkWEI0X0OPtuH/lzP6H9acnbecPptKlZ/FkvqP5+RHC4ujYjhZ3lgXEk3kUy3rZIPRh4LXmcH48kL96O3ZwYVG5K/+d7RgJSuD5V83o9cYAAJpmIBrPY03WZa+bf2/y9PB6AxAALnwyNPvjn8ld+WXt7m+RzJ69fU709ohwiBxYxgbdqKIsV5DNyUhl1rFTIgnRYTs0eXq4uMloabDnxwN5AP6rkXhYKepfxx+vDpZVk1deGjZip6siYdQuB/dgn6/r0lcng381r28B1t2GgxEAka3iW+l/AoltNie4fs8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Spring",
+        "url": "0cd0a4cd3fc560ff4a4037575612eb30",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAQpJREFUOI3V1DtKQ0EUBuBvJAghIhYR1LgCN6EggovQItEuTawEa8FeSaOgvYgICq4ggrau4XbBR3E7dSxCwEfuTa5Y6F+eAx9nhjNT8ssp/WMwmq+oNFPpCmYrKk+p9KaqetQN3btiYFRHO5WW+6VUOoeFru6mqI2W4GU4GK3hOPtQoIkyNvLBqIr2EKyfhuhMcJ03YR2TI4LQIh9cLIDBkigIYhY4XRAcxxQes8CHguArnj8WvoIdrBYAO4K3PPAEO3orMUq+bcRnMEhE29gfAbsQnOaDPfRANIFdjGVg51gf1Bj89IK9WqxdJZItLGNG7/JvcSi4zBo783NIQnKPRla/MPjT/H3wHf+GPPxJup/7AAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1300,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Wells/MapServer/2",
+    "name": "FDOH Limited Use Drinking Water Wells",
+    "description": "This dataset contains the location of limited use drinking water facilities in Florida. This includes Limited Use Public Water Systems (public water systems which are not covered by the Safe Drinking Water Act), multi-family water systems, and private water systems. Definitions for these systems and statutory authorization are found in section 381.0062 of the Florida Statutes.",
+    "longName": "FDOH Limited Use Drinking Water Wells",
+    "type": "feature",
+    "layerName": "DRINKWATER",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "c5b6f66deff71cae2fd695ca7dd8a2a9",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAApdJREFUOI2llF1IU2EYx/97efees53NbabgB4mJGopdNBGDtMwQGRUR6BLyoovdRHRh3Zap1GUflEGEURSBrIsIgjWEPsjoQ52VUJAgYeDnnO3jnLOdnc66MEW32dT+Vy88z/Pj+T8P70Oxjhx99+0A7WSSaS+JMQtR9VSjcVVjyi/VIL+mcV3P09NtY8l1NAXU+8hMGPHygew9kbyfutn8z4jxfpR+aAeJc3rEuVwmmlug01qO3Ha/EKYLDvd318lpgY6+vnImCUMqiWSN1fZC5HwAAKYVpFpIEPCBbY2x7MBk680n1Y/PHJtcA2y6fi+LybZhyTZj/lp2FYC43jTWWhSFHFUQR9ouDhb1d9fJK0Aq6F+qusimYKuhYv7UMwAHKQAceninnp/OtY/V3tg0bFn8oq3x6K3+XRQA1Li+J5I3CZH7tCUYACBBoOoTnRQAmGSpnt/xbuuwv6KyYT8FAKrwQozzp98mAGjmDQGJwqx06aEnpR/b/7tDourp0paZqiHKSKaC4X2XARJOG7PKVSj2taoUABQmyXyUCZlbCEMhU2lDXLQBGqcEKQBETcFRPmStywj8hywLO6EYI2+XLBuDl6DTniOR0XVaCTE7TDPbE1L2dA8FgAFnh9dx98E302xhxRZwKPvehqg18N7jOulb+Xp+80QDk80/WCjLsBlY5fhZUFkIKURsBlYdhyFn15zDfaUeKHmzEagQs6Ns/DiobAorRn+Nx+UKrwECgMd5bqTG3VWcYyh5ZZrLr0ieqVWqAhdrgGWhHKaZIki2eZ/0e/HAgMsVWs5JObBDzq45AJVN7mvNkCzn+YhlN1OMBiiUFH9p1VQWFRVjcCRaOHHBc+LUYHJ9CnBZA84OLwBvJuvJ+gMYS+04j+/JdQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1301,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Wells/MapServer/0",
+    "name": "NWFWMD Wells",
+    "description": "Well Construction permitting data shows locational information about some of the wells permitted by the District. The Water Resources Act of 1972 gave the Northwest Florida Water Management District the responsibility to protect, conserve and manage the ground waters in northwest Florida from Escambia County to western Jefferson County. As required by law, the District initiated regulation of the construction, repair and abandonment of all water wells. Those regulations, found in Chapter 40A-3, Florida Administrative Code (www.nwfwmd.state.fl.us/permits/rules/ch40A3.pdf), require permits for all wells, establish minimum well construction standards and conduct inspections and enforcement. Spatial distribution of wells help permitting personnel determine whether the construction of proposed well will be according to the Florida Statutes. For example, whether it will adversely affect the ground/surface water resources or will be close to a ground water contamination area. The spatial data provided may only represent a small fraction of the existing wells. The data represents the records for well construction/repair/abandonment permitted beginning in the year 1976 so does not contain data on wells constructed prior to 1976. The location information may have been provided by the well contractor or owner and may not have been verified by the District. Please keep these limitations in mind when using the data.",
+    "longName": "NWFWMD Wells",
+    "type": "feature",
+    "layerName": "WELLS_NWFWMD",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "b650f0ed4daa9fb09cfb69a165f63f8c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAr1JREFUOI2dlFtI01Ecx79u59+au+q2vMw0obQZls7MSEdWmIgVFHsQg1Cw3iR6EHpImxYkGFFRLxJogjRD6UGlZuAFL1TeszIqMYdO5y7538Ulu9hDTdyc6fw8nt/5fQ6/3znnR7AJ9a31cjeYFfMmbqbByhIYlikiCXW6xLyVpQjhco/jN7PqekHBhH8e8V940tjII6Ehmv7vouO5R7QhWcljEHD1KK0ths7KonRWlgQ6vpLF9Cgfv2zqHPgsPaeuzHIEFDa/fZYwORc6KCU2/v1rD8HnvAYAOF1JAIp9Dl5xM9D7Q3xaFmvS1jS8Siu7clHrI6xrqeN/1QmHUuIXePmKcoSEGDfrhg+Teq5YFmEbLrjdF6uuzHKsCT27qK7ocFtQsvVSxaG5NjVwhgBAa89TRduIRF5z9UHQMi8fpsNPP1KrkwkAWB3sqrOHZ8DjaHYkA/72lL3bXUEAQGsQpF1SDOxY5kW/FHqSAMCChc3hc/X/bnMjTpdoW0KjlSUkAGC0U4zS2mL4P41gMSxThACAmOP0zNEsxlYJ9TdUoIgpYMxMy3HvRaGLAECUwOGYo1mcrYQUMYEiXwLGaFseJLwVmgBA3B56dEgrzNpK+D8mpg4iSmTrJwAQGWa6y2LufbPi3rLqgFjsedCMx65mHpivIgCQnV6maWh/Ptk6HiMLVra6KkZz52WkxZveFZ0vGln7eonS6exZE+/n6KyAHYysvfcOdGaOJYxazgXWDYeMFNXiwGi1Akjo3Y7UYs9DS1chdGauVSY1pStzSqw+QgA4kXpz+P2Yal+MKL6741O0zL+nZloOiy0PE1OJ6PgYh2P7DSNS7tIpZU6Jxbtnw4DNSFEtAkjqHqzJXfglujWzKEidp9lso51iVDcVeiL5DnushB6+cPRbeb6itM8/f4PQS3Z6mQZA0NPiD5PCBG8uqGFmAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1302,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Wells/MapServer/3",
+    "name": "FDOH Super Act Wells",
+    "description": "This dataset consists of information and locations relating to all privately and publicly owned potable wells investigated as part of the State Underground Petroleum Environmental Response Act (SUPER Act) program. Environmental Engineering staff identify all private water wells within mile, and all public drinking water wells within mile of potential petroleum contamination sources. The data contains information about the owners, addresses and geographic coordinates of the wells.",
+    "longName": "FDOH Super Act Wells",
+    "type": "feature",
+    "layerName": "SUPERACT_WELL",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "1e9ed7d6b4f736e3cf3df048169367ac",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAolJREFUOI2l1NtLFFEcB/DvzpyZve96LUGxggosrFVbEHPJDPGl3nzwIYqkDcKn3stQ+hd8UfEhiCzoqYKWwAteELx3oYeSQtLM++zszI4z55ztQVp0XVvXvo8z8/vM7/zOzCE4IOHXo5Vx2Nr4OrvMVepnOieiS6DwiltSDhmSDLOjt7nuY2odSb1w/9mQN+aSI9GvRrXrotvmKPeBeAiWuxbBVC5B5YVsyWoyRTTdfDnaTz8nrve118bTgq3vx89uLloTEoGv6F4JiHvnNqd83wo4A7a/GfVSqbTQ8nSsqvdWzcIeMPxqzKcsmZOOU06vP1QAwXbQMPbG+m0V4Dimmh+PlPa118aToCHbBsQ8KStsN2o/73gD4BoBgDtDkyF9Wq0sCpdkjSXR70Z9S99gOQEAHmcdrguu5MyOEs4AyyG3EQBgq2aVJ5R3ZCzZ5Ra9QgCARplb8IhpdxMAEjRxOFFlOTsdakxY7lr87w6ZzgkBANEtcqYwIVNB8YMTsJH0u0YVC6vPf1ECAIJfjDOFuTOBNmKDQNK/l8YoBC9RCADYj9lnrAWzNhP4rxjzOoR8cZQAAMmVnwgi3nF2NIxqFPqclvCdkTsIAHQHA5Hbb8e/6HNaWbYYTwAb/WuQT9nHu2/UTCe/ZKnYUSetWz+sn6YzG0wZXgPboFG/xBuBXYdDTyCw0jozE9pEbPgwKNUotgbWwDYsNbdYDnY2VKt7QADorKiYujs7e9LKNwaNT1pZ6kypYoHHGPT5GPQPOuTTjmmnh1ztbKiO/n1m38/bEwisADgXnphtpJvmw+2V7QquMCfTmLD6YpkTn6iJhfKU+5LnUW8oOJJaf+Bp0B0MRABEMi09NX8Al2QSgd6QigEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1303,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Wells/MapServer/4",
+    "name": "FDOH Super Act Risk Sources",
+    "description": "The dataset consists of information relating to petroleum and drycleaning facilities investigated as part of the State Underground Petroleum Environmental Response Act Program (SUPER ACT), and Drycleaning Solvent Surveillance Program (DSSP).",
+    "longName": "FDOH Super Act Risk Sources",
+    "type": "feature",
+    "layerName": "SUPERACT_RISK",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "fd9d1ca66c1600e0805ee8f2028a04ac",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jYaAyYBlaBs60ZdjPwMCgS4oB/z8y6GZcYniO1UAGBgZBBgYGYZKcJM7AjNOF1ACjBo4aOGogyQamH2YwoKqB1ACD30AA7+cH6Q+7GGUAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1304,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/NHD24/MapServer/0",
+    "name": "NHD(24K) Linear Surface Water Drainage Network",
+    "description": "This data set contains routes that make up a linear surface water drainage network. This is the fundamental flow network consisting predominantly of stream/river and artificial path vector features. It represents the spatial geometry, carries the attributes, models the water flow, and contains linear referencing measures for locating events on the network. Additional NHDFlowline features are canal/ditch, pipeline, connector, underground conduit, and coastline. The National Hydrography Dataset (NHD) is a feature-based database that interconnects and uniquely identifies the stream segments or reaches that make up the nation's surface water drainage system. NHD data was originally developed at 1:100,000-scale and exists at that scale for the whole country. This high-resolution NHD, generally developed at 1:24,000/1:12,000 scale, adds detail to the original 1:100,000-scale NHD. The data was originally published by the USGS then it is modified by the NHD data steward for Florida (FDEP). When received from FDEP, this data was originally in geodatabase format. When in shapefile format the data loses the network functionality of the geodatabase. Please contact the FDEP if you need the original geodatabase.",
+    "longName": "NHD(24K) Linear Surface Water Drainage Network",
+    "type": "feature",
+    "layerName": "NHD24FLOWLINE",
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "69ab951bdbd36755c90b33f709052ab4",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAACxJREFUOI1jYaAyYBk1cNTA4WvgzJn/qWJaejojC4xBFQMZhk4Yjho4vA0EAIfMBCA9fPzDAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1305,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/NHD24/MapServer/1",
+    "name": "NHD(24K) Hydrographic Landmark Areas",
+    "description": "This data set contains regions representing areal NHD hydrographic landmark features. One of the more important is the stream/river feature. It represents the aerial extent of the water in a wide stream/river with a basic set of attributes. They typically contain NHDFlowline artificial paths that are used to model the stream/river. Artificial path carries the critical attributes of the stream/river, whereas NHDArea represents the geometric extent. The National Hydrography Dataset (NHD) is a feature-based database that interconnects and uniquely identifies the stream segments or reaches that make up the nation's surface water drainage system. NHD data was originally developed at 1:100,000-scale and exists at that scale for the whole country. This high-resolution NHD, generally developed at 1:24,000/1:12,000 scale, adds detail to the original 1:100,000-scale NHD. The FDEP is the NHD data steward for Florida. When received from FDEP, this data was originally in geodatabase format. When in shapefile format the data loses the network functionality of the geodatabase. Please contact the FDEP if you need the original geodatabase.",
+    "longName": "NHD(24K) Hydrographic Landmark Areas",
+    "type": "feature",
+    "layerName": "NHD24AREA",
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "336; 343; 364; 373; 398; 403; 431; 454; 455; 460; 461",
+        "url": "6777a44d53c50898a25fd17aabf46e1a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgXM2nPpPqWEpAWaMKC5UVOAm27D7D74yMDDQ0sujBo4aOGrgqIE4DYQVQeSAlAAzRhQDYQKUAgDrHwvbLwypCgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1306,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/NHD24/MapServer/2",
+    "name": "NHD(24K) Water Bodies",
+    "description": "This data set contains regions representing areal NHD hydrographic waterbody features. Basic waterbodies such as lake/pond features are represented here. They portray the spatial geometry and the attributes of the feature. These water polygons may contain NHDFlowline artificial paths to allow the representation of water flow. Other NHDWaterbody features are swamp/marsh, reservoir, playa, estuary, and ice mass. The National Hydrography Dataset (NHD) is a feature-based database that interconnects and uniquely identifies the stream segments or reaches that make up the nation's surface water drainage system. NHD data was originally developed at 1:100,000-scale and exists at that scale for the whole country. This high-resolution NHD, generally developed at 1:24,000/1:12,000 scale, adds detail to the original 1:100,000-scale NHD. The data was originally published by the USGS then it is modified by the NHD data steward for Florida (FDEP). When received from FDEP, this data was originally in geodatabase format. When in shapefile format the data loses the network functionality of the geodatabase. Please contact the FDEP if you need the original geodatabase.",
+    "longName": "NHD(24K) Water Bodies",
+    "type": "feature",
+    "layerName": "NHD24WATERBODY",
+    "minScale": 24000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Flat",
+        "url": "5ecca8500f5bb57653cc5374381059da",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgf//n/lPqWGMjCaMtHPhqIGjBo4aOGrg0DCQkdGEEcVAmAClAADCmAS/q7wI4gAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Shoal",
+        "url": "eee5b404988973f453fa4313f3fa5122",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgb1Tp/6n1LDi7GxGFBdy6puQbdj3i2cYGBho6eVRA0cNHDVw1ECcBsKKIHJAcXY2I4qBMAFKAQAB6Ax5tNoJOQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Structure",
+        "url": "28c31cd48b70dd9004f30c95199a2f44",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgb1Tp/6n1LDi7GxG2rlw1MBRA0cNHDVwaBhYnJ3NiGIgTIBSAAAk3gblEuWTjQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Water",
+        "url": "947b7960263cd678fda12d202e71381a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgRuO3PtPqWEBNkqMtHPhqIGjBo4aOGrg0DAwwEaJEcVAmAClAADuAgWv3OPRewAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Wetland",
+        "url": "0f5692ea9a45ff0d7147a7e96975a3f5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgf17+v9TalihSyEj7Vw4auCogaMGjho4NAwsdClkRDEQJkApAAAYXQafXOOJqgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1307,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/NHD100/MapServer/0",
+    "name": "NHD(100K) Linear Surface Water Drainage Network",
+    "description": "This data set contains regions representing areal NHD hydrographic landmark features. One of the more important is the stream/river feature. It represents the aerial extent of the water in a wide stream/river with a basic set of attributes. They typically contain NHDFlowline artificial paths that are used to model the stream/river. Artificial path carries the critical attributes of the stream/river, whereas NHDArea represents the geometric extent. The National Hydrography Dataset (NHD) is a feature-based database that interconnects and uniquely identifies the stream segments or reaches that make up the nation's surface water drainage system. Medium resolution NHD is based on the content of the U.S. Geological Survey (USGS) 1:100,000-scale Digital Line Graph (DLG) hydrography data, integrated with reach-related information from the U.S. Environmental Protection Agency Reach File Version 3.0 (RF3). The FDEP is the NHD data steward for Florida. When received from FDEP, this data was originally in geodatabase format. When in shapefile format the data loses the network functionality of the geodatabase. Please contact the FDEP if you need the original geodatabase.",
+    "longName": "NHD(100K) Linear Surface Water Drainage Network",
+    "type": "feature",
+    "layerName": "NHD100FLOWLINE",
+    "minScale": 500000,
+    "maxScale": 100000,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "69ab951bdbd36755c90b33f709052ab4",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAACxJREFUOI1jYaAyYBk1cNTA4WvgzJn/qWJaejojC4xBFQMZhk4Yjho4vA0EAIfMBCA9fPzDAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1308,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/NHD100/MapServer/1",
+    "name": "NHD(100K) Hydrographic Landmark Areas",
+    "description": "This data set contains regions representing areal NHD hydrographic landmark features. One of the more important is the stream/river feature. It represents the aerial extent of the water in a wide stream/river with a basic set of attributes. They typically contain NHDFlowline artificial paths that are used to model the stream/river. Artificial path carries the critical attributes of the stream/river, whereas NHDArea represents the geometric extent. The National Hydrography Dataset (NHD) is a feature-based database that interconnects and uniquely identifies the stream segments or reaches that make up the nation's surface water drainage system. Medium resolution NHD is based on the content of the U.S. Geological Survey (USGS) 1:100,000-scale Digital Line Graph (DLG) hydrography data, integrated with reach-related information from the U.S. Environmental Protection Agency Reach File Version 3.0 (RF3). The FDEP is the NHD data steward for Florida. When received from FDEP, this data was originally in geodatabase format. When in shapefile format the data loses the network functionality of the geodatabase. Please contact the FDEP if you need the original geodatabase.",
+    "longName": "NHD(100K) Hydrographic Landmark Areas",
+    "type": "feature",
+    "layerName": "NHD100AREA",
+    "minScale": 250000,
+    "maxScale": 24000,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "6777a44d53c50898a25fd17aabf46e1a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgXM2nPpPqWEpAWaMKC5UVOAm27D7D74yMDDQ0sujBo4aOGrgqIE4DYQVQeSAlAAzRhQDYQKUAgDrHwvbLwypCgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1309,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/NHD100/MapServer/2",
+    "name": "NHD(100K) Water Bodies",
+    "description": "This data set contains regions representing areal NHD hydrographic waterbody features. Basic waterbodies such as lake/pond features are represented here. They portray the spatial geometry and the attributes of the feature. These water polygons may contain NHDFlowline artificial paths to allow the representation of water flow. Other NHDWaterbody features are swamp/marsh, reservoir, playa, estuary, and ice mass. The National Hydrography Dataset (NHD) is a feature-based database that interconnects and uniquely identifies the stream segments or reaches that make up the nation's surface water drainage system. Medium resolution NHD is based on the content of the U.S. Geological Survey (USGS) 1:100,000-scale Digital Line Graph (DLG) hydrography data, integrated with reach-related information from the U.S. Environmental Protection Agency Reach File Version 3.0 (RF3). The FDEP is the NHD data steward for Florida. When received from FDEP, this data was originally in geodatabase format. When in shapefile format the data loses the network functionality of the geodatabase. Please contact the FDEP if you need the original geodatabase.",
+    "longName": "NHD(100K) Water Bodies",
+    "type": "feature",
+    "layerName": "NHD100WATERBODY",
+    "minScale": 250000,
+    "maxScale": 24000,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Lake/Pond",
+        "url": "bf74026191d1144955d84545d6f83fb4",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgRuO3PtPqWEBNkqMKC4UEREh27A3b94wMDDQ0sujBo4aOGrgqIE4DYQVQeSAABslRhQDYQKUAgDbYQtzsByAgwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Reservoir",
+        "url": "ae0efbe185041da76087d8faf31d4992",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgdwMTf8pNewrQx0jigvFRETINuzVmzcMDAy09PKogaMGjho4aiBOA2FFEDngK0MdI4qBMAFKAQB4/Qv7wJZ2lwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Swamp/Marsh",
+        "url": "cf492e4036606417f3244a1143a7fb98",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgWf/n/1PqWHGjMaMKC7kYuAi27BvDN8YGBho6eVRA0cNHDVw1ECcBsKKIHKAMaMxI4qBMAFKAQAkPQkNEHpeUgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1310,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Water_Resource_Designations/MapServer/0",
+    "name": "Nationwide Rivers Inventory",
+    "description": "This dataset contains Nationwide Rivers Inventory (NRI) data for the State of Florida. The Nationwide Rivers Inventory (NRI) is a listing of more than 3,200 free-flowing river segments in the United States that are believed to possess one or more \"outstandingly remarkable\" natural or cultural values judged to be at least regionally significant. Hence, NRI river segments are potential candidates for inclusion in the National Wild and Scenic River System. Under the Wild and Scenic Rivers Act section 5(d)(1) and related guidance, all federal agencies must seek to avoid or mitigate actions that would adversely affect one or more NRI segments.",
+    "longName": "Nationwide Rivers Inventory",
+    "type": "feature",
+    "layerName": "NRI",
+    "minScale": 800000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "0e7251d9ae2f82cf823780648d064e8a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD5JREFUOI1jYaAyYBk1cNRAcg08ceI/VUyzsGBkoZphDAwMDCdO/KeBly0sGKnrZSiDKgYyDJ1kM2rgoDIQAPDYDFGaFjN2AAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1311,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Water_Resource_Designations/MapServer/1",
+    "name": "Wild and Scenic Rivers",
+    "description": "This data set contains Florida's designated Wild & Scenic Rivers. This layer depicts national wild and scenic river segments designated by Congress and the Secretary of the Interior, as well as state wild and scenic river segments designated by the State of Florida. \"Wild\" rivers are free of dams, generally inaccessible except by trail, and represent vestiges of primitive America. \"Scenic\" rivers are free of dams, with shorelines or watersheds still largely primitive and shorelines largely undeveloped, but accessible in places by roads. \"Recreational\" rivers are readily accessible by road or railroad, may have some development along their shorelines, and may have been dammed in the past. Data for national wild and scenic rivers were provided by the U.S. Forest Service and come from a variety of sources including the US Forest Service, National Park Service, Bureau of Land Management and the Fish and Wildlife Service. Spatial data for national rivers were referenced to the latest High Resolution National Hydrological Data Layer (NHD 1:24,000 Scale or better), published by United States Geological Survey (USGS). State wild and scenic river data were obtained from High Resolution National Hydrological Data flowlines (NHD 1:24,000 Scale or better), originally published by United States Geological Survey (USGS) and modified by the NHD data steward for Florida (FDEP).",
+    "longName": "Wild and Scenic Rivers",
+    "type": "feature",
+    "layerName": "WILDRIVER",
+    "minScale": 800000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "f46a5ad5823a5459eec46c5187e9517c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADlJREFUOI1jYaAyYBk1cNRAsg38/586xjEyslDPMAYGBob//2nhZUZGKnsZwqCOgUMo2YwaOJgMBAB/9whRM+rMVwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1690,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Land_Use/MapServer/0",
+    "name": "Military Lands",
+    "description": "This dataset contains locations of United States Military Installations in the state of Florida. This data is collected from many different sources, for more information please see process steps.",
+    "longName": "Military Lands",
+    "type": "feature",
+    "layerName": "MILITR",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "f4169d8f63d9882eb7d70d412a51a039",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD5JREFUOI1jYaAyYIHS/6lkHiMLYTWkARQD9bL/kWXIpalM2A2kBhg1cNTAUQOHoYHIpQZVDKQGgBnISC0DAfo7BbuX0yVlAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1691,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Land_Use/MapServer/1",
+    "name": "Development of Regional Impact (DRI)",
+    "description": "This dataset contains Developments of Regional Impacts (DRI) in the State of Florida. A DRI is defined as any development which, because of its character, magnitude or location, would have a substantial effect on the health, safety or welfare of citizens in more than one county. UF GeoPlan Center compiled this dataset from various sources including the Florida Department of Economic Opportunity (DEO), Regional Planning Councils, and County Governments. Tabular data is based on the DEO's Status of Application for Developments of Regional Impact as of February 2018.",
+    "longName": "Development of Regional Impact (DRI)",
+    "type": "feature",
+    "layerName": "DRI",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "4b40641c587357027440c141499669bd",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEdJREFUOI1jYaAyYKGZgf4MDJsoMWgjA8NBBgaGXhQXmkAEyTWQgYGBll4eNXDUwFEDRw3EauBGBoaDG/GpJAx6UQyECVAKALi5CDQL+yg+AAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1692,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Land_Use/MapServer/2",
+    "name": "Planned Unit Development (PUD)",
+    "description": "This dataset contains 2009 Planned Unit Developments (PUD) in the State of Florida. A Planned Unit Development (PUD) is a self-contained development in which the subdivision and zoning controls are applied to the project as a whole rather than to individual lots, as is the case in most subdivisions, to provide more flexibility than conventional zoning. A combination of diverse land uses, such as housing, recreation and shopping may be accommodated within a single development, and buildings may be clustered on smaller lots, permitting the preservation of natural features in common areas or open park-like areas. Homeowners with property located in a PUD typically pay monthly dues to a Homeowner's Association.",
+    "longName": "Planned Unit Development (PUD)",
+    "type": "feature",
+    "layerName": "PUD",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "4b40641c587357027440c141499669bd",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEdJREFUOI1jYaAyYKGZgf4MDJsoMWgjA8NBBgaGXhQXmkAEyTWQgYGBll4eNXDUwFEDRw3EauBGBoaDG/GpJAx6UQyECVAKALi5CDQL+yg+AAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1693,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Land_Use/MapServer/3",
+    "name": "Generalized Land Use (Parcels Derived)",
+    "description": "This dataset contains generalized land use derived from parcel specific land use for the Florida Department of Transportation (FDOT). The original 99 land use classes from the parcel data have been collapsed into 15 generalized classes. Please Note: As of 2015 there has been a change to the original FDOR 99 Land Use Values. Value 009 is now 'Residential Common Elements / Areas' this land use value maintains the same Generalized Land Use code 11 - RESIDENTIAL. Value 080 is now 'Vacant Governmental' this land use value does not maintain the same Generalized Land Use code 7 - OTHER, instead it is now classified as Generalized Land Use Code 8 - PUBLIC/SEMI-PUBLIC.",
+    "longName": "Generalized Land Use (Parcels Derived)",
+    "type": "feature",
+    "layerName": "LU_GEN",
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Acreage Not Zoned for Agriculture",
+        "url": "6a7d6ebd5d8798b8246698b00104c5ea",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jiguPniPfJGsjCE1TL48aOGrgqIGjBmI3EFYEkQkY0Q1kpMg4KAAAhCUDwDgnQhAAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Agriculture",
+        "url": "0a8487cdee931b09f163baa48abd0e80",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigsVexTJNul+yX0GBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAcfwGheCOxBYAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Centrally Assessed",
+        "url": "daf3f266dcfaab81065f329342fff81f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADlJREFUOI1jYaAyYKGlgf+pYB4jigv/L6bApFgITVMvjxo4auCogaMGYjcQVgSRCRjRDWSkyDgoAAB+wwOxnHeHbwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Industrial",
+        "url": "31c0cb28749c17057763509d3dc84c8d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jiguPtn8m2yTrSl4GBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAA80MFFI6MA9YAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Institutional",
+        "url": "fcf862b62c62a55c94ed086512004e04",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtT6z+SbdLsRn4GBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAGCAFfjC2HdsAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Mining",
+        "url": "0f8f70a8bf7d1b64d9fe14b42e84a2bc",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jiguLGbzJNqmXYSsDAwONvTxq4KiBowaOGojdQFgRRCZgRDeQkRLTYAAAy/oEld/4aFMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Other",
+        "url": "daf3f266dcfaab81065f329342fff81f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADlJREFUOI1jYaAyYKGlgf+pYB4jigv/L6bApFgITVMvjxo4auCogaMGYjcQVgSRCRjRDWSkyDgoAAB+wwOxnHeHbwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Public/ Semi-Public",
+        "url": "ab9550f0c517d6144fd865d8ac5a4dc6",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jmgspMZORgYGBxl4eNXDUwFEDRw3EZSAjJWYxohtIkWkwAAAJfgJUuOB5RwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "ROW",
+        "url": "a485b29c0b2ee9b9e05ea97f7473048f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAACpJREFUOI1jYaAyYKGlgf+pYB4jTV04auCogaMGjho4NAxkRDeQkRqmAgC2zQFTJBeFXgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Recreation",
+        "url": "bd042ab492399318ef65ce68b427887e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigsnvp1Itkn5wvkMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAA6QFRFX8pPMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Residential",
+        "url": "9d0f501b7a616519c2a9d030b4522752",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADhJREFUOI1jYaAyYKGlgf+pYB4jigv/U2AkIyOEpqmXRw0cNXDUwFEDsRsIK4LIBIzoBlJmHBQAAF8jA1XJU6ZXAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Retail / Office",
+        "url": "d1505065bdb83c32f90afcd8e5cb494c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jigspMZERStPUy6MGjho4auCogdgNZMSlijjAiG4gheZBAAALgAJUXqzQHAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Vacant Non-Residential",
+        "url": "2a14f63eebfab0180e63e4785d9dccde",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGlgf+pYB4jigv/73tBvklOEgwMDDT28qiBowaOGjhqIHYDYUUQmYAR3UBGSkyDAQDP7gSuN7/FEgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Water",
+        "url": "f6b2047004982287e798a9ae9e00dc23",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jigvP3ybfTENVRgYGBhp7edTAUQNHDRw1ELuBsCKITMCIbiBFpsEAAM7VBKo1pmaEAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Vacant / Residential",
+        "url": "993f2ae75be0f1718366dcff558b22fe",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigu769LJNqm0aSYDAwONvTxq4KiBowaOGojdQFgRRCZgRDeQkRLTYAAAOigF45SG7vkAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1606,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Eliminated_Dev/MapServer/16",
+    "name": "2640 ft (.5 mile)",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of a half mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\2640 ft (.5 mile)",
+    "type": "feature",
+    "layerName": "V3D_ELIM_FEATURE_AREAS_2640",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "c08c412b70d32e84373a72f98075f827",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgWtE1hRQYlD89/gLX79+PYDiQr/vfhcoMZSBgZZeHjVw1MBRA0cNxGpg/Pd4ioqur1+/HkAxECZAKQAAJcUUdwOgwtYAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1607,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Eliminated_Dev/MapServer/17",
+    "name": "5280 ft (1 mile)",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 1 mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\5280 ft (1 mile)",
+    "type": "feature",
+    "layerName": "V3D_ELIM_FEATURE_AREAS_5280",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "c105fb5502481f85533a55fa9648dd59",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgZulN8dQYlDiz8Trb968OYviQp+fPtcpMZSBgZZeHjVw1MBRA0cNxGpg4s9EioquN2/enEUxECZAKQAAP5IUbevxeFEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1608,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Eliminated_Dev/MapServer/19",
+    "name": "100 ft",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 100 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\100 ft",
+    "type": "feature",
+    "layerName": "V3D_ELIM_ANALYSIS_AREAS_100",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "9bd1848bc3ac0fbe595cb0a2bf887729",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFFJREFUOI1jYaAyYGFgYGA4x3AukhqGGTEYLWdB4ltRaN4xBgaoC9EFyQBwx6AbSDEYNXDUwFEDh6eBlBZhKAaSW3RhGmjEYLScGoYxMDAwAABo8wdcaLKJ1QAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1609,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Eliminated_Dev/MapServer/20",
+    "name": "200 ft",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 200 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\200 ft",
+    "type": "feature",
+    "layerName": "V3D_ELIM_ANALYSIS_AREAS_200",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "256690bc75c99019768adaf657b76ffc",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGB4zfDalxqGiTKIbmaB87gZzCgy7SvDKQYGqAvRBUkGSI5hwaeOHDBq4KiBowYORwMpLcJQDCS36MJmoCiD6GZqGMbAwMAAAL5JCi7TwcZ0AAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1610,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Eliminated_Dev/MapServer/21",
+    "name": "500 ft",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 500 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\500 ft",
+    "type": "feature",
+    "layerName": "V3D_ELIM_ANALYSIS_AREAS_500",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "97ad7537002c093c0c99d90392e66b0a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGD4wP3BgRqGCXwVOMAC53EyGFBk2neGCwwMUBeiC5IMkBzDgk8dOWDUwFEDRw0cjgZSWoShGEhu0YXNQIGvAgeoYRgDAwMDALvJDCYOtyLeAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1611,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer/19",
+    "name": "100 ft",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 100 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of ETAT Review.",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\100 ft",
+    "type": "feature",
+    "layerName": "V3D_ETAT_ANALYSIS_AREAS_100",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "9bd1848bc3ac0fbe595cb0a2bf887729",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFFJREFUOI1jYaAyYGFgYGA4x3AukhqGGTEYLWdB4ltRaN4xBgaoC9EFyQBwx6AbSDEYNXDUwFEDh6eBlBZhKAaSW3RhGmjEYLScGoYxMDAwAABo8wdcaLKJ1QAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1612,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer/20",
+    "name": "200 ft",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 200 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of ETAT Review.",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\200 ft",
+    "type": "feature",
+    "layerName": "V3D_ETAT_ANALYSIS_AREAS_200",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "256690bc75c99019768adaf657b76ffc",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGB4zfDalxqGiTKIbmaB87gZzCgy7SvDKQYGqAvRBUkGSI5hwaeOHDBq4KiBowYORwMpLcJQDCS36MJmoCiD6GZqGMbAwMAAAL5JCi7TwcZ0AAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1613,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer/21",
+    "name": "500 ft",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 500 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of ETAT Review.",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\500 ft",
+    "type": "feature",
+    "layerName": "V3D_ETAT_ANALYSIS_AREAS_500",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "97ad7537002c093c0c99d90392e66b0a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGD4wP3BgRqGCXwVOMAC53EyGFBk2neGCwwMUBeiC5IMkBzDgk8dOWDUwFEDRw0cjgZSWoShGEhu0YXNQIGvAgeoYRgDAwMDALvJDCYOtyLeAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1614,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer/22",
+    "name": "1320 ft (.25 mile)",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of a quarter mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of ETAT Review.",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\1320 ft (.25 mile)",
+    "type": "feature",
+    "layerName": "V3D_ETAT_ANALYSIS_AREAS_1320",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "90398305a7137e2be19f9c261695a823",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGD4JvLNmBqGcb3hOssC57EzaFJk2k+G6wwMUBeiC5IMkBzDgk8dOWDUwFEDRw0cjgZSWoShGEhu0YXNQK43XGepYRgDAwMDALiaDB4qJNmJAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1615,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer/23",
+    "name": "2640 ft (.5 mile)",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of a half mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of ETAT Review.",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\2640 ft (.5 mile)",
+    "type": "feature",
+    "layerName": "V3D_ETAT_ANALYSIS_AREAS_2640",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "1f577e297979195d47d27da4e03aa0ee",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFhJREFUOI1jYaAyYGFgYGD4yfBTjRqGsTOw32KBcRgZGBUoMew/w/8HDAxQF6ILkgqQHcOCUxWZYNTAUQNHDRyGBlJahKEYSG7RhdVAdgb2W9QwjIGBgQEAB4UNOV0E1hoAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1616,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer/24",
+    "name": "5280 ft (1 mile)",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 1 mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of ETAT Review.",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\5280 ft (1 mile)",
+    "type": "feature",
+    "layerName": "V3D_ETAT_ANALYSIS_AREAS_5280",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "03c6720fc93a15d65da37e8e92933e74",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE9JREFUOI3t1L0JACAMhNEvkB0E959NcAptRPzpTCrJdUnxuOoU5yhAo2UPTJCiy52MXoXR8Hw+ZJY5QXMCDDDAP0HrhG3g63TdoCDFAwPoXG0HOcscPf0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1617,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer/2",
+    "name": "Point Labels",
+    "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on POINT_ID.",
+    "longName": "Features of the Alternative\\Labels\\Point Labels",
+    "type": "feature",
+    "layerName": "V3D_REV_POINTS",
+    "minScale": 800000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2fa9a046f28bd9638488536e0a3a46be",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1618,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer/3",
+    "name": "Line Labels",
+    "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on SEGMENT_ID.",
+    "longName": "Features of the Alternative\\Labels\\Line Labels",
+    "type": "feature",
+    "layerName": "V3D_REV_SEGMENTS",
+    "minScale": 800000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2fa9a046f28bd9638488536e0a3a46be",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1619,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer/4",
+    "name": "Polygon Labels",
+    "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on POLY_ID.",
+    "longName": "Features of the Alternative\\Labels\\Polygon Labels",
+    "type": "feature",
+    "layerName": "V3D_REV_POLYGONS",
+    "minScale": 800000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2fa9a046f28bd9638488536e0a3a46be",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1620,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer/5",
+    "name": "Termini",
+    "description": "This dataset contains points representing the beginning and end points of unique project alternatives for planned transportation projects within the Efficient Transportation Decision Making (ETDM) Process. The project alternatives associated with these points currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
+    "longName": "Features of the Alternative\\Termini",
+    "type": "feature",
+    "layerName": "V3D_REV_TERMINI",
+    "minScale": 800000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Begin Point",
+        "url": "c79ad8ae88ecd2016a8daddee72639bf",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jYaAyYBk1cAgZeIbhTN5/hv98OKTPmjKYbifJQAYGhjJGBkZpbBL/Gf7PZGBgINlAssCogUPJQBMGExmqGkguGDWQcgAA3NcKtnEFjH8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "End Point",
+        "url": "d64bef3eb42eb023a598bccd4e807030",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYBk1kIHh/+lybgZGSWI0f2VguMnAaDIdv4EMjLFfGRi0iXTQXgYGBkIGUgZGDRw1cIQYyGiiQ10DKQSD30AA7VoIhE1G4tkAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1621,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer/6",
+    "name": "Points",
+    "description": "\r\nThis dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes point features of project alternatives and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"NON_DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these points currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
+    "longName": "Features of the Alternative\\Points",
+    "type": "feature",
+    "layerName": "V3D_REV_POINTS",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "TBD",
+        "url": "d26d5c933eefefff8dc3152f39028c99",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAO9JREFUOI3t06FKg1EYBuDnk4HI32SIuGRRMGi3eQOb2WgwyMKqZsELELySwWQ3YDNrtwi/C8KPJo9hTEH3uzOx6Rs/znl4zwen4ZfT+Affk5IlHKFD0aIqMcRFhNFcYErWKQZUm+NJBRvYRTeloh1RXWeBKVmk6H9gX9Kk6qdkJ8J9TsNDqq0abJJlnOI4B2zPwCbZzwVbmeBqShYivM4Cy0xw9BmrA4fYywCvpg2ngZfo+v7pLzjLAiM8pdRsUw6wMuXOMw4i3OY2FFHepGSb4oSqgzU8Gq/jPMJdXfXarxfhgaqHXt2ZucCf5g+CbzhZOnf63lkOAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Review Complete",
+        "url": "736e28a4625498e625b330f0a0347a80",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAS5JREFUOI3t1LFLQlEUx/HvfYqHNgmJ6A3yFoWGwrWtf0CbGxsawqG1SNMMWoOgv0Qw/AfacpOaHOwNycsgedh7g7chI6in7wYNBf3gLgfOh3OGc5P8cJL/4EeOWXBwdkd6VBJLbDQemrar3AvqDL8F5o5yjo/fCgnzogT0WxnFhqOc8qA2KPo1/9oMPEf8J78J5KMaQh1m0qSb2Up2vdvo3seCmWFmB8XqrJWmWRwnxofAXiwoSoox2PukW0YgYJuAwDJgAZO5YKADT5SYgMPPWCQoStrAZiynuIoqfwHdiXtpW3aZ+au/oDk1AmnwHFSDIoqWIEsRPWNg2627t2Yg4J14N4VKYa1v9Q8EKQErwCPQTiVSZ71q727W6DNPr9PoPAD702ecv/zb/BbwFSqOV7CsCu3cAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Dispute Resolution In Progress",
+        "url": "255e151d841026754e77ad25dd6e50b8",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAQ5JREFUOI3t07ErhHEYB/DPzyviHZQuyU0WykBWdQNlPUYZDQYZbmVW/gDlL1G4GxUmVnYDOjeoNxd5X4MYuHMv2fiOT7/fp+8zPN1+Od3/4HuyJX2urWKBuEhSR9WjnXCs8S0wKxl1G++TjL9OEhjDjB7r2XxcDrXkJBeY0SuK96Rv2KcUPCV72bypUHPVueGcFWky0QZ7y6CmTax1Bp+URR04iCzmAyPFHBwMZ3QF0q9B6jnBxkesNdilKjWbAzxoNWy18q7UOl+s/qyp31YuMNTcZ6VCWVTfx1CLPw8iy+HQRb6GCEf1s2zapIF4g2QBI7hDVdN2OHXZrnzb0wvnbkgqqLR78y3wp/mD4AtwC0Yr1W9QiwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Summary Report Complete",
+        "url": "f4bdfdea9dfe12c7788429079212ed0d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAATFJREFUOI3t1L1LAzEYgPEnl+LXIkgRsZOLgoPiKnRQ6Np2FEdBB+ngJFS8fnhqwUkQ/EsK1XYU1ElX3R1UahUXj2ubOPgtd14EBwUfyPJCfiRDEuGHi/yDr83k892XeAsIUkAMVB2oerpr57BYbHwLjG+sDl03vQow8ja1hoHJDuFlEoXlZK2wdWQGbs93ytt2WYn32IeiTWQ5YdvjNce5CAWn76JzSjAagL3U58rWCrAYCjYtkZRKh3ggIW0ESqVjodpTA4AFqC9BoG4INj5jvqClqSrBlAG45zf0uXJkV8lWBgi8ehvcHs26EVhznPt4LpuUFhWg32fPg9TM7hdLZ0YgwMFa6WTCtsd6ZSsLpIBB4AZN1ZWidJzbPA86feDTO3WcK2DpeRn3h3+bXwM+AqeqV1d4kYYmAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Work Program",
+        "url": "994315024b885530a38fd94c22a8f71e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAATpJREFUOI3t1LFLw0AUx/HfPQPRSRARMZOLgsVkd3PI4GDiKI6CDtKhOFTi4qIUOwmC/4iF2GTXTWiloLhJF6EWqkNjwfcc2jpo2kRwUPALtxzchzuOOw0/nPYPfnSwXhsbfeFtsLgKygCjIYRAb9Hp7mWm+S3wyK3NjrTefEDNA6o7SZhTwFJnnLNFu+rkQ/MqFXiyda9H9Xapi8U2yZoqFeyK5YVWPRF8fYg2QWph0JF6TSiN9gHsJIJCcBKwfmupQMUwhFKB0yFCsmHzUJBJGqp/EcMiND9jsSCxCoSwnAiyXMRNfwF15rOIKAvAGMJFwjhMBeZC6/l45cYRwAcwFbOmLSwbXtm8TQUCwJ6/eF1crZrSgSdQLggzAJ5ACMBU8MqZu0FbH/j08ufmI4Bcb6TuD/82vwZ8B8YbYHU6nlrKAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Location Design Concept Acceptance (LDCA)",
+        "url": "f0af1de37765f09b97dfac3c4544e7cb",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAATxJREFUOI3t1L1LQlEcxvHv73R7m4KIiJxaEhpqb2twCOp6pSUagxrCoSlQoogsoSkI+i8iQcH07rU11xougQmWkL14TkPaUF7vDRoKeuAsPzgfnsPhHIsfjvUPfmRxO9P/0KNWtTZRhJCGsjIUq6/m6HzHqXwLjO5lx6rG5DEmjLzPFIwjTA90Szyyn7HdpHMRCFw5POkt1XQOCHuUGLK05CLp3JSbmCv5gjc1a1nBhNeRmhm0Go0ksOYLKrB9sFacQKCGkAoGjoCrIKI7NzSUWxfRKQqpfMbaN1RSVMbM+IEac9Zu/hWsvxyrPiuOIdTBq+suSQUC3d2F+9lUxgbJA8Nt9jxqZKmQsK8CgQD5Tedy/uB08vlJEohEFYwCdwopat1IF7Zi117VPZ9ediN2C6w3V+D84d/m14Bv36tfbLmzwt8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1622,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer/7",
+    "name": "Lines",
+    "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes line features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"NON_DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these segments currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
+    "longName": "Features of the Alternative\\Lines",
+    "type": "feature",
+    "layerName": "V3D_REV_SEGMENTS",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "TBD",
+        "url": "9d8469223c447c5f447b839f3ba6075e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD5JREFUOI3t0rEJADAQQtEv3P4rmyJkgWCRgFdZPRRuCN8ULHgJ2jiBSWhSGOxi+ckSik4+IQHCN29T8C1wAcXdDFFTzyiHAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Review Complete",
+        "url": "85c8c5c2bb736e3ce95d31fa8ed6fc12",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYBk1cNRAMg2Urpf+Tw3DnjY+ZWShlmEMDBCHUd/LTxufMlLVyzAGNQxkYBgyyWbUwMFlIAC/XxBRaZREOgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Dispute Resolution In Progress",
+        "url": "443cd1c2e78c38145caa5cccf85443cf",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYBk1cNRAMg3878DwnxqGMR5gYGShlmEMDBCHUd/LjAcYGKnqZRiDGgYyMAyZZDNq4OAyEABh6wxRJl6eEQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Summary Report Complete",
+        "url": "81c58be8d935864ed05d3fc1b6e2581e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYBk1cNRAMg10aKj8Tw3DDjS0M7JQyzAGBojDqO/lAw3tjFT1MoxBDQMZGIZMshk1cHAZCAC1YhBRZBI6IwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Work Program",
+        "url": "8e082b708d7c5bf7bac7ff6655babd21",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYBk1cNRAMg3s8Lz8nxqGVWzXZWShlmEMDBCHUd/LFdt1GanqZRiDGgYyMAyZZDNq4OAyEAB80BBRaKiVxAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Location Design Concept Acceptance (LDCA)",
+        "url": "9648ff82ca70f9db4d2bd1507e3bca28",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYBk1cNRAMg30bNn4nxqGba/xZ2ShlmEMDBCHUd/L22v8GanqZRiDGgYyMAyZZDNq4OAyEAA2AhBRlKbV7wAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Analysis Complete",
+        "url": "a5a04292ed3498e61a61586c071a4e4d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADlJREFUOI1jYaAyYBk1cNRAsg1M/08d42YyslDPMAYGBob0/7Tw8kxGKnsZwqCOgUMo2YwaOJgMBABksAhRRNsDjwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1623,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer/8",
+    "name": "Polygons",
+    "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes polygon features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"NON_DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these polygons currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
+    "longName": "Features of the Alternative\\Polygons",
+    "type": "feature",
+    "layerName": "V3D_REV_POLYGONS",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "TBD",
+        "url": "45e429e012542884801efd9035e0535f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE1JREFUOI1jYaAyYKGZgUuWxD+gxKATJ3iPTZkyJQrFhdHRC4+Rb2AOAwMDLb08auCogaMGjhqI1cATJ3iPwYogcsCUKVOiUAyECVAKALUeE/UTIwrMAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Review Complete",
+        "url": "52deb333d9f115a083495eb388129681",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jka6XXsZARcBCTcNQDCzWK7aixKDeS73HUAykFhg1EBUUBhUewybev64fZwQOcS+PQAPxxSZZBpIDRrKBsPKMagZSCwAANEcOZCpX5acAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Dispute Resolution In Progress",
+        "url": "b88f64afff13c2b5e427b2cd8fa33dc4",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1j+W/LsIyBioCFmoahGhjWbUWRSatKj6EaSCUwaiAayCk5hlV8Sg/OCBzqXh6BBuKJTfIMJAOMaAOh5Rn1DKQSAABA5wtyMlXbeQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Summary Report Complete",
+        "url": "c538b49e10d052db90d55331514450ed",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jsW2oXMZARcBCTcNQDAzTNbSixKBVl88fQzGQWmDUQFSQExR6DJv4lHWrcUbgEPfyCDQQX2ySZSA5YCQbCCvPqGYgtQAAxm8PZrU8RYIAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Work Program",
+        "url": "9467b3940a8e0cda1b91f9e4adb1c923",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1j6fC8vIyBioCFmoahGKjpx2tFiUHXN30+hmIgtcCogajAL0P+GDbxTTMe4ozAIe7lEWggvtgky0BywEg2EFaeUc1AagEACocQQmTPKY4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Location Design Concept Acceptance (LDCA)",
+        "url": "bdad03cdc76a825f178685df2e17e7de",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1j8WzZuIyBioCFmoahGOinI2FFiUGbrrw4hmIgtcCogaggw9/sGDbxGRtP4YzAIe7lEWggvtgky0BywEg2EFaeUc1AagEA5RsP9sBrafgAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1624,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer/9",
+    "name": "Alternatives",
+    "description": "This dataset contains all spatial features of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer contains polygons which are based on a 1 foot buffer of all features in the project alternatives. These polygons are used for visual purposes only. These project alternatives currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
+    "longName": "Alternatives",
+    "type": "feature",
+    "layerName": "V3D_REV_ALTERNATIVES",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "TBD",
+        "url": "45e429e012542884801efd9035e0535f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE1JREFUOI1jYaAyYKGZgUuWxD+gxKATJ3iPTZkyJQrFhdHRC4+Rb2AOAwMDLb08auCogaMGjhqI1cATJ3iPwYogcsCUKVOiUAyECVAKALUeE/UTIwrMAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Review Complete",
+        "url": "52deb333d9f115a083495eb388129681",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jka6XXsZARcBCTcNQDCzWK7aixKDeS73HUAykFhg1EBUUBhUewybev64fZwQOcS+PQAPxxSZZBpIDRrKBsPKMagZSCwAANEcOZCpX5acAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Dispute Resolution In Progress",
+        "url": "b88f64afff13c2b5e427b2cd8fa33dc4",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1j+W/LsIyBioCFmoahGhjWbUWRSatKj6EaSCUwaiAayCk5hlV8Sg/OCBzqXh6BBuKJTfIMJAOMaAOh5Rn1DKQSAABA5wtyMlXbeQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Summary Report Complete",
+        "url": "c538b49e10d052db90d55331514450ed",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jsW2oXMZARcBCTcNQDAzTNbSixKBVl88fQzGQWmDUQFSQExR6DJv4lHWrcUbgEPfyCDQQX2ySZSA5YCQbCCvPqGYgtQAAxm8PZrU8RYIAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Work Program",
+        "url": "9467b3940a8e0cda1b91f9e4adb1c923",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1j6fC8vIyBioCFmoahGKjpx2tFiUHXN30+hmIgtcCogajAL0P+GDbxTTMe4ozAIe7lEWggvtgky0BywEg2EFaeUc1AagEACocQQmTPKY4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Location Design Concept Acceptance (LDCA)",
+        "url": "bdad03cdc76a825f178685df2e17e7de",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1j8WzZuIyBioCFmoahGOinI2FFiUGbrrw4hmIgtcCogaggw9/sGDbxGRtP4YzAIe7lEWggvtgky0BywEg2EFaeUc1AagEA5RsP9sBrafgAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Currently Draft",
+        "url": "2e7046a6b7286513c85098070e6d3966",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jYWBIX8ZARcBCTcNQDOzutrKixKDS0mPHUAykFhg1EBWUlMQdwybe07MIZwQOcS+PQAPxxSZZBpIDRrKBsPKMagZSCwAADa0NyGpIqn4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1625,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer/12",
+    "name": "100 ft",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 100 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\100 ft",
+    "type": "feature",
+    "layerName": "V3D_REV_FEATURE_AREAS_100",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "00953cc7989d04e5d91fc222d198628a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgfUM9ZsoMaiRofEgAwNDL4oL/Rj8DlJgIAMDAy29PGrgqIGjBo4aiNXARobGg7AiiEzQi2IgTIBSAABuswqPfj8zhgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1626,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer/13",
+    "name": "200 ft",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 200 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\200 ft",
+    "type": "feature",
+    "layerName": "V3D_REV_FEATURE_AREAS_200",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2d5f658ba83e43fa1ead8ea9a651e1dd",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgdMZpi+mxKBMhszDDAwMs1BcGMIQcpgCAxkYGGjp5VEDRw0cNXDUQKwGZjJkHoYVQWSCWSgGwgQoBQCdsQopmSN8TwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1627,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Eliminated_Dev/MapServer/22",
+    "name": "1320 ft (.25 mile)",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of a quarter mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\1320 ft (.25 mile)",
+    "type": "feature",
+    "layerName": "V3D_ELIM_ANALYSIS_AREAS_1320",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "90398305a7137e2be19f9c261695a823",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGD4JvLNmBqGcb3hOssC57EzaFJk2k+G6wwMUBeiC5IMkBzDgk8dOWDUwFEDRw0cjgZSWoShGEhu0YXNQK43XGepYRgDAwMDALiaDB4qJNmJAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1628,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Eliminated_Dev/MapServer/23",
+    "name": "2640 ft (.5 mile)",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of a half mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\2640 ft (.5 mile)",
+    "type": "feature",
+    "layerName": "V3D_ELIM_ANALYSIS_AREAS_2640",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "1f577e297979195d47d27da4e03aa0ee",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFhJREFUOI1jYaAyYGFgYGD4yfBTjRqGsTOw32KBcRgZGBUoMew/w/8HDAxQF6ILkgqQHcOCUxWZYNTAUQNHDRyGBlJahKEYSG7RhdVAdgb2W9QwjIGBgQEAB4UNOV0E1hoAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1629,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Eliminated_Dev/MapServer/24",
+    "name": "5280 ft (1 mile)",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 1 mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\5280 ft (1 mile)",
+    "type": "feature",
+    "layerName": "V3D_ELIM_ANALYSIS_AREAS_5280",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "03c6720fc93a15d65da37e8e92933e74",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE9JREFUOI3t1L0JACAMhNEvkB0E959NcAptRPzpTCrJdUnxuOoU5yhAo2UPTJCiy52MXoXR8Hw+ZJY5QXMCDDDAP0HrhG3g63TdoCDFAwPoXG0HOcscPf0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1630,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer/2",
+    "name": "Point Labels",
+    "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on POINT_ID.",
+    "longName": "Features of the Alternative\\Labels\\Point Labels",
+    "type": "feature",
+    "layerName": "V3D_ETAT_POINTS",
+    "minScale": 800000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2fa9a046f28bd9638488536e0a3a46be",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1631,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer/3",
+    "name": "Line Labels",
+    "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on SEGMENT_ID.",
+    "longName": "Features of the Alternative\\Labels\\Line Labels",
+    "type": "feature",
+    "layerName": "V3D_ETAT_SEGMENTS",
+    "minScale": 800000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2fa9a046f28bd9638488536e0a3a46be",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1632,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer/4",
+    "name": "Polygons Labels",
+    "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on POLY_ID.",
+    "longName": "Features of the Alternative\\Labels\\Polygons Labels",
+    "type": "feature",
+    "layerName": "V3D_ETAT_POLYGONS",
+    "minScale": 800000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2fa9a046f28bd9638488536e0a3a46be",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1633,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer/5",
+    "name": "Termini",
+    "description": "This dataset contains points representing the beginning and end points of unique project alternatives for planned transportation projects within the Efficient Transportation Decision Making (ETDM) Process. The project alternatives associated with these points currently have a status of ETAT Review.",
+    "longName": "Features of the Alternative\\Termini",
+    "type": "feature",
+    "layerName": "V3D_ETAT_TERMINI",
+    "minScale": 800000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Begin Point",
+        "url": "c79ad8ae88ecd2016a8daddee72639bf",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jYaAyYBk1cAgZeIbhTN5/hv98OKTPmjKYbifJQAYGhjJGBkZpbBL/Gf7PZGBgINlAssCogUPJQBMGExmqGkguGDWQcgAA3NcKtnEFjH8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "End Point",
+        "url": "d64bef3eb42eb023a598bccd4e807030",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYBk1kIHh/+lybgZGSWI0f2VguMnAaDIdv4EMjLFfGRi0iXTQXgYGBkIGUgZGDRw1cIQYyGiiQ10DKQSD30AA7VoIhE1G4tkAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1634,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer/6",
+    "name": "Points",
+    "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes point features of project alternatives and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ETAT_REVIEW_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these points currently have a status of ETAT Review.",
+    "longName": "Features of the Alternative\\Points",
+    "type": "feature",
+    "layerName": "V3D_ETAT_POINTS",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "AN Review",
+        "url": "a00f9149d3db04218f8abb53a35ad42a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAO1JREFUOI3t0yFLg0EYwPHfyUDkmgwRTRYFg3abX2AzGw0GWbBqFvwAgp9kMNkXsJm1W4TXBeFBk69BtqB79SY2/cfj7sdzB9fyy7X+wUk1CzhEV86rIioMcZEYzQTWrMl5IGIDRMA6dtCrc+6kiOsisGZezv0J9rm2iH7NduK+ZMIDEZsN2LhFnOKoBOx8g43bKwVXC8HlmrnE63dgVQiOPmJN4BC7BeDVtMVp4CV6vr76C86KwMRT3W53VNUAS1POPGM/cVs6oVRVNzVbcj4R0cUKHr0/x3nirmn0xq+XeBBxjOOmPTOBP+0Pgm/3Wj017gBcLwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "ETAT Review",
+        "url": "a00f9149d3db04218f8abb53a35ad42a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAO1JREFUOI3t0yFLg0EYwPHfyUDkmgwRTRYFg3abX2AzGw0GWbBqFvwAgp9kMNkXsJm1W4TXBeFBk69BtqB79SY2/cfj7sdzB9fyy7X+wUk1CzhEV86rIioMcZEYzQTWrMl5IGIDRMA6dtCrc+6kiOsisGZezv0J9rm2iH7NduK+ZMIDEZsN2LhFnOKoBOx8g43bKwVXC8HlmrnE63dgVQiOPmJN4BC7BeDVtMVp4CV6vr76C86KwMRT3W53VNUAS1POPGM/cVs6oVRVNzVbcj4R0cUKHr0/x3nirmn0xq+XeBBxjOOmPTOBP+0Pgm/3Wj017gBcLwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1635,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer/7",
+    "name": "Lines",
+    "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes line features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ETAT_REVIEW_POLYGONS\" for a complete representation of each project alternative. The project alternatives associated with these segments currently have a status of ETAT Review.",
+    "longName": "Features of the Alternative\\Lines",
+    "type": "feature",
+    "layerName": "V3D_ETAT_SEGMENTS",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "AN Review",
+        "url": "6fbba9b3b2225fdfb6a66e9f9a46c67b",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI3t0rEJADAQQtEvuP/KlyJkgWCRgFdZPRTOhM8FC16CA5PABHIKg10sP1mg6OQTEiB88zYF3wIXh/cIUShNGbgAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "ETAT Review",
+        "url": "6fbba9b3b2225fdfb6a66e9f9a46c67b",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI3t0rEJADAQQtEvuP/KlyJkgWCRgFdZPRTOhM8FC16CA5PABHIKg10sP1mg6OQTEiB88zYF3wIXh/cIUShNGbgAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1636,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer/8",
+    "name": "Polygons",
+    "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes polygon features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ETAT_REVIEW_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these polygons currently have a status of ETAT Review.",
+    "longName": "Features of the Alternative\\Polygons",
+    "type": "feature",
+    "layerName": "V3D_ETAT_POLYGONS",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "AN Review",
+        "url": "cdcc3c0e77a8dd9509c647a4222ad428",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEdJREFUOI1j+c/AsIyBioCFmoahGtjdbUWRSaWlx1ANpBIYNRANlJQcwyre04MzAoe6l0eggXhikzwDyQAj2kBoeUY9A6kEAJz/Cvig3s0oAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "ETAT Review",
+        "url": "cdcc3c0e77a8dd9509c647a4222ad428",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEdJREFUOI1j+c/AsIyBioCFmoahGtjdbUWRSaWlx1ANpBIYNRANlJQcwyre04MzAoe6l0eggXhikzwDyQAj2kBoeUY9A6kEAJz/Cvig3s0oAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1637,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer/9",
+    "name": "Alternatives",
+    "description": "This dataset contains all spatial features of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer contains polygons which are based on a 1 foot buffer of all features in the project alternatives. These polygons are used for visual purposes only. These project alternatives currently have a status of ETAT Review.",
+    "longName": "Alternatives",
+    "type": "feature",
+    "layerName": "V3D_ETAT_ALTERNATIVES",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "AN Review",
+        "url": "cdcc3c0e77a8dd9509c647a4222ad428",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEdJREFUOI1j+c/AsIyBioCFmoahGtjdbUWRSaWlx1ANpBIYNRANlJQcwyre04MzAoe6l0eggXhikzwDyQAj2kBoeUY9A6kEAJz/Cvig3s0oAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "ETAT Review",
+        "url": "cdcc3c0e77a8dd9509c647a4222ad428",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEdJREFUOI1j+c/AsIyBioCFmoahGtjdbUWRSaWlx1ANpBIYNRANlJQcwyre04MzAoe6l0eggXhikzwDyQAj2kBoeUY9A6kEAJz/Cvig3s0oAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1638,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer/12",
+    "name": "100 ft",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 100 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of ETAT Review.",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\100 ft",
+    "type": "feature",
+    "layerName": "V3D_ETAT_FEATURE_AREAS_100",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "00953cc7989d04e5d91fc222d198628a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgfUM9ZsoMaiRofEgAwNDL4oL/Rj8DlJgIAMDAy29PGrgqIGjBo4aiNXARobGg7AiiEzQi2IgTIBSAABuswqPfj8zhgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1639,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer/13",
+    "name": "200 ft",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 200 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of ETAT Review.",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\200 ft",
+    "type": "feature",
+    "layerName": "V3D_ETAT_FEATURE_AREAS_200",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2d5f658ba83e43fa1ead8ea9a651e1dd",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgdMZpi+mxKBMhszDDAwMs1BcGMIQcpgCAxkYGGjp5VEDRw0cNXDUQKwGZjJkHoYVQWSCWSgGwgQoBQCdsQopmSN8TwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1640,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer/14",
+    "name": "500 ft",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 500 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of ETAT Review.",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\500 ft",
+    "type": "feature",
+    "layerName": "V3D_ETAT_FEATURE_AREAS_500",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "3bd68ab52d7bfb09bf5ddbcdba848b7f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgfMZ5k+mxKBEhsRjDAwMy1FcGMgQeIwCAxkYGGjp5VEDRw0cNXDUQKwGJjIkHoMVQWSC5SgGwgQoBQAy7woTzgj6iwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1641,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer/15",
+    "name": "1320 ft (.25 mile)",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of a quarter mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of ETAT Review.",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\1320 ft (.25 mile)",
+    "type": "feature",
+    "layerName": "V3D_ETAT_FEATURE_AREAS_1320",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "f339f116f049228d8f273fdc8f56d2b5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgUu4lzRTYlDM15hTDAwMm1FcGPA14BQlhjIw0NLLowaOGjhq4KiBWA2ElmeUgM0oBsIEKAUACQMLjU05SFYAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1642,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer/16",
+    "name": "2640 ft (.5 mile)",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of a half mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of ETAT Review.",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\2640 ft (.5 mile)",
+    "type": "feature",
+    "layerName": "V3D_ETAT_FEATURE_AREAS_2640",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "c08c412b70d32e84373a72f98075f827",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgWtE1hRQYlD89/gLX79+PYDiQr/vfhcoMZSBgZZeHjVw1MBRA0cNxGpg/Pd4ioqur1+/HkAxECZAKQAAJcUUdwOgwtYAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1643,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer/17",
+    "name": "5280 ft (1 mile)",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 1 mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of ETAT Review.",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\5280 ft (1 mile)",
+    "type": "feature",
+    "layerName": "V3D_ETAT_FEATURE_AREAS_5280",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "c105fb5502481f85533a55fa9648dd59",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgZulN8dQYlDiz8Trb968OYviQp+fPtcpMZSBgZZeHjVw1MBRA0cNxGpg4s9EioquN2/enEUxECZAKQAAP5IUbevxeFEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1644,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer/16",
+    "name": "2640 ft",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of a half mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\2640 ft",
+    "type": "feature",
+    "layerName": "V3D_DRAFT_FEATURE_AREAS_2640",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "c08c412b70d32e84373a72f98075f827",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgWtE1hRQYlD89/gLX79+PYDiQr/vfhcoMZSBgZZeHjVw1MBRA0cNxGpg/Pd4ioqur1+/HkAxECZAKQAAJcUUdwOgwtYAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1645,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer/17",
+    "name": "5280 ft",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 1 mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\5280 ft",
+    "type": "feature",
+    "layerName": "V3D_DRAFT_FEATURE_AREAS_5280",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "c105fb5502481f85533a55fa9648dd59",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgZulN8dQYlDiz8Trb968OYviQp+fPtcpMZSBgZZeHjVw1MBRA0cNxGpg4s9EioquN2/enEUxECZAKQAAP5IUbevxeFEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1646,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer/19",
+    "name": "100 ft",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 100 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\100 ft",
+    "type": "feature",
+    "layerName": "V3D_DRAFT_ANALYSIS_AREAS_100",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "9bd1848bc3ac0fbe595cb0a2bf887729",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFFJREFUOI1jYaAyYGFgYGA4x3AukhqGGTEYLWdB4ltRaN4xBgaoC9EFyQBwx6AbSDEYNXDUwFEDh6eBlBZhKAaSW3RhGmjEYLScGoYxMDAwAABo8wdcaLKJ1QAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1647,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer/20",
+    "name": "200 ft",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 200 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\200 ft",
+    "type": "feature",
+    "layerName": "V3D_DRAFT_ANALYSIS_AREAS_200",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "256690bc75c99019768adaf657b76ffc",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGB4zfDalxqGiTKIbmaB87gZzCgy7SvDKQYGqAvRBUkGSI5hwaeOHDBq4KiBowYORwMpLcJQDCS36MJmoCiD6GZqGMbAwMAAAL5JCi7TwcZ0AAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1648,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer/21",
+    "name": "500 ft",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 500 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\500 ft",
+    "type": "feature",
+    "layerName": "V3D_DRAFT_ANALYSIS_AREAS_500",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "97ad7537002c093c0c99d90392e66b0a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGD4wP3BgRqGCXwVOMAC53EyGFBk2neGCwwMUBeiC5IMkBzDgk8dOWDUwFEDRw0cjgZSWoShGEhu0YXNQIGvAgeoYRgDAwMDALvJDCYOtyLeAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1649,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer/22",
+    "name": "1320 ft",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of a quarter mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\1320 ft",
+    "type": "feature",
+    "layerName": "V3D_DRAFT_ANALYSIS_AREAS_1320",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "90398305a7137e2be19f9c261695a823",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGD4JvLNmBqGcb3hOssC57EzaFJk2k+G6wwMUBeiC5IMkBzDgk8dOWDUwFEDRw0cjgZSWoShGEhu0YXNQK43XGepYRgDAwMDALiaDB4qJNmJAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1650,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer/2",
+    "name": "Point Labels",
+    "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on POINT_ID.",
+    "longName": "Features of the Alternative\\Labels\\Point Labels",
+    "type": "feature",
+    "layerName": "V3D_DRAFT_POINTS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2fa9a046f28bd9638488536e0a3a46be",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1651,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer/3",
+    "name": "Line Labels",
+    "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on SEGMENTID. ",
+    "longName": "Features of the Alternative\\Labels\\Line Labels",
+    "type": "feature",
+    "layerName": "V3D_DRAFT_SEGMENTS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2fa9a046f28bd9638488536e0a3a46be",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1652,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer/4",
+    "name": "Polygon Labels",
+    "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on AREAID. ",
+    "longName": "Features of the Alternative\\Labels\\Polygon Labels",
+    "type": "feature",
+    "layerName": "V3D_DRAFT_POLYGONS",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2fa9a046f28bd9638488536e0a3a46be",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABtJREFUOI1jYaAyYBk1cNTAUQNHDRw1cKQaCAAQKwBR5g8A3AAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1653,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer/5",
+    "name": "Termini",
+    "description": "This dataset contains points representing the beginning and end points of unique project alternatives for planned transportation projects within the Efficient Transportation Decision Making (ETDM) Process. The project alternatives associated with these points currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "Features of the Alternative\\Termini",
+    "type": "feature",
+    "layerName": "V3D_DRAFT_TERMINI",
+    "minScale": 800000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Begin Point",
+        "url": "c79ad8ae88ecd2016a8daddee72639bf",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jYaAyYBk1cAgZeIbhTN5/hv98OKTPmjKYbifJQAYGhjJGBkZpbBL/Gf7PZGBgINlAssCogUPJQBMGExmqGkguGDWQcgAA3NcKtnEFjH8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "End Point",
+        "url": "d64bef3eb42eb023a598bccd4e807030",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYBk1kIHh/+lybgZGSWI0f2VguMnAaDIdv4EMjLFfGRi0iXTQXgYGBkIGUgZGDRw1cIQYyGiiQ10DKQSD30AA7VoIhE1G4tkAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1654,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer/6",
+    "name": "Points",
+    "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes point features of project alternatives and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these points currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "Features of the Alternative\\Points",
+    "type": "feature",
+    "layerName": "V3D_DRAFT_POINTS",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Editing",
+        "url": "4b29624a4349ef50e6c0c3896a7dc471",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAQtJREFUOI3t07FKw1AUxvF/bouiZxAkiJjJRcFBdzdfIHUUNwsRlA5ddRacRVAhgy9RqOQF3Jx1dxGuHYSDXZI4FEEkaU/FTb/xcu6PDw6nyS+n+Q9+yd4cLBxC0BLJI9WGhzyD+Uu4GEwJHq2KFH1V1qFE1QHlGrhtGHZEklg1vTeCyaxI0RthlQlVXQ+SLUifLQ3bqmzUYJ9ZBHcKHBvARgzlBA+AXSOYR+As4DKjwWJSQ29sOPiO1TXMwO0YwLuqx6qlXAEdIBqDDSE4M4LpWxgmsfeuDyxV/HmHYB9uHq0N8T59gINNkZkTVVrACvAKZODO4fqprvqY07t9UaULdOtnpgJ/lj8IfgDYnkfTuUX8KgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Ready for GIS Analysis",
+        "url": "3b1e69291020ab35ee7f66d2f1a01497",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAASVJREFUOI3t1DFLw0AYgOH3Li3iKiJiJxcFB92lcEkha3V2dHCQDq46C/4AwV9SqCTQkFDq5qy7i1A7uCjp4edQlVIbc4KDgi/ccnAPN9x3FX64yj/4Ua/Xm7fWHgA7QA0YKKUiz/PO6/X68FtglmWr1toOsD6xvSYi29baVpIkzSAIrpzAfr8/l+d5ewqbbFEp1U7TdMsYc1cK5nm+D2wUYO8tiMgJcFgKKqWaIlLiAbDrBIpIzUUDluM41mEYvnwJAgNHcDiNFYEREJRpInI5a/8TOBqNLqrVaovx2yvqGTh1AsMwfEzTtCkiHWBpxpknpdSe7/s3TiCAMea62+1uaq2PGU/KCvAgIpHW+swYc1t09cLRazQa98DR23LuD/82vwZ8BWJqYCrN1B60AAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "GIS analysis Complete",
+        "url": "778becae2c234a1fd3483494352bf865",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAQxJREFUOI3t07FLQlEUx/HvETPkbiEhObUUONje1uD6bG6r4SXxBteaA1fBCHl/h6C8/oC25tpbgpdDcDEcPA1GgXl912iz33i498PvDCfPHyf/D35FY4ooIdAAUwGboiTk6ErIaCVQY3ZRMwC7P5tYgD2EQ6ZEGptAQnvvBWqHTdT0v7G5CCXU9rXHgTR5zm5Y5Axs1bXSZ7YQroCLbFAI0AxulmM/UKl4cVDWO3JSZ7ochNQTHM1jLjABjjI5Zbho/BMscMuECJau/o5w7QXKKW/aKwVIOgC2F/wZAydyzqNfQ0Ca6YPeUGPDXIJtADvAK5AgtCXkyVXdeXoS8QK2BbRcb1YCf5s1BD8AIehFHxx1CVMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "FIHS Consistency Review",
+        "url": "4dda173c46d0e5521030511b38334c84",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAO1JREFUOI3t0yFLw0EYwOHnlYHIv8kQccmiYNBu8wtsZqPBIAtWzYIfQPCTDCb7AjazdoswF4RDk2eQLej+7iY2/cXj7uG9g2v45Rr/4KQsL+EIHZWWZIgBLkOM5gKzvK7Sl2yCBDawi26ucjtS3BSBWV5U6U2wrzUlvSzvhHgomfBQslWDjVvGGY5LwPYMbNx+KdgqBFezvBDibRY4LARHn7E6cIC9AvB62uI08Apd31/9FedFYIjn3MxtQ32sTDnzgoMQd6UTimHcZnlb5VTSwRqefDzHRYj7utFrv16IR8kJTur2zAX+tD8IvgM7Fzp3Jj2nfgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "ETDM QA/QC",
+        "url": "91ccd4344e80ccbae915c65e4e372b69",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAASFJREFUOI3t1LFLw0AUgPHvNamliIuIiJ1cFDpUOggiODi4ts5uOsQiGVx1FlwFRUr+jkIl3TWTgkPR3UWoRVwMavoclCA1bU5wUPCDWx7cj7vhzuaHs//BOA/NaxkHmypQADoKfibLkXMm3W+B3rLOaEgTmPs0nhVY6r3geotacQI5NwIP0ZyGNPqwOIEJjWjUizpfa8ttKphfYBMoJl8oblxG2QO2U0GxqGiUwr23ZgRqRMGIg6kWmllFekNBoGMIdvuxZNDCJ2IlTVM4TZp/AUfGOHl+wIWhVw/FYt8I3GjJY72kFcnRBCYT9jxhsb4VyLURCFC7kovjspayNru8UsVmGrjHwhc4cAK5GXT0gU/PvZQ7YOdjGfeHf5tfA74Boi9LHbVUAaMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1655,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer/7",
+    "name": "Lines",
+    "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes line features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these segments currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "Features of the Alternative\\Lines",
+    "type": "feature",
+    "layerName": "V3D_DRAFT_SEGMENTS",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Editing",
+        "url": "b3f83b1c9d44758d94024f632e5d8942",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC5JREFUOI1jYaAyYBk1cNRAigxM/0+ZUTMZ0QykDhhSBkLCgIoGUgeMGjgSDAQA6lQC60shsYQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Ready for GIS Analysis",
+        "url": "4d6c94020f728555359354705b63f663",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNRACgw8cODAf0oMcnBwYEQxkFpgCBkICwOqGUgtMGrgSDAQAMfXBRJzUz6TAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "GIS Analysis Complete",
+        "url": "006efe4b67758f7a13fd5962cef63242",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNRACgz8P5PhPyUGMaYzMKIYSC0whAyEhQHVDKQWGDVwJBgIAEFMA7rfGiDQAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "FIHS Consistency Review",
+        "url": "8549686f12f5596d65c941f5e699f45b",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNRACgz8z/D/PyUGMTIwMqIYSC0whAyEhQHVDKQWGDVwJBgIAFuIA1TF5h66AAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "ETDM QA/QC",
+        "url": "648e75a81112e0249d2fe29430013147",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNRACgycafr/PyUGpZ9mZEQxkFpgCBkICwOqGUgtMGrgSDAQAMomBYVsHsqDAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1656,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer/8",
+    "name": "Polygons",
+    "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes polygon features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these polygons currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "Features of the Alternative\\Polygons",
+    "type": "feature",
+    "layerName": "V3D_DRAFT_POLYGONS",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Editing",
+        "url": "71abdd45d3b77580817dc81b76c2f392",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGVJREFUOI1jYWBgYGBgSI9koAqYuZyFeoYxMDAwpEeywJgtqfZWlBhVM/vgMQYGBgYWQgpJBRgGulhaHyPFgD3Hj6L4jPYuHDVw1MBRA4kxED1vUmwgpQBuIKw8o4KBM5dTswoAALJFFDFNvZXrAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Ready for GIS Analysis",
+        "url": "ef2713686194b1259a4809945779ca82",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGdJREFUOI1jYWBgYNi/f38kAxWAo6PjchZqGcbAAHEYC4zD8oXfihLD/vB8PMbAwMDAQkghqQDDQNbXwsdIMeC36FsUn9HehaMGjho4aiAxBqLnTYoNpBTADYSVZxQb6OjouJyaVQAAH1wb3Wi2kTwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "GIS Analysis Complete",
+        "url": "7ea052edd7fa5b9f426677e42327b6d2",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGdJREFUOI1jYWBgYPg/kyGSgQqAMZ1hOQu1DGNggDiMBcZ5wzjFihLDRP7nHGNgYGBgIaSQVIBh4F0W32OkGKD8ZzOKz2jvwlEDRw0cNZAYA9HzJsUGUgrgBsLKM4oNZExnWE7NKgAAvgAXk4FIeQUAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "FIHS Consistency Review",
+        "url": "626f9b7d9969a8f9dfb1ff2cb0b833e3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGdJREFUOI1jYWBgYPjP8D+SgQqAkYFxOQu1DGNggDiMBcZ5k/rVihLDRGZzH2NgYGBgIaSQVIBh4F3Lt8dIMUD5uDCKz2jvwlEDRw0cNZAYA9HzJsUGUgrgBsLKM4oNZGRgXE7NKgAAZUYWXz09A1EAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "ETDM QA/QC",
+        "url": "76f59bb88e362e9f2dac5632a94a14fd",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGdJREFUOI1jYWBgYJhp+D+SgQog/TzjchZqGcbAAHEYC4wjYvPVihLD3hzhPsbAwMDAQkghqQDDQGnDt8dIMeDpeWEUn9HehaMGjho4aiAxBqLnTYoNpBTADYSVZxQbmH6ecTk1qwAAaI4a9b5RiqMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1657,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Geology/MapServer/0",
+    "name": "Subsidence Incident Reports",
+    "description": "What is a Subsidence Incident? Sinkholes are closed depressions in areas underlain by soluble rock such as limestone, dolostone, gypsum, or salt. Sinkholes form when surface sediments subside into underground voids created by the dissolving action of groundwater in the underlying bedrock. Other subterranean events can cause holes, depressions or subsidence of the land surface that may mimic sinkhole activity. These include subsurface expansive clay or organic layers which compress as water is removed, collapsed or broken sewer and drain pipes or broken septic tanks, improperly compacted soil after excavation work, and even buried trash, logs and other debris. Commonly, a reported depression is not verified by a licensed professional geologist to be a true sinkhole, and the cause of subsidence is not known. Such an event is called a subsidence incident. The Florida Geological Survey maintains and provides a downloadable database of reported subsidence incidents statewide. While this data may include some true sinkholes, the majority of the incidents have not been field-checked and the cause of subsidence is not verified.",
+    "longName": "Subsidence Incident Reports",
+    "type": "feature",
+    "layerName": "SIR",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "9693f68adeb07c1fb9f793502f108293",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAPhJREFUOI3tzrFKw1AYhuH3p80pBRUHEZfeg3fgJrg52NlJcRPHDE1IaskNVMSxDi71AsRbcNE76FYEFyfxBPs5NIMOBhO7iP7b+Tg8vE0WfM1/8JeCin3XEjdeCKhjOZQPFb7cWtZ+/nnhar6NWCdo7AKjWqAivw+kQAOxXMxDRX4w/8AlnaBnh/b2LdBSN1LsHxFXwEoxLwEtxIn13VmlQgBL3I16/gDj+sM8KMNKwbnKFgDiHmMTincdUMgg38E4stRdKPZdxLnC1zXLWk/VC8N8gxl7duoeACxxY0X5HY4OUB20zE2B6actDSbA5MuI0sKa9wfBdyIQSldGKGF2AAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1658,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Geology/MapServer/1",
+    "name": "Leon Co. Karst Geology",
+    "description": "This dataset contains karst features derived from 1996 DEM. Karst is a type of topography that results from dissolution and collapse of carbonate rocks such as limestone and dolomite and characterized by closed depressions or sinkholes, caves, and underground drainage.",
+    "longName": "Leon Co. Karst Geology",
+    "type": "feature",
+    "layerName": "C37_KARST",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "1a333145d7031a71ea8df5bab02118af",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGBJREFUOI1jYaAyYGFgYGDIz8/3pYZhEydO3MwC4+iIvTajxLArr0RPMTBAXQgDupJXTpFj2OXnOnDHsOBTSA4YNXDUwFEDh6GByKUGxQbCyjOqGDhx4sTN1DCMgYGBAQBGWxNw3HVGRQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1659,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Geology/MapServer/2",
+    "name": "SWFWMD Sensitive Karst Areas",
+    "description": "This dataset contains Sensitive Karst Areas found within the Southwest Florida Water Management District. This is a subset of the data layer found on the map titled \"Geologic Map of the State of Florida\", created by the Department of Environmental Protection . This data layer is a reselection of the formation types that were determined to be \"Sensitive Karst Areas\". Karst is a terrain with distinctive landforms and hydrology created from the dissolution of soluble rocks, principally limestone and dolomite. Karst terrain is characterized by springs, caves, sinkholes, and a unique hydrogeology that results in aquifers that are highly productive but extremely vulnerable to contamination.",
+    "longName": "SWFWMD Sensitive Karst Areas",
+    "type": "feature",
+    "layerName": "SWFWMD_KARST",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "0f6539b47d4f00384e6b25e4c9af16c4",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGBJREFUOI1jYaAyYGFgYGDIz8/3pYZhEydO3MwC4+iwvjajxLArv0VPMTBAXQgDuuxXTpFj2OWfOnDHsOBTSA4YNXDUwFEDh6GByKUGxQbCyjOqGDhx4sTN1DCMgYGBAQBYXROTLeHP3wAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1660,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Geology/MapServer/3",
+    "name": "Environmental Geology",
+    "description": "This dataset represents distribution of the following rock and sediment types located within 10 feet of land surface: Clayey Sand, Dolomite, Gravel and Coarse Sand, Limestone, Limestone/Dolomite, Med. Fine Sand and Silt, Peat, Sandy Clay and Clay, Shell Beds, Shelly Sand and Clay.",
+    "longName": "Environmental Geology",
+    "type": "feature",
+    "layerName": "FDEPGEO",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Clayey Sand",
+        "url": "0f44eff05f8af79d72f533d48c46e6fd",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgT9WKv6n1DCO8PuMtHPhqIGjBo4aOGrg0DCQI/w+I4qBMAFKAQAfNwbP6BF2fAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Dolomite",
+        "url": "ffcc206148319fd431172a900f5c6c73",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgYHn1/2n1LD1hkGMtHPhqIGjBo4aOGrg0DBwvWEQI4qBMAFKAQAdWwa3nUGnogAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Gravel and Coarse Sand",
+        "url": "567538b652bc43b0ff87bc61af7456e3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgdt2bfpPqWFebn6MtHPhqIGjBo4aOGrg0DDQy82PEcVAmAClAAD+rgYPP56iaAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Limestone",
+        "url": "48ffe56cbebced4788e5e0f1b1b144c5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgYlnbf9Tath848OMtHPhqIGjBo4aOGrg0DBwvvFhRhQDYQKUAgA/igd9FEUzKQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Limestone/Dolomite",
+        "url": "4a3599e6c6b369929b4234b193820aad",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgXV10v8pNayp6Skj7Vw4auCogaMGjho4NAxsanrKiGIgTIBSAABc6AgljgtzRAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Med. Fine Sand and Silt",
+        "url": "59d852a9addcd8906269a182bc18ebc9",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgefOrfhPqWFGRhGMtHPhqIGjBo4aOGrg0DDQyCiCEcVAmAClAADyVAXLh5zMQgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Peat",
+        "url": "a6d34b06e01fe9e19238dba85d27de8b",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgSXhpv8pNaxn5WlG2rlw1MBRA0cNHDVwaBjYs/I0I4qBMAFKAQBlXQhTage3gQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Sandy",
+        "url": "162b00227dbfb2743c823b5ec549c85d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgbumFvyn1DC37AmMtHPhqIGjBo4aOGrg0DDQLXsCI4qBMAFKAQAhYgbVJZak6AAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Shell Beds",
+        "url": "40c47ee67b2ef1a0d6e5cebf580d5b0f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgT8fTv9PqWHs8pmMtHPhqIGjBo4aOGrg0DCQXT6TEcVAmAClAADh3QVxUzTV7QAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Shelly Sand and Clay",
+        "url": "cf6b89f381a782e1f6f770e4545cc5e8",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgbEnY/9Tathi88WMtHPhqIGjBo4aOGrg0DBwsfliRhQDYQKUAgA3SgdN70nXRgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Water",
+        "url": "f0758369c5dec6500fe77cf4d369b565",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgWf+//9PqWEmjIyMKC58cvQ+2YbJWCsyMDDQ0sujBo4aOGrgqIE4DYQVQeQAE0ZGRhQDYQKUAgDmjwg3bDjjrAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1661,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Geology/MapServer/4",
+    "name": "USGS Geologic Units",
+    "description": "This report presents the results of the USGS Mineral Resources Program activity to compile a national-scale geologic map database to support national and regional level projects, including mineral resource and geoenvironmental assessments. The only comprehensive sources of regional- and national-scale geologic maps are state geologic maps with scales ranging from 1:100,000 to 1:1,000,000. Digital versions of these state maps form the core of what is presented here. ",
+    "longName": "USGS Geologic Units",
+    "type": "feature",
+    "layerName": "FLGEOL",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Alluvium",
+        "url": "9da61e33f30b6a60fcb8c3730321c644",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf+2lf2nxCAmry5GFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIA+NMFKNE2f5UAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Alum Bluff Group",
+        "url": "fa3b4026d84d5c40e7ceabf458d5b43c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgXcycv9TYpDKjMmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAIpMFocuBBCoAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Anastatia Formation",
+        "url": "e65297be9b44cfd2026438ef3bf2b46a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgVoNtv8pMehaw2FGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAaIUGawtAghkAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Avon Park Formation",
+        "url": "8a30bcdab0f3651b3fee22d1c7cdf6bd",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgZur5/6nxCDf1mRGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGfwFh3D+gMcAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Beach Ridge and Dune",
+        "url": "5b26cf6c8e3a11f46758019ae728ab1c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgduWXf1PiUFeUdqMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9xIFIWiQs7oAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Chattahoochee Formation",
+        "url": "5764f74293b910079a6552babccad426",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgZcevflPiUF6ciKMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA0OUEsm4i3dwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Citronelle Formation",
+        "url": "be380d86f774a8a4fb46f5bc1ac15167",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgd5nr/ynxKCtxjqMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAD0MFZmicE58AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Cypresshead Formation",
+        "url": "512290e54ed7e6a604610008858ce03d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgUmeIv8pMWje9jeMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAdeQGkyf2jTYAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Dunes",
+        "url": "a71bfb0916a20e1a60be4f68b844d96d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgbcUtf5TYpDa/WuMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAUnIGLWxr/Y0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Hawthorn Group",
+        "url": "f151a6ddd8766104ba968a5cbeb2488e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgZ7uJf8pMWj7zh5GFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAXqUGTq+T3ZIAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Hawthorn Group, Arcadia Formation",
+        "url": "bcf25a4751403e1b3e9d83d82f22451a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdwWSf8pMejriXmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAf3kGrWIQ/QMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Hawthorn Group, Arcadia Formation, Tampa Member",
+        "url": "8d51a1b8ccea908ff636bada58f4be18",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgYWLq/9TYlB/bCsjioHUAqMGjho4auCogXQ2EFaeUc1AagEALrwFw6TQtKIAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Hawthorn Group, Coosawhatchie Formation",
+        "url": "6f7cc7061ebd1cb4f379a7e9bde507e9",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRP8Tf9TYlDBxtOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAWJ8GPmcESVgAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Hawthorn Group, Coosawhatchie Formation, Charlton Member",
+        "url": "e1a220594ef9e12c37ba9f7f9d794acd",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgXqzFP9TYtCltPuMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAZ7UGaeLMKqEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Hawthorn Group, Peace River Formation",
+        "url": "e65297be9b44cfd2026438ef3bf2b46a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgVoNtv8pMehaw2FGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAaIUGawtAghkAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Hawthorn Group, Peace River Formation, Bone Valley Member",
+        "url": "475228abed727fcf0791543832ddd43c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdw9Fv8pMehryQlGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAcN8Gg3DkjxIAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Hawthorn Group, Statenville Formation",
+        "url": "796596b6da193b0c642a3932fcbe067d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgXPmzPlPiUEpKSmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAFvoFfiZ/j+YAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Hawthorn Group, Torreya Formation",
+        "url": "a522227c83410f43fc38f63771661716",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9WZP6nxCCmiOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAAh0FQ4RTNtcAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Holocene Sediments",
+        "url": "3909c2e7dbc6fe645dd4935c754c8544",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgS31u/5TYlBNoxsjioHUAqMGjho4auCogXQ2EFaeUc1AagEAHxgFlS31lG0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Intracoastal Formation",
+        "url": "662d0a88bb49a59fc5ad532606dc0dfb",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgZ67Wv9TYtB2t2pGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAMVYFytC3uUcAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Jackson Bluff Formation",
+        "url": "322fc64c7f3732c92e22727e64c8f3f6",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSJ7jvynxKA3LjaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUALaoFvvERcqUAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Key Largo Limestone",
+        "url": "018fbb23756f2b3fe2a675d84ccfffc2",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenc6f8pMWjm15mMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAbUIGeatcfmQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Miami Limestone",
+        "url": "61c29ebebcfb6c2960fe5005bf2f5db2",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgbuddv+nxCDXfa6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAIJoFmrhLdjIAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Miccosukee Formation",
+        "url": "b8f11bcd45853e82e7390e0c8623dc69",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgZ87u/9TYhBveSkjioHUAqMGjho4auCogXQ2EFaeUc1AagEABQoFS+MmUTAAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Ocala Limestone",
+        "url": "00771f35f4c57c30551115e633e1732d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgZcuXfpPiUF6enqMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA3zsE3G2GR4AAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Residuum on Eocene Sediments",
+        "url": "7a7abec0b277fe43645666065c131904",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgVHFzf8pMWhZby0jioHUAqMGjho4auCogXQ2EFaeUc1AagEARIMGAqY0jgYAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Residuum on Miocene Sediments",
+        "url": "a9f117513bc4171fba5a7a0f5ca3743b",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSX5B/5TYlDPRAdGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAKB4Fr8sk748AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Residuum on Oligocene Sediments",
+        "url": "53ad9a68727ab3490c95b5124af1443c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdyJDv8pMejr/AOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAfO8GptrApk0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Reworked Cypresshead Sediments",
+        "url": "bac8039dded00d22b981630f05432e51",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRP7ov5TYlB+0TJGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIANgsF2RhVBf8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Shelly Sediments of Plio-Pleistocene Age",
+        "url": "a94dae3325674a50890ae644019028e4",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdX/zv6nxKBWJmNGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIA8A0FDL7H5ngAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "St. Marks Formation",
+        "url": "3909c2e7dbc6fe645dd4935c754c8544",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgS31u/5TYlBNoxsjioHUAqMGjho4auCogXQ2EFaeUc1AagEAHxgFlS31lG0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Suwannee Limestone",
+        "url": "643c681b6d6acc0ef66a4e8b5ce80b6b",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgU+atP5TYpBM3TVGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIALaAFwtpSyBoAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Suwannee Limestone- Marianna Limestone Undifferentiated",
+        "url": "6f568a73ea15b5d9e69672f438df420c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTERIv8pMWjJijeMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUActIGin4JIZIAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Tamiami Formation",
+        "url": "51989d737e3b67e3520a940ab49a087e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgQ98/1NkksJmRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAE5VBCVVPXQOAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Trail Ridge Sands",
+        "url": "789d63bfcabd7f76f44fd8eeab4c95ab",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgV133/6nxKAyZWFGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIA604E/vx1DBIAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Undifferentiated Sediments",
+        "url": "3768c3acd135eb5ce1eebb8fe4c9d106",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgd8/7flPiUGcfC6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAztgErdC3+KoAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1662,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Aquifers/MapServer/0",
+    "name": "DRASTIC Coverage for the Floridan Aquifer System",
+    "description": "This coverage contains statewide DRASTIC data for the Floridan Aquifer System. DRASTIC is a system developed jointly by the U.S. Environmental Protection Agency (USEPA) and the National Water Well Association (NWWA) to map potential aquifer vulnerability to pollution introduced on the ground's surface.",
+    "longName": "DRASTIC Coverage for the Floridan Aquifer System",
+    "type": "feature",
+    "layerName": "AQDRFL",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "1-79",
+        "url": "4fc0dd8a7c346fc1d8341ebae61641fc",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtTGOLJNmkOw0IGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAymUEkMjt8+0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "80-99",
+        "url": "8d8f984cb6535d1f6eb38cbc23240f12",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigv/U2AmIwMjAwMDjb08auCogaMGjhqI3UBYEUQmYEQ3kCLTYAAAXiIDVbuaJW4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "100-119",
+        "url": "ab9550f0c517d6144fd865d8ac5a4dc6",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jmgspMZORgYGBxl4eNXDUwFEDRw3EZSAjJWYxohtIkWkwAAAJfgJUuOB5RwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "120-139",
+        "url": "da71c73021712666651f3ab99fea212c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADdJREFUOI1jYaAyYKGlgf+pYB4jqgtTKDBqDoSiqZdHDRw1cNTAUQNxGDiHIrMY0Q1kpMg4KAAAP8cC7zNuFUkAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "140-159",
+        "url": "9f43f64e0bbf3b8814e0dd6e6d44ae8d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADRJREFUOI1jYaAyYKGlgf+pYB4jqgspMZIRQtHUy6MGjho4auCogTgMZKTILEZ0AykzDgoACn8CVEWKLv4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "160-179",
+        "url": "9d0f501b7a616519c2a9d030b4522752",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADhJREFUOI1jYaAyYKGlgf+pYB4jigv/U2AkIyOEpqmXRw0cNXDUwFEDsRsIK4LIBIzoBlJmHBQAAF8jA1XJU6ZXAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "180-199",
+        "url": "6ab08c4a0f9ec89115fef98c96eb04c3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigv/rSHfJKYQCE1TL48aOGrgqIGjBmI3EFYEkQkY0Q1kpMg4KAAAfAQDqYoxwx0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "200-226",
+        "url": "d1505065bdb83c32f90afcd8e5cb494c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jigspMZERStPUy6MGjho4auCogdgNZMSlijjAiG4gheZBAAALgAJUXqzQHAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1663,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Aquifers/MapServer/1",
+    "name": "DRASTIC Coverage for the Intermediate Aquifer System",
+    "description": "This coverage contains statewide DRASTIC data for the Intermediate Aquifer System. DRASTIC is a system developed jointly by the U.S. Environmental Protection Agency (USEPA) and the National Water Well Association (NWWA) to map potential aquifer vulnerability to pollution introduced on the ground's surface.",
+    "longName": "DRASTIC Coverage for the Intermediate Aquifer System",
+    "type": "feature",
+    "layerName": "AQDRIN",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "1-79",
+        "url": "4fc0dd8a7c346fc1d8341ebae61641fc",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtTGOLJNmkOw0IGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAymUEkMjt8+0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "80-99",
+        "url": "8d8f984cb6535d1f6eb38cbc23240f12",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigv/U2AmIwMjAwMDjb08auCogaMGjhqI3UBYEUQmYEQ3kCLTYAAAXiIDVbuaJW4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "100-119",
+        "url": "ab9550f0c517d6144fd865d8ac5a4dc6",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jmgspMZORgYGBxl4eNXDUwFEDRw3EZSAjJWYxohtIkWkwAAAJfgJUuOB5RwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "120-139",
+        "url": "da71c73021712666651f3ab99fea212c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADdJREFUOI1jYaAyYKGlgf+pYB4jqgtTKDBqDoSiqZdHDRw1cNTAUQNxGDiHIrMY0Q1kpMg4KAAAP8cC7zNuFUkAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "140-159",
+        "url": "9f43f64e0bbf3b8814e0dd6e6d44ae8d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADRJREFUOI1jYaAyYKGlgf+pYB4jqgspMZIRQtHUy6MGjho4auCogTgMZKTILEZ0AykzDgoACn8CVEWKLv4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "160-179",
+        "url": "9d0f501b7a616519c2a9d030b4522752",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADhJREFUOI1jYaAyYKGlgf+pYB4jigv/U2AkIyOEpqmXRw0cNXDUwFEDsRsIK4LIBIzoBlJmHBQAAF8jA1XJU6ZXAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "180-199",
+        "url": "6ab08c4a0f9ec89115fef98c96eb04c3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigv/rSHfJKYQCE1TL48aOGrgqIGjBmI3EFYEkQkY0Q1kpMg4KAAAfAQDqYoxwx0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "200-226",
+        "url": "d1505065bdb83c32f90afcd8e5cb494c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jigspMZERStPUy6MGjho4auCogdgNZMSlijjAiG4gheZBAAALgAJUXqzQHAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1664,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Aquifers/MapServer/2",
+    "name": "DRASTIC Coverage for the Surficial Aquifer System",
+    "description": "This coverage contains statewide DRASTIC data for the Surficial Aquifer System. DRASTIC is a system developed jointly by the U.S. Environmental Protection Agency (USEPA) and the National Water Well Association (NWWA) to map potential aquifer vulnerability to pollution introduced on the ground's surface.",
+    "longName": "DRASTIC Coverage for the Surficial Aquifer System",
+    "type": "feature",
+    "layerName": "AQDRSU",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "1-79",
+        "url": "4fc0dd8a7c346fc1d8341ebae61641fc",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtTGOLJNmkOw0IGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAymUEkMjt8+0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "80-99",
+        "url": "8d8f984cb6535d1f6eb38cbc23240f12",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigv/U2AmIwMjAwMDjb08auCogaMGjhqI3UBYEUQmYEQ3kCLTYAAAXiIDVbuaJW4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "100-119",
+        "url": "ab9550f0c517d6144fd865d8ac5a4dc6",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jmgspMZORgYGBxl4eNXDUwFEDRw3EZSAjJWYxohtIkWkwAAAJfgJUuOB5RwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "120-139",
+        "url": "da71c73021712666651f3ab99fea212c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADdJREFUOI1jYaAyYKGlgf+pYB4jqgtTKDBqDoSiqZdHDRw1cNTAUQNxGDiHIrMY0Q1kpMg4KAAAP8cC7zNuFUkAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "140-159",
+        "url": "9f43f64e0bbf3b8814e0dd6e6d44ae8d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADRJREFUOI1jYaAyYKGlgf+pYB4jqgspMZIRQtHUy6MGjho4auCogTgMZKTILEZ0AykzDgoACn8CVEWKLv4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "160-179",
+        "url": "9d0f501b7a616519c2a9d030b4522752",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADhJREFUOI1jYaAyYKGlgf+pYB4jigv/U2AkIyOEpqmXRw0cNXDUwFEDsRsIK4LIBIzoBlJmHBQAAF8jA1XJU6ZXAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "180-199",
+        "url": "6ab08c4a0f9ec89115fef98c96eb04c3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADpJREFUOI1jYaAyYKGlgf+pYB4jigv/rSHfJKYQCE1TL48aOGrgqIGjBmI3EFYEkQkY0Q1kpMg4KAAAfAQDqYoxwx0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "200-226",
+        "url": "d1505065bdb83c32f90afcd8e5cb494c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADZJREFUOI1jYaAyYKGlgf+pYB4jigspMZERStPUy6MGjho4auCogdgNZMSlijjAiG4gheZBAAALgAJUXqzQHAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1665,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Aquifers/MapServer/3",
+    "name": "FAVA Floridan Aquifer System Response Theme",
+    "description": "The Floridan Aquifer System Response theme grid is the relative vulnerability map for the Floridan Aquifer System. It was calculated using the ArcSDM extension and applying the weights of evidence and logistical regression method. The total number of unique conditions, number of training points per unique condition, evidential theme generalizations and posterior probability are contained in the table. A relative vulnerability class field is also in the table so that the grid can be symbolized based on FAVA vulnerability zones.",
+    "longName": "FAVA Floridan Aquifer System Response Theme",
+    "type": "feature",
+    "layerName": "FAVA_FAS",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "LESS VULNERABLE",
+        "url": "1f15c03dc9946987990da337f14a2e4d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADhJREFUOI1jYaAyYKGlgf+pYB4jmgtnUmBWOgMDA429PGrgqIGjBo4aiMvAdErMYkQ3kJES02AAACwoAroLOaxzAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "MORE VULNERABLE",
+        "url": "7605b6744f51a583976efbba1e9e8871",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADhJREFUOI1jYaAyYKGlgf+pYB4jigtnUmBSOpSmqZdHDRw1cNTAUQOxG5iOSxVxgBHdQEbKzIMAAC72Arr20AlbAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "VULNERABLE",
+        "url": "54cb0c7d5c7676eb9d587040e071b53f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtzZ4aTbdLk9JUMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAQL4F9oQXnLAAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1666,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Aquifers/MapServer/4",
+    "name": "FAVA Intermediate Aquifer System Response Theme",
+    "description": "The Intermediate Aquifer System Response theme grid is the relative vulnerability map for the Intermediate Aquifer System. It was calculated using the ArcSDM extension and applying the weights of evidence method. The total number of unique conditions, number of training points per unique condition, evidential theme generalizations and posterior probability are contained in the table. A relative vulnerability class field is also in the table so that the grid can be symbolized based on FAVA vulnerability zones.",
+    "longName": "FAVA Intermediate Aquifer System Response Theme",
+    "type": "feature",
+    "layerName": "FAVA_IAS",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "LESS VULNERABLE",
+        "url": "1f15c03dc9946987990da337f14a2e4d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADhJREFUOI1jYaAyYKGlgf+pYB4jmgtnUmBWOgMDA429PGrgqIGjBo4aiMvAdErMYkQ3kJES02AAACwoAroLOaxzAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "MORE VULNERABLE",
+        "url": "7605b6744f51a583976efbba1e9e8871",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADhJREFUOI1jYaAyYKGlgf+pYB4jigtnUmBSOpSmqZdHDRw1cNTAUQOxG5iOSxVxgBHdQEbKzIMAAC72Arr20AlbAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "VULNERABLE",
+        "url": "54cb0c7d5c7676eb9d587040e071b53f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtzZ4aTbdLk9JUMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAQL4F9oQXnLAAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1667,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Aquifers/MapServer/5",
+    "name": "FAVA Surficial Aquifer System Response Theme",
+    "description": "The Surficial Aquifer System Response theme grid is the relative vulnerability map for the Surficial Aquifer System. It was calculated using the ArcSDM extension and applying the weights of evidence method. The total number of unique conditions, number of training points per unique condition, evidential theme generalizations and posterior probability are contained in the table. A relative vulnerability class field is also in the table so that the grid can be symbolized based on FAVA vulnerability zones.",
+    "longName": "FAVA Surficial Aquifer System Response Theme",
+    "type": "feature",
+    "layerName": "FAVA_SAS",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "More Vulnerable",
+        "url": "7605b6744f51a583976efbba1e9e8871",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADhJREFUOI1jYaAyYKGlgf+pYB4jigtnUmBSOpSmqZdHDRw1cNTAUQOxG5iOSxVxgBHdQEbKzIMAAC72Arr20AlbAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Vulnerable",
+        "url": "54cb0c7d5c7676eb9d587040e071b53f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtzZ4aTbdLk9JUMDAw09vKogaMGjho4aiB2A2FFEJmAEd1ARkpMgwEAQL4F9oQXnLAAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Less Vulnerable",
+        "url": "1f15c03dc9946987990da337f14a2e4d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADhJREFUOI1jYaAyYKGlgf+pYB4jmgtnUmBWOgMDA429PGrgqIGjBo4aiMvAdErMYkQ3kJES02AAACwoAroLOaxzAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1668,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Aquifers/MapServer/6",
+    "name": "Recharge Areas of the Floridan Aquifer",
+    "description": "Generalized recharge to and discharge from the Floridan Aquifer System. This layer covers the entire state of Florida. Aquifers are underground layers of rock and sand that hold water. These layers are made up of loosely packed sediments and layers of calcium-rich limestone and dolomite. In Florida, most of the population depends on the Upper Floridan aquifer for their drinking water. The Upper Floridan aquifer, which is the largest aquifer in the state, holds the ground water like a sponge. Holes in the rock that makes up the aquifer allow the water to move freely through it. The Upper Floridan aquifer stretches for 100,000 square miles beneath Florida and parts of Alabama, Georgia and South Carolina.",
+    "longName": "Recharge Areas of the Floridan Aquifer",
+    "type": "feature",
+    "layerName": "RCHARG",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Discharge/1 to 5",
+        "url": "fcdd87ed047c0d4c4b4a90366bacbde2",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGhJREFUOI3t1E0KQCEIBOAC7+qZOq2thNCC6c1rEeSuQb5+kKT8XHIMVFNjsVZblRiMazW1mMXyHj/Q8so72JhNwa/YFGSwBLJYAlksgSwGgygGgei7QuAbbKjnssFG/sRVj28kMWCrAwkrfFEPDms3AAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Discharge/Greater than 5",
+        "url": "89e43fe5a582084bd6a558a6ea19a8b7",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGhJREFUOI1jYaAyYKGdgWdM/1NsmslpRhZ0ART+GdP/GGLoAKYG6iDcXibFMCSA3UAyDcNuIAWGYRpIoWGYBlJoGKaBFBpGvIFEGkacgcSGK1EGjiZsYtQMtYRNTJmISw3UIhZ0AUoBAMN1XVEv1NDHAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Discharge/Less than 1",
+        "url": "89964c6e71859998a86879bf2efc6d75",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGhJREFUOI3t1E0KQCEIBOAC79qZPK2thNCC6c1rEeSuQb5+kKT8XHIMVFNjsVZblRiMazW1mMXyHj/Q8so72JhNwa/YFGSwBLJYAlksgSwGgygGgei7QuAbbKjnssFG/sRVj28kMWCrA2zHfFEvEatPAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Recharge/1 to 10",
+        "url": "0734ed88e6e06f16e2336a7ecb0f06e9",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAH1JREFUOI21k9ENgDAIRG3CPA7h4B2iC+FXjRGhd6D8tYHXoxyyfRzyG7AP1Srs2FuT50VU0IeqlzMFCVowH1zlGIVVqBlKFfo65QrUtU0WGvqQgULADBTaFAQKK2Sh1C7TxkYUUMZG26KMXYWmN8XLM38Ynb24Qy8g4jEkThnGhTle8cb5AAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Recharge/Greater than 10",
+        "url": "827bc642042961aa347f6b30756f1948",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHlJREFUOI21k1EOgDAIQ13CXTnTTotfM0aEtaD8bYG3MoocH4f8BlQ168LmHEOeF1mBqlmUswQJWrAe3OU4hV2oG0oX+jrlDjS0TRWa+pCBQsAKFNoUBAorZKHULtPGRhRQxkbboozdhZY3Jcpzf5ido7hDLyDiMSROhEaUYVpcNukAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Recharge/Less than 1",
+        "url": "86175a97391c5bce68bf1aee5879d4a0",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAH1JREFUOI21k9ENgDAIRG3CSp3JmTqTQ+FXjRGhd6D8tYHXoxyyfRzyG7AP1Srs2FuT50VU0IeqlzMFCVowH1zlGIVVqBlKFfo65QrUtU0WGvqQgULADBTaFAQKK2Sh1C7TxkYUUMZG26KMXYWmN8XLM38Ynb24Qy8g4jEkTogulGGYn6keAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1669,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Aquifers/MapServer/7",
+    "name": "Sole Source Aquifers",
+    "description": "This data set contains indexes and Esri shape files of boundaries of the designated sole source aquifers and related aquifer boundaries. Data provide a vector polygon GIS layer showing available materials representing extents at the land surface related to 78 designated Sole Source Aquifers (SSA) related to announcements in the Federal Register. GIS coverages for SSAs were obtained from EPA Regions 1, 2, 3, 4, 5, 6, 8, 9, and 10 for a baseline period in September of 2009. Each SSA polygon was checked against the Federal Register (FR) determination for that SSA. These coverages were appended, in order to create a national seamless coverage of SSAs. There are 89 GIS polygons for the Sole Source Aquifers, since in addition to a single SSA designated area polygons, some Regions have delineated GIS layers for streamflow zones, aquifer recharge areas, and other features at the land surface important for the SSA designations. GIS materials are not available at this time for the St. Joseph SSA in Indiana [53 FR 23682 (1988)]. Additional information can be found at: https://edg.epa.gov/data/Public/OW/SSA_FR_notices_DWMA_Sept2009.Zip and https://edg.epa.gov/data/Public/OW/SSA_IDS_revd.xls This layer is an update to the FGDL layer SSAQUIFERS.shp",
+    "longName": "Sole Source Aquifers",
+    "type": "feature",
+    "layerName": "EPASSA",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "346ac0aad77bdc8c9c5f2a99997300b1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE9JREFUOI1jYaAyYKGZgdL19f8pNexpYyMjC7qAdH39/6eNjYzIFhHDhzmIdl6miYEwZ6OHJyn8kR6GI9DA0WQzCA2kJFJg4Qo3EDmgKQEA9BpjiSh2QNwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1670,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Aquifers/MapServer/8",
+    "name": "Principal Aquifers",
+    "description": "This map layer contains the shallowest principal aquifers of the state of Florida portrayed as polygons. The map layer was developed as part of the effort to produce the series \"Ground Water Atlas of the United States\". The published maps contain base and cultural features not included in these data. This is a replacement for the July 1998 map layer called Principal Aquifers of the 48 Conterminous United States created by the U.S. geological Survey.",
+    "longName": "Principal Aquifers",
+    "type": "feature",
+    "layerName": "AQUIP",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Biscayne Aquifer",
+        "url": "7d585578707e4512de8c43579be7ff64",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgf9nnvlPqWGM6SaMtHPhqIGjBo4aOGrg0DCQMd2EEcVAmAClAADm2gWLfRqs1QAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Coastal Lowlands Aquifer System",
+        "url": "bf00cebd8f41b8dcfcf36d16bd8dff89",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgTNn/v9PqWHp6YyMtHPhqIGjBo4aOGrg0DAwPZ2REcVAmAClAAD6LQXx4rOrvQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Floridan Aquifer System",
+        "url": "72d9d18a942c2d240fd9c8243e901220",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgTP/z/xPqWHpjOmMtHPhqIGjBo4aOGrg0DAwnTGdEcVAmAClAAD5YQXxOdjWmQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Surficial Aquifer System",
+        "url": "0152bff6e3eb4ef48c6e3903d34b06c2",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgTPP/P9PqWHpJoyMtHPhqIGjBo4aOGrg0DAw3YSREcVAmAClAADoDAWLD5gUUwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1671,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/NWI_axl/MapServer/0",
+    "name": "National Wetlands Inventory Areas V2",
+    "description": "This data set represents the extent, approximate location and type of wetlands and deepwater habitats in the United States and its Territories. These data delineate the areal extent of wetlands and surface waters as defined by Cowardin et al. (1979). The National Wetlands Inventory - Version 2, Surface Waters and Wetlands Inventory was derived by retaining the wetland and deepwater polygons that compose the NWI digital wetlands spatial data layer and reintroducing any linear wetland or surface water features that were orphaned from the original NWI hard copy maps by converting them to narrow polygonal features. Additionally, the data are supplemented with hydrography data, buffered to become polygonal features, as a secondary source for any single-line stream features not mapped by the NWI and to complete segmented connections. Wetland mapping conducted in WA, OR, CA, NV and ID after 2012 and most other projects mapped after 2015 were mapped to include all surface water features and are not derived data. The linear hydrography dataset used to derive Version 2 was the U.S. Geological Survey's National Hydrography Dataset (NHD). Specific information on the NHD version used to derive Version 2 and where Version 2 was mapped can be found in the 'comments' field of the Wetlands_Project_Metadata feature class. Certain wetland habitats are excluded from the National mapping program because of the limitations of aerial imagery as the primary data source used to detect wetlands. These habitats include seagrasses or submerged aquatic vegetation that are found in the intertidal and subtidal zones of estuaries and near shore coastal waters. Some deepwater reef communities (coral or tuberficid worm reefs) have also been excluded from the inventory. These habitats, because of their depth, go undetected by aerial imagery. By policy, the Service also excludes certain types of \"farmed wetlands\" as may be defined by the Food Security Act or that do not coincide with the Cowardin et al. definition. Contact the Service's Regional Wetland Coordinator for additional information on what types of farmed wetlands are included on wetland maps. This dataset should be used in conjunction with the Wetlands_Project_Metadata layer, which contains project specific wetlands mapping procedures and information on dates, scales and emulsion of imagery used to map the wetlands within specific project boundaries.",
+    "longName": "National Wetlands Inventory Areas V2",
+    "type": "feature",
+    "layerName": "NWIP_V2",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Estuarine",
+        "url": "e6ef2a7dc5eb81c8837d4355fe54b5c3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEpJREFUOI1jYaAyYKGZgen/0/9TathMxpmMLOgCyBYg85EBNjmYg2jnZZoYiB6O+MIVl9xID8MRaOBoshmEBlISKbAwZUEXoBQAAO+XQ+WN+RfoAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Lacustrine",
+        "url": "a5cd909fbcb734f1ccde0b8422eef8b1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEpJREFUOI1jYaAyYKGZgaam//9Tatjp04yMLOgCyBYg85EBNjmYg2jnZZoYiB6O+MIVl9xID8MRaOBoshmEBlISKbAwZUEXoBQAADp4QSmz9xhcAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Marine",
+        "url": "b2727e9472f2bdf3bc0e9cdf7c16f1d4",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEpJREFUOI1jYaAyYKGZgWf+//9PqWEmjIyMLOgCyBYg85EBNjmYg2jnZZoYiB6O+MIVl9xID8MRaOBoshmEBlISKbAwZUEXoBQAAGBaStBJmB/fAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Palustrine",
+        "url": "c6cb305ce5edeac5dcfc04cd5a1245f4",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEpJREFUOI1jYaAyYKGZgf//z/xPqWGMjOmMLOgCyBYg85EBNjmYg2jnZZoYiB6O+MIVl9xID8MRaOBoshmEBlISKbAwZUEXoBQAAHkJSWvCJ9qOAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Riverine",
+        "url": "04c03e896b5342a1bcc951fe98062092",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEpJREFUOI1jYaAyYKGZgaZn/v+n1LDTJoyMLOgCyBYg85EBNjmYg2jnZZoYiB6O+MIVl9xID8MRaOBoshmEBlISKbAwZUEXoBQAANWRRUrhAcceAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1672,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer/14",
+    "name": "500 ft",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 500 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\500 ft",
+    "type": "feature",
+    "layerName": "V3D_REV_FEATURE_AREAS_500",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "3bd68ab52d7bfb09bf5ddbcdba848b7f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgfMZ5k+mxKBEhsRjDAwMy1FcGMgQeIwCAxkYGGjp5VEDRw0cNXDUQKwGJjIkHoMVQWSC5SgGwgQoBQAy7woTzgj6iwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1673,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer/15",
+    "name": "1320 ft (.25 mile)",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of a quarter mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\1320 ft (.25 mile)",
+    "type": "feature",
+    "layerName": "V3D_REV_FEATURE_AREAS_1320",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "f339f116f049228d8f273fdc8f56d2b5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgUu4lzRTYlDM15hTDAwMm1FcGPA14BQlhjIw0NLLowaOGjhq4KiBWA2ElmeUgM0oBsIEKAUACQMLjU05SFYAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1674,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer/16",
+    "name": "2640 ft (.5 mile)",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of a half mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\2640 ft (.5 mile)",
+    "type": "feature",
+    "layerName": "V3D_REV_FEATURE_AREAS_2640",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "c08c412b70d32e84373a72f98075f827",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgWtE1hRQYlD89/gLX79+PYDiQr/vfhcoMZSBgZZeHjVw1MBRA0cNxGpg/Pd4ioqur1+/HkAxECZAKQAAJcUUdwOgwtYAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1675,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer/17",
+    "name": "5280 ft (1 mile)",
+    "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 1 mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
+    "longName": "GIS Analysis Buffers\\Feature Buffers\\5280 ft (1 mile)",
+    "type": "feature",
+    "layerName": "V3D_REV_FEATURE_AREAS_5280",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "c105fb5502481f85533a55fa9648dd59",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgZulN8dQYlDiz8Trb968OYviQp+fPtcpMZSBgZZeHjVw1MBRA0cNxGpg4s9EioquN2/enEUxECZAKQAAP5IUbevxeFEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1676,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer/19",
+    "name": "100 ft",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 100 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\100 ft",
+    "type": "feature",
+    "layerName": "V3D_REV_ANALYSIS_AREAS_100",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "9bd1848bc3ac0fbe595cb0a2bf887729",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFFJREFUOI1jYaAyYGFgYGA4x3AukhqGGTEYLWdB4ltRaN4xBgaoC9EFyQBwx6AbSDEYNXDUwFEDh6eBlBZhKAaSW3RhGmjEYLScGoYxMDAwAABo8wdcaLKJ1QAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1677,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer/20",
+    "name": "200 ft",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 200 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\200 ft",
+    "type": "feature",
+    "layerName": "V3D_REV_ANALYSIS_AREAS_200",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "256690bc75c99019768adaf657b76ffc",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGB4zfDalxqGiTKIbmaB87gZzCgy7SvDKQYGqAvRBUkGSI5hwaeOHDBq4KiBowYORwMpLcJQDCS36MJmoCiD6GZqGMbAwMAAAL5JCi7TwcZ0AAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1678,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer/21",
+    "name": "500 ft",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 500 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\500 ft",
+    "type": "feature",
+    "layerName": "V3D_REV_ANALYSIS_AREAS_500",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "97ad7537002c093c0c99d90392e66b0a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGD4wP3BgRqGCXwVOMAC53EyGFBk2neGCwwMUBeiC5IMkBzDgk8dOWDUwFEDRw0cjgZSWoShGEhu0YXNQIGvAgeoYRgDAwMDALvJDCYOtyLeAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1679,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer/22",
+    "name": "1320 ft (.25 mile)",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of a quarter mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\1320 ft (.25 mile)",
+    "type": "feature",
+    "layerName": "V3D_REV_ANALYSIS_AREAS_1320",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "90398305a7137e2be19f9c261695a823",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFZJREFUOI1jYaAyYGFgYGD4JvLNmBqGcb3hOssC57EzaFJk2k+G6wwMUBeiC5IMkBzDgk8dOWDUwFEDRw0cjgZSWoShGEhu0YXNQK43XGepYRgDAwMDALiaDB4qJNmJAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1680,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer/23",
+    "name": "2640 ft (.5 mile)",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of a half mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\2640 ft (.5 mile)",
+    "type": "feature",
+    "layerName": "V3D_REV_ANALYSIS_AREAS_2640",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "1f577e297979195d47d27da4e03aa0ee",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFhJREFUOI1jYaAyYGFgYGD4yfBTjRqGsTOw32KBcRgZGBUoMew/w/8HDAxQF6ILkgqQHcOCUxWZYNTAUQNHDRyGBlJahKEYSG7RhdVAdgb2W9QwjIGBgQEAB4UNOV0E1hoAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1681,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer/24",
+    "name": "5280 ft (1 mile)",
+    "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 1 mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
+    "longName": "GIS Analysis Buffers\\Alternative Buffers\\5280 ft (1 mile)",
+    "type": "feature",
+    "layerName": "V3D_REV_ANALYSIS_AREAS_5280",
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "03c6720fc93a15d65da37e8e92933e74",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE9JREFUOI3t1L0JACAMhNEvkB0E959NcAptRPzpTCrJdUnxuOoU5yhAo2UPTJCiy52MXoXR8Hw+ZJY5QXMCDDDAP0HrhG3g63TdoCDFAwPoXG0HOcscPf0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1682,
+    "url": "https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_Drafts_Dev/MapServer/0",
+    "name": "Draft Alternatives",
+    "description": "This dataset contains all spatial features of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer contains polygons which are based on a 1 foot buffer of all features in the project alternatives. These polygons are used for visual purposes only. These project alternatives currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "Draft Alternatives",
+    "type": "feature",
+    "layerName": "V3D_DRAFT_ALTERNATIVES",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "b34ebc050c44b8da7773f9ede7f7f61b",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE9JREFUOI1jYaAyYKGZgVOm5H+lxKDbtxmuT5w40QTFhdnZLNfJNbCg4A8DAwMtvTxq4KiBowaOGojVwNu3Ga7DiiBywMSJE01QDIQJUAoAvZkTFRUBDAYAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1683,
+    "url": "https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_MMA_Dev/MapServer/0",
+    "name": "Milestone Max Alternatives",
+    "description": null,
+    "longName": "Milestone Max Alternatives",
+    "type": "feature",
+    "layerName": "V3D_MILESTONE_MAX_ALTERNATIVES",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "282bee925a272de9dbad607b1b426820",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGZgf//F3+l0KzrjIy9JuguvE6hoTT08qiBowaOGjhqIC4DKSq6GBl7TVAMhAlQCgBYxAiFw8ufewAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1684,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Springs/MapServer/0",
+    "name": "FDEP Springs",
+    "description": "This dataset contains the best available locations of springs that have had some data collection or field activities or were included in publications by various agencies. Currently this collection has 1093 unique spring vents, karst windows and associated sinkholes that are recognized in Florida and are represented in this dataset.",
+    "longName": "FDEP Springs",
+    "type": "feature",
+    "layerName": "SPRINGS_FDEP",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "First Magnitude",
+        "url": "d191de04317ecb73d7a5152b3712268f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYBk1kEGE4c5eBgYGZWI0v2H4p8XAoPYNr4EM3AzSDF8Z5IlzDxsTQRdSCkYNHDVwUBr45quKBlUNpBSMQAMBl8kIwCDukKsAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Spring",
+        "url": "b3d3a102fe3b2fdc4d27b3aa5f61d421",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAASlJREFUOI3t1DFLQmEUxvG/x0thaoFERE4tCQ21tzU4NOhtCaUxsCEcWmsO+gBBnyFxVDC9e23NtYZLoIJepQg6b0s5lLf7Bg0FPfAuB86PZ3mPww/H+QfHGRSLMfHZR40LpFE6iLa0Hz2bvbrofQscuu4yfdMAMuOhsAKyIXOmPMoW8nGvcm0F9kqladp+HUxm0gIwbxzqfrawnvQq7VBw6n6wh7AagL0nFXE4Bg5CQUTzICEeANt2oErazmPRgERAQxrSseKE3kcsoGGkhZjNUFD1ctL4ExjV7vmLpMpA+gvuCeXECox53mC4tZMHaQALE3YeUd1NNKu3ViBAolG9GeVya+Z55ghwEZaALkLLqJ4mm9W7oOqBXy9eqz0Ah2/POn/42vwa8BXcB1gdLXGe/QAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1685,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Springs/MapServer/1",
+    "name": "SJRWMD Springs",
+    "description": "A spring is defined as a place where groundwater flows naturally onto the land surface or into a body of surface water. A spring's occurrence depends on the nature and relationships among topography, underlying geologic strata, and aquifer water levels. While some springs are isolated features, many are clustered into spring groups of varying size and areal extent. In addition to providing a unique recreational resource, springs provide important base flow to rivers and streams and critical habitat to plants and animals. Most springs in SJRWMD occur in discharge areas of the Upper Floridan aquifer where limestone is at or near land surface, or where the sediments overlying Floridan limestone have been breached. The majority of the springs in SJRWMD are located along the major river systems of the St. Johns, Ocklawaha, and Wekiva rivers. This data layer also includes surficial aquifer springs, which are now called seeps, under nomenclature recently agreed upon by the Florida Geological Survey. Springs are classified by magnitude based on the volume of flow, or discharge of water. The amount of water that flows from a spring depends on several factors, including rainfall, size of the caverns within the rocks, the water pressure in the aquifer, and the size of spring recharge basin. Human activities can also influence the volume of water that discharges from a spring; for example, increased groundwater withdrawals can reduce the hydraulic pressure in an aquifer, causing water levels to decline and spring flows to decrease. Since springs have dynamic flows dependent on climate, hydrogeology, and others factors, a spring classified as being a certain magnitude at one time may not continue to flow at that rate at other times. Springs are classified by magnitude, which is based on the median value of all discharge measurements for the period of record. First magnitude springs discharge the greatest amount of water. The following is a summary of spring classification magnitude by discharge.",
+    "longName": "SJRWMD Springs",
+    "type": "feature",
+    "layerName": "SPRINGS_SJRWMD",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "b3d3a102fe3b2fdc4d27b3aa5f61d421",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAASlJREFUOI3t1DFLQmEUxvG/x0thaoFERE4tCQ21tzU4NOhtCaUxsCEcWmsO+gBBnyFxVDC9e23NtYZLoIJepQg6b0s5lLf7Bg0FPfAuB86PZ3mPww/H+QfHGRSLMfHZR40LpFE6iLa0Hz2bvbrofQscuu4yfdMAMuOhsAKyIXOmPMoW8nGvcm0F9kqladp+HUxm0gIwbxzqfrawnvQq7VBw6n6wh7AagL0nFXE4Bg5CQUTzICEeANt2oErazmPRgERAQxrSseKE3kcsoGGkhZjNUFD1ctL4ExjV7vmLpMpA+gvuCeXECox53mC4tZMHaQALE3YeUd1NNKu3ViBAolG9GeVya+Z55ghwEZaALkLLqJ4mm9W7oOqBXy9eqz0Ah2/POn/42vwa8BXcB1gdLXGe/QAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1686,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Springs/MapServer/2",
+    "name": "NWFWMD Springs",
+    "description": "Locations of NWFWMD field verified spring discharge. Includes both Floridan Aquifer and surficial aquifer vents and seeps. Karst windows, sinkholes, and flowing wells are not included. Springs Inventories Reports can be found on the NWFWMD website here:http://www.nwfwater.com/Data-Publications/Reports-Plans/Springs-Inventories.",
+    "longName": "NWFWMD Springs",
+    "type": "feature",
+    "layerName": "SPRINGS_NWFWMD",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "b3d3a102fe3b2fdc4d27b3aa5f61d421",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAASlJREFUOI3t1DFLQmEUxvG/x0thaoFERE4tCQ21tzU4NOhtCaUxsCEcWmsO+gBBnyFxVDC9e23NtYZLoIJepQg6b0s5lLf7Bg0FPfAuB86PZ3mPww/H+QfHGRSLMfHZR40LpFE6iLa0Hz2bvbrofQscuu4yfdMAMuOhsAKyIXOmPMoW8nGvcm0F9kqladp+HUxm0gIwbxzqfrawnvQq7VBw6n6wh7AagL0nFXE4Bg5CQUTzICEeANt2oErazmPRgERAQxrSseKE3kcsoGGkhZjNUFD1ctL4ExjV7vmLpMpA+gvuCeXECox53mC4tZMHaQALE3YeUd1NNKu3ViBAolG9GeVya+Z55ghwEZaALkLLqJ4mm9W7oOqBXy9eqz0Ah2/POn/42vwa8BXcB1gdLXGe/QAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1687,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Springs/MapServer/3",
+    "name": "USGS Springs (SRWMD)",
+    "description": "This dataset represents the locations of spring features as points. ",
+    "longName": "USGS Springs (SRWMD)",
+    "type": "feature",
+    "layerName": "SPRINGS_SRWMD_USGS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "b3d3a102fe3b2fdc4d27b3aa5f61d421",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAASlJREFUOI3t1DFLQmEUxvG/x0thaoFERE4tCQ21tzU4NOhtCaUxsCEcWmsO+gBBnyFxVDC9e23NtYZLoIJepQg6b0s5lLf7Bg0FPfAuB86PZ3mPww/H+QfHGRSLMfHZR40LpFE6iLa0Hz2bvbrofQscuu4yfdMAMuOhsAKyIXOmPMoW8nGvcm0F9kqladp+HUxm0gIwbxzqfrawnvQq7VBw6n6wh7AagL0nFXE4Bg5CQUTzICEeANt2oErazmPRgERAQxrSseKE3kcsoGGkhZjNUFD1ctL4ExjV7vmLpMpA+gvuCeXECox53mC4tZMHaQALE3YeUd1NNKu3ViBAolG9GeVya+Z55ghwEZaALkLLqJ4mm9W7oOqBXy9eqz0Ah2/POn/42vwa8BXcB1gdLXGe/QAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1688,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Springs/MapServer/4",
+    "name": "SRWMD Springs",
+    "description": "This data set represents springs on Suwannee River Water Management District lands.",
+    "longName": "SRWMD Springs",
+    "type": "feature",
+    "layerName": "SPRINGS_SRWMD",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "b3d3a102fe3b2fdc4d27b3aa5f61d421",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAASlJREFUOI3t1DFLQmEUxvG/x0thaoFERE4tCQ21tzU4NOhtCaUxsCEcWmsO+gBBnyFxVDC9e23NtYZLoIJepQg6b0s5lLf7Bg0FPfAuB86PZ3mPww/H+QfHGRSLMfHZR40LpFE6iLa0Hz2bvbrofQscuu4yfdMAMuOhsAKyIXOmPMoW8nGvcm0F9kqladp+HUxm0gIwbxzqfrawnvQq7VBw6n6wh7AagL0nFXE4Bg5CQUTzICEeANt2oErazmPRgERAQxrSseKE3kcsoGGkhZjNUFD1ctL4ExjV7vmLpMpA+gvuCeXECox53mC4tZMHaQALE3YeUd1NNKu3ViBAolG9GeVya+Z55ghwEZaALkLLqJ4mm9W7oOqBXy9eqz0Ah2/POn/42vwa8BXcB1gdLXGe/QAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 1689,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Springs/MapServer/5",
+    "name": "SJRWMD Springsheds",
+    "description": "This data set represents springsheds for St Johns River Water Management District (SJRWMD). A variety of different modeling techniques were used to derive these polygons. This data was originally downloaded in 10 different shapefiles from SJRWMD and merged into one layer. A unique metadata existed for each shapefile. This metadata is a combination of all metadatas. For more detailed information on each springshed it is recommended that you reference the original layers metadata from SJRWMD.",
+    "longName": "SJRWMD Springsheds",
+    "type": "feature",
+    "layerName": "SJRWMD_SPRINGSHEDS",
+    "minScale": 800000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "091c4135e5f56ac7f1dec4ee2458e496",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgaamJ2ZSYtDp0xbpKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAcYEGhprPEe8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
     "id": 1000,
     "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/rci_gaming/MapServer/0",
+    "name": "RCI_GAMING",
+    "description": "",
+    "longName": "RCI_GAMING",
+    "type": "feature",
+    "layerName": "",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 2000,
+    "url": "https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/rci_gaming/MapServer/0",
+    "name": "RCI_GAMING",
+    "description": "",
+    "longName": "RCI_GAMING",
+    "type": "feature",
+    "layerName": "",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 3000,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/rci_gaming/MapServer/0",
     "name": "RCI_GAMING",
     "description": "",
     "longName": "RCI_GAMING",
@@ -16294,6 +22976,54 @@ define({
     "name": "zillow_neighborhood_sdr",
     "description": "",
     "longName": "zillow_neighborhood_sdr",
+    "type": "feature",
+    "layerName": "",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 69000,
+    "url": "https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_Drafts_Stage/MapServer/0",
+    "name": "Draft Alternatives",
+    "description": "This dataset contains all spatial features of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer contains polygons which are based on a 1 foot buffer of all features in the project alternatives. These polygons are used for visual purposes only. These project alternatives currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "Draft Alternatives",
+    "type": "feature",
+    "layerName": "",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 70000,
+    "url": "https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_MMA_Stage/MapServer/0",
+    "name": "Milestone Max Alternatives",
+    "description": "",
+    "longName": "Milestone Max Alternatives",
+    "type": "feature",
+    "layerName": "",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 75000,
+    "url": "https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_Drafts_Prod/MapServer/0",
+    "name": "Draft Alternatives",
+    "description": "This dataset contains all spatial features of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer contains polygons which are based on a 1 foot buffer of all features in the project alternatives. These polygons are used for visual purposes only. These project alternatives currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "Draft Alternatives",
+    "type": "feature",
+    "layerName": "",
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 76000,
+    "url": "https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_MMA_Prod/MapServer/0",
+    "name": "Milestone Max Alternatives",
+    "description": "",
+    "longName": "Milestone Max Alternatives",
     "type": "feature",
     "layerName": "",
     "minScale": 0,

@@ -160,6 +160,9 @@ define([
                 }
                 this.saveMapDialog.show();
             },
+            //First step in saving a map, check to see if we already have a map with the given name
+            //and prompt to overwrite if so. If it's a new map name, construct the basic saved map object, 
+            //or if user confirms overwrite, load the existing map, then pass the new/existing map to _saveMap
             saveMap: function () {
                 var mapName = this.mapName.value;
                 if (!mapName) {
@@ -183,9 +186,11 @@ define([
                     }).show();
                 }
             },
+            //callback from saveMap function, gets the layer config/projects and saves to the referenced map.
             _saveMap: function (savedMap) {
                 //get layers
                 savedMap.layers = app.getLayerConfig();
+                savedMap.extent = app.map.extent;
                 savedMap.includesProjects = this.hasProjects() && this.includeProjects();
                 if (this.hasProjects() && !this.includeProjects()) {
                     //filter projects out of the map

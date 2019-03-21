@@ -2,11 +2,11 @@
     <div data-bind="visible: layerSearchResults().length > 0">
         <div data-bind="foreach: layerSearchResults">
             <strong data-bind="text: longName || name"></strong>
-            <div data-bind="visible: legend && legend.length > 0" style="margin-bottom: 1em">
-            <label>Symbols: </label>
-            <span data-bind="foreach: legend">
-                <img data-bind="attr: {src: 'data:image/png;base64, ' + imageData, alt: label}" style="vertical-align: bottom" /> &nbsp;
-            </span>
+            <div data-bind="if: legendSymbols && legendSymbols.length > 0" style="margin-bottom: 1em">
+                <label>Symbols: </label>
+                <span data-bind="foreach: legendSymbols">
+                    <img data-bind="attr: {src: 'data:image/png;base64, ' + imageData, alt: label}" style="vertical-align: bottom" /> &nbsp;
+                </span>
             </div>
             <label>Description</label>
             <p data-bind="text: description"></p>

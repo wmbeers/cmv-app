@@ -376,9 +376,9 @@ define([
                     enableButtonMode: has('phone') ? false : true,
                     expanded: true, // || has('phone') ? true : false,
                     allPlaceholder: 'Find address, place, county or district',
-                    enableSourcesMenu: true,
+                    //enableSourcesMenu: true,
                     addLayersFromMap: true, //doesn't seem to to anything
-                    exactMatch: true,
+                    //exactMatch: true,
                     sources: [
                         {
                             locator: new Locator('//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer'),
@@ -395,7 +395,7 @@ define([
                                 url: 'https://js.arcgis.com/3.27/esri/dijit/Search/images/search-pointer.png',
                                 width: 36, height: 36, xoffset: 9, yoffset: 18
                             }
-                        },
+                        }/*,
                         {
                             featureLayer: new FeatureLayer('https://services.arcgis.com/LBbVDC0hKPAnLRpO/ArcGIS/rest/services/countyBoundary/FeatureServer/1'),
                             searchFields: ['NAME'],
@@ -425,7 +425,7 @@ define([
                             enableSuggestions: true,
                             minCharacters: 0,
                             localSearchOptions: {distance: 5000}
-                        }
+                        }*/
                     ]
 
                 }
@@ -643,7 +643,7 @@ define([
                     legendLayerInfos: true
                 }
             },
-            dnd: {
+            /*dnd: {
                 include: true,
                 id: 'dnd',
                 type: 'titlePane',
@@ -654,7 +654,7 @@ define([
                 options: {
                     map: true
                 }
-            },
+            },*/
             bookmarks: {
                 include: true,
                 id: 'bookmarks',
@@ -738,7 +738,7 @@ define([
                     ]
                 }
             },
-            directions: {
+            /*directions: {
                 include: true,
                 id: 'directions',
                 type: 'titlePane',
@@ -759,7 +759,7 @@ define([
                         active: false //for 3.12, starts active by default, which we dont want as it interfears with mapClickMode
                     }
                 }
-            },
+            },*/
             zoomToCounty: {
                 include: true,
                 id: 'zoomToCounty',
@@ -781,7 +781,7 @@ define([
                     }
                 }
             },
-            zoomToWMD: {
+            /*zoomToWMD: {
                 include: true,
                 id: 'zoomToWMD',
                 type: 'titlePane',
@@ -800,7 +800,7 @@ define([
                         selectFeature: 'Select a District'
                     }
                 }
-            },
+            },*/
             
             editor: {
                 include: false, // TODO has('phone') ? false : true,
