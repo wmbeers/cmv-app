@@ -11,6 +11,7 @@ define([
     'esri/layers/ArcGISDynamicMapServiceLayer',
     'esri/layers/FeatureLayer',
     'esri/layers/VectorTileLayer',
+    'esri/layers/ImageParameters',
     'esri/dijit/Legend',
     'esri/InfoTemplate',
     'esri/request',
@@ -35,6 +36,7 @@ define([
     ArcGISDynamicMapServiceLayer,
     FeatureLayer,
     VectorTileLayer,
+    ImageParameters,
     Legend,
     InfoTemplate,
     esriRequest,
@@ -104,6 +106,7 @@ define([
             };
             topic.publish('attributesTable/addTable', tableOptions);
         },
+
         // Get a layer definition by numeric id (relates back to objectid of t_rest_services_mxd), the 
         getLayerDef: function (sdeLayerNameOrUrl) {
             var categories = this.widgets.layerLoader.categories;
@@ -193,11 +196,14 @@ define([
             //app._initLayer(layerDef, ArcGISDynamicMapServiceLayer);
 
             if (layerDef.type === 'dynamic') {
+                var ip = new ImageParameters();
+                ip.format = 'png32';
                 layer = new ArcGISDynamicMapServiceLayer(layerDef.url,
                     {
                         //opacity: 0.75, //todo store in config?
                         //todo either use db id or just let this be autoassigned id: layerDef.name,
                         //infoTemplate: new InfoTemplate('Attributes', '${*}')
+                        imageParameters: ip
                     });
             } else if (layerDef.type === 'feature') {
                 layer = new FeatureLayer(layerDef.url,
@@ -338,11 +344,14 @@ define([
                             //        iconClass: 'fa fa-info fa-fw'
                             //    }
                             //},
-                            menu: [{
-                                label: 'Open Attribute Table',
-                                topic: 'openAttributeTable',
-                                iconClass: 'fa fa-table fa-fw'
-                            }],
+                            //TODO: I don't think the following actually does anything. See subLayerMenu, below
+                            menu: [
+                                {
+                                    label: 'Open Attribute Table',
+                                    topic: 'openAttributeTable',
+                                    iconClass: 'fa fa-table fa-fw'
+                                }
+                            ],
                             //Note: the following is what's documented on the CMV site, but doesn't work, 
                             //see below for the correct way discovered via trial-and-error
                             // gives all dynamic layers the subLayerMenu items
