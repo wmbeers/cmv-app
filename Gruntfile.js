@@ -35,8 +35,8 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         scp: {
             options: {
-                host: 'prometheus.est.vpn',
-                username: 'bill'
+                //host: 'prometheus.est.vpn',
+                //username: 'bill'
             },
             your_target: {
                 files: [{
@@ -194,8 +194,8 @@ module.exports = function (grunt) {
     grunt.registerTask('scripts', 'Compiles the JavaScript files.', ['eslint', 'uglify']);
     grunt.registerTask('stylesheets', 'Auto prefixes css and compiles the stylesheets.', ['stylelint', 'postcss', 'cssmin']);
     grunt.registerTask('lint', 'Run eslint and stylelint.', ['eslint', 'stylelint']);
-    grunt.registerTask('build-deploy-dev', 'Compiles all of the assets and copies the files to the build directory, then deploys to dev.', ['clean', 'copy', 'scripts', 'stylesheets','scp']);
-    grunt.registerTask('deploy-dev', 'Deploys the dist folder to dev.', ['scp']);
+    grunt.registerTask('build-deploy', 'Compiles all of the assets and copies the files to the dist folder, then deploys it. User is prompted for host (destination server), username and password.', ['clean', 'copy', 'scripts', 'stylesheets','scp']);
+    grunt.registerTask('deploy', 'Deploys the dist folder. User is prompted for host (destination server), username and password.', ['scp']);
     
     
 };
