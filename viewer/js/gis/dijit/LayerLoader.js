@@ -221,21 +221,30 @@ define([
                 //TODO lucene or some more powerful search engine will be replacing this
                 var searchString = this.searchNode.displayedValue;
                 var tokens = searchString.toLowerCase().split(' ');
-                this.layerSearchResults(array.filter(this.layerDefs, function (l) {
+                var layerSearchResults = array.filter(this.layerDefs, function (l) {
                     var x = array.some(tokens, function (s) {
-                        var name = String(l.name).toLowerCase(), 
-                            description = String(l.description).toLowerCase(), 
+                        var name = String(l.name).toLowerCase(),
+                            description = String(l.description).toLowerCase(),
                             longName = String(l.longName).toLowerCase();
 
                         return (name.indexOf(s) >= 0 ||
                             description.indexOf(s) >= 0 ||
                             longName.indexOf(s) >= 0);
                     });
-                    if (x) {
-                        return true;
-                    }
-                    return false; //not really necessary, but prevents a consistent-return eslint error
-                }));
+                    return x;
+                });
+
+                var categorySearchResults = array.filter(this.allCategories, function (c) {
+                    var x = array.some(tokens, function (s) {
+                        var name = String(c.name).toLowerCase(); /*categories don't have this currently,
+                            description = String(l.description).toLowerCase(),
+                            longName = String(l.longName).toLowerCase();*/
+                        return name.indexOf(s) >= 0;
+                    });
+                    return x;
+                });
+
+                this.searchResults(categorySearchResults.concat(layerSearchResults));
 
                 this.searchResultsDialog.show();
             },
@@ -323,11 +332,13 @@ define([
             //Post-process categories to cross-reference layers and knockoutify
             _processCategories: function () {
                 var root = this; // eslint-disable-line consistent-this
+                root.allCategories = []; // used when searching
 
                 //internal function to add layerDefs and functions; recursively called, starting
                 //with the root model (this LayerLoader), then each root-level category, then subcategories
                 function processCategories (parent) {
                     parent.categories.forEach(function (category) {
+                        root.allCategories.push(category);
                         category.layerDefs = category.layerIds.map(function (layerId) {
                             return root.layerDefs.find(function (l) {
                                 return l.id === layerId;
@@ -365,6 +376,7 @@ define([
                                 var mapServiceLayer = app.constructLayer(categoryLayerDef);
                                 app.addLayer(mapServiceLayer);
                                 root.layerBrowserDialog.hide();
+                                root.searchResultsDialog.hide();
                             } else {
                                 //this shouldn't happen
                                 //TODO
@@ -382,6 +394,6 @@ define([
             },
             currentCategory: ko.observable(null),
             currentLayer: ko.observable(null),
-            layerSearchResults: ko.observableArray()
+            searchResults: ko.observableArray()
         });
     });

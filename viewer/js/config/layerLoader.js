@@ -2,24 +2,29 @@
 define({
 "categories":[
   {
+    "type": "category",
     "name": "Social and Economic",
     "categories": [
       {
+        "type": "category",
         "name": "Aesthetic Effects",
         "categories": [],
         "layerIds": [],
         "serviceURL": null
       },
       {
+        "type": "category",
         "name": "Economic",
         "categories": [],
         "layerIds": [],
         "serviceURL": null
       },
       {
+        "type": "category",
         "name": "Land Use Changes",
         "categories": [
           {
+            "type": "category",
             "name": "Land Use",
             "categories": [],
             "layerIds": [
@@ -35,21 +40,25 @@ define({
         "serviceURL": null
       },
       {
+        "type": "category",
         "name": "Mobility",
         "categories": [],
         "layerIds": [],
         "serviceURL": null
       },
       {
+        "type": "category",
         "name": "Relocation Potential",
         "categories": [],
         "layerIds": [],
         "serviceURL": null
       },
       {
+        "type": "category",
         "name": "Demographics",
         "categories": [
           {
+            "type": "category",
             "name": "Census Boundaries",
             "categories": [],
             "layerIds": [
@@ -67,9 +76,11 @@ define({
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/CENBLK/MapServer"
           },
           {
+            "type": "category",
             "name": "Densities",
             "categories": [
               {
+                "type": "category",
                 "name": "2000 Demographic Densities",
                 "categories": [],
                 "layerIds": [
@@ -84,6 +95,7 @@ define({
                 "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_2000/MapServer"
               },
               {
+                "type": "category",
                 "name": "2010 Demographic Densities",
                 "categories": [],
                 "layerIds": [
@@ -97,6 +109,7 @@ define({
                 "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_2010/MapServer"
               },
               {
+                "type": "category",
                 "name": "2017 Demographic Densities",
                 "categories": [],
                 "layerIds": [
@@ -115,9 +128,11 @@ define({
             "serviceURL": null
           },
           {
+            "type": "category",
             "name": "Distribution",
             "categories": [
               {
+                "type": "category",
                 "name": "2000 Demographic Distribution",
                 "categories": [],
                 "layerIds": [
@@ -137,6 +152,7 @@ define({
                 "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2000/MapServer"
               },
               {
+                "type": "category",
                 "name": "2010 Demographic Distribution",
                 "categories": [],
                 "layerIds": [
@@ -155,6 +171,7 @@ define({
                 "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2010/MapServer"
               },
               {
+                "type": "category",
                 "name": "2017 Demographic Distribution",
                 "categories": [],
                 "layerIds": [
@@ -178,9 +195,11 @@ define({
             "serviceURL": null
           },
           {
+            "type": "category",
             "name": "Percentages",
             "categories": [
               {
+                "type": "category",
                 "name": "2000 Demographic Percentages",
                 "categories": [],
                 "layerIds": [
@@ -196,6 +215,7 @@ define({
                 "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_2000/MapServer"
               },
               {
+                "type": "category",
                 "name": "2010 Demographic Percentages",
                 "categories": [],
                 "layerIds": [
@@ -210,6 +230,7 @@ define({
                 "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_2010/MapServer"
               },
               {
+                "type": "category",
                 "name": "2017 Demographic Percentages",
                 "categories": [],
                 "layerIds": [
@@ -229,9 +250,11 @@ define({
             "serviceURL": null
           },
           {
+            "type": "category",
             "name": "Vehicles",
             "categories": [
               {
+                "type": "category",
                 "name": "2000 Demographic Vehicles",
                 "categories": [],
                 "layerIds": [
@@ -245,6 +268,7 @@ define({
                 "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_2000/MapServer"
               },
               {
+                "type": "category",
                 "name": "2010 Demographic Vehicles",
                 "categories": [],
                 "layerIds": [
@@ -258,6 +282,7 @@ define({
                 "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_2010/MapServer"
               },
               {
+                "type": "category",
                 "name": "2017 Demographic Vehicles",
                 "categories": [],
                 "layerIds": [
@@ -279,12 +304,14 @@ define({
         "serviceURL": null
       },
       {
+        "type": "category",
         "name": "Safety/Emergency Response",
         "categories": [],
         "layerIds": [],
         "serviceURL": null
       },
       {
+        "type": "category",
         "name": "Farmland",
         "categories": [],
         "layerIds": [
@@ -296,9 +323,11 @@ define({
         "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Farmlands/MapServer"
       },
       {
+        "type": "category",
         "name": "Community and SCE",
         "categories": [
           {
+            "type": "category",
             "name": "Community Points",
             "categories": [],
             "layerIds": [
@@ -327,6 +356,7 @@ define({
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer"
           },
           {
+            "type": "category",
             "name": "Community Polygons",
             "categories": [],
             "layerIds": [
@@ -344,6 +374,7 @@ define({
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Polys/MapServer"
           },
           {
+            "type": "category",
             "name": "Community",
             "categories": [],
             "layerIds": [
@@ -357,6 +388,7 @@ define({
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Community/MapServer"
           },
           {
+            "type": "category",
             "name": "Zillow Test",
             "categories": [],
             "layerIds": [
@@ -369,18 +401,21 @@ define({
         "serviceURL": null
       },
       {
+        "type": "category",
         "name": "Land Use",
         "categories": [],
         "layerIds": [],
         "serviceURL": null
       },
       {
+        "type": "category",
         "name": "Landcover",
         "categories": [],
         "layerIds": [],
         "serviceURL": null
       },
       {
+        "type": "category",
         "name": "Parcels",
         "categories": [],
         "layerIds": [
@@ -393,9 +428,11 @@ define({
     "serviceURL": null
   },
   {
+    "type": "category",
     "name": "Cultural and Tribal",
     "categories": [
       {
+        "type": "category",
         "name": "Archaeological and Historical Resources",
         "categories": [],
         "layerIds": [
@@ -413,6 +450,7 @@ define({
         "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer"
       },
       {
+        "type": "category",
         "name": "Archaeological and Historical Resources - Secure",
         "categories": [],
         "layerIds": [
@@ -422,9 +460,11 @@ define({
         "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Historic_Resources_S/MapServer"
       },
       {
+        "type": "category",
         "name": "Recreation Areas",
         "categories": [
           {
+            "type": "category",
             "name": "Trails",
             "categories": [],
             "layerIds": [
@@ -443,12 +483,14 @@ define({
         "serviceURL": null
       },
       {
+        "type": "category",
         "name": "Section 4(f) Potential",
         "categories": [],
         "layerIds": [],
         "serviceURL": null
       },
       {
+        "type": "category",
         "name": "Year Built",
         "categories": [],
         "layerIds": [
@@ -464,18 +506,22 @@ define({
     "serviceURL": null
   },
   {
+    "type": "category",
     "name": "Natural",
     "categories": [
       {
+        "type": "category",
         "name": "Coastal and Marine",
         "categories": [
           {
+            "type": "category",
             "name": "Essential Fish Habitat",
             "categories": [],
             "layerIds": [],
             "serviceURL": null
           },
           {
+            "type": "category",
             "name": "Coastal Barrier Resources",
             "categories": [],
             "layerIds": [
@@ -500,9 +546,11 @@ define({
         "serviceURL": null
       },
       {
+        "type": "category",
         "name": "Floodplains",
         "categories": [
           {
+            "type": "category",
             "name": "Flood Zones",
             "categories": [],
             "layerIds": [
@@ -519,6 +567,7 @@ define({
         "serviceURL": null
       },
       {
+        "type": "category",
         "name": "Geology",
         "categories": [],
         "layerIds": [
@@ -531,6 +580,7 @@ define({
         "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Geology/MapServer"
       },
       {
+        "type": "category",
         "name": "Soils",
         "categories": [],
         "layerIds": [
@@ -539,9 +589,11 @@ define({
         "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Soils/MapServer"
       },
       {
+        "type": "category",
         "name": "Water Quality and Quantity",
         "categories": [
           {
+            "type": "category",
             "name": "Aquifers",
             "categories": [],
             "layerIds": [
@@ -558,6 +610,7 @@ define({
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Aquifers/MapServer"
           },
           {
+            "type": "category",
             "name": "Elevation",
             "categories": [],
             "layerIds": [
@@ -571,6 +624,7 @@ define({
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Topo/MapServer"
           },
           {
+            "type": "category",
             "name": "National Hydrography Dataset (24K)",
             "categories": [],
             "layerIds": [
@@ -581,6 +635,7 @@ define({
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/NHD24/MapServer"
           },
           {
+            "type": "category",
             "name": "National Hydrography Dataset (100K)",
             "categories": [],
             "layerIds": [
@@ -591,6 +646,7 @@ define({
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/NHD100/MapServer"
           },
           {
+            "type": "category",
             "name": "Permits",
             "categories": [],
             "layerIds": [
@@ -604,6 +660,7 @@ define({
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SWFWMD_Permits/MapServer"
           },
           {
+            "type": "category",
             "name": "Springs",
             "categories": [],
             "layerIds": [
@@ -617,6 +674,7 @@ define({
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Springs/MapServer"
           },
           {
+            "type": "category",
             "name": "Wells",
             "categories": [],
             "layerIds": [
@@ -633,9 +691,11 @@ define({
         "serviceURL": null
       },
       {
+        "type": "category",
         "name": "Wetlands and Surface Waters",
         "categories": [
           {
+            "type": "category",
             "name": "Mitigation",
             "categories": [],
             "layerIds": [
@@ -646,6 +706,7 @@ define({
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Mitigation/MapServer"
           },
           {
+            "type": "category",
             "name": "National Wetlands Inventory Areas USFWS",
             "categories": [],
             "layerIds": [
@@ -654,6 +715,7 @@ define({
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/NWI_usfws/MapServer"
           },
           {
+            "type": "category",
             "name": "National Wetlands Inventory Areas V2",
             "categories": [],
             "layerIds": [
@@ -666,9 +728,11 @@ define({
         "serviceURL": null
       },
       {
+        "type": "category",
         "name": "Wildlife and Habitat",
         "categories": [
           {
+            "type": "category",
             "name": "ARC Lands",
             "categories": [],
             "layerIds": [
@@ -682,6 +746,7 @@ define({
             "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/ARC_Lands/MapServer"
           },
           {
+            "type": "category",
             "name": "Conservation",
             "categories": [],
             "layerIds": [
@@ -703,6 +768,7 @@ define({
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer"
           },
           {
+            "type": "category",
             "name": "CLIP V4",
             "categories": [],
             "layerIds": [
@@ -725,6 +791,7 @@ define({
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/CLIP_V4/MapServer"
           },
           {
+            "type": "category",
             "name": "Consultation Areas",
             "categories": [],
             "layerIds": [
@@ -757,6 +824,7 @@ define({
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Consultation_Areas/MapServer"
           },
           {
+            "type": "category",
             "name": "Critical Habitat",
             "categories": [],
             "layerIds": [
@@ -787,19 +855,18 @@ define({
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Critical_Habitat/MapServer"
           },
           {
+            "type": "category",
             "name": "FNAI Likely Element Occurrence (Secure)",
             "categories": [],
             "layerIds": [
               1016,
-              1013,
               1017,
-              1014,
-              1018,
-              1015
+              1018
             ],
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/FNAI_FLEO_S/MapServer"
           },
           {
+            "type": "category",
             "name": "Green Links",
             "categories": [],
             "layerIds": [
@@ -809,6 +876,7 @@ define({
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/GreenLinks/MapServer"
           },
           {
+            "type": "category",
             "name": "Habitat",
             "categories": [],
             "layerIds": [
@@ -830,6 +898,7 @@ define({
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat/MapServer"
           },
           {
+            "type": "category",
             "name": "Species Occurrence",
             "categories": [],
             "layerIds": [
@@ -863,18 +932,22 @@ define({
     "serviceURL": null
   },
   {
+    "type": "category",
     "name": "Physical",
     "categories": [
       {
+        "type": "category",
         "name": "Air Quality",
         "categories": [],
         "layerIds": [],
         "serviceURL": null
       },
       {
+        "type": "category",
         "name": "Contamination",
         "categories": [
           {
+            "type": "category",
             "name": "Waste",
             "categories": [],
             "layerIds": [
@@ -907,15 +980,52 @@ define({
               27
             ],
             "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer"
+          },
+          {
+            "type": "category",
+            "name": "Waste Groups Test",
+            "categories": [],
+            "layerIds": [
+              2985,
+              2986,
+              2987,
+              2988,
+              2989,
+              2659,
+              2660,
+              2661,
+              2662,
+              2663,
+              2664,
+              2665,
+              2666,
+              2667,
+              2668,
+              2669,
+              2670,
+              2671,
+              2672,
+              2673,
+              2978,
+              2979,
+              2980,
+              2981,
+              2982,
+              2983,
+              2984
+            ],
+            "serviceURL": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer"
           }
         ],
         "layerIds": [],
         "serviceURL": null
       },
       {
+        "type": "category",
         "name": "Infrastructure",
         "categories": [
           {
+            "type": "category",
             "name": "RCI",
             "categories": [],
             "layerIds": [
@@ -944,6 +1054,7 @@ define({
             "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI/MapServer"
           },
           {
+            "type": "category",
             "name": "RCI Basemap",
             "categories": [],
             "layerIds": [
@@ -954,6 +1065,7 @@ define({
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI_Base/MapServer"
           },
           {
+            "type": "category",
             "name": "Roadways",
             "categories": [],
             "layerIds": [
@@ -968,6 +1080,7 @@ define({
             "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/WorkProgram/MapServer"
           },
           {
+            "type": "category",
             "name": "Utilities",
             "categories": [],
             "layerIds": [
@@ -987,12 +1100,14 @@ define({
         "serviceURL": null
       },
       {
+        "type": "category",
         "name": "Navigation",
         "categories": [],
         "layerIds": [],
         "serviceURL": null
       },
       {
+        "type": "category",
         "name": "Noise",
         "categories": [],
         "layerIds": [],
@@ -1003,9 +1118,11 @@ define({
     "serviceURL": null
   },
   {
+    "type": "category",
     "name": "Special Designations",
     "categories": [
       {
+        "type": "category",
         "name": "Water Resource Designations",
         "categories": [],
         "layerIds": [
@@ -16691,234 +16808,6 @@ define({
     ]
   },
   {
-    "id": 1013,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/FNAI_FLEO_S/MapServer/0",
-    "name": "FNAI Documented Element Occurrence",
-    "description": "This is subset of FLEO_POLY where occurrences are documented. This is a polygon data layer locating the occurrences of endangered or rare plants and animals, high quality natural communities and other occurrences of natural resource interest in the Florida Natural Areas Inventory (FNAI) database. An \"Element\" is any exemplary or rare component of the natural environment, such as a species, plant community, bird rookery, spring, sinkhole, cave or other ecological feature. An \"Element Occurrence\" (EO) represents the locational record of an element and is a single extant habitat which sustains or otherwise contributes to the survival of a population or a distinct, self-sustaining example of a particular natural community. EO representations may have area added to account for uncertainty in the actual location of an observation (in the case of historical museum records for example). Please see additional supporting documentation for an explanation of proper interpretation of EO shapes. \r\n\r\nThis subset is created with the definition Query: OCCURRENCE = 'DOCUMENTED'",
-    "longName": "FNAI Documented Element Occurrence",
-    "type": "feature",
-    "layerName": "FLEO_POLY",
-    "minScale": 500000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "Endangered",
-        "url": "494d808b1bd88b24656a164e2a13250a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7MYBQl27AZ/18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgCHOQnbZQ+MWwAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Threatened",
-        "url": "c1205b67dfe2f65aa262823fb89c9563",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7cIipKtmE+r18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgBl7Ql75OtXtAAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Candidate Species",
-        "url": "239ec14fc820fa19e3f6c9540c5c7fe7",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC58HqtPtmGSiy8yMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgAynAjm423qrgAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Not Currently Listed",
-        "url": "c0fa2a24892a0120e91a1c8fae272335",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgf////9PqWGMjIyMqC58nkG+aZIzGBgYaOnlUQNHDRw1cNRA3AZCiyByACMjIyOKgTABSgEAksIHCrt/iHUAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Threatened due to Similarity of Appearance",
-        "url": "c1205b67dfe2f65aa262823fb89c9563",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7cIipKtmE+r18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgBl7Ql75OtXtAAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Species of Concern",
-        "url": "a0e75a9ee7cb8a5af3a057b9cedc48d5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgf////9PqWGMjIyMqC6cZUa+aWmnGBgYaOnlUQNHDRw1cNRA3AZCiyByACMjIyOKgTABSgEAvjgHiTS5hrgAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Non-essential Experimental Population",
-        "url": "29ff5960b1ff1562967924a680929b79",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGZgf////9PqWGMjIyMLGgCZBsGcw/tvDxq4KiBowaOGojTQEqKREZo2ceCLkApAACx1ApWoWPtcQAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 1014,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/FNAI_FLEO_S/MapServer/1",
-    "name": "FNAI Likely Element Occurrence",
-    "description": "This is subset of FLEO_POLY where occurrences are likely. This is a polygon data layer locating the occurrences of endangered or rare plants and animals, high quality natural communities and other occurrences of natural resource interest in the Florida Natural Areas Inventory (FNAI) database. An \"Element\" is any exemplary or rare component of the natural environment, such as a species, plant community, bird rookery, spring, sinkhole, cave or other ecological feature. An \"Element Occurrence\" (EO) represents the locational record of an element and is a single extant habitat which sustains or otherwise contributes to the survival of a population or a distinct, self-sustaining example of a particular natural community. EO representations may have area added to account for uncertainty in the actual location of an observation (in the case of historical museum records for example). Please see additional supporting documentation for an explanation of proper interpretation of EO shapes.\r\n\r\nThis subset is created with the definition Query: OCCURRENCE = 'LIKELY'",
-    "longName": "FNAI Likely Element Occurrence",
-    "type": "feature",
-    "layerName": "FLEO_POLY",
-    "minScale": 500000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "Endangered",
-        "url": "494d808b1bd88b24656a164e2a13250a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7MYBQl27AZ/18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgCHOQnbZQ+MWwAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Threatened",
-        "url": "c1205b67dfe2f65aa262823fb89c9563",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7cIipKtmE+r18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgBl7Ql75OtXtAAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Candidate Species",
-        "url": "239ec14fc820fa19e3f6c9540c5c7fe7",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC58HqtPtmGSiy8yMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgAynAjm423qrgAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Not Currently Listed",
-        "url": "c0fa2a24892a0120e91a1c8fae272335",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgf////9PqWGMjIyMqC58nkG+aZIzGBgYaOnlUQNHDRw1cNRA3AZCiyByACMjIyOKgTABSgEAksIHCrt/iHUAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Threatened due to Similarity of Appearance",
-        "url": "c1205b67dfe2f65aa262823fb89c9563",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7cIipKtmE+r18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgBl7Ql75OtXtAAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Species of Concern",
-        "url": "a0e75a9ee7cb8a5af3a057b9cedc48d5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgf////9PqWGMjIyMqC6cZUa+aWmnGBgYaOnlUQNHDRw1cNRA3AZCiyByACMjIyOKgTABSgEAvjgHiTS5hrgAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Non-essential Experimental Population",
-        "url": "29ff5960b1ff1562967924a680929b79",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGZgf////9PqWGMjIyMLGgCZBsGcw/tvDxq4KiBowaOGojTQEqKREZo2ceCLkApAACx1ApWoWPtcQAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 1015,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/FNAI_FLEO_S/MapServer/2",
-    "name": "FNAI Potential Element Occurrence",
-    "description": "This is subset of FLEO_POLY where occurrences are potentially located. This is a polygon data layer locating the occurrences of endangered or rare plants and animals, high quality natural communities and other occurrences of natural resource interest in the Florida Natural Areas Inventory (FNAI) database. An \"Element\" is any exemplary or rare component of the natural environment, such as a species, plant community, bird rookery, spring, sinkhole, cave or other ecological feature. An \"Element Occurrence\" (EO) represents the locational record of an element and is a single extant habitat which sustains or otherwise contributes to the survival of a population or a distinct, self-sustaining example of a particular natural community. EO representations may have area added to account for uncertainty in the actual location of an observation (in the case of historical museum records for example). Please see additional supporting documentation for an explanation of proper interpretation of EO shapes. \r\n\r\nThis subset is created with the definition Query: OCCURRENCE = 'LIKELY'",
-    "longName": "FNAI Potential Element Occurrence",
-    "type": "feature",
-    "layerName": "FLEO_POLY",
-    "minScale": 500000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "Endangered",
-        "url": "494d808b1bd88b24656a164e2a13250a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7MYBQl27AZ/18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgCHOQnbZQ+MWwAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Threatened",
-        "url": "c1205b67dfe2f65aa262823fb89c9563",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7cIipKtmE+r18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgBl7Ql75OtXtAAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Candidate Species",
-        "url": "239ec14fc820fa19e3f6c9540c5c7fe7",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC58HqtPtmGSiy8yMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgAynAjm423qrgAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Not Currently Listed",
-        "url": "c0fa2a24892a0120e91a1c8fae272335",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgf////9PqWGMjIyMqC58nkG+aZIzGBgYaOnlUQNHDRw1cNRA3AZCiyByACMjIyOKgTABSgEAksIHCrt/iHUAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Threatened due to Similarity of Appearance",
-        "url": "c1205b67dfe2f65aa262823fb89c9563",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgf////9PqWGMjIyMKC7cIipKtmE+r18zMDDQ0sujBo4aOGrgqIE4DYQVQeQARkZGRhQDYQKUAgBl7Ql75OtXtAAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Species of Concern",
-        "url": "a0e75a9ee7cb8a5af3a057b9cedc48d5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgf////9PqWGMjIyMqC6cZUa+aWmnGBgYaOnlUQNHDRw1cNRA3AZCiyByACMjIyOKgTABSgEAvjgHiTS5hrgAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Non-essential Experimental Population",
-        "url": "29ff5960b1ff1562967924a680929b79",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADxJREFUOI1jYaAyYKGZgf////9PqWGMjIyMLGgCZBsGcw/tvDxq4KiBowaOGojTQEqKREZo2ceCLkApAACx1ApWoWPtcQAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
     "id": 1299,
     "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Wells/MapServer/1",
     "name": "FDEP Well Inventory",
@@ -17481,6 +17370,372 @@ define({
     ]
   },
   {
+    "id": 2659,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/6",
+    "name": "FDEP Petroleum Contamination Monitoring Sites",
+    "description": "This coverage includes all identified petroleum program contaminated discharge sites where cleanup is ongoing or complete. Discharge cleanup sites may be eligible or ineligible for state funding assistance. More than one discharge site may be present at a current or former petroleum storage tank facility.",
+    "longName": "Waste Related Point Layers\\FDEP Petroleum Contamination Monitoring Sites",
+    "type": "feature",
+    "layerName": "PCTS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "ELIGIBLE DISCHARGES OPEN",
+        "url": "4b34a17563afec2ca7c3f66aa1434350",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAfFJREFUOI3V1N9Lk1Ecx/H33NzTdtYe1Kei7bKwHwSFTPwP0rECoSjqZrQIopsJ3QgRSr9ASeqiKCoIugop6iKKIi/CLrrodxApq4Q5hXVyzvW1wnJdpDDreZ5WeNPn6vx88T3nwPGxyPH9d+D5yk4zCXOtiq0PSnhFDT7/LDPTRQpjTxl4PcyjLxVL99uClmVd+tmKeJK64/AT7m2ZFO0JUQeUGeVtnVCIJunagJo9ciqQvA+gtbavUGv9GOAgJ2+PMhTfzSFMGhYcoYjmLlcCMWk9cVZeZnYSueZ2ZFJWT0dej8TbOUAN3t/uyMRiG2luccETRF3uJz+wg+UFJ7D2nX7RtZfjtth8vHiJs4d++kK76NwH9DqBbTE21/oxHLH5+FnCOlrIMrTdEVRKtUSlMfhHbS4RVpHlTaRybAEoImEDYwowqwENAkxT+u4IAh/GeT/SwMqN1YCT5JnhW8YRVEo9OCfpziRHMQhQosgnJphiAoAw9YSoZykmQok7XKSJ1jOOoIgMCjLcR2pTNRU2k8he5dhNRxAoW5aV0lo/BFwfx6Lx61j0eYIcZTcQrfUzpVSbiFwHltlj0Y+fVW6rzsmrX+dsfxsRGQTWKKXSItIOrJ6bygA3NLnTCEW7vW7fV0FEuoFulzV/Bf5TFh38AXdNov8UAFY9AAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "INELIGIBLE DISCHARGES OPEN",
+        "url": "8c410be40692522f7cbf8682c105a96c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAiFJREFUOI3V1D9oE1EcB/Dvu7vcXS+hsZFqoylVKKSI0C7SwU5KMKUKDqI4JpcEl6Jb7SCKiEMnQQeHCwdOURSLiCDWIVSHgJhBqVKi+Ce1jW1Jk5L7k9wfB1Mx9C5mcNAfvOX93u/Dj997PAZ/OZj/C5Qk6XZLUvf5+UrvAabO74ZNsTaxFINTvqmBlQWL1rWtc4lE4pwjSAiRAICyKdLzceTSZvDDcYvXCOpegAAN/0aPyWh7+16PHQQxry4fys617VAUxVcAMDuVf6LuXBsPPYqAfdbdUqAfq6AUyXXteB++PiTGC4dB7ruCAHDv2ssLOr0x3j9zBGSN2jYj7qkf/W+PYmkyS5gzvJy7az8fBSk7gplMxqOvli4P3JxwxH6NZolG8M4Yiok5n/dxNIkaZhxBRVGigWLYQy+yrthW0AssvCshVE8XT0F2AQGMej8HhT9qzRC+7EJt//Ke3/daQMuyuqmapwrA3wlIbXIwOM10BQkhq+q+7594BIY7ARuhCgC70K7DbGk4d9GYVkE1WBi8CkNQYHp+vmG6wYNRBDBaFwxOQ3XgHbhy3y1XMJlMzkuStLg+mB/ppENG8309OxWZdQUB2ISQOIAXANpeDrEZ3RKUCQB2OxCiKObT6XQUwAMAvY4Y6HVQ5olYLP5mW9dOBaIozsuyHLYs6zyAkwAGm6kCgIeGWb+RSqUqTrWu31csFisDuNJcHce//8H+ADLRuoyQ6/fqAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "ELIGIBLE DISCHARGES COMPLETED",
+        "url": "c5a5c5d6b0a7da881728c7740c6b7156",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAitJREFUOI3V1FtIk2EYB/D//OZOb+6g37S2ohuZMKK6W1C7sBsnumpQBF0ISVFhWCPogITLRkaJSHUxYVDdBRnlTRAlFXoxYhDkARzLSbZK97pTPaOwbV2kMGvfWuFN/7v39ON5D7xyrHHk/x3oK2zYWw7orLYdVq3WUFdRISiyS0uZZDz24dXIk6k3gRdfC6YeLwqKougHAJPJJHO5ey4Gng63pha4TKcXkQcwFw4Z0qm4+cSl61ty2e893W3OZwDAOS9eIec8CACdff7HkdBU87Guq9DX1K7aQjw2j+G7PvUux54r9ydi4cb1sqFSW8aZfv/pj+8izYc6zkIQhN/OqNpYhzZ3F4YGB2SaKu3t5wv5kcZaWUIKrJwIBrrdvTeKYisRBDlc7R2403d53ZEL3qMArkmBDnuTs1KhVEtiK1Go1Nhq24nZ6fH9kiBjzLa5war5o7acTfUWvJ2eNBX2rQKJSKtQqtIAdOWASo0GmVQqKwkCiL2fCc8aN2zcVg4Yn/+EXC4XlgQZYy97O9vPn/T2Q6XWgNJJJBZj+Bz/+c6qqkUYaoxgWj0yX1K4N3gTu5tab0mCRDRKFAl5Dru2l1Ohfe/BOZ/33CNJEEBeFMV2zvkYgJKXY7ZYvs0Ex1oA5EuB4Jy/Zow5iOgBAGMxTDRbFpPRqJOIxn8dK/rbENEogAbG2Cki2gegfnkoDOAhj4YGAKSKrS31fSWIyAPAU2LOX4H/lDUHfwDyccA+Y1spLgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "INELIGIBLE DISCHARGES COMPETED",
+        "url": "bba387e3ef339fa9767eea007fa83664",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAhRJREFUOI3V1D9oE1EcB/Dve/c/TRMNTRurIGghIEKKUBzsUqWQEgsOLo7JJcFNRxdRHBycHBwcLmQNqOjkYkVidSgKEZQKEkFRbE0T04T0cne5e+eSiqF3MYOD/uAt7/d+H3783uPx+MvB/1+gpml3B5JKMCzuix7jRHkKhIpwmW4b+jezsbnObNPYPZfNZi96goQQDQAopWT86OzVnY2PZ5llEE4eAwD02tv7Wc84OJGYPw7m3Nh6U14Z2qGqqq8B4N7zymOrXV+KzS1CCIQGCqydFhrv1pTxw/GbR1KZ6kKM3PcFAaD05OVlu7O9NHXiNAile2YkjoURmzuDWqVMOFEuPqu5TxcmSdMTLJVKgvXj+7XpUylP7NdoKIdoYh6br1aCcjiZA3DLE9R1PRmaiQuUF32x3aC8CCV6CHr963lfEMBJZeJA4I9aP+TIJLr1jenf9wZAxliI8kIbQHgUkBMkOKbh+IKEkC2zWfskhSKJUcBepwXArQ7rsNxYX7tiG11QQYRjduGYOpz+G+YkGZwUACcpcCwDnc/vIUdid3zBXC63qmnah1a1MjtKh7wS/HJhefGRLwjAJYRkALwAMPRyCMebzNRTANxhIFRVrRQKhSSABwCinhjlGmDOcjqTebuna68CVVVXi8VinDF2CcA5ADP9VBXAQ7tn3c7n8y2vWt/vK51ONwFc76+R49//YH8CP2S1butfmhQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2660,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/7",
+    "name": "FDEP Storage Tank Contamination Monitoring",
+    "description": "Regulated Facilities from STCM (Storage Tank Contamination Monitoring).This coverage includes facilities with registered above-ground or underground storage tanks. This dataset contains both currently and previously regulated facilities. It also contains facilities registered with DEP for the purpose of tracking on-site petroleum contamination.",
+    "longName": "Waste Related Point Layers\\FDEP Storage Tank Contamination Monitoring",
+    "type": "feature",
+    "layerName": "STCM",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "cb0c1215a8f27ced40c6e29e06074886",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAZhJREFUOI3V1L9LVlEYB/DPWzq8nkCKW4KO/YIKaivoH1DUcCjahaAhqKkaisQioqAiGhqk/oGiWoKgoFCagiBBSaQGeYPymEQ8kBDa8CqYvD8oGuq7XO45537u91lOi7+clv8OvLP65QjtB1LatSmiY5Efn/n4lIkXfF917HhdsCiKEeikNJzz+cf0zUWUCkziC13X2LOY0nBvufwMcs71G+acX8MITybpuYItq/Y/VUcoH4q4PBsxXeJ+s5HdLYpT73PuOY11a/Y6cA7XKbVzb4nnJeYbga2vcr5wqwa2kvU4gUtsuMgxXG0EdvfTWq6DraSMgxjncEMwpbR/d0RbEw9sxwSda9d/ASNiYYa3W9nbDPyGed41BFNKLwcjzt5AW/UDs8gosBkbl9dvo6/6aNhw9ANTA+xr1vAoM2d41BDEUlEUgznnseWSNbODhbGurl6VylIzUM75TUqpOyIeqE65FpurpNQflcp4rZ/VvBwiYhQ7U0onI2IA2zCNh1PcFPG1XvtGt818RAxhqMGZ3wL/KP8++BOWQoRwnxsDMAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2661,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/8",
+    "name": "FDEP Treaters, Storers, and Disposers of Hazardous Waste",
+    "description": "Treaters, Storers and Disposers of Hazardous Waste are facilities regulated under the federal Resource Conservation and Recovery Act (RCRA) and applicable state regulations for Treating, Storing, and/ or Disposing of hazardous waste. They are either conducting those hazardous waste activities under permits issued by the Department of Environmental Protection, or are facilities that may be undergoing corrective action or site remediation under civil or judicial orders.",
+    "longName": "Waste Related Point Layers\\FDEP Treaters, Storers, and Disposers of Hazardous Waste",
+    "type": "feature",
+    "layerName": "TSDS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2d27c761a9e005b0c6ce19222e551d92",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAqRJREFUOI2l1FtIk2EYB/D/ty3nNufWjjgVWZubZY4Kp7kwrVhhYVBdKIEESaJ2F4VpEUKlRlLeZOJFZN5YMDrMA161i1GWYbDFwB36kJxrR5W5k5FfF1JQmPvQ5/rPj+d9H56HBZoV7FVekV4lH6TLsehgVqu+mD/iuJeqx1P2CCLbBqX+1B1GMsaKa3lNQKxn26CIDJ8IlGnAn4+0bBucfnvwDO+VnTN6fR/q71ryUhdRyH4C15bBnd/j7d4KFZY5LHgrVQyRJ3oNIJu2BJregS2dDB+w1u0BAMyWyFE1s1BHAc0EsEYbXOzM3ZuQCjr5Y4GTP7IymO4cLgDAncOFQcDOirVJFiMC/nOem7z/7/P/gKl6iMLVyo7MULQh078kDe8WE5+P7Ic7hwuKWM9QBPCspZSh9sWztXb/Jc4Cr3H5FucbRSQGOLOxQfYIIiwAcJp0j9csnibJJ5IRKNPgdWMhljkb/wZFAC4FFy6FEoLD+Qyj2VUg++jsXpPwbgd7ZW0sANCctbWai2tGC8hQh3w2VF7XY2F6K1Rw6uR/dQgABAWofXFobH7kvvdgJV+YIGt0k2EZ+4ahctqx3gYBqhYTYwDGupcuZOq/zjXnkbHLh1441BXsDAw360AR61jDgA3M5OrPYJF4xn66pLv82NRLwPv/obQLh5IA+gD09QdqVef7Z9xqXxwuBRdqXxw7VqKJqeqQ0Gj0rtKe8u9qlZk9R016t8bmV7sUSmjtfkQVsnGjMbQhlhYEgHkl75FhyPEwuyofuVYPlRQLOzfLp1+9XQUDJcq53uNmFzMh5wRFN71ftgW2C4eSpyb0H4pM04ZQqXIYCG2ap3Vt5pSSrkIO743YQnaly9ICa7UT485q3aDmnG3T40obBAFKA1sLnegvkXf8LukMLOoAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2662,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/9",
+    "name": "FDEP Wastewater Facilities",
+    "description": "Statewide coverage of Wastewater Facility Regulation (WAFR) Facilities. This dataset includes facilities whose current operating status is Active, Closed but Monitored, or Under Construction. Also included are un-permitted facilities for which a permit is required. These facilities are regulated by the following Florida Department of Environmental Protection programs - \"Industrial Wastewater Program\", \"Domestic Wastewater Program\", \"Phosphate Management Wastewater Program\", \"Power Plant Management Wastewater Program.\"",
+    "longName": "Waste Related Point Layers\\FDEP Wastewater Facilities",
+    "type": "feature",
+    "layerName": "WAFR",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "NPDES Surface Water Discharge",
+        "url": "824a223fa7c32bebbc0223b331e26a06",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAWVJREFUOI3l1D9IAlEcwPFvcf3RKymRMByMoKZoCBpcIqitzb2xCKSIaGtpiMaGiKCWgoaWxtYamoSgMEowlChRLFLM6+V1dmeDwWV3LXVL9Nve9z0+/KYn4fBI/xxcG/QNFSmHDy7EVhzSvwb9vseZhWOmJgOcxzMOgLqBC8Aj0/4TzAIaOm6A5gptjoC6TitAk8sp0PgAJVkGUfdwf5T1NwgDqBqN2zG65obJAaQeKC/H6bOAJ/eEAG5VEVnsl8Of786ywt/rxQvwqsMT8KwSANAkSrYbroRw7Y4B0AmiE6AKRE5gc8R8J3Q4ysL0QO2cUuS71QthBTNKDfg8VQOUCqRfzPZSAfFqtruScNtumCxCQfsCAnkFLvP1oFI2W7KAxxYcD0K3XA8aOhzewESP2RQN9hJmu+4gN39qA+5cgafFumEsAxsxs6k6JIpmuy0QtN1w6ZwGvplo1Npmbdof+76cmHeEb4G3BI3Z5QAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Non-Surface Water Discharge",
+        "url": "3ec5630632ad51ea9f3034b489325116",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAZZJREFUOI3llD9IAlEcxz+ZYNkfMiKihqampoIGpyhaGlqkSRwLisY2p4agIVxawskpKFyCKGiIIMGhhgpSsEEwKT0s7Qq7O++611Bcf84h6pboB294n/fjw/f3eDw3Dpf7nwsXJxeHZVMOJPeT0TTp/K+Fvh7fXCQWmZ0amTpNnzggNDCaAdwt7rafyGxCYQgvgMflaXVEaGI2AXhwSiheha5GV8vXxuWZ5TVDNwIA+rPuih/Gu4MTwSJA4bagRHejAzbhWebMD3Bzf7MQGg8FPp5lspme3u7eTgDj2UDXdBRN6QOoGbWHugnnA/PNSzNLAL63hRCClY0VwqGw1aeoCsfnx0yPTQOQl/JXsf2YXViqlGx3IoTgSX1CKksWUzUVFdVi0p3krZswJ+WoPFZsUlmWuby6tPaariFX39n17XV7XaF/0E9XR9cnmSlMEhcJRodGLVZVquwd7VksV8wVI/GIXbid2KbV+/nFCFOQyqbYPNh8H7mmki1nLVYoFfrrJlzfWW+wzftWq1ur32J/7Ptyol4AgH2xRbagv8cAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2663,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/10",
+    "name": "FDOH Biomedical Waste",
+    "description": "This shapefile contains biomedical waste facilities inspected by the Florida Department of Health. There are approximately 42,000 facilities in Florida that generate biomedical waste. These include hospitals, clinics, nursing homes, laboratories, funeral homes, dentists, veterinarians, physicians, pharmacies that provide flu shots, body piercing salons, tattoo shops, transporters, and storage and treatment facilities.",
+    "longName": "Waste Related Point Layers\\FDOH Biomedical Waste",
+    "type": "feature",
+    "layerName": "BIOMED_WASTE",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2a04728ba17a021573edc19981c5b63b",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAATtJREFUOI3d1L1LAgEcxvHv+cKBBQ2WSxC5dC7pdOBLqDQE6hB4g9JdRMIhLQ2ZgtkcSPQHOAoitwQeiJvr4Sj0J4RLuDq0REMEEV3mCwQ+4/PAh9/0c7HkuFYGdABvSwM1jWarxQ3wvDAoy2vxWm1yEAxyV6lwuijo0LTJdSDAriDg6HQ2w5Y1HswNKgq6qhIFkCR28vlx1bI4nhfcUBTyXi/ezyKXI9Lvc2KatGcGCwWq2SyRr53Px5aicGaaPAKvs4B7msahKCJ+HxSFaK/HpWFw/2ewVOI2mUT+afN4WFdV0oZBE3iZCvr9pHUdWRBsbgdSKWLFIuVGg/I00K3rXEgSAXsOnE7c5+fEut3t/dFo9GQLhsNchULEh8PfuI+IIpFEYvTQbnNkCw4G1DMZ6tM5+6zO+/o/8B0/yUfGpnzp7AAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2664,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/11",
+    "name": "FDOH Onsite Sewage",
+    "description": "This shapefile contains onsite sewage treatment and disposal systems inspected by the Department of Health.",
+    "longName": "Waste Related Point Layers\\FDOH Onsite Sewage",
+    "type": "feature",
+    "layerName": "SEPTIC",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "da2edf941607a9627e4e29aa8d4f3d90",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAUFJREFUOI3d1L1LAgEcxvGvbwi94GA1dGC2qIsFwdHd+RYGgjYEHaGkEQUSLQ2VgdUcSPQHNAohLkFCtNUotxkGQlND3BKuDi3REEFEl/kCQc/4PPDhN/2s9DnWfwOagde+gRmF4nmVA+CpZ1D0DIYPl1vBKRfH+2VWewXNGbm15xNwmyTMl/URqdpoal2Dqkg2HUYB8I7jSonNfLXBYregQ50l5RzG+VEkg8g3dVYqNUodgxsh8ksy8uduzMGoKrFWqXEBvHQCejIRonYb9q+DqqBc19gua5z8GtyNczTnR/xuG7AzlA6RKGsUgee24CQksjFEk8ngdiA+Q2AzSu7sllw70JZNsuUV8BlzYLFgW58ncPUg+HVdvzcEJYGdaTfhu8efuPfYrciRCf20pBMzBDWdwkKBQnvOOP/nff0d+AY+4Eb4guQNwwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2665,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/12",
+    "name": "Miami-Dade DERM Contaminated Sites",
+    "description": "This dataset represents a point feature class of open Miami-Dade Department of Environmental Resources (DERM) contaminated sites in the County. Each feature identifies properties where environmental contamination has been documented in the soil or groundwater.",
+    "longName": "Waste Related Point Layers\\Miami-Dade DERM Contaminated Sites",
+    "type": "feature",
+    "layerName": "MIAMI_DADE_DERM",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "26a01cf63a0aefcc9bd59768f4d6a9a3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAATFJREFUOI3t0T9Lw0AYx/HvU0oUioPSJa1oB906CYLQScTFSVHrIVQXQXwFbr4EVyniIA4G/7yGjm6KuDhJENI4xMEhILHNOVi1ltiSWsTBZ7p7ftyH5+6S9LiS/+DvgFbKmVZ+ttIzUJCyhTupMJ9+DJ6knSntMQ7hPHAYGzzjYfQlHQ6+77XHRmPK0nG6ev0xdZ/UlWPedARraJ3wOAAmWqKZhMdVY/2oU+Eq0BlUmPdH2AUDowysRdzqUggXV/xhOyKLfsMSuWdg3aJqCKimyA4ICo08stp+ikC+pTUi9A8A8cFT3LEQnQcudFY2xQl3QJaMt9/ejw3W0QuSYnfID7ZnnVwNWLaobgFzXYEJOC/6mbvmniKzZ+FWQAuIjgUW+Yp9oubtd2fagt3W3wdfAY86V4OYwQ1mAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2666,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/13",
+    "name": "FDEP Solid Waste Facilities",
+    "description": "Statewide coverage of Water Assurance Compliance System (WACS) Solid Waste Facilities.",
+    "longName": "Waste Related Point Layers\\FDEP Solid Waste Facilities",
+    "type": "feature",
+    "layerName": "SLDWST",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "e6fa57bdb2820b2e0046d1bb4da1aa23",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAANdJREFUOI3tzrFKw1AUxvE/3AvJUENpH8EtQqYGzlLHDj5DwUWc+gAO7uLaPoJuneoTCFkOBskWunVwcu+QDIe6FxK41UXoN37n8DvH88fxZ/AfglmWTZxz11EU7du23VRV9X0ymOf5ClgAmBne+2cRuVXVt2BQRO7MbHFUD83sNU3Tq7quv0I/vO/oL5IkmQNPQaCZjXqOjbsGfR9+Apcdxz6CwTiOH5qmuQEGR6P3sizXwWBRFDsRyc1sCUyBvXPuRVUfgUMwCKCqW2DWtxMEnpIz+Pv8AAr4QE9pmOHfAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2667,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/14",
+    "name": "FDEP State funded Hazardous Waste Cleanup Sites",
+    "description": "The State-Funded cleanup program is designed to address sites where there are no viable responsible parties; the site poses an imminent hazard; and, the site does not qualify for Superfund or is a low priority for EPA. Remediation efforts are triggered when a Florida Dept. of Environmental Protection District Office requests adoption of a site for state-funded cleanup. Funding for these remedial efforts comes from the Water Quality Assurance Trust Fund. Remedial activity may include contamination assessments, risk assessments, feasibility studies, design and construction of treatment systems, operation and maintenance of the installed treatment systems, and removal of contaminated media when necessary.",
+    "longName": "Waste Related Point Layers\\FDEP State funded Hazardous Waste Cleanup Sites",
+    "type": "feature",
+    "layerName": "STATE_CLEANUP_SITES",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "e51dd4ca1a0471d552c4a5b4572a4a6d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAUpJREFUOI1jYaAyYBk1kC4G8luEltvxCohz7t62/ArD09PXyDbQvXhJvIK2bRGvqKweAwMjg5ZryutHN06uWl/nWs7AwPCVJAM98+f5Kpv7T+Lg5OGDibFy8ooqG7pkBzftZVlb55xBkoEiysZpMMP+//3L8O//XwZmFjYGBgYGBkl1s0gRh4zpbw7MuEi0gexcvDow9qU9ixh2T0liKFz/k4GZhY2Bg4uHz9LMwWozKQYy/Pv/B8YUltVgcM2Zx8DEyAwV+c/w5/ffP9i04TTw26d35wQklVQYGBgYZLQsGWS0LOFyn98+f/P+2fV1JBn49undel5BUVteMXlJZPGf37/+e/PkRv+JlS1vSTJwZ3/EDf+qzW7fPn3oZucVsGRmYuL89fvHzW9vHk9dW+M8E5c+vOlwY5vvFQYGBk98akgykBwwaiDlAAAzjGfTde5j4AAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2668,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/15",
+    "name": "USEPA Assessment Cleanup and Redevelopment Exchange System",
+    "description": "This data set contains locations of properties targeted for EPA Brownfields grant assistance from the Assessment, Cleanup and Redevelopment Exchange System (ACRES) database. ACRES stores information reported by EPA Brownfields grant recipients on brownfields properties assessed or cleaned up with grant funding as well as information on Targeted Brownfields Assessments performed by EPA Regions. A brownfield is a property, the expansion, redevelopment, or reuse of which may be complicated by the presence or potential presence of a hazardous substance, pollutant, or contaminant. Additional Information is available at the EPA website: https://www.epa.gov/brownfields/brownfields-grantee-reporting-using-assessment-cleanup-and-redevelopment-exchange-system.",
+    "longName": "Waste Related Point Layers\\USEPA Assessment Cleanup and Redevelopment Exchange System",
+    "type": "feature",
+    "layerName": "EPAACRES",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "64a3edc8be1a6447a7908910fabfbbdf",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAOFJREFUOI3t0LFKw1AUxvF/bi4SSAtFfYOOrnW0W1uiryC4SKcMkTp0cBeHkNA+Qrt1SouIuDgL7m4dOhU6JpvNdXMISfCmLoV+4/m4v3s4kn+OPIB7CHqnTktuaG8hVsgoZLGuDN5zNVYbXAUIANKnAc6Nz8tcGxzg3CpwM+MGiKlH5yzkbaUFpoi+yK/qJkfXwKMWKOC4qMMWJyT5VcmGfApo5nVGkn4UvSvZUA7h+xKoZT56D3ieaYM+0fKO3rmJHCm4AGLDFhMrsR4ApQ0CBLx+Ad3fQcHd/gxWyQHcPT/O4TH276NCgwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2669,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/16",
+    "name": "USEPA National Pollutant Discharge Elimination System",
+    "description": "This data set contains locations of EPA-regulated pollutant discharge facilities from the Integrated Compliance Information System (ICIS) database. ICIS-NPDES is an information management system designed to track permit compliance and enforcement status of facilities regulated by the National Pollutant Discharge Elimination System (NPDES) under the Clean Water Act (CWA). The NPDES permit program addresses water pollution by regulating point sources that discharge pollutants to waters of the United States. ICIS-NPDES is designed to support the NPDES program at the state, regional, and national levels. ICIS-NPDES is now the database of record for inspection data (both state and federal) for states that have been migrated to ICIS-NPDES from the Permit Compliance System (PCS). Additional Information is available at the EPA website: http://www.epa.gov/geospatial.",
+    "longName": "Waste Related Point Layers\\USEPA National Pollutant Discharge Elimination System",
+    "type": "feature",
+    "layerName": "EPANPDES",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "85cfad0dcfc3509e72a8fbac1f1a65d1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAANpJREFUOI3t0LFqAlEQheH/uEIaA5I8gkUWbZNSy0BEyQsIwipWPoBF+pBW67UxXSqTxdo6kPZiZ5Eq/bY61gnrwtU0gqecGb4Zpsg/p3gGTxBMXHwrqWEoDWTzhzD6ORhMXDxBGhoAxsZ4SVzcbVV7797gh5v2EcM/5TLS63wV1x7D3rffhdIALKtzGZg6wLMXKOxq7zK43tfI++EXUMlexqc3aIVgpO2mCZR+1WHZCqM3b7B9010v3PRuK8ZAHUiFZhdB+oSyn5sLAjSr0Qq4z5vxAg/JGTw+O3ocNPfD6DxNAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2670,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/17",
+    "name": "USEPA National Priority Site from CERCLIS",
+    "description": "US Environmental Protection Agency National Priorities List (NPL) site polygons. The NPL is the list of national priorities among the known releases or threatened releases of hazardous substances, pollutants, or contaminants throughout the United States and its territories. The NPL is intended primarily to guide the EPA in determining which sites warrant further investigation.",
+    "longName": "Waste Related Point Layers\\USEPA National Priority Site from CERCLIS",
+    "type": "feature",
+    "layerName": "EPANPL",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "05b77dc52f725c1412ad10b10fed0516",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIBJREFUOI1jYaAyYKGZgVXSxf8pNaztaS8jC7oAPg1V0sX/camBOYiFWA0wCwmpwXAhpYZiRAqlhmKNZUoMxZlsyDUUbzokxVCiDCTHUKJyCjGGEu1CUg0lKS+TnLCJcQFJCZtYb5GUsCk1lOycgksdRhji4+MCyIbCDSQmjREDAItNo8U+7/xzAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2671,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/18",
+    "name": "USEPA Regulated Air Emissions Facilities",
+    "description": "This data set contains locations of EPA-regulated air emissions facilities from the Locational Reference Tables (LRT) contained in the Envirofacts (EF) database. Information on air releases is contained in the Aerometric Information Retrieval System (AIRS), a computer-based repository for information about air pollution in the United States. This information comes from source reports by various stationary sources of air pollution, such as electric power plants, steel mills, factories, and universities, and provides information about the air pollutants they produce. In AIRS, these sources are known as facilities, and the part of AIRS associated with data about sources is called the AIRS Facility Subsystem, or AFS. The information in AFS is used by the states to prepare State Implementation Plans, to track the compliance status of point sources with various regulatory programs, and to report air emissions estimates for pollutants regulated under the Clean Air Act. Envirofacts air release information specifically relates to industrial plants and their components (stacks, points, and segments). This data provides valuable information not only about the industrial facilities, but about the chemicals they introduce into your local air. There is information available on managing operating permit application and renewals. You may use the Air Releases Query to retrieve selected data from the Envirofacts Database employing any combination of facility name, geographic location, and standard industrial classification. Additional Information is available at the EPA website http://www.epa.gov/geospatial/.",
+    "longName": "Waste Related Point Layers\\USEPA Regulated Air Emissions Facilities",
+    "type": "feature",
+    "layerName": "EPAAFS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "0b21bc1454bfddaf59baf36f48180f34",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAANlJREFUOI3t0CGLAkEYxvH/ixsEFcS7b2C0atRosAsuHFjEtLDaDHYxiKt+BAX3MHmf4LJgtxkuCRt3m+dcMIjHDtzoFcGnzfswv3kZi3+O9QQfEHzvvBaRoAKEJ8Xa9jjcDPouM0XgoM5ngeHSpWlP+DAGfZcWgvNrnBVhsepQqHt8mW0otDVN5ghvwMAMhJz+rdQLRLGdFhTYKsjHdYpoo7unBU8JevJNDUhfY3zaHitj0B6x97uUlGIqUAZCJDWXZNQ/u4YgQGPMDqheJvH/9mfwljzB+/MDj9ox1rDbE3sAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2672,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/19",
+    "name": "USEPA Resource Conservation and Recovery Act Regulated Facility",
+    "description": "This data set contains locations of and information on sites that are regulated under the Resource Conservation and Recovery Act (RCRA). Hazardous waste information is contained in the Resource Conservation and Recovery Act Information (RCRAInfo), a national program management and inventory system about hazardous waste handlers. In general, all generators, transporters, treaters, storers, and disposers of hazardous waste are required to provide information about their activities to state environmental agencies. These agencies, in turn pass on the information to regional and national EPA offices. This regulation is governed by the Resource Conservation and Recovery Act (RCRA), as amended by the Hazardous and Solid Waste Amendments of 1984. (Excerpted from https://www.epa.gov/enviro/rcrainfo-overview). Additional Information is available at the EPA website http://www.epa.gov/geospatial/.",
+    "longName": "Waste Related Point Layers\\USEPA Resource Conservation and Recovery Act Regulated Facility",
+    "type": "feature",
+    "layerName": "EPARCRA",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "348c08b48039ddf363b0808137bd0c83",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAMNJREFUOI3t0LEKQWEYxvH/K1kOJdyB0cpwEqPBNSiLTC7AYJeVS2AzcQWKk1J2m8GkjM7qNRxJ8sl3WNR5xufp/fX1xflx4hH4h+Aqp0U5URU4K8zKyDE06KEjTnQANKgGHtosI3Nr0ENbEGAPSQOTJVqoIAfbF7YNfSoGDaBvC2aMi0MW//X0DtwC+VeD+GxMR0YwBt0L1IHk07RwYWoNush+jZYuMAQqwBmHccKnJ4hagzd0B9TuheHfPgbDJAK/zxVLUinWImKMuQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2673,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/20",
+    "name": "USEPA Superfund Sites",
+    "description": "This data set contains locations of EPA-regulated Superfund sites contained in the Superfund Enterprise Management System (SEMS). SEMS integrates multiple legacy systems into a comprehensive tracking and reporting tool. The database contains information for National Priorities List (NPL) sites (i.e., sites proposed to the NPL, currently on the final NPL or deleted from the final NPL), sites with a Superfund Alternative Approach agreement, as well as Non-NPL sites. More information is available at https://www.epa.gov/superfund.",
+    "longName": "Waste Related Point Layers\\USEPA Superfund Sites",
+    "type": "feature",
+    "layerName": "EPASUPERFUND",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "bd8649f7f10532129002af50272bf8f9",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAATdJREFUOI3t0T1Lw3AQx/GvbVKR4CAEHQpKQTOIi0JB6CRuThUVRNAugjiJxAe6uDr4EJykiENfgK+ho4OgiCCSwRQhi0Swwx+rjYlLC9pWa2MRB2+6ux/3WU6ixSX9g78DKtramDB3cy0Dwc9AOg7bhR+D6qA+6rgMoL0kMck2D2obfarid1VGR3iL5XZeHV6/rOzb791X2zauGoPSs+88SsfIjFQl447wLsr9gxIJzwHfAK8P7iCVQFMzwEJNXuIcOTQlrJ18TVYXBCBbxCSFpkeA2XdBHstJQLZY/67xU4aq5l7iPZ2cEQCMrfSXwdOo8JbsSGgLmWkKpSRw1DzYIU0qT96+sLo3bdIuMENMX4bwRDDQ9U6EZdx+2Fl7h0RXc0Ab4DcHmlVYpWzj5tObL8GA9ffBN2MAW29frh9SAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
     "id": 1304,
     "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/NHD24/MapServer/0",
     "name": "NHD(24K) Linear Surface Water Drainage Network",
@@ -17711,6 +17966,50 @@ define({
     ]
   },
   {
+    "id": 2978,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/21",
+    "name": "USEPA Toxic Release Inventory",
+    "description": "This dataset contains the basic facility identification information for all Toxic Release Inventory (TRI) facilities, in Florida, for Reporting Year 2016. The Toxics Release Inventory (TRI) is a database containing detailed information on nearly 650 chemicals and chemical categories that industrial and federal facilities manage through disposal or other releases, and waste management for recycling, energy recovery, or treatment. The file lists the last reporting year the Facility submitted an active and valid data to the TRI program. TRI tracks the management of certain toxic chemicals that may pose a threat to human health and the environment. U.S. facilities in different industry sectors must report annually how much of each chemical is released to the environment and/or managed through recycling, energy recovery and treatment. (A \"release\" of a chemical means that it is emitted to the air or water, or placed in some type of land disposal.) The information submitted by facilities is compiled in the Toxics Release Inventory. TRI helps support informed decision-making by industry, government, non-governmental organizations and the public.",
+    "longName": "Waste Related Point Layers\\USEPA Toxic Release Inventory",
+    "type": "feature",
+    "layerName": "EPATRI",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "05f0d73cf6d86a1a5f06069c2760211a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAANZJREFUOI3t0LEOwVAUxvF/bztIkAjewGhlZDR4BolFTIZKDQa7GJo2PAKbiScwS+w2g0li1FGPRSJpStyySHzjObm/++VYfDnWH/xB0LaLFcs6169XLiKsfJ9TYnAwYCZy7omAUgBMHIe267LWBh2Hjgi9yDgHLGybsu9z1ALDkO69VTRZ06QFjLVApcg/20G6AEHs5lXDnVKU4naGEWyfvXvVcAg0gUzko43nsdQGXZdDv0/VNJmKUAMuhpGep1LBCBBtEMDz2AONxyT+bm+DSfIHP88NHLI3+T7n73MAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2979,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/22",
+    "name": "FDEP Waste Cleanup (Closed) Responsible Party Sites",
+    "description": "This data set reflects CLOSED Waste Cleanup (Responsible Party) sites. These are sites where the case file has been closed by the District Waste Cleanup Section. All cleanup phases, including long term monitoring have been accomplished and are no longer the responsibility of the district. Cases referred to, and accepted by, other program areas, e.g., the EPA, State Cleanup/Superfund programs, petroleum programs, drycleaning solvent cleanup program are also designated as CLOSED. There may be long-term deed restrictions or engineering controls placed on a site that has been CLOSED in COMET. Any such controls are tracked in the Institutional Control Registry.",
+    "longName": "Waste Related Point Layers\\FDEP Waste Cleanup (Closed) Responsible Party Sites",
+    "type": "feature",
+    "layerName": "WCU_CLOSED",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "68d309f954682cd99f59bbc1878b0902",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAXBJREFUOI1jYaAyYBk1ECvY/euFlCubxDOqGLj333Pf+1c4F+7+9UKHGEOxGrjz2+vW/wwMXgwMDAy/fzAwvH7CIiirwnx2x7fXLxgYGBiYWf7NdGUTn0G0gddPc8SwcvyX+/eXYRcn93/TV0+YGW5dYL/EyfVf+dZFNmXn8M+mDAwMxBuoYvTb+s551sd6tt/W/vrOuOn1U5YpOpZfq948Z+tW0WNgYGL6V0uSl314hZ7MufRx89vnrDMFBP+2MjAwMPxnYDJ+dJPd0dDha7oTI+6wxBkpKXr8fhMOff4vYPHbi4GBgeHpXfY2aZVf150YxWfh0oPXQAYGBgYh6b/Vj25wtP77x8Dw/iWzsLbl90R86gkaGKcs0Na7/0v6qR3sciktHxY5M0lupshABgYGBlXD78U/vjKu5uH/PYmQWqIM5Ob78/P/P4bnjoySZ6lioDOT5OaG1V9eEGMYUQYyMDAwNITynKaqgaSAwW8gAB/9fW3/VUmeAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
     "id": 1690,
     "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Land_Use/MapServer/0",
     "name": "Military Lands",
@@ -17918,6 +18217,226 @@ define({
         "label": "Vacant / Residential",
         "url": "993f2ae75be0f1718366dcff558b22fe",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigu769LJNqm0aSYDAwONvTxq4KiBowaOGojdQFgRRCZgRDeQkRLTYAAAOigF45SG7vkAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2980,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/23",
+    "name": "FDEP Waste Cleanup (Inactive) Responsible Party Sites",
+    "description": "Waste Cleanup (Responsible Party) Sites are placed in INACTIVE status while awaiting action a s a result of determining eligibility for program cleanup in either Dry Cleaning or petroleum or CERCLA screening. Sites placed in this status may breturn to Waste Cleanup after the program cleanup or evaluation is completed to resolve any outstanding issues. When a case is returned to the District Waste Cleanup Section from one of the reviewing programs noted above, the status is changed back to OPEN.",
+    "longName": "Waste Related Point Layers\\FDEP Waste Cleanup (Inactive) Responsible Party Sites",
+    "type": "feature",
+    "layerName": "WCU_INACTIVE",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "25772f9eb2176689d3d0cf619dff4666",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAVBJREFUOI3t0j1oFFEUxfHfjNmFuBYWA3Ft4haWBsN0KYUUAROwsbdJlULQ1o8hooiVYOPUAW3SOOksLcRiLSwsBJE0Wz3SDUSz7FhMRJRkZgN28ZTn3fN/917ujH+smf/AWj9cTDpJvy0cojBsBSZVkgahCEIr0MSaWNEIDEKKvu0PXPpWm1XE85XfRdd2uXVFTy8tlc1AB3Z0sFSwf57BXSYDtm7+GoFnr8BsNFuUyuaRdY1M5PqP1r3bYX7w5/uLj1x4TCUP8RQ7BGOZjnWLW3zaZOFe7S9/Z/UJDI1lR0WPBnaNepNeVp57/cD4BvtXa//+W85uQ65rND0QZVw+VLluMUu9f8rGHkt36u4i+XG55sOuZM58fmNul9tfib/UXoOagbFCZejyRnr4Qf733Z0MCAfWdLxUGSVRkgehsbwdWC9/Fdpg0wFPqFMI/AmR5WG7YBw+pQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2981,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/24",
+    "name": "FDEP Waste Cleanup (Open) Responsible Party Sites",
+    "description": "This data set reflects OPEN Waste Cleanup (Responsible Party) sites. Cleanup of the site as tracked by the District Waste Cleanup Section remains to be done, a cleanup phase is progressing, or the site is subject to a monitoring plan. This set does not include sites awaiting action as a result of a case referral, e.g., to EPA or State Cleanup/Superfund. Sites that have completed remediation and are awaiting a copy of a county clerk \"filed\" stamp for recording of any institutional controls are still considered OPEN. Sites where EPA has assumed the role of lead agency but the site is not on the National Priorities List are still overseen by the district are included in the list of OPEN sites.",
+    "longName": "Waste Related Point Layers\\FDEP Waste Cleanup (Open) Responsible Party Sites",
+    "type": "feature",
+    "layerName": "WCU_OPEN",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "a022441c59e8772f016ff03c3be79613",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAU5JREFUOI3t0iFIA1Ecx/HvnXeT8+qBm2VgmM1yQVAxDkS3aLMuiGBwZr2gGASLxQsbiM3miYKCcW1ZsAzBTRgP22OwjT3DrUy33Q1s+qvv//+8///xDH45xj/YT3vOccxUVLMQWjUSdBzlCkEgBJEg9PKgB2NBIXCB1E3miiSVocwHK2y9bmPbuFIyHoTOHZjc17Pspi/Q6A6cKqZ5ePMAsCwtkHKwewiYaEDPL8tkIdsqsmCdDpy+tIqU5SygfCH06DcM0/XALJSaGxynrzF4D2fvzlNqrgNUw5qfGQEmGrbd856kfZhrHbBq7QFQkfs8yxkAP9wkNghS6kegNs9ry+5iZg1FgrP6Un86zR/VF/GxlVdj6vbxc4c2BnV0QA1dNSaoB6CqJyLj9i/wv/+7CUGATh7MSyDlOJovxPjqGGCiAeQAorCY4GT5g+AX/lpqoG+V+mkAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2982,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/26",
+    "name": "USEPA Ocean Dredged Material Disposal Sites",
+    "description": "This dataset represents Ocean Dredged Material Disposal Sites (ODMDS) designated by the EPA for dredged material disposal under section 102 of the Marine Protection, Research, and Sanctuaries Act (MPRSA). In the United States, uncontaminated dredged material is the primary material disposed into the ocean today. Dredged material is sediment excavated or otherwise removed from the bottoms of the navigable waters of the United States to maintain navigation channels and docks. In October 1972, Congress enacted the Marine Protection, Research and Sanctuaries Act (MPRSA), sometimes referred to as the Ocean Dumping Act, declaring that it is the policy of the United States to regulate the dumping of all materials which would adversely affect human health, welfare or amenities, or the marine environment, ecological systems or economic potentialities. EPA is responsible for designating and managing ocean dumping sites under the Marine Protection, Research and Sanctuaries Act (MPRSA). For further information, visit: https://www.epa.gov/ocean-dumping/ocean-disposal-sites.",
+    "longName": "Waste Related Polygon Layers\\USEPA Ocean Dredged Material Disposal Sites",
+    "type": "feature",
+    "layerName": "EPADRDG",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "8f155e66225ebd89ce93a84258aef1a6",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jYaAyYKGZgUktu99TYtC8428uMGyNdERxYV6mzQXyDdzAwMBASy+PGjhq4KiBowZiNXDe8TcXYEUQWWBrpCOKgTABSgEABLMTHQ7cpB8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2983,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/27",
+    "name": "FDEP Brownfield Areas",
+    "description": "This data set contains Brownfield Boundaries. Brownfields are defined by the Florida Department of Environmental Protection (FDEP) as abandoned, idled, or underused industrial and commercial facilities where expansion or redevelopment is complicated by real or perceived environmental contamination. The primary goals of Florida's Brownfields Redevelopment Act (Ch. 97-277, Laws of Florida, codified at ss. 376.77-.85, F.S.) are to reduce health and environmental hazards on existing commercial and industrial sites that are abandoned or underused due to these hazards and create financial and regulatory incentives to encourage redevelopment and voluntary cleanup of contaminated properties. A 'brownfield area' means a contiguous area of one or more brownfield sites, some of which may not be contaminated, that has been designated as such by a local government resolution. Such areas may include all or portions of community redevelopment areas, enterprise zones, empowerment zones, other such designated economically deprived communities and areas, and Environmental Protection Agency (EPA) designated brownfield pilot projects. This layer provides a polygon representation of the boundaries of these designated Brownfield Areas in Florida.",
+    "longName": "Waste Related Polygon Layers\\FDEP Brownfield Areas",
+    "type": "feature",
+    "layerName": "BROWNFIELDS_AREAS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "56ec9c0b263492b7121c51589213d539",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEBJREFUOI1jYVAr/s9ARcBCTcOGqoG3ehlJMgEtDujgQt8VpMX6zdMEDNwcMdi9PGog5QaOwGRDYfk4FGOZQgAAUWUS+QR93soAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2984,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/28",
+    "name": "FDEP NPDES Stormwater Permits",
+    "description": "A Municipal Separate Storm Sewer System or MS4 is defined in Rule 62-624.200(8), F.A.C., as follows: Municipal separate storm sewer or MS4 means a conveyance or system of conveyances like roads with stormwater systems, municipal streets, catch basins, curbs, gutters, ditches, constructed channels, or storm drains: Owned or operated by a State, city, town, county, special district, association, or other public body (created by or pursuant to State Law) having jurisdiction over management and discharge of stormwater, or an Indian tribe or an authorized Indian tribal organization, that discharges to waters of the state; Designed or used for collecting or conveying stormwater; Which is not a combined sewer; and Which is not part of a Publicly Owned Treatment Works (POTW). POTW means any device or system used in the treatment of municipal sewage or industrial wastes of a liquid nature which is owned by a \"State\" or \"municipality.\" This definition includes sewers, pipes, or other conveyances only if they convey wastewater to a POTW providing treatment.",
+    "longName": "Waste Related Polygon Layers\\FDEP NPDES Stormwater Permits",
+    "type": "feature",
+    "layerName": "NPDES_STORMWATER",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "f77006b8084a9c0591a914d9df02bb4e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE1JREFUOI1jYaAyYKGZgRMmdl6jxKC7d54cnjx5cjqKC63sDA5TYCADAwMtvTxq4KiBowaOGojVwLt3nhyGFUHkgMmTJ6ejGAgToBQAAJJzFpYiA4cFAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2985,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/1",
+    "name": "FDEP Dry Cleaning Program Sites",
+    "description": "These drycleaning sites are eligible for a state funded program (Drycleaning Solvent Cleanup Program) to cleanup properties that are contaminated as a result of the operations of a drycleaning facility or a wholesale supply company (Chapter 376, Florida Statutes).  A fund has been established to pay for the costs related to the cleanup of these properties. Drycleaners applied to participate in this program from 1995 (when the law was passed) to December 31, 1998. All sites have confirmed contamination above Contamination Target Levels and have complied with conditions set in the law.",
+    "longName": "Waste Related Point Layers\\FDEP Dry Cleaning Program Sites",
+    "type": "feature",
+    "layerName": "DRYCLEAN",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "e450e1d536a9660381b09d1a1ce14e8c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAVNJREFUOI211E8ow2Ecx/H3U1tN++NE6sdEclztpLlISdlwmiU3qSVSLhTlwpzYcjDt4ODgsKwclIOUoigOc+CkMSctf3Zgaqf9HERtP/v9nmz73J7PU6/n+/TUY6LKMdUUVFXVA9T/w7kTQjxowI8csYKKS1YRgMMOwBIQ0oDxI5TjG/mx3K0w7f9F0YAv75gTGXnQZgG1pDN8lG4bzHshmYLlpPEhhuBKAJ6zMDEI4SR8VgpmXqHTCVNRY0wKjJ5AYg7cLXD4ViG4MwB9XXB2DWP94PNAaE8f/hNccEFwGNJPEFiHi9x3v9EDsRm4vIXJfUnwYBQ6nLC6C9uPxXuzp7B1DpERuFqEcFwCVBohn4egD4Llb4a1DqwWCdC/Cd52EEJHA+6z0GTX9howXYBoSh/7ybgR6Gojt2bCIcdBcwOYS0YqWg71CkUWK5fafrDVyBcwKU4dcntIfwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2986,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/2",
+    "name": "FDEP Hazardous Waste Faciltities",
+    "description": "Statewide coverage of Compliance & Enforcement Tracking for Hazardous Waste (CHAZ) Facilities.",
+    "longName": "Waste Related Point Layers\\FDEP Hazardous Waste Faciltities",
+    "type": "feature",
+    "layerName": "CHAZ",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "2511e8cd7bc2b5b59ae30082068c0984",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAkhJREFUOI2l1E9IFGEcxvHvrAMVI7IIdqpmQk1sFdnATCtROlh6MEEJwqCsll1FwkqsjaUxa23Rci9by26W5BJEkBRpRB26KP0BZbHsoIGTnhKshEEJajqMBwnZHdwX3sP78vB53/f3vrwiFtvFNs739nE7WU60gr19g6OtnQAwACymDM7Nc31iArGxEVcsxs2UwXicqoAf4nE8kCL4+iV1vk62jDyDqsNsA3KB6Q2DmiZddjXpSBK4Pdj2jtMeCuPaEDg9zabOq/oen9cc7y+Dp0McA9zAX8vgmeMUKLtQvZeo3ppFmiyb84oM23eQXnOEH4rM41CYHv47/lows0uVvN/m9ROTcbJKKxDq601EEMyAIECwF9usRsboGGeLnZzOy2MOkXAsRgRYFAEGH3A3dAeXT9VtAT8EboAkrV8GQYCditnrarFF+5E7vHQ7nXQdqqBDBGg8SXNpCS8mP+P98JGS6lrSXE1mzeQ1OwQwDNA0GB2DyH04UMry4ACvFJkrByuZEldXNYBhYNj4yeZ4A+6pL7T4A+SkS3Crx0QNAy60w68l/lSUS+OdPr27qoahhJci2FkBgkBwaZHs1nPMaBooCsxq8H2BZfUadodD/71eSRI+m4xMvj56yMzoGDmKYh6zqJARh4N1saQgwO58Qu5W+o7WQjSKUZCLmiifFCzKJVxZTm+0n7TCIhai9/iUEijYWRl6wvu6Bsq6VGkQ9IR5S79NoQP/vmKe+1TdnyxrCczOZ6Slmci7U4k/V8vg6jv1WMn+A/z6stDEqmhiAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2987,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/3",
+    "name": "FDEP Institutional Control Registry",
+    "description": "INSTITUTIONAL CONTROL REGISTRY (ICR) An institutional control site is a site that has certain restrictions on the property. For example, a site may be cleaned up to satisfy commercial contamination target levels. An institutional control may be placed on that property indicating that it may only be used for commercial levels. If the owner of the property ever wants to use that property for residential purposes, the owner will have to ensure that the contamination meets residential target levels.",
+    "longName": "Waste Related Point Layers\\FDEP Institutional Control Registry",
+    "type": "feature",
+    "layerName": "ICR_SITES",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "e51dd4ca1a0471d552c4a5b4572a4a6d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAUpJREFUOI1jYaAyYBk1kC4G8luEltvxCohz7t62/ArD09PXyDbQvXhJvIK2bRGvqKweAwMjg5ZryutHN06uWl/nWs7AwPCVJAM98+f5Kpv7T+Lg5OGDibFy8ooqG7pkBzftZVlb55xBkoEiysZpMMP+//3L8O//XwZmFjYGBgYGBkl1s0gRh4zpbw7MuEi0gexcvDow9qU9ixh2T0liKFz/k4GZhY2Bg4uHz9LMwWozKQYy/Pv/B8YUltVgcM2Zx8DEyAwV+c/w5/ffP9i04TTw26d35wQklVQYGBgYZLQsGWS0LOFyn98+f/P+2fV1JBn49undel5BUVteMXlJZPGf37/+e/PkRv+JlS1vSTJwZ3/EDf+qzW7fPn3oZucVsGRmYuL89fvHzW9vHk9dW+M8E5c+vOlwY5vvFQYGBk98akgykBwwaiDlAAAzjGfTde5j4AAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2988,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/4",
+    "name": "FDEP Large Quantity Generators of Hazardous Waste",
+    "description": "Large Quantity Generators of Hazardous Waste are tracked in this coverage based on their notification to the Department of Environmental Protection as to their handler status, or based on inspections conducted at their facilities. These facilities are regulated under the federal Resource Conservation and Recovery Act (RCRA) and applicable state regulations as generators of hazardous wastes in quantities equal to or greater than 1,000 Kg in any one calendar month.",
+    "longName": "Waste Related Point Layers\\FDEP Large Quantity Generators of Hazardous Waste",
+    "type": "feature",
+    "layerName": "LQGS",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "97890fc2050098c51f7a2fffb998d2d1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAiJJREFUOI2l1N9L1WccB/DX0cNx8cj4Mk7eZB5kxqBFbMFS+nEpQizIi2hsDC9a0o9dFRLpzYlSi6IfF1JzQkoMii4a2xT6B8KxiBUljBXCKW/04A6MB+tA2UUGFaEH/cBz9+b1fB4+D5+0CuuQcHhAPLdULl0JNmrN58dMncYwZlcMTimdvE/6G6HzmnhqxeA9sS0veCgewMrAX2nvZdUNiXaxHuvw77LBQsge64gEGXuFqr/FriE6lwXepuZinNvUJQEtEr+zh7gfLysGv2VDo5A/zY7VVDfIgAYZa6htE/5bK14f4oz3nv82+ElPCN1PY/x+gtVbSLVLNMhILQRSOKWuqqD88Tj7vhT3NvGkWrh8TRzEbBp+kr00pNjZG2NVXnBcIix09X6lkJORU+dr5aphpVxe7N/Iie3C0TR0Kh7crPGPCdPdd8Tm3WJ1h6wWNe90CPMoKBv33IiiZuYGhVv1kp4dpibSC7fOMzmK0RIf3Zfd/w+Hzio11aJPndQC1m3a/7zYGlbd7Yn6d3GT6PX5wFASnlG8gAtPNH7aZfpRQVlORkHZDHM/iklrjOWKp/ym1pp8/LPso3HPm3IyxpVsYKyVD2JLgvAZA0cUz+9UY0ScX0d+sfyS4EbFy9s4e0Wpej0zIzxYEZjw7Bfhz+/ELT0hXBXjovmKts16dX1fmfytN8a+pbIVgV+YHPtBdvAvxUWXa8Xg639aPFBJ9hVvLq5+fohBcwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 2989,
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/5",
+    "name": "FDEP Off Site Contamination Notices",
+    "description": "This data set contains off-site contamination noticing locations. These notices are generated weekly by the Florida Department of Environmental Protection (FDEP) for the Florida Department of Transportation (FDOT). Updated shapefile versions can be found here: ftp://ftp.geoplan.ufl.edu/pub/fdot/FDEP_NOTIFICATION.",
+    "longName": "Waste Related Point Layers\\FDEP Off Site Contamination Notices",
+    "type": "feature",
+    "layerName": "NOTICING_FDEP",
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "8c1745be8c6cdf72e2896859c7aeee4c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAASZJREFUOI3t0TtLA0EUhuH3bBY7C0G0082inZUgCKnEziqiggiaRhArkXghja2Fl8VKgljkB/gbUtopYmOVHay1sPOSzLEwhrCsLhuDWPhVM+djHmZ3XLoc9x/8HbC2pVP+oVS7BopSrpV0wt+Xpx+DpqiTCqO8kgcqqcFwR4dF6WsNLKsAAstmW29a4zoNP5DbRFBfUFzOgfFINa2W6+b6UTIsAcmgfyL3pqA5209ZYCXmq67EYc47EBPTxf9DryLPQCEsag+w2FYZeSDX7GOT9Chjkf2QM0gvkB40GzqiH+ClWtbEYQ+Yb7yRB87S39BlVizHDLCbLUkdWAiLuk6GmY5Aa7nwA6m1z7JHcmo2taqoCKKpwCj2GS+Qu6/OfAt2mr8PvgMl71ljmiWNXQAAAABJRU5ErkJggg==",
         "contentType": "image/png",
         "height": 20,
         "width": 20
