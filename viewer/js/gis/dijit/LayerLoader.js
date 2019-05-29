@@ -71,32 +71,32 @@ define([
                 //computeds that refers to "self"/"this" have to be added here, not in root constructor
                 self.mapServiceSearchResults = ko.pureComputed(function () {
                     return ko.utils.arrayFilter(self.searchResults(), function (x) {
-                        return x.type === "category" && x.layerDefs && x.layerDefs.length > 0;
+                        return x.type === 'category' && x.layerDefs && x.layerDefs.length > 0;
                     });
                 });
 
                 self.featureLayerSearchResults = ko.pureComputed(function () {
                     return ko.utils.arrayFilter(self.searchResults(), function (x) {
-                        return x.type === "feature"
+                        return x.type === 'feature';
                     });
                 });
 
                 self.searchResultsCount = ko.pureComputed(function () {
                     if (self.mapServiceSearchResults().length === 0 && self.featureLayerSearchResults().length === 0) {
-                        return "No results found";
+                        return 'No results found';
                     }
-                    let s = [];
+                    var s = [];
                     if (self.mapServiceSearchResults().length === 1) {
-                        s.push("one category");
+                        s.push('one category');
                     } else if (self.mapServiceSearchResults().length > 1) {
-                        s.push(self.mapServiceSearchResults().length + " categories");
+                        s.push(self.mapServiceSearchResults().length + ' categories');
                     }
                     if (self.featureLayerSearchResults().length === 1) {
-                        s.push("one layer");
+                        s.push('one layer');
                     } else if (self.featureLayerSearchResults().length > 1) {
-                        s.push(self.featureLayerSearchResults().length + " layers");
+                        s.push(self.featureLayerSearchResults().length + ' layers');
                     }
-                    return "Found " + s.join(" and ");
+                    return 'Found ' + s.join(' and ');
                 });
 
                 this._initializeDialogs();
@@ -151,13 +151,9 @@ define([
                 //    debugger;
                 //});
 
-
                 ko.applyBindings(this, dom.byId('layerLoaderSideBarKO'));
                 ko.applyBindings(this, dom.byId('loadMapDialog'));
                 ko.applyBindings(this, dom.byId('saveMapDialog'));
-
-
-
             },
             handleSearchKeyDown: function (event) {
                 if (event.keyCode === 13) {
