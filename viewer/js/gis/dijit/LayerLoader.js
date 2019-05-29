@@ -7,6 +7,7 @@ define([
     'dijit/ConfirmDialog',
     'dojo/ready',
     'dijit/popup',
+    'dojo/request',
     'dojo/_base/lang',
     'dojo/_base/array',
     'dojo/on',
@@ -26,7 +27,7 @@ define([
 
     'xstyle/css!./LayerLoader/css/layerLoader.css'
 ],
-    function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog, ConfirmDialog, ready, popup, lang, array, on, dom, domConstruct, 
+    function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog, ConfirmDialog, ready, popup, request, lang, array, on, dom, domConstruct, 
         topic, Memory, layerLoaderSidebarTemplate, layerLoaderDialogTemplate, searchResultsDialogTemplate
 ) {
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
@@ -66,6 +67,38 @@ define([
             },
             postCreate: function () {
                 this.inherited(arguments);
+                var self = this; //solves the problem of "this" meaning something different in onchange event handler
+                //computeds that refers to "self"/"this" have to be added here, not in root constructor
+                self.mapServiceSearchResults = ko.pureComputed(function () {
+                    return ko.utils.arrayFilter(self.searchResults(), function (x) {
+                        return x.type === "category" && x.layerDefs && x.layerDefs.length > 0;
+                    });
+                });
+
+                self.featureLayerSearchResults = ko.pureComputed(function () {
+                    return ko.utils.arrayFilter(self.searchResults(), function (x) {
+                        return x.type === "feature"
+                    });
+                });
+
+                self.searchResultsCount = ko.pureComputed(function () {
+                    if (self.mapServiceSearchResults().length === 0 && self.featureLayerSearchResults().length === 0) {
+                        return "No results found";
+                    }
+                    let s = [];
+                    if (self.mapServiceSearchResults().length === 1) {
+                        s.push("one category");
+                    } else if (self.mapServiceSearchResults().length > 1) {
+                        s.push(self.mapServiceSearchResults().length + " categories");
+                    }
+                    if (self.featureLayerSearchResults().length === 1) {
+                        s.push("one layer");
+                    } else if (self.featureLayerSearchResults().length > 1) {
+                        s.push(self.featureLayerSearchResults().length + " layers");
+                    }
+                    return "Found " + s.join(" and ");
+                });
+
                 this._initializeDialogs();
             },
             startup: function () {
@@ -118,9 +151,13 @@ define([
                 //    debugger;
                 //});
 
+
                 ko.applyBindings(this, dom.byId('layerLoaderSideBarKO'));
                 ko.applyBindings(this, dom.byId('loadMapDialog'));
                 ko.applyBindings(this, dom.byId('saveMapDialog'));
+
+
+
             },
             handleSearchKeyDown: function (event) {
                 if (event.keyCode === 13) {
@@ -217,36 +254,55 @@ define([
                 this.loadMapDialog.hide();
             },
             handleSearch: function () {
-                //filter this.layerDefs
-                //TODO lucene or some more powerful search engine will be replacing this
-                var searchString = this.searchNode.displayedValue;
-                var tokens = searchString.toLowerCase().split(' ');
-                var layerSearchResults = array.filter(this.layerDefs, function (l) {
-                    var x = array.some(tokens, function (s) {
-                        var name = String(l.name).toLowerCase(),
-                            description = String(l.description).toLowerCase(),
-                            longName = String(l.longName).toLowerCase();
+                var self = this; //solves the problem of "this" meaning something different in request callback handler
+                this.searchResultsError(null);
+                //eslint-disable-next-line no-useless-escape
+                var encodedSearchTerms = encodeURIComponent(this.searchNode.displayedValue.replace(/([-\+\|\!\{\}\[\]\:\^\~\*\?\(\)])/g, '\\$1')); // escape solr special chars
 
-                        return (name.indexOf(s) >= 0 ||
-                            description.indexOf(s) >= 0 ||
-                            longName.indexOf(s) >= 0);
+                //SOLR query
+                //should look like this for the search term land use:
+                // /solr1/layers/select?indent=on&q=name:land%20use^10%20or%20longName:land%20use^10%20or%20description:land%20use%20or%20layerName:land%20use&wt=json
+
+                var searchUrl = window.location.origin +
+                    '/solr1/layers/select?q=name:"' +
+                    encodedSearchTerms +
+                    '"^150+or+longName:"' +
+                    encodedSearchTerms +
+                    '"^100+or+description:"' +
+                    encodedSearchTerms +
+                    '"^50+or+name:' +
+                    encodedSearchTerms +
+                    '+or+longName:' +
+                    encodedSearchTerms +
+                    '+or+description:' +
+                    encodedSearchTerms +
+                    '&wt=json';
+                request(searchUrl).then(function (reply) {
+                    var resultDocs = JSON.parse(reply).response.docs;
+                    var searchResults = [];
+                    resultDocs.forEach(function (doc) {
+                        if (doc.type === 'category') {
+                            var cat = array.filter(self.allCategories, function (c) {
+                                return ('c' + c.id) === doc.id;
+                            });
+                            if (cat && cat.length > 0) {
+                                searchResults.push(cat[0]);
+                            }
+                        } else {
+                            var lyr = array.filter(self.layerDefs, function (ld) {
+                                return ('l' + ld.id) === doc.id;
+                            });
+                            if (lyr && lyr.length > 0) {
+                                searchResults.push(lyr[0]);
+                            }
+                        }
                     });
-                    return x;
+                    self.searchResults(searchResults);
+                    self.searchResultsDialog.show();
+                }, function (err) {
+                    self.searchResultsError(err);
+                    self.searchResultsDialog.show();
                 });
-
-                var categorySearchResults = array.filter(this.allCategories, function (c) {
-                    var x = array.some(tokens, function (s) {
-                        var name = String(c.name).toLowerCase(); /*categories don't have this currently,
-                            description = String(l.description).toLowerCase(),
-                            longName = String(l.longName).toLowerCase();*/
-                        return name.indexOf(s) >= 0;
-                    });
-                    return x;
-                });
-
-                this.searchResults(categorySearchResults.concat(layerSearchResults));
-
-                this.searchResultsDialog.show();
             },
             showCategories: function () {
                 //resize to work around Dojo's auto-sizing limitations
@@ -394,6 +450,8 @@ define([
             },
             currentCategory: ko.observable(null),
             currentLayer: ko.observable(null),
-            searchResults: ko.observableArray()
+            searchResults: ko.observableArray(),
+            searchResultsError: ko.observable(null),
+            showDetails: ko.observable(true)
         });
     });

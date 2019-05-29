@@ -1,0 +1,256 @@
+/* https://github.com/eslint/eslint/tree/master/docs/rules */
+{
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+
+    "rules": {
+
+        /*
+            Possible Errors
+            The follow rules point out areas where you
+            might have made mistakes.
+        */
+        "comma-dangle": ["error", "never"],
+        "no-cond-assign": "error",
+        "no-console": "error",
+        "no-constant-condition": "error",
+        "no-control-regex": "error",
+        "no-debugger": "error",
+        "no-dupe-args": "error",
+        "no-dupe-keys": "error",
+        "no-duplicate-case": "error",
+        "no-empty-character-class": "error",
+        "no-empty": "error",
+        "no-ex-assign": "error",
+        "no-extra-boolean-cast": "error",
+        "no-extra-semi": "error",
+        "no-func-assign": "error",
+        "no-inner-declarations": "error",
+        "no-invalid-regexp": "error",
+        "no-irregular-whitespace": "error",
+        "no-negated-in-lhs": "error",
+        "no-obj-calls": "error",
+        "no-regex-spaces": "error",
+        "no-sparse-arrays": "error",
+        "no-unexpected-multiline": "error",
+        "no-unreachable": "error",
+        "use-isnan": "error",
+        "valid-jsdoc": "error",
+        "valid-typeof": "error",
+
+        // ignored possible errors
+        "no-extra-parens": "off",
+
+        /*
+            Best Practices
+            These are rules designed to prevent you from making
+            mistakes. They either prescribe a better way of
+            doing something or help you avoid footguns.
+        */
+        "accessor-pairs": ["error", {
+            "getWithoutSet": true
+        }],
+        "block-scoped-var": "error",
+        "consistent-return": "error",
+        "curly": "error",
+        "default-case": "error",
+        "dot-location": ["error", "property"],
+        "dot-notation": "error",
+        "eqeqeq": "error",
+        "guard-for-in": "error",
+        "no-alert": "error",
+        "no-caller": "error",
+        "no-compare-neg-zero": "error",
+        "no-div-regex": "error",
+        "no-else-return": "error",
+        "no-empty-pattern": "error",
+        "no-eq-null": "error",
+        "no-eval": "error",
+        "no-extend-native": ["error", {"exceptions": ["Object","Array"]}],
+        "no-extra-bind": "error",
+        "no-fallthrough": "error",
+        "no-floating-decimal": "error",
+        "no-implicit-coercion": "error",
+        "no-implied-eval": "error",
+        "no-iterator": "error",
+        "no-labels": "error",
+        "no-lone-blocks": "error",
+        "no-loop-func": "error",
+        "no-multi-spaces": "error",
+        "no-multi-str": "error",
+        "no-native-reassign": "error",
+        "no-new-func": "error",
+        "no-new-wrappers": "error",
+        "no-new": "error",
+        "no-octal-escape": "error",
+        "no-octal": "error",
+        "no-process-env": "error",
+        "no-proto": "error",
+        "no-redeclare": "error",
+        "no-return-assign": "error",
+        "no-script-url": "error",
+        "no-self-compare": "error",
+        "no-sequences": "error",
+        "no-throw-literal": "error",
+        "no-unused-expressions": "error",
+        "no-useless-call": "error",
+        "no-useless-concat": "error",
+        "no-useless-escape": "error",
+        "no-void": "error",
+        "no-with": "error",
+        "radix": "error",
+        "wrap-iife": ["error", "inside"],
+        "yoda": "error",
+
+        // best practices rules to keep an eye on and consider fixing
+        "max-statements": ["warn", 30],
+        "complexity": ["warn", 20],
+
+        // ignored best practices rules
+        "no-invalid-this": "off",
+        "no-magic-numbers": "off",
+        "no-param-reassign": "off",
+        "no-warning-comments": "off",
+        "vars-on-top": "off",
+
+
+        /*
+            Strict Mode
+        */
+            "strict": "error",
+
+
+        /*
+            Variables
+            These rules have to do with variable declarations.
+        */
+        "no-catch-shadow": "error",
+        "no-delete-var": "error",
+        "no-label-var": "error",
+        "no-shadow-restricted-names": "error",
+        "no-shadow": "error",
+        "no-undef-init": "error",
+        "no-unused-vars": "error",
+        "no-use-before-define": "error",
+
+        // variable rules to keep an eye on and consider fixing
+        "init-declarations": "warn",
+        "no-undef": "warn",
+        "no-undefined": "warn",
+
+        /*
+            Stylistic Issues
+            These rules are purely matters of style and
+            are quite subjective.
+        */
+        "array-bracket-spacing": ["error", "never"],
+        "block-spacing": ["error", "always"],
+        "brace-style": ["error", "1tbs", {
+            "allowSingleLine": false
+        }],
+        "camelcase": "error",
+        "comma-spacing": ["error", {
+            "before": false,
+            "after": true
+        }],
+        "comma-style": "error",
+        "computed-property-spacing": ["error", "never"],
+        "consistent-this": ["error", "self"],
+        "func-style": ["error", "declaration"],
+        "indent": ["error", 4],
+        "key-spacing": ["error", {
+            "beforeColon": false,
+            "afterColon": true,
+            "mode": "strict"
+        }],
+        "keyword-spacing": ["error", {
+            "before": true,
+            "after": true,
+            "overrides": {}
+        }],
+        "id-match": "error",
+        "max-nested-callbacks": ["error", 4],
+        "new-cap": "error",
+        "new-parens": "error",
+        "no-array-constructor": "error",
+        "no-continue": "error",
+        "no-lonely-if": "error",
+        "no-mixed-spaces-and-tabs": "error",
+        "no-multiple-empty-lines": "error",
+        "object-curly-spacing": ["error", "never"],
+        "operator-assignment": "error",
+        "operator-linebreak": "error",
+        "quotes": ["error", "single"],
+        "semi-spacing": ["error", {
+            "before": false,
+            "after": true
+        }],
+        "semi": ["error", "always"],
+        "space-before-blocks": ["error", "always"],
+        "space-before-function-paren": ["error", "always"],
+        "space-in-parens": ["error", "never"],
+        "space-infix-ops": "error",
+        "wrap-regex": "error",
+
+        // stylistic rules to keep an eye on and consider fixing
+        "space-unary-ops": "warn",
+
+        // ignored stylistic rules
+        "eol-last": "off",
+        "func-names": "off",
+        "jsx-quotes": "off",
+        "lines-around-comment": "off",
+        "linebreak-style": "off",
+        "no-inline-comments": "off",
+        "no-negated-condition": "off",
+        "no-underscore-dangle": "off",
+        "one-var": "off",
+        "padded-blocks": "off",
+        "padding-line-between-statements": "off",
+        "quote-props": "off",
+        "require-jsdoc": "off",
+        "spaced-comment": "off",
+
+
+        /*
+            ECMAScript 6
+            These rules are only relevant to ES6 environments.
+        */
+        "arrow-parens": ["error", "always"],
+        "arrow-spacing": ["error", {
+            "before": true,
+            "after": true
+        }],
+        "constructor-super": "error",
+        "generator-star-spacing": ["error", {
+            "before": true,
+            "after": true
+        }],
+        "no-class-assign": "error",
+        "no-const-assign": "error",
+        "no-dupe-class-members": "error",
+        "no-this-before-super": "error",
+        "prefer-const": "error",
+        "prefer-spread": "error",
+        "require-yield": "error",
+
+        // ignored ECMA6  rules
+        "no-arrow-condition": "off",
+        "no-var": "off",
+        "object-shorthand": "off",
+        "prefer-arrow-callback": "off",
+        "prefer-reflect": "off",
+        "prefer-template": 0
+
+    },
+    "env": {
+        "amd": true,
+        "browser": true
+    },
+    "globals": {
+        "define": true,
+        "require": true
+    }
+}

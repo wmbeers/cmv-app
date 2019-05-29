@@ -66,3 +66,8 @@ span.selectedItem {
 .tip {
     font-size: small;
 }
+
+#searchResultsDialog {
+    min-width: 500px;
+    max-width: 700px;
+}

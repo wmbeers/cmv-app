@@ -3,10 +3,12 @@ define({
 "categories":[
   {
     "type": "category",
+    "id": 100,
     "name": "Social and Economic",
     "categories": [
       {
         "type": "category",
+        "id": 110,
         "name": "Aesthetic Effects",
         "categories": [],
         "layerIds": [],
@@ -14,6 +16,7 @@ define({
       },
       {
         "type": "category",
+        "id": 120,
         "name": "Economic",
         "categories": [],
         "layerIds": [],
@@ -21,10 +24,12 @@ define({
       },
       {
         "type": "category",
+        "id": 130,
         "name": "Land Use Changes",
         "categories": [
           {
             "type": "category",
+            "id": 1305,
             "name": "Land Use",
             "categories": [],
             "layerIds": [
@@ -41,6 +46,7 @@ define({
       },
       {
         "type": "category",
+        "id": 140,
         "name": "Mobility",
         "categories": [],
         "layerIds": [],
@@ -48,6 +54,7 @@ define({
       },
       {
         "type": "category",
+        "id": 150,
         "name": "Relocation Potential",
         "categories": [],
         "layerIds": [],
@@ -55,10 +62,12 @@ define({
       },
       {
         "type": "category",
+        "id": 160,
         "name": "Demographics",
         "categories": [
           {
             "type": "category",
+            "id": 165,
             "name": "Census Boundaries",
             "categories": [],
             "layerIds": [
@@ -77,10 +86,12 @@ define({
           },
           {
             "type": "category",
+            "id": 161,
             "name": "Densities",
             "categories": [
               {
                 "type": "category",
+                "id": 1611,
                 "name": "2000 Demographic Densities",
                 "categories": [],
                 "layerIds": [
@@ -96,6 +107,7 @@ define({
               },
               {
                 "type": "category",
+                "id": 1612,
                 "name": "2010 Demographic Densities",
                 "categories": [],
                 "layerIds": [
@@ -110,6 +122,7 @@ define({
               },
               {
                 "type": "category",
+                "id": 1613,
                 "name": "2017 Demographic Densities",
                 "categories": [],
                 "layerIds": [
@@ -129,10 +142,12 @@ define({
           },
           {
             "type": "category",
+            "id": 162,
             "name": "Distribution",
             "categories": [
               {
                 "type": "category",
+                "id": 1621,
                 "name": "2000 Demographic Distribution",
                 "categories": [],
                 "layerIds": [
@@ -153,6 +168,7 @@ define({
               },
               {
                 "type": "category",
+                "id": 1622,
                 "name": "2010 Demographic Distribution",
                 "categories": [],
                 "layerIds": [
@@ -172,6 +188,7 @@ define({
               },
               {
                 "type": "category",
+                "id": 1623,
                 "name": "2017 Demographic Distribution",
                 "categories": [],
                 "layerIds": [
@@ -196,10 +213,12 @@ define({
           },
           {
             "type": "category",
+            "id": 163,
             "name": "Percentages",
             "categories": [
               {
                 "type": "category",
+                "id": 1631,
                 "name": "2000 Demographic Percentages",
                 "categories": [],
                 "layerIds": [
@@ -216,6 +235,7 @@ define({
               },
               {
                 "type": "category",
+                "id": 1632,
                 "name": "2010 Demographic Percentages",
                 "categories": [],
                 "layerIds": [
@@ -231,6 +251,7 @@ define({
               },
               {
                 "type": "category",
+                "id": 1633,
                 "name": "2017 Demographic Percentages",
                 "categories": [],
                 "layerIds": [
@@ -251,10 +272,12 @@ define({
           },
           {
             "type": "category",
+            "id": 164,
             "name": "Vehicles",
             "categories": [
               {
                 "type": "category",
+                "id": 1641,
                 "name": "2000 Demographic Vehicles",
                 "categories": [],
                 "layerIds": [
@@ -269,6 +292,7 @@ define({
               },
               {
                 "type": "category",
+                "id": 1642,
                 "name": "2010 Demographic Vehicles",
                 "categories": [],
                 "layerIds": [
@@ -283,6 +307,7 @@ define({
               },
               {
                 "type": "category",
+                "id": 1643,
                 "name": "2017 Demographic Vehicles",
                 "categories": [],
                 "layerIds": [
@@ -305,6 +330,7 @@ define({
       },
       {
         "type": "category",
+        "id": 170,
         "name": "Safety/Emergency Response",
         "categories": [],
         "layerIds": [],
@@ -312,6 +338,7 @@ define({
       },
       {
         "type": "category",
+        "id": 180,
         "name": "Farmland",
         "categories": [],
         "layerIds": [
@@ -324,10 +351,12 @@ define({
       },
       {
         "type": "category",
+        "id": 190,
         "name": "Community and SCE",
         "categories": [
           {
             "type": "category",
+            "id": 191,
             "name": "Community Points",
             "categories": [],
             "layerIds": [
@@ -357,6 +386,7 @@ define({
           },
           {
             "type": "category",
+            "id": 192,
             "name": "Community Polygons",
             "categories": [],
             "layerIds": [
@@ -375,6 +405,7 @@ define({
           },
           {
             "type": "category",
+            "id": 194,
             "name": "Community",
             "categories": [],
             "layerIds": [
@@ -389,11 +420,10 @@ define({
           },
           {
             "type": "category",
+            "id": 193,
             "name": "Zillow Test",
             "categories": [],
-            "layerIds": [
-              43000
-            ],
+            "layerIds": [],
             "serviceURL": ""
           }
         ],
@@ -402,6 +432,7 @@ define({
       },
       {
         "type": "category",
+        "id": 200,
         "name": "Land Use",
         "categories": [],
         "layerIds": [],
@@ -409,6 +440,7 @@ define({
       },
       {
         "type": "category",
+        "id": 210,
         "name": "Landcover",
         "categories": [],
         "layerIds": [],
@@ -416,6 +448,7 @@ define({
       },
       {
         "type": "category",
+        "id": 220,
         "name": "Parcels",
         "categories": [],
         "layerIds": [
@@ -429,10 +462,12 @@ define({
   },
   {
     "type": "category",
+    "id": 300,
     "name": "Cultural and Tribal",
     "categories": [
       {
         "type": "category",
+        "id": 310,
         "name": "Archaeological and Historical Resources",
         "categories": [],
         "layerIds": [
@@ -451,6 +486,7 @@ define({
       },
       {
         "type": "category",
+        "id": 311,
         "name": "Archaeological and Historical Resources - Secure",
         "categories": [],
         "layerIds": [
@@ -461,10 +497,12 @@ define({
       },
       {
         "type": "category",
+        "id": 320,
         "name": "Recreation Areas",
         "categories": [
           {
             "type": "category",
+            "id": 3201,
             "name": "Trails",
             "categories": [],
             "layerIds": [
@@ -484,6 +522,7 @@ define({
       },
       {
         "type": "category",
+        "id": 330,
         "name": "Section 4(f) Potential",
         "categories": [],
         "layerIds": [],
@@ -491,6 +530,7 @@ define({
       },
       {
         "type": "category",
+        "id": 340,
         "name": "Year Built",
         "categories": [],
         "layerIds": [
@@ -507,14 +547,17 @@ define({
   },
   {
     "type": "category",
+    "id": 500,
     "name": "Natural",
     "categories": [
       {
         "type": "category",
+        "id": 510,
         "name": "Coastal and Marine",
         "categories": [
           {
             "type": "category",
+            "id": 511,
             "name": "Essential Fish Habitat",
             "categories": [],
             "layerIds": [],
@@ -522,6 +565,7 @@ define({
           },
           {
             "type": "category",
+            "id": 512,
             "name": "Coastal Barrier Resources",
             "categories": [],
             "layerIds": [
@@ -547,10 +591,12 @@ define({
       },
       {
         "type": "category",
+        "id": 520,
         "name": "Floodplains",
         "categories": [
           {
             "type": "category",
+            "id": 5205,
             "name": "Flood Zones",
             "categories": [],
             "layerIds": [
@@ -568,6 +614,7 @@ define({
       },
       {
         "type": "category",
+        "id": 525,
         "name": "Geology",
         "categories": [],
         "layerIds": [
@@ -581,6 +628,7 @@ define({
       },
       {
         "type": "category",
+        "id": 526,
         "name": "Soils",
         "categories": [],
         "layerIds": [
@@ -590,10 +638,12 @@ define({
       },
       {
         "type": "category",
+        "id": 530,
         "name": "Water Quality and Quantity",
         "categories": [
           {
             "type": "category",
+            "id": 5306,
             "name": "Aquifers",
             "categories": [],
             "layerIds": [
@@ -611,6 +661,7 @@ define({
           },
           {
             "type": "category",
+            "id": 5307,
             "name": "Elevation",
             "categories": [],
             "layerIds": [
@@ -625,6 +676,7 @@ define({
           },
           {
             "type": "category",
+            "id": 5301,
             "name": "National Hydrography Dataset (24K)",
             "categories": [],
             "layerIds": [
@@ -636,6 +688,7 @@ define({
           },
           {
             "type": "category",
+            "id": 5302,
             "name": "National Hydrography Dataset (100K)",
             "categories": [],
             "layerIds": [
@@ -647,6 +700,7 @@ define({
           },
           {
             "type": "category",
+            "id": 5308,
             "name": "Permits",
             "categories": [],
             "layerIds": [
@@ -661,6 +715,7 @@ define({
           },
           {
             "type": "category",
+            "id": 5303,
             "name": "Springs",
             "categories": [],
             "layerIds": [
@@ -675,6 +730,7 @@ define({
           },
           {
             "type": "category",
+            "id": 5305,
             "name": "Wells",
             "categories": [],
             "layerIds": [
@@ -692,10 +748,12 @@ define({
       },
       {
         "type": "category",
+        "id": 540,
         "name": "Wetlands and Surface Waters",
         "categories": [
           {
             "type": "category",
+            "id": 545,
             "name": "Mitigation",
             "categories": [],
             "layerIds": [
@@ -707,6 +765,7 @@ define({
           },
           {
             "type": "category",
+            "id": 546,
             "name": "National Wetlands Inventory Areas USFWS",
             "categories": [],
             "layerIds": [
@@ -716,6 +775,7 @@ define({
           },
           {
             "type": "category",
+            "id": 547,
             "name": "National Wetlands Inventory Areas V2",
             "categories": [],
             "layerIds": [
@@ -729,10 +789,12 @@ define({
       },
       {
         "type": "category",
+        "id": 550,
         "name": "Wildlife and Habitat",
         "categories": [
           {
             "type": "category",
+            "id": 551,
             "name": "ARC Lands",
             "categories": [],
             "layerIds": [
@@ -747,6 +809,7 @@ define({
           },
           {
             "type": "category",
+            "id": 552,
             "name": "Conservation",
             "categories": [],
             "layerIds": [
@@ -769,6 +832,7 @@ define({
           },
           {
             "type": "category",
+            "id": 553,
             "name": "CLIP V4",
             "categories": [],
             "layerIds": [
@@ -792,6 +856,7 @@ define({
           },
           {
             "type": "category",
+            "id": 556,
             "name": "Consultation Areas",
             "categories": [],
             "layerIds": [
@@ -825,6 +890,7 @@ define({
           },
           {
             "type": "category",
+            "id": 555,
             "name": "Critical Habitat",
             "categories": [],
             "layerIds": [
@@ -856,6 +922,7 @@ define({
           },
           {
             "type": "category",
+            "id": 557,
             "name": "FNAI Likely Element Occurrence (Secure)",
             "categories": [],
             "layerIds": [
@@ -867,6 +934,7 @@ define({
           },
           {
             "type": "category",
+            "id": 554,
             "name": "Green Links",
             "categories": [],
             "layerIds": [
@@ -877,6 +945,7 @@ define({
           },
           {
             "type": "category",
+            "id": 559,
             "name": "Habitat",
             "categories": [],
             "layerIds": [
@@ -899,6 +968,7 @@ define({
           },
           {
             "type": "category",
+            "id": 558,
             "name": "Species Occurrence",
             "categories": [],
             "layerIds": [
@@ -933,10 +1003,12 @@ define({
   },
   {
     "type": "category",
+    "id": 700,
     "name": "Physical",
     "categories": [
       {
         "type": "category",
+        "id": 710,
         "name": "Air Quality",
         "categories": [],
         "layerIds": [],
@@ -944,10 +1016,12 @@ define({
       },
       {
         "type": "category",
+        "id": 720,
         "name": "Contamination",
         "categories": [
           {
             "type": "category",
+            "id": 721,
             "name": "Waste",
             "categories": [],
             "layerIds": [
@@ -983,6 +1057,7 @@ define({
           },
           {
             "type": "category",
+            "id": 722,
             "name": "Waste Groups Test",
             "categories": [],
             "layerIds": [
@@ -1022,10 +1097,12 @@ define({
       },
       {
         "type": "category",
+        "id": 730,
         "name": "Infrastructure",
         "categories": [
           {
             "type": "category",
+            "id": 731,
             "name": "RCI",
             "categories": [],
             "layerIds": [
@@ -1055,6 +1132,7 @@ define({
           },
           {
             "type": "category",
+            "id": 7311,
             "name": "RCI Basemap",
             "categories": [],
             "layerIds": [
@@ -1066,6 +1144,7 @@ define({
           },
           {
             "type": "category",
+            "id": 733,
             "name": "Roadways",
             "categories": [],
             "layerIds": [
@@ -1081,6 +1160,7 @@ define({
           },
           {
             "type": "category",
+            "id": 732,
             "name": "Utilities",
             "categories": [],
             "layerIds": [
@@ -1101,6 +1181,7 @@ define({
       },
       {
         "type": "category",
+        "id": 740,
         "name": "Navigation",
         "categories": [],
         "layerIds": [],
@@ -1108,6 +1189,7 @@ define({
       },
       {
         "type": "category",
+        "id": 750,
         "name": "Noise",
         "categories": [],
         "layerIds": [],
@@ -1119,10 +1201,12 @@ define({
   },
   {
     "type": "category",
+    "id": 900,
     "name": "Special Designations",
     "categories": [
       {
         "type": "category",
+        "id": 950,
         "name": "Water Resource Designations",
         "categories": [],
         "layerIds": [
@@ -24451,18 +24535,6 @@ define({
     "legendSymbols": null
   },
   {
-    "id": 43000,
-    "url": "https://services.arcgis.com/LBbVDC0hKPAnLRpO/ArcGIS/rest/services/zillow_neighborhood_sdr_reports_2019/FeatureServer/0",
-    "name": "zillow_neighborhood_sdr",
-    "description": "",
-    "longName": "zillow_neighborhood_sdr",
-    "type": "feature",
-    "layerName": "",
-    "minScale": 0,
-    "maxScale": 0,
-    "legendSymbols": null
-  },
-  {
     "id": 65000,
     "url": "https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Stage/MapServer/0",
     "name": "Analysis Area Features",
@@ -26907,18 +26979,6 @@ define({
     "type": "feature",
     "layerName": "",
     "minScale": 0,
-    "maxScale": 0,
-    "legendSymbols": null
-  },
-  {
-    "id": 9000,
-    "url": "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/sw_parcels_2017_V2/FeatureServer/0",
-    "name": "parcels_2017v2",
-    "description": "This dataset contains 2017 parcel boundaries with each parcel's associated tax information from the Florida Department of Revenue's tax database. This feature class contains parcel polygons and associated parcel attribute information. Attributes include PARCELID, ALTKEY, Section, Township, Range, owner name, owner mailing address, site address, most recent sales info, valuation, land use codes, building details, legal description, and more. This is an update to the FGDL data layer PARCELS_2015.",
-    "longName": "parcels_2017v2",
-    "type": "feature",
-    "layerName": "",
-    "minScale": 12218,
     "maxScale": 0,
     "legendSymbols": null
   }
