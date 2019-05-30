@@ -316,39 +316,73 @@ define([
         // operationalLayers: Array of Layers to load on top of the basemap: valid 'type' options: 'dynamic', 'tiled', 'feature'.
         // The 'options' object is passed as the layers options for constructor. Title will be used in the legend only. id's must be unique and have no spaces.
         // 3 'mode' options: MODE_SNAPSHOT = 0, MODE_ONDEMAND = 1, MODE_SELECTION = 2
-        operationalLayers: [{
-            type: 'dynamic',
-            url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Previously_Reviewed_Dev/MapServer',
-            title: 'Projects (Previously Reviewed)',
-            options: {
-                id: 'Projects',
-                opacity: 1.0,
-                visible: true,
-                outFields: ['*'],
-                imageParameters: buildImageParameters({
-                    layerIds: [0, 7],
-                    layerOption: 'show'
-                }),
-                mode: 1
-            },
-            editorLayerInfos: {
-                disableGeometryUpdate: false
-            },
-            legendLayerInfos: {
-                exclude: false,
-                layerInfo: {
-                    title: 'Projects (Previously Reviewed)'
+        operationalLayers: [
+            {
+                type: 'dynamic',
+                url: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Prod/MapServer',
+                title: 'Projects (Previously Reviewed)',
+                options: {
+                    id: 'V3_PREVIOUSLY_REVIEWED_PROD',
+                    opacity: 1.0,
+                    visible: true,
+                    outFields: ['*'],
+                    imageParameters: buildImageParameters({
+                        layerIds: [0, 7],
+                        layerOption: 'show'
+                    }),
+                    mode: 1
+                },
+                editorLayerInfos: {
+                    disableGeometryUpdate: false
+                },
+                legendLayerInfos: {
+                    exclude: false,
+                    layerInfo: {
+                        title: 'Projects (Previously Reviewed)'
+                    }
+                },
+                layerControlLayerInfos: {
+                    //layerGroup: 'Project Data',
+                    menu: [{
+                        label: 'Open Attribute Table',
+                        topic: 'openTable',
+                        iconClass: 'fa fa-table fa-fw'
+                    }]
                 }
             },
-            layerControlLayerInfos: {
-                //layerGroup: 'Project Data',
-                menu: [{
-                    label: 'Open Attribute Table',
-                    topic: 'openTable',
-                    iconClass: 'fa fa-table fa-fw'
-                }]
-            }
-        }],
+            {
+                type: 'dynamic',
+                url: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Prod/MapServer',
+                title: 'Projects (Currently in Review)',
+                options: {
+                    id: 'V3_ETAT_REVIEW_PROD',
+                    opacity: 1.0,
+                    visible: true,
+                    outFields: ['*'],
+                    imageParameters: buildImageParameters({
+                        layerIds: [0, 7],
+                        layerOption: 'show'
+                    }),
+                    mode: 1
+                },
+                editorLayerInfos: {
+                    disableGeometryUpdate: false
+                },
+                legendLayerInfos: {
+                    exclude: false,
+                    layerInfo: {
+                        title: 'Projects (Previously Reviewed)'
+                    }
+                },
+                layerControlLayerInfos: {
+                    //layerGroup: 'Project Data',
+                    menu: [{
+                        label: 'Open Attribute Table',
+                        topic: 'openTable',
+                        iconClass: 'fa fa-table fa-fw'
+                    }]
+                }
+            }],
         // set include:true to load. For titlePane type set position the the desired order in the sidebar
         widgets: {
             growler: {
