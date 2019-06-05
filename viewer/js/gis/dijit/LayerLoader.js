@@ -262,15 +262,15 @@ define([
                 var searchUrl = window.location.origin +
                     '/solr1/layers/select?q=name:"' +
                     encodedSearchTerms +
-                    '"^150+or+longName:"' +
+                    '"^150+OR+longName:"' +
                     encodedSearchTerms +
-                    '"^100+or+description:"' +
+                    '"^100+OR+description:"' +
                     encodedSearchTerms +
-                    '"^50+or+name:' +
+                    '"^50+OR+name:' +
                     encodedSearchTerms +
-                    '+or+longName:' +
+                    '+OR+longName:' +
                     encodedSearchTerms +
-                    '+or+description:' +
+                    '+OR+description:' +
                     encodedSearchTerms +
                     '&wt=json';
                 request(searchUrl).then(function (reply) {
