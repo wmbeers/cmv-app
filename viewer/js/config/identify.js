@@ -1,16 +1,13 @@
 define([
-    'dojo/i18n!./nls/main',
-    'dojo/_base/lang',
-    'dojo/number'
-], function (i18n, lang, number) {
+], function () {
 
-    var linkTemplate = '<a href="{url}" target="_blank">{text}</a>';
-    function directionsFormatter (noValue, attributes) {
-        return lang.replace(linkTemplate, {
-            url: 'https://www.google.com/maps/dir/' + attributes.Address + ' Louisville, KY',
-            text: 'Get Directions'
-        });
-    }
+    //var linkTemplate = '<a href="{url}" target="_blank">{text}</a>';
+    //function directionsFormatter (noValue, attributes) {
+    //    return lang.replace(linkTemplate, {
+    //        url: 'https://www.google.com/maps/dir/' + attributes.Address + ' Louisville, KY',
+    //        text: 'Get Directions'
+    //    });
+    //}
 
     return {
         map: true,
@@ -38,82 +35,1231 @@ define([
         // for details on pop-up definition see: https://developers.arcgis.com/javascript/jshelp/intro_popuptemplate.html
 
         identifies: {
-            cities: {
-                0: {
-                    fieldInfos: [{
-                        visible: true,
-                        fieldName: 'CITY_NAME',
-                        label: 'Name'
-                    }, {
-                        visible: true,
-                        fieldName: 'POP',
-                        label: 'Population',
-                        formatter: function (value) {
-                            return number.format(value);
-                        }
-                    }]
-                }
-            },
-            damageAssessment: {
-                0: {
+            V3_PREVIOUSLY_REVIEWED_PROD: {
+                2: {
                     fieldInfos: [
                         {
-                            fieldName: 'primcause',
                             visible: true,
-                            label: 'Cause',
+                            fieldName: 'POINT_ID',
+                            label: 'Point ID'
+                        }
+                    ]
+                },
+                3: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'SEGMENT_ID',
+                            label: 'Line ID'
+                        }
+                    ]
+                },
+                4: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'POLY _ID',
+                            label: 'Polygon ID'
+                        }
+                    ]
+                },
+                5: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'STREET_NAME',
+                            label: 'Street Name',
                             formatter: function (value) {
-                                return (value.toLowerCase() !== 'null') ? value : 'Unknown';
+                                return value === 'Null' ? '' : value;
                             }
                         },
                         {
-                            fieldName: 'typdamage',
                             visible: true,
-                            label: 'Extent'
+                            fieldName: 'FROM_STREET',
+                            label: 'From Street',
+                            formatter: function (value) {
+                                return value === 'Null' ? '' : value;
+                            }
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'TO_STREET',
+                            label: 'To Street',
+                            formatter: function (value) {
+                                return value === 'Null' ? '' : value;
+                            }
+                        }
+                    ]
+                },
+                6: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        }
+                    ]
+                },
+                7: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'SEGMENT_ID',
+                            label: 'Segment ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        } 
+                    ]
+                },
+                8: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'POLY_ID',
+                            label: 'Poly ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        }
+                    ]
+                },
+                9: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        }
+                    ]
+                },
+                12: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FEATURE_DESCRIPTION',
+                            label: 'Feature Type',
+                            formatter: function (value) {
+                                return value.charAt(0) + value.slice(1).toLowerCase();
+                            }
+                        }
+                    ]
+                },
+                13: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FEATURE_DESCRIPTION',
+                            label: 'Feature Type',
+                            formatter: function (value) {
+                                return value.charAt(0) + value.slice(1).toLowerCase();
+                            }
+                        }
+                    ]
+                },
+                14: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FEATURE_DESCRIPTION',
+                            label: 'Feature Type',
+                            formatter: function (value) {
+                                return value.charAt(0) + value.slice(1).toLowerCase();
+                            }
+                        }
+                    ]
+                },
+                15: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FEATURE_DESCRIPTION',
+                            label: 'Feature Type',
+                            formatter: function (value) {
+                                return value.charAt(0) + value.slice(1).toLowerCase();
+                            }
+                        }
+                    ]
+                },
+                16: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FEATURE_DESCRIPTION',
+                            label: 'Feature Type',
+                            formatter: function (value) {
+                                return value.charAt(0) + value.slice(1).toLowerCase();
+                            }
+                        }
+                    ]
+                },
+                17: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FEATURE_DESCRIPTION',
+                            label: 'Feature Type',
+                            formatter: function (value) {
+                                return value.charAt(0) + value.slice(1).toLowerCase();
+                            }
+                        }
+                    ]
+                },
+                19: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
+                        }
+                    ]
+                },
+                20: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
+                        }
+                    ]
+                },
+                21: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
+                        }
+                    ]
+                },
+                22: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
+                        }
+                    ]
+                },
+                23: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
+                        }
+                    ]
+                },
+                24: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
                         }
                     ]
                 }
             },
-            louisvillePubSafety: {
+            V3_ETAT_REVIEW_PROD: {
                 2: {
-                    title: i18n.identify.louisvillePubSafety.policeStation,
                     fieldInfos: [
                         {
-                            // example of adding a 'calculated' or formatted field
-                            // click on a louisville kentucky police station to see
-                            // the result
-                            fieldName: 'Directions',
                             visible: true,
-                            formatter: directionsFormatter,
-                            useExpression: false
-                        }, {
-                            fieldName: 'Name',
-                            visible: true
-                        }, {
-                            fieldName: 'Address',
-                            visible: true
-                        }, {
-                            fieldName: 'Type',
-                            visible: true
-                        }, {
-                            fieldName: 'Police Function',
-                            visible: true
-                        }, {
-                            fieldName: 'Last Update Date',
-                            visible: true
+                            fieldName: 'POINT_ID',
+                            label: 'Point ID'
+                        }
+                    ]
+                },
+                3: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'SEGMENT_ID',
+                            label: 'Line ID'
+                        }
+                    ]
+                },
+                4: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'POLY _ID',
+                            label: 'Polygon ID'
+                        }
+                    ]
+                },
+                5: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'STREET_NAME',
+                            label: 'Street Name',
+                            formatter: function (value) {
+                                return value === 'Null' ? '' : value;
+                            }
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FROM_STREET',
+                            label: 'From Street',
+                            formatter: function (value) {
+                                return value === 'Null' ? '' : value;
+                            }
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'TO_STREET',
+                            label: 'To Street',
+                            formatter: function (value) {
+                                return value === 'Null' ? '' : value;
+                            }
+                        }
+                    ]
+                },
+                6: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        }
+                    ]
+                },
+                7: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'SEGMENT_ID',
+                            label: 'Segment ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
                         }
                     ]
                 },
                 8: {
-                    title: i18n.identify.louisvillePubSafety.trafficCamera,
-                    description: '{Description} lasted updated: {Last Update Date}',
-                    mediaInfos: [
+                    fieldInfos: [
                         {
-                            title: '',
-                            caption: '',
-                            type: 'image',
-                            value: {
-                                sourceURL: '{Location URL}',
-                                linkURL: '{Location URL}'
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'POLY_ID',
+                            label: 'Poly ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        }
+                    ]
+                },
+                9: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        }
+                    ]
+                },
+                12: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FEATURE_DESCRIPTION',
+                            label: 'Feature Type',
+                            formatter: function (value) {
+                                return value.charAt(0) + value.slice(1).toLowerCase();
+                            }
+                        }
+                    ]
+                },
+                13: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FEATURE_DESCRIPTION',
+                            label: 'Feature Type',
+                            formatter: function (value) {
+                                return value.charAt(0) + value.slice(1).toLowerCase();
+                            }
+                        }
+                    ]
+                },
+                14: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FEATURE_DESCRIPTION',
+                            label: 'Feature Type',
+                            formatter: function (value) {
+                                return value.charAt(0) + value.slice(1).toLowerCase();
+                            }
+                        }
+                    ]
+                },
+                15: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FEATURE_DESCRIPTION',
+                            label: 'Feature Type',
+                            formatter: function (value) {
+                                return value.charAt(0) + value.slice(1).toLowerCase();
+                            }
+                        }
+                    ]
+                },
+                16: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FEATURE_DESCRIPTION',
+                            label: 'Feature Type',
+                            formatter: function (value) {
+                                return value.charAt(0) + value.slice(1).toLowerCase();
+                            }
+                        }
+                    ]
+                },
+                17: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FEATURE_DESCRIPTION',
+                            label: 'Feature Type',
+                            formatter: function (value) {
+                                return value.charAt(0) + value.slice(1).toLowerCase();
+                            }
+                        }
+                    ]
+                },
+                19: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
+                        }
+                    ]
+                },
+                20: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
+                        }
+                    ]
+                },
+                21: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
+                        }
+                    ]
+                },
+                22: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
+                        }
+                    ]
+                },
+                23: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
+                            }
+                        }
+                    ]
+                },
+                24: {
+                    fieldInfos: [
+                        {
+                            visible: true,
+                            fieldName: 'ALT_ID',
+                            label: 'Project/Analysis Area ID'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'PRJNAME',
+                            label: 'Project Name'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'FK_ALT_TYPE',
+                            label: 'Type'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'CURRENT_STATUS',
+                            label: 'Status'
+                        },
+                        {
+                            visible: true,
+                            fieldName: 'BUFFER_DISTANCE',
+                            label: 'Buffer Distance',
+                            formatter: function (value) {
+                                return value.toString() + ' ft.';
                             }
                         }
                     ]
