@@ -232,8 +232,7 @@ function showFeature () {
 function showProject () {
     showMap(function () {
         mapWindow.app.addProjectToMap(
-            document.getElementById('projectId').value,
-            document.getElementById('altNumber').value
+            document.getElementById('projectId').value
         );
     });
 }

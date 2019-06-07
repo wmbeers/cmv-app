@@ -6,7 +6,7 @@ define([
     'dojo/topic',
     'dojo/Deferred',
     'dojo/promise/all',
-
+    './js/config/projects.js',
     'esri/map',
     'esri/layers/ArcGISDynamicMapServiceLayer',
     'esri/layers/FeatureLayer',
@@ -31,7 +31,7 @@ define([
     topic,
     Deferred,
     all,
-
+    projects,
     Map,
     ArcGISDynamicMapServiceLayer,
     FeatureLayer,
@@ -448,7 +448,8 @@ define([
             //validate the projectAltId
             var query = new Query();
             query.where = definitionQuery;
-            var queryTask = new QueryTask('https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Query_MMA_Dev/MapServer/0');
+            //TODO: this url should probably be in a config file somewhere.
+            var queryTask = new QueryTask(projects.queryLayer);
             var deferred = new Deferred();
             queryTask.executeForCount(query, function (count) {
                 if (count === 0) {
@@ -465,7 +466,7 @@ define([
                         {
                             name: 'Project # ' + projectAltId,
                             id: 'project_' + projectAltId.replace('-', '_'),
-                            url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Query_MMA_Dev/MapServer/0',
+                            url: projects.queryLayer,
                             type: 'feature',
                             projectAltId: projectAltId, //used when saving to layerconfig
                             layerName: null //only needed for metadata

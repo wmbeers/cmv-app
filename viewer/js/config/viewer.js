@@ -14,7 +14,6 @@ define([
     'dijit/Dialog',
     'dojo/request'
 ], function (units, Extent, esriConfig, /*urlUtils,*/ GeometryService, ImageParameters, Locator, FeatureLayer, GoogleMapsLoader, i18n, topic, has, Dialog, request) {
-
     // url to your proxy page, must be on same machine hosting you app. See proxy folder for readme.
     esriConfig.defaults.io.proxyUrl = 'proxy/proxy.ashx';
     esriConfig.defaults.io.alwaysUseProxy = false;
@@ -121,6 +120,7 @@ define([
     });
 
     return {
+
         // used for debugging your app
         isDebug: true,
 
@@ -319,10 +319,10 @@ define([
         operationalLayers: [
             {
                 type: 'dynamic',
-                url: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Prod/MapServer',
+                url: 'https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer',
                 title: 'Projects (Previously Reviewed)',
                 options: {
-                    id: 'V3_PREVIOUSLY_REVIEWED_PROD',
+                    id: 'previouslyReviewedProjectsLayer',
                     opacity: 1.0,
                     visible: true,
                     outFields: ['*'],
@@ -352,10 +352,10 @@ define([
             },
             {
                 type: 'dynamic',
-                url: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Prod/MapServer',
+                url: 'https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer',
                 title: 'Projects (Currently in Review)',
                 options: {
-                    id: 'V3_ETAT_REVIEW_PROD',
+                    id: 'currentlyInReviewProjects',
                     opacity: 1.0,
                     visible: true,
                     outFields: ['*'],

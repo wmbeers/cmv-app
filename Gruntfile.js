@@ -1,6 +1,26 @@
 /* global module */
 module.exports = function (grunt) {
-
+    //get target from command line, e.g. "grunt build-deploy --target=stage"; defaults to "dev" if not provided on command line
+    var target = grunt.option('target') || 'dev';
+    //get host from target; if not dev or stage, user is prompted for host (assuming you have Bill's modified version of the scp grunt task)
+    var host = target === 'dev' ? 'prometheus.est.vpn' :
+        target === 'stage' ? 'hyperion.est.vpn' : null;
+    //get operationalLayers based on target
+    //in our source it should always be dev (https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer and 
+    //https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer)
+    //which will be replaced with the stage or prod version
+    var previouslyReviewed = target === 'stage' ? 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Stage/MapServer' :
+        target === 'prod' ? 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Prod/MapServer' : null;
+    var currentlyInReview = target === 'stage' ? 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Stage/MapServer' :
+        target === 'prod' ? 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Prod/MapServer' : null;
+    var queryLayer = target === 'stage' ? 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_MMA_Stage/MapServer/0' :
+        target === 'prod' ? 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_MMA_Prod/MapServer/0' : null;
+        
+        
+    grunt.log.writeln ("target: " + target);
+    grunt.log.writeln ("previouslyReviewed: " + previouslyReviewed);
+    grunt.log.writeln ("currentlyInReview: " + currentlyInReview);
+    
     // middleware for grunt.connect
     var middleware = function (connect, options, middlewares) {
         // inject a custom middleware into the array of default middlewares for proxy page
@@ -33,8 +53,15 @@ module.exports = function (grunt) {
     // grunt task config
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        // exec: {
+        //     llc: {
+        //         command: './layerLoaderConfigurator/LayerLoaderConfigurator.exe ' + target + ' .\\viewer\\js\\config\\layerLoader.js',
+        //         sync: false
+        //     }
+        // },
         scp: {
             options: {
+                host: host
                 //host: 'prometheus.est.vpn',
                 //username: 'bill'
             },
@@ -47,6 +74,30 @@ module.exports = function (grunt) {
                     dest: '/var/www/map'
                 }]
             },
+        },
+        'string-replace': {
+            operationalLayers: {
+                files: {
+                    'dist/js/config/viewer.js': 'viewer/js/config/viewer.js',
+                    'dist/js/config/projects.js': 'viewer/js/config/projects.js'
+                },
+                options: {
+                    replacements: [
+                        {
+                            pattern: 'https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer',
+                            replacement: previouslyReviewed
+                        },
+                        {
+                            pattern: 'https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer',
+                            replacement: currentlyInReview
+                        },
+                        {
+                            pattern: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_MMA_Dev/MapServer/0',
+                            replacement: queryLayer
+                        }
+                    ]
+                }
+            }
         },
         tag: {
             banner: '/*  <%= pkg.name %>\n' +
@@ -186,16 +237,24 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-open');
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-scp');
+    grunt.loadNpmTasks('grunt-string-replace');
+    //grunt.loadNpmTasks('grunt-exec');
 
     // define the tasks
+    //grunt.registerTask('layerLoaderJs','exec');
     grunt.registerTask('default', 'Watches the project for changes, automatically builds them and runs a web server and opens default browser to preview.', ['eslint', 'stylelint', 'connect:dev', 'open:dev_browser', 'watch:dev']);
-    grunt.registerTask('build', 'Compiles all of the assets and copies the files to the build directory.', ['clean', 'copy', 'scripts', 'stylesheets']); // we don't want to zip it, 'compress']);
+    grunt.registerTask('build', 'Compiles all of the assets and copies the files to the build directory.', [/*'layerLoaderJs',*/'clean', 'copy', 'scripts', 'stylesheets']); // we don't want to zip it, 'compress']);
     grunt.registerTask('build-view', 'Compiles all of the assets and copies the files to the build directory starts a web server and opens browser to preview app.', ['clean', 'copy', 'scripts', 'stylesheets', 'compress', 'connect:build', 'open:build_browser', 'watch:build']);
     grunt.registerTask('scripts', 'Compiles the JavaScript files.', ['eslint', 'uglify']);
     grunt.registerTask('stylesheets', 'Auto prefixes css and compiles the stylesheets.', ['stylelint', 'postcss', 'cssmin']);
     grunt.registerTask('lint', 'Run eslint and stylelint.', ['eslint', 'stylelint']);
-    grunt.registerTask('build-deploy', 'Compiles all of the assets and copies the files to the dist folder, then deploys it. User is prompted for host (destination server), username and password.', ['clean', 'copy', 'scripts', 'stylesheets','scp']);
+    grunt.registerTask('build-deploy', 'Compiles all of the assets and copies the files to the dist folder, then deploys it. User is prompted for username and password.', [/*'layerLoaderJs',*/'clean', 'copy', 'operationalLayers', 'scripts', 'stylesheets','scp']);
     grunt.registerTask('deploy', 'Deploys the dist folder. User is prompted for host (destination server), username and password.', ['scp']);
-    
-    
+    grunt.registerTask('operationalLayers', function() {
+        if (target === 'stage' || target === 'prod') {
+            grunt.task.run(['string-replace']);
+        } else {
+            grunt.log.write('Skipping string-replace');
+        }
+    });
 };

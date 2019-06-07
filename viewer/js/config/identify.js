@@ -35,7 +35,7 @@ define([
         // for details on pop-up definition see: https://developers.arcgis.com/javascript/jshelp/intro_popuptemplate.html
 
         identifies: {
-            V3_PREVIOUSLY_REVIEWED_PROD: {
+            previouslyReviewedProjectsLayer: {
                 2: {
                     fieldInfos: [
                         {
@@ -650,7 +650,7 @@ define([
                     ]
                 }
             },
-            V3_ETAT_REVIEW_PROD: {
+            currentlyInReviewProjects: {
                 2: {
                     fieldInfos: [
                         {
