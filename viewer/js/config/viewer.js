@@ -794,24 +794,22 @@ define([
                     }
                 }
             },*/
-            zoomToCounty: {
+            zoomToRegion: {
                 include: true,
-                id: 'zoomToCounty',
+                id: 'zoomToRegion',
                 type: 'titlePane',
-                title: 'Zoom to County',
+                title: 'Zoom to Region',
                 position: 10,
                 open: true,
                 path: 'gis/dijit/ZoomToFeature',
                 options: {
                     map: true,
 
-                    url: 'https://services.arcgis.com/LBbVDC0hKPAnLRpO/ArcGIS/rest/services/countyBoundary/FeatureServer/1',
-                    field: 'NAME',
-                    //where: 'STATE_FIPS = \'12\'',
-
-                    // you can customize the text
+                    url: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/QUERY_REGIONS/MapServer/0',
+                    field: 'DESCRIPT',
+                    maxAllowableOffset: 100,
                     i18n: {
-                        selectFeature: 'Select a County'
+                        selectFeature: 'Enter a County, WMD, or FDOT District Name'
                     }
                 }
             },
