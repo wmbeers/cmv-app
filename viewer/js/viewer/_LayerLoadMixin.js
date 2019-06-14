@@ -51,13 +51,18 @@ define([
 ) {
 
     return declare(null, {
-
         startup: function () {
             //subscribe to topics
             topic.subscribe('layerControl/openAttributeTable', lang.hitch(this, 'openAttributeTable'));
+            topic.subscribe('layerLoader/addProjectToMap', lang.hitch(this, 'addProjectToMap'));
+            topic.subscribe('layerLoader/addLayerFromLayerDef', lang.hitch(this, 'addLayerFromLayerDef'));
+            topic.subscribe('layerLoader/addCategory', lang.hitch(this, 'addCategory'));
+
             //load the coordinateFormatter
             coordinateFormatter.load();
             //just a test of whether jquery works: jquery("#subHeaderTitleSpan").html('Yo');
+
+            this.inherited(arguments);
         },
 
         openAttributeTable: function (layerControlItem) {
@@ -85,7 +90,7 @@ define([
                         url: url,
                         maxAllowableOffset: 100, // TODO this is used for generalizing geometries. At this setting, the polygons are highly generalized
                         where: definitionExpression,
-                        geometry: app.map.extent 
+                        geometry: this.map.extent 
                     },
                     idProperty: 'AUTOID' // TODO get this from the layer's fields property
                 },
@@ -286,152 +291,170 @@ define([
          * @return {Promise}  A Promise that will be resolved after the layer is loaded in the map
          */
         addLayer: function (layer) {
-            var deferred = new Deferred();
-            var layerDef = layer.layerDef;
+            var deferred = new Deferred(),
+                layerDef = layer.layerDef,
+                self = this; 
 
             //Note: _MapMixin adds layers to the layers control with unshift, e.g.:
             //layers.unshift(l)
             //but that's to keep it in the order in which they're listed in operationalLayers;
             //we're using push so they appear on top. If we want them to appear under the projects
             //change the next line to unshift
-            app.layers.push(layer);
+            this.layers.push(layer);
 
             //construct on-load handler. The layer needs to be loaded before getting the layerInfo
             //and adding to layerControl widget
+            //HOWEVER, if layer was previously loaded, apparently the load event doesn't fire...
+            if (layer.loaded) {
+                this._onLayerLoad(layer, layerDef, deferred);
+            }
             on(layer, 'load', function () {
-                if (layerDef.loaded) { //if it has a loaded observable, assign it to true. (It always does when it's a layerDef defined by our system)
-                    layerDef.loaded(true);
-                }
-                //I don't know why we need to make this separate esriRequest, but the layer won't show up in layerControl
-                //unless we do. We don't do anything with the response. It's cribbed from DnD plug in, DroppedItem.js.
-                esriRequest({
-                    url: layerDef.url,
-                    content: {
-                        f: 'json'
-                    },
-                    handleAs: 'json',
-                    callbackParamName: 'callback'
-                }).then(function () {
-                    //copy extended properties from our database and append to the sublayers
-                    //this relies on our JS being in perfect sync with what's actually being served!
-                    //we don't need this next block
-                    if (layerDef.layers) {
-                        for (var i = 0; i < layerDef.layers.length; i++) {
-                            //response.layers[i].layerName = layerDef.layers[i].layerName;
-                            layer.layerInfos[i].layerName = layerDef.layers[i].layerName;
-                        }
-                    }
-                    if (layerDef.layerName) {
-                        layer.layerName = layerDef.layerName;
-                    }
-                    //todo: put this in config? Or have some default options if not in config?
-                    var layerControlInfo = {
-                        controlOptions: {
-                            expanded: false,
-                            metadataUrl: true,
-                            //includeUnspecifiedLayers: true, //TODO: if this is included, the service doesn't load properly for some reason, and no layers show up.
-                            swipe: true,
-                            noMenu: false,
-                            noZoom: false,
-                            mappkgDL: true,
-                            allowRemove: true,
-                            //layerGroup: layerDef.layerGroup,
-                            //TODO: documentation on this is really confusing, neither of these work
-                            //menu: {
-                            //    dynamic: {
-                            //        label: 'Wny does this not show up?',
-                            //        topic: 'remove',
-                            //        iconClass: 'fa fa-info fa-fw'
-                            //    }
-                            //},
-                            //TODO: I don't think the following actually does anything. See subLayerMenu, below
-                            menu: [
-                                {
-                                    label: 'Open Attribute Table',
-                                    topic: 'openAttributeTable',
-                                    iconClass: 'fa fa-table fa-fw'
-                                }
-                            ],
-                            //Note: the following is what's documented on the CMV site, but doesn't work, 
-                            //see below for the correct way discovered via trial-and-error
-                            // gives all dynamic layers the subLayerMenu items
-                            //subLayerMenu: {
-                            //    dynamic: [{
-                            //        label: 'Query Layer...',
-                            //        iconClass: 'fa fa-search fa-fw',
-                            //        topic: 'queryLayer'
-                            //    }, {
-                            //        label: 'Open Attribute Table',
-                            //        topic: 'openTable',
-                            //        iconClass: 'fa fa-table fa-fw'
-                            //    }]
-                            //},
-                            //TODO finish working on menus
-                            subLayerMenu: [
-                                //{
-                                //    label: 'Query Layer...',
-                                //    iconClass: 'fa fa-search fa-fw',
-                                //    topic: 'queryLayer'
-                                //},
-                                {
-                                    label: 'Open Attribute Table',
-                                    topic: 'openAttributeTable',
-                                    iconClass: 'fa fa-table fa-fw'
-                                },
-                                {
-                                    label: 'View Metadata',
-                                    topic: 'viewMetadata',
-                                    iconClass: 'fa fa-info-circle fa-fw'
-                                }]
-                        },
-                        layer: layer,
-                        title: layerDef.title,
-                        type: layerDef.type
-
-                    };
-                    topic.publish('layerControl/addLayerControls', [layerControlInfo]); //TODO the whole collection of layers to be added should be passed at once for layerGroup to do anything.
-                    topic.publish('identify/addLayerInfos', [layerControlInfo]);
-                    app.legendLayerInfos.push(layerControlInfo);
-
-                    if (layer.getDefinitionExpression && layer.getDefinitionExpression()) { //TODO there might be some pre-defined layers with definition expressions assigned in map service. None yet, but if there are we need some other way to handle deciding when to zoom
-                        //zoom to layer
-                        app.zoomToLayer(layer);
-                        //TODO? is it possible after zooming to the defined features (which, as far our documented requirements go, will be just one)
-                        //it's still not visible? if so, need a callback handler after zooming
-                        //with visibleAtMapScale check, like below
-                    }
-                    //TODO Ruth would prefer not to see these at all;
-                    //particularly when a bunch of layers are loaded at once. Maybe best to put this in the all-resolved?
-                    if (!layer.visibleAtMapScale) {
-                        topic.publish('growler/growl', {
-                            title: '',
-                            message: layerDef.name + ' loaded, but is not visible at the current map scale.',
-                            level: 'warning',
-                            timeout: 3000
-                        });
-                    } else {
-                        topic.publish('growler/growl', layerDef.name + ' loaded.');
-                    }
-                    deferred.resolve(layer);
-
-                }, function (error) {
-                    topic.publish('viewer/handleError', {
-                        source: 'LayerLoadMixin.addLayer',
-                        error: error
-                    });
-                }).catch(function (error) {
-                    topic.publish('viewer/handleError', {
-                        source: 'LayerLoadMixin.addLayer',
-                        error: error
-                    });
-                });
-
-            }); //end on-load
-
+                self._onLayerLoad(layer, layerDef, deferred); 
+            });
+            
             //add the layer to the map
-            app.map.addLayer(layer);
+            this.map.addLayer(layer);
 
             return deferred;
+        },
+
+        _onLayerLoad: function (layer, layerDef, deferred) {
+            var self = this;
+            if (layerDef.loaded) { //if it has a loaded observable, assign it to true. (It always does when it's a layerDef defined by our system)
+                layerDef.loaded(true);
+            }
+            //I don't know why we need to make this separate esriRequest, but the layer won't show up in layerControl
+            //unless we do. We don't do anything with the response. It's cribbed from DnD plug in, DroppedItem.js.
+            esriRequest({
+                url: layerDef.url,
+                content: {
+                    f: 'json'
+                },
+                handleAs: 'json',
+                callbackParamName: 'callback'
+            }).then(function () {
+                //copy extended properties from our database and append to the sublayers
+                //this relies on our JS being in perfect sync with what's actually being served!
+                //we don't need this next block
+                if (layerDef.layers) {
+                    for (var i = 0; i < layerDef.layers.length; i++) {
+                        //response.layers[i].layerName = layerDef.layers[i].layerName;
+                        layer.layerInfos[i].layerName = layerDef.layers[i].layerName;
+                    }
+                }
+                if (layerDef.layerName) {
+                    layer.layerName = layerDef.layerName;
+                }
+                //todo: put this in config? Or have some default options if not in config?
+                var layerControlInfo = {
+                    controlOptions: {
+                        expanded: false,
+                        metadataUrl: true,
+                        //includeUnspecifiedLayers: true, //TODO: if this is included, the service doesn't load properly for some reason, and no layers show up.
+                        swipe: true,
+                        noMenu: false,
+                        noZoom: false,
+                        mappkgDL: true,
+                        allowRemove: true,
+                        //layerGroup: layerDef.layerGroup,
+                        //TODO: documentation on this is really confusing, neither of these work
+                        //menu: {
+                        //    dynamic: {
+                        //        label: 'Wny does this not show up?',
+                        //        topic: 'remove',
+                        //        iconClass: 'fa fa-info fa-fw'
+                        //    }
+                        //},
+                        //TODO: I don't think the following actually does anything. See subLayerMenu, below
+                        menu: [
+                            {
+                                label: 'Open Attribute Table',
+                                topic: 'openAttributeTable',
+                                iconClass: 'fa fa-table fa-fw'
+                            }
+                        ],
+                        //Note: the following is what's documented on the CMV site, but doesn't work, 
+                        //see below for the correct way discovered via trial-and-error
+                        // gives all dynamic layers the subLayerMenu items
+                        //subLayerMenu: {
+                        //    dynamic: [{
+                        //        label: 'Query Layer...',
+                        //        iconClass: 'fa fa-search fa-fw',
+                        //        topic: 'queryLayer'
+                        //    }, {
+                        //        label: 'Open Attribute Table',
+                        //        topic: 'openTable',
+                        //        iconClass: 'fa fa-table fa-fw'
+                        //    }]
+                        //},
+                        //TODO finish working on menus
+                        subLayerMenu: [
+                            //{
+                            //    label: 'Query Layer...',
+                            //    iconClass: 'fa fa-search fa-fw',
+                            //    topic: 'queryLayer'
+                            //},
+                            {
+                                label: 'Open Attribute Table',
+                                topic: 'layerLoader/openAttributeTable',
+                                iconClass: 'fa fa-table fa-fw'
+                            },
+                            {
+                                label: 'View Metadata',
+                                topic: 'viewMetadata',
+                                iconClass: 'fa fa-info-circle fa-fw'
+                            }]
+                    },
+                    layer: layer,
+                    title: layerDef.title,
+                    type: layerDef.type
+
+                };
+                topic.publish('layerControl/addLayerControls', [layerControlInfo]); //TODO the whole collection of layers to be added should be passed at once for layerGroup to do anything.
+                topic.publish('identify/addLayerInfos', [layerControlInfo]);
+                self.legendLayerInfos.push(layerControlInfo);
+
+                if (layer.getDefinitionExpression && layer.getDefinitionExpression()) { //TODO there might be some pre-defined layers with definition expressions assigned in map service. None yet, but if there are we need some other way to handle deciding when to zoom
+                    //zoom to layer
+                    self.zoomToLayer(layer);
+                    //TODO? is it possible after zooming to the defined features (which, as far our documented requirements go, will be just one)
+                    //it's still not visible? if so, need a callback handler after zooming
+                    //with visibleAtMapScale check, like below
+                }
+                //TODO Ruth would prefer not to see these at all;
+                //particularly when a bunch of layers are loaded at once. Maybe best to put this in the all-resolved?
+                if (!layer.visibleAtMapScale) {
+                    topic.publish('growler/growl', {
+                        title: '',
+                        message: layerDef.name + ' loaded, but is not visible at the current map scale.',
+                        level: 'warning',
+                        timeout: 3000
+                    });
+                } else {
+                    topic.publish('growler/growl', layerDef.name + ' loaded.');
+                }
+                deferred.resolve(layer);
+
+            }, function (error) {
+                topic.publish('viewer/handleError', {
+                    source: 'LayerLoadMixin.addLayer',
+                    error: error
+                });
+            }).catch(function (error) {
+                topic.publish('viewer/handleError', {
+                    source: 'LayerLoadMixin.addLayer',
+                    error: error
+                });
+            });
+
+        },
+
+        addLayerFromLayerDef: function (layerDef) {
+            if (!layerDef.layer) {
+                layerDef.layer = this.constructLayer(layerDef);
+                //layerDef.layer.layerDef = layerDef.layer; //bi-directional references
+            }
+            return this.addLayer(layerDef.layer); //TODO return statement not needed, just call to this.addLayer
         },
 
         //TODO: support adding draft projects to map for editing
@@ -510,14 +533,14 @@ define([
         },
 
         zoomToLayer: function (layer) {
-
+            var self = this;
             if (layer.getDefinitionExpression && layer.getDefinitionExpression()) {
                 //this.zoomToExtent([layer.fullExtent]); //unfortunately, this doesn't take definitionExpression into account
                 var q = new Query({
                     where: '1=1' //definitionExpression, if present doesn't need to be re-applied
                 });
                 layer.queryExtent(q, function (r) {
-                    app.zoomToExtent(r.extent);
+                    self.zoomToExtent(r.extent);
                 }, function (e) {
                     topic.publish('viewer/handleError', {
                         source: 'LayerLoadMixin.zoomToLayer',
@@ -525,7 +548,7 @@ define([
                     });
                 });
             } else {
-                app.zoomToExtent(layer.fullExtent);
+                this.zoomToExtent(layer.fullExtent);
             }
         },
 
@@ -601,7 +624,7 @@ define([
                 var layerClone = this.layers.slice(0);
                 layerClone.forEach(function (layer) {
                     if (layer.id !== 'Projects' && (layerConfig.includesProjects || layer.name !== 'Milestone Max Alternatives')) {
-                        this.widgets.layerControl._removeLayer(layer);
+                        topic.publish('layerControl/_removeLayer', layer);
                     }
                 }, this);
             }
@@ -683,7 +706,7 @@ define([
                 }
             }
 
-            return (zoomLevel ? app.map.centerAndZoom(point, zoomLevel) : app.map.centerAt(point));
+            return (zoomLevel ? this.map.centerAndZoom(point, zoomLevel) : this.map.centerAt(point));
         },
 
         convertPointToMgrs: function (point) {

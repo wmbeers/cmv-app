@@ -47,7 +47,9 @@
         'viewer/_SidebarMixin', // for mobile sidebar
 
         //'config/_customMixin'
-        'viewer/_LayerLoadMixin' // custom
+        'viewer/_LayerLoadMixin', // custom
+
+        'viewer/_SessionMixin'
 
     ], function (
         declare,
@@ -61,7 +63,8 @@
         // _WebMapMixin
 
         _SidebarMixin,
-        _LayerLoadMixin
+        _LayerLoadMixin,
+        _SessionMixin
         //_MyCustomMixin
 
     ) {
@@ -74,6 +77,8 @@
             // for the most part they are interchangeable, except _ConfigMixin
             // and _ControllerBase
             //
+            _SessionMixin,
+
             _LayerLoadMixin,
 
             // Mixin for Mobile Sidebar

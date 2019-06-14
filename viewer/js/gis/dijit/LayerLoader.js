@@ -41,10 +41,11 @@ define([
             saveMapDialog: null,
             //loadMapDialog: null,
             searchResultsDialog: null,
-            savedMaps: ko.observableArray(),
-            selectedMap: ko.observable(),
-            clearMapFirst: ko.observable(false),
-            includeProjects: ko.observable(false),
+            savedMaps: ko.observableArray(), // eslint-disable-line no-undef
+            selectedMap: ko.observable(), // eslint-disable-line no-undef
+            clearMapFirst: ko.observable(false), // eslint-disable-line no-undef
+            includeProjects: ko.observable(false), // eslint-disable-line no-undef
+            // eslint-disable-next-line no-undef 
             hasProjects: ko.observable(false), // non-computed, because fundamentally app.layers aren't observable, so computed doesn't know when to re-run. We set this when the save dialog loads
             loadSelectedMap: function () {
                 this.loadMap(this.selectedMap());
@@ -69,19 +70,19 @@ define([
                 this.inherited(arguments);
                 var self = this; //solves the problem of "this" meaning something different in onchange event handler
                 //computeds that refers to "self"/"this" have to be added here, not in root constructor
-                self.mapServiceSearchResults = ko.pureComputed(function () {
-                    return ko.utils.arrayFilter(self.searchResults(), function (x) {
+                self.mapServiceSearchResults = ko.pureComputed(function () { // eslint-disable-line no-undef
+                    return ko.utils.arrayFilter(self.searchResults(), function (x) { // eslint-disable-line no-undef
                         return x.type === 'category' && x.layerDefs && x.layerDefs.length > 0;
                     });
                 });
 
-                self.featureLayerSearchResults = ko.pureComputed(function () {
-                    return ko.utils.arrayFilter(self.searchResults(), function (x) {
+                self.featureLayerSearchResults = ko.pureComputed(function () { // eslint-disable-line no-undef
+                    return ko.utils.arrayFilter(self.searchResults(), function (x) { // eslint-disable-line no-undef
                         return x.type === 'feature';
                     });
                 });
 
-                self.searchResultsCount = ko.pureComputed(function () {
+                self.searchResultsCount = ko.pureComputed(function () { // eslint-disable-line no-undef
                     if (self.mapServiceSearchResults().length === 0 && self.featureLayerSearchResults().length === 0) {
                         return 'No results found';
                     }
@@ -151,9 +152,9 @@ define([
                 //    debugger;
                 //});
 
-                ko.applyBindings(this, dom.byId('layerLoaderSideBarKO'));
-                ko.applyBindings(this, dom.byId('loadMapDialog'));
-                ko.applyBindings(this, dom.byId('saveMapDialog'));
+                ko.applyBindings(this, dom.byId('layerLoaderSideBarKO')); // eslint-disable-line no-undef
+                ko.applyBindings(this, dom.byId('loadMapDialog')); // eslint-disable-line no-undef
+                ko.applyBindings(this, dom.byId('saveMapDialog')); // eslint-disable-line no-undef
             },
             handleSearchKeyDown: function (event) {
                 if (event.keyCode === 13) {
@@ -167,10 +168,8 @@ define([
             },
             addProject: function () {
                 //TODO: first a quick DWR call to check if user can see it (valid project, if draft then only show if user has draft access, etc.)
-                //either do that here or in addProjectToMap function 
-                app.addProjectToMap(
-                    this.projectAltId.value
-                );
+                //either do that here or in addProjectToMap function
+                topic.publish('layerLoader/addProjectToMap', this.projectAltId.value);
             },
             getSavedMap: function (mapName) {
                 var savedMap = this.savedMaps().find(function (sm) {
@@ -223,7 +222,7 @@ define([
             _saveMap: function (savedMap) {
                 //get layers
                 savedMap.layers = app.getLayerConfig();
-                savedMap.extent = app.map.extent;
+                savedMap.extent = this.map.extent;
                 savedMap.includesProjects = this.hasProjects() && this.includeProjects();
                 if (this.hasProjects() && !this.includeProjects()) {
                     //filter projects out of the map
@@ -327,15 +326,18 @@ define([
                     var root = this; // eslint-disable-line consistent-this
 
                     layerDef.loadLayer = function () {
-                        var layer = app.constructLayer(layerDef);
-                        return app.addLayer(layer);
+                        //var layer = app.constructLayer(layerDef);
+                        //return app.addLayer(layer);
+
+                        topic.publish('layerLoader/addLayerFromLayerDef', this);
                     };
                     layerDef.removeLayer = function () {
                         if (layerDef.layer) {
-                            app.widgets.layerControl._removeLayer(layerDef.layer);
+                            //app.widgets.layerControl._removeLayer(layerDef.layer);
+                            topic.publish('layerControl/removeLayer', layerDef.layer);
                         }
                     };
-                    layerDef.scaleText = ko.computed(function () {
+                    layerDef.scaleText = ko.computed(function () { // eslint-disable-line no-undef
                         var scaleText = '';
                         var minScale = (layerDef.layer && layerDef.layer.minScale) ? layererDef.layer.minScale : (layerDef.minScale || 0);
                         var maxScale = (layerDef.layer && layerDef.layer.maxScale) ? layererDef.layer.maxScale : (layerDef.maxScale || 0);
@@ -355,17 +357,17 @@ define([
                         root.currentLayer(layerDef);
                     };
 
-                    layerDef.isSelected = ko.pureComputed(function () {
+                    layerDef.isSelected = ko.pureComputed(function () { // eslint-disable-line no-undef
                         return root.currentLayer() === layerDef;
                     });
-                    layerDef.loaded = ko.observable(false);
+                    layerDef.loaded = ko.observable(false); // eslint-disable-line no-undef
                 }, this);
 
                 //start the chain of post-processing categories to add knockout observables and functions
                 this._processCategories(this);
 
                 //apply knockout bindings
-                ko.applyBindings(this, dom.byId('layerLoaderDialog'));
+                ko.applyBindings(this, dom.byId('layerLoaderDialog')); // eslint-disable-line no-undef
 
                 //bindings appear to muck this up and set it to the last one
                 this.currentCategory(this.categories[0]);
@@ -378,7 +380,7 @@ define([
                 });
 
                 //apply knockout bindings to search results
-                ko.applyBindings(this, dom.byId('searchResultsDialog'));
+                ko.applyBindings(this, dom.byId('searchResultsDialog')); // eslint-disable-line no-undef
 
             },
             //Post-process categories to cross-reference layers and knockoutify
@@ -400,12 +402,12 @@ define([
                         category.allLayerDefs = [];
 
                         category.loadCategory = function () {
-                            app.addCategory(category);
+                            topic.publish('layerLoader/addCategory', category);
                             root.layerBrowserDialog.hide();
                         };
 
                         category.loadCategoryRecursive = function () {
-                            app.addCategory(category, true);
+                            topic.publish('layerLoader/addCategory', category, true);
                             root.layerBrowserDialog.hide();
                         };
 
@@ -414,7 +416,7 @@ define([
                             root.currentLayer(category.layerDefs.length > 0 ? category.layerDefs[0] : null);
                         };
 
-                        category.isSelected = ko.pureComputed(function () {
+                        category.isSelected = ko.pureComputed(function () { // eslint-disable-line no-undef
                             return root.currentCategory() === category;
                         });
 
@@ -425,8 +427,9 @@ define([
                                     url: category.serviceURL,
                                     name: category.name
                                 };
-                                var mapServiceLayer = app.constructLayer(categoryLayerDef);
-                                app.addLayer(mapServiceLayer);
+                                topic.publish('layerLoader/addLayerFromLayerDef', categoryLayerDef);
+                                //var mapServiceLayer = app.constructLayer(categoryLayerDef);
+                                //app.addLayer(mapServiceLayer);
                                 root.layerBrowserDialog.hide();
                                 root.searchResultsDialog.hide();
                             } else {
@@ -444,10 +447,10 @@ define([
 
                 processCategories(this);
             },
-            currentCategory: ko.observable(null),
-            currentLayer: ko.observable(null),
-            searchResults: ko.observableArray(),
-            searchResultsError: ko.observable(null),
-            showDetails: ko.observable(true)
+            currentCategory: ko.observable(null), // eslint-disable-line no-undef
+            currentLayer: ko.observable(null), // eslint-disable-line no-undef
+            searchResults: ko.observableArray(), // eslint-disable-line no-undef
+            searchResultsError: ko.observable(null), // eslint-disable-line no-undef
+            showDetails: ko.observable(true) // eslint-disable-line no-undef
         });
     });

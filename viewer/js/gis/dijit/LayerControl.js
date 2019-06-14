@@ -136,6 +136,9 @@ define([
             this._addLayerControlsHandler = topic.subscribe('layerControl/addLayerControls', lang.hitch(this, function (layerInfos) {
                 this._addLayerControls(layerInfos);
             }));
+            this._removeLayerHandler = topic.subscribe('layerControl/removeLayer', lang.hitch(this, function (layer) {
+                this._removeLayer(layer);
+            }));
         },
         _addLayerControls: function (layerInfos) {
             // load only the modules we need
@@ -521,6 +524,7 @@ define([
             this.map.removeLayer(layer);
 
             //remove from the app layers collection
+            //TODO: figure out a way to do this without relying on global reference to app
             for (i = 0; i < app.layers.length; i++) {
                 if (app.layers[i] === layer) {
                     app.layers.splice(i, 1);
