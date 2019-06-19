@@ -6,7 +6,8 @@ define([
     'dojo/topic',
     'dojo/Deferred',
     'dojo/promise/all',
-    './js/config/projects.js',
+    './js/config/projects.js', //TODO put in app.js paths?
+    //'./js/config/layerLoader.js', //TODO put in app.js paths?
     'esri/map',
     'esri/layers/ArcGISDynamicMapServiceLayer',
     'esri/layers/FeatureLayer',
@@ -21,7 +22,7 @@ define([
     'esri/geometry/Extent',
     'esri/renderers/SimpleRenderer',
     'esri/geometry/coordinateFormatter',
-    'esri/geometry/webMercatorUtils'//,
+    'esri/geometry/webMercatorUtils'
     //note: 'jquery' // we don't need jquery, just an example of how to reference it
 ], function (
     declare,
@@ -32,6 +33,7 @@ define([
     Deferred,
     all,
     projects,
+    //layerConfig,
     Map,
     ArcGISDynamicMapServiceLayer,
     FeatureLayer,
@@ -46,7 +48,7 @@ define([
     Extent,
     SimpleRenderer,
     coordinateFormatter,
-    webMercatorUtils//,
+    webMercatorUtils
     //jquery //we don't need jquery
 ) {
 
@@ -56,7 +58,9 @@ define([
             topic.subscribe('layerControl/openAttributeTable', lang.hitch(this, 'openAttributeTable'));
             topic.subscribe('layerLoader/addProjectToMap', lang.hitch(this, 'addProjectToMap'));
             topic.subscribe('layerLoader/addLayerFromLayerDef', lang.hitch(this, 'addLayerFromLayerDef'));
-            topic.subscribe('layerLoader/addCategory', lang.hitch(this, 'addCategory'));
+            topic.subscribe('layerLoader/addLayerFromCategoryDef', lang.hitch(this, 'addLayerFromCategoryDef'));
+            topic.subscribe('layerLoader/saveMap', lang.hitch(this, 'saveMap'));
+            topic.subscribe('layerLoader/loadMap', lang.hitch(this, 'loadMap'));
 
             //load the coordinateFormatter
             coordinateFormatter.load();
@@ -112,6 +116,12 @@ define([
             topic.publish('attributesTable/addTable', tableOptions);
         },
 
+        getService: function (serviceId) {
+            return this.widgets.layerLoader.allCategories.find(function (c) {
+                return c.serviceId === serviceId;
+            });
+        },
+
         // Get a layer definition by numeric id (relates back to objectid of t_rest_services_mxd), the 
         getLayerDef: function (sdeLayerNameOrUrl) {
             var categories = this.widgets.layerLoader.categories;
@@ -158,6 +168,14 @@ define([
 
             return null; //just to shut up eslint
         },
+        //Tests if a layer (either feature or dynamic) is already loaded in the map (exists in this.layers)
+        //based on the URL and definitionExpression
+        findLayerInMap: function (layerDef, definitionExpression) {
+            return this.layers.find(function (l) {
+                return l.url === layerDef.url && (l.getDefinitionExpression == null || l.getDefinitionExpression() === definitionExpression)
+            });
+        },
+
         // Construct a layer based on a layerDef; layerDef might just be the ID of a layerDef contained in the config, 
         // a layer name, or a URL
         constructLayer: function (layerDef, definitionExpression, includeDefinitionExpressionInTitle, renderer) {
@@ -171,28 +189,24 @@ define([
                 }
             }
 
-            //test if it's already in the map by url and definitionExpression
-            if (array.some(this.layers, function (l) {
-                // eslint-disable-next-line no-eq-null, eqeqeq
-                if (l.url === layerDef.url && (l.getDefinitionExpression == null || l.getDefinitionExpression() === definitionExpression)) {
-                    //assign reference
-                    layer = l;
-                    //Make it visible
-                    l.setVisibility(true); // use this method rather than .visible property to keep LayerControl in sync
-                    //rezoom--user might have panned/zoomed elsewhere, but are requesting to go back
-                    this.zoomToLayer(l);
-                    //Warn if not visible at current scale
-                    if (!l.visibleAtMapScale) {
-                        topic.publish('growler/growl', {
-                            title: '',
-                            message: layerDef.name + ' is already loaded in the map, but is not visible at the current map scale.',
-                            level: 'warning'
-                        });
-                    }
-                    return true; //shortcuts the array.some call to stop looping through layers
+            if (layerDef.type && layerDef.type === 'featureLayer') {
+                //from saved map, use the layerId property to find it in the layers collection
+                layerDef = this.getLayerDef(layerDef.layerId);
+                if (!layerDef) {
+                    return null; //error has already been handled in getLayerDef
                 }
-                return false; //not really necessary, but prevents a consistent-return eslint error
-            }, this)) {
+            }
+
+            if (layerDef.type && layerDef.type === 'restService') {
+                //from saved map, use the layerId property (which is actually the serviceId) to find it
+                layerDef = this.getService(layerDef.layerId);
+            }
+
+            //See if the layer is already in the map; if so nothing to do, just return a reference to it
+            layer = this.findLayerInMap(layerDef, definitionExpression);
+            if (layer) {
+                //set a temporary tag to make sure it doesn't get re-added, that breaks things
+                layer.alreadyInMap = true;
                 return layer;
             }
 
@@ -226,7 +240,7 @@ define([
 
             //definitionExpression only applies to a featureLayer
             //but we can support it for projects loaded via dynamic map service, applying it to all feature layers in the service
-            layerDef.title = layerDef.name;
+            layerDef.title = layerDef.name || layerDef.displayName;
             if (definitionExpression) {
                 if (layerDef.type === 'dynamic') {
                     //TODO see https://developers.arcgis.com/javascript/3/jsapi/arcgisdynamicmapservicelayer-amd.html#setlayerdefinitions
@@ -294,6 +308,29 @@ define([
             var deferred = new Deferred(),
                 layerDef = layer.layerDef,
                 self = this; 
+
+            if (layer.alreadyInMap) {
+                //set it construct layer, means it was already found in the map
+                //Make it visible
+                layer.setVisibility(true); // use this method rather than .visible property to keep LayerControl in sync
+                //rezoom--user might have panned/zoomed elsewhere, but are requesting to go back
+                this.zoomToLayer(layer);
+                //Warn if not visible at current scale
+                if (!layer.visibleAtMapScale) {
+                    topic.publish('growler/growl', {
+                        title: '',
+                        message: layerDef.name + ' is already loaded in the map, but is not visible at the current map scale.',
+                        level: 'warning'
+                    });
+                }
+                //remove the temporary tag
+                delete (layer.alreadyInMap);
+                //todo maybe this needs to be set with timeout so it gets resolved before the return?
+                deferred.resolve(layer);
+
+                return deferred;
+
+            }
 
             //Note: _MapMixin adds layers to the layers control with unshift, e.g.:
             //layers.unshift(l)
@@ -457,6 +494,13 @@ define([
             return this.addLayer(layerDef.layer); //TODO return statement not needed, just call to this.addLayer
         },
 
+        addLayerFromCategoryDef: function (categoryDef) {
+            if (!categoryDef.layer) {
+                categoryDef.layer = this.constructLayer(categoryDef);
+            }
+            return this.addLayer(categoryDef.layer);
+        },
+
         //TODO: support adding draft projects to map for editing
         addProjectToMap: function (projectAltId) {
             var self = this; //so we don't lose track buried down in callbacks
@@ -532,6 +576,61 @@ define([
             return deferred;
         },
 
+        //gets the layer config/projects and saves to the referenced map. 
+        //subscribed to topic layerLoader/saveMap
+        saveMap: function (savedMap) {
+            //get layers, excluding opeerationalLayers
+            savedMap.layers = this.getLayerConfig();
+            savedMap.extent = this.map.extent;
+            try {
+                SavedMapDAO.saveMap(savedMap, {
+                    callback: function (savedMapId) {
+                        savedMap.id = savedMapId;
+                    },
+                    errorHandler: function (message, exception) {
+                        topic.publish('viewer/handleError', {
+                        source: 'LayerLoadMixin.saveMap',
+                        error: "Error message is: " + message + " - Error Details: " + dwr.util.toDescriptiveString(exception, 2)
+                    });
+                    }
+                });
+            } catch (exception) {
+                console.log(exception);
+            }
+
+            topic.publish('growler/growl', 'Saved ' + savedMap.layers.length + ' layers to ' + savedMap.name);
+        },
+
+        loadMap: function (savedMapId, clearMapFirst) {
+            var self = this; //DWR callback loses scope of this
+            
+            //load from server
+            SavedMapDAO.getBeanById(savedMapId, {
+                callback: function (savedMap) {
+                    if (savedMap) {
+                        self._loadMap(savedMap, clearMapFirst);
+                    } else {
+                        topic.publish('viewer/handleError', {
+                            source: 'LayerLoadMixin.loadMap',
+                            error: 'Invalid Map ID (' + savedMapId + ')'
+                        });
+                    }
+                },
+                errorHandler: function (message, exception) {
+                    topic.publish('viewer/handleError', {
+                        source: 'LayerLoadMixin.loadMap',
+                        error: "Error message is: " + message + " - Error Details: " + dwr.util.toDescriptiveString(exception, 2)
+                    });
+                }
+            });
+        },
+        _loadMap: function(savedMap, clearMapFirst) {
+            if (savedMap) {
+                this.loadLayerConfig(savedMap.layers, clearMapFirst).then(function (layers) {
+                    topic.publish('growler/growl', 'Loaded ' + layers.length + ' layers for ' + savedMap.mapName);
+                });
+            }
+        },
         zoomToLayer: function (layer) {
             var self = this;
             if (layer.getDefinitionExpression && layer.getDefinitionExpression()) {
@@ -594,19 +693,25 @@ define([
             }
         },
 
+        //gets all layers added to the map by the user (excluding the project layers defined as operationalLayers)
+        getUserLayers: function() {
+            return array.filter(this.layers, function (layer) {
+                return this.config.operationalLayers.find(x => x.options.id === layer.id) == null;
+            }, this);
+        },
+
         getLayerConfig: function () {
-            return array.map(this.layers, function (layer) {
+            return array.map(this.getUserLayers(), function (layer) {
                 var x = {
                     url: layer.url, //TODO this will change if we support uploaded shapefiles
-                    name: layer._name || layer.id,
+                    name: layer.layerDef ? layer.layerDef.name : (layer._name || layer.id),
                     visible: layer.visible,
-                    id: layer.id,
+                    layerId: layer.layerDef ? (layer.layerDef.type === 'dynamic' ? layer.layerDef.serviceId : layer.layerDef.id) : layer.id,
                     type: layer.layerDef ? layer.layerDef.type : null,
                     definitionExpression: layer.getDefinitionExpression ? layer.getDefinitionExpression() : null
                 };
+                //todo handle project layers
                 if (layer.layerDef) {
-                    x.id = layer.layerDef.id; //for layers loaded via layerLoader--doesn't apply to map services
-                    x.name = layer.layerDef.name;
                     if (layer.name === 'Milestone Max Alternatives') {
                         //special case for our project/alt layers
                         x.projectAltId = layer.layerDef.projectAltId;
@@ -623,7 +728,8 @@ define([
                 //clone the layers array first, otherwise forEach bails
                 var layerClone = this.layers.slice(0);
                 layerClone.forEach(function (layer) {
-                    if (layer.id !== 'Projects' && (layerConfig.includesProjects || layer.name !== 'Milestone Max Alternatives')) {
+                    if (layer.id !== 'previouslyReviewedProjectsLayer'
+                            && layer.id !== 'currentlyInReviewProjects') {
                         topic.publish('layerControl/_removeLayer', layer);
                     }
                 }, this);
@@ -633,10 +739,7 @@ define([
             for (var i = layerConfig.length - 1; i >= 0; i--) {
                 var layer = null,
                     layerConfigItem = layerConfig[i];
-                //ignore projects (for now) TODO still important to know the order
-                if (layerConfigItem.id === 'Projects') {
-                    //don't load these for now--hard-coded in viewer.js
-                } else if (layerConfigItem.name === 'Milestone Max Alternatives' && layerConfigItem.projectAltId) {
+                if (layerConfigItem.name === 'Milestone Max Alternatives' && layerConfigItem.projectAltId) {
                     promises.push(this.addProjectToMap(layerConfigItem.projectAltId));
                     if (layerConfigItem.visible === false) {
                         layer.visible = false;

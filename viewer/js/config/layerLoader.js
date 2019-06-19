@@ -3,33 +3,32 @@ define({
 "map":true,
 "categories":[
   {
-    "type": "category",
     "id": 100,
     "name": "Social and Economic",
     "categories": [
       {
-        "type": "category",
         "id": 110,
         "name": "Aesthetic Effects",
         "categories": [],
         "layerIds": [],
-        "serviceURL": null
+        "url": null,
+        "serviceId": 0,
+        "type": "category"
       },
       {
-        "type": "category",
         "id": 120,
         "name": "Economic",
         "categories": [],
         "layerIds": [],
-        "serviceURL": null
+        "url": null,
+        "serviceId": 0,
+        "type": "category"
       },
       {
-        "type": "category",
         "id": 130,
         "name": "Land Use Changes",
         "categories": [
           {
-            "type": "category",
             "id": 1305,
             "name": "Land Use",
             "categories": [],
@@ -39,35 +38,39 @@ define({
               1692,
               1693
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Land_Use/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Land_Use/MapServer",
+            "serviceId": 78,
+            "type": "dynamic"
           }
         ],
         "layerIds": [],
-        "serviceURL": null
+        "url": null,
+        "serviceId": 0,
+        "type": "category"
       },
       {
-        "type": "category",
         "id": 140,
         "name": "Mobility",
         "categories": [],
         "layerIds": [],
-        "serviceURL": null
+        "url": null,
+        "serviceId": 0,
+        "type": "category"
       },
       {
-        "type": "category",
         "id": 150,
         "name": "Relocation Potential",
         "categories": [],
         "layerIds": [],
-        "serviceURL": null
+        "url": null,
+        "serviceId": 0,
+        "type": "category"
       },
       {
-        "type": "category",
         "id": 160,
         "name": "Demographics",
         "categories": [
           {
-            "type": "category",
             "id": 165,
             "name": "Census Boundaries",
             "categories": [],
@@ -83,15 +86,15 @@ define({
               2351,
               2352
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/CENBLK/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/CENBLK/MapServer",
+            "serviceId": 85,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 161,
             "name": "Densities",
             "categories": [
               {
-                "type": "category",
                 "id": 1611,
                 "name": "2000 Demographic Densities",
                 "categories": [],
@@ -104,10 +107,11 @@ define({
                   137,
                   138
                 ],
-                "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_2000/MapServer"
+                "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_2000/MapServer",
+                "serviceId": 16,
+                "type": "dynamic"
               },
               {
-                "type": "category",
                 "id": 1612,
                 "name": "2010 Demographic Densities",
                 "categories": [],
@@ -119,10 +123,11 @@ define({
                   145,
                   146
                 ],
-                "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_2010/MapServer"
+                "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_2010/MapServer",
+                "serviceId": 17,
+                "type": "dynamic"
               },
               {
-                "type": "category",
                 "id": 1613,
                 "name": "2017 Demographic Densities",
                 "categories": [],
@@ -135,19 +140,21 @@ define({
                   152,
                   153
                 ],
-                "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_2017/MapServer"
+                "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_2017/MapServer",
+                "serviceId": 18,
+                "type": "dynamic"
               }
             ],
             "layerIds": [],
-            "serviceURL": null
+            "url": null,
+            "serviceId": 0,
+            "type": "category"
           },
           {
-            "type": "category",
             "id": 162,
             "name": "Distribution",
             "categories": [
               {
-                "type": "category",
                 "id": 1621,
                 "name": "2000 Demographic Distribution",
                 "categories": [],
@@ -165,10 +172,11 @@ define({
                   187,
                   188
                 ],
-                "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2000/MapServer"
+                "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2000/MapServer",
+                "serviceId": 19,
+                "type": "dynamic"
               },
               {
-                "type": "category",
                 "id": 1622,
                 "name": "2010 Demographic Distribution",
                 "categories": [],
@@ -185,10 +193,11 @@ define({
                   167,
                   168
                 ],
-                "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2010/MapServer"
+                "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2010/MapServer",
+                "serviceId": 20,
+                "type": "dynamic"
               },
               {
-                "type": "category",
                 "id": 1623,
                 "name": "2017 Demographic Distribution",
                 "categories": [],
@@ -206,19 +215,21 @@ define({
                   175,
                   176
                 ],
-                "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2017/MapServer"
+                "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2017/MapServer",
+                "serviceId": 21,
+                "type": "dynamic"
               }
             ],
             "layerIds": [],
-            "serviceURL": null
+            "url": null,
+            "serviceId": 0,
+            "type": "category"
           },
           {
-            "type": "category",
             "id": 163,
             "name": "Percentages",
             "categories": [
               {
-                "type": "category",
                 "id": 1631,
                 "name": "2000 Demographic Percentages",
                 "categories": [],
@@ -232,10 +243,11 @@ define({
                   199,
                   200
                 ],
-                "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_2000/MapServer"
+                "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_2000/MapServer",
+                "serviceId": 22,
+                "type": "dynamic"
               },
               {
-                "type": "category",
                 "id": 1632,
                 "name": "2010 Demographic Percentages",
                 "categories": [],
@@ -248,10 +260,11 @@ define({
                   207,
                   208
                 ],
-                "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_2010/MapServer"
+                "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_2010/MapServer",
+                "serviceId": 23,
+                "type": "dynamic"
               },
               {
-                "type": "category",
                 "id": 1633,
                 "name": "2017 Demographic Percentages",
                 "categories": [],
@@ -265,19 +278,21 @@ define({
                   204,
                   205
                 ],
-                "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_2017/MapServer"
+                "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_2017/MapServer",
+                "serviceId": 24,
+                "type": "dynamic"
               }
             ],
             "layerIds": [],
-            "serviceURL": null
+            "url": null,
+            "serviceId": 0,
+            "type": "category"
           },
           {
-            "type": "category",
             "id": 164,
             "name": "Vehicles",
             "categories": [
               {
-                "type": "category",
                 "id": 1641,
                 "name": "2000 Demographic Vehicles",
                 "categories": [],
@@ -289,10 +304,11 @@ define({
                   215,
                   222
                 ],
-                "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_2000/MapServer"
+                "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_2000/MapServer",
+                "serviceId": 25,
+                "type": "dynamic"
               },
               {
-                "type": "category",
                 "id": 1642,
                 "name": "2010 Demographic Vehicles",
                 "categories": [],
@@ -304,10 +320,11 @@ define({
                   227,
                   228
                 ],
-                "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_2010/MapServer"
+                "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_2010/MapServer",
+                "serviceId": 26,
+                "type": "dynamic"
               },
               {
-                "type": "category",
                 "id": 1643,
                 "name": "2017 Demographic Vehicles",
                 "categories": [],
@@ -319,26 +336,32 @@ define({
                   220,
                   221
                 ],
-                "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_2017/MapServer"
+                "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_2017/MapServer",
+                "serviceId": 27,
+                "type": "dynamic"
               }
             ],
             "layerIds": [],
-            "serviceURL": null
+            "url": null,
+            "serviceId": 0,
+            "type": "category"
           }
         ],
         "layerIds": [],
-        "serviceURL": null
+        "url": null,
+        "serviceId": 0,
+        "type": "category"
       },
       {
-        "type": "category",
         "id": 170,
         "name": "Safety/Emergency Response",
         "categories": [],
         "layerIds": [],
-        "serviceURL": null
+        "url": null,
+        "serviceId": 0,
+        "type": "category"
       },
       {
-        "type": "category",
         "id": 180,
         "name": "Farmland",
         "categories": [],
@@ -348,15 +371,15 @@ define({
           298,
           299
         ],
-        "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Farmlands/MapServer"
+        "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Farmlands/MapServer",
+        "serviceId": 32,
+        "type": "dynamic"
       },
       {
-        "type": "category",
         "id": 190,
         "name": "Community and SCE",
         "categories": [
           {
-            "type": "category",
             "id": 191,
             "name": "Community Points",
             "categories": [],
@@ -383,10 +406,11 @@ define({
               973,
               974
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Points/MapServer",
+            "serviceId": 35,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 192,
             "name": "Community Polygons",
             "categories": [],
@@ -402,10 +426,11 @@ define({
               330,
               331
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Polys/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Polys/MapServer",
+            "serviceId": 38,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 194,
             "name": "Community",
             "categories": [],
@@ -417,57 +442,65 @@ define({
               1023,
               1024
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Community/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Community/MapServer",
+            "serviceId": 53,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 193,
             "name": "Zillow Test",
             "categories": [],
             "layerIds": [],
-            "serviceURL": ""
+            "url": "",
+            "serviceId": 43,
+            "type": "category"
           }
         ],
         "layerIds": [],
-        "serviceURL": null
+        "url": null,
+        "serviceId": 0,
+        "type": "category"
       },
       {
-        "type": "category",
         "id": 200,
         "name": "Land Use",
         "categories": [],
         "layerIds": [],
-        "serviceURL": null
+        "url": null,
+        "serviceId": 0,
+        "type": "category"
       },
       {
-        "type": "category",
         "id": 210,
         "name": "Landcover",
         "categories": [],
         "layerIds": [],
-        "serviceURL": null
+        "url": null,
+        "serviceId": 0,
+        "type": "category"
       },
       {
-        "type": "category",
         "id": 220,
         "name": "Parcels",
         "categories": [],
         "layerIds": [
           2344
         ],
-        "serviceURL": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Parcels/MapServer"
+        "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Parcels/MapServer",
+        "serviceId": 84,
+        "type": "dynamic"
       }
     ],
     "layerIds": [],
-    "serviceURL": null
+    "url": null,
+    "serviceId": 0,
+    "type": "category"
   },
   {
-    "type": "category",
     "id": 300,
     "name": "Cultural and Tribal",
     "categories": [
       {
-        "type": "category",
         "id": 310,
         "name": "Archaeological and Historical Resources",
         "categories": [],
@@ -483,10 +516,11 @@ define({
           720,
           721
         ],
-        "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer"
+        "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Historic_Resources/MapServer",
+        "serviceId": 12,
+        "type": "dynamic"
       },
       {
-        "type": "category",
         "id": 311,
         "name": "Archaeological and Historical Resources - Secure",
         "categories": [],
@@ -494,15 +528,15 @@ define({
           722,
           723
         ],
-        "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Historic_Resources_S/MapServer"
+        "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Historic_Resources_S/MapServer",
+        "serviceId": 41,
+        "type": "dynamic"
       },
       {
-        "type": "category",
         "id": 320,
         "name": "Recreation Areas",
         "categories": [
           {
-            "type": "category",
             "id": 3201,
             "name": "Trails",
             "categories": [],
@@ -515,22 +549,26 @@ define({
               265,
               266
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Trails/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Trails/MapServer",
+            "serviceId": 29,
+            "type": "dynamic"
           }
         ],
         "layerIds": [],
-        "serviceURL": null
+        "url": null,
+        "serviceId": 0,
+        "type": "category"
       },
       {
-        "type": "category",
         "id": 330,
         "name": "Section 4(f) Potential",
         "categories": [],
         "layerIds": [],
-        "serviceURL": null
+        "url": null,
+        "serviceId": 0,
+        "type": "category"
       },
       {
-        "type": "category",
         "id": 340,
         "name": "Year Built",
         "categories": [],
@@ -540,32 +578,34 @@ define({
           1003,
           1004
         ],
-        "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Year_Built/MapServer"
+        "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Year_Built/MapServer",
+        "serviceId": 48,
+        "type": "dynamic"
       }
     ],
     "layerIds": [],
-    "serviceURL": null
+    "url": null,
+    "serviceId": 0,
+    "type": "category"
   },
   {
-    "type": "category",
     "id": 500,
     "name": "Natural",
     "categories": [
       {
-        "type": "category",
         "id": 510,
         "name": "Coastal and Marine",
         "categories": [
           {
-            "type": "category",
             "id": 511,
             "name": "Essential Fish Habitat",
             "categories": [],
             "layerIds": [],
-            "serviceURL": null
+            "url": null,
+            "serviceId": 0,
+            "type": "category"
           },
           {
-            "type": "category",
             "id": 512,
             "name": "Coastal Barrier Resources",
             "categories": [],
@@ -584,19 +624,21 @@ define({
               710,
               711
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Coastal/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Coastal/MapServer",
+            "serviceId": 39,
+            "type": "dynamic"
           }
         ],
         "layerIds": [],
-        "serviceURL": null
+        "url": null,
+        "serviceId": 0,
+        "type": "category"
       },
       {
-        "type": "category",
         "id": 520,
         "name": "Floodplains",
         "categories": [
           {
-            "type": "category",
             "id": 5205,
             "name": "Flood Zones",
             "categories": [],
@@ -607,14 +649,17 @@ define({
               978,
               979
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM/MapServer",
+            "serviceId": 44,
+            "type": "dynamic"
           }
         ],
         "layerIds": [],
-        "serviceURL": null
+        "url": null,
+        "serviceId": 0,
+        "type": "category"
       },
       {
-        "type": "category",
         "id": 525,
         "name": "Geology",
         "categories": [],
@@ -625,25 +670,26 @@ define({
           1660,
           1661
         ],
-        "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Geology/MapServer"
+        "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Geology/MapServer",
+        "serviceId": 81,
+        "type": "dynamic"
       },
       {
-        "type": "category",
         "id": 526,
         "name": "Soils",
         "categories": [],
         "layerIds": [
           990
         ],
-        "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Soils/MapServer"
+        "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Soils/MapServer",
+        "serviceId": 46,
+        "type": "dynamic"
       },
       {
-        "type": "category",
         "id": 530,
         "name": "Water Quality and Quantity",
         "categories": [
           {
-            "type": "category",
             "id": 5306,
             "name": "Aquifers",
             "categories": [],
@@ -658,10 +704,11 @@ define({
               1669,
               1670
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Aquifers/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Aquifers/MapServer",
+            "serviceId": 82,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 5307,
             "name": "Elevation",
             "categories": [],
@@ -673,10 +720,11 @@ define({
               995,
               999
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Topo/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Topo/MapServer",
+            "serviceId": 49,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 5301,
             "name": "National Hydrography Dataset (24K)",
             "categories": [],
@@ -685,10 +733,11 @@ define({
               1305,
               1306
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/NHD24/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/NHD24/MapServer",
+            "serviceId": 56,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 5302,
             "name": "National Hydrography Dataset (100K)",
             "categories": [],
@@ -697,10 +746,11 @@ define({
               1308,
               1309
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/NHD100/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/NHD100/MapServer",
+            "serviceId": 57,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 5308,
             "name": "Permits",
             "categories": [],
@@ -712,10 +762,11 @@ define({
               1008,
               1009
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SWFWMD_Permits/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SWFWMD_Permits/MapServer",
+            "serviceId": 50,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 5303,
             "name": "Springs",
             "categories": [],
@@ -727,10 +778,11 @@ define({
               1688,
               1689
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Springs/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Springs/MapServer",
+            "serviceId": 77,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 5305,
             "name": "Wells",
             "categories": [],
@@ -741,19 +793,21 @@ define({
               1302,
               1303
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Wells/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Wells/MapServer",
+            "serviceId": 55,
+            "type": "dynamic"
           }
         ],
         "layerIds": [],
-        "serviceURL": null
+        "url": null,
+        "serviceId": 0,
+        "type": "category"
       },
       {
-        "type": "category",
         "id": 540,
         "name": "Wetlands and Surface Waters",
         "categories": [
           {
-            "type": "category",
             "id": 545,
             "name": "Mitigation",
             "categories": [],
@@ -762,39 +816,43 @@ define({
               992,
               993
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Mitigation/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Mitigation/MapServer",
+            "serviceId": 47,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 546,
             "name": "National Wetlands Inventory Areas USFWS",
             "categories": [],
             "layerIds": [
               1314
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/NWI_usfws/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/NWI_usfws/MapServer",
+            "serviceId": 80,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 547,
             "name": "National Wetlands Inventory Areas V2",
             "categories": [],
             "layerIds": [
               1671
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/NWI_axl/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/NWI_axl/MapServer",
+            "serviceId": 79,
+            "type": "dynamic"
           }
         ],
         "layerIds": [],
-        "serviceURL": null
+        "url": null,
+        "serviceId": 0,
+        "type": "category"
       },
       {
-        "type": "category",
         "id": 550,
         "name": "Wildlife and Habitat",
         "categories": [
           {
-            "type": "category",
             "id": 551,
             "name": "ARC Lands",
             "categories": [],
@@ -806,10 +864,11 @@ define({
               132,
               133
             ],
-            "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/ARC_Lands/MapServer"
+            "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/ARC_Lands/MapServer",
+            "serviceId": 15,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 552,
             "name": "Conservation",
             "categories": [],
@@ -829,10 +888,11 @@ define({
               698,
               699
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer",
+            "serviceId": 40,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 553,
             "name": "CLIP V4",
             "categories": [],
@@ -853,10 +913,11 @@ define({
               249,
               254
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/CLIP_V4/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/CLIP_V4/MapServer",
+            "serviceId": 28,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 556,
             "name": "Consultation Areas",
             "categories": [],
@@ -887,10 +948,11 @@ define({
               684,
               685
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Consultation_Areas/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Consultation_Areas/MapServer",
+            "serviceId": 37,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 555,
             "name": "Critical Habitat",
             "categories": [],
@@ -919,10 +981,11 @@ define({
               659,
               660
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Critical_Habitat/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Critical_Habitat/MapServer",
+            "serviceId": 36,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 557,
             "name": "FNAI Likely Element Occurrence (Secure)",
             "categories": [],
@@ -931,10 +994,11 @@ define({
               1017,
               1018
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/FNAI_FLEO_S/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/FNAI_FLEO_S/MapServer",
+            "serviceId": 52,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 554,
             "name": "Green Links",
             "categories": [],
@@ -942,10 +1006,11 @@ define({
               310,
               311
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/GreenLinks/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/GreenLinks/MapServer",
+            "serviceId": 34,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 559,
             "name": "Habitat",
             "categories": [],
@@ -965,10 +1030,11 @@ define({
               1863,
               1864
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat/MapServer",
+            "serviceId": 83,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 558,
             "name": "Species Occurrence",
             "categories": [],
@@ -992,36 +1058,40 @@ define({
               1297,
               1298
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Species_Occurrence/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Species_Occurrence/MapServer",
+            "serviceId": 54,
+            "type": "dynamic"
           }
         ],
         "layerIds": [],
-        "serviceURL": null
+        "url": null,
+        "serviceId": 0,
+        "type": "category"
       }
     ],
     "layerIds": [],
-    "serviceURL": null
+    "url": null,
+    "serviceId": 0,
+    "type": "category"
   },
   {
-    "type": "category",
     "id": 700,
     "name": "Physical",
     "categories": [
       {
-        "type": "category",
         "id": 710,
         "name": "Air Quality",
         "categories": [],
         "layerIds": [],
-        "serviceURL": null
+        "url": null,
+        "serviceId": 0,
+        "type": "category"
       },
       {
-        "type": "category",
         "id": 720,
         "name": "Contamination",
         "categories": [
           {
-            "type": "category",
             "id": 721,
             "name": "Waste",
             "categories": [],
@@ -1054,10 +1124,11 @@ define({
               26,
               27
             ],
-            "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer"
+            "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste/MapServer",
+            "serviceId": 4,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 722,
             "name": "Waste Groups Test",
             "categories": [],
@@ -1090,19 +1161,21 @@ define({
               2983,
               2984
             ],
-            "serviceURL": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer"
+            "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer",
+            "serviceId": 86,
+            "type": "dynamic"
           }
         ],
         "layerIds": [],
-        "serviceURL": null
+        "url": null,
+        "serviceId": 0,
+        "type": "category"
       },
       {
-        "type": "category",
         "id": 730,
         "name": "Infrastructure",
         "categories": [
           {
-            "type": "category",
             "id": 731,
             "name": "RCI",
             "categories": [],
@@ -1129,10 +1202,11 @@ define({
               286,
               287
             ],
-            "serviceURL": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI/MapServer"
+            "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI/MapServer",
+            "serviceId": 30,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 7311,
             "name": "RCI Basemap",
             "categories": [],
@@ -1141,10 +1215,11 @@ define({
               1011,
               1012
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI_Base/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI_Base/MapServer",
+            "serviceId": 51,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 733,
             "name": "Roadways",
             "categories": [],
@@ -1157,10 +1232,11 @@ define({
               308,
               309
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/WorkProgram/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/WorkProgram/MapServer",
+            "serviceId": 33,
+            "type": "dynamic"
           },
           {
-            "type": "category",
             "id": 732,
             "name": "Utilities",
             "categories": [],
@@ -1174,39 +1250,45 @@ define({
               293,
               294
             ],
-            "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer"
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer",
+            "serviceId": 31,
+            "type": "dynamic"
           }
         ],
         "layerIds": [],
-        "serviceURL": null
+        "url": null,
+        "serviceId": 0,
+        "type": "category"
       },
       {
-        "type": "category",
         "id": 740,
         "name": "Navigation",
         "categories": [],
         "layerIds": [],
-        "serviceURL": null
+        "url": null,
+        "serviceId": 0,
+        "type": "category"
       },
       {
-        "type": "category",
         "id": 750,
         "name": "Noise",
         "categories": [],
         "layerIds": [],
-        "serviceURL": null
+        "url": null,
+        "serviceId": 0,
+        "type": "category"
       }
     ],
     "layerIds": [],
-    "serviceURL": null
+    "url": null,
+    "serviceId": 0,
+    "type": "category"
   },
   {
-    "type": "category",
     "id": 900,
     "name": "Special Designations",
     "categories": [
       {
-        "type": "category",
         "id": 950,
         "name": "Water Resource Designations",
         "categories": [],
@@ -1216,11 +1298,15 @@ define({
           1312,
           1313
         ],
-        "serviceURL": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Water_Resource_Designations/MapServer"
+        "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Water_Resource_Designations/MapServer",
+        "serviceId": 58,
+        "type": "dynamic"
       }
     ],
     "layerIds": [],
-    "serviceURL": null
+    "url": null,
+    "serviceId": 0,
+    "type": "category"
   }
 ],
 "layerDefs":[

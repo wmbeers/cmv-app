@@ -15,6 +15,8 @@ define([
     'dojo/dom-construct',
     'dojo/topic',
     'dojo/store/Memory',
+    'dojo/Deferred',
+
     'dojo/text!./LayerLoader/templates/layerLoaderSidebar.html', // template for the widget in left panel, and some dialogs
     'dojo/text!./LayerLoader/templates/layerLoaderDialog.html', // template for the resource layer broswer dialog
     'dojo/text!./LayerLoader/templates/searchResultsDialog.html', // template for the layer search results
@@ -28,12 +30,12 @@ define([
     'xstyle/css!./LayerLoader/css/layerLoader.css'
 ],
     function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog, ConfirmDialog, ready, popup, request, lang, array, on, dom, domConstruct, 
-        topic, Memory, layerLoaderSidebarTemplate, layerLoaderDialogTemplate, searchResultsDialogTemplate
+        topic, Memory, Deferred, layerLoaderSidebarTemplate, layerLoaderDialogTemplate, searchResultsDialogTemplate
 ) {
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
             widgetsInTemplate: true,
             templateString: layerLoaderSidebarTemplate,
-            topicID: 'layerLoader',            
+            topicID: 'layerLoader',
             baseClass: 'layerLoader',
             map: this.map,
             //broader scope needed for these dialogs to support closing when option is selected, so declaring these here
@@ -42,13 +44,24 @@ define([
             //loadMapDialog: null,
             searchResultsDialog: null,
             savedMaps: ko.observableArray(), // eslint-disable-line no-undef
+            //represents the map selected in the loadMapDialog; not the same as the currentMap until the user clicks the open button
             selectedMap: ko.observable(), // eslint-disable-line no-undef
+            //represents the map currently loaded; will just be the stub of id and mapName
+            currentMap: ko.observable(), // eslint-disable-line no-undef
             clearMapFirst: ko.observable(false), // eslint-disable-line no-undef
             includeProjects: ko.observable(false), // eslint-disable-line no-undef
-            // eslint-disable-next-line no-undef 
-            hasProjects: ko.observable(false), // non-computed, because fundamentally app.layers aren't observable, so computed doesn't know when to re-run. We set this when the save dialog loads
+            allCategories: [], // originally used in searching; now that that's been pushed to SOLR, not needed for that, but useful for loading saved maps with references to dynamic map services
+            getCategoryByServiceId: function (serviceId) {
+                return ko.utils.arrayFirst(this.allCategories, function (c) {
+                    return c.id === serviceId;
+                });
+            },
             loadSelectedMap: function () {
-                this.loadMap(this.selectedMap());
+                if (this.selectedMap()) {
+                    this.currentMap(this.selectedMap());
+                    topic.publish('layerLoader/loadMap', this.selectedMap().id);
+                    this.loadMapDialog.hide();
+                }
             },
             deleteSelectedMap: function () {
                 if (!this.selectedMap()) {
@@ -64,7 +77,7 @@ define([
                 this.savedMaps.remove(this.selectedMap());
                 this.selectedMap(null);
                 //TODO save to database/user config, not LSO
-                localStorage.setItem('savedMaps', JSON.stringify(this.savedMaps()));
+                //localStorage.setItem('savedMaps', JSON.stringify(this.savedMaps()));
             },
             postCreate: function () {
                 this.inherited(arguments);
@@ -72,7 +85,7 @@ define([
                 //computeds that refers to "self"/"this" have to be added here, not in root constructor
                 self.mapServiceSearchResults = ko.pureComputed(function () { // eslint-disable-line no-undef
                     return ko.utils.arrayFilter(self.searchResults(), function (x) { // eslint-disable-line no-undef
-                        return x.type === 'category' && x.layerDefs && x.layerDefs.length > 0;
+                        return x.type === 'dynamic' && x.layerDefs && x.layerDefs.length > 0;
                     });
                 });
 
@@ -106,10 +119,7 @@ define([
                 var self = this; //solves the problem of "this" meaning something different in onchange event handler
                 this.inherited(arguments);
 
-                //TODO save to database/user config, not LSO
-                var savedMaps = localStorage.getItem('savedMaps') || '[]';
-                savedMaps = JSON.parse(savedMaps);
-
+                //configure knockout
                 //ko->dojo--load the data
                 this.savedMaps.subscribe(function () {
                     var format = new Memory({
@@ -131,8 +141,6 @@ define([
                     }
                 });
 
-                this.savedMaps(savedMaps);
-
                 //dojo->ko--handle change
                 on(this.savedMapsDijit, 'change', function () {
                     //argument passed to this function is going to just be the name, stupidly
@@ -152,18 +160,43 @@ define([
                 //    debugger;
                 //});
 
-                ko.applyBindings(this, dom.byId('layerLoaderSideBarKO')); // eslint-disable-line no-undef
-                ko.applyBindings(this, dom.byId('loadMapDialog')); // eslint-disable-line no-undef
-                ko.applyBindings(this, dom.byId('saveMapDialog')); // eslint-disable-line no-undef
+                this._loadSavedMaps().then(function () {
+                    ko.applyBindings(self, dom.byId('layerLoaderSideBarKO')); // eslint-disable-line no-undef
+                    ko.applyBindings(self, dom.byId('loadMapDialog')); // eslint-disable-line no-undef
+                    ko.applyBindings(self, dom.byId('saveMapDialog')); // eslint-disable-line no-undef
+                }); //note: we need to have this deferred and then apply bindings or the open button does nothing.
             },
+            _loadSavedMaps: function () {
+                var deferred = new Deferred();
+                var self = this;
+                SavedMapDAO.getSavedMapNamesForCurrentUser({
+                    callback: function (savedMapNames) {
+                        self.savedMaps(savedMapNames);
+                        deferred.resolve();
+                    },
+                    errorHandler: function (message, exception) {
+                        alert("Error message is: " + message + " - Error Details: " + dwr.util.toDescriptiveString(exception, 2));
+                        deferred.resolve();
+                    }
+                });
+                return deferred;
+            },
+            //listen for the enter key when user is typing in the search field
             handleSearchKeyDown: function (event) {
                 if (event.keyCode === 13) {
                     this.handleSearch();
                 }
             },
+            //listen for the enter key when user is typing in the Project field
             handleProjectKeyUp: function (event) {
                 if (event.keyCode === 13) {
                     this.addProject();
+                }
+            },
+            //listen for the enter key when user is typing in the map name field of the save dialog
+            handleMapNameKeyUp: function (event) {
+                if (event.keyCode === 13) {
+                    this.saveMap();
                 }
             },
             addProject: function () {
@@ -171,28 +204,25 @@ define([
                 //either do that here or in addProjectToMap function
                 topic.publish('layerLoader/addProjectToMap', this.projectAltId.value);
             },
+            //gets a saved map by its name
             getSavedMap: function (mapName) {
                 var savedMap = this.savedMaps().find(function (sm) {
-                    return sm.name === mapName;
+                    return sm.mapName === mapName;
                 });
                 return savedMap;
             },
             showLoadMapDialog: function () {
-                //todo apply bindings here?
                 this.loadMapDialog.show();
             },
             showSaveMapDialog: function () {
-                this.hasProjects(false);
-                if (app.layers.find(
-                    function (l) {
-                        return l.name === 'Milestone Max Alternatives';
-                    }
-                )) {
-                    this.hasProjects(true);
+                if (this.currentMap()) {
+                    this.mapName.set('value', this.currentMap().mapName);
+                } else {
+                    this.mapName.set('value', '');
                 }
                 this.saveMapDialog.show();
             },
-            //First step in saving a map, check to see if we already have a map with the given name
+            //First step in saving a map, check to see if we already have a map with the given name (other than the current map)
             //and prompt to overwrite if so. If it's a new map name, construct the basic saved map object, 
             //or if user confirms overwrite, load the existing map, then pass the new/existing map to _saveMap
             saveMap: function () {
@@ -201,52 +231,32 @@ define([
                     return;
                 }
                 var savedMap = this.getSavedMap(mapName);
+                //if null, it's a new map
                 if (!savedMap) {
                     //construct new
                     savedMap = {
-                        name: mapName,
-                        id: mapName //dojo needs this. Eventually we'll have our own server-provided ids
+                        mapName: mapName,
+                        id: 0 //flags it as new, will get updated in callback from server; has to be a non-null value or Dojo memory borks
                     };
-                    this.savedMaps.push(savedMap);
+                    this.savedMaps.push(savedMap); //remember it locally
                     this._saveMap(savedMap);
-                } else {
+                } else if (this.currentMap() == null || this.currentMap().id !== savedMap.id) {
                     //confirm overwrite
                     new ConfirmDialog({
                         title: 'Confirm Overwrite',
                         content: 'Are you sure you want to overwrite the ' + mapName + ' map?',
                         onExecute: lang.hitch(this, '_saveMap', savedMap)
                     }).show();
+                } else {
+                    //just update existing map
+                    this._saveMap(savedMap);
                 }
             },
             //callback from saveMap function, gets the layer config/projects and saves to the referenced map.
             _saveMap: function (savedMap) {
-                //get layers
-                savedMap.layers = app.getLayerConfig();
-                savedMap.extent = this.map.extent;
-                savedMap.includesProjects = this.hasProjects() && this.includeProjects();
-                if (this.hasProjects() && !this.includeProjects()) {
-                    //filter projects out of the map
-                    savedMap.layers = array.filter(savedMap.layers, function (l) {
-                        return l.name === 'Milestone Max Alternatives';
-                    });
-                }
-                //TODO save to database/user config, not LSO
-                localStorage.setItem('savedMaps', JSON.stringify(this.savedMaps()));
+                this.currentMap(savedMap);
                 this.saveMapDialog.hide();
-                topic.publish('growler/growl', 'Saved ' + savedMap.layers.length + ' layers to ' + savedMap.name);
-            },
-            loadMap: function (savedMap) {
-                //is it an object or just the name of a map?
-                if (typeof savedMap === 'string') {
-                    savedMap = this.getSavedMap(savedMap);
-                }
-
-                if (savedMap) {
-                    app.loadLayerConfig(savedMap.layers, this.clearMapFirst()).then(function (layers) {
-                        topic.publish('growler/growl', 'Loaded ' + layers.length + ' layers for ' + savedMap.name);
-                    });
-                }
-                this.loadMapDialog.hide();
+                topic.publish('layerLoader/saveMap', savedMap);
             },
             handleSearch: function () {
                 var self = this; //solves the problem of "this" meaning something different in request callback handler
@@ -277,18 +287,18 @@ define([
                     var searchResults = [];
                     resultDocs.forEach(function (doc) {
                         if (doc.type === 'category') {
-                            var cat = array.filter(self.allCategories, function (c) {
+                            var cat = self.allCategories.find(function (c) {
                                 return ('c' + c.id) === doc.id;
                             });
-                            if (cat && cat.length > 0) {
-                                searchResults.push(cat[0]);
+                            if (cat) {
+                                searchResults.push(cat);
                             }
                         } else {
-                            var lyr = array.filter(self.layerDefs, function (ld) {
+                            var lyr = self.layerDefs.find(function (ld) {
                                 return ('l' + ld.id) === doc.id;
                             });
-                            if (lyr && lyr.length > 0) {
-                                searchResults.push(lyr[0]);
+                            if (lyr) {
+                                searchResults.push(lyr);
                             }
                         }
                     });
@@ -326,14 +336,10 @@ define([
                     var root = this; // eslint-disable-line consistent-this
 
                     layerDef.loadLayer = function () {
-                        //var layer = app.constructLayer(layerDef);
-                        //return app.addLayer(layer);
-
                         topic.publish('layerLoader/addLayerFromLayerDef', this);
                     };
                     layerDef.removeLayer = function () {
                         if (layerDef.layer) {
-                            //app.widgets.layerControl._removeLayer(layerDef.layer);
                             topic.publish('layerControl/removeLayer', layerDef.layer);
                         }
                     };
@@ -386,8 +392,7 @@ define([
             //Post-process categories to cross-reference layers and knockoutify
             _processCategories: function () {
                 var root = this; // eslint-disable-line consistent-this
-                root.allCategories = []; // used when searching
-
+                
                 //internal function to add layerDefs and functions; recursively called, starting
                 //with the root model (this LayerLoader), then each root-level category, then subcategories
                 function processCategories (parent) {
@@ -421,21 +426,9 @@ define([
                         });
 
                         category.loadService = function () {
-                            if (category.serviceURL) {
-                                var categoryLayerDef = {
-                                    type: 'dynamic',
-                                    url: category.serviceURL,
-                                    name: category.name
-                                };
-                                topic.publish('layerLoader/addLayerFromLayerDef', categoryLayerDef);
-                                //var mapServiceLayer = app.constructLayer(categoryLayerDef);
-                                //app.addLayer(mapServiceLayer);
-                                root.layerBrowserDialog.hide();
-                                root.searchResultsDialog.hide();
-                            } else {
-                                //this shouldn't happen
-                                //TODO
-                            }
+                            topic.publish('layerLoader/addLayerFromCategoryDef', category);
+                            root.layerBrowserDialog.hide();
+                            root.searchResultsDialog.hide();
                         };
 
                         if (category.categories && category.categories.length > 0) {

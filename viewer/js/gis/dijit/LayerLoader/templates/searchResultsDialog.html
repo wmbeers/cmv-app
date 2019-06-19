@@ -10,7 +10,7 @@
             <span data-bind="text: searchResultsCount"></span> <label><input type="checkbox" data-bind="checked: showDetails" /> Show Details</label>
         </div>
         <div data-bind="foreach: searchResults">
-            <!--ko if: type=="category" && layerDefs && layerDefs.length > 0 -->
+            <!--ko if: type=="dynamic" && layerDefs && layerDefs.length > 0 -->
                 <hr />
                 <strong data-bind="text: name"></strong> (Category)
                 <div data-bind="visible: $root.showDetails">
@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="buttonContainer buttonContainerRight">
-                    <!-- ko if: serviceURL && serviceURL !== '' -->
+                    <!-- ko if: url && url !== '' -->
                     <div data-bind="click: loadService" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus-square fa-fw'">
                         Add to Map
                     </div>
