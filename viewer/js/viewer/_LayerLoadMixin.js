@@ -172,7 +172,8 @@ define([
         //based on the URL and definitionExpression
         findLayerInMap: function (layerDef, definitionExpression) {
             return this.layers.find(function (l) {
-                return l.url === layerDef.url && (l.getDefinitionExpression == null || l.getDefinitionExpression() === definitionExpression)
+                //eslint-disable-next-line no-eq-null, eqeqeq
+                return l.url === layerDef.url && (l.getDefinitionExpression == null || l.getDefinitionExpression() === definitionExpression);
             });
         },
 
@@ -583,19 +584,23 @@ define([
             savedMap.layers = this.getLayerConfig();
             savedMap.extent = this.map.extent;
             try {
+                //eslint-disable-next-line no-undef
                 SavedMapDAO.saveMap(savedMap, {
                     callback: function (savedMapId) {
                         savedMap.id = savedMapId;
                     },
                     errorHandler: function (message, exception) {
                         topic.publish('viewer/handleError', {
-                        source: 'LayerLoadMixin.saveMap',
-                        error: "Error message is: " + message + " - Error Details: " + dwr.util.toDescriptiveString(exception, 2)
-                    });
+                            source: 'LayerLoadMixin.saveMap',
+                            error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                        });
                     }
                 });
             } catch (exception) {
-                console.log(exception);
+                topic.publish('viser/handleError', {
+                    source: 'LayerLoadMixin.saveMap',
+                    error: exception
+                });
             }
 
             topic.publish('growler/growl', 'Saved ' + savedMap.layers.length + ' layers to ' + savedMap.name);
@@ -605,6 +610,7 @@ define([
             var self = this; //DWR callback loses scope of this
             
             //load from server
+            //eslint-disable-next-line no-undef
             SavedMapDAO.getBeanById(savedMapId, {
                 callback: function (savedMap) {
                     if (savedMap) {
@@ -619,12 +625,12 @@ define([
                 errorHandler: function (message, exception) {
                     topic.publish('viewer/handleError', {
                         source: 'LayerLoadMixin.loadMap',
-                        error: "Error message is: " + message + " - Error Details: " + dwr.util.toDescriptiveString(exception, 2)
+                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
                     });
                 }
             });
         },
-        _loadMap: function(savedMap, clearMapFirst) {
+        _loadMap: function (savedMap, clearMapFirst) {
             if (savedMap) {
                 this.loadLayerConfig(savedMap.layers, clearMapFirst).then(function (layers) {
                     topic.publish('growler/growl', 'Loaded ' + layers.length + ' layers for ' + savedMap.mapName);
@@ -655,13 +661,15 @@ define([
             var map = this.map;
             if (extent.spatialReference === map.spatialReference) {
                 map.setExtent(extent, true);
-            } else if (esriConfig.defaults.geometryService) {
+            } else if (esriConfig.defaults.geometryService) { //eslint-disable-line no-undef
+
                 //project the extent--most often we're getting an extent from one of our layers,
                 //and the extent will be in Albers; need to project it to the Map's World Mercator coordinate system
                 var params = lang.mixin(new ProjectParameters(), {
                     geometries: [extent],
                     outSR: map.spatialReference
                 });
+                //eslint-disable-next-line no-undef
                 esriConfig.defaults.geometryService.project(params,
                     function (r) {
                         //we could just call setExtent with r[0], but if the extent is of a point, 
@@ -694,9 +702,9 @@ define([
         },
 
         //gets all layers added to the map by the user (excluding the project layers defined as operationalLayers)
-        getUserLayers: function() {
+        getUserLayers: function () {
             return array.filter(this.layers, function (layer) {
-                return this.config.operationalLayers.find(x => x.options.id === layer.id) == null;
+                return this.config.operationalLayers.find((x) => x.options.id === layer.id) === null;
             }, this);
         },
 
@@ -728,8 +736,8 @@ define([
                 //clone the layers array first, otherwise forEach bails
                 var layerClone = this.layers.slice(0);
                 layerClone.forEach(function (layer) {
-                    if (layer.id !== 'previouslyReviewedProjectsLayer'
-                            && layer.id !== 'currentlyInReviewProjects') {
+                    if (layer.id !== 'previouslyReviewedProjectsLayer' &&
+                            layer.id !== 'currentlyInReviewProjects') {
                         topic.publish('layerControl/_removeLayer', layer);
                     }
                 }, this);

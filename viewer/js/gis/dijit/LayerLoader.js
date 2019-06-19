@@ -52,6 +52,7 @@ define([
             includeProjects: ko.observable(false), // eslint-disable-line no-undef
             allCategories: [], // originally used in searching; now that that's been pushed to SOLR, not needed for that, but useful for loading saved maps with references to dynamic map services
             getCategoryByServiceId: function (serviceId) {
+                //eslint-disable-next-line no-undef
                 return ko.utils.arrayFirst(this.allCategories, function (c) {
                     return c.id === serviceId;
                 });
@@ -169,13 +170,17 @@ define([
             _loadSavedMaps: function () {
                 var deferred = new Deferred();
                 var self = this;
+                //eslint-disable-next-line no-undef
                 SavedMapDAO.getSavedMapNamesForCurrentUser({
                     callback: function (savedMapNames) {
                         self.savedMaps(savedMapNames);
                         deferred.resolve();
                     },
                     errorHandler: function (message, exception) {
-                        alert("Error message is: " + message + " - Error Details: " + dwr.util.toDescriptiveString(exception, 2));
+                        topic.publish('viewer/handleError', {
+                            source: 'LayerLoader._loadSavedMaps',
+                            error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                        });
                         deferred.resolve();
                     }
                 });
@@ -240,7 +245,7 @@ define([
                     };
                     this.savedMaps.push(savedMap); //remember it locally
                     this._saveMap(savedMap);
-                } else if (this.currentMap() == null || this.currentMap().id !== savedMap.id) {
+                } else if (this.currentMap() === null || this.currentMap().id !== savedMap.id) {
                     //confirm overwrite
                     new ConfirmDialog({
                         title: 'Confirm Overwrite',
@@ -345,8 +350,8 @@ define([
                     };
                     layerDef.scaleText = ko.computed(function () { // eslint-disable-line no-undef
                         var scaleText = '';
-                        var minScale = (layerDef.layer && layerDef.layer.minScale) ? layererDef.layer.minScale : (layerDef.minScale || 0);
-                        var maxScale = (layerDef.layer && layerDef.layer.maxScale) ? layererDef.layer.maxScale : (layerDef.maxScale || 0);
+                        var minScale = (layerDef.layer && layerDef.layer.minScale) ? layerDef.layer.minScale : (layerDef.minScale || 0);
+                        var maxScale = (layerDef.layer && layerDef.layer.maxScale) ? layerDef.layer.maxScale : (layerDef.maxScale || 0);
 
                         if (minScale > 0) {
                             if (maxScale > 0) {
