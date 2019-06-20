@@ -9,6 +9,8 @@ define([
     'dojo/dom',
     'dojo/topic',
     'dojo/request',
+    'dojo/request/iframe',
+    'jquery',
     'dojo/text!./templates/warnUserExpiringSoonDialog.html',
     'dojo/text!./templates/reLoginDialog.html'
 ], function (
@@ -22,26 +24,30 @@ define([
     dom,
     topic,
     request,
+    iframe,
+    jQuery,
     warnUserExpiringSoonDialogTemplate,
     reLoginDialogTemplate
 ) {
 
     return declare(null, {
-        lastActivityTime: new Date(), //when was the last time we noted any activity
-        lastPingTime: new Date(), //when was the last time we pinged the server to keep the server session alive
-        sessionStatus: 'unknown', //changes to active, expiring-soon or expired
-        warnUserExpiringSoonAt: 100, //TODO should be 120; doesn't need to be a variable, but for clarity, debugging and testing assigning here
-        secondsPerSession: 120, //TODO should be 9000. Note: it doesn't change, so could just be a static value, but for debugging and testing I'm using a variable here TODO: can use ETDMSession.getSessionDuration to get the real value
-        refreshDelaySeconds: 15, //how many seconds between calls to ETDMSession on the server; don't want to do it every tick
-        //activity: false, //set to true by user activity, gets set back to false after we reset everything; basically means "has there been activity since the last time we checked"
-
-        //timeout/interval IDs
-        updateSessionStatusInterval: null, //Doesn't ever get cleared in normal circumstances, but making it something that can be cleared for testing/debugging
+        //when was the last time we noted any activity
+        lastActivityTime: new Date(),
+        //when was the last time we pinged the server to keep the server session alive
+        lastPingTime: new Date(), 
+        //Status of the session, changes to active, expiring-soon or expired
+        sessionStatus: 'unknown', 
+        //Controls when to warn the user the session expires soon--
+        //when this many seconds are left in the session, popups up the dialog.
+        //Doesn't need to be a variable, but for clarity, debugging and testing assigning here 
+        warnUserExpiringSoonAt: 130,
+        //how many seconds does the server session live without interaction; usually 15, but varies by platform. Updated in startup.
+        secondsPerSession: 900, 
+        //how many seconds between calls to ETDMSession on the server; don't want to do it every tick
+        refreshDelaySeconds: 15,
 
         //how many seconds are left in the session
-        secondsToGo: ko.observable(-1), //doesn't need to be observable, and we don't really need it outside of the updateSessionStatus method, but for debugging I've promoted it to this scope
-
-        
+        secondsToGo: -1, //we don't really need it outside of the updateSessionStatus method, but for debugging I've promoted it to this scope
 
         //dialogs
         warnUserExpiringSoonDialog: new Dialog({
@@ -50,7 +56,6 @@ define([
             content: warnUserExpiringSoonDialogTemplate//,
             //style: 'width: 90%; height: 75%'
         }),
-
         reLoginDialog: new Dialog({
             id: 'reLoginDialog',
             title: 'Your Session Has Expired',
@@ -60,11 +65,17 @@ define([
         startup: function () {
             var self = this; //needed in event listeners
 
+            //unless we modify ReLogin to not call top.reLoginSuccess, there's no other way to do this
+            window.reLoginSuccess = function () {
+                self.sessionStatus = 'active';
+                self.lastActivityTime = new Date();
+                self.reLoginDialog.hide();
+                self.userNamePasswordVisible(false);
+            };
+
             //I would prefer not to use ko here, but I just can't get regular Dojo events right in a Mixin context; would have to convert this to a widget
             ko.applyBindings(this, dom.byId('warnUserExpiringSoonDialogTemplate')); // eslint-disable-line no-undef
             ko.applyBindings(this, dom.byId('reLoginDialogTemplate')); // eslint-disable-line no-undef
-            //for debugging session only
-            ko.applyBindings(this, dom.byId('sessionDebug'));
 
             //when user moves mouse, log that we've had some activity
             on(window, 'mousemove', function () {
@@ -72,8 +83,15 @@ define([
             });
             //TODO probably need keyUp, etc.
 
+            //sync up this applications session length with what's actually on the server
+            ETDMSession.getSessionDuration( //eslint-disable-line no-undef
+                function (sessionLength) {
+                    self.secondsPerSession = sessionLength;
+                }
+            );
+
             //Set up call to updateSessionStatus to be run every second
-            this.updateSessionStatusInterval = window.setInterval(function () {
+            window.setInterval(function () {
                 self.updateSessionStatus();
             }, 1000);
 
@@ -81,12 +99,35 @@ define([
             if (typeof (Storage) !== 'undefined') {
                 window.addEventListener('storage', function (e) {
                     if (e.key === 'resetTimeout') {
-                        console.log('resetTimeout from another window');
                         self.warnUserExpiringSoonDialog.hide();
                         self.lastActivityTime = new Date(); //todo: store as getTime? storing this way is easier to read when debugging...
                     }
                 });
             }
+            
+            //TODO: eventually our 408 and 403 pages will be cusotmized and we won't need to do this, but for now...
+            //hack-ity hack way of seeing if we got a 408 response when waiting too long to sign in, or if the server has restarted
+            var loginFormWrapper = dom.byId('loginFormWrapper');
+            on(loginFormWrapper, 'load', function () {
+                //look for HTTP Status 408
+                var iframeDocument = loginFormWrapper.contentDocument || loginFormWrapper.contentWindow.document;
+                var content = jQuery(iframeDocument);
+                var h = content.find('H1');
+                if (h && h.length > 0) {
+                    if (h.html().indexOf('HTTP Status 408') >= 0) {
+                        self.showLogin();
+                    }
+                    if (h.html().indexOf('Service Temporarily Unavailable') >= 0) {
+                        //even more hackity
+                        var p = content.find('P')[0];
+                        jQuery('<button type="button">Try Again</button>')
+                            .appendTo(p)
+                            .on('click', function () {
+                                self.showLogin();
+                            });
+                    }
+                }
+            });
         },
 
         //logs that activity has occurred in this window
@@ -102,11 +143,11 @@ define([
             var now = new Date(),
                 secondsSinceLastActivity = parseInt((now.getTime() - this.lastActivityTime.getTime()) / 1000, 10);
 
-            this.secondsToGo(this.secondsPerSession - secondsSinceLastActivity);
+            this.secondsToGo = this.secondsPerSession - secondsSinceLastActivity;
 
-            if (this.secondsToGo() <= 1) {
+            if (this.secondsToGo <= 1) {
                 this.sessionStatus = 'expired';
-            } else if (this.secondsToGo() <= this.warnUserExpiringSoonAt) {
+            } else if (this.secondsToGo <= this.warnUserExpiringSoonAt) {
                 this.sessionStatus = 'expiring-soon';
             } else {
                 this.sessionStatus = 'active';
@@ -118,8 +159,8 @@ define([
             // 3. we've hit our delay interval (the remainder of secondsToGo / refreshDelaySeconds is 0; e.g.every 15 seconds)
             //Then ping the server to keep the server session alive
             if (this.sessionStatus !== 'expired' && // 1
-                (this.lastPingTime == null || this.lastActivityTime > this.lastPingTime) && // 2
-                this.secondsToGo() % this.refreshDelaySeconds === 0) { // 3
+                this.lastActivityTime > this.lastPingTime && // 2
+                this.secondsToGo % this.refreshDelaySeconds === 0) { // 3
                 this.pingSession();
             }
 
@@ -150,23 +191,24 @@ define([
             var self = this; //"this" changes context in callback
 
             this.lastPingTime = new Date();
+
             //pings the server to keep the session alive
             try {
                 // eslint-disable-next-line no-undef
                 ETDMSession.getSessionID({ 
                     callback: function () {
                         //really nothing to do here
-                        //console.log(x);
                     },
                     errorHandler: function (e) {
-                        //console.log(e);
                         if (e === 'HTML reply from the server.') {
                             //this is the login prompt, means that the session died
                             self.sessionStatus = 'expired';
+                            self.promptRelogin();
                         } else if (e === 'Service Temporarily Unavailable') {
                             //shouldn't happen on production, but on dev/stage it probably means the server is in the process of restarting
                             //for our purposes, let's just treat it as session expired
                             self.sessionStatus = 'expired';
+                            self.promptRelogin();
                         } else {
                             topic.publish('viewer/handleError', {
                                 source: 'SessionMixin.pingSession DWR error handler',
@@ -181,12 +223,11 @@ define([
                     error: e
                 });
             }
-            },
+        },
 
         //Responds to the button-press on the "Keep Working" button in the warn-user-expiring-soon dialog, to hide the dialog. 
         //Also kind of redundantly calls setActivity, because mouse move will have already done that.
         keepWorking: function () {
-            console.log('keepWorking');
             this.setActivity();
             this.warnUserExpiringSoonDialog.hide();
         },
@@ -207,57 +248,11 @@ define([
 
         //simple observable to control what's shown on the session-expired dialog
         userNamePasswordVisible: ko.observable(false), //eslint-disable-line no-undef
-        //bindings for username and password
-        userName: ko.observable(), //eslint-disable-line no-undef
-        password: ko.observable(), //eslint-disable-line no-undef
 
+        //shows the iframe with ReLogin.do
         showLogin: function () {
-            this.userName(null);
-            this.password(null);
             this.userNamePasswordVisible(true);
-        },
-
-        //the response message we give to the user if something goes awry with their login attempt
-        loginResponseMessage: ko.observable(), //eslint-disable-line no-undef
-
-        //response to the Sign In button
-        login: function () {
-            var self = this;
-            try {
-                request.post('/est/j_security_check', {
-                    data: {
-                        j_username: this.userName(),
-                        j_password: this.password()
-                    },
-                    headers: {
-                        //'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-                        //maybe because referer isn't ReLogin.do?
-                        //or x-Requested-With: XMLHttpRequest is in this request, but not in the usual one
-                    }
-                }).then(
-                    function (response) {
-                        //a full page HTML comes back from this if invalid username/password
-                        //just look for 'Authentication failure. Invalid username / password combination'
-                        if (response.indexOf('Authentication failure. Invalid username / password combination') >= 0) {
-                            self.loginResponseMessage('Authentication failure. Invalid username / password combination');
-                        } else if (false) {
-
-                        }
-                        console.log("login response: " + response);
-                    },
-                    function (error) {
-                        if (error && error.response && error.response.status === 404) {
-                            //seems to happen when we log in successfully, but there's nothing to redirect to; but also happens when login fails but there's an existing session?
-                        }
-                        //if (error && error.indexOf('408') >= 0) {
-                        //request timed out; happens after server restarts for some reason
-                        //}   
-                        console.log("login error: " + error);
-                    }
-                );
-            } catch (e) {
-                console.log("login post error: " + e);
-            }
+            dom.byId('loginFormWrapper').src = '/est/security/ReLogin.do';
         },
 
         //Responds to the button-press on the "No, Log Off" button on the warn user expiring soon dialog and the "Exit" button on the session-expired dialog
@@ -267,5 +262,7 @@ define([
                 document.location = '/est/security/Logout.do';
             }
         }
+
+
     });
 });

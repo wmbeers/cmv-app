@@ -21,30 +21,7 @@
             Exit
         </div>
     </div>
-    <div data-bind="visible: userNamePasswordVisible()">
-        <label>Username</label>
-        <input id="userNameTextBox" type="text"
-               data-dojo-type="dijit/form/ValidationTextBox" 
-               data-dojo-props="name:'userName',trim:true,required:true,style:'width:100%;'"
-               data-bind="value: userName" />
-
-        <label>Password</label>
-        <input id="passwordTextBox" type="password"
-               data-dojo-type="dijit/form/ValidationTextBox" 
-               data-dojo-props="name:'password',required:true,style:'width:100%;'"
-               data-bind="value: password" />
-        <br />
-        <div data-dojo-type="dijit/form/Button"
-             data-dojo-props="iconClass:'fa fa-sign-in-alt fa-fw'"
-             data-bind="click: login">
-            Sign In
-        </div>
-
-        <div data-dojo-type="dijit/form/Button"
-             data-dojo-props="iconClass:'fa fa-sign-out-alt fa-fw'"
-             data-bind="click: logout">
-            Exit
-        </div>
-    </div>
+    
+    <iframe data-bind="visible: userNamePasswordVisible()" id="loginFormWrapper" frameBorder="0" seamless="seamless" style="height: 270px" src="js/viewer/templates/loading.html"></iframe>
 
 </div>
