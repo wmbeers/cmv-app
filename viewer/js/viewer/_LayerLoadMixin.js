@@ -704,7 +704,9 @@ define([
         //gets all layers added to the map by the user (excluding the project layers defined as operationalLayers)
         getUserLayers: function () {
             return array.filter(this.layers, function (layer) {
-                return this.config.operationalLayers.find((x) => x.options.id === layer.id) === null;
+                return this.config.operationalLayers.find(function (x) {
+                    return x.options.id === layer.id;
+                }) === null;
             }, this);
         },
 
