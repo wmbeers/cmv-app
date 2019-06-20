@@ -1,0 +1,109 @@
+<div id="layerLoaderDialog">
+    <script type="text/html" id="selectableItem">
+        <span class="selectableItem" data-bind="css: {selectedItem: isSelected()}, click: select">
+            <span data-bind="visible: isSelected" style="float: right">&gt;</span>
+            <span data-bind="html: name"></span>
+        </span>
+    </script>
+
+    <script type="text/html" id="categoryTemplate">
+        <li data-bind="css: {emptyCategory: layerDefs.length === 0 && categories.length === 0}">
+            <span data-bind="template: 'selectableItem'"></span>
+            <ul class="plain-list" data-bind="template: {foreach: categories, name: 'categoryTemplate'}"></ul>
+        </li>
+    </script>
+
+
+    <section>
+        <div class="layerLoaderColumn">
+            <ul class="plain-list unindented" data-bind="template: {foreach: categories, name: 'categoryTemplate'}"></ul>
+        </div>
+
+        <div class="layerLoaderColumn">
+            <!-- ko with: currentCategory -->
+                <div data-bind="visible: layerDefs && layerDefs.length > 0">
+                    <h4>Layers</h4>
+                    <ul class="plain-list unindented" data-bind="foreach: layerDefs">
+                        <li data-bind="template: 'selectableItem'">
+                        </li>
+                    </ul>
+                </div>
+
+                <div data-bind="visible: categories && categories.length > 0">
+                    <h4>Sub-topics</h4>
+                    <ul class="plain-list unindented" data-bind="template: {foreach: categories, name: 'selectableItem'}">
+                    </ul>
+                </div>
+
+                <div data-bind="visible: layerDefs.length === 0 && categories.length === 0" class="emptyCategory">
+                    Pardon our dust: no layers or sub-topics have been defined for this topic yet.
+                </div>
+
+                <div class="buttonContainer buttonContainerRight">
+                    <!-- ko if: url && url !== '' -->
+                    <div data-bind="click: loadService" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus-square fa-fw'">
+                        Add All to Map
+                    </div>
+                    <!-- /ko -->
+                    <!--this is just asking for trouble
+                    <!-- xko if: layerDefs && layerDefs.length > 0 
+                    <div data-bind="click: loadCategory" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus-square fa-fw'">
+                        Add Layers to Map Individually
+                    </div>
+                    <!-- /kox
+                    <div data-bind="visible: categories && categories.length > 0, click: loadCategoryRecursive">
+                        <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus-square fa-fw'">
+                            Add all to Map + Sub-topics
+                        </div>
+                    </div> -->
+                </div>
+                <div class="tip">
+                    <p data-bind="visible: url && url !== ''">
+                        Use the <strong>Add All to Map</strong> button to add all layers within a topic at once.
+                        <span data-bind="visible: layerDefs && layerDefs.length > 0">This will draw faster and generally perform better than adding each layer individually.</span>
+                    </p>
+                    <p data-bind="visible: layerDefs && layerDefs.length > 0">
+                        <!--this is just asking for trouble
+                        Use the <strong>Add Layers to Map Individually</strong> button to add all layers in this topic to the map as individual layers.
+                        -->
+                        If you would like to add layers individually, select a layer and click the <strong>Add Layer to Map</strong> button on the right.
+                        <span data-bind="visible: url && url !== ''">
+                            For multiple, dense layers, this option will draw slower but will enable you to change the order of the layers and allow for more detailed interaction within each layer.
+                        </span>
+                    </p>
+                </div>
+            <!-- /ko -->
+        </div>
+
+        <div class="layerLoaderColumn">
+            <!-- ko with: currentLayer -->
+                <h3 data-bind="text: longName || name"></h3>
+                <div data-bind="if: legendSymbols && legendSymbols.length > 0" style="margin-bottom: 1em">
+                    <label>Symbols: </label>
+                    <span data-bind="foreach: legendSymbols">
+                        <img data-bind="attr: {src: 'data:image/png;base64, ' + imageData, alt: label, title: label || ($parent.name + ' symbol')}" style="vertical-align: bottom" /> &nbsp;
+                    </span>
+                </div>
+                <label>Description</label>
+                <p data-bind="text: description"></p>
+                <label data-bind="text: scaleText"></label>
+                <p data-bind="if: layerName">
+                    <a data-bind="attr: {href: '/metadata/' + layerName + '.htm'}" target="_blank">View Complete Metadata</a>
+                </p>
+                <div class="buttonContainer buttonContainerRight">
+                    <div data-bind="visible: !loaded(), click: loadLayer">
+                        <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus-square fa-fw'">
+                            Add Layer to Map
+                        </div>
+                    </div>
+                    <div data-bind="visible: loaded(), click: removeLayer">
+                        <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-minus-square fa-fw'">
+                            Remove from Map
+                        </div>
+                    </div>
+                </div>
+            <!-- /ko -->
+        </div>
+    </section>
+
+</div>

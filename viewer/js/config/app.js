@@ -15,12 +15,15 @@
                 location: path + 'js/config'
             }, {
                 name: 'proj4js',
-                location: '//cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15'
+                location: '//cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15' //TODO copy locally and don't use CDN
             }, {
                 name: 'flag-icon-css',
-                location: '//cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.8.0'
+                location: '//cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.8.0' //TODO copy locally and don't use CDN
             }
-        ]
+        ], 
+        paths: {
+            jquery: 'https://code.jquery.com/jquery-3.3.1.slim.min' //TODO copy locally and don't use CDN
+        }
     };
 
     require(window.dojoConfig, [
@@ -34,14 +37,19 @@
         // or replace core mixins with your own
         'viewer/_ConfigMixin', // manage the Configuration
         'viewer/_LayoutMixin', // build and manage the Page Layout and User Interface
+        
+        
         'viewer/_MapMixin', // build and manage the Map
         'viewer/_WidgetsMixin', // build and manage the Widgets
 
         // 'viewer/_WebMapMixin' // for WebMaps
 
-        'viewer/_SidebarMixin' // for mobile sidebar
+        'viewer/_SidebarMixin', // for mobile sidebar
 
         //'config/_customMixin'
+        'viewer/_LayerLoadMixin', // custom
+
+        'viewer/_SessionMixin'
 
     ], function (
         declare,
@@ -54,7 +62,9 @@
 
         // _WebMapMixin
 
-        _SidebarMixin
+        _SidebarMixin,
+        _LayerLoadMixin,
+        _SessionMixin
         //_MyCustomMixin
 
     ) {
@@ -67,6 +77,9 @@
             // for the most part they are interchangeable, except _ConfigMixin
             // and _ControllerBase
             //
+            _SessionMixin,
+
+            _LayerLoadMixin,
 
             // Mixin for Mobile Sidebar
             _SidebarMixin,

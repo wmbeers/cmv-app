@@ -31,9 +31,9 @@ define({
                 sf311Incidents: 'San Francisco 311 Incidents'
             },
             titles: {
-                header: 'Configurable Map Viewer',
-                pageTitle: 'Configurable Map Viewer',
-                subHeader: 'make it your own'
+                header: 'Environmental Screening Tool',
+                pageTitle: 'EST Map Viewer',
+                subHeader: 'Map Viewer'
             },
             widgets: {
                 bookmarks: 'Bookmarks',

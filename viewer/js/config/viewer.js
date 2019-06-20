@@ -5,15 +5,20 @@ define([
     /*'esri/urlUtils',*/
     'esri/tasks/GeometryService',
     'esri/layers/ImageParameters',
+    'esri/tasks/locator',
+    'esri/layers/FeatureLayer',
     'gis/plugins/Google',
     'dojo/i18n!./nls/main',
     'dojo/topic',
-    'dojo/sniff'
-], function (units, Extent, esriConfig, /*urlUtils,*/ GeometryService, ImageParameters, GoogleMapsLoader, i18n, topic, has) {
-
+    'dojo/sniff',
+    'dijit/Dialog',
+    'dojo/request'
+], function (units, Extent, esriConfig, /*urlUtils,*/ GeometryService, ImageParameters, Locator, FeatureLayer, GoogleMapsLoader, i18n, topic, has, Dialog, request) {
     // url to your proxy page, must be on same machine hosting you app. See proxy folder for readme.
     esriConfig.defaults.io.proxyUrl = 'proxy/proxy.ashx';
     esriConfig.defaults.io.alwaysUseProxy = false;
+    //might be needed for metadata if we want to load it in a Dialog; not necessary if just opening in new window
+    esriConfig.defaults.io.corsEnabledServers.push('tasks.arcgisonline.com');
 
     // add a proxy rule to force specific domain requests through proxy
     // be sure the domain is added in proxy.config
@@ -35,6 +40,7 @@ define([
     //     layerIds: [0],
     //     layerOption: 'show'
     // })
+    // eslint-disable-next-line no-unused-vars
     function buildImageParameters (config) {
         config = config || {};
         var ip = new ImageParameters();
@@ -69,6 +75,38 @@ define([
         });
     });
 
+    topic.subscribe('layerControl/viewMetadata', function (event) {
+        //using request instead of the direct href property so we can handle errors
+        //there's probably a way to handle errors with dialog.show, but Dojo documentation isn't clear on that
+        request('/est/metadata/' + event.subLayer.layerName + '.htm', {
+            headers: {
+                'X-Requested-With': null
+            }
+        }).then(
+            function (data) {
+                var dlg = new Dialog({
+                    id: event.subLayer.layerName + '_metadata',
+                    title: 'Metadata for ' + event.subLayer.name,
+                    content: data
+                });
+                dlg.show();
+            },
+            function () {
+                //happens when running on a local server that doesn't have /est/metadata path
+                //so make request to pub server
+                //using window.open to work around CORS issues
+                topic.publish('growler/growl', 'Fetching metadata for ' + event.subLayer.name);
+                window.open('https://etdmpub.fla-etat.org/est/metadata/' + event.subLayer.layerName + '.htm');
+            });
+
+        //var dlg = new Dialog({
+        //    id: event.subLayer.layerName + '_metadata',
+        //    title: 'Metadata for ' + event.subLayer.name,
+        //    href: '/est/metadata/' + event.subLayer.layerName + '.htm'
+        //});
+        //dlg.show();
+    });
+
     // simple clustering example now. should be replaced with a layerControl plugin
     topic.subscribe('layerControl/toggleClustering', function (event) {
         var layer = event.layer;
@@ -82,6 +120,7 @@ define([
     });
 
     return {
+
         // used for debugging your app
         isDebug: true,
 
@@ -90,41 +129,153 @@ define([
         // map options, passed to map constructor. see: https://developers.arcgis.com/javascript/jsapi/map-amd.html#map1
         mapOptions: {
             basemap: 'streets',
-            center: [-96.59179687497497, 39.09596293629694],
-            zoom: 5,
-            sliderStyle: 'small'
+            center: [-84.380741, 28.190003],
+            zoom: 1, //use 7 if using default lods; this is the index of the lods listed below,
+            sliderStyle: 'small',
+            lods: [
+                {
+                    'level': 6,
+                    'resolution': 2445.98490512499,
+                    'scale': 9244648.868618
+                },
+                {
+                    'level': 7,
+                    'resolution': 1222.992452562495,
+                    'scale': 4622324.434309
+                },
+                {
+                    'level': 8,
+                    'resolution': 611.4962262813797,
+                    'scale': 2311162.217155
+                },
+                {
+                    'level': 9,
+                    'resolution': 305.74811314055756,
+                    'scale': 1155581.108577
+                },
+                {
+                    'level': 10,
+                    'resolution': 152.87405657041106,
+                    'scale': 577790.554289
+                },
+                {
+                    'level': 11,
+                    'resolution': 76.43702828507324,
+                    'scale': 288895.277144
+                },
+                {
+                    'level': 12,
+                    'resolution': 38.21851414253662,
+                    'scale': 144447.638572
+                },
+                {
+                    'level': 13,
+                    'resolution': 19.10925707126831,
+                    'scale': 72223.819286
+                },
+                {
+                    'level': 14,
+                    'resolution': 9.554628535634155,
+                    'scale': 36111.909643
+                },
+                {
+                    'level': 15,
+                    'resolution': 4.77731426794937,
+                    'scale': 18055.954822
+                },
+                {
+                    'level': 16,
+                    'resolution': 2.388657133974685,
+                    'scale': 9027.977411
+                },
+                {
+                    'level': 17,
+                    'resolution': 1.1943285668550503,
+                    'scale': 4513.988705
+                },
+                {
+                    'level': 18,
+                    'resolution': 0.5971642835598172,
+                    'scale': 2256.994353
+                },
+                {
+                    'level': 19,
+                    'resolution': 0.29858214164761665,
+                    'scale': 1128.497176
+                },
+                {
+                    'level': 20,
+                    'resolution': 0.14929107082380833,
+                    'scale': 564.248588
+                },
+                {
+                    'level': 21,
+                    'resolution': 0.07464553541190416,
+                    'scale': 282.124294
+                },
+                {
+                    'level': 22,
+                    'resolution': 0.03732276770595208,
+                    'scale': 141.062147
+                },
+                {
+                    'level': 23,
+                    'resolution': 0.01866138385297604,
+                    'scale': 70.5310735
+                }
+            ]
+            /*,
+            titles: {
+                header: 'Environmental Screening Tool',
+                subHeader: 'Map Viewer',
+                pageTitle: 'EST Map Viewer'
+            }*/
         },
 
         //webMapId: 'ef9c7fbda731474d98647bebb4b33c20',  // High Cost Mortgage
         // webMapOptions: {},
 
-        // panes: {
-        // 	left: {
-        // 		splitter: true
-        // 	},
-        // 	right: {
-        // 		id: 'sidebarRight',
-        // 		placeAt: 'outer',
-        // 		region: 'right',
-        // 		splitter: true,
-        // 		collapsible: true
-        // 	},
-        // 	bottom: {
-        // 		id: 'sidebarBottom',
-        // 		placeAt: 'outer',
-        // 		splitter: true,
-        // 		collapsible: true,
-        // 		region: 'bottom'
-        // 	},
-        // 	top: {
-        // 		id: 'sidebarTop',
-        // 		placeAt: 'outer',
-        // 		collapsible: true,
-        // 		splitter: true,
-        // 		region: 'top'
-        // 	}
-        // },
-        // collapseButtonsPane: 'center', //center or outer
+        panes: {
+            left: {
+                splitter: true
+            },
+            bottom: {
+                id: 'sidebarBottom',
+                placeAt: 'outer',
+                splitter: true,
+                collapsible: true,
+                region: 'bottom',
+                //style: 'height:200px;width:75%;', //have to set width if open is false, or it gets stuck collapsed; unfortunately setting the width presents other problems and the table doesn't resize properly.
+                style: 'height:200px',
+                content: '<div id="attributesContainer"></div>',
+                open: true //so we're stuck with keeping it open, then closing it after startup is complete.
+            }/*,
+            right: {
+                  id: 'sidebarRight',
+                  placeAt: 'outer',
+                  region: 'right',
+                  splitter: true,
+                  collapsible: true
+            },
+            bottom: {
+                id: 'sidebarBottom',
+                placeAt: 'outer',
+                splitter: true,
+                collapsible: true,
+                region: 'bottom',
+                open: false
+
+            },
+         	top: {
+         		id: 'sidebarTop',
+         		placeAt: 'outer',
+                  collapsible: true,
+                    open: false,
+         		splitter: false,
+         		region: 'top'
+         	}*/
+        },
+        collapseButtonsPane: 'center', //center or outer
 
         // custom titles
         titles: {
@@ -165,179 +316,73 @@ define([
         // operationalLayers: Array of Layers to load on top of the basemap: valid 'type' options: 'dynamic', 'tiled', 'feature'.
         // The 'options' object is passed as the layers options for constructor. Title will be used in the legend only. id's must be unique and have no spaces.
         // 3 'mode' options: MODE_SNAPSHOT = 0, MODE_ONDEMAND = 1, MODE_SELECTION = 2
-        operationalLayers: [{
-            type: 'feature',
-            url: 'https://services.arcgis.com/doC3DvW5p9jGtDST/arcgis/rest/services/RestaurantInspections_April2018/FeatureServer/0/',
-            title: i18n.viewer.operationalLayers.restaurants,
-            options: {
-                id: 'restaurants',
-                opacity: 1.0,
-                visible: true,
-                outFields: ['*'],
-                featureReduction: has('phone') ? null : {
-                    type: 'cluster',
-                    clusterRadius: 10
+        operationalLayers: [
+            {
+                type: 'dynamic',
+                url: 'https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer',
+                title: 'Projects (Previously Reviewed)',
+                options: {
+                    id: 'previouslyReviewedProjectsLayer',
+                    opacity: 1.0,
+                    visible: true,
+                    outFields: ['*'],
+                    imageParameters: buildImageParameters({
+                        layerIds: [0, 7],
+                        layerOption: 'show'
+                    }),
+                    mode: 1
                 },
-                mode: 0
-            },
-            editorLayerInfos: {
-                disableGeometryUpdate: false
-            },
-            legendLayerInfos: {
-                exclude: false,
-                layerInfo: {
-                    title: i18n.viewer.operationalLayers.restaurants
-                }
-            },
-            layerControlLayerInfos: {
-                layerGroup: 'Grouped Feature Layers',
-                menu: [{
-                    id: 'toggle-clustering-menu',
-                    topic: 'toggleClustering',
-                    label: 'Toggle Clustering',
-                    iconClass: 'fas fa-fw fa-toggle-on'
-                }]
-            }
-        }, {
-            type: 'feature',
-            url: 'https://sampleserver6.arcgisonline.com/ArcGIS/rest/services/SF311/FeatureServer/0',
-            title: i18n.viewer.operationalLayers.sf311Incidents,
-            options: {
-                id: 'sf311Incidents',
-                opacity: 1.0,
-                visible: false,
-                outFields: ['req_type', 'req_date', 'req_time', 'address', 'district'],
-                mode: 0
-            },
-            layerControlLayerInfos: {
-                layerGroup: 'Grouped Feature Layers',
-                menu: [{
-                    topic: 'hello',
-                    label: 'Say Hello Custom',
-                    iconClass: 'far fa-fw fa-smile'
-                }]
-            }
-        }, {
-            type: 'dynamic',
-            url: 'https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/PublicSafety/PublicSafetyOperationalLayers/MapServer',
-            title: i18n.viewer.operationalLayers.louisvillePubSafety,
-            options: {
-                id: 'louisvillePubSafety',
-                opacity: 1.0,
-                visible: true,
-                imageParameters: buildImageParameters({
-                    // include only sub layer ids.
-                    // group layers omitted
-                    layerIds: [2, 4, 5, 8, 12, 21],
-                    layerOption: 'show'
-                })
-            },
-            identifyLayerInfos: {
-                layerIds: [2, 4, 5, 8, 12, 21]
-            },
-            layerControlLayerInfos: {
-                // group layers included to maintain folder hierarchy, not visibility.
-                layerIds: [0, 2, 4, 5, 8, 9, 10, 12, 21]
-            },
-            legendLayerInfos: {
-                layerInfo: {
-                    hideLayers: [21]
-                }
-            }
-        }, {
-            type: 'dynamic',
-            url: 'https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/MapServer',
-            title: i18n.viewer.operationalLayers.damageAssessment,
-            options: {
-                id: 'damageAssessment',
-                opacity: 1.0,
-                visible: true,
-                imageParameters: buildImageParameters()
-            },
-            identifyLayerInfos: {
-                returnFieldName: true
-            },
-            legendLayerInfos: {
-                exclude: true
-            },
-            layerControlLayerInfos: {
-                swipe: true,
-                metadataUrl: true,
-                expanded: true,
-
-                //override the menu on this particular layer
-                subLayerMenu: [{
-                    topic: 'hello',
-                    label: 'Say Hello',
-                    iconClass: 'far fa-fw fa-smile'
-                }]
-            }
-        }, {
-            type: 'dynamic',
-            url: 'https://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer',
-            title: i18n.viewer.operationalLayers.cities,
-            options: {
-                id: 'cities',
-                visible: false
-            }
-        /*
-        //examples of vector tile layers (beta in v3.15)
-        }, {
-            type: 'vectortile',
-            title: 'Light Gray Canvas Vector',
-            url: 'https//www.arcgis.com/sharing/rest/content/items/bdf1eec3fa79456c8c7c2bb62f86dade/resources/styles/root.json',
-            options: {
-                id: 'vectortile1',
-                opacity: 0.8,
-                visible: true
-            }
-        }, {
-           //  taken from this demo: https://github.com/ycabon/presentations/blob/gh-pages/2015-berlin-plenary/demos/3.15-vectortile/create-by-style-object.html
-            type: 'vectortile',
-            title: 'Custom Vector Style',
-            options: {
-                id: 'vectortile2',
-                opacity: 1.0,
-                visible: true,
-                'glyphs': 'https://www.arcgis.com/sharing/rest/content/items/00cd8e843bae49b3a040423e5d65416b/resources/fonts/{fontstack}/{range}.pbf',
-                'sprite': 'https://www.arcgis.com/sharing/rest/content/items/00cd8e843bae49b3a040423e5d65416b/resources/sprites/sprite',
-                'version': 8,
-                'sources': {
-                    'esri': {
-                        'url': 'https://basemapsdev.arcgis.com/arcgis/rest/services/World_Basemap/VectorTileServer',
-                        'type': 'vector'
+                editorLayerInfos: {
+                    disableGeometryUpdate: false
+                },
+                legendLayerInfos: {
+                    exclude: false,
+                    layerInfo: {
+                        title: 'Projects (Previously Reviewed)'
                     }
                 },
-                'layers': [{
-                    'id': 'background',
-                    'type': 'background',
-                    'paint': {
-                        'background-color': '#556688'
+                layerControlLayerInfos: {
+                    //layerGroup: 'Project Data',
+                    menu: [{
+                        label: 'Open Attribute Table',
+                        topic: 'openTable',
+                        iconClass: 'fa fa-table fa-fw'
+                    }]
+                }
+            },
+            {
+                type: 'dynamic',
+                url: 'https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer',
+                title: 'Projects (Currently in Review)',
+                options: {
+                    id: 'currentlyInReviewProjects',
+                    opacity: 1.0,
+                    visible: true,
+                    outFields: ['*'],
+                    imageParameters: buildImageParameters({
+                        layerIds: [0, 7],
+                        layerOption: 'show'
+                    }),
+                    mode: 1
+                },
+                editorLayerInfos: {
+                    disableGeometryUpdate: false
+                },
+                legendLayerInfos: {
+                    exclude: false,
+                    layerInfo: {
+                        title: 'Projects (Previously Reviewed)'
                     }
-                }, {
-                    'id': 'Land',
-                    'type': 'fill',
-                    'source': 'esri',
-                    'source-layer': 'Land',
-                    'paint': {
-                        'fill-color': '#273344'
-                    },
-                }, {
-                    'id': 'roads',
-                    'type': 'line',
-                    'source': 'esri',
-                    'source-layer': 'Road',
-                    'layout': {
-                        'line-join': 'round'
-                    },
-                    'paint': {
-                        'line-width': 1,
-                        'line-color': '#131622'
-                    }
-                }]
-            }
-        */
-        }],
+                },
+                layerControlLayerInfos: {
+                    //layerGroup: 'Project Data',
+                    menu: [{
+                        label: 'Open Attribute Table',
+                        topic: 'openTable',
+                        iconClass: 'fa fa-table fa-fw'
+                    }]
+                }
+            }],
         // set include:true to load. For titlePane type set position the the desired order in the sidebar
         widgets: {
             growler: {
@@ -361,9 +406,96 @@ define([
                 options: {
                     map: true,
                     visible: true,
-                    enableInfoWindow: false,
+                    enableInfoWindow: true,
                     enableButtonMode: has('phone') ? false : true,
-                    expanded: has('phone') ? true : false
+                    expanded: true, // || has('phone') ? true : false,
+                    allPlaceholder: 'Find address, place, county or district',
+                    //enableSourcesMenu: true,
+                    addLayersFromMap: true, //doesn't seem to to anything
+                    //exactMatch: true,
+                    sources: [
+                        {
+                            locator: new Locator('//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer'),
+                            singleLineFieldName: 'SingleLine',
+                            outFields: ['Addr_type'],
+                            name: 'Esri World Geocoder',
+                            countryCode: 'US',
+                            localSearchOptions: {
+                                minScale: 300000,
+                                distance: 50000
+                            },
+                            placeholder: 'Find address or place',
+                            highlightSymbol: {
+                                url: 'https://js.arcgis.com/3.27/esri/dijit/Search/images/search-pointer.png',
+                                width: 36, height: 36, xoffset: 9, yoffset: 18
+                            }
+                        }/*,
+                        {
+                            featureLayer: new FeatureLayer('https://services.arcgis.com/LBbVDC0hKPAnLRpO/ArcGIS/rest/services/countyBoundary/FeatureServer/1'),
+                            searchFields: ['NAME'],
+                            suggestionTemplate: '${NAME}', //setting this to 'Name' causes it to return 'Untitled', have to match case
+                            //displayField: 'Name',
+                            exactMatch: true, //doesn't seem to do anything, still returns match for 'SEMINOLE' before 'LEON' when searching 'LE'
+                            outFields: ['*'],
+                            name: 'Counties',
+                            placeholder: 'County name',
+                            maxResults: 6,
+                            maxSuggestions: 6,
+                            enableSuggestions: true,
+                            minCharacters: 0,
+                            localSearchOptions: {distance: 5000}
+                        },
+                        {
+                            featureLayer: new FeatureLayer('https://ca.dep.state.fl.us/arcgis/rest/services/Map_Direct/Boundaries/MapServer/9'), //TODO use a geoplan source
+                            searchFields: ['NAME'],
+                            suggestionTemplate: '${NAME}', //setting this to 'Name' causes it to return 'Untitled', have to match case
+                            //displayField: 'Name',
+                            exactMatch: false, 
+                            outFields: ['*'],
+                            name: 'Water Management Districts',
+                            placeholder: 'WMD name',
+                            maxResults: 6,
+                            maxSuggestions: 6,
+                            enableSuggestions: true,
+                            minCharacters: 0,
+                            localSearchOptions: {distance: 5000}
+                        }*/
+                    ]
+
+                }
+            },
+            attributesTable: {
+                include: true,
+                id: 'attributesTable',
+                type: 'domNode',
+                srcNodeRef: 'attributesContainer',
+                path: 'gis/dijit/AttributesTable',
+                options: {
+                    map: true,
+                    mapClickMode: false, //TODO sort out weirdness where it tries to identify instead of select when this is true
+
+                    // use a tab container for multiple tables or
+                    // show only a single table
+                    useTabs: true, //Note: nothing shows up if useTabs is set to true. If we really need that we'll have to sort out what's wrong with AttributesTable tab functionality.
+
+                    // used to open the sidebar after a query has completed
+                    sidebarID: 'sidebarBottom'
+
+                    //// optional tables to load when the widget is first instantiated
+                    //tables: [
+                    //    {
+                    //        title: 'Census',
+                    //        topicID: 'censusQuery',
+                    //        queryOptions: {
+                    //            queryParameters: {
+                    //                url: 'http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Demographics/ESRI_Census_USA/MapServer/4',
+                    //                maxAllowableOffset: 100,
+                    //                where: 'STATE_FIPS = \'06\' OR STATE_FIPS = \'08\''
+                    //            },
+                    //            idProperty: 'ObjectID'
+                    //        }
+                    //    }
+                    //]
                 }
             },
             reverseGeocoder: {
@@ -468,14 +600,67 @@ define([
                 options: {
                     map: true,
                     extent: new Extent({
-                        xmin: -180,
-                        ymin: -85,
-                        xmax: 180,
-                        ymax: 85,
+                        xmin: -87.79,
+                        ymin: 24.38,
+                        xmax: -79.8,
+                        ymax: 31.1,
                         spatialReference: {
                             wkid: 4326
                         }
                     })
+                }
+            },
+            layerLoader: {
+                include: true,
+                id: 'layerLoader',
+                type: 'titlePane',
+                canFloat: true,
+                path: 'gis/dijit/LayerLoader',
+                title: 'Map Loader',
+                open: true,
+                position: 0,
+                options: 'config/layerLoader'
+            },
+            layerControl: {
+                include: true,
+                id: 'layerControl',
+                type: 'titlePane',
+                canFloat: true,
+                path: 'gis/dijit/LayerControl',
+                title: i18n.viewer.widgets.layerControl,
+                iconClass: 'fas fa-fw fa-th-list',
+                open: true,
+                position: 1,
+                options: {
+                    map: true,
+                    layerControlLayerInfos: true,
+                    separated: true,
+                    vectorReorder: true,
+                    overlayReorder: true
+                    // create a custom menu entry in all of these feature types
+                    // the custom menu item will publish a topic when clicked
+                    /*menu: {
+                        feature: [{
+                            topic: 'hello',
+                            iconClass: 'fas fa-fw fa-smile',
+                            label: 'Say Hello A'
+                        }],
+                        dynamic: [{
+                            topic: 'hello',
+                            iconClass: 'fas fa-fw fa-smile',
+                            label: 'Say Hello B'
+                        }]
+                    }*/
+
+                    //create a example sub layer menu that will
+                    /*apply to all layers of type 'dynamic'
+                    subLayerMenu: {
+                        dynamic: [{
+                            topic: 'remove',
+                            iconClass: 'fas fa-fw fa-frown',
+                            label: 'Remove C'
+                        }]
+                    }*/
                 }
             },
             legend: {
@@ -486,47 +671,24 @@ define([
                 title: i18n.viewer.widgets.legend,
                 iconClass: 'far fa-fw fa-images',
                 open: false,
-                position: 1,
+                position: 2,
                 options: {
                     map: true,
                     legendLayerInfos: true
                 }
             },
-            layerControl: {
+            /*dnd: {
                 include: true,
-                id: 'layerControl',
+                id: 'dnd',
                 type: 'titlePane',
-                path: 'gis/dijit/LayerControl',
-                title: i18n.viewer.widgets.layerControl,
-                iconClass: 'fas fa-fw fa-th-list',
-                open: false,
-                position: 0,
+                canFloat: true,
+                path: 'gis/dijit/DnD',
+                title: 'Drag and Drop',
+                position: 3,
                 options: {
-                    map: true,
-                    layerControlLayerInfos: true,
-                    separated: true,
-                    vectorReorder: true,
-                    overlayReorder: true,
-                    // create a custom menu entry in all of these feature types
-                    // the custom menu item will publish a topic when clicked
-                    menu: {
-                        feature: [{
-                            topic: 'hello',
-                            iconClass: 'fas fa-fw fa-smile',
-                            label: 'Say Hello'
-                        }]
-                    },
-                    //create a example sub layer menu that will
-                    //apply to all layers of type 'dynamic'
-                    subLayerMenu: {
-                        dynamic: [{
-                            topic: 'goodbye',
-                            iconClass: 'fas fa-fw fa-frown',
-                            label: 'Say goodbye'
-                        }]
-                    }
+                    map: true
                 }
-            },
+            },*/
             bookmarks: {
                 include: true,
                 id: 'bookmarks',
@@ -535,11 +697,11 @@ define([
                 title: i18n.viewer.widgets.bookmarks,
                 iconClass: 'fas fa-fw fa-bookmark',
                 open: false,
-                position: 2,
+                position: 4,
                 options: 'config/bookmarks'
             },
             find: {
-                include: true,
+                include: false,
                 id: 'find',
                 type: 'titlePane',
                 canFloat: true,
@@ -547,7 +709,7 @@ define([
                 title: i18n.viewer.widgets.find,
                 iconClass: 'fas fa-fw fa-search',
                 open: false,
-                position: 3,
+                position: 5,
                 options: 'config/find'
             },
             draw: {
@@ -559,7 +721,7 @@ define([
                 title: i18n.viewer.widgets.draw,
                 iconClass: 'fas fa-fw fa-paint-brush',
                 open: false,
-                position: 4,
+                position: 6,
                 options: {
                     map: true,
                     mapClickMode: true
@@ -574,7 +736,7 @@ define([
                 title: i18n.viewer.widgets.measure,
                 iconClass: 'fas fa-fw fa-expand',
                 open: false,
-                position: 5,
+                position: 7,
                 options: {
                     map: true,
                     mapClickMode: true,
@@ -591,7 +753,7 @@ define([
                 title: i18n.viewer.widgets.print,
                 iconClass: 'fas fa-fw fa-print',
                 open: false,
-                position: 6,
+                position: 8,
                 options: {
                     map: true,
                     printTaskURL: 'https://utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task',
@@ -610,7 +772,7 @@ define([
                     ]
                 }
             },
-            directions: {
+            /*directions: {
                 include: true,
                 id: 'directions',
                 type: 'titlePane',
@@ -618,7 +780,7 @@ define([
                 title: i18n.viewer.widgets.directions,
                 iconClass: 'fas fa-fw fa-map-signs',
                 open: false,
-                position: 7,
+                position: 9,
                 options: {
                     map: true,
                     mapRightClickMenu: true,
@@ -631,16 +793,56 @@ define([
                         active: false //for 3.12, starts active by default, which we dont want as it interfears with mapClickMode
                     }
                 }
+            },*/
+            zoomToRegion: {
+                include: true,
+                id: 'zoomToRegion',
+                type: 'titlePane',
+                title: 'Zoom to Region',
+                position: 10,
+                open: true,
+                path: 'gis/dijit/ZoomToFeature',
+                options: {
+                    map: true,
+
+                    url: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/QUERY_REGIONS/MapServer/0',
+                    field: 'DESCRIPT',
+                    maxAllowableOffset: 100,
+                    i18n: {
+                        selectFeature: 'Enter a County, WMD, or FDOT District Name'
+                    }
+                }
             },
+            /*zoomToWMD: {
+                include: true,
+                id: 'zoomToWMD',
+                type: 'titlePane',
+                title: 'Zoom to Water Management District',
+                position: 11,
+                open: true,
+                path: 'gis/dijit/ZoomToFeature',
+                options: {
+                    map: true,
+
+                    url: 'https://ca.dep.state.fl.us/arcgis/rest/services/Map_Direct/Boundaries/MapServer/9',
+                    field: 'NAME',
+
+                    // you can customize the text
+                    i18n: {
+                        selectFeature: 'Select a District'
+                    }
+                }
+            },*/
+            
             editor: {
-                include: has('phone') ? false : true,
+                include: false, // TODO has('phone') ? false : true,
                 id: 'editor',
                 type: 'titlePane',
                 path: 'gis/dijit/Editor',
                 title: i18n.viewer.widgets.editor,
                 iconClass: 'fas fa-fw fa-pencil-alt',
                 open: false,
-                position: 8,
+                position: 12,
                 options: {
                     map: true,
                     mapClickMode: true,
@@ -660,12 +862,14 @@ define([
                     }
                 }
             },
+            
+            /* TODO: need Google Maps API key,
             streetview: {
                 include: true,
                 id: 'streetview',
                 type: 'titlePane',
                 canFloat: true,
-                position: 9,
+                position: 11,
                 path: 'gis/dijit/StreetView',
                 title: i18n.viewer.widgets.streetview,
                 iconClass: 'fas fa-fw fa-street-view',
@@ -683,8 +887,8 @@ define([
                     mapClickMode: true,
                     mapRightClickMenu: true
                 }
-            },
-            locale: {
+            },*/
+            /*locale: {
                 include: true,
                 type: has('phone') ? 'titlePane' : 'domNode',
                 id: 'locale',
@@ -696,7 +900,7 @@ define([
                 options: {
                     style: has('phone') ? null : 'margin-left: 30px;'
                 }
-            },
+            },*/
             help: {
                 include: has('phone') ? false : true,
                 id: 'help',
@@ -714,5 +918,8 @@ define([
             }
 
         }
+    
     };
+
+
 });

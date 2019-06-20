@@ -194,9 +194,10 @@ body {
 }
 
 .cmv .dijitTitlePaneTitle {
-    background-color: #F5F5F5;
-    color: #666;
+    background-color: rgba(0, 91, 136, 255);
+    color: #FFF;
 }
+
 
 .cmv .dijitTitlePaneTitleOpen {
     border-bottom-left-radius: 0;

@@ -1,0 +1,76 @@
+<div id="layerLoader">
+    <h3>Resource Data</h3>
+
+    <label>Search Layers</label>
+    <input id="searchNode" type="text" data-dojo-type="dijit/form/TextBox" data-dojo-attach-point="searchNode" data-dojo-attach-event="keydown: handleSearchKeyDown" />
+    <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-search fa-fw', showLabel: false" data-dojo-attach-event="click: handleSearch">Search</div>
+    <br />
+    <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-columns fa-fw'" data-dojo-attach-event="click: showCategories">
+        Browse
+    </div>
+
+    <hr />
+
+    <h3>ETDM Projects</h3>
+    <label>Project ID</label>
+    <input type="text" data-dojo-attach-point="projectAltId" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-event="keyup: handleProjectKeyUp" data-dojo-props="regExp:'\\d+-{0,1}\\d{0,2}',intermediateChanges:true" style="width: 150px"/>
+    <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus fa-fw', showLabel: false" data-dojo-attach-event="click: addProject">
+        Add Project
+    </div>
+
+    <p class="tip">Enter a project number to view all analysis areas for that project. To view just a specific analysis area, enter as project-analysis area ID, e.g. "1234-1".</p>
+
+    <hr />
+    <div id="layerLoaderSideBarKO">
+        <h3>My Maps</h3>
+        <div data-bind="with: currentMap()">
+            Current Map: <span data-bind="text: mapName"></span>
+        </div>
+        <div class="buttonContainer">
+            <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-save fa-fw'" data-dojo-attach-event="click: showSaveMapDialog">
+                Save
+            </div>
+            <!--ko if: savedMaps().length > 0-->
+            <!--Note: use ko if binding wrapping the entire button div; using ko visible binding on the div itself still renders the border of the button, without content -->
+            <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-folder-open fa-fw'" data-dojo-attach-event="click: showLoadMapDialog">
+                Open
+            </div>
+            <!--/ko-->
+            <!--TODO would a "clear" button make sense here, to give user option to remove all layers?-->
+        </div>
+    </div>
+
+    <div data-dojo-type="dijit/Dialog" data-dojo-attach-point="loadMapDialog" title="Open Map" style="width: 300px; height: 200px" id="loadMapDialog">
+        <label>Select Map</label>
+        <input id="savedMapsDijit" type="select" data-dojo-type="dijit/form/FilteringSelect" data-dojo-props="name:'selectedMap',autoComplete:true,required:true,searchAttr:'mapName',labelAttr:'mapName',style:'width:100%;'" data-dojo-attach-point="savedMapsDijit" />
+        <br />
+        <div data-dojo-attach-point="clearMapFirstDom">
+            <br />
+            <label>
+                <input type="checkbox" data-dojo-attach-point="clearMapFirstCheckBox" data-dojo-type="dijit/form/CheckBox" data-dojo-props="'class':'optionsCheckBox'" data-bind="checked: clearMapFirst" />
+                Clear map before loading
+            </label>
+        </div>
+        <br />
+        <div class="buttonContainer buttonContainerRight">
+            <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-folder-open fa-fw'" data-bind="click: loadSelectedMap">
+                Open
+            </div>
+            <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-trash fa-fw'" data-bind="click: deleteSelectedMap">
+                Delete
+            </div>
+        </div>
+
+    </div>
+
+    <div data-dojo-type="dijit/Dialog" data-dojo-attach-point="saveMapDialog" title="Save Map" style="width: 300px; height: 200px" id="saveMapDialog">
+        <label>Map Name</label>
+        <input type="text" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-props="name:'mapName',trim:true,required:true,style:'width:100%;'" data-dojo-attach-point="mapName" data-dojo-attach-event="keyup: handleMapNameKeyUp" />
+
+        <div class="buttonContainer buttonContainerRight">
+            <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-save fa-fw'" data-dojo-attach-event="click: saveMap">
+                Save
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+#layerLoaderDialog,
+section {
+    height: 100%;
+}
+
+div.categoriesList span {
+    float: left;
+    width: 85px;
+    height: 100px;
+    text-align: center;
+    font-size: 0.85em;
+    padding-top: 5px;
+    border: 1px solid #ffffff;
+}
+
+ul.layerList {
+    padding-left: 20px;
+}
+
+#layerLoaderDialog section {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#layerLoaderDialog section .layerLoaderColumn {
+	flex-basis: 28%;
+	max-height: 95%;
+	overflow-y: auto;
+}
+
+#layerLoaderDialog section .layerLoaderColumn:last-child {
+	flex-basis: 38%;
+}
+
+#layerLoaderDialog section ul {
+	list-style: none;
+	padding-inline-start: 20px; /* less indented */
+}
+
+ul.unindented {
+    padding-inline-start: 0 !important; /* not indented */
+}
+
+.selectableItem {
+	border-radius: 5px;
+    cursor: pointer;
+	display: block;
+	padding: 0.25em;
+}
+
+span.selectedItem {
+	background-color: #69A1C2;
+	color: #FFFFFF;
+}
+
+.buttonContainerRight {
+    text-align: right;
+}
+
+.emptyCategory {
+    font-style: italic;
+    color: gray;
+}
+
+.tip {
+    font-size: small;
+}
+
+#searchResultsDialog {
+    min-width: 500px;
+    max-width: 700px;
+}

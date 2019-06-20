@@ -1,0 +1,22 @@
+<div id="warnUserExpiringSoonDialogTemplate" title="Your Session is about to expire." data-dojo-type="dijit/form/Form" >
+    <div>
+        Your Session is about to expire. Do you want to continue your session?
+    </div>
+
+    <!--note the data-dojo-attach-point and data-dojo-attach-event attributes aren't working at all in a Mixin context -->    
+    <div data-dojo-type="dijit/form/Button" 
+         data-dojo-props="iconClass:'fa fa-sign-in-alt fa-fw'" 
+         data-dojo-attach-point="keepWorkingButton"
+         data-dojo-attach-event="click: keepWorking"
+         data-bind="click: keepWorking" >
+        Yes, Keep Working
+    </div>
+
+    <div data-dojo-type="dijit/form/Button"
+         data-dojo-props="iconClass:'fa fa-sign-out-alt fa-fw'"
+         data-dojo-attach-point="logoutButton"
+         data-bind="click: logout"
+         data-dojo-attach-event="click: function() {console.log('foo');}" >
+        No, Log Off
+    </div>
+</div>

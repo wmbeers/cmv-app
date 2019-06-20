@@ -1,0 +1,27 @@
+<div id="reLoginDialogTemplate" title="Your Session has expired." data-dojo-type="dijit/form/Form">
+    <div data-bind="visible: !userNamePasswordVisible()">
+        <div>
+            Your Session has expired. Do you want to restart your session?
+        </div>
+
+        <!--note the data-dojo-attach-point and data-dojo-attach-event attributes aren't working at all in a Mixin context -->
+        <div data-dojo-type="dijit/form/Button"
+             data-dojo-props="iconClass:'fa fa-sign-in-alt fa-fw'"
+             data-dojo-attach-point="showLoginButton"
+             data-dojo-attach-event="onclick:showLogin"
+             data-bind="click:showLogin">
+            Restart Session
+        </div>
+
+        <div data-dojo-type="dijit/form/Button"
+             data-dojo-props="iconClass:'fa fa-sign-out-alt fa-fw'"
+             data-dojo-attach-point="logoutButton"
+             data-dojo-attach-event="click: function() {console.log('foo');}"
+             data-bind="click:logout">
+            Exit
+        </div>
+    </div>
+    
+    <iframe data-bind="visible: userNamePasswordVisible()" id="loginFormWrapper" frameBorder="0" seamless="seamless" style="height: 270px" src="js/viewer/templates/loading.html"></iframe>
+
+</div>

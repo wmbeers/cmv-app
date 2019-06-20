@@ -1,0 +1,70 @@
+<div id="searchResultsDialog">
+    <div data-bind="visible: searchResultsError() != null">
+        <div style="width: 500px; font-style: italic">
+            Search error: <span data-bind="text: searchResultsError"></span>
+        </div>
+    </div>
+
+    <div data-bind="visible: searchResults().length > 0">
+        <div>
+            <span data-bind="text: searchResultsCount"></span> <label><input type="checkbox" data-bind="checked: showDetails" /> Show Details</label>
+        </div>
+        <div data-bind="foreach: searchResults">
+            <!--ko if: type=="dynamic" && layerDefs && layerDefs.length > 0 -->
+                <hr />
+                <strong data-bind="text: name"></strong> (Category)
+                <div data-bind="visible: $root.showDetails">
+                    <h4>Layers</h4>
+                    <ul data-bind="foreach: layerDefs">
+                        <li data-bind="html: name"></li>
+                    </ul>
+                </div>
+
+                <div class="buttonContainer buttonContainerRight">
+                    <!-- ko if: url && url !== '' -->
+                    <div data-bind="click: loadService" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus-square fa-fw'">
+                        Add to Map
+                    </div>
+                    <!-- /ko -->
+                </div>
+            <!-- /ko -->
+            <!--ko if: type=="feature"-->
+                <hr />
+                <strong data-bind="text: longName || name"></strong>
+                <div data-bind="visible: $root.showDetails">
+                    <div data-bind="if: legendSymbols && legendSymbols.length > 0" style="margin-bottom: 1em">
+                        <label>Symbols: </label>
+                        <span data-bind="foreach: legendSymbols">
+                            <img data-bind="attr: {src: 'data:image/png;base64, ' + imageData, alt: label}" style="vertical-align: bottom" /> &nbsp;
+                        </span>
+                    </div>
+                    <label>Description</label>
+                    <p data-bind="text: description"></p>
+                    <label data-bind="text: scaleText"></label>
+                    <p data-bind="if: layerName">
+                        <a data-bind="attr: {href: '/metadata/' + layerName + '.htm'}" target="_blank">View Complete Metadata</a>
+                    </p>
+                </div>
+                <div class="buttonContainer buttonContainerRight">
+                    <div data-bind="visible: !loaded(), click: loadLayer">
+                        <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus-square fa-fw'">
+                            Add to Map
+                        </div>
+                    </div>
+                    <div data-bind="visible: loaded(), click: removeLayer">
+                        <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-minus-square fa-fw'">
+                            Remove from Map
+                        </div>
+                    </div>
+                </div>
+            <!-- /ko -->
+        </div>
+    </div>
+
+    <div data-bind="visible: searchResults().length == 0">
+        <div style="width: 500px; font-style: italic">
+            No matches found.
+        </div>
+    </div>
+
+</div>

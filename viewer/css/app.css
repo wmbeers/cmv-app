@@ -2,17 +2,17 @@
 @import url('./cmv.css'); /* the start of cmv theme */
 
 .appHeader {
-    background: url("../images/linen.jpg") repeat-x scroll left top transparent;
-    height: 60px;
+    background-color: rgba(0, 116, 77, 255);
+    height: 50px;
     margin: 0;
     padding: 0;
     width: 100%;
 }
 
-.appHeader .headerLogo {
-    height: calc(100% - 10px);
-    left: 15px;
-}
+    .appHeader .headerLogo {
+        height: calc(100%);
+        left: 0;
+    }
 
 .appHeader .headerTitle {
     color: #FFFFFF;

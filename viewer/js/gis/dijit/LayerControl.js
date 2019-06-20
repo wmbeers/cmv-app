@@ -136,6 +136,9 @@ define([
             this._addLayerControlsHandler = topic.subscribe('layerControl/addLayerControls', lang.hitch(this, function (layerInfos) {
                 this._addLayerControls(layerInfos);
             }));
+            this._removeLayerHandler = topic.subscribe('layerControl/removeLayer', lang.hitch(this, function (layer) {
+                this._removeLayer(layer);
+            }));
         },
         _addLayerControls: function (layerInfos) {
             // load only the modules we need
@@ -514,6 +517,48 @@ define([
                     this._swipeDisable();
                 }
             }));
+        },
+        _removeLayer: function (layer) {
+            var i = 0;
+            //remove from the map
+            this.map.removeLayer(layer);
+
+            //remove from the app layers collection
+            //TODO: figure out a way to do this without relying on global reference to app
+            for (i = 0; i < app.layers.length; i++) {
+                if (app.layers[i] === layer) {
+                    app.layers.splice(i, 1);
+                }
+            }
+
+            if (layer.layerDef && layer.layerDef.loaded) {
+                layer.layerDef.loaded(false);
+            }
+
+            //remove from layerControls
+            topic.publish('layerControl/removeLayerControls', [layer]);
+            //remove from identify
+            topic.publish('identify/removeLayerInfos', [{id: layer.id}]); //that's all we need of the layerInfo used in removeLayerInfos method
+            //remove from legend
+            for (i = 0; i < app.legendLayerInfos.length; i++) {
+                if (app.legendLayerInfos[i].layer === layer) {
+                    app.legendLayerInfos.splice(i, 1);
+                }
+            }
+
+            //refresh the map; it isn't really necessary to do this as far as the map display is concerned, 
+            //because the map will update on the removeLayer call above, but without this the removed layer 
+            //remains in the legend until after the user pans/zooms the map
+            //TODO surely there's a better way to refresh the map?
+            this.map.setExtent(this.map.extent);
+    
+            //TODO: the layer still seems to linger and some events continue to fire
+            //I've tried a couple of other fixes, such as below, to no avail.
+            //See the "ham-fisted" work-around in _checkboxScaleRange of _Control.js
+            //this.destroy()
+            //console.log(this._handlers);
+            //delete layer;
+
         },
         _swipeDisable: function () {
             this._swiper.disable();

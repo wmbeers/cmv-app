@@ -56,7 +56,8 @@ define([
                     label: i18n.zoomTo,
                     iconClass: 'fas fa-fw fa-search',
                     onClick: function () {
-                        controller._zoomToLayer(layer);
+                        //controller._zoomToLayer(layer);
+                        app.zoomToLayer(layer);
                     }
                 }));
             }
@@ -120,6 +121,17 @@ define([
                     iconClass: 'fas fa-fw fa-info-circle',
                     onClick: function () {
                         window.open(controlOptions.metadataUrl, '_blank');
+                    }
+                }));
+            }
+            // remove
+            if (controlOptions.allowRemove) {
+                self.addChild(new MenuSeparator());
+                self.addChild(new MenuItem({
+                    label: i18n.remove,
+                    iconClass: 'fas fa-fw fa-minus-circle',
+                    onClick: function () {
+                        controller._removeLayer(layer);
                     }
                 }));
             }
