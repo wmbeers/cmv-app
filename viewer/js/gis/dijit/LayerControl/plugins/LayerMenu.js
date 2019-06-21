@@ -52,14 +52,14 @@ define([
             }
             //zoom to layer
             if ((controlOptions.noZoom !== true && controller.noZoom !== true) || (controller.noZoom === true && controlOptions.noZoom === false)) {
-                self.addChild(new MenuItem({
+                control._zoomTo = new MenuItem({
                     label: i18n.zoomTo,
                     iconClass: 'fas fa-fw fa-search',
                     onClick: function () {
-                        //controller._zoomToLayer(layer);
-                        app.zoomToLayer(layer);
+                        controller._zoomToLayer(layer);
                     }
-                }));
+                });
+                self.addChild(control._zoomTo);
             }
             //transparency
             if ((controlOptions.noTransparency !== true && controller.noTransparency !== true) || (controller.noTransparency === true && controlOptions.noTransparency === false)) {
