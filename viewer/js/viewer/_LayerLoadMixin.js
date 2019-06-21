@@ -4,6 +4,7 @@ define([
     'dojo/_base/array',
     'dojo/on',
     'dojo/topic',
+    'dojo/io-query',
     'dojo/Deferred',
     'dojo/promise/all',
     './js/config/projects.js', //TODO put in app.js paths?
@@ -30,6 +31,7 @@ define([
     array,
     on,
     topic,
+    ioQuery,
     Deferred,
     all,
     projects,
@@ -68,7 +70,21 @@ define([
             coordinateFormatter.load();
             //just a test of whether jquery works: jquery("#subHeaderTitleSpan").html('Yo');
 
+            //this has to wait until the layerLoader is finished loading
+            //doesn't quite cut it window.setTimeout(this._handleQueryString.bind(this), 2000);
+            topic.subscribe('layerLoader/startupComplete', lang.hitch(this, '_handleQueryString'));
+
             this.inherited(arguments);
+        },
+
+        _handleQueryString: function (testUri) {
+            var uri = testUri || window.location.href;
+            var qs = uri.indexOf('?') >= 0 ? uri.substring(uri.indexOf('?') + 1, uri.length) : '';
+            var qsObj = ioQuery.queryToObject(qs);
+            //acceptable arguments include loadMap, TODO
+            if (qsObj.loadMap) {
+                this.loadMap(qsObj.loadMap);
+            }
         },
 
         openAttributeTable: function (layerControlItem) {
@@ -643,6 +659,7 @@ define([
             if (savedMap) {
                 this.loadLayerConfig(savedMap.layers, clearMapFirst).then(function (layers) {
                     topic.publish('growler/growl', 'Loaded ' + layers.length + ' layers for ' + savedMap.mapName);
+                    topic.publish('layerloader/mapLoaded', savedMap); //lets the layerloader widget know what's up when this is loaded from query string
                 });
             }
         },

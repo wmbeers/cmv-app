@@ -120,6 +120,9 @@ define([
                 var self = this; //solves the problem of "this" meaning something different in onchange event handler
                 this.inherited(arguments);
 
+                //subscribe to the mapLoaded topic, published by _LayerLoadMixin when the map is loaded from query string
+                topic.subscribe('layerloader/mapLoaded', lang.hitch(this, 'currentMap'));
+
                 //configure knockout
                 //ko->dojo--load the data
                 this.savedMaps.subscribe(function () {
@@ -166,6 +169,9 @@ define([
                     ko.applyBindings(self, dom.byId('loadMapDialog')); // eslint-disable-line no-undef
                     ko.applyBindings(self, dom.byId('saveMapDialog')); // eslint-disable-line no-undef
                 }); //note: we need to have this deferred and then apply bindings or the open button does nothing.
+
+                //let the application know we're done starting up
+                topic.publish('layerLoader/startupComplete');
             },
             _loadSavedMaps: function () {
                 var deferred = new Deferred();
