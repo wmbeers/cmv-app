@@ -11,8 +11,10 @@ define([
     'dojo/_base/lang',
     'dojo/_base/array',
     'dojo/on',
+    'dojo/query',
     'dojo/dom',
     'dojo/dom-construct',
+    'dojo/dom-class',
     'dojo/topic',
     'dojo/store/Memory',
     'dojo/Deferred',
@@ -29,7 +31,7 @@ define([
 
     'xstyle/css!./LayerLoader/css/layerLoader.css'
 ],
-    function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog, ConfirmDialog, ready, popup, request, lang, array, on, dom, domConstruct, 
+    function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog, ConfirmDialog, ready, popup, request, lang, array, on, query, dom, domConstruct, domClass,
         topic, Memory, Deferred, layerLoaderSidebarTemplate, layerLoaderDialogTemplate, searchResultsDialogTemplate
 ) {
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
@@ -121,7 +123,14 @@ define([
                 this.inherited(arguments);
 
                 //subscribe to the mapLoaded topic, published by _LayerLoadMixin when the map is loaded from query string
-                topic.subscribe('layerloader/mapLoaded', lang.hitch(this, 'currentMap'));
+                topic.subscribe('layerLoader/mapLoaded', lang.hitch(this, 'mapLoaded'));
+
+                //subscribe to the mapSaved topic, published by _LayerLoadMixin when the map is saved
+                topic.subscribe('layerLoader/mapSaved', lang.hitch(this, 'mapSaved'));
+
+
+                //subscribe to the layerLoader/layersChanged topic, to let use know they have unsaved changes
+                topic.subscribe('layerLoader/layersChanged', lang.hitch(this, 'layersChanged'));
 
                 //configure knockout
                 //ko->dojo--load the data
@@ -170,6 +179,18 @@ define([
                     ko.applyBindings(self, dom.byId('saveMapDialog')); // eslint-disable-line no-undef
                 }); //note: we need to have this deferred and then apply bindings or the open button does nothing.
 
+                //set up link for copying
+                window.copyElem = function (elem) {
+                    elem.select();
+                    document.execCommand('copy');
+                    //not obvious: topic.publish('growler/growl','Map Link copied to clipboard.');
+                    //this only works once, getting it by ID the second time fails. domClass.remove('linkCopiedTip', 'hidden');
+                    query('.linkCopiedTip').forEach(function (n) {
+                        domClass.remove(n, 'hidden');
+                    });
+                    //todo an alternative way would be to make sure the dialog gets destroyed when done
+                };
+
                 //let the application know we're done starting up
                 topic.publish('layerLoader/startupComplete');
             },
@@ -191,6 +212,26 @@ define([
                     }
                 });
                 return deferred;
+            },
+            //tracks whether changes have been made to the map
+            hasUnsavedChanges: ko.observable(false), // eslint-disable-line no-undef
+            //listens for the map loading complete, mostly to handle loading via url
+            mapLoaded: function (savedMap) {
+                this.currentMap(savedMap);
+                this.hasUnsavedChanges(false);
+            },
+            //lists for the map saved complete, to reset hasUnsavedChanges
+            mapSaved: function () {
+                this.hasUnsavedChanges(false);
+                if (this.waitingToShare) {
+                    //temporary tag written to the model just so the dialog shows up at the right time
+                    delete (this.waitingToShare);
+                    this.shareMap();
+                }
+            },
+            //listens for changes made via addLayer or removeLayer functions, via layerLoader/layersChanged
+            layersChanged: function () {
+                this.hasUnsavedChanges(true);
             },
             //listen for the enter key when user is typing in the search field
             handleSearchKeyDown: function (event) {
@@ -269,6 +310,56 @@ define([
                 this.saveMapDialog.hide();
                 topic.publish('layerLoader/saveMap', savedMap);
             },
+            //starts the chain of saving and coming back to share
+            _saveAndShare: function () {
+                this.waitingToShare = true; //temporary tag
+                this.showSaveMapDialog();
+            },
+            shareMap: function () {
+                if (this.hasUnsavedChanges()) {
+                    //prompt user to save
+                    new ConfirmDialog({
+                        title: 'Unsaved Changes',
+                        content: 'You have unsaved changes, do you want to save first?',
+                        onExecute: lang.hitch(this, '_saveAndShare'),
+                        onCancel: lang.hitch(this, '_shareMap')
+                    }).show();
+                } else {
+                    this._shareMap();
+                }
+            },
+            _shareMap: function () {
+                if (this.currentMap() && this.currentMap().id && this.currentMap().id > 0) {
+                    //get the base url
+                    var uri = window.location.href;
+                    if (uri.indexOf('?') >= 0) {
+                        uri = uri.substr(0, uri.indexOf('?'));
+                    }
+                    uri += '?loadMap=' + this.currentMap().id;
+                    //try to copy it to the 
+                    var dlg = new Dialog({
+                        title: 'Map Link',
+                        content: '<div class="mapLinkDiv">' +
+                            '<p class="tip">Copy the link below and paste it into an email to share this map.</p>' +
+                            '<input type="text" value="' + uri + '" class="mapLink" onclick="copyElem(this)" />' +
+                            '<p class="tip hidden linkCopiedTip">Link copied to clipboard</p>' +
+                            '</div>'
+                    });
+                    dlg.show();
+                } else if (this.hasUnsavedChanges()) {
+                    topic.publish('growler/growl', {
+                        message: 'You must save the map before you can share it.',
+                        title: null,
+                        level: 'warning'
+                    });
+                } else {
+                    topic.publish('growler/growl', {
+                        message: 'You don\'t have any changes in the map to save, nothing to share.',
+                        title: null,
+                        level: 'warning'
+                    });
+                }
+            },            
             handleSearch: function () {
                 var self = this; //solves the problem of "this" meaning something different in request callback handler
                 this.searchResultsError(null);

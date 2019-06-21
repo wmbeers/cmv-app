@@ -71,3 +71,19 @@ span.selectedItem {
     min-width: 500px;
     max-width: 700px;
 }
+
+input.mapLink {
+    border: none;
+    width: 100%;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.hidden {
+    display: none;
+}
+
+.mapLinkDiv {
+    width: 400px;
+    height: 105px;
+}

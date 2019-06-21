@@ -496,6 +496,9 @@ define([
                 } else {
                     topic.publish('growler/growl', layerDef.name + ' loaded.');
                 }
+                //publish layerLoader/layersChanged to let the layer loader know changes have been made to the current map
+                //affects whether user should be prompted to save before they share the map
+                topic.publish('layerLoader/layersChanged');
                 deferred.resolve(layer);
 
             }, function (error) {
@@ -613,6 +616,8 @@ define([
                 SavedMapDAO.saveMap(savedMap, {
                     callback: function (savedMapId) {
                         savedMap.id = savedMapId;
+                        topic.publish('growler/growl', 'Saved ' + savedMap.layers.length + ' layers to ' + savedMap.name);
+                        topic.publish('layerLoader/mapSaved');
                     },
                     errorHandler: function (message, exception) {
                         topic.publish('viewer/handleError', {
@@ -622,13 +627,12 @@ define([
                     }
                 });
             } catch (exception) {
-                topic.publish('viser/handleError', {
+                topic.publish('viewer/handleError', {
                     source: 'LayerLoadMixin.saveMap',
                     error: exception
                 });
             }
 
-            topic.publish('growler/growl', 'Saved ' + savedMap.layers.length + ' layers to ' + savedMap.name);
         },
 
         loadMap: function (savedMapId, clearMapFirst) {
@@ -656,10 +660,21 @@ define([
             });
         },
         _loadMap: function (savedMap, clearMapFirst) {
+            var self = this; //this changes context in the "then" callback
             if (savedMap) {
                 this.loadLayerConfig(savedMap.layers, clearMapFirst).then(function (layers) {
+                    if (savedMap.extent) {
+                        savedMapExtent = new Extent({
+                            xmin: savedMap.extent.xmin,
+                            ymin: savedMap.extent.ymin,
+                            xmax: savedMap.extent.xmax,
+                            ymax: savedMap.extent.ymax,
+                            spatialReference: self.map.spatialReference
+                        });
+                        self.zoomToExtent(savedMapExtent);
+                    }
                     topic.publish('growler/growl', 'Loaded ' + layers.length + ' layers for ' + savedMap.mapName);
-                    topic.publish('layerloader/mapLoaded', savedMap); //lets the layerloader widget know what's up when this is loaded from query string
+                    topic.publish('layerLoader/mapLoaded', savedMap); //lets the layerloader widget know what's up when this is loaded from query string
                 });
             }
         },
@@ -845,6 +860,9 @@ define([
             //console.log(this._handlers);
             //delete layer;
 
+            //publish layerLoader/layersChanged to let the layer loader know changes have been made to the current map
+            //affects whether user should be prompted to save before they share the map
+            topic.publish('layerLoader/layersChanged');
         },
         zoomToMgrsPoint: function (mgrs, zoomLevel) {
             var point = coordinateFormatter.fromMgrs(mgrs, null, 'automatic');
