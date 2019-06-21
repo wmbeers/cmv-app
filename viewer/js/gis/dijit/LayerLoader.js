@@ -60,7 +60,7 @@ define([
             loadSelectedMap: function () {
                 if (this.selectedMap()) {
                     this.currentMap(this.selectedMap());
-                    topic.publish('layerLoader/loadMap', this.selectedMap().id);
+                    topic.publish('layerLoader/loadMap', this.selectedMap().id, this.clearMapFirst());
                     this.loadMapDialog.hide();
                 }
             },
@@ -345,7 +345,7 @@ define([
                     };
                     layerDef.removeLayer = function () {
                         if (layerDef.layer) {
-                            topic.publish('layerControl/removeLayer', layerDef.layer);
+                            topic.publish('layerLoader/removeLayer', layerDef.layer);
                         }
                     };
                     layerDef.scaleText = ko.computed(function () { // eslint-disable-line no-undef

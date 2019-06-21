@@ -61,6 +61,8 @@ define([
             topic.subscribe('layerLoader/addLayerFromCategoryDef', lang.hitch(this, 'addLayerFromCategoryDef'));
             topic.subscribe('layerLoader/saveMap', lang.hitch(this, 'saveMap'));
             topic.subscribe('layerLoader/loadMap', lang.hitch(this, 'loadMap'));
+            topic.subscribe('layerLoader/removeLayer', lang.hitch(this, 'removeLayer'));
+            topic.subscribe('layerLoader/clearUserLayers', lang.hitch(this, 'clearUserLayers'));
 
             //load the coordinateFormatter
             coordinateFormatter.load();
@@ -171,9 +173,16 @@ define([
         //Tests if a layer (either feature or dynamic) is already loaded in the map (exists in this.layers)
         //based on the URL and definitionExpression
         findLayerInMap: function (layerDef, definitionExpression) {
+            definitionExpression = definitionExpression || ''; //make sure it's not undefined
             return this.layers.find(function (l) {
-                //eslint-disable-next-line no-eq-null, eqeqeq
-                return l.url === layerDef.url && (l.getDefinitionExpression == null || l.getDefinitionExpression() === definitionExpression);
+                if (l.url === layerDef.url) {
+                    //compare definitionExpressions, which may be (and usually are) undefined
+                    //to simplify, make sure they are empty strings if not defined
+                    var layerDefinitionExpression = (l.getDefinitionExpression && l.getDefinitionExpression()) || '';
+                    return layerDefinitionExpression === definitionExpression;
+                }
+                //urls don't match, this is not the layer you're looking for
+                return false;
             });
         },
 
@@ -704,9 +713,10 @@ define([
         //gets all layers added to the map by the user (excluding the project layers defined as operationalLayers)
         getUserLayers: function () {
             return array.filter(this.layers, function (layer) {
-                return this.config.operationalLayers.find(function (x) {
+                var operationalLayer = this.config.operationalLayers.find(function (x) {
                     return x.options.id === layer.id;
-                }) === null;
+                });
+                return typeof operationalLayer === 'undefined';
             }, this);
         },
 
@@ -731,18 +741,19 @@ define([
             });
         },
 
+        clearUserLayers: function () {
+            //clone the layers array first, otherwise forEach bails
+            var layerClone = this.getUserLayers().slice(0);
+            layerClone.forEach(function (layer) {
+                this.removeLayer(layer);
+            }, this);
+        },
+
         loadLayerConfig: function (layerConfig, clearMapFirst) {
             var deferred = new Deferred();
             var promises = [];
             if (clearMapFirst) {
-                //clone the layers array first, otherwise forEach bails
-                var layerClone = this.layers.slice(0);
-                layerClone.forEach(function (layer) {
-                    if (layer.id !== 'previouslyReviewedProjectsLayer' &&
-                            layer.id !== 'currentlyInReviewProjects') {
-                        topic.publish('layerControl/_removeLayer', layer);
-                    }
-                }, this);
+                this.clearUserLayers();
             }
 
             //load in reverse order
@@ -774,6 +785,50 @@ define([
             return deferred;
         },
 
+        //Removes a layer from the map, layer control widget, identify and legend. 
+        removeLayer: function (layer) {
+            //remove from the map
+            this.map.removeLayer(layer);
+
+            var i = 0;
+
+            //remove from the layers collection
+            //TODO: figure out a way to do this without relying on global reference to app
+            for (i = 0; i < this.layers.length; i++) {
+                if (this.layers[i] === layer) {
+                    this.layers.splice(i, 1);
+                }
+            }
+
+            if (layer.layerDef && layer.layerDef.loaded) {
+                layer.layerDef.loaded(false);
+            }
+
+            //remove from layerControls
+            topic.publish('layerControl/removeLayerControls', [layer]);
+            //remove from identify
+            topic.publish('identify/removeLayerInfos', [{id: layer.id}]); //that's all we need of the layerInfo used in removeLayerInfos method
+            //remove from legend
+            for (i = 0; i < this.legendLayerInfos.length; i++) {
+                if (this.legendLayerInfos[i].layer === layer) {
+                    this.legendLayerInfos.splice(i, 1);
+                }
+            }
+
+            //refresh the map; it isn't really necessary to do this as far as the map display is concerned, 
+            //because the map will update on the removeLayer call above, but without this the removed layer 
+            //remains in the legend until after the user pans/zooms the map
+            //TODO surely there's a better way to refresh the map?
+            this.map.setExtent(this.map.extent);
+
+            //TODO: the layer still seems to linger and some events continue to fire
+            //I've tried a couple of other fixes, such as below, to no avail.
+            //See the "ham-fisted" work-around in _checkboxScaleRange of _Control.js
+            //this.destroy()
+            //console.log(this._handlers);
+            //delete layer;
+
+        },
         zoomToMgrsPoint: function (mgrs, zoomLevel) {
             var point = coordinateFormatter.fromMgrs(mgrs, null, 'automatic');
             var deferred = new Deferred();
