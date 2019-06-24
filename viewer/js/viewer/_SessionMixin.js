@@ -141,7 +141,9 @@ define([
         //Checks every second if we're getting close to session timeout
         updateSessionStatus: function () {
             var now = new Date(),
-                secondsSinceLastActivity = parseInt((now.getTime() - this.lastActivityTime.getTime()) / 1000, 10);
+                nowTime = now.getTime(),
+                secondsSinceLastActivity = parseInt((nowTime - this.lastActivityTime.getTime()) / 1000, 10),
+                secondsSinceLastPing = parseInt((nowTime - this.lastPingTime.getTime()) / 1000, 10);
 
             this.secondsToGo = this.secondsPerSession - secondsSinceLastActivity;
 
@@ -156,11 +158,11 @@ define([
             //if all of the following are true:
             // 1. we're not already expired
             // 2. there's been recent activity (defined as activity since the last ping)
-            // 3. we've hit our delay interval (the remainder of secondsToGo / refreshDelaySeconds is 0; e.g.every 15 seconds)
+            // 3. It's been more than or equal to the refreshDelaySeconds parameter seconds since we last pinged
             //Then ping the server to keep the server session alive
             if (this.sessionStatus !== 'expired' && // 1
                 this.lastActivityTime > this.lastPingTime && // 2
-                this.secondsToGo % this.refreshDelaySeconds === 0) { // 3
+                secondsSinceLastPing >= this.refreshDelaySeconds) { // 3
                 this.pingSession();
             }
 
@@ -189,7 +191,6 @@ define([
         //pings the server via DWR to keep the server session alive
         pingSession: function () {
             var self = this; //"this" changes context in callback
-
             this.lastPingTime = new Date();
 
             //pings the server to keep the session alive
