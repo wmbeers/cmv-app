@@ -101,7 +101,7 @@ define([
                 topicId += '_' + layerControlItem.subLayer.id;
                 //todo pick up subLayer definitionExpression. Not sure how this is done or if it can be done...
             } else if (layerControlItem.layer.getDefinitionExpression && layerControlItem.layer.getDefinitionExpression()) {
-                definitionExpression = layerControlItem.getDefinitionExpression();
+                definitionExpression = layerControlItem.layer.getDefinitionExpression();
             }
 
             var tableOptions = {
@@ -328,19 +328,22 @@ define([
          * Adds a layer to the map
          * @param  {Object} layer An instance of a subclass of the base class esri/layers/Layer (.e.g FeatureLayer, ArcGisDynamicMapServiceLayer)
          * the layer object must be created with the constructLayer method and have the added layerDef object added to it.
+         * @param {boolean} zoomOnLoad Optional parameter, if true the map will toom to the extent of the layer after it is loaded
          * @return {Promise}  A Promise that will be resolved after the layer is loaded in the map
          */
-        addLayer: function (layer) {
+        addLayer: function (layer, zoomOnLoad) {
             var deferred = new Deferred(),
                 layerDef = layer.layerDef,
                 self = this; 
 
             if (layer.alreadyInMap) {
-                //set it construct layer, means it was already found in the map
+                //alreadyInMap was set in construct layer, means it was already found in the map
                 //Make it visible
                 layer.setVisibility(true); // use this method rather than .visible property to keep LayerControl in sync
                 //rezoom--user might have panned/zoomed elsewhere, but are requesting to go back
-                this.zoomToLayer(layer);
+                if (zoomOnLoad) {
+                    this.zoomToLayer(layer);
+                }
                 //Warn if not visible at current scale
                 if (!layer.visibleAtMapScale) {
                     topic.publish('growler/growl', {
@@ -369,10 +372,10 @@ define([
             //and adding to layerControl widget
             //HOWEVER, if layer was previously loaded, apparently the load event doesn't fire...
             if (layer.loaded) {
-                this._onLayerLoad(layer, layerDef, deferred);
+                this._onLayerLoad(layer, layerDef, deferred, zoomOnLoad);
             }
             on(layer, 'load', function () {
-                self._onLayerLoad(layer, layerDef, deferred); 
+                self._onLayerLoad(layer, layerDef, deferred, zoomOnLoad); 
             });
             
             //add the layer to the map
@@ -381,7 +384,7 @@ define([
             return deferred;
         },
 
-        _onLayerLoad: function (layer, layerDef, deferred) {
+        _onLayerLoad: function (layer, layerDef, deferred, zoomOnLoad) {
             var self = this;
             if (layerDef.loaded) { //if it has a loaded observable, assign it to true. (It always does when it's a layerDef defined by our system)
                 layerDef.loaded(true);
@@ -477,7 +480,7 @@ define([
                 topic.publish('identify/addLayerInfos', [layerControlInfo]);
                 self.legendLayerInfos.push(layerControlInfo);
 
-                if (layer.getDefinitionExpression && layer.getDefinitionExpression()) { //TODO there might be some pre-defined layers with definition expressions assigned in map service. None yet, but if there are we need some other way to handle deciding when to zoom
+                if (zoomOnLoad) {
                     //zoom to layer
                     self.zoomToLayer(layer);
                     //TODO? is it possible after zooming to the defined features (which, as far our documented requirements go, will be just one)
@@ -514,59 +517,113 @@ define([
             });
 
         },
-
+        /**
+         * Listens to topic layerLoader/addLayerFromLayerDef, called from LayerLoader widget.
+         * @param {object} layerDef a layerDef object found in layerLoader.js
+         * @return {object} Deffered instance
+          */
         addLayerFromLayerDef: function (layerDef) {
             if (!layerDef.layer) {
                 layerDef.layer = this.constructLayer(layerDef);
-                //layerDef.layer.layerDef = layerDef.layer; //bi-directional references
             }
-            return this.addLayer(layerDef.layer); //TODO return statement not needed, just call to this.addLayer
+            return this.addLayer(layerDef.layer, false); //note: return statement not needed, just call to this.addLayer, but may be useful in future
         },
 
+        /**
+         * Lists to topic layerLoader/addLayerFromCategoryDef
+         * @param {object} categoryDef a layerDef object found in layerLoader.js
+         * @return {object} Deffered instance
+         */
         addLayerFromCategoryDef: function (categoryDef) {
             if (!categoryDef.layer) {
                 categoryDef.layer = this.constructLayer(categoryDef);
             }
-            return this.addLayer(categoryDef.layer);
+            return this.addLayer(categoryDef.layer, false);
         },
 
+        //Add a project or alternative to the map, using one of the following patterns:
+        //'p' followed by a project ID (e.g. p12992 to load project #12992)
+        // number, or string that contains just numbers (e.g. 12992 or '12992' to load project #12992)
+        //'a' followed by a project alt ID (e.g. 'a9912' to load project alt 9912)
+        // string containing two numbers separated by a dash (e.g. 12992-1 to load alt 1 of project 12992)
         //TODO: support adding draft projects to map for editing
-        addProjectToMap: function (projectAltId) {
-            var self = this; //so we don't lose track buried down in callbacks
-            //figure out if we're zooming to a project or just a specific alt
-            var definitionQuery = '';
-            if (projectAltId.indexOf('-') > 0) {
+        addProjectToMap: function (projectAltId, zoomOnLoad) {
+            var self = this, //so we don't lose track buried down in callbacks
+                isAlt = false,
+                definitionQuery = '',
+                deferred = new Deferred(),
+                query = new Query(),
+                queryTask = new QueryTask(projects.queryLayer); //query task url is in the config file viewer/js/config/projects.js. 
+
+            //default zoomOnLoad to true
+            if (typeof zoomOnLoad === 'undefined') {
+                zoomOnLoad = true;
+            }
+
+            //figure out if we're zooming to a project or a specific alt
+            if (typeof projectAltId === 'number' || !isNaN(projectAltId)) {
+                //presumed to be a project #
+                //all alternatives for a given project
+                definitionQuery = 'fk_project = ' + projectAltId;
+            } else if (projectAltId.startsWith('a')) {
+                //specific alternative by fk_project_alt
+                definitionQuery = 'fk_project_alt = ' + projectAltId.substr(1);
+                isAlt = true;
+            } else if (projectAltId.indexOf('-') > 0) {
+                //specific alternative identified by project-alt pattern, like '1234-1' for alt 1 of project 1234
                 definitionQuery = 'alt_id = \'' + projectAltId + '\'';
-            } else {
-                definitionQuery = 'alt_id like \'' + projectAltId + '-%\'';
+                isAlt = true;
+            } else if (projectAltId.startsWith('p')) {
+                definitionQuery = 'fk_project = ' + projectAltId.substr(1);
+            } else if (!isNaN(projectAltId)) {
+                //something we don't know how to handle.
+                //no features found
+                topic.publish('growler/growl', {
+                    title: 'Invalid Project/Analysis Area ID',
+                    message: 'Unable to parse ID ' + projectAltId,
+                    level: 'error'
+                });
+                deferred.cancel('Invalid project/alt ID');
             }
 
             //validate the projectAltId
-            var query = new Query();
             query.where = definitionQuery;
-            //TODO: this url should probably be in a config file somewhere.
-            var queryTask = new QueryTask(projects.queryLayer);
-            var deferred = new Deferred();
-            queryTask.executeForCount(query, function (count) {
-                if (count === 0) {
+            query.returnGeometry = false;
+            query.outFields = ['FK_PROJECT', 'FK_PROJECT_ALT', 'ALT_ID'];
+
+            //old way used executeForCount and just got the number of features,
+            //but we really need to know, if it's an alt, the fk_project_alt value for saving it
+            //queryTask.executeForCount(query, function (count) {
+            //    if (count === 0) {
+            queryTask.execute(query, function (reply) {
+                if (reply.features.length === 0) {                
                     //no features found
                     topic.publish('growler/growl', {
-                        title: 'Invalid Project/Alt ID',
-                        message: 'No projects found with project/Alt ID ' + projectAltId,
+                        title: 'Invalid Project/Analysis Area ID',
+                        message: 'No projects found with id ' + projectAltId,
                         level: 'error'
                     });
                     deferred.cancel('Invalid project/alt ID');
                 } else {
                     //load it!
-                    var projectLayer = self.constructLayer(
-                        {
-                            name: 'Project # ' + projectAltId,
-                            id: 'project_' + projectAltId.replace('-', '_'),
-                            url: projects.queryLayer,
-                            type: 'feature',
-                            projectAltId: projectAltId, //used when saving to layerconfig
-                            layerName: null //only needed for metadata
-                        },
+                    //first construct a layer config
+                    var projectLayerConfig = {
+                        name: 'Project # ' + projectAltId,
+                        id: ('project_' + projectAltId).replace('-', '_'), //internal ID, not really important, but helps with debugging
+                        url: projects.queryLayer,
+                        type: 'feature',
+                        layerName: null //only needed for metadata
+                    };
+                    if (isAlt) {
+                        //cache the fk_project_alt for savedMap
+                        projectLayerConfig.projectAltId = reply.features[0].attributes.FK_PROJECT_ALT;
+                        projectLayerConfig.name = 'Project # ' + reply.features[0].attributes.ALT_ID;
+                    } else {
+                        //cach the fk_project for savedMap
+                        projectLayerConfig.projectId = reply.features[0].attributes.FK_PROJECT;
+                    }
+                    
+                    var projectLayer = self.constructLayer(projectLayerConfig, 
                         definitionQuery,
                         false, //prevents definitionExpression from overriding title TODO cleaner method of handling this
                         //todo just set this in the map service rather than having to code in js
@@ -588,7 +645,7 @@ define([
                     );
                     //resolve deferred via addLayer method
                     //todo how to handle error?
-                    self.addLayer(projectLayer).then(
+                    self.addLayer(projectLayer, zoomOnLoad).then(
                         function (l) {
                             deferred.resolve(l);
                         });
@@ -616,7 +673,7 @@ define([
                 SavedMapDAO.saveMap(savedMap, {
                     callback: function (savedMapId) {
                         savedMap.id = savedMapId;
-                        topic.publish('growler/growl', 'Saved ' + savedMap.layers.length + ' layers to ' + savedMap.name);
+                        topic.publish('growler/growl', 'Saved ' + savedMap.layers.length + ' layers to ' + savedMap.mapName);
                         topic.publish('layerLoader/mapSaved');
                     },
                     errorHandler: function (message, exception) {
@@ -664,7 +721,7 @@ define([
             if (savedMap) {
                 this.loadLayerConfig(savedMap.layers, clearMapFirst).then(function (layers) {
                     if (savedMap.extent) {
-                        savedMapExtent = new Extent({
+                        var savedMapExtent = new Extent({
                             xmin: savedMap.extent.xmin,
                             ymin: savedMap.extent.ymin,
                             xmax: savedMap.extent.xmax,
@@ -698,7 +755,7 @@ define([
             }
         },
 
-        zoomToExtent: function (extent) {
+        zoomToExtent: function (extent) { //TODO this overwrites _GraphicsMixin.js zoomToExtent; does that break anything?
             var map = this.map;
             if (extent.spatialReference === map.spatialReference) {
                 map.setExtent(extent, true);
@@ -762,11 +819,15 @@ define([
                     type: layer.layerDef ? layer.layerDef.type : null,
                     definitionExpression: layer.getDefinitionExpression ? layer.getDefinitionExpression() : null
                 };
-                //todo handle project layers
+                //handle project layers
                 if (layer.layerDef) {
-                    if (layer.name === 'Milestone Max Alternatives') {
-                        //special case for our project/alt layers
-                        x.projectAltId = layer.layerDef.projectAltId;
+                    if (layer.layerDef.projectId) {
+                        x.layerId = layer.layerDef.projectId;
+                        x.type = 'project';
+                    }
+                    if (layer.layerDef.projectAltId) {
+                        x.layerId = layer.layerDef.projectAltId;
+                        x.type = 'projectAlt';
                     }
                 }
                 return x;
@@ -792,8 +853,13 @@ define([
             for (var i = layerConfig.length - 1; i >= 0; i--) {
                 var layer = null,
                     layerConfigItem = layerConfig[i];
-                if (layerConfigItem.name === 'Milestone Max Alternatives' && layerConfigItem.projectAltId) {
-                    promises.push(this.addProjectToMap(layerConfigItem.projectAltId));
+                if (layerConfigItem.type === 'project') {
+                    promises.push(this.addProjectToMap(layerConfigItem.layerId, false));
+                    if (layerConfigItem.visible === false) {
+                        layer.visible = false;
+                    }
+                } else if (layerConfigItem.type === 'projectAlt') {
+                    promises.push(this.addProjectToMap('a' + layerConfigItem.layerId, false));
                     if (layerConfigItem.visible === false) {
                         layer.visible = false;
                     }
@@ -801,7 +867,7 @@ define([
                     layer = this.constructLayer(layerConfigItem, layerConfigItem.definitionExpression);
                 }
                 if (layer) {
-                    promises.push(this.addLayer(layer));
+                    promises.push(this.addLayer(layer, false));
                     if (layerConfigItem.visible === false) {
                         layer.visible = false;
                     }

@@ -77,10 +77,21 @@ define([
                 }).show();
             },
             _deleteSelectedMap: function () {
-                this.savedMaps.remove(this.selectedMap());
-                this.selectedMap(null);
-                //TODO save to database/user config, not LSO
-                //localStorage.setItem('savedMaps', JSON.stringify(this.savedMaps()));
+                var self = this;
+                SavedMapDAO.deleteSavedMap(this.selectedMap().id, {
+                    callback: function (reply) {
+                        if (reply === 'ok') {
+                            self.savedMaps.remove(this.selectedMap());
+                            self.selectedMap(null);
+                        }
+                    },
+                    errorHandler: function (message, exception) {
+                        topic.publish('viewer/handleError', {
+                            source: 'LayerLoader._deleteSelectedMap',
+                            error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                        });
+                    }
+                });
             },
             postCreate: function () {
                 this.inherited(arguments);
