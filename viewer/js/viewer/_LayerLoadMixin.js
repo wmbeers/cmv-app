@@ -56,8 +56,6 @@ define([
 
     return declare(null, {
         startup: function () {
-            var self = this;
-
             //subscribe to topics
             topic.subscribe('layerControl/openAttributeTable', lang.hitch(this, 'openAttributeTable'));
             topic.subscribe('layerLoader/addProjectToMap', lang.hitch(this, 'addProjectToMap'));
