@@ -1,5 +1,8 @@
 var mapWindow = null; //global reference to map window; will be set when map loads
 
+
+
+
 function showMap (callback) {
     /// <summary>
     /// Shows the map, opening it in a new window if not already open
@@ -25,6 +28,8 @@ function showMap (callback) {
         callback();
     }
 }
+
+
 
 //globals for testLayerDrawSpeed
 var cancel = false,
@@ -110,15 +115,34 @@ function testLayerDrawSpeed() {
 
     showMap(function () {
         var app = mapWindow.app,
-            map = app.map;
+            map = app.map,
+            layerDefs = [],
+            layerNames = document.getElementById('layerNames').value;
+
+        if (layerNames) {
+            //convert to array
+            layerNames = layerNames.split(',');
+            layerNames.forEach(function (ln) {
+                ld = app.getLayerDef(ln);
+                if (ld) {
+                    layerDefs.push(ld);
+                } else {
+                    console.log('Invalid layer name: ' + ln);
+                }
+            });
+        } else {
+            //hooboy, going for the full enchilada
+            layerDefs = mapWindow.app.widgets.layerLoader.layerDefs;
+        }
         
-        app.layers[0].setVisibility(false); //Hide Projects layer
+        app.layers[0].setVisibility(false); //Hide Projects layers
+        app.layers[1].setVisibility(false); //Hide Projects layers
 
         function wrapUp() {
             if (updateEndListener) updateEndListener.remove();
             //REPORT
            
-            app.widgets.layerLoader.layerDefs.forEach(function(layerDef) {
+            layerDefs.forEach(function(layerDef) {
                if (layerDef.drawTimes) {
                    layerDef.drawTimes.forEach(function (drawTime) {
                        console.log(layerDef.id + ',' + layerDef.definitionQuery + ',' + layerDef.layerName + ',' + drawTime.centerName + ',' + drawTime.zoomLevel + ',' + drawTime.duration + ',' + drawTime.visibleAtScale)
@@ -142,7 +166,7 @@ function testLayerDrawSpeed() {
                 //no more centers, on to the next layer
                 l++;
                 i = 0;
-                if (l > app.widgets.layerLoader.layerDefs.length) {
+                if (l > layerDefs.length) {
                     //done!
                     console.log('done');
                     wrapUp();
@@ -164,10 +188,10 @@ function testLayerDrawSpeed() {
         }
 
         function loadLayer() {
-            ld = mapWindow.app.widgets.layerLoader.layerDefs[l];
+            ld = layerDefs[l];
             console.log('Loading ' + ld.layerName);
             ld.drawTimes = [];
-            ld.loadLayer().then(function(a) {
+            app.addLayerFromLayerDef(ld).then(function(a) {
                 console.log('Loaded ' + a.layerName);
                 centerAndZoom();
             });
@@ -189,51 +213,160 @@ function testLayerDrawSpeed() {
     });
 }
 
-//examples of how to load a layer filtered to a specific feature by autoId in an already opened map
-function loadData () {
-    mapWindow.app.addLayer(
-        {
-            name: 'Solid Waste',
-            url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Contamination/MapServer/12',
-            type: 'feature',
-            layerName: 'sldwst'
-        },
-        'autoid = 228'
-    );
+
+function testServiceDrawSpeed() {
+    debugger;
+    document.getElementById('drawSpeedResults').innerText = 'id,centerName,zoomLevel,duration,visibleAtScale';
+    cancel = false;
+    i = 0;
+    l = 0;
+    z = 7;
+    sd = null;
+    timer = null;
+
+    showMap(function () {
+        var app = mapWindow.app,
+            map = app.map,
+            serviceDefs = [],
+            serviceIds = document.getElementById('serviceIds').value;
+
+        if (serviceIds) {
+            //convert to array
+            serviceIds = serviceIds.split(',');
+            serviceIds.forEach(function (id) {
+                if (id && !isNaN(id)) {
+                    id = parseInt(id,10);
+                }
+                sd = app.getService(id);
+                if (sd) {
+                    serviceDefs.push(sd);
+                } else {
+                    console.log('Invalid service ID: ' + id);
+                }
+            });
+        } else {
+            //hooboy, going for the full enchilada
+            serviceDefs = mapWindow.app.widgets.layerLoader.allCategories.filter(function (c) {
+                return c.servicdId;
+            });
+        }
+
+        app.layers[0].setVisibility(false); //Hide Projects layers
+        app.layers[1].setVisibility(false); //Hide Projects layers
+
+        function wrapUp() {
+            if (updateEndListener) updateEndListener.remove();
+            //REPORT
+
+            serviceDefs.forEach(function (serviceDef) {
+                if (serviceDef.drawTimes) {
+                    serviceDef.drawTimes.forEach(function (drawTime) {
+                        console.log(serviceDef.id + ',' + drawTime.centerName + ',' + drawTime.zoomLevel + ',' + drawTime.duration + ',' + drawTime.visibleAtScale)
+                    })
+                }
+            });
+        }
+
+        function centerAndZoom() {
+            if (cancel) {
+                wrapUp();
+                return;
+            }
+            if (z > 23) {
+                //no more zoom levels, on to the next center
+                z = 7;
+                i++;
+                console.log("Moving to next center");
+            }
+            if (i >= centers.length) {
+                //no more centers, on to the next layer
+                l++;
+                i = 0;
+                if (l > serviceDefs.length) {
+                    //done!
+                    console.log('done');
+                    wrapUp();
+
+                    return;
+                }
+                ld.removeLayer();
+                console.log("moving to next layer");
+                loadService();
+                return;
+            }
+            console.log('l: ' + l + ' i:' + i + ' z:' + z);
+            timer = {
+                zoomLevel: z,
+                centerName: centers[i].name,
+                startTime: new moment()
+            };
+            map.centerAndZoom(centers[i].center, z);
+        }
+
+        function loadService() {
+            sd = serviceDefs[l];
+            console.log('Loading ' + sd.id);
+            sd.drawTimes = [];
+            app.addLayerFromCategoryDef(sd).then(function (a) {
+                console.log('Loaded ' + a.layerName);
+                centerAndZoom();
+            });
+        }
+
+        updateEndListener = map.on('update-end', function () {
+            timer.visibleAtScale = sd.layer.visibleAtMapScale;
+            timer.endTime = new moment();
+            timer.duration = timer.endTime.diff(timer.startTime);
+            console.log(timer.duration);
+            sd.drawTimes.push(timer);
+            writeResultLine(sd.id + ',' + timer.centerName + ',' + timer.zoomLevel + ',' + timer.duration + ',' + timer.visibleAtScale)
+            z++;
+            centerAndZoom();
+        });
+        //load first layer and start
+        loadService();
+
+    });
 }
-//minimalist flavor, just using the layerName property; URL of map service is also supported
-function loadData2 () {
-    mapWindow.app.addLayer('sldwst', 'autoid = 228');
+
+
+//example of how to open the map and load a layer
+function loadLayer () {
+    showMap(function () {
+        mapWindow.postMessage({
+            command: 'addLayer',
+            layerName: 'SLDWST'
+        });
+    });
 }
 
-//examples of how to open the map and load a layer in one step
-/* exported showMapAndLoadData */
-function showMapAndLoadData () {
-    showMap(loadData);
-}
-
-/* exported showMapAndLoadData2 */
-function showMapAndLoadData2 () {
-    showMap(loadData2);
-}
-
-
-
-
+//example of how to open the map, load a layer, and zoom to a specific feature
 function showFeature () {
     showMap(function () {
-        mapWindow.app.addToMap(
-            document.getElementById('layerName').value,
-            'autoid = ' + document.getElementById('autoId').value
-        );
+        mapWindow.postMessage({
+            command: 'addLayer',
+            layerName: 'SLDWST',
+            zoomPoint: '17RKP2401887779'
+        });
     });
 }
 
 function showProject () {
     showMap(function () {
-        mapWindow.app.addProjectToMap(
-            document.getElementById('projectId').value
-        );
+        mapWindow.postMessage({
+            command: 'addProjectToMap',
+            projectId: document.getElementById('projectId').value
+        });
+    });
+}
+
+function loadSavedMap() {
+    showMap(function () {
+        mapWindow.postMessage({
+            command: 'loadMap',
+            savedMapId: document.getElementById('savedMapId').value,
+            clearBeforeLoading: document.getElementById('clearBeforeLoading').checked
+        });
     });
 }
 
@@ -243,7 +376,12 @@ function zoomToMgrsPoint() {
             zoomLevelText = document.getElementById('zoomLevel').value,
             inferZoom = document.getElementById('inferZoom').checked,
             zoomLevel = inferZoom ? 'infer' : zoomLevelText;
-        mapWindow.app.zoomToMgrsPoint(mgrs, zoomLevel).then(function () { console.log('done'); });
+        //mapWindow.app.zoomToMgrsPoint(mgrs, zoomLevel).then(function () { console.log('done'); });
+        mapWindow.postMessage({
+            command: 'zoomToMgrsPoint',
+            mgrs: mgrs,
+            zoomLevel: zoomLevel
+        });
     });
 }
 
