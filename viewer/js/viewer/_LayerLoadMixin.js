@@ -56,6 +56,8 @@ define([
 
     return declare(null, {
         startup: function () {
+            var self = this;
+
             //subscribe to topics
             topic.subscribe('layerControl/openAttributeTable', lang.hitch(this, 'openAttributeTable'));
             topic.subscribe('layerLoader/addProjectToMap', lang.hitch(this, 'addProjectToMap'));
@@ -65,14 +67,56 @@ define([
             topic.subscribe('layerLoader/loadMap', lang.hitch(this, 'loadMap'));
             topic.subscribe('layerLoader/removeLayer', lang.hitch(this, 'removeLayer'));
             topic.subscribe('layerLoader/clearUserLayers', lang.hitch(this, 'clearUserLayers'));
+            topic.subscribe('layerLoader/zoomToMgrsPoint', lang.hitch(this, 'zoomToMgrsPoint'));
 
             //load the coordinateFormatter
             coordinateFormatter.load();
             //just a test of whether jquery works: jquery("#subHeaderTitleSpan").html('Yo');
 
             //this has to wait until the layerLoader is finished loading
-            //doesn't quite cut it window.setTimeout(this._handleQueryString.bind(this), 2000);
+            //doesn't quite cut it: window.setTimeout(this._handleQueryString.bind(this), 2000);
+            //so we wait for the last widget we have to publish startupComplete
             topic.subscribe('layerLoader/startupComplete', lang.hitch(this, '_handleQueryString'));
+
+            //event listener for messages from other EST windows
+            //for certain specific external functions, including loadMap, addProjectToMap, zoomToMgrsPoint, loadLayer
+            window.addEventListener('message', function (e) {
+                switch (e.data.command) {
+                case 'addProjectToMap':
+                    self.addProjectToMap(e.data.projectId);
+                    break;
+                case 'zoomToMgrsPoint':
+                    self.zoomToMgrsPoint(e.data.mgrs, e.data.zoomLevel);
+                    break;
+                case 'addLayer':
+                    //external API only supports feature layers, identified by layerName
+                    //because the biggest use case is from the analysis results
+                    //optionally can zoom the map to a specific point
+                    var layer = self.constructLayer(e.data.layerName),
+                        zoomPoint = e.data.zoomPoint || null,
+                        hasZoomPoint = false;
+                    if (zoomPoint) {
+                        hasZoomPoint = true;
+                    }
+                    if (layer) {
+                        self.addLayer(layer, !hasZoomPoint).then(function () {
+                            if (hasZoomPoint) {
+                                self.zoomToMgrsPoint(e.data.zoomPoint, 'infer');
+                            }
+                        });
+                    }
+                    break;
+                case 'loadMap':
+                    self.loadMap(e.data.savedMapId);
+                    break;
+                default:
+                    topic.publish('viewer/handleError', {
+                        source: 'LayerLoadMixin message event listener',
+                        error: 'Unsupported command: ' + e.data.command
+                    });
+                }
+            });
+
 
             this.inherited(arguments);
         },
@@ -81,9 +125,13 @@ define([
             var uri = testUri || window.location.href;
             var qs = uri.indexOf('?') >= 0 ? uri.substring(uri.indexOf('?') + 1, uri.length) : '';
             var qsObj = ioQuery.queryToObject(qs);
-            //acceptable arguments include loadMap, TODO
+            //acceptable arguments include loadMap, projectId
+            //TODO expand to addLayer
+            //TODO could also consider expanding to chain multiple events, like load several layers, load a saved map and add a project, etc.
             if (qsObj.loadMap) {
                 this.loadMap(qsObj.loadMap);
+            } else if (qsObj.projectId) {
+                this.addProjectToMap(qsObj.projectId);
             }
         },
 
@@ -134,60 +182,68 @@ define([
             topic.publish('attributesTable/addTable', tableOptions);
         },
 
+        /**
+         * Gets a reference to a map service by its service ID, via the allCategories array in the LayerLoader widget.
+         * @param {number} serviceId Id of the service to find.
+         * @returns {object} A reference to the category, defined in allCategories, with a serviceId matching the provided serviceId
+         */
         getService: function (serviceId) {
             return this.widgets.layerLoader.allCategories.find(function (c) {
                 return c.serviceId === serviceId;
             });
         },
 
-        // Get a layer definition by numeric id (relates back to objectid of t_rest_services_mxd), the 
-        getLayerDef: function (sdeLayerNameOrUrl) {
-            var categories = this.widgets.layerLoader.categories;
-            var layerDefs = this.widgets.layerLoader.layerDefs;
+        /**
+         * Gets a reference to a layer definition by numeric id (relates back to objectid of t_rest_services_mxd), or
+         * by its SDE layer name. The numeric id is used primarily when coming from a saved map, and the SDE layer name
+         * is used primarily when coming from the GIS analysis results report.
+         * @param {any} layerIdOrName the id of a layer def, or its sde layer name
+         * @returns {object} a layer def with the id of sde layer name matching layerIdOrName
+         */
+        getLayerDef: function (layerIdOrName) {
+            var layerDefs = this.widgets.layerLoader.layerDefs,
+                ld = null;
 
-            if (typeof sdeLayerNameOrUrl === 'number') {
-                var ld = layerDefs.find(function (layerDef) {
-                    return layerDef.id === sdeLayerNameOrUrl;
+            //by numeric id, when coming from saved map
+            if (typeof layerIdOrName === 'number' || !isNaN(layerIdOrName)) {
+                if (typeof layerIdOrName === 'string') {
+                    layerIdOrName = parseInt(layerIdOrName, 10);
+                }
+                ld = layerDefs.find(function (layerDef) {
+                    return layerDef.id === layerIdOrName;
                 });
-                //if we make it this far, it's a problem
+                //not found
                 if (ld === null) {
                     topic.publish('viewer/handleError', {
                         source: 'LayerLoadMixin.getLayerDef',
-                        error: 'Unable to find definition for layerDef with id ' + sdeLayerNameOrUrl
+                        error: 'Unable to find definition for layerDef with id ' + layerIdOrName
                     });
                 }
                 return ld;
             }
-            for (var i = 0; i < categories.length; i++) {
-                var category = categories[i];
-                if (category.name === sdeLayerNameOrUrl) {
-                    return category;
-                }
-                if (category.layersDefs) {
-                    for (var j = 0; j < category.layersDefs.length; j++) {
-                        var l = category.layersDefs[j];
-                        if (l.url === sdeLayerNameOrUrl || l.layerName === sdeLayerNameOrUrl) {
-                            return l;
-                        }
-                    }
-                }
-            }
-            //maybe it's just a plain old URL?
-            if (sdeLayerNameOrUrl.toLowerCase().startsWith('http')) {
-                //TODO construct a new layerDef
-                //we need to determine if it's a map service (dynamic) or layer (featureLayer)
-                //or any other URL-based thing, see DnD for examples
-            }
-            //if we make it this far, it's a problem
-            topic.publish('viewer/handleError', {
-                source: 'LayerLoadMixin.getLayerDef',
-                error: 'Unable to find definition for category with name or layer with layerName or URL "' + sdeLayerNameOrUrl + '"'
-            });
 
-            return null; //just to shut up eslint
+            //not a number, so look by SDE layername, when coming from external link/function call in analysis report
+            ld = layerDefs.find(function (layerDef) {
+                return layerDef.layerName === layerIdOrName;
+            });
+            //not found
+            if (ld === null) {
+                topic.publish('viewer/handleError', {
+                    source: 'LayerLoadMixin.getLayerDef',
+                    error: 'Unable to find definition for layerDef with name ' + layerIdOrName
+                });
+            }
+
+            return ld;
         },
-        //Tests if a layer (either feature or dynamic) is already loaded in the map (exists in this.layers)
-        //based on the URL and definitionExpression
+
+        /**
+         * Tests if a layer (either feature or dynamic) is already loaded in the map (exists in this.layers)
+         * based on the URL and definitionExpression, returns a reference to the layer if it is in the map
+         * @param {object} layerDef the layerDef object defining the layer to find in the map
+         * @param {string} definitionExpression optional definition expression, used to distinguish two instances of the same layer with different definition expressions defined
+         * @returns {object} a reference to a map layer, if one is found with a matching layer definition and definition expression; otherwise null
+        */
         findLayerInMap: function (layerDef, definitionExpression) {
             definitionExpression = definitionExpression || ''; //make sure it's not undefined
             return this.layers.find(function (l) {
@@ -202,10 +258,18 @@ define([
             });
         },
 
-        // Construct a layer based on a layerDef; layerDef might just be the ID of a layerDef contained in the config, 
+        /**
+         * Construct a layer based on a layerDef; layerDef might just be the ID of a layerDef contained in the config,
         // a layer name, or a URL
+         * @param {any} layerDef Either a layerDef object found in the LayerLoader's layerDefs array, or a string or number that can be used to find the layer def
+         * @param {String} definitionExpression Optional definition expression to be applied to the layer
+         * @param {Boolean} includeDefinitionExpressionInTitle If true, the defition expression will be displayed in the title
+         * @param {Object} renderer Optional renderer to be used to display the layer in the map
+         * @returns {Object} an ArcGIS layer of some sort; specific type depends on the layer definition
+         */
         constructLayer: function (layerDef, definitionExpression, includeDefinitionExpressionInTitle, renderer) {
-            var layer = null;
+            var layer = null,
+                visibleLayers = layerDef.visibleLayers || null; //cache the visible layers
 
             if (typeof layerDef === 'string' || typeof layerDef === 'number') {
                 //find layer by id, layerName, or url property
@@ -215,7 +279,7 @@ define([
                 }
             }
 
-            if (layerDef.type && layerDef.type === 'featureLayer') {
+            if (layerDef.type === 'featureLayer') {
                 //from saved map, use the layerId property to find it in the layers collection
                 layerDef = this.getLayerDef(layerDef.layerId);
                 if (!layerDef) {
@@ -223,7 +287,7 @@ define([
                 }
             }
 
-            if (layerDef.type && layerDef.type === 'restService') {
+            if (layerDef.type === 'restService') {
                 //from saved map, use the layerId property (which is actually the serviceId) to find it
                 layerDef = this.getService(layerDef.layerId);
             }
@@ -233,6 +297,7 @@ define([
             if (layer) {
                 //set a temporary tag to make sure it doesn't get re-added, that breaks things
                 layer.alreadyInMap = true;
+                //TODO reset visible layers here?
                 return layer;
             }
 
@@ -250,6 +315,9 @@ define([
                         //infoTemplate: new InfoTemplate('Attributes', '${*}')
                         imageParameters: ip
                     });
+                if (visibleLayers) {
+                    layer.setVisibleLayers(visibleLayers);
+                }
             } else if (layerDef.type === 'feature') {
                 layer = new FeatureLayer(layerDef.url,
                     {
@@ -691,16 +759,22 @@ define([
             }
 
         },
-
+        /**
+         * Loads a saved map from the server.
+         * @param {number} savedMapId ID of the saved map to load
+         * @param {boolean} clearMapFirst Optional, if true, all user layers will be removed from the map before loading new layers; if false or absent, layers from the saved map will be added on top of the layers already in the map.
+         * @returns {object} The Deferred object to be resolved when the map is done loading
+         */
         loadMap: function (savedMapId, clearMapFirst) {
-            var self = this; //DWR callback loses scope of this
+            var self = this, //DWR callback loses scope of this
+                deferred = new Deferred(); // promise to be fullfilled when map is done loading and map has zoomed
             
             //load from server
             //eslint-disable-next-line no-undef
             SavedMapDAO.getBeanById(savedMapId, {
                 callback: function (savedMap) {
                     if (savedMap) {
-                        self._loadMap(savedMap, clearMapFirst);
+                        self._loadMap(savedMap, clearMapFirst, deferred);
                     } else {
                         topic.publish('viewer/handleError', {
                             source: 'LayerLoadMixin.loadMap',
@@ -713,13 +787,23 @@ define([
                         source: 'LayerLoadMixin.loadMap',
                         error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
                     });
+                    deferred.reject(message);
                 }
             });
+
+            return deferred;
         },
-        _loadMap: function (savedMap, clearMapFirst) {
+        /**
+         * Callback function from SavedMapDAO.getBeanById call made in LoadMap function.
+         * @param {object} savedMap The SavedMapBean returned from the DWR call
+         * @param {boolean} clearMapFirst Optional, if true, all user layers will be removed from the map before loading new layers; if false or absent, layers from the saved map will be added on top of the layers already in the map.
+         * @param {object} deferred The Deferred object to be resolved when the map is done loading
+         * @return {void}
+         */
+        _loadMap: function (savedMap, clearMapFirst, deferred) {
             var self = this; //this changes context in the "then" callback
             if (savedMap) {
-                this.loadLayerConfig(savedMap.layers, clearMapFirst).then(function (layers) {
+                this._loadLayerConfig(savedMap.layers, clearMapFirst).then(function (layers) {
                     if (savedMap.extent) {
                         var savedMapExtent = new Extent({
                             xmin: savedMap.extent.xmin,
@@ -729,11 +813,60 @@ define([
                             spatialReference: self.map.spatialReference
                         });
                         self.zoomToExtent(savedMapExtent);
+                        deferred.resolve(true);
                     }
                     topic.publish('growler/growl', 'Loaded ' + layers.length + ' layers for ' + savedMap.mapName);
                     topic.publish('layerLoader/mapLoaded', savedMap); //lets the layerloader widget know what's up when this is loaded from query string
                 });
+            } else {
+                deferred.reject('No savedMap passed to _loadMap function');
             }
+        },
+        /**
+         * Loads the layers from a saved map
+         * @param {Array} layerConfig The layers to be loaded, structure defined by SavedMapLayerBean
+         * @param {boolean} clearMapFirst Optional, if true, all user layers will be removed from the map before loading new layers; if false or absent, layers from the saved map will be added on top of the layers already in the map.
+         * @returns {object} Deferred object that will be resolved when all layers are done loading
+         */
+        _loadLayerConfig: function (layerConfig, clearMapFirst) {
+            var deferred = new Deferred();
+            var promises = [];
+            if (clearMapFirst) {
+                this.clearUserLayers();
+            }
+
+            //load in reverse order
+            for (var i = layerConfig.length - 1; i >= 0; i--) {
+                var layer = null,
+                    layerConfigItem = layerConfig[i];
+                if (layerConfigItem.type === 'project') {
+                    promises.push(this.addProjectToMap(layerConfigItem.layerId, false));
+                    if (layerConfigItem.visible === false) {
+                        layer.visible = false;
+                    }
+                } else if (layerConfigItem.type === 'projectAlt') {
+                    promises.push(this.addProjectToMap('a' + layerConfigItem.layerId, false));
+                    if (layerConfigItem.visible === false) {
+                        layer.visible = false;
+                    }
+                } else {
+                    layer = this.constructLayer(layerConfigItem, layerConfigItem.definitionExpression);
+                }
+                if (layer) {
+                    promises.push(this.addLayer(layer, false));
+                    if (layerConfigItem.visible === false) {
+                        layer.visible = false;
+                    }
+                }
+            }
+
+            if (promises.length > 0) {
+                all(promises).then(function (layers) {
+                    deferred.resolve(layers);
+                });
+            }
+
+            return deferred;
         },
         zoomToLayer: function (layer) {
             var self = this;
@@ -809,6 +942,7 @@ define([
             }, this);
         },
 
+        //gets the configuration of the layers currently loaded in the map
         getLayerConfig: function () {
             return array.map(this.getUserLayers(), function (layer) {
                 var x = {
@@ -817,10 +951,11 @@ define([
                     visible: layer.visible,
                     layerId: layer.layerDef ? (layer.layerDef.type === 'dynamic' ? layer.layerDef.serviceId : layer.layerDef.id) : layer.id,
                     type: layer.layerDef ? layer.layerDef.type : null,
-                    definitionExpression: layer.getDefinitionExpression ? layer.getDefinitionExpression() : null
+                    definitionExpression: layer.getDefinitionExpression ? layer.getDefinitionExpression() : null,
+                    visibleLayers: []
                 };
-                //handle project layers
                 if (layer.layerDef) {
+                    //handle project layers
                     if (layer.layerDef.projectId) {
                         x.layerId = layer.layerDef.projectId;
                         x.type = 'project';
@@ -829,6 +964,9 @@ define([
                         x.layerId = layer.layerDef.projectAltId;
                         x.type = 'projectAlt';
                     }
+                }
+                if (layer.declaredClass === 'esri.layers.ArcGISDynamicMapServiceLayer') {
+                    x.visibleLayers = layer.visibleLayers;
                 }
                 return x;
             });
@@ -840,47 +978,6 @@ define([
             layerClone.forEach(function (layer) {
                 this.removeLayer(layer);
             }, this);
-        },
-
-        loadLayerConfig: function (layerConfig, clearMapFirst) {
-            var deferred = new Deferred();
-            var promises = [];
-            if (clearMapFirst) {
-                this.clearUserLayers();
-            }
-
-            //load in reverse order
-            for (var i = layerConfig.length - 1; i >= 0; i--) {
-                var layer = null,
-                    layerConfigItem = layerConfig[i];
-                if (layerConfigItem.type === 'project') {
-                    promises.push(this.addProjectToMap(layerConfigItem.layerId, false));
-                    if (layerConfigItem.visible === false) {
-                        layer.visible = false;
-                    }
-                } else if (layerConfigItem.type === 'projectAlt') {
-                    promises.push(this.addProjectToMap('a' + layerConfigItem.layerId, false));
-                    if (layerConfigItem.visible === false) {
-                        layer.visible = false;
-                    }
-                } else {
-                    layer = this.constructLayer(layerConfigItem, layerConfigItem.definitionExpression);
-                }
-                if (layer) {
-                    promises.push(this.addLayer(layer, false));
-                    if (layerConfigItem.visible === false) {
-                        layer.visible = false;
-                    }
-                }
-            }
-
-            if (promises.length > 0) {
-                all(promises).then(function (layers) {
-                    deferred.resolve(layers);
-                });
-            }
-
-            return deferred;
         },
 
         //Removes a layer from the map, layer control widget, identify and legend. 
@@ -930,9 +1027,11 @@ define([
             //affects whether user should be prompted to save before they share the map
             topic.publish('layerLoader/layersChanged');
         },
+
         zoomToMgrsPoint: function (mgrs, zoomLevel) {
-            var point = coordinateFormatter.fromMgrs(mgrs, null, 'automatic');
-            var deferred = new Deferred();
+            var point = coordinateFormatter.fromMgrs(mgrs, null, 'automatic'),
+                deferred = new Deferred();
+
             if (!point) {
                 //something went awry in converting from Mgrs
                 deferred.reject();
