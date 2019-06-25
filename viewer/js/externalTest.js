@@ -215,8 +215,7 @@ function testLayerDrawSpeed() {
 
 
 function testServiceDrawSpeed() {
-    debugger;
-    document.getElementById('drawSpeedResults').innerText = 'id,centerName,zoomLevel,duration,visibleAtScale';
+    document.getElementById('drawSpeedResults').innerText = 'id,centerName,zoomLevel,duration,visibleAtScale,visibleLayers';
     cancel = false;
     i = 0;
     l = 0;
@@ -261,7 +260,7 @@ function testServiceDrawSpeed() {
             serviceDefs.forEach(function (serviceDef) {
                 if (serviceDef.drawTimes) {
                     serviceDef.drawTimes.forEach(function (drawTime) {
-                        console.log(serviceDef.id + ',' + drawTime.centerName + ',' + drawTime.zoomLevel + ',' + drawTime.duration + ',' + drawTime.visibleAtScale)
+                        console.log(serviceDef.id + ',' + drawTime.centerName + ',' + drawTime.zoomLevel + ',' + drawTime.duration + ',' + drawTime.visibleAtScale + ',' + drawTime.visibleLayers)
                     })
                 }
             });
@@ -280,19 +279,28 @@ function testServiceDrawSpeed() {
             }
             if (i >= centers.length) {
                 //no more centers, on to the next layer
-                l++;
-                i = 0;
-                if (l > serviceDefs.length) {
-                    //done!
-                    console.log('done');
-                    wrapUp();
+                if (sd.retry) {
+                    i = 0;
+                    z= 7;
+                    sd.retry = false;
+                    sd.layer.setVisibleLayers(sd.layer.layerInfos.map(function (li) {
+                        return li.id;
+                    }));
+                } else {
+                    l++;
+                    i = 0;
+                    if (l > serviceDefs.length) {
+                        //done!
+                        console.log('done');
+                        wrapUp();
 
+                        return;
+                    }
+                    app.removeLayer(sd.layer);
+                    console.log("moving to next layer");
+                    loadService();
                     return;
                 }
-                ld.removeLayer();
-                console.log("moving to next layer");
-                loadService();
-                return;
             }
             console.log('l: ' + l + ' i:' + i + ' z:' + z);
             timer = {
@@ -305,10 +313,14 @@ function testServiceDrawSpeed() {
 
         function loadService() {
             sd = serviceDefs[l];
-            console.log('Loading ' + sd.id);
+            console.log('Loading ' + sd.serviceId);
             sd.drawTimes = [];
             app.addLayerFromCategoryDef(sd).then(function (a) {
-                console.log('Loaded ' + a.layerName);
+                if (a.visibleLayers && a.visibleLayers.length === 0 && !sd.retry) {
+                    //one of the services like land use where everything is turned off
+                    sd.retry = true;
+                }
+                console.log('Loaded ' + a.url);
                 centerAndZoom();
             });
         }
@@ -317,9 +329,10 @@ function testServiceDrawSpeed() {
             timer.visibleAtScale = sd.layer.visibleAtMapScale;
             timer.endTime = new moment();
             timer.duration = timer.endTime.diff(timer.startTime);
+            timer.visibleLayers = sd.layer.visibleLayers;
             console.log(timer.duration);
             sd.drawTimes.push(timer);
-            writeResultLine(sd.id + ',' + timer.centerName + ',' + timer.zoomLevel + ',' + timer.duration + ',' + timer.visibleAtScale)
+            writeResultLine(sd.serviceId + ',"' + timer.centerName + '",' + timer.zoomLevel + ',' + timer.duration + ',' + timer.visibleAtScale + ',"' + timer.visibleLayers + '"');
             z++;
             centerAndZoom();
         });
