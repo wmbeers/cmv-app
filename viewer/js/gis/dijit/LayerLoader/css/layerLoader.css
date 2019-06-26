@@ -83,6 +83,20 @@ input.mapLink {
     display: none;
 }
 
+/* todo move alert declarations to a more general location */
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert {
+    padding: 0.5rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
 .mapLinkDiv {
     width: 400px;
     height: 105px;

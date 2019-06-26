@@ -71,9 +71,13 @@
         <input type="text" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-props="name:'mapName',trim:true,required:true,style:'width:100%;'" data-dojo-attach-point="mapName" data-dojo-attach-event="keyup: handleMapNameKeyUp" />
 
         <div class="buttonContainer buttonContainerRight">
+            <span class="hidden" data-dojo-attach-point="saveMapWait"><i class="fas fa-spinner fa-spin"></i> Saving...</span>
             <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-save fa-fw'" data-dojo-attach-event="click: saveMap">
                 Save
             </div>
         </div>
+
+        <div class="alert alert-danger hidden" data-dojo-attach-point="saveMapError"></div>
+
     </div>
 </div>

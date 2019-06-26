@@ -107,7 +107,7 @@ define([
                     hasZoomPoint = true;
                 }
                 if (layer) {
-                    this.addLayer(layer, !hasZoomPoint).then(function () {
+                    this.addLayer(layer, !hasZoomPoint, false).then(function () {
                         if (hasZoomPoint) {
                             this.zoomToMgrsPoint(e.data.zoomPoint, 'infer');
                         }
@@ -405,12 +405,16 @@ define([
          * @param  {Object} layer An instance of a subclass of the base class esri/layers/Layer (.e.g FeatureLayer, ArcGisDynamicMapServiceLayer)
          * the layer object must be created with the constructLayer method and have the added layerDef object added to it.
          * @param {boolean} zoomOnLoad Optional parameter, if true the map will toom to the extent of the layer after it is loaded
-         * @return {Promise}  A Promise that will be resolved after the layer is loaded in the map
+         * @param {boolean} suppressGrowl Optional parameter, if false, the growler message that shows up after the layer loads is not shown; if true or missing, the growler message is shown.
+         * @return {Object}  A Deferred that will be resolved after the layer is loaded in the map
          */
-        addLayer: function (layer, zoomOnLoad) {
+        addLayer: function (layer, zoomOnLoad, suppressGrowl) {
             var deferred = new Deferred(),
                 layerDef = layer.layerDef,
-                self = this; 
+                self = this;
+            if (typeof suppressGrowl === 'undefined') {
+                suppressGrowl = false;
+            }
 
             if (layer.alreadyInMap) {
                 //alreadyInMap was set in construct layer, means it was already found in the map
@@ -421,7 +425,7 @@ define([
                     this.zoomToLayer(layer);
                 }
                 //Warn if not visible at current scale
-                if (!layer.visibleAtMapScale) {
+                if (!layer.visibleAtMapScale && !supressGrowl) {
                     topic.publish('growler/growl', {
                         title: '',
                         message: layerDef.name + ' is already loaded in the map, but is not visible at the current map scale.',
@@ -448,10 +452,10 @@ define([
             //and adding to layerControl widget
             //HOWEVER, if layer was previously loaded, apparently the load event doesn't fire...
             if (layer.loaded) {
-                this._onLayerLoad(layer, layerDef, deferred, zoomOnLoad);
+                this._onLayerLoad(layer, layerDef, deferred, zoomOnLoad, suppressGrowl);
             }
             on(layer, 'load', function () {
-                self._onLayerLoad(layer, layerDef, deferred, zoomOnLoad); 
+                self._onLayerLoad(layer, layerDef, deferred, zoomOnLoad, suppressGrowl); 
             });
             
             //add the layer to the map
@@ -460,7 +464,7 @@ define([
             return deferred;
         },
 
-        _onLayerLoad: function (layer, layerDef, deferred, zoomOnLoad) {
+        _onLayerLoad: function (layer, layerDef, deferred, zoomOnLoad, suppressGrowl) {
             var self = this;
             if (layerDef.loaded) { //if it has a loaded observable, assign it to true. (It always does when it's a layerDef defined by our system)
                 layerDef.loaded(true);
@@ -565,15 +569,17 @@ define([
                 }
                 //TODO Ruth would prefer not to see these at all;
                 //particularly when a bunch of layers are loaded at once. Maybe best to put this in the all-resolved?
-                if (!layer.visibleAtMapScale) {
-                    topic.publish('growler/growl', {
-                        title: '',
-                        message: layerDef.name + ' loaded, but is not visible at the current map scale.',
-                        level: 'warning',
-                        timeout: 3000
-                    });
-                } else {
-                    topic.publish('growler/growl', layerDef.name + ' loaded.');
+                if (!suppressGrowl) {
+                    if (!layer.visibleAtMapScale) {
+                        topic.publish('growler/growl', {
+                            title: '',
+                            message: layerDef.name + ' loaded, but is not visible at the current map scale.',
+                            level: 'warning',
+                            timeout: 3000
+                        });
+                    } else {
+                        topic.publish('growler/growl', layerDef.name + ' loaded.');
+                    }
                 }
                 //publish layerLoader/layersChanged to let the layer loader know changes have been made to the current map
                 //affects whether user should be prompted to save before they share the map
@@ -602,7 +608,7 @@ define([
             if (!layerDef.layer) {
                 layerDef.layer = this.constructLayer(layerDef);
             }
-            return this.addLayer(layerDef.layer, false); //note: return statement not needed, just call to this.addLayer, but may be useful in future
+            return this.addLayer(layerDef.layer, false, false); //note: return statement not needed, just call to this.addLayer, but may be useful in future
         },
 
         /**
@@ -614,7 +620,7 @@ define([
             if (!categoryDef.layer) {
                 categoryDef.layer = this.constructLayer(categoryDef);
             }
-            return this.addLayer(categoryDef.layer, false);
+            return this.addLayer(categoryDef.layer, false, false);
         },
 
         //Add a project or alternative to the map, using one of the following patterns:
@@ -738,10 +744,14 @@ define([
             return deferred;
         },
 
-        //gets the layer config/projects and saves to the referenced map. 
-        //subscribed to topic layerLoader/saveMap
+        /**
+         * Saves to the referenced map to the server, including the layer configuration (via getLayerConfig) and the map extent.
+         * Subscribed to topic layerLoader/saveMap.
+         * @param {object} savedMap the map to save, an object with id and mapName properties, and optionally (if testing) a Deferred to be resolved when the saveMap call is complete.
+         * @returns {void}
+         */
         saveMap: function (savedMap) {
-            //get layers, excluding opeerationalLayers
+            //get layers, excluding operationalLayers
             savedMap.layers = this.getLayerConfig();
             savedMap.extent = this.map.extent;
             try {
@@ -751,12 +761,18 @@ define([
                         savedMap.id = savedMapId;
                         topic.publish('growler/growl', 'Saved ' + savedMap.layers.length + ' layers to ' + savedMap.mapName);
                         topic.publish('layerLoader/mapSaved');
+                        if (savedMap.deferred) {
+                            savedMap.deferred.resolve();
+                        }
                     },
                     errorHandler: function (message, exception) {
                         topic.publish('viewer/handleError', {
                             source: 'LayerLoadMixin.saveMap',
                             error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
                         });
+                        if (savedMap.deferred) {
+                            savedMap.deferred.reject(message);
+                        }
                     }
                 });
             } catch (exception) {
@@ -771,18 +787,31 @@ define([
          * Loads a saved map from the server.
          * @param {number} savedMapId ID of the saved map to load
          * @param {boolean} clearMapFirst Optional, if true, all user layers will be removed from the map before loading new layers; if false or absent, layers from the saved map will be added on top of the layers already in the map.
-         * @returns {object} The Deferred object to be resolved when the map is done loading
+         * @return {void}
          */
         loadMap: function (savedMapId, clearMapFirst) {
             var self = this, //DWR callback loses scope of this
                 deferred = new Deferred(); // promise to be fullfilled when map is done loading and map has zoomed
-            
+
             //load from server
             //eslint-disable-next-line no-undef
             SavedMapDAO.getBeanById(savedMapId, {
                 callback: function (savedMap) {
                     if (savedMap) {
                         self._loadMap(savedMap, clearMapFirst, deferred);
+                        deferred.then(
+                            function (layers) {
+                                topic.publish('growler/removeUpdatable');
+                                topic.publish('growler/growl', 'Loaded ' + layers.length + ' layers for ' + savedMap.mapName);
+                                topic.publish('layerLoader/mapLoaded', savedMap); //lets the layerloader widget know what's up when this is loaded from query string
+                            },
+                            function (err) {
+                                topic.publish('growler/growlError', err);
+                            },
+                            function (progressMessage) {
+                                topic.publish('growler/updateGrowl', progressMessage);
+                            }
+                        );
                     } else {
                         topic.publish('viewer/handleError', {
                             source: 'LayerLoadMixin.loadMap',
@@ -798,9 +827,12 @@ define([
                     deferred.reject(message);
                 }
             });
-
-            return deferred;
         },
+
+        testTopic: function (topicName, args) {
+            topic.publish(topicName, args);
+        },
+
         /**
          * Callback function from SavedMapDAO.getBeanById call made in LoadMap function.
          * @param {object} savedMap The SavedMapBean returned from the DWR call
@@ -811,70 +843,82 @@ define([
         _loadMap: function (savedMap, clearMapFirst, deferred) {
             var self = this; //this changes context in the "then" callback
             if (savedMap) {
-                this._loadLayerConfig(savedMap.layers, clearMapFirst).then(function (layers) {
-                    if (savedMap.extent) {
-                        var savedMapExtent = new Extent({
-                            xmin: savedMap.extent.xmin,
-                            ymin: savedMap.extent.ymin,
-                            xmax: savedMap.extent.xmax,
-                            ymax: savedMap.extent.ymax,
-                            spatialReference: self.map.spatialReference
-                        });
-                        self.zoomToExtent(savedMapExtent);
-                        deferred.resolve(true);
-                    }
-                    topic.publish('growler/growl', 'Loaded ' + layers.length + ' layers for ' + savedMap.mapName);
-                    topic.publish('layerLoader/mapLoaded', savedMap); //lets the layerloader widget know what's up when this is loaded from query string
-                });
+                if (savedMap.layers.length === 0) {
+                    deferred.reject('No savedMap passed to _loadMap function');
+                }
+                if (clearMapFirst) {
+                    this.clearUserLayers();
+                }
+                if (savedMap.extent) {
+                    var savedMapExtent = new Extent({
+                        xmin: savedMap.extent.xmin,
+                        ymin: savedMap.extent.ymin,
+                        xmax: savedMap.extent.xmax,
+                        ymax: savedMap.extent.ymax,
+                        spatialReference: self.map.spatialReference
+                    });
+                    this.zoomToExtent(savedMapExtent).then(function () {
+                        self._loadSavedMapLayers(savedMap, deferred);
+                    });
+                } else {
+                    //this is currently not an option, but we might in the future allow users the option whether to save the extent or not
+                    this._loadSavedMapLayers(savedMap, deferred);
+                }
             } else {
                 deferred.reject('No savedMap passed to _loadMap function');
             }
         },
         /**
          * Loads the layers from a saved map
-         * @param {Array} layerConfig The layers to be loaded, structure defined by SavedMapLayerBean
-         * @param {boolean} clearMapFirst Optional, if true, all user layers will be removed from the map before loading new layers; if false or absent, layers from the saved map will be added on top of the layers already in the map.
-         * @returns {object} Deferred object that will be resolved when all layers are done loading
+         * @param {object} savedMap The SavedMapBean returned from the DWR call
+         * @param {object} deferred The Deferred object to be resolved when the map is done loading, and progress reported as layers load
+         * @returns {void}
          */
-        _loadLayerConfig: function (layerConfig, clearMapFirst) {
-            var deferred = new Deferred();
-            var promises = [];
-            if (clearMapFirst) {
-                this.clearUserLayers();
-            }
+        _loadSavedMapLayers: function (savedMap, deferred) {
+            var layerConfig = savedMap.layers,
+                promises = [],
+                promisesKept = 0;
 
             //load in reverse order
             for (var i = layerConfig.length - 1; i >= 0; i--) {
-                var layer = null,
-                    layerConfigItem = layerConfig[i];
+                var layerConfigItem = layerConfig[i],
+                    promise = null;
                 if (layerConfigItem.type === 'project') {
-                    promises.push(this.addProjectToMap(layerConfigItem.layerId, false));
-                    if (layerConfigItem.visible === false) {
-                        layer.visible = false;
-                    }
+                    promise = this.addProjectToMap(layerConfigItem.layerId, false);
                 } else if (layerConfigItem.type === 'projectAlt') {
-                    promises.push(this.addProjectToMap('a' + layerConfigItem.layerId, false));
-                    if (layerConfigItem.visible === false) {
-                        layer.visible = false;
-                    }
+                    promise = this.addProjectToMap('a' + layerConfigItem.layerId, false);
                 } else {
-                    layer = this.constructLayer(layerConfigItem, layerConfigItem.definitionExpression);
-                }
-                if (layer) {
-                    promises.push(this.addLayer(layer, false));
-                    if (layerConfigItem.visible === false) {
-                        layer.visible = false;
+                    var layer = this.constructLayer(layerConfigItem, layerConfigItem.definitionExpression);
+                    if (layer) {
+                        promise = this.addLayer(layer, false, true);
+                        if (layerConfigItem.visible === false) {
+                            layer.visible = false;
+                        }
                     }
+                }
+
+                if (promise) {
+                    promises.push(promise);
+                    promise.then(function () { //eslint-disable-line no-loop-func
+                        //deferred action to take when layer is loaded, just updates progress
+                        promisesKept++;
+                        deferred.progress('Loaded layer ' + promisesKept + ' of ' + promises.length);
+                    });
                 }
             }
+
 
             if (promises.length > 0) {
-                all(promises).then(function (layers) {
-                    deferred.resolve(layers);
-                });
+                //'all' calls then function when all promises are resolved
+                all(promises).then(
+                    //resolved
+                    function (layers) {
+                        deferred.resolve(layers);
+                    }
+                );
+            } else {
+                deferred.reject('No valid layers found in saved map');
             }
-
-            return deferred;
         },
         zoomToLayer: function (layer) {
             var self = this;
@@ -897,11 +941,12 @@ define([
         },
 
         zoomToExtent: function (extent) { //TODO this overwrites _GraphicsMixin.js zoomToExtent; does that break anything?
-            var map = this.map;
+            var self = this,
+                map = this.map,
+                deferred = new Deferred();
             if (extent.spatialReference === map.spatialReference) {
-                map.setExtent(extent, true);
+                this._zoomToExtent(extent, deferred);               
             } else if (esriConfig.defaults.geometryService) { //eslint-disable-line no-undef
-
                 //project the extent--most often we're getting an extent from one of our layers,
                 //and the extent will be in Albers; need to project it to the Map's World Mercator coordinate system
                 var params = lang.mixin(new ProjectParameters(), {
@@ -911,25 +956,14 @@ define([
                 //eslint-disable-next-line no-undef
                 esriConfig.defaults.geometryService.project(params,
                     function (r) {
-                        //we could just call setExtent with r[0], but if the extent is of a point, 
-                        //it results in the map just panning to the point and staying at whatever zoom 
-                        //level the map currently is at, even statewide; and if extent of line/poly
-                        //it often zooms in too tightly.
-                        //To handle this, we create an Extent object, then expanding it if it's a line/poly
-                        //or just center and zoom if a point
                         extent = new Extent(r[0]);
-                        if (extent.getWidth() === 0 && extent.getHeight() === 0) {
-                            //expanding it has no effect, so just use center and zoom
-                            map.centerAndZoom(extent.getCenter(), 21);
-                        } else {
-                            extent.expand(1.1);
-                            map.setExtent(extent, true);
-                        }
+                        self._zoomToExtent(extent, deferred);
                     }, function (e) {
                         topic.publish('viewer/handleError', {
                             source: 'LayerLoadMixin.zoomToExtent',
                             error: e
                         });
+                        deferred.reject(e);
                     }
                 );
             } else {
@@ -937,6 +971,42 @@ define([
                     source: 'LayerLoadMixin.zoomToExtent',
                     error: 'esriConfig.defaults.geometryService is not set'
                 });
+                deferred.reject('esriConfig.defaults.geometryService is not set');
+            }
+            return deferred;
+        },
+
+        _zoomToExtent: function (extent, deferred) {
+            //we could just call setExtent, but if the extent is of a point, 
+            //it results in the map just panning to the point and staying at whatever zoom 
+            //level the map currently is at, even statewide; and if extent of line/poly
+            //it often zooms in too tightly.
+            //To handle this, we create an Extent object, then expanding it if it's a line/poly
+            //or just center and zoom if a point
+            if (extent.getWidth() === 0 && extent.getHeight() === 0) {
+                //expanding it has no effect, so just use center and zoom
+                this.map.centerAndZoom(extent.getCenter(), 21).then(
+                    //resolved centerAndZoom
+                    function () {
+                        deferred.resolve('centerAndZoom');
+                    },
+                    //rejected
+                    function (err) {
+                        deferred.reject(err);
+                    }
+                );
+            } else {
+                extent.expand(1.1);
+                this.map.setExtent(extent, true).then(
+                    //resolved setExtent
+                    function () {
+                        deferred.resolve('setExtent');
+                    },
+                    //rejected
+                    function (err) {
+                        deferred.reject(err);
+                    }
+                );
             }
         },
 

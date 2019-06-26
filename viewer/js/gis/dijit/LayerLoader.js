@@ -15,6 +15,7 @@ define([
     'dojo/dom',
     'dojo/dom-construct',
     'dojo/dom-class',
+    'dojo/html',
     'dojo/topic',
     'dojo/store/Memory',
     'dojo/Deferred',
@@ -31,8 +32,8 @@ define([
 
     'xstyle/css!./LayerLoader/css/layerLoader.css'
 ],
-    function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog, ConfirmDialog, ready, popup, request, lang, array, on, query, dom, domConstruct, domClass,
-        topic, Memory, Deferred, layerLoaderSidebarTemplate, layerLoaderDialogTemplate, searchResultsDialogTemplate
+    function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog, ConfirmDialog, ready, popup, request, lang, array, on, query, dom, domConstruct,
+        domClass, html, topic, Memory, Deferred, layerLoaderSidebarTemplate, layerLoaderDialogTemplate, searchResultsDialogTemplate
 ) {
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
             widgetsInTemplate: true,
@@ -278,6 +279,9 @@ define([
                 this.loadMapDialog.show();
             },
             showSaveMapDialog: function () {
+                //clear the error message and hide it
+                html.set(this.saveMapError, '');
+                domClass.add(this.saveMapError, 'hidden');
                 if (this.currentMap()) {
                     this.mapName.set('value', this.currentMap().mapName);
                 } else {
@@ -303,7 +307,7 @@ define([
                     };
                     this.savedMaps.push(savedMap); //remember it locally
                     this._saveMap(savedMap);
-                } else if (this.currentMap() === null || this.currentMap().id !== savedMap.id) {
+                } else if (typeof this.currentMap() === 'undefined' || this.currentMap().id !== savedMap.id) {
                     //confirm overwrite
                     new ConfirmDialog({
                         title: 'Confirm Overwrite',
@@ -315,10 +319,26 @@ define([
                     this._saveMap(savedMap);
                 }
             },
-            //callback from saveMap function, gets the layer config/projects and saves to the referenced map.
+            //callback from saveMap function, passes on to layerLoader.saveMap
             _saveMap: function (savedMap) {
+                var self = this;
+                //create and attach deferred to the savedMap, to be resolved/rejected in _LayerLoadMixin.saveMap
+                //(because it's a topic publish call, we can't rely on _layerLoadMixin to create the deferred and return it)
+                savedMap.deferred = new Deferred();
+                domClass.remove(this.saveMapWait, 'hidden');
                 this.currentMap(savedMap);
-                this.saveMapDialog.hide();
+                savedMap.deferred.then(
+                    //callback
+                    function () {
+                        domClass.add(self.saveMapWait, 'hidden');
+                        self.saveMapDialog.hide();
+                    },
+                    //error handler
+                    function (err) {
+                        domClass.add(self.saveMapWait, 'hidden');
+                        html.set(self.saveMapError, 'Error saving map: ' + err);
+                        domClass.remove(self.saveMapError, 'hidden');
+                    });
                 topic.publish('layerLoader/saveMap', savedMap);
             },
             //starts the chain of saving and coming back to share
