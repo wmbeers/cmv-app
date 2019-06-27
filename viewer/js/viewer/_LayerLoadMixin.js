@@ -8,14 +8,10 @@ define([
     'dojo/Deferred',
     'dojo/promise/all',
     './js/config/projects.js', //TODO put in app.js paths?
-    //'./js/config/layerLoader.js', //TODO put in app.js paths?
-    'esri/map',
     'esri/layers/ArcGISDynamicMapServiceLayer',
     'esri/layers/FeatureLayer',
     'esri/layers/VectorTileLayer',
     'esri/layers/ImageParameters',
-    'esri/dijit/Legend',
-    'esri/InfoTemplate',
     'esri/request',
     'esri/tasks/ProjectParameters',
     'esri/tasks/query',
@@ -35,14 +31,10 @@ define([
     Deferred,
     all,
     projects,
-    //layerConfig,
-    Map,
     ArcGISDynamicMapServiceLayer,
     FeatureLayer,
     VectorTileLayer,
     ImageParameters,
-    Legend,
-    InfoTemplate,
     esriRequest,
     ProjectParameters,
     Query,
@@ -57,7 +49,10 @@ define([
     return declare(null, {
         startup: function () {
             //subscribe to topics
+            //topics called from custom menus defined in the addLayerMethod will use topic layerContro/...
             topic.subscribe('layerControl/openAttributeTable', lang.hitch(this, 'openAttributeTable'));
+            topic.subscribe('layerControl/zoomToLayer', lang.hitch(this, 'zoomToLayer'));
+            //topics called from other places use topic layerLoader/... for clarity
             topic.subscribe('layerLoader/addProjectToMap', lang.hitch(this, 'addProjectToMap'));
             topic.subscribe('layerLoader/addLayerFromLayerDef', lang.hitch(this, 'addLayerFromLayerDef'));
             topic.subscribe('layerLoader/addLayerFromCategoryDef', lang.hitch(this, 'addLayerFromCategoryDef'));
@@ -425,7 +420,7 @@ define([
                     this.zoomToLayer(layer);
                 }
                 //Warn if not visible at current scale
-                if (!layer.visibleAtMapScale && !supressGrowl) {
+                if (!layer.visibleAtMapScale && !suppressGrowl) {
                     topic.publish('growler/growl', {
                         title: '',
                         message: layerDef.name + ' is already loaded in the map, but is not visible at the current map scale.',
@@ -452,10 +447,10 @@ define([
             //and adding to layerControl widget
             //HOWEVER, if layer was previously loaded, apparently the load event doesn't fire...
             if (layer.loaded) {
-                this._onLayerLoad(layer, layerDef, deferred, zoomOnLoad, suppressGrowl);
+                this._onLayerLoad(layer, deferred, zoomOnLoad, suppressGrowl);
             }
             on(layer, 'load', function () {
-                self._onLayerLoad(layer, layerDef, deferred, zoomOnLoad, suppressGrowl); 
+                self._onLayerLoad(layer, deferred, zoomOnLoad, suppressGrowl); 
             });
             
             //add the layer to the map
@@ -464,8 +459,18 @@ define([
             return deferred;
         },
 
-        _onLayerLoad: function (layer, layerDef, deferred, zoomOnLoad, suppressGrowl) {
-            var self = this;
+        /**
+         * Callback function run after a layer is loaded via the addLayer function (or directly called from addLayer if the layer is already loaded).
+         * @param {Object} layer Reference to the layer that was loaded
+         * @param {Object} deferred Reference to the Deferred object to be resolved after layer is loaded
+         * @param {boolean} zoomOnLoad If true, the map will toom to the referenced layer's extent after it is loaded
+         * @param {boolean} suppressGrowl If true, the "Loaded..." growler is not shown
+         * @returns {void}
+         */
+        _onLayerLoad: function (layer, deferred, zoomOnLoad, suppressGrowl) {
+            var self = this,
+                layerDef = layer.layerDef;
+
             if (layerDef.loaded) { //if it has a loaded observable, assign it to true. (It always does when it's a layerDef defined by our system)
                 layerDef.loaded(true);
             }
@@ -499,24 +504,19 @@ define([
                         //includeUnspecifiedLayers: true, //TODO: if this is included, the service doesn't load properly for some reason, and no layers show up.
                         swipe: true,
                         noMenu: false,
-                        noZoom: false,
+                        noZoom: true, //we use our own zoom-to function, defined in menu below
                         mappkgDL: true,
                         allowRemove: true,
-                        //layerGroup: layerDef.layerGroup,
-                        //TODO: documentation on this is really confusing, neither of these work
-                        //menu: {
-                        //    dynamic: {
-                        //        label: 'Wny does this not show up?',
-                        //        topic: 'remove',
-                        //        iconClass: 'fa fa-info fa-fw'
-                        //    }
-                        //},
-                        //TODO: I don't think the following actually does anything. See subLayerMenu, below
                         menu: [
                             {
                                 label: 'Open Attribute Table',
                                 topic: 'openAttributeTable',
                                 iconClass: 'fa fa-table fa-fw'
+                            },
+                            {
+                                label: 'Zoom to Layer', //TODO support i18n.zoomTo,
+                                topic: 'zoomToLayer',
+                                iconClass: 'fas fa-fw fa-search'
                             }
                         ],
                         //Note: the following is what's documented on the CMV site, but doesn't work, 
@@ -549,7 +549,8 @@ define([
                                 label: 'View Metadata',
                                 topic: 'viewMetadata',
                                 iconClass: 'fa fa-info-circle fa-fw'
-                            }]
+                            }
+                        ]
                     },
                     layer: layer,
                     title: layerDef.title,
@@ -920,26 +921,62 @@ define([
                 deferred.reject('No valid layers found in saved map');
             }
         },
+
+        /**
+         * Zooms to the extent of the referenced layer, taking the layer's definition expression into account
+         * @param {any} layer Either an object that is a subclass of esri.Layer, or an object defined by layer control with layer property
+         * @returns {object} deferred The Deferred object to be resolved when the map is done zooming
+         */
         zoomToLayer: function (layer) {
             var self = this;
+            //when called from the menu, "layer" argument isn't really the layer, but a structure created by layer control
+            if (layer.layer) {
+                layer = layer.layer;
+            }
+
+            //test if we have a definition expression applied, and if so, query the extent and zoom in query callback
             if (layer.getDefinitionExpression && layer.getDefinitionExpression()) {
+                var deferred = new Deferred();
                 //this.zoomToExtent([layer.fullExtent]); //unfortunately, this doesn't take definitionExpression into account
                 var q = new Query({
                     where: '1=1' //definitionExpression, if present doesn't need to be re-applied
                 });
-                layer.queryExtent(q, function (r) {
-                    self.zoomToExtent(r.extent);
-                }, function (e) {
-                    topic.publish('viewer/handleError', {
-                        source: 'LayerLoadMixin.zoomToLayer',
-                        error: e
-                    });
-                });
-            } else {
-                this.zoomToExtent(layer.fullExtent);
+                layer.queryExtent(q,
+                    //query extent succeeded, zoom the map
+                    function (r) {
+                        self.zoomToExtent(r.extent).then(
+                            //zoom to extent succeeded, resolve this function's deferred
+                            function (e) {
+                                deferred.resolve(e);
+                            },
+                            //zoom to extent failed, reject this function's deferred
+                            function (e) {
+                                //TODO publish to handleError, or was that already done in zoomToExtent?
+                                deferred.reject(e);
+                            }
+                        );
+                    },
+                    //query extent failed, reject thsi function's deferred
+                    function (e) {
+                        topic.publish('viewer/handleError', {
+                            source: 'LayerLoadMixin.zoomToLayer',
+                            error: e
+                        });
+                        deferred.reject(e);
+                    }
+                );
+                return deferred;
             }
+
+            //no definition expression, just zoom to the layer's full extent
+            return this.zoomToExtent(layer.fullExtent);
         },
 
+        /**
+         * Zooms the map to the specified extent, projecting if necessary.
+         * @param {object} extent an esri.geometry.Extent object
+         * @returns {object} deferred The Deferred object to be resolved when the map is done zooming
+         */
         zoomToExtent: function (extent) { //TODO this overwrites _GraphicsMixin.js zoomToExtent; does that break anything?
             var self = this,
                 map = this.map,
@@ -975,7 +1012,12 @@ define([
             }
             return deferred;
         },
-
+        /**
+         * Callback function from zoomToExtent, fired after the geometryService.project call, or directly if the extent does not need to be projected.
+         * @param {object} extent an esri.geometry.Extent object
+         * @param {object} deferred The Deferred object to be resolved when the map is done zooming
+         * @returns {void}
+         */
         _zoomToExtent: function (extent, deferred) {
             //we could just call setExtent, but if the extent is of a point, 
             //it results in the map just panning to the point and staying at whatever zoom 
@@ -1010,7 +1052,10 @@ define([
             }
         },
 
-        //gets all layers added to the map by the user (excluding the project layers defined as operationalLayers)
+        /**
+         * Gets the layers added by the user to the map.
+         * @returns {array} Array of layer objects, excluding the operational layers that are not user-configurable.
+         */
         getUserLayers: function () {
             return array.filter(this.layers, function (layer) {
                 var operationalLayer = this.config.operationalLayers.find(function (x) {
@@ -1020,7 +1065,10 @@ define([
             }, this);
         },
 
-        //gets the configuration of the layers currently loaded in the map
+        /**
+         * Gets the configuration of the layers currently loaded in the map, used for saving maps.
+         * @returns {array} Array of layerDef objects, excluding the operational layers that are not user-configurable.
+         */
         getLayerConfig: function () {
             return array.map(this.getUserLayers(), function (layer) {
                 var x = {
@@ -1050,6 +1098,10 @@ define([
             });
         },
 
+        /**
+         * Removes all layers added to the map by the user.
+         * @returns {void}
+         */
         clearUserLayers: function () {
             //clone the layers array first, otherwise forEach bails
             var layerClone = this.getUserLayers().slice(0);
@@ -1058,7 +1110,11 @@ define([
             }, this);
         },
 
-        //Removes a layer from the map, layer control widget, identify and legend. 
+        /**
+         * Removes the referenced layer from the map, as well as the layer control, identify, and legend widgets.
+         * @param {any} layer the Layer to be removed from the map.
+         * @returns {void}
+         */
         removeLayer: function (layer) {
             //remove from the map
             this.map.removeLayer(layer);
@@ -1066,13 +1122,13 @@ define([
             var i = 0;
 
             //remove from the layers collection
-            //TODO: figure out a way to do this without relying on global reference to app
             for (i = 0; i < this.layers.length; i++) {
                 if (this.layers[i] === layer) {
                     this.layers.splice(i, 1);
                 }
             }
 
+            //keep the layerDef's loaded property in sync so the LayerLoader widget is in sync.
             if (layer.layerDef && layer.layerDef.loaded) {
                 layer.layerDef.loaded(false);
             }
@@ -1091,28 +1147,29 @@ define([
             //refresh the map; it isn't really necessary to do this as far as the map display is concerned, 
             //because the map will update on the removeLayer call above, but without this the removed layer 
             //remains in the legend until after the user pans/zooms the map
-            //TODO surely there's a better way to refresh the map?
             this.map.setExtent(this.map.extent);
-
-            //TODO: the layer still seems to linger and some events continue to fire
-            //I've tried a couple of other fixes, such as below, to no avail.
-            //See the "ham-fisted" work-around in _checkboxScaleRange of _Control.js
-            //this.destroy()
-            //console.log(this._handlers);
-            //delete layer;
 
             //publish layerLoader/layersChanged to let the layer loader know changes have been made to the current map
             //affects whether user should be prompted to save before they share the map
             topic.publish('layerLoader/layersChanged');
         },
 
+        /**
+         * Centers that map at a point in the Military Grid Reference System (MGRS) geocoordinate standard, and optionally zooms to the specified or inferred level.
+         * @param {any} mgrs A point in MGRS format.
+         * @param {any} zoomLevel Number, string 'infer', or null; 
+         *      If a specific number, it will be passed to the centerAndZoom function as the zoom level of the map to set; 
+         *      If the string 'infer', the zoom level is inferred from the precision of the input MGRS point.
+         *      If null, the map will not be zoomed, but just centered at the point.
+         * @returns {object} Deffered object to be resolved after the map is zoomed.
+         */
         zoomToMgrsPoint: function (mgrs, zoomLevel) {
-            var point = coordinateFormatter.fromMgrs(mgrs, null, 'automatic'),
-                deferred = new Deferred();
+            var point = coordinateFormatter.fromMgrs(mgrs, null, 'automatic');
 
             if (!point) {
                 //something went awry in converting from Mgrs
-                deferred.reject();
+                var deferred = new Deferred();
+                deferred.reject('Unable to interpet ' + mgrs + ' as an MGRS coordinate');
                 return deferred;
             }
             //infer zoomLevel from length of string
@@ -1155,6 +1212,11 @@ define([
             return (zoomLevel ? this.map.centerAndZoom(point, zoomLevel) : this.map.centerAt(point));
         },
 
+        /**
+         * Converts a point from geographic (WGS84) or Web Mercator to the Military Grid Reference System (mgrs).
+         * @param {any} point The point to be converted
+         * @returns {any} A point in MGRS.
+         */
         convertPointToMgrs: function (point) {
             //point must be in wgs84
             if (point.spatialReference.isWebMercator()) {

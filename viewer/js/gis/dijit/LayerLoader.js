@@ -5,15 +5,11 @@ define([
     'dijit/_WidgetsInTemplateMixin',
     'dijit/Dialog',
     'dijit/ConfirmDialog',
-    'dojo/ready',
-    'dijit/popup',
     'dojo/request',
     'dojo/_base/lang',
-    'dojo/_base/array',
     'dojo/on',
     'dojo/query',
     'dojo/dom',
-    'dojo/dom-construct',
     'dojo/dom-class',
     'dojo/html',
     'dojo/topic',
@@ -32,7 +28,7 @@ define([
 
     'xstyle/css!./LayerLoader/css/layerLoader.css'
 ],
-    function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog, ConfirmDialog, ready, popup, request, lang, array, on, query, dom, domConstruct,
+    function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog, ConfirmDialog, request, lang, on, query, dom,
         domClass, html, topic, Memory, Deferred, layerLoaderSidebarTemplate, layerLoaderDialogTemplate, searchResultsDialogTemplate
 ) {
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
@@ -41,59 +37,45 @@ define([
             topicID: 'layerLoader',
             baseClass: 'layerLoader',
             map: this.map,
-            //broader scope needed for these dialogs to support closing when option is selected, so declaring these here
-            layerBrowserDialog: null, //Note: we actually keep this open, and user closes it the usual way, so might not need broad scope for this one
+
+            //Dialogs. Broader scope needed for these dialogs to support closing when option is selected, so declaring these here
+            layerBrowserDialog: null,
             saveMapDialog: null,
-            //loadMapDialog: null,
             searchResultsDialog: null,
+
+            //the array of saved maps (just id and mapName), loaded at startup
             savedMaps: ko.observableArray(), // eslint-disable-line no-undef
+
             //represents the map selected in the loadMapDialog; not the same as the currentMap until the user clicks the open button
             selectedMap: ko.observable(), // eslint-disable-line no-undef
-            //represents the map currently loaded; will just be the stub of id and mapName
+
+            //represents the map currently loaded in the viewer; will just be the stub of id and mapName
             currentMap: ko.observable(), // eslint-disable-line no-undef
+
+            //flags whether user wants to clear layers from the map before loading a new map
             clearMapFirst: ko.observable(false), // eslint-disable-line no-undef
-            includeProjects: ko.observable(false), // eslint-disable-line no-undef
-            allCategories: [], // originally used in searching; now that that's been pushed to SOLR, not needed for that, but useful for loading saved maps with references to dynamic map services
-            getCategoryByServiceId: function (serviceId) {
-                //eslint-disable-next-line no-undef
-                return ko.utils.arrayFirst(this.allCategories, function (c) {
-                    return c.id === serviceId;
-                });
-            },
-            loadSelectedMap: function () {
-                if (this.selectedMap()) {
-                    this.currentMap(this.selectedMap());
-                    topic.publish('layerLoader/loadMap', this.selectedMap().id, this.clearMapFirst());
-                    this.loadMapDialog.hide();
-                }
-            },
-            deleteSelectedMap: function () {
-                if (!this.selectedMap()) {
-                    return;
-                }
-                new ConfirmDialog({
-                    title: 'Confirm Delete',
-                    content: 'Are you sure you want to delete the ' + this.selectedMap().name + ' map?',
-                    onExecute: lang.hitch(this, '_deleteSelectedMap')
-                }).show();
-            },
-            _deleteSelectedMap: function () {
-                var self = this;
-                SavedMapDAO.deleteSavedMap(this.selectedMap().id, {
-                    callback: function (reply) {
-                        if (reply === 'ok') {
-                            self.savedMaps.remove(this.selectedMap());
-                            self.selectedMap(null);
-                        }
-                    },
-                    errorHandler: function (message, exception) {
-                        topic.publish('viewer/handleError', {
-                            source: 'LayerLoader._deleteSelectedMap',
-                            error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
-                        });
-                    }
-                });
-            },
+
+            //tracks whether changes have been made to the map
+            hasUnsavedChanges: ko.observable(false), // eslint-disable-line no-undef
+
+            //the category currently selected in the layer browser
+            currentCategory: ko.observable(null), // eslint-disable-line no-undef
+
+            //the layer currently selected in the layer browser
+            currentLayer: ko.observable(null), // eslint-disable-line no-undef
+
+            //the array of layerDefs and categories returned from searching
+            searchResults: ko.observableArray(), // eslint-disable-line no-undef
+
+            //stores any errors that happen during search
+            searchResultsError: ko.observable(null), // eslint-disable-line no-undef
+
+            //boolean flag for storing whether user wants detailed search results, or just layer/category names
+            showDetails: ko.observable(true), // eslint-disable-line no-undef
+
+            //flattened list of all categories, used for loading saved maps with references to dynamic map services
+            allCategories: [], 
+
             postCreate: function () {
                 this.inherited(arguments);
                 var self = this; //solves the problem of "this" meaning something different in onchange event handler
@@ -130,6 +112,7 @@ define([
 
                 this._initializeDialogs();
             },
+
             startup: function () {
                 var self = this; //solves the problem of "this" meaning something different in onchange event handler
                 this.inherited(arguments);
@@ -206,255 +189,11 @@ define([
                 //let the application know we're done starting up
                 topic.publish('layerLoader/startupComplete');
             },
-            _loadSavedMaps: function () {
-                var deferred = new Deferred();
-                var self = this;
-                //eslint-disable-next-line no-undef
-                SavedMapDAO.getSavedMapNamesForCurrentUser({
-                    callback: function (savedMapNames) {
-                        self.savedMaps(savedMapNames);
-                        deferred.resolve();
-                    },
-                    errorHandler: function (message, exception) {
-                        topic.publish('viewer/handleError', {
-                            source: 'LayerLoader._loadSavedMaps',
-                            error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
-                        });
-                        deferred.resolve();
-                    }
-                });
-                return deferred;
-            },
-            //tracks whether changes have been made to the map
-            hasUnsavedChanges: ko.observable(false), // eslint-disable-line no-undef
-            //listens for the map loading complete, mostly to handle loading via url
-            mapLoaded: function (savedMap) {
-                this.currentMap(savedMap);
-                this.hasUnsavedChanges(false);
-            },
-            //lists for the map saved complete, to reset hasUnsavedChanges
-            mapSaved: function () {
-                this.hasUnsavedChanges(false);
-                if (this.waitingToShare) {
-                    //temporary tag written to the model just so the dialog shows up at the right time
-                    delete (this.waitingToShare);
-                    this.shareMap();
-                }
-            },
-            //listens for changes made via addLayer or removeLayer functions, via layerLoader/layersChanged
-            layersChanged: function () {
-                this.hasUnsavedChanges(true);
-            },
-            //listen for the enter key when user is typing in the search field
-            handleSearchKeyDown: function (event) {
-                if (event.keyCode === 13) {
-                    this.handleSearch();
-                }
-            },
-            //listen for the enter key when user is typing in the Project field
-            handleProjectKeyUp: function (event) {
-                if (event.keyCode === 13) {
-                    this.addProject();
-                }
-            },
-            //listen for the enter key when user is typing in the map name field of the save dialog
-            handleMapNameKeyUp: function (event) {
-                if (event.keyCode === 13) {
-                    this.saveMap();
-                }
-            },
-            addProject: function () {
-                //TODO: first a quick DWR call to check if user can see it (valid project, if draft then only show if user has draft access, etc.)
-                //either do that here or in addProjectToMap function
-                topic.publish('layerLoader/addProjectToMap', this.projectAltId.value);
-            },
-            //gets a saved map by its name
-            getSavedMap: function (mapName) {
-                var savedMap = this.savedMaps().find(function (sm) {
-                    return sm.mapName === mapName;
-                });
-                return savedMap;
-            },
-            showLoadMapDialog: function () {
-                this.loadMapDialog.show();
-            },
-            showSaveMapDialog: function () {
-                //clear the error message and hide it
-                html.set(this.saveMapError, '');
-                domClass.add(this.saveMapError, 'hidden');
-                if (this.currentMap()) {
-                    this.mapName.set('value', this.currentMap().mapName);
-                } else {
-                    this.mapName.set('value', '');
-                }
-                this.saveMapDialog.show();
-            },
-            //First step in saving a map, check to see if we already have a map with the given name (other than the current map)
-            //and prompt to overwrite if so. If it's a new map name, construct the basic saved map object, 
-            //or if user confirms overwrite, load the existing map, then pass the new/existing map to _saveMap
-            saveMap: function () {
-                var mapName = this.mapName.value;
-                if (!mapName) {
-                    return;
-                }
-                var savedMap = this.getSavedMap(mapName);
-                //if null, it's a new map
-                if (!savedMap) {
-                    //construct new
-                    savedMap = {
-                        mapName: mapName,
-                        id: 0 //flags it as new, will get updated in callback from server; has to be a non-null value or Dojo memory borks
-                    };
-                    this.savedMaps.push(savedMap); //remember it locally
-                    this._saveMap(savedMap);
-                } else if (typeof this.currentMap() === 'undefined' || this.currentMap().id !== savedMap.id) {
-                    //confirm overwrite
-                    new ConfirmDialog({
-                        title: 'Confirm Overwrite',
-                        content: 'Are you sure you want to overwrite the ' + mapName + ' map?',
-                        onExecute: lang.hitch(this, '_saveMap', savedMap)
-                    }).show();
-                } else {
-                    //just update existing map
-                    this._saveMap(savedMap);
-                }
-            },
-            //callback from saveMap function, passes on to layerLoader.saveMap
-            _saveMap: function (savedMap) {
-                var self = this;
-                //create and attach deferred to the savedMap, to be resolved/rejected in _LayerLoadMixin.saveMap
-                //(because it's a topic publish call, we can't rely on _layerLoadMixin to create the deferred and return it)
-                savedMap.deferred = new Deferred();
-                domClass.remove(this.saveMapWait, 'hidden');
-                this.currentMap(savedMap);
-                savedMap.deferred.then(
-                    //callback
-                    function () {
-                        domClass.add(self.saveMapWait, 'hidden');
-                        self.saveMapDialog.hide();
-                    },
-                    //error handler
-                    function (err) {
-                        domClass.add(self.saveMapWait, 'hidden');
-                        html.set(self.saveMapError, 'Error saving map: ' + err);
-                        domClass.remove(self.saveMapError, 'hidden');
-                    });
-                topic.publish('layerLoader/saveMap', savedMap);
-            },
-            //starts the chain of saving and coming back to share
-            _saveAndShare: function () {
-                this.waitingToShare = true; //temporary tag
-                this.showSaveMapDialog();
-            },
-            shareMap: function () {
-                if (this.hasUnsavedChanges()) {
-                    //prompt user to save
-                    new ConfirmDialog({
-                        title: 'Unsaved Changes',
-                        content: 'You have unsaved changes, do you want to save first?',
-                        onExecute: lang.hitch(this, '_saveAndShare'),
-                        onCancel: lang.hitch(this, '_shareMap')
-                    }).show();
-                } else {
-                    this._shareMap();
-                }
-            },
-            _shareMap: function () {
-                if (this.currentMap() && this.currentMap().id && this.currentMap().id > 0) {
-                    //get the base url
-                    var uri = window.location.href;
-                    if (uri.indexOf('?') >= 0) {
-                        uri = uri.substr(0, uri.indexOf('?'));
-                    }
-                    uri += '?loadMap=' + this.currentMap().id;
-                    //try to copy it to the 
-                    var dlg = new Dialog({
-                        title: 'Map Link',
-                        content: '<div class="mapLinkDiv">' +
-                            '<p class="tip">Copy the link below and paste it into an email to share this map.</p>' +
-                            '<input type="text" value="' + uri + '" class="mapLink" onclick="copyElem(this)" />' +
-                            '<p class="tip hidden linkCopiedTip">Link copied to clipboard</p>' +
-                            '</div>'
-                    });
-                    dlg.show();
-                } else if (this.hasUnsavedChanges()) {
-                    topic.publish('growler/growl', {
-                        message: 'You must save the map before you can share it.',
-                        title: null,
-                        level: 'warning'
-                    });
-                } else {
-                    topic.publish('growler/growl', {
-                        message: 'You don\'t have any changes in the map to save, nothing to share.',
-                        title: null,
-                        level: 'warning'
-                    });
-                }
-            },            
-            handleSearch: function () {
-                var self = this; //solves the problem of "this" meaning something different in request callback handler
-                this.searchResultsError(null);
-                //eslint-disable-next-line no-useless-escape
-                var encodedSearchTerms = encodeURIComponent(this.searchNode.displayedValue.replace(/([-\+\|\!\{\}\[\]\:\^\~\*\?\(\)])/g, '\\$1')); // escape solr special chars
 
-                //SOLR query
-                //should look like this for the search term land use:
-                // /solr1/layers/select?indent=on&q=name:land%20use^10%20or%20longName:land%20use^10%20or%20description:land%20use%20or%20layerName:land%20use&wt=json
-
-                var searchUrl = window.location.origin +
-                    '/solr1/layers/select?q=name:"' +
-                    encodedSearchTerms +
-                    '"^150+OR+longName:"' +
-                    encodedSearchTerms +
-                    '"^100+OR+description:"' +
-                    encodedSearchTerms +
-                    '"^50+OR+name:' +
-                    encodedSearchTerms +
-                    '+OR+longName:' +
-                    encodedSearchTerms +
-                    '+OR+description:' +
-                    encodedSearchTerms +
-                    '&wt=json';
-                request(searchUrl).then(function (reply) {
-                    var resultDocs = JSON.parse(reply).response.docs;
-                    var searchResults = [];
-                    resultDocs.forEach(function (doc) {
-                        if (doc.type === 'category') {
-                            var cat = self.allCategories.find(function (c) {
-                                return ('c' + c.id) === doc.id;
-                            });
-                            if (cat) {
-                                searchResults.push(cat);
-                            }
-                        } else {
-                            var lyr = self.layerDefs.find(function (ld) {
-                                return ('l' + ld.id) === doc.id;
-                            });
-                            if (lyr) {
-                                searchResults.push(lyr);
-                            }
-                        }
-                    });
-                    self.searchResults(searchResults);
-                    self.searchResultsDialog.show();
-                }, function (err) {
-                    self.searchResultsError(err);
-                    self.searchResultsDialog.show();
-                });
-            },
-            showCategories: function () {
-                //resize to work around Dojo's auto-sizing limitations
-                //it expects the content to have a fixed size, but we need it to be at least somewhat 
-                //dynamic with regard to the size of the window
-                var width = window.innerWidth * 0.85,
-                    height = window.innerHeight * 0.7,
-                    content = document.getElementById('layerLoaderDialog');
-
-                content.setAttribute('style', 'width: ' + width + 'px; height: ' + height + 'px;');
-
-                this.layerBrowserDialog.show();
-                
-            },
+            /**
+             * Called from postCreate, initializes the layer browser dialog, post-processes layerDefs from config/layerLoader.js
+             * @returns {void}
+             */
             _initializeDialogs: function () {
                 //layer browser dialog
                 this.layerBrowserDialog = new Dialog({
@@ -522,10 +261,14 @@ define([
                 ko.applyBindings(this, dom.byId('searchResultsDialog')); // eslint-disable-line no-undef
 
             },
-            //Post-process categories to cross-reference layers and knockoutify
+
+            /**
+             * Called from postCreate via _intializeDialogs. Post-process categories to cross-reference layers and knockoutify
+             * @returns {void}
+             */
             _processCategories: function () {
                 var root = this; // eslint-disable-line consistent-this
-                
+
                 //internal function to add layerDefs and functions; recursively called, starting
                 //with the root model (this LayerLoader), then each root-level category, then subcategories
                 function processCategories (parent) {
@@ -573,10 +316,403 @@ define([
 
                 processCategories(this);
             },
-            currentCategory: ko.observable(null), // eslint-disable-line no-undef
-            currentLayer: ko.observable(null), // eslint-disable-line no-undef
-            searchResults: ko.observableArray(), // eslint-disable-line no-undef
-            searchResultsError: ko.observable(null), // eslint-disable-line no-undef
-            showDetails: ko.observable(true) // eslint-disable-line no-undef
+
+            /**
+             * Called from startup, loads current user's saved maps from the server.
+             * @returns {object} Deferred object to be resolved after DWR callback is complete, or rejected if error.
+             */
+            _loadSavedMaps: function () {
+                var deferred = new Deferred();
+                var self = this;
+                //eslint-disable-next-line no-undef
+                SavedMapDAO.getSavedMapNamesForCurrentUser({
+                    callback: function (savedMaps) {
+                        self.savedMaps(savedMaps);
+                        deferred.resolve();
+                    },
+                    errorHandler: function (message, exception) {
+                        topic.publish('viewer/handleError', {
+                            source: 'LayerLoader._loadSavedMaps',
+                            error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                        });
+                        deferred.reject();
+                    }
+                });
+                return deferred;
+            },
+
+            /**
+             * Loads the selected map into the viewer, passing the map's id to layerLoader/loadMap
+             * @returns {void}
+             */
+            loadSelectedMap: function () {
+                if (this.selectedMap()) {
+                    this.currentMap(this.selectedMap());
+                    topic.publish('layerLoader/loadMap', this.selectedMap().id, this.clearMapFirst());
+                    this.loadMapDialog.hide();
+                }
+            },
+
+            /**
+             * Prompts the user to confirm deleting the selected map. If confirmed, calls _deleteSelectedMap.
+             * @returns {void}
+             */
+            deleteSelectedMap: function () {
+                var sm = this.selectedMap();
+                if (!sm) {
+                    return;
+                }
+                new ConfirmDialog({
+                    title: 'Confirm Delete',
+                    content: 'Are you sure you want to delete the "' + sm.mapName + '" map?',
+                    onExecute: lang.hitch(this, '_deleteSelectedMap')
+                }).show();
+            },
+
+            /**
+             * Callback from confirmation prompt in deleteSelectedMap. Calls the DWR function to delete the saved map.
+             * @returns {void}
+             */
+            _deleteSelectedMap: function () {
+                var self = this,
+                    sm = this.selectedMap(); //selected in dialog
+                    
+                if (!sm) {
+                    return;
+                }
+
+                //eslint-disable-next-line no-undef
+                SavedMapDAO.deleteSavedMap(sm.id, {
+                    callback: function (reply) {
+                        //reply will be string "ok", or if we're out of sync with the database, or string starting with "Invalid map ID" (which means it was already deleted--either way, let's sync up our copy of the maps), or some other error message
+                        if (reply === 'ok' || reply.startsWith('Invalid map ID')) {
+                            self.savedMaps.remove(sm);
+                            if (sm === self.currentMap()) {
+                                self.currentMap(null);
+                            }
+                            self.selectedMap(null);
+                        } else {
+                            //some other error
+                            topic.publish('growler/growlError', 'Error deleting map: ' + reply);
+                        }
+                    },
+                    errorHandler: function (message, exception) {
+                        topic.publish('viewer/handleError', {
+                            source: 'LayerLoader._deleteSelectedMap',
+                            error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                        });
+                    }
+                });
+            },
+
+
+            /**
+             * Listens for the map loading complete, to handle loading via url.
+             * @param {any} savedMap Reference to the saved map that was loaded
+             * @returns {void}
+             */
+            mapLoaded: function (savedMap) {
+                this.currentMap(savedMap);
+                this.hasUnsavedChanges(false);
+            },
+
+            /**
+             * Listens for the map saved complete, to reset hasUnsavedChanges
+             * @returns {void}
+             */
+            mapSaved: function () {
+                this.hasUnsavedChanges(false);
+                if (this.waitingToShare) {
+                    //temporary tag written to the model just so the dialog shows up at the right time
+                    delete (this.waitingToShare);
+                    this.shareMap();
+                }
+            },
+
+            /**
+             * Listens for changes made via addLayer or removeLayer functions, via layerLoader/layersChanged
+             * @returns {void}
+             */
+            layersChanged: function () {
+                this.hasUnsavedChanges(true);
+            },
+
+            /**
+             * Listen for the keyDown event in the search field, to detect when enter key is typed
+             * @param {any} event the keyDown event
+             * @returns {void}
+             */
+            handleSearchKeyDown: function (event) {
+                if (event.keyCode === 13) {
+                    this.handleSearch();
+                }
+            },
+            /**
+             * Listen for the keyUp event in the Project field, to detect when enter key is typed
+             * @param {any} event the keyUp event
+             * @returns {void}
+             */
+            handleProjectKeyUp: function (event) {
+                if (event.keyCode === 13) {
+                    this.addProject();
+                }
+            },
+
+            /**
+             * Listen for the keyDown event in the map name field of the save dialog, to detect when enter key is typed
+             * @param {any} event the keyUp event
+             * @returns {void}
+             */
+            handleMapNameKeyUp: function (event) {
+                if (event.keyCode === 13) {
+                    this.saveMap();
+                }
+            },
+
+            /**
+             * Adds the project/project-alt identified by the value entered in the projectAltId field.
+             * @returns {void}
+             */
+            addProject: function () {
+                //TODO: first a quick DWR call to check if user can see it (valid project, if draft then only show if user has draft access, etc.)
+                //either do that here or in addProjectToMap function
+                topic.publish('layerLoader/addProjectToMap', this.projectAltId.value);
+            },
+
+            /**
+             * Gets a saved map by its name, used to determine whether a user is overwriting an existing saved map
+             * @param {any} mapName The name of the map to get.
+             * @returns {object} A reference to the savedMap with the referenced mapName, or undefined if not found
+             */
+            getSavedMap: function (mapName) {
+                var savedMap = this.savedMaps().find(function (sm) {
+                    return sm.mapName === mapName;
+                });
+                return savedMap;
+            },
+
+            /**
+             * Shows the Load Map dialog.
+             * @returns {void}
+             */
+            showLoadMapDialog: function () {
+                this.loadMapDialog.show();
+            },
+
+            /**
+             * Shows the Save Map dialog.
+             * @returns {void}
+             */
+            showSaveMapDialog: function () {
+                //clear the error message and hide it
+                html.set(this.saveMapError, '');
+                domClass.add(this.saveMapError, 'hidden');
+                if (this.currentMap()) {
+                    this.mapName.set('value', this.currentMap().mapName);
+                } else {
+                    this.mapName.set('value', '');
+                }
+                this.saveMapDialog.show();
+            },
+
+            /**
+             * Starts the process of saving a map. First checks to see if we already have a map with the given name (other than the current map)
+             * via getSavedMap, and prompts user to overwrite if found. If not found, it's a new map name, and constructs the basic saved map object
+             * to pass to _saveMap.
+             * @returns {void}
+             */
+            saveMap: function () {
+                var mapName = this.mapName.value;
+                if (!mapName) {
+                    return;
+                }
+                var savedMap = this.getSavedMap(mapName);
+                //if null, it's a new map
+                if (!savedMap) {
+                    //construct new
+                    savedMap = {
+                        mapName: mapName,
+                        id: 0 //flags it as new, will get updated in callback from server; has to be a non-null value or Dojo memory borks
+                    };
+                    this.savedMaps.push(savedMap); //remember it locally
+                    this._saveMap(savedMap);
+                } else if (typeof this.currentMap() === 'undefined' || this.currentMap().id !== savedMap.id) {
+                    //confirm overwrite
+                    new ConfirmDialog({
+                        title: 'Confirm Overwrite',
+                        content: 'Are you sure you want to overwrite the ' + mapName + ' map?',
+                        onExecute: lang.hitch(this, '_saveMap', savedMap)
+                    }).show();
+                } else {
+                    //just update existing map
+                    this._saveMap(savedMap);
+                }
+            },
+
+            /**
+             * Called from saveMap function, passes on to layerLoader.saveMap
+             * @param {any} savedMap The map to be saved (just ID and mapName, rest handled in layerLoader.saveMap
+             * @returns {void}
+             */
+            _saveMap: function (savedMap) {
+                var self = this;
+                //create and attach deferred to the savedMap, to be resolved/rejected in _LayerLoadMixin.saveMap
+                //(because it's a topic publish call, we can't rely on _layerLoadMixin to create the deferred and return it)
+                savedMap.deferred = new Deferred();
+                domClass.remove(this.saveMapWait, 'hidden');
+                this.currentMap(savedMap);
+                savedMap.deferred.then(
+                    //callback
+                    function () {
+                        domClass.add(self.saveMapWait, 'hidden');
+                        self.saveMapDialog.hide();
+                    },
+                    //error handler
+                    function (err) {
+                        domClass.add(self.saveMapWait, 'hidden');
+                        html.set(self.saveMapError, 'Error saving map: ' + err);
+                        domClass.remove(self.saveMapError, 'hidden');
+                    });
+                topic.publish('layerLoader/saveMap', savedMap);
+            },
+
+            /**
+             * Starts the chain of showing the link for a shared map, prompting to save first if necessary.
+             * @returns {void}
+             */
+            shareMap: function () {
+                if (this.hasUnsavedChanges()) {
+                    //prompt user to save
+                    new ConfirmDialog({
+                        title: 'Unsaved Changes',
+                        content: 'You have unsaved changes, do you want to save first?',
+                        onExecute: lang.hitch(this, '_saveAndShare'),
+                        onCancel: lang.hitch(this, '_shareMap')
+                    }).show();
+                } else {
+                    this._shareMap();
+                }
+            },
+
+            /**
+             * Continues the chain of saving and coming back to share the link after saving is complete
+             * @returns {void}
+             */
+            _saveAndShare: function () {
+                this.waitingToShare = true; //temporary tag read after saving is complete, which will then call _shareMap
+                this.showSaveMapDialog();
+            },
+
+            /**
+             * Final step in the chain of share the link to a saved map.
+             * @returns {void}
+             */
+            _shareMap: function () {
+                if (this.currentMap() && this.currentMap().id && this.currentMap().id > 0) {
+                    //get the base url
+                    var uri = window.location.href;
+                    if (uri.indexOf('?') >= 0) {
+                        uri = uri.substr(0, uri.indexOf('?'));
+                    }
+                    uri += '?loadMap=' + this.currentMap().id;
+                    //try to copy it to the 
+                    var dlg = new Dialog({
+                        title: 'Map Link',
+                        content: '<div class="mapLinkDiv">' +
+                            '<p class="tip">Copy the link below and paste it into an email to share this map.</p>' +
+                            '<input type="text" value="' + uri + '" class="mapLink" onclick="copyElem(this)" />' +
+                            '<p class="tip hidden linkCopiedTip">Link copied to clipboard</p>' +
+                            '</div>'
+                    });
+                    dlg.show();
+                } else if (this.hasUnsavedChanges()) {
+                    topic.publish('growler/growl', {
+                        message: 'You must save the map before you can share it.',
+                        title: null,
+                        level: 'warning'
+                    });
+                } else {
+                    topic.publish('growler/growl', {
+                        message: 'You don\'t have any changes in the map to save, nothing to share.',
+                        title: null,
+                        level: 'warning'
+                    });
+                }
+            },
+
+            /**
+             * Handles searching for layers and services, showing the search results.
+             * @returns {void}
+             */
+            handleSearch: function () {
+                var self = this; //solves the problem of "this" meaning something different in request callback handler
+                this.searchResultsError(null);
+                //eslint-disable-next-line no-useless-escape
+                var encodedSearchTerms = encodeURIComponent(this.searchNode.displayedValue.replace(/([-\+\|\!\{\}\[\]\:\^\~\*\?\(\)])/g, '\\$1')); // escape solr special chars
+
+                //SOLR query
+                //should look like this for the search term land use:
+                // /solr1/layers/select?indent=on&q=name:land%20use^10%20or%20longName:land%20use^10%20or%20description:land%20use%20or%20layerName:land%20use&wt=json
+
+                var searchUrl = window.location.origin +
+                    '/solr1/layers/select?q=name:"' +
+                    encodedSearchTerms +
+                    '"^150+OR+longName:"' +
+                    encodedSearchTerms +
+                    '"^100+OR+description:"' +
+                    encodedSearchTerms +
+                    '"^50+OR+name:' +
+                    encodedSearchTerms +
+                    '+OR+longName:' +
+                    encodedSearchTerms +
+                    '+OR+description:' +
+                    encodedSearchTerms +
+                    '&wt=json';
+                request(searchUrl).then(function (reply) {
+                    var resultDocs = JSON.parse(reply).response.docs;
+                    var searchResults = [];
+                    resultDocs.forEach(function (doc) {
+                        if (doc.type === 'category') {
+                            var cat = self.allCategories.find(function (c) {
+                                return ('c' + c.id) === doc.id;
+                            });
+                            if (cat) {
+                                searchResults.push(cat);
+                            }
+                        } else {
+                            var lyr = self.layerDefs.find(function (ld) {
+                                return ('l' + ld.id) === doc.id;
+                            });
+                            if (lyr) {
+                                searchResults.push(lyr);
+                            }
+                        }
+                    });
+                    self.searchResults(searchResults);
+                    self.searchResultsDialog.show();
+                }, function (err) {
+                    self.searchResultsError(err);
+                    self.searchResultsDialog.show();
+                });
+            },
+
+            /**
+             * Opens the layer browser dialog.
+             * @returns {void}
+             */
+            browseLayers: function () {
+                //resize to work around Dojo's auto-sizing limitations
+                //it expects the content to have a fixed size, but we need it to be at least somewhat 
+                //dynamic with regard to the size of the window
+                var width = window.innerWidth * 0.85,
+                    height = window.innerHeight * 0.7,
+                    content = document.getElementById('layerLoaderDialog');
+
+                content.setAttribute('style', 'width: ' + width + 'px; height: ' + height + 'px;');
+
+                this.layerBrowserDialog.show();
+                
+            }
+
         });
     });
