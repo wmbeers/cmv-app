@@ -98,9 +98,9 @@ define([
                     }
                     var s = [];
                     if (self.mapServiceSearchResults().length === 1) {
-                        s.push('one category');
+                        s.push('one topic');
                     } else if (self.mapServiceSearchResults().length > 1) {
-                        s.push(self.mapServiceSearchResults().length + ' categories');
+                        s.push(self.mapServiceSearchResults().length + ' topics');
                     }
                     if (self.featureLayerSearchResults().length === 1) {
                         s.push('one layer');

@@ -7,6 +7,7 @@ define([
     'dojo/io-query',
     'dojo/Deferred',
     'dojo/promise/all',
+    'dojo/request',
     './js/config/projects.js', //TODO put in app.js paths?
     'esri/layers/ArcGISDynamicMapServiceLayer',
     'esri/layers/FeatureLayer',
@@ -30,6 +31,7 @@ define([
     ioQuery,
     Deferred,
     all,
+    request,
     projects,
     ArcGISDynamicMapServiceLayer,
     FeatureLayer,
@@ -52,6 +54,8 @@ define([
             //topics called from custom menus defined in the addLayerMethod will use topic layerContro/...
             topic.subscribe('layerControl/openAttributeTable', lang.hitch(this, 'openAttributeTable'));
             topic.subscribe('layerControl/zoomToLayer', lang.hitch(this, 'zoomToLayer'));
+            topic.subscribe('layerControl/viewMetadata', lang.hitch(this, 'viewMetadata'));
+
             //topics called from other places use topic layerLoader/... for clarity
             topic.subscribe('layerLoader/addProjectToMap', lang.hitch(this, 'addProjectToMap'));
             topic.subscribe('layerLoader/addLayerFromLayerDef', lang.hitch(this, 'addLayerFromLayerDef'));
@@ -500,7 +504,7 @@ define([
                 var layerControlInfo = {
                     controlOptions: {
                         expanded: false,
-                        metadataUrl: true,
+                        metadataUrl: false,
                         //includeUnspecifiedLayers: true, //TODO: if this is included, the service doesn't load properly for some reason, and no layers show up.
                         swipe: true,
                         noMenu: false,
@@ -517,6 +521,11 @@ define([
                                 label: 'Zoom to Layer', //TODO support i18n.zoomTo,
                                 topic: 'zoomToLayer',
                                 iconClass: 'fas fa-fw fa-search'
+                            },
+                            {
+                                label: 'View Metadata',
+                                topic: 'viewMetadata',
+                                iconClass: 'fa fa-info-circle fa-fw'
                             }
                         ],
                         //Note: the following is what's documented on the CMV site, but doesn't work, 
@@ -555,7 +564,6 @@ define([
                     layer: layer,
                     title: layerDef.title,
                     type: layerDef.type
-
                 };
                 topic.publish('layerControl/addLayerControls', [layerControlInfo]); //TODO the whole collection of layers to be added should be passed at once for layerGroup to do anything.
                 topic.publish('identify/addLayerInfos', [layerControlInfo]);
@@ -829,9 +837,65 @@ define([
                 }
             });
         },
+        /**
+         * Opens FGDL metadata for the layer included in the event argument. Listens for LayerControl/viewMetadata topic.
+         * @param {any} event The click event on the View Metadata menu itm.
+         * @returns {void}
+         */
+        viewMetadata: function (event) {
+            //we're looking for the layerName property of a layerDef. If this is a featureLayer, we're already there. If it's a dynamic map service,
+            //we have to dig deeper.
+            var layer = event.layer, //the layer, which might or might not have sublayers
+                subLayer = event.subLayer, //the sublayer of a dynamic map service layer, which will be null if this is a feature layer
+                displayName = subLayer ? subLayer.name : layer.name,
+                layerName = null; //the SDE layer name, which is also the metadata file name.
 
-        testTopic: function (topicName, args) {
-            topic.publish(topicName, args);
+            if (layer.layerDef) {
+                if (subLayer) {
+                    //sublayer has id's that are just the index of the layer within the dynamic map service layer
+                    var subLayerDef = layer.layerDef.layerDefs[subLayer.id];
+                    layerName = subLayerDef.layerName;
+                } else {
+                    layerName = layer.layerDef.layerName;
+                }
+            }
+
+            if (!layerName) {
+                return; //TODO warn user something is wrong
+            }
+
+            //metadata files are in lower case
+            layerName = layerName.toLowerCase();
+
+            //using request instead of the direct href property so we can handle errors
+            //there's probably a way to handle errors with dialog.show, but Dojo documentation isn't clear on that
+            request('/est/metadata/' + layerName + '.htm', {
+                headers: {
+                    'X-Requested-With': null
+                }
+            }).then(
+                function (data) {
+                    var dlg = new Dialog({
+                        id: layerName + '_metadata',
+                        title: 'Metadata for ' + displayName,
+                        content: data
+                    });
+                    dlg.show();
+                },
+                function () {
+                    //happens when running on a local server that doesn't have /est/metadata path
+                    //so make request to pub server
+                    //using window.open to work around CORS issues
+                    topic.publish('growler/growl', 'Fetching metadata for ' + displayName);
+                    window.open('https://etdmpub.fla-etat.org/est/metadata/' + layerName + '.htm');
+                });
+
+            //var dlg = new Dialog({
+            //    id: event.subLayer.layerName + '_metadata',
+            //    title: 'Metadata for ' + event.subLayer.name,
+            //    href: '/est/metadata/' + event.subLayer.layerName + '.htm'
+            //});
+            //dlg.show();
         },
 
         /**
