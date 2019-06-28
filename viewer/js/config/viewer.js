@@ -385,6 +385,7 @@ define([
             }],
         // set include:true to load. For titlePane type set position the the desired order in the sidebar
         widgets: {
+            //handles messaging in upper right
             growler: {
                 include: true,
                 id: 'growler',
@@ -395,6 +396,7 @@ define([
                     style: 'position:absolute;top:15px;' + (has('phone') ? 'left:50%;transform:translate(-50%,0);' : 'right:15px;')
                 }
             },
+            //address/geographic name search, floats upper left of map
             search: {
                 include: true,
                 type: has('phone') ? 'titlePane' : 'ui',
@@ -464,6 +466,7 @@ define([
 
                 }
             },
+            //bottom band
             attributesTable: {
                 include: true,
                 id: 'attributesTable',
@@ -498,6 +501,7 @@ define([
                     //]
                 }
             },
+            //right-click map to get address
             reverseGeocoder: {
                 include: true,
                 type: 'invisible',
@@ -507,6 +511,7 @@ define([
                     mapRightClickMenu: true
                 }
             },
+            //floats upper right of map
             basemaps: {
                 include: true,
                 id: 'basemaps',
@@ -516,20 +521,9 @@ define([
                 position: 'first',
                 options: 'config/basemaps'
             },
-            identify: {
-                include: true,
-                id: 'identify',
-                type: 'titlePane',
-                path: 'gis/dijit/Identify',
-                title: i18n.viewer.widgets.identify,
-                iconClass: 'fas fa-fw fa-info-circle',
-                open: false,
-                preload: true,
-                position: 3,
-                options: 'config/identify'
-            },
+            //bottom left of map
             mapInfo: {
-                include: false,
+                include: true,
                 id: 'mapInfo',
                 type: 'domNode',
                 path: 'gis/dijit/MapInfo',
@@ -545,6 +539,7 @@ define([
                     minWidth: 286
                 }
             },
+            //bottom center of map
             scalebar: {
                 include: true,
                 id: 'scalebar',
@@ -552,32 +547,14 @@ define([
                 path: 'esri/dijit/Scalebar',
                 options: {
                     map: true,
-                    attachTo: 'bottom-left',
+                    attachTo: 'bottom-center',
                     scalebarStyle: 'line',
                     scalebarUnit: 'dual'
                 }
             },
-            locateButton: {
-                include: true,
-                id: 'locateButton',
-                type: 'ui',
-                path: 'gis/dijit/LocateButton',
-                placeAt: 'top-left',
-                position: 'last',
-                options: {
-                    map: true,
-                    publishGPSPosition: true,
-                    highlightLocation: true,
-                    useTracking: true,
-                    geolocationOptions: {
-                        maximumAge: 0,
-                        timeout: 15000,
-                        enableHighAccuracy: true
-                    }
-                }
-            },
+            //bottom-right of map, little arrow icon toggles display
             overviewMap: {
-                include: has('phone') ? false : true,
+                include: true, //has('phone') ? true : false,
                 id: 'overviewMap',
                 type: 'map',
                 path: 'esri/dijit/OverviewMap',
@@ -591,6 +568,7 @@ define([
                     visible: false
                 }
             },
+            //upper-right, below zoomIn/ZoomOut
             homeButton: {
                 include: true,
                 id: 'homeButton',
@@ -610,6 +588,23 @@ define([
                     })
                 }
             },
+            //floats when toggled from iHelp menu
+            help: {
+                include: has('phone') ? false : true,
+                id: 'help',
+                type: 'floating',
+                path: 'gis/dijit/Help',
+                title: i18n.viewer.widgets.help,
+                iconClass: 'fas fa-fw fa-info-circle',
+                paneOptions: {
+                    draggable: false,
+                    html: '<a href="#"><i class="fas fa-fw fa-info-circle"></i>link</a>'.replace('link', i18n.viewer.widgets.help),
+                    domTarget: 'helpDijit',
+                    style: 'height:345px;width:450px;'
+                },
+                options: {}
+            },
+            //title-pane type widgets, in left menu, positioned in the order shown below
             layerLoader: {
                 include: true,
                 id: 'layerLoader',
@@ -620,7 +615,7 @@ define([
                 open: true,
                 position: 0,
                 options: 'config/layerLoader'
-            },
+            }, //open
             layerControl: {
                 include: true,
                 id: 'layerControl',
@@ -662,7 +657,7 @@ define([
                         }]
                     }*/
                 }
-            },
+            }, //open
             legend: {
                 include: true,
                 id: 'legend',
@@ -677,29 +672,37 @@ define([
                     legendLayerInfos: true
                 }
             },
-            /*dnd: {
+            identify: {
                 include: true,
-                id: 'dnd',
+                id: 'identify',
                 type: 'titlePane',
-                canFloat: true,
-                path: 'gis/dijit/DnD',
-                title: 'Drag and Drop',
-                position: 3,
-                options: {
-                    map: true
-                }
-            },*/
-            bookmarks: {
-                include: true,
-                id: 'bookmarks',
-                type: 'titlePane',
-                path: 'gis/dijit/Bookmarks',
-                title: i18n.viewer.widgets.bookmarks,
-                iconClass: 'fas fa-fw fa-bookmark',
+                path: 'gis/dijit/Identify',
+                title: i18n.viewer.widgets.identify,
+                iconClass: 'fas fa-fw fa-info-circle',
                 open: false,
-                position: 4,
-                options: 'config/bookmarks'
+                preload: true,
+                position: 3,
+                options: 'config/identify'
             },
+            zoomToRegion: {
+                include: true,
+                id: 'zoomToRegion',
+                type: 'titlePane',
+                title: 'Zoom to Region',
+                position: 4,
+                open: true,
+                path: 'gis/dijit/ZoomToFeature',
+                options: {
+                    map: true,
+
+                    url: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/QUERY_REGIONS/MapServer/0',
+                    field: 'DESCRIPT',
+                    maxAllowableOffset: 100,
+                    i18n: {
+                        selectFeature: 'Enter a County, WMD, or FDOT District Name'
+                    }
+                }
+            }, //open
             find: {
                 include: false,
                 id: 'find',
@@ -712,6 +715,17 @@ define([
                 position: 5,
                 options: 'config/find'
             },
+            bookmarks: {
+                include: true,
+                id: 'bookmarks',
+                type: 'titlePane',
+                path: 'gis/dijit/Bookmarks',
+                title: i18n.viewer.widgets.bookmarks,
+                iconClass: 'fas fa-fw fa-bookmark',
+                open: false,
+                position: 6,
+                options: 'config/bookmarks'
+            },
             draw: {
                 include: true,
                 id: 'draw',
@@ -721,7 +735,7 @@ define([
                 title: i18n.viewer.widgets.draw,
                 iconClass: 'fas fa-fw fa-paint-brush',
                 open: false,
-                position: 6,
+                position: 7,
                 options: {
                     map: true,
                     mapClickMode: true
@@ -736,7 +750,7 @@ define([
                 title: i18n.viewer.widgets.measure,
                 iconClass: 'fas fa-fw fa-expand',
                 open: false,
-                position: 7,
+                position: 8,
                 options: {
                     map: true,
                     mapClickMode: true,
@@ -753,7 +767,7 @@ define([
                 title: i18n.viewer.widgets.print,
                 iconClass: 'fas fa-fw fa-print',
                 open: false,
-                position: 8,
+                position: 9,
                 options: {
                     map: true,
                     printTaskURL: 'https://utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task',
@@ -772,68 +786,8 @@ define([
                     ]
                 }
             },
-            /*directions: {
-                include: true,
-                id: 'directions',
-                type: 'titlePane',
-                path: 'gis/dijit/Directions',
-                title: i18n.viewer.widgets.directions,
-                iconClass: 'fas fa-fw fa-map-signs',
-                open: false,
-                position: 9,
-                options: {
-                    map: true,
-                    mapRightClickMenu: true,
-                    options: {
-                        routeTaskUrl: 'https://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Network/USA/NAServer/Route',
-                        routeParams: {
-                            directionsLanguage: 'en-US',
-                            directionsLengthUnits: units.MILES
-                        },
-                        active: false //for 3.12, starts active by default, which we dont want as it interfears with mapClickMode
-                    }
-                }
-            },*/
-            zoomToRegion: {
-                include: true,
-                id: 'zoomToRegion',
-                type: 'titlePane',
-                title: 'Zoom to Region',
-                position: 10,
-                open: true,
-                path: 'gis/dijit/ZoomToFeature',
-                options: {
-                    map: true,
 
-                    url: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/QUERY_REGIONS/MapServer/0',
-                    field: 'DESCRIPT',
-                    maxAllowableOffset: 100,
-                    i18n: {
-                        selectFeature: 'Enter a County, WMD, or FDOT District Name'
-                    }
-                }
-            },
-            /*zoomToWMD: {
-                include: true,
-                id: 'zoomToWMD',
-                type: 'titlePane',
-                title: 'Zoom to Water Management District',
-                position: 11,
-                open: true,
-                path: 'gis/dijit/ZoomToFeature',
-                options: {
-                    map: true,
-
-                    url: 'https://ca.dep.state.fl.us/arcgis/rest/services/Map_Direct/Boundaries/MapServer/9',
-                    field: 'NAME',
-
-                    // you can customize the text
-                    i18n: {
-                        selectFeature: 'Select a District'
-                    }
-                }
-            },*/
-            
+            //excluded, but will be left menu
             editor: {
                 include: false, // TODO has('phone') ? false : true,
                 id: 'editor',
@@ -842,7 +796,7 @@ define([
                 title: i18n.viewer.widgets.editor,
                 iconClass: 'fas fa-fw fa-pencil-alt',
                 open: false,
-                position: 12,
+                position: 10,
                 options: {
                     map: true,
                     mapClickMode: true,
@@ -861,8 +815,29 @@ define([
                         }
                     }
                 }
-            },
-            
+            }
+
+            //track location, excluded
+            //locateButton: {
+            //    include: false,
+            //    id: 'locateButton',
+            //    type: 'ui',
+            //    path: 'gis/dijit/LocateButton',
+            //    placeAt: 'top-left',
+            //    position: 'last',
+            //    options: {
+            //        map: true,
+            //        publishGPSPosition: true,
+            //        highlightLocation: true,
+            //        useTracking: true,
+            //        geolocationOptions: {
+            //            maximumAge: 0,
+            //            timeout: 15000,
+            //            enableHighAccuracy: true
+            //        }
+            //    }
+            //},
+
             /* TODO: need Google Maps API key,
             streetview: {
                 include: true,
@@ -887,35 +862,41 @@ define([
                     mapClickMode: true,
                     mapRightClickMenu: true
                 }
-            },*/
-            /*locale: {
+            },*/             /*directions: {
                 include: true,
-                type: has('phone') ? 'titlePane' : 'domNode',
-                id: 'locale',
-                position: 0,
-                srcNodeRef: 'geocodeDijit',
-                path: 'gis/dijit/Locale',
-                title: i18n.viewer.widgets.locale,
-                iconClass: 'fas fa-fw fa-flag',
+                id: 'directions',
+                type: 'titlePane',
+                path: 'gis/dijit/Directions',
+                title: i18n.viewer.widgets.directions,
+                iconClass: 'fas fa-fw fa-map-signs',
+                open: false,
+                position: 9,
                 options: {
-                    style: has('phone') ? null : 'margin-left: 30px;'
+                    map: true,
+                    mapRightClickMenu: true,
+                    options: {
+                        routeTaskUrl: 'https://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Network/USA/NAServer/Route',
+                        routeParams: {
+                            directionsLanguage: 'en-US',
+                            directionsLengthUnits: units.MILES
+                        },
+                        active: false //for 3.12, starts active by default, which we dont want as it interfears with mapClickMode
+                    }
                 }
             },*/
-            help: {
-                include: has('phone') ? false : true,
-                id: 'help',
-                type: 'floating',
-                path: 'gis/dijit/Help',
-                title: i18n.viewer.widgets.help,
-                iconClass: 'fas fa-fw fa-info-circle',
-                paneOptions: {
-                    draggable: false,
-                    html: '<a href="#"><i class="fas fa-fw fa-info-circle"></i>link</a>'.replace('link', i18n.viewer.widgets.help),
-                    domTarget: 'helpDijit',
-                    style: 'height:345px;width:450px;'
-                },
-                options: {}
+            /*,
+            dnd: {
+            include: true,
+            id: 'dnd',
+            type: 'titlePane',
+            canFloat: true,
+            path: 'gis/dijit/DnD',
+            title: 'Drag and Drop',
+            position: 3,
+            options: {
+                map: true
             }
+        },*/
 
         }
     
