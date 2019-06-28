@@ -6,6 +6,7 @@ define([
     'dojo/topic',
     'dojo/io-query',
     'dojo/Deferred',
+    'dijit/Dialog',
     'dojo/promise/all',
     'dojo/request',
     './js/config/projects.js', //TODO put in app.js paths?
@@ -30,6 +31,7 @@ define([
     topic,
     ioQuery,
     Deferred,
+    Dialog,
     all,
     request,
     projects,
