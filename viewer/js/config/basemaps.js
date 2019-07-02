@@ -1,8 +1,8 @@
 define([
-    'esri/dijit/Basemap',
-    'esri/dijit/BasemapLayer',
-    'dojo/i18n!./nls/main'
-], function (Basemap, BasemapLayer, i18n) {
+//    'esri/dijit/Basemap',
+//    'esri/dijit/BasemapLayer',
+//    'dojo/i18n!./nls/main'
+], function (/*Basemap, BasemapLayer, i18n*/) {
 
     return {
         map: true, // needs a reference to the map
@@ -34,7 +34,7 @@ define([
             'dark-gray-vector': {}, // requires v3.16 or higher
             oceans: {},
             'national-geographic': {},
-            osm: {},
+            osm: {}
             
 
             // additional examples of vector tile basemaps (requires v3.16 or higher)

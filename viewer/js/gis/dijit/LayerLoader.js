@@ -130,7 +130,7 @@ define([
                         return uri;
                     }
                     return null;
-                }),
+                });
 
                 this._initializeDialogs();
             },
@@ -291,7 +291,7 @@ define([
 
                 //internal function to add layerDefs and functions; recursively called, starting
                 //with the root model (this LayerLoader), then each root-level category, then subcategories
-                function processCategories(parent) {
+                function processCategories (parent) {
                     parent.categories.forEach(function (category) {
                         root.allCategories.push(category);
                         category.layerDefs = category.layerIds.map(function (layerId) {
