@@ -857,7 +857,7 @@ define([
                     //sublayer has id's that are just the index of the layer within the dynamic map service layer
                     var subLayerDef = layer.layerDef.layerDefs[subLayer.id];
                     layerName = subLayerDef.layerName;
-                } else {
+           
                     layerName = layer.layerDef.layerName;
                 }
             }
