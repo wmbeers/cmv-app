@@ -28,26 +28,6 @@ define([
             'streets-relief-vector': {}, // requires v3.16 or higher
             satellite: {},
             hybrid: {},
-            clarity: {
-                title: i18n.basemaps.clarity,
-                basemap: {
-                    baseMapLayers: [
-                        {
-                            url: 'https://clarity.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/MapServer'
-                        }
-                    ]
-                }
-            },
-            firefly: {
-                title: i18n.basemaps.firefly,
-                basemap: {
-                    baseMapLayers: [
-                        {
-                            url: 'https://fly.maptiles.arcgis.com/arcgis/rest/services/World_Imagery_Firefly/MapServer'
-                        }
-                    ]
-                }
-            },
             topo: {},
             terrain: {},
             'gray-vector': {}, // requires v3.16 or higher
@@ -55,49 +35,7 @@ define([
             oceans: {},
             'national-geographic': {},
             osm: {},
-            landsatShaded: {
-                title: i18n.basemaps.landsatShaded,
-                basemap: {
-                    baseMapLayers: [
-                        {
-                            url: 'https://imagery.arcgisonline.com/arcgis/rest/services/LandsatGLS/LandsatShadedBasemap/ImageServer'
-                        }
-                    ]
-                }
-            },
-            earthAtNight: {
-                title: i18n.basemaps.earthAtNight,
-                basemap: {
-                    baseMapLayers: [
-                        {
-                            url: 'https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Earth_at_Night_WM/MapServer'
-                        }
-                    ]
-                }
-            },
-            davidRumseyMap1812: {
-                title: i18n.basemaps.davidRumseyMap1812,
-                basemap: {
-                    baseMapLayers: [
-                        {
-                            url: 'https://tiles.arcgis.com/tiles/IEuSomXfi6iB7a25/arcgis/rest/services/World_Globe_1812/MapServer'
-                        }
-                    ]
-                }
-            },
-            mapboxPirates: {
-                title: 'Pirates (mapbox.com)',
-                basemap: new Basemap({
-                    id: 'mapboxPirates',
-                    layers: [new BasemapLayer({
-                        url: 'https://${subDomain}.tiles.mapbox.com/v3/aj.Sketchy2/${level}/${col}/${row}.png',
-                        copyright: 'mapbox, 2016',
-                        id: 'mapboxPirates',
-                        subDomains: ['a', 'b', 'c', 'd'],
-                        type: 'WebTiledLayer'
-                    })]
-                })
-            }
+            
 
             // additional examples of vector tile basemaps (requires v3.16 or higher)
             /*
