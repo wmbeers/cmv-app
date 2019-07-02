@@ -72,12 +72,24 @@ span.selectedItem {
     max-width: 700px;
 }
 
-input.mapLink {
+/* Div wrapping the shared map link */
+#mapLinkDiv {
+    width: 400px;
+    height: 75px;
+}
+
+/* The shared map link itself, is an input that needs to not look like an input */
+#mapLink {
     border: none;
-    width: 100%;
+    width: 95%;
     text-align: center;
     font-size: 1.1em;
 }
+
+    /* selection color when link is copied */
+    #mapLink::selection {
+        background-color: #e3edff;
+    }
 
 .hidden {
     display: none;
@@ -97,7 +109,3 @@ input.mapLink {
     border-radius: 0.25rem;
 }
 
-.mapLinkDiv {
-    width: 400px;
-    height: 105px;
-}

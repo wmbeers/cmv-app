@@ -19,6 +19,7 @@ define([
     'dojo/text!./LayerLoader/templates/layerLoaderSidebar.html', // template for the widget in left panel, and some dialogs
     'dojo/text!./LayerLoader/templates/layerLoaderDialog.html', // template for the resource layer broswer dialog
     'dojo/text!./LayerLoader/templates/searchResultsDialog.html', // template for the layer search results
+    'dojo/text!./LayerLoader/templates/shareMapDialog.html', // template for the share saved map
 
     'dijit/form/Form',
     'dijit/form/FilteringSelect',
@@ -29,7 +30,8 @@ define([
     'xstyle/css!./LayerLoader/css/layerLoader.css'
 ],
     function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog, ConfirmDialog, request, lang, on, query, dom,
-        domClass, html, topic, Memory, Deferred, layerLoaderSidebarTemplate, layerLoaderDialogTemplate, searchResultsDialogTemplate
+        domClass, html, topic, Memory, Deferred, layerLoaderSidebarTemplate, layerLoaderDialogTemplate, searchResultsDialogTemplate,
+        shareMapDialogTemplate
 ) {
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
             widgetsInTemplate: true,
@@ -42,6 +44,7 @@ define([
             layerBrowserDialog: null,
             saveMapDialog: null,
             searchResultsDialog: null,
+            shareMapDialog: null,
 
             //the array of saved maps (just id and mapName), loaded at startup
             savedMaps: ko.observableArray(), // eslint-disable-line no-undef
@@ -51,6 +54,12 @@ define([
 
             //represents the map currently loaded in the viewer; will just be the stub of id and mapName
             currentMap: ko.observable(), // eslint-disable-line no-undef
+
+            //represents the sharable URI for the map currently loaded in the viewer, based on the map
+            currentMapUri: null, //just a stub for clarity, will be assigned to pureComputed function in separate step, because it refers back to currentMap
+
+            //boolean flag set to true after it's copied to windows clipboard
+            linkCopied: ko.observable(false), //eslint-disable-line no-undef
 
             //flags whether user wants to clear layers from the map before loading a new map
             clearMapFirst: ko.observable(false), // eslint-disable-line no-undef
@@ -74,7 +83,7 @@ define([
             showDetails: ko.observable(true), // eslint-disable-line no-undef
 
             //flattened list of all categories, used for loading saved maps with references to dynamic map services
-            allCategories: [], 
+            allCategories: [],
 
             postCreate: function () {
                 this.inherited(arguments);
@@ -109,6 +118,19 @@ define([
                     }
                     return 'Found ' + s.join(' and ');
                 });
+
+                self.currentMapUri = ko.pureComputed(function () { // eslint-disable-line no-undef
+                    if (self.currentMap() && self.currentMap().id && self.currentMap().id > 0) {
+                        //get the base url
+                        var uri = window.location.href;
+                        if (uri.indexOf('?') >= 0) {
+                            uri = uri.substr(0, uri.indexOf('?'));
+                        }
+                        uri += '?loadMap=' + self.currentMap().id;
+                        return uri;
+                    }
+                    return null;
+                }),
 
                 this._initializeDialogs();
             },
@@ -173,18 +195,6 @@ define([
                     ko.applyBindings(self, dom.byId('loadMapDialog')); // eslint-disable-line no-undef
                     ko.applyBindings(self, dom.byId('saveMapDialog')); // eslint-disable-line no-undef
                 }); //note: we need to have this deferred and then apply bindings or the open button does nothing.
-
-                //set up link for copying
-                window.copyElem = function (elem) {
-                    elem.select();
-                    document.execCommand('copy');
-                    //not obvious: topic.publish('growler/growl','Map Link copied to clipboard.');
-                    //this only works once, getting it by ID the second time fails. domClass.remove('linkCopiedTip', 'hidden');
-                    query('.linkCopiedTip').forEach(function (n) {
-                        domClass.remove(n, 'hidden');
-                    });
-                    //todo an alternative way would be to make sure the dialog gets destroyed when done
-                };
 
                 //let the application know we're done starting up
                 topic.publish('layerLoader/startupComplete');
@@ -260,6 +270,16 @@ define([
                 //apply knockout bindings to search results
                 ko.applyBindings(this, dom.byId('searchResultsDialog')); // eslint-disable-line no-undef
 
+                //share map dialog
+                this.shareMapDialog = new Dialog({
+                    id: 'layerloader_share_map_dialog',
+                    title: 'Share Map',
+                    content: shareMapDialogTemplate
+                });
+
+                //apply knockout bindings to share map
+                ko.applyBindings(this, dom.byId('shareMapDialog')); // eslint-disable-line no-undef
+
             },
 
             /**
@@ -271,7 +291,7 @@ define([
 
                 //internal function to add layerDefs and functions; recursively called, starting
                 //with the root model (this LayerLoader), then each root-level category, then subcategories
-                function processCategories (parent) {
+                function processCategories(parent) {
                     parent.categories.forEach(function (category) {
                         root.allCategories.push(category);
                         category.layerDefs = category.layerIds.map(function (layerId) {
@@ -376,7 +396,7 @@ define([
             _deleteSelectedMap: function () {
                 var self = this,
                     sm = this.selectedMap(); //selected in dialog
-                    
+
                 if (!sm) {
                     return;
                 }
@@ -404,7 +424,6 @@ define([
                     }
                 });
             },
-
 
             /**
              * Listens for the map loading complete, to handle loading via url.
@@ -447,6 +466,7 @@ define([
                     this.handleSearch();
                 }
             },
+
             /**
              * Listen for the keyUp event in the Project field, to detect when enter key is typed
              * @param {any} event the keyUp event
@@ -608,23 +628,9 @@ define([
              * @returns {void}
              */
             _shareMap: function () {
-                if (this.currentMap() && this.currentMap().id && this.currentMap().id > 0) {
-                    //get the base url
-                    var uri = window.location.href;
-                    if (uri.indexOf('?') >= 0) {
-                        uri = uri.substr(0, uri.indexOf('?'));
-                    }
-                    uri += '?loadMap=' + this.currentMap().id;
-                    //try to copy it to the 
-                    var dlg = new Dialog({
-                        title: 'Map Link',
-                        content: '<div class="mapLinkDiv">' +
-                            '<p class="tip">Copy the link below and paste it into an email to share this map.</p>' +
-                            '<input type="text" value="' + uri + '" class="mapLink" onclick="copyElem(this)" />' +
-                            '<p class="tip hidden linkCopiedTip">Link copied to clipboard</p>' +
-                            '</div>'
-                    });
-                    dlg.show();
+                if (this.currentMapUri()) {
+                    this.linkCopied(false);
+                    this.shareMapDialog.show();
                 } else if (this.hasUnsavedChanges()) {
                     topic.publish('growler/growl', {
                         message: 'You must save the map before you can share it.',
@@ -638,6 +644,18 @@ define([
                         level: 'warning'
                     });
                 }
+            },
+
+            /**
+             * Copies the current map URI to the windows clipboard
+             * @returns {void}
+             */
+            copyCurrentMapUri: function () {
+                //set up link for copying
+                var elem = dom.byId('mapLink');
+                elem.select();
+                document.execCommand('copy');
+                this.linkCopied(true);
             },
 
             /**
