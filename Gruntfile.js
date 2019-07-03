@@ -4,8 +4,9 @@ module.exports = function (grunt) {
     var target = grunt.option('target') || 'dev';
     //get host from target; if not dev or stage, user is prompted for host (assuming you have Bill's modified version of the scp grunt task)
     var host = target === 'dev' ? 'prometheus.est.vpn' :
+        target === 'stage' ? 'hyperion.est.vpn' : 
         target === 'preprod' ? 'pandora.est.vpn' :
-        target === 'stage' ? 'hyperion.est.vpn' : null;
+        target === 'prod' ? 'calypso.est.vpn' : null;
     //get operationalLayers based on target
     //in our source it should always be dev (https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer and 
     //https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer)
