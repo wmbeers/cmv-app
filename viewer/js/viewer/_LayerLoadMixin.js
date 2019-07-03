@@ -12,8 +12,10 @@ define([
     './js/config/projects.js', //TODO put in app.js paths?
     'esri/layers/ArcGISDynamicMapServiceLayer',
     'esri/layers/FeatureLayer',
+    'esri/layers/RasterLayer',
     'esri/layers/VectorTileLayer',
     'esri/layers/ImageParameters',
+    'esri/layers/ImageServiceParameters',
     'esri/request',
     'esri/tasks/ProjectParameters',
     'esri/tasks/query',
@@ -37,8 +39,10 @@ define([
     projects,
     ArcGISDynamicMapServiceLayer,
     FeatureLayer,
+    RasterLayer,
     VectorTileLayer,
     ImageParameters,
+    ImageServiceParameters,
     esriRequest,
     ProjectParameters,
     Query,
@@ -335,6 +339,18 @@ define([
                         //todo either use db id or just let this be autoassigned id: layerDef.name,
                         //infoTemplate: new InfoTemplate('Attributes', '${*}')
                     });
+            } else if (layerDef.type === 'raster') {
+                var isp = new ImageServiceParameters();
+                isp.format = 'png32';
+                layer = new RasterLayer(layerDef.url, {
+                    imageServiceParameters: isp
+                });
+                //TODO 
+                    //{
+                    //    imageServiceParameters: {
+                    //        format: 'png32'
+                    //    }
+                    //});
             } else if (layerDef.type === 'vectortile') {
                 layer = new VectorTileLayer(layerDef.url);
             } else {
@@ -479,6 +495,7 @@ define([
 
             if (layerDef.loaded) { //if it has a loaded observable, assign it to true. (It always does when it's a layerDef defined by our system)
                 layerDef.loaded(true);
+                layerDef.loadPending(false);
             }
             //I don't know why we need to make this separate esriRequest, but the layer won't show up in layerControl
             //unless we do. We don't do anything with the response. It's cribbed from DnD plug in, DroppedItem.js.

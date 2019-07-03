@@ -215,16 +215,24 @@ define([
 
                 //post-process layerDefs
                 this.layerDefs.forEach(function (layerDef) {
+                    //root in this context is the LayerLoader widget, passed as the "this" to the forEach. "this" looses context in the computeds, so redefining here
                     var root = this; // eslint-disable-line consistent-this
 
+                    //function called when user clicks Add to Map, passes the request on to _LayerLoadMixin.addLayerFromLayerDef, passing reference to the layerDef
                     layerDef.loadLayer = function () {
+                        layerDef.loadPending(true);
                         topic.publish('layerLoader/addLayerFromLayerDef', this);
                     };
+
+                    //function called when user clicks Remove from Map, passes the request on to _LayerLoadMixin.removeLayer, passing reference to the layer (why the layer? because the removeLayer function also works from layer control menus, which only know about layers)
                     layerDef.removeLayer = function () {
                         if (layerDef.layer) {
                             topic.publish('layerLoader/removeLayer', layerDef.layer);
                         }
                     };
+
+                    //for giving user feedback about when it is visible
+                    //TODO there's probably no reason for this to be computed, it won't change. As long as this is sorted out before ko.applyBindings, it could just be a simple assignment; or it could just be something we handle in creating layerDerfs.
                     layerDef.scaleText = ko.computed(function () { // eslint-disable-line no-undef
                         var scaleText = '';
                         var minScale = (layerDef.layer && layerDef.layer.minScale) ? layerDef.layer.minScale : (layerDef.minScale || 0);
@@ -241,14 +249,28 @@ define([
                         }
                         return scaleText;
                     });
+
+                    //handles user clicking on a layer in the middle pane
                     layerDef.select = function () {
                         root.currentLayer(layerDef);
                     };
-
                     layerDef.isSelected = ko.pureComputed(function () { // eslint-disable-line no-undef
                         return root.currentLayer() === layerDef;
                     });
+
+                    //set to true when the layer is loaded into the map
                     layerDef.loaded = ko.observable(false); // eslint-disable-line no-undef
+
+                    //set to true when the user requests it to be loaded into the map, before it actually gets loaded
+                    layerDef.loadPending = ko.observable(false);
+
+                    //TEMPORARY until we figure out if it's possible to load raster layers. Isn't supported in DnD, and I get "Output format not supported." error when I try to create RasterLayer
+                    layerDef.loadable = layerDef.type === 'feature';
+
+                    //cross-reference layerDefs to categories (so far, a given layer doesn't appear in more than one category, but we might do that in the future)
+                    //these are added in _processCategories
+                    layerDef.categories = [];
+
                 }, this);
 
                 //start the chain of post-processing categories to add knockout observables and functions
@@ -300,6 +322,11 @@ define([
                             });
                         }, this);
 
+                        category.layerDefs.forEach(function (l) {
+                            l.categories.push(category);
+                        });
+
+                        //not currently used, but this rolls up all layerDefs of this category and those of it's sub-categories.
                         category.allLayerDefs = [];
 
                         category.loadCategory = function () {
