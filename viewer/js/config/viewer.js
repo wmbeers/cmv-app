@@ -347,6 +347,40 @@ define([
                         iconClass: 'fa fa-table fa-fw'
                     }]
                 }
+            },
+            {
+                type: 'feature',
+                url: 'https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/AOIDEV_INPUT/FeatureServer/1',
+                title: 'Area of Interest Lines',
+                options: {
+                    id: 'aoiL',
+                    opacity: 1.0,
+                    visible: true,
+                    outFields: ['*'],
+                    imageParameters: buildImageParameters({
+                        layerIds: [0, 7],
+                        layerOption: 'show'
+                    }),
+                    mode: 1
+                },
+                editorLayerInfos: {
+                    exclude: false,
+                    disableGeometryUpdate: false
+                },
+                legendLayerInfos: {
+                    exclude: false,
+                    layerInfo: {
+                        title: 'AOI Lines'
+                    }
+                },
+                layerControlLayerInfos: {
+                    //layerGroup: 'Project Data',
+                    menu: [{
+                        label: 'Open Attribute Table',
+                        topic: 'openTable',
+                        iconClass: 'fa fa-table fa-fw'
+                    }]
+                }
             }],
         // set include:true to load. For titlePane type set position the the desired order in the sidebar
         widgets: {
@@ -752,15 +786,14 @@ define([
                 }
             },
 
-            //excluded, but will be left menu
             editor: {
-                include: false, // TODO has('phone') ? false : true,
+                include: true, //todo start with this false, then if use has authority change to true before processing by _WidgetsMixin.js
                 id: 'editor',
                 type: 'titlePane',
                 path: 'gis/dijit/Editor',
                 title: i18n.viewer.widgets.editor,
                 iconClass: 'fas fa-fw fa-pencil-alt',
-                open: false,
+                open: true,
                 position: 10,
                 options: {
                     map: true,

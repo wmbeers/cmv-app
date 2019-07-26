@@ -372,7 +372,7 @@ define([
                 var deferred = new Deferred();
                 var self = this;
                 //eslint-disable-next-line no-undef
-                SavedMapDAO.getSavedMapNamesForCurrentUser({
+                MapDAO.getSavedMapNamesForCurrentUser({
                     callback: function (savedMaps) {
                         self.savedMaps(savedMaps);
                         deferred.resolve();
@@ -429,7 +429,7 @@ define([
                 }
 
                 //eslint-disable-next-line no-undef
-                SavedMapDAO.deleteSavedMap(sm.id, {
+                MapDAO.deleteSavedMap(sm.id, {
                     callback: function (reply) {
                         //reply will be string "ok", or if we're out of sync with the database, or string starting with "Invalid map ID" (which means it was already deleted--either way, let's sync up our copy of the maps), or some other error message
                         if (reply === 'ok' || reply.startsWith('Invalid map ID')) {

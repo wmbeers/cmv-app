@@ -69,6 +69,7 @@ define([
 
         initConfigSuccess: function (config) {
             this.config = config;
+            //todo inject stuff for config varying by role here, I guess; or maybe a separate mixin would be better
             if (config.isDebug) {
                 window.app = this; //dev only
             }

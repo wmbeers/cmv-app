@@ -784,7 +784,7 @@ define([
             savedMap.extent = this.map.extent;
             try {
                 //eslint-disable-next-line no-undef
-                SavedMapDAO.saveMap(savedMap, {
+                MapDAO.saveMap(savedMap, {
                     callback: function (savedMapId) {
                         savedMap.id = savedMapId;
                         topic.publish('growler/growl', 'Saved ' + savedMap.layers.length + ' layers to ' + savedMap.mapName);
@@ -823,7 +823,7 @@ define([
 
             //load from server
             //eslint-disable-next-line no-undef
-            SavedMapDAO.getBeanById(savedMapId, {
+            MapDAO.getBeanById(savedMapId, {
                 callback: function (savedMap) {
                     if (savedMap) {
                         self._loadMap(savedMap, clearMapFirst, deferred);
@@ -918,7 +918,7 @@ define([
         },
 
         /**
-         * Callback function from SavedMapDAO.getBeanById call made in LoadMap function.
+         * Callback function from MapDAO.getBeanById call made in LoadMap function.
          * @param {object} savedMap The SavedMapBean returned from the DWR call
          * @param {boolean} clearMapFirst Optional, if true, all user layers will be removed from the map before loading new layers; if false or absent, layers from the saved map will be added on top of the layers already in the map.
          * @param {object} deferred The Deferred object to be resolved when the map is done loading

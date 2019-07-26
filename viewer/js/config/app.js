@@ -88,6 +88,7 @@
             _WidgetsMixin,
             // _WebMapMixin,
             _MapMixin,
+            //TODO insert a separate mixin here before calling _MapMixin (or at least _WidgetsMixin) to handle changing the config based on user role
 
             // configMixin should be right before _ControllerBase so it is
             // called first to initialize the config object
