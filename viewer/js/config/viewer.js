@@ -349,9 +349,42 @@ define([
                 }
             },
             {
+                type: 'dynamic',
+                url: 'https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer',
+                title: 'Projects (Draft)',
+                options: {
+                    id: 'draftProjects',
+                    opacity: 1.0,
+                    visible: true,
+                    outFields: ['*'],
+                    imageParameters: buildImageParameters({
+                        layerIds: [0, 7],
+                        layerOption: 'show'
+                    }),
+                    mode: 1
+                },
+                editorLayerInfos: {
+                    disableGeometryUpdate: false
+                },
+                legendLayerInfos: {
+                    exclude: false,
+                    layerInfo: {
+                        title: 'Projects (Draft)'
+                    }
+                },
+                layerControlLayerInfos: {
+                    //layerGroup: 'Project Data',
+                    menu: [{
+                        label: 'Open Attribute Table',
+                        topic: 'openTable',
+                        iconClass: 'fa fa-table fa-fw'
+                    }]
+                }
+            },
+            {
                 type: 'feature',
-                url: 'https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/AOIDEV_INPUT/FeatureServer/1',
-                title: 'Area of Interest Lines',
+                url: 'https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/AOIDEV_INPUT/FeatureServer/3',
+                title: 'Area of Interest Polygons',
                 options: {
                     id: 'aoiL',
                     opacity: 1.0,
@@ -370,7 +403,7 @@ define([
                 legendLayerInfos: {
                     exclude: false,
                     layerInfo: {
-                        title: 'AOI Lines'
+                        title: 'AOI Polygons'
                     }
                 },
                 layerControlLayerInfos: {
@@ -786,7 +819,26 @@ define([
                 }
             },
 
-            editor: {
+            aoiEditor: {
+                include: false, //todo start with this false, then if use has authority change to true before processing by _WidgetsMixin.js
+                id: 'aoiEditor',
+                type: 'titlePane',
+                path: 'gis/dijit/AoiEditor',
+                canFloat: true,
+                title: 'AOI Editor',
+                iconClass: 'fas fa-fw fa-pencil-alt',
+                open: true,
+                position: 10,
+                options: {
+                    map: true,
+                    mapClickMode: true,
+                    settings: {
+                        
+                    }
+                }
+            }
+
+            /*editor: {
                 include: true, //todo start with this false, then if use has authority change to true before processing by _WidgetsMixin.js
                 id: 'editor',
                 type: 'titlePane',
@@ -804,7 +856,8 @@ define([
                         showAttributesOnClick: true,
                         enableUndoRedo: true,
                         createOptions: {
-                            polygonDrawTools: ['freehandpolygon', 'autocomplete']
+                            polygonDrawTools: ['freehandpolygon', 'autocomplete'],
+                            polylineDrawTools: ['freehandpolyline']
                         },
                         toolbarOptions: {
                             reshapeVisible: true,
@@ -813,7 +866,7 @@ define([
                         }
                     }
                 }
-            }
+            }*/
 
             //track location, excluded
             //locateButton: {

@@ -39,6 +39,8 @@
         'viewer/_LayoutMixin', // build and manage the Page Layout and User Interface
         
         
+        'viewer/_AuthorizationMixin', //handle authorization before loading layers and widgets
+
         'viewer/_MapMixin', // build and manage the Map
         'viewer/_WidgetsMixin', // build and manage the Widgets
 
@@ -47,7 +49,9 @@
         'viewer/_SidebarMixin', // for mobile sidebar
 
         //'config/_customMixin'
-        'viewer/_LayerLoadMixin', // custom
+        'viewer/_LayerLoadMixin',
+
+        'viewer/_EditorMixin',
 
         'viewer/_SessionMixin'
 
@@ -57,6 +61,7 @@
         _ControllerBase,
         _ConfigMixin,
         _LayoutMixin,
+        _AuthorizationMixin,
         _MapMixin,
         _WidgetsMixin,
 
@@ -64,6 +69,7 @@
 
         _SidebarMixin,
         _LayerLoadMixin,
+        _EditorMixin,
         _SessionMixin
         //_MyCustomMixin
 
@@ -79,6 +85,8 @@
             //
             _SessionMixin,
 
+            _EditorMixin,
+
             _LayerLoadMixin,
 
             // Mixin for Mobile Sidebar
@@ -88,7 +96,8 @@
             _WidgetsMixin,
             // _WebMapMixin,
             _MapMixin,
-            //TODO insert a separate mixin here before calling _MapMixin (or at least _WidgetsMixin) to handle changing the config based on user role
+
+            _AuthorizationMixin,
 
             // configMixin should be right before _ControllerBase so it is
             // called first to initialize the config object
@@ -98,6 +107,28 @@
             _ControllerBase
         ]);
         var app = new App();
-        app.startup();
+        //call app.startup in callback from getAuthorities to avoid a race condition between the callback and things happening in _MapMixin
+        MapDAO.getAuthorities({
+            callback: function(authorities) {
+                app.authorities = authorities;
+                //post-process authorities to determine which controls can be added
+                app.hasAoiEditAuthority = authorities.find(function(auth) {
+                    return auth.aoi;
+                }) ? true : false;
+                app.hasProjectEditAuthority = authorities.find(function(auth) {
+                    return auth.project;
+                }) ? true : false;
+
+                app.startup();
+
+            },
+            errorHandler: function (err) {
+                debugger;
+                app.authorities = [];
+                app.hasAoiEditAuthority = false;
+                app.hasProjectEditAuthority = false;
+                app.startup();
+            }
+        });
     });
 })();
