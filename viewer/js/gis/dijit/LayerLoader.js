@@ -259,10 +259,10 @@ define([
                     });
 
                     //set to true when the layer is loaded into the map
-                    layerDef.loaded = ko.observable(false); // eslint-disable-line no-undef
+                    layerDef.loaded = ko.observable(false); //eslint-disable-line no-undef
 
                     //set to true when the user requests it to be loaded into the map, before it actually gets loaded
-                    layerDef.loadPending = ko.observable(false);
+                    layerDef.loadPending = ko.observable(false); //eslint-disable-line no-undef
 
                     //TEMPORARY until we figure out if it's possible to load raster layers. Isn't supported in DnD, and I get "Output format not supported." error when I try to create RasterLayer
                     layerDef.loadable = layerDef.type === 'feature';

@@ -108,22 +108,23 @@
         ]);
         var app = new App();
         //call app.startup in callback from getAuthorities to avoid a race condition between the callback and things happening in _MapMixin
-        MapDAO.getAuthorities({
-            callback: function(authorities) {
+        MapDAO.getAuthorities({ //eslint-disable-line no-undef
+            callback: function (authorities) {
                 app.authorities = authorities;
                 //post-process authorities to determine which controls can be added
-                app.hasAoiEditAuthority = authorities.find(function(auth) {
+                app.hasAoiEditAuthority = authorities.find(function (auth) {
                     return auth.aoi;
                 }) ? true : false;
-                app.hasProjectEditAuthority = authorities.find(function(auth) {
+                app.hasProjectEditAuthority = authorities.find(function (auth) {
                     return auth.project;
                 }) ? true : false;
 
                 app.startup();
 
             },
-            errorHandler: function (err) {
-                debugger;
+            errorHandler: function () {
+                //TODO report the error
+                //for now just treat this as unauthorized
                 app.authorities = [];
                 app.hasAoiEditAuthority = false;
                 app.hasProjectEditAuthority = false;

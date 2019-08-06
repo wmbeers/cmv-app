@@ -34,49 +34,55 @@ define([
 
     'xstyle/css!./LayerLoader/css/layerLoader.css'
 ],
-    function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog, ConfirmDialog, request, lang, on, query, dom,
-        domClass, html, topic, Memory, Deferred, AoiEditorSidebarTemplate, AoiEditorDialogTemplate, 
-        Add, Delete, Update, Draw) {
+    function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog, ConfirmDialog, request, lang, on, query, dom, //eslint-disable-line no-unused-vars
+        domClass, html, topic, Memory, Deferred, AoiEditorSidebarTemplate, AoiEditorDialogTemplate, //eslint-disable-line no-unused-vars
+        Add, Delete, Update, Draw) { //eslint-disable-line no-unused-vars
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
-                widgetsInTemplate: true,
-                templateString: AoiEditorSidebarTemplate,
-                topicID: 'AoiEditor',
-                baseClass: 'AoiEditor',
-                map: this.map,
+            widgetsInTemplate: true,
+            templateString: AoiEditorSidebarTemplate,
+            topicID: 'AoiEditor',
+            baseClass: 'AoiEditor',
+            map: this.map,
 
-                //knockout-bound observable properties, will be assigned in _knockoutify method
-                aois: null,
-                currentAoi: null,
-                filterAois: null,
+            //knockout-bound observable properties, will be assigned in _knockoutify method
+            aois: null,
+            currentAoi: null,
+            filterAois: null,
                 
 
-                //Dialogs. Broader scope needed for these dialogs to support closing when option is selected, so declaring these here
-                openAoiDialog: null,
+            //Dialogs. Broader scope needed for these dialogs to support closing when option is selected, so declaring these here
+            openAoiDialog: null,
+
+            openAOI: function () {
+                //todo
+            },
+
+            createAOI: function () {
+                //todo
+            },
             
-                postCreate: function () {
-                    this.inherited(arguments);
-                    var self = this; //solves the problem of "this" meaning something different in onchange event handler
-                    //todo post create code goes here
+            postCreate: function () {
+                this.inherited(arguments);
+                //todo post create code goes here
 
-                },
+            },
 
-                startup: function () {
-                    this.inherited(arguments);
-                    var self = this; //solves the problem of "this" meaning something different in onchange event handler
-                    //todo startup code goes here
+            startup: function () {
+                this.inherited(arguments);
+                //todo startup code goes here
 
-                },
+            },
 
-                _constrectAoiModel: function(aoi) {
-                    aoi.name = ko.observable(aoi.name);
-                    aoi.type = ko.observable(aoi.type);
-                    aoi.expirationDate =ko.observable(aoi.expirationDate);
+            _constrectAoiModel: function (aoi) {
+                aoi.name = ko.observable(aoi.name); //eslint-disable-line no-undef
+                aoi.type = ko.observable(aoi.type); //eslint-disable-line no-undef
+                aoi.expirationDate = ko.observable(aoi.expirationDate);  //eslint-disable-line no-undef
                     
-                },
+            },
 
-                _loadAOIs: function() {
+            _loadAOIs: function () {
                     
-                }
             }
-     );
-});
+        }
+    );
+    });
