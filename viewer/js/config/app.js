@@ -111,23 +111,13 @@
         MapDAO.getAuthorities({ //eslint-disable-line no-undef
             callback: function (authorities) {
                 app.authorities = authorities;
-                //post-process authorities to determine which controls can be added
-                app.hasAoiEditAuthority = authorities.find(function (auth) {
-                    return auth.aoi;
-                }) ? true : false;
-                app.hasProjectEditAuthority = authorities.find(function (auth) {
-                    return auth.project;
-                }) ? true : false;
-
+                //AuthorizationMixin takes care of the rest
                 app.startup();
-
             },
             errorHandler: function () {
                 //TODO report the error
-                //for now just treat this as unauthorized
+                //for now just treat this as unauthorized, empty set of authorities
                 app.authorities = [];
-                app.hasAoiEditAuthority = false;
-                app.hasProjectEditAuthority = false;
                 app.startup();
             }
         });

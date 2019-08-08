@@ -656,14 +656,14 @@ define([
         // number, or string that contains just numbers (e.g. 12992 or '12992' to load project #12992)
         //'a' followed by a project alt ID (e.g. 'a9912' to load project alt 9912)
         // string containing two numbers separated by a dash (e.g. 12992-1 to load alt 1 of project 12992)
-        //TODO: support adding draft projects to map for editing
-        addProjectToMap: function (projectAltId, zoomOnLoad) {
+        addProjectToMap: function (projectAltId, zoomOnLoad, _deferred, queryDraft) {
             var self = this, //so we don't lose track buried down in callbacks
                 isAlt = false,
                 definitionQuery = '',
-                deferred = new Deferred(),
+                deferred = _deferred || new Deferred(),
                 query = new Query(),
-                queryTask = new QueryTask(projects.queryLayer); //query task url is in the config file viewer/js/config/projects.js. 
+                url = queryDraft && (this.hasProjectEditAuthority || this.hasViewDraftAuthority) ? projects.queryDraftLayer : projects.queryMmaLayer, //query task url is in the config file viewer/js/config/projects.js. 
+                queryTask = new QueryTask(url); 
 
             //default zoomOnLoad to true
             if (typeof zoomOnLoad === 'undefined') {
@@ -674,17 +674,32 @@ define([
             if (typeof projectAltId === 'number' || !isNaN(projectAltId)) {
                 //presumed to be a project #
                 //all alternatives for a given project
-                definitionQuery = 'fk_project = ' + projectAltId;
+                //TODO get lex to make drafts layer have same structure with fk_project field added
+                if (queryDraft) {
+                    definitionQuery = 'alt_id like \'' + projectAltId + '-%\'';
+                } else {
+                    definitionQuery = 'fk_project = ' + projectAltId;
+                }
             } else if (projectAltId.startsWith('a')) {
                 //specific alternative by fk_project_alt
-                definitionQuery = 'fk_project_alt = ' + projectAltId.substr(1);
+                //TODO get lex to make drafts layer have same structure with fk_project_alt field instead of project_alt
+                if (queryDraft) {
+                    definitionQuery = 'project_alt = ' + projectAltId.substr(1);
+                } else {
+                    definitionQuery = 'fk_project_alt = ' + projectAltId.substr(1);
+                }
                 isAlt = true;
             } else if (projectAltId.indexOf('-') > 0) {
                 //specific alternative identified by project-alt pattern, like '1234-1' for alt 1 of project 1234
                 definitionQuery = 'alt_id = \'' + projectAltId + '\'';
                 isAlt = true;
             } else if (projectAltId.startsWith('p')) {
-                definitionQuery = 'fk_project = ' + projectAltId.substr(1);
+                //TODO get lex to make drafts layer have same structure with fk_project field added
+                if (queryDraft) {
+                    definitionQuery = 'alt_id like \'' + projectAltId.substr(1) + '-%\'';
+                } else {
+                    definitionQuery = 'fk_project = ' + projectAltId.substr(1);
+                }
             } else if (!isNaN(projectAltId)) {
                 //something we don't know how to handle.
                 //no features found
@@ -699,7 +714,8 @@ define([
             //validate the projectAltId
             query.where = definitionQuery;
             query.returnGeometry = false;
-            query.outFields = ['FK_PROJECT', 'FK_PROJECT_ALT', 'ALT_ID'];
+            //TODO get lex to make draft layer structure consistent
+            query.outFields = queryDraft ? ['PROJECT_ALT', 'ALT_ID'] : ['FK_PROJECT', 'FK_PROJECT_ALT', 'ALT_ID'];
 
             //old way used executeForCount and just got the number of features,
             //but we really need to know, if it's an alt, the fk_project_alt value for saving it
@@ -708,29 +724,35 @@ define([
             queryTask.execute(query, function (reply) {
                 if (reply.features.length === 0) {                
                     //no features found
-                    topic.publish('growler/growl', {
-                        title: 'Invalid Project/Analysis Area ID',
-                        message: 'No projects found with id ' + projectAltId,
-                        level: 'error'
-                    });
-                    deferred.cancel('Invalid project/alt ID');
+                    if (!queryDraft && (self.hasProjectEditAuthority || self.hasViewDraftAuthority)) {
+                        //try again with draft, passing the deferred we've already created and true for the queryDraft argument
+                        self.addProjectToMap(projectAltId, zoomOnLoad, deferred, true);
+                    } else {
+                        //not found 
+                        topic.publish('growler/growl', {
+                            title: 'Invalid Project/Analysis Area ID',
+                            message: 'No projects found with id ' + projectAltId,
+                            level: 'error'
+                        });
+                        deferred.cancel('Invalid project/alt ID');
+                    }
                 } else {
                     //load it!
                     //first construct a layer config
                     var projectLayerConfig = {
                         name: 'Project # ' + projectAltId,
                         id: ('project_' + projectAltId).replace('-', '_'), //internal ID, not really important, but helps with debugging
-                        url: projects.queryLayer,
+                        url: url,
                         type: 'feature',
                         layerName: null //only needed for metadata
                     };
                     if (isAlt) {
                         //cache the fk_project_alt for savedMap
-                        projectLayerConfig.projectAltId = reply.features[0].attributes.FK_PROJECT_ALT;
+                        projectLayerConfig.projectAltId = queryDraft ? reply.features[0].attributes.PROJECT_ALT : reply.features[0].attributes.FK_PROJECT_ALT;
                         projectLayerConfig.name = 'Project # ' + reply.features[0].attributes.ALT_ID;
                     } else {
                         //cach the fk_project for savedMap
-                        projectLayerConfig.projectId = reply.features[0].attributes.FK_PROJECT;
+                        projectLayerConfig.projectId = queryDraft ? reply.features[0].attributes.ALT_ID.split('-')[0] : reply.features[0].attributes.FK_PROJECT;
                     }
                     
                     var projectLayer = self.constructLayer(projectLayerConfig, 
@@ -754,7 +776,6 @@ define([
                         })
                     );
                     //resolve deferred via addLayer method
-                    //todo how to handle error?
                     self.addLayer(projectLayer, zoomOnLoad).then(
                         function (l) {
                             deferred.resolve(l);

@@ -1,22 +1,33 @@
 <div>
-    <div style="text-align:center;">
+    <div id="aoiEditorSidebar">
+        <div data-bind="visible: currentAoi() == null">
+            <button data-dojo-type="dijit/form/Button"
+                    data-dojo-attach-event="onClick:openAOI"
+                    data-dojo-attach-point="toggleBTN">
+                Open
+            </button>
 
-        <button data-dojo-type="dijit/form/Button"
-                data-dojo-attach-event="onClick:openAOI"
-                data-dojo-attach-point="toggleBTN">
-            Open
-        </button>
+            <button data-dojo-type="dijit/form/Button"
+                    data-dojo-attach-event="onClick:createAOI"
+                    data-dojo-attach-point="toggleBTN">
+                Create
+            </button>
+        </div>
 
-        <button data-dojo-type="dijit/form/Button"
-                data-dojo-attach-event="onClick:createAOI"
-                data-dojo-attach-point="toggleBTN">
-            Create
-        </button>
+        <div data-bind="with: currentAoi">
+            <div data-bind="visible: mode()=='editName'">
+                <label for="aoiName">Name</label>
+                <input id="aoiName" type="text" data-bind="value: name" data-dojo-type="dijit/form/TextBox" data-dojo-attach-point="aoiName" />
+                <label for="aoiDescription">Description</label>
+                <textarea id="aoiDescription" data-bind="value: description"></textarea>
+                <label for="expirationDate">Keep Until</label>
+                <input id="expirationDate" data-bind="value: expirationDate" data-dojo-type="dijit/form/DateTextBox" />
+            </div>
 
+        </div>
+
+        <div>
+
+        </div>
     </div>
-    
-    <div>
-
-    </div>
-
 </div>
