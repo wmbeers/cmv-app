@@ -21,6 +21,7 @@ define([
     'esri/tasks/query',
     'esri/tasks/QueryTask',
     'esri/geometry/Extent',
+    'esri/geometry/Point',
     'esri/renderers/SimpleRenderer',
     'esri/geometry/coordinateFormatter',
     'esri/geometry/webMercatorUtils'
@@ -48,6 +49,7 @@ define([
     Query,
     QueryTask,
     Extent,
+    Point,
     SimpleRenderer,
     coordinateFormatter,
     webMercatorUtils
@@ -71,6 +73,7 @@ define([
             topic.subscribe('layerLoader/removeLayer', lang.hitch(this, 'removeLayer'));
             topic.subscribe('layerLoader/clearUserLayers', lang.hitch(this, 'clearUserLayers'));
             topic.subscribe('layerLoader/zoomToMgrsPoint', lang.hitch(this, 'zoomToMgrsPoint'));
+            topic.subscribe('layerLoader/zoomToLatLong', lang.hitch(this, 'zoomToLatLong'));
 
             //load the coordinateFormatter
             coordinateFormatter.load();
@@ -100,6 +103,9 @@ define([
                 break;
             case 'zoomToMgrsPoint':
                 this.zoomToMgrsPoint(e.data.mgrs, e.data.zoomLevel);
+                break;
+            case 'zoomToLatLong':
+                this.zoomToLatLong(e.data.latLong, e.data.zoomLevel);
                 break;
             case 'addLayer':
                 //external API only supports feature layers, identified by layerName
@@ -137,14 +143,20 @@ define([
         _handleQueryString: function (testUri) {
             var uri = testUri || window.location.href;
             var qs = uri.indexOf('?') >= 0 ? uri.substring(uri.indexOf('?') + 1, uri.length) : '';
+            qs = qs.toLowerCase();
             var qsObj = ioQuery.queryToObject(qs);
             //acceptable arguments include loadMap, projectId
             //TODO expand to addLayer
             //TODO could also consider expanding to chain multiple events, like load several layers, load a saved map and add a project, etc.
-            if (qsObj.loadMap) {
-                this.loadMap(qsObj.loadMap);
-            } else if (qsObj.projectId) {
-                this.addProjectToMap(qsObj.projectId);
+            if (qsObj.loadmap) {
+                this.loadMap(qsObj.loadmap);
+            } else if (qsObj.projectid) {
+                this.addProjectToMap(qsObj.projectid);
+            } else if (qsObj.latlong || qsObj.latlon) {
+                var ll = sqObj.latLong || qsObj.latlon;
+                this.zoomToLatLong(ll, qsObj.zoomlevel);
+            } else if (qsObj.mgrs) {
+                this.zoomToMgrsPoint(qsobj.mgrs, qsobj.zoomLevel);
             }
         },
 
@@ -1256,6 +1268,165 @@ define([
             //publish layerLoader/layersChanged to let the layer loader know changes have been made to the current map
             //affects whether user should be prompted to save before they share the map
             topic.publish('layerLoader/layersChanged');
+        },
+
+        /**
+         * Centers that map at a latitude/longitude, and optionally zooms to the specified or inferred level.
+         * @param {any} coordinates A lat long in a variety of acceptable formats, including:
+         *      * An object with x and y numeric properties, e.g. {x: -81.2322, y: 32.3432}; 
+         *        the X/longitude coordinate will be interpreted as negative if it is positive;
+         *        the coordinate properties can be identified as x/y, lat/lon, lat/long, or latitude/longitude
+         *      * A string containing both lat/long (or long/lat), as decimal degrees (##.####), 
+         *        decimal minutes (## ##.####), or degrees/minutes/seconds (## ## ##.####), with or without +/- or 
+         *        characters to denote degrees, minutes or seconds (e.g. [82 23 42.43] is treated the same as [-82� 23' 42.43"])
+         * @param {any} zoomLevel optional number
+         *      If specified and in the range of zoom levels supported by the map, it will be passed to the centerAndZoom function as the zoom level of the map to set; 
+         *      If null, defaults to four steps up from the max level (13, based on current lods configuration in viewer.js)
+         *      If less than zero, the map will not be zoomed, but just centered at the point.
+         * @returns {object} Deffered object to be resolved after the map is zoomed.
+         */
+        zoomToLatLong: function (coordinates, zoomLevel) {
+            //Note: I'm not using the otherwise very useful coordinateFormatter.fromLatitudeLongitude method, because this method
+            //below has advantages of not worrying about hemisphere or swapped latitude and longitude, an advantage we can create
+            //because we're only worrying about coordinates in the vicinity of Florida. 
+
+            try {
+                if (typeof (coordinates) === 'string') {
+                    coordinates = this._interpretCoordinates(coordinates);
+                }
+                if (!coordinates) {
+                    //something went awry in interpreting coordinates
+                    throw new Error('Unable to interpet ' + coordinates + ' as lat/long coordinates');
+                }
+                //normalize lat/long terms to y/x
+                if (!coordinates.y) {
+                    coordinates.y = coordinates.Y || coordinates.lat || coordinates.latitude;
+                }
+                if (!coordinates.x) {
+                    coordinates.x = coordinates.X || coordinates.lon || coordinates.long || coordinates.longitude;
+                }
+
+                if (!coordinates.x || !coordinates.y) {
+                    //invalid structure
+                    throw new Error('Coordinates objecting missing x or y properties');
+                }
+
+                //normalize longitude to negative for Wester hemisphere
+                if (coordinates.x > 0) {
+                    coordinates.x *= -1;
+                }
+            } catch (err) {
+                var deferred = new Deferred();
+                deferred.reject(err);
+                return deferred;
+            }
+
+            //assume WGS84 if not provided
+            if (!coordinates.spatialReference) {
+                coordinates.spatialReference = {'wkid': 4326};
+            }
+
+            //construct Point
+            var point = new Point(coordinates);
+
+            zoomLevel = zoomLevel || this.map.getMaxZoom() - 4;
+            if (zoomLevel < app.map.getMinZoom() || zoomLevel > app.map.getMaxZoom()) {
+                zoomLevel = null;
+            }
+
+            return (zoomLevel ? this.map.centerAndZoom(point, zoomLevel) : this.map.centerAt(point)); 
+        },
+
+        /**
+         * Tests a coordinates string to determine if it can be interpreted as a lat / lon, and converts to object with x and y properties
+         * @param {String} coordinates a string containing 2, 4 or 6 sets of numbers that can be interpreted as lat/long coordinates
+         * @return {Object} object with x (longitude, as a negative number) and y (latitude, as a positive number) properties.
+         * Returns null if not a valid lat / lon
+        */
+        _interpretCoordinates: function (coordinates) {
+            var pattern = new RegExp('(\\d+\\.{0,1}\\d+)', 'g'),
+                matches = coordinates.match(pattern),
+                d1 = null, d2 = null,
+                point = {x: null, y: null};
+
+            if (!matches) {
+                return null;
+            }
+
+            switch (matches.length) {
+            case 2:
+                //decimal degrees
+                d1 = matches[0];
+                d2 = matches[1];
+                break;
+            case 4:
+                //degrees decimal minutes
+                //test degrees are integers
+                if (!this._isInt(matches[0]) || !this._isInt(matches[2])) {
+                    return null;
+                }
+                //test minutes are less than 60
+                if (matches[1] > 60 || matches[3] > 60) {
+                    return null;
+                }
+                d1 = parseFloat(matches[0]) + parseFloat(matches[1]) / 60;
+                d2 = parseFloat(matches[2]) + parseFloat(matches[3]) / 60;
+                break;
+            case 6:
+                //degrees minutes seconds
+                //test degrees and minutes are integers
+                if (!this._isInt(matches[0]) || !this._isInt(matches[1]) || 
+                    !this._isInt(matches[3]) || !this._isInt(matches[4])) {
+                    return null;
+                }
+                //test minutes and seconds are less than 60
+                if (matches[1] > 60 || matches[2] > 60 || 
+                    matches[4] > 60 || matches[5] > 60) {
+                    return null;
+                }
+                var m1 = parseFloat(matches[1]) + parseFloat(matches[2]) / 60,
+                    m2 = parseFloat(matches[4]) + parseFloat(matches[5]) / 60;
+                d1 = parseFloat(matches[0]) + m1 / 60;
+                d2 = parseFloat(matches[3]) + m2 / 60;
+                break;
+            default:
+                //unexpected number of sets of numbers
+                return null;
+            }
+            //test which is lat vs which is long
+            if (d1 > 32 && d2 < 77) {
+                //probably long/lat
+                point.y = d2;
+                point.x = d1;
+            } else {
+                //assume lat/long
+                point.y = d1;
+                point.x = d2;
+            }
+
+            //normalize sign
+            point.x *= -1;
+
+            //reconfirm valid values for lat and long in a generous envelope around Florida
+            if (point.y < 24.5 || point.y > 31.2 || point.x < -88 || point.x > -79.8) {
+                return null;
+            }
+
+            return point;
+        },
+
+        /**
+          * Tests a value to see if it is an integer, or string convertable to an integer, returning true if so.
+          * Thanks to https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isInteger
+          * @param {any} value An input value to test
+          * @returns {boolean} True if value is integer or string containing an integer
+          */
+        _isInt: function (value) {
+            if (isNaN(value)) {
+                return false;
+            }
+            var x = parseFloat(value);
+            return (x | 0) === x;
         },
 
         /**
