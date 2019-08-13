@@ -153,10 +153,10 @@ define([
             } else if (qsObj.projectid) {
                 this.addProjectToMap(qsObj.projectid);
             } else if (qsObj.latlong || qsObj.latlon) {
-                var ll = sqObj.latLong || qsObj.latlon;
+                var ll = qsObj.latlong || qsObj.latlon;
                 this.zoomToLatLong(ll, qsObj.zoomlevel);
             } else if (qsObj.mgrs) {
-                this.zoomToMgrsPoint(qsobj.mgrs, qsobj.zoomLevel);
+                this.zoomToMgrsPoint(qsObj.mgrs, qsObj.zoomlevel);
             }
         },
 
