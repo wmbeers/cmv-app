@@ -7,8 +7,20 @@ define([
     "esri/toolbars/draw",
     "esri/toolbars/edit",
     'esri/graphic',
+
     'esri/geometry/Multipoint',
-    'esri/SpatialReference'
+    'esri/geometry/Point',
+    'esri/geometry/Polyline',
+    'esri/geometry/Polygon',
+
+    "esri/symbols/SimpleMarkerSymbol",
+        "esri/symbols/SimpleLineSymbol",
+        "esri/symbols/SimpleFillSymbol",
+        'esri/Color',
+    'esri/graphic',
+    'esri/SpatialReference',
+
+    'esri/tasks/BufferParameters'
 ], function (
     declare,
     lang,
@@ -19,7 +31,16 @@ define([
     Edit,
     Graphic,
     Multipoint,
-    SpatialReference) {
+    Point,
+    Polyline,
+    Polygon,
+    SimpleMarkerSymbol,
+    SimpleLineSymbol,
+    SimpleFillSymbol,
+    Color,
+    Graphic,
+    SpatialReference,
+    BufferParameters) {
 
         return declare(null, {
             startup: function () {
@@ -98,7 +119,7 @@ define([
                         editingEnabled = false;
                     }
                 });
-            
+
                 /*var templatePicker = new TemplatePicker({
                     featureLayers: layers,
                     rows: "auto",
@@ -142,7 +163,7 @@ define([
 
             //Just testing a proof of concept of using applyedits with a multipoint feature class. It works, so this can be deleted
             testApplyEdits: function (multippoint) {
-             
+
                 var feature = new Graphic(multipoint);
 
                 this.layers[0].applyEdits([feature], null, null,
@@ -152,6 +173,88 @@ define([
                     function (d, e, f) {
                         debugger;
                     }).then(function (g, h, i) {
+                        debugger;
+                    });
+            },
+
+            testBufferAndUnion: function () {
+                var params = new BufferParameters();
+
+                params.distances = [100,100,100]; //,100,100]; //has to be the same number of distances as input features?
+                params.outSpatialReference = new SpatialReference({ "wkid": 102100, "latestWkid": 3857 });
+                params.unit = 9002; //todo GeometryService.UNIT_FOOT;
+                params.unionResults = false; //TODO try true
+                var polyline1 = new Polyline({
+                    "paths": [[[-9421427.184329292, 3540405.5570207625], [-9420127.754848445, 3541743.205015751], [-9418828.325367598, 3540348.2292495486], [-9417548.005143823, 3541724.09575868]]],
+                    "spatialReference": { "wkid": 102100, "latestWkid": 3857 }
+                });
+
+                var polygon1 = new Polygon({
+                    rings: [[[-9418541.68651153, 3542584.012326887], [-9416401.449719548, 3543539.4751804504], [-9414815.381382633, 3542029.8438718203], [-9415369.5498377, 3540252.6829641922], [-9417318.694058968, 3540673.0866197604], [-9418541.68651153, 3542584.012326887]]],
+                    "spatialReference": { "wkid": 102100, "latestWkid": 3857 }
+                });
+
+  
+                var polyline2 = new Polyline({
+                    "paths": [[[-9416611.651547333, 3541590.3309591813], [-9416860.071889259, 3539736.733023268], [-9414758.05361142, 3539622.0774808405], [-9415331.331323558, 3537883.135087355]]],
+                    "spatialReference": { "wkid": 102100, "latestWkid": 3857 }
+                });
+
+                var sl = new SimpleLineSymbol(
+                        SimpleLineSymbol.STYLE_SOLID,
+                        new Color([255,0,0,0.65]), 2
+                    );
+
+                var symbol1 = new SimpleFillSymbol(
+                    SimpleFillSymbol.STYLE_SOLID,
+                    new SimpleLineSymbol(
+                        SimpleLineSymbol.STYLE_SOLID,
+                        new Color([255,0,0,0.65]), 2
+                    ),
+                    new Color([255,0,0,0.35])
+                );
+
+                var symbol2 = new SimpleFillSymbol(
+                    SimpleFillSymbol.STYLE_SOLID,
+                    new SimpleLineSymbol(
+                        SimpleLineSymbol.STYLE_DASH,
+                        new Color([255,0,0,0.65]), 2
+                    ),
+                    new Color([255,0,0,0.35])
+                );
+
+                var g = new Graphic(polygon1, symbol1);
+                //this.map.graphics.add(g);
+                var l1 = new Graphic(polyline1, sl);
+                var l2 = new Graphic(polyline2, sl);
+                this.map.graphics.add(l1);
+                this.map.graphics.add(l2);
+
+                var m = this.map;
+
+
+                //step zero, simplify polygons
+                //seems to be necessary because shrug emoji
+                esriConfig.defaults.geometryService.simplify([polygon1], 
+                    function(simplifiedGeometries) {
+                        var gSimple = new Graphic(simplifiedGeometries[0], symbol2);
+                        m.graphics.add(gSimple);
+
+                        params.geometries = simplifiedGeometries; // [polyline1, /*simplifiedGeometries[0], */ polyline2];
+                        
+                        esriConfig.defaults.geometryService.buffer(params, 
+                            function (bufferedGeometries) {
+                                
+                                bufferedGeometries.forEach(function(geometry) {
+                                    var graphic = new Graphic(geometry, symbol1);
+                                    m.graphics.add(graphic);
+                                });
+                            },
+                            function(err, a) {
+                                debugger;
+                            });
+                    },
+                    function (err) {
                         debugger;
                     });
             }

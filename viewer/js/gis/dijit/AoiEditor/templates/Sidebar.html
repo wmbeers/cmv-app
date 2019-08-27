@@ -8,7 +8,7 @@
             </button>
 
             <button data-dojo-type="dijit/form/Button"
-                    data-dojo-attach-event="onClick:createAOI"
+                    data-dojo-attach-event="onClick:createAoi"
                     data-dojo-attach-point="toggleBTN">
                 Create
             </button>
@@ -17,11 +17,64 @@
         <div data-bind="with: currentAoi">
             <div data-bind="visible: mode()=='editName'">
                 <label for="aoiName">Name</label>
-                <input id="aoiName" type="text" data-bind="value: name" data-dojo-type="dijit/form/TextBox" data-dojo-attach-point="aoiName" />
+                <input id="aoiName" type="text" data-bind="value: name" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-props="name:'aoiName',trim:true,required:true,style:'width:100%;'" data-dojo-attach-point="aoiName" />
                 <label for="aoiDescription">Description</label>
-                <textarea id="aoiDescription" data-bind="value: description"></textarea>
+                <textarea id="aoiDescription" data-bind="value: description" style="width:100%"></textarea>
                 <label for="expirationDate">Keep Until</label>
-                <input id="expirationDate" data-bind="value: expirationDate" data-dojo-type="dijit/form/DateTextBox" />
+                <input id="expirationDate" data-bind="value: expirationDate" data-dojo-type="dijit/form/TextBox" style="width:100%" />
+                <label for="org">Identity</label>
+                <select id="org"  style="width:100%"  data-dojo-type="dijit/form/Select">
+                    <option value="1">District 1</option>
+                </select>
+
+                <br />
+
+                <button data-dojo-type="dijit/form/Button" data-bind="click: showFeatureList">
+                    Next
+                </button>
+
+                <button data-dojo-type="dijit/form/Button">
+                    Cancel
+                </button>
+            </div>
+
+            <div data-bind="visible: mode() == 'editFeatures'">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Buffer</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: features">
+                        <!-- ko if: selected -->
+                        <tr>
+                            <td>
+                                <input type="text" data-bind="value: name" />
+                            </td>
+                            <td>Current</td>
+                        </tr>
+                        <!-- /ko -->
+                        <!-- ko ifnot: selected -->
+                        <tr data-bind="click: select">
+                            <td data-bind="text: name"></td>
+                            <td>Other</td>
+                        </tr>
+                        <!-- /ko -->
+                    </tbody>
+                </table>
+
+                <button data-dojo-type="dijit/form/Button" data-bind="click: function() { $root.digitizeFeature('point'); }">
+                    Point
+                </button>
+
+                <button data-dojo-type="dijit/form/Button" data-bind="click: function() { $root.digitizeFeature('polygon'); }">
+                    Polygon
+                </button>
+
+                <button data-dojo-type="dijit/form/Button" data-bind="click: function() { $root.digitizeFeature('freehandpolygon'); }">
+                    FH Polygon
+                </button>
             </div>
 
         </div>
