@@ -72,7 +72,7 @@ define([
             currentAoi: null,
             filterAois: null,
 
-            aoiAuthorities: [], //populated in startup
+            aoiAuthorities: [], //populated in startup, lists the orgUser accounts with AOI editor capabilities.
 
 
             //Dialogs. Broader scope needed for these dialogs to support closing when option is selected, so declaring these here
@@ -125,12 +125,17 @@ define([
                 if (!this.currentAuthority() || this.currentAuthority().aoiEditor === false) {
                     this.currentAuthority(this.aoiAuthorities[0]);
                 }
+                this._setupEditor();
+                this._knockoutifyAoiEditor();
+            },
 
+            _setupEditor: function() {
+                var self = this; //closure so we can access this.draw etc.
                 this.draw = new Draw(this.map); //draw toolbar, not shown in UI, but utilized by our UI
                 this.edit = new Edit(this.map);
-                var self = this; //closure so we can access this.draw etc.
+                
+                //event handler for draw complete, creates a new feature when user finishes digitizing
                 this.draw.on('draw-complete', function (event) {
-
                     //toggle back to default map click mode
                     topic.publish('mapClickMode/setDefault');
                     self.draw.deactivate();
@@ -140,18 +145,8 @@ define([
                     }
                     //construct a feature
                     var f = self._constructFeature(event);
+                    //todo move the following into _constructFeature
                     //put a graphic on the map
-                    //switch (f.geometry.type) {
-                    //   case "point":
-                    //     symbol = self.draw.markerSymbol;
-                    //     break;
-                    //   case "polyline":
-                    //     symbol = self.draw.lineSymbol;
-                    //     break;
-                    //   case "polygon":
-                    //     symbol = self.draw.fillSymbol;
-                    //     break;
-                    //}
                     f.graphic = new Graphic(f.geometry);
                     //back-reference
                     f.graphic.feature = f;
@@ -175,16 +170,16 @@ define([
 
                     //buffer it
                     self.bufferFeature(f);
-
                 });
 
-                var vertexChanged = function(evt) {
+                //event handler function for vertext move and delete
+                var vertexChanged = function (evt) {
                     var delay = 2000; //number of seconds to give the user before we automatically rebuffer
                     self.lastEditAt = new Date();
                     self.vertexMoving = false;
                     //update buffer after short delay
                     //the delay prevents annoying the user if they're busy moving several vertices
-                    window.setTimeout(function() {
+                    window.setTimeout(function () {
                         //if another vertex move has happened in the built-in delay since this function was called, do not buffer
                         var now = new Date(),
                             duration = now.getTime() - self.lastEditAt.getTime(); //# of milliseconds since the last time vertex move stop happened
@@ -216,9 +211,7 @@ define([
                     this.vertexMoving = true;
                 }, this);
                 //TODO we can also support scaling, etc.
-                //TODO handle merge/split
-
-                this._knockoutifyAoiEditor();
+                //TODO handle merge/split  
             },
 
             //user clicks the Point, Line, Freehand Line, Polygon or Freehand Polygon digitize button
@@ -286,9 +279,12 @@ define([
                 aoi.features = features;
                 aoi.currentFeature = ko.observable();
                 aoi.analysisGroups = ko.computed(function () {
-                    return ko.utils.arrayMap(aoi.features(), function (f) {
-                        return f.analysisGroup;
-                    });
+                    return ko.utils.arrayMap(ko.utils.arrayFilter(
+                        aoi.features(), function(f) {
+                            return f.analysisGroup();
+                        }), function (f) {
+                            return f.analysisGroup();
+                        });
                 });
                 aoi.currentFeature.subscribe(function (f) {
                     if (f && (f.type === 'polygon' || f.type === 'polyline') && f.graphic) {
@@ -323,15 +319,15 @@ define([
                 feature.bufferUnit = ko.observable(feature.bufferUnit || { id: 9002, name: 'Ft' }); //TODO cache the last-entered unit
                 feature._analysisGroup = ko.observable(feature.analysisGroup);
                 feature.analysisGroup = ko.pureComputed({
-                    read: function() {
+                    read: function () {
                         return feature._analysisGroup();
                     },
-                    write: function(ag) {
+                    write: function (ag) {
                         feature._analysisGroup(ag);
                         //todo update buffer
                     }
                 });
-                feature.selected = ko.pureComputed(function() {
+                feature.selected = ko.pureComputed(function () {
                     return self.currentAoi() && self.currentAoi().currentFeature() === feature;
                 });
                 //happens when user clicks on a feature in the table of features, but not when clicking on the map;
@@ -340,7 +336,7 @@ define([
                     if (self.currentAoi()) {
                         self.currentAoi().currentFeature(feature);
                         //todo zoom/pan if not in current extent
-                        var geometry = feature.graphic ? feature.graphic.geometry : {getExtent: function () { return null }}, //pseudo object with null extent
+                        var geometry = feature.graphic ? feature.graphic.geometry : { getExtent: function () { return null } }, //pseudo object with null extent
                             testExtent = feature.type === 'point' ? geometry : geometry.getExtent(); //contains method expects a point or an extent
 
                         if (testExtent && !self.map.extent.contains(testExtent)) {
@@ -355,9 +351,42 @@ define([
                     }
                 };
 
+                feature.bufferDistance.subscribe(function(oldValue, newValue) {
+                    self.bufferFeature(feature);
+                },"changed");
+
 
                 /* eslint-enable no-undef */
                 return feature;
+            },
+
+            _addFeatureToAnalysisGroup: function (feature, analysisGroup) {
+                //if analysis group is null, nothing to do
+                if (!analysisGroup) {
+                    return null;
+                }
+                if (typeof analysisGroup === 'string') {
+                    //first check to see if it exists
+                    var existingGroup = ko.utils.arrayFirst(this.currentAoi().analysisGroups(), function (ag) {
+                        return ag.name() === analysisGroup;
+                    });
+                    if (existingGroup) {
+                        analysisGroup = existingGroup;
+                    } else {
+                        analysisGroup = {
+                            name: ko.observable(analysisGroup), //observable so that user can rename it
+                            buffer: null //doesn't need to be observable
+                        };
+                        analysisGroup.features = ko.pureComputed(function () {
+                            return ko.utils.arrayFilter(this.currentAoi().features(), function (f) {
+                                return f.analysisGroup() === analysisGroup;
+                                });
+                        }, this);
+                    }
+                }
+                feature.analysisGroup(analysisGroup);
+                //todo update buffer
+                return analysisGroup;
             },
 
             loadAOIs: function () {
@@ -384,27 +413,26 @@ define([
                 }
                 return deferred;                            
             },
-//TODO! this doesn't take into account analysisGroup; we really need to be bufffering and unioning. Unfortunately 
-//the geometryService.buffer can only deal with a collection of geometries of the same type, so it has to be a several-step process.
-//first we buffer each feature individually, but don't draw anything
-//then we union the buffers of features within the same analysisGroup,
-//and finally we draw it on the map, and eventually save to AOI
+
+            /**
+             * Creates a buffer around the referenced feature. If buffer distance is set to 0, no buffer is created. 
+             * Called after creating a new feature, modifying an existing feature (moving vertices, etc.), or changing the
+             * feature's buffer distance or buffer distance units.
+             * @param {any} feature The feature object to be buffered.
+             * @returns {Deffered} A Deffered object that is resolved when the buffer is created, passing a reference to the buffer graphic if it can be created.
+             */
             bufferFeature: function (feature) {
                 var self = this, //closures because "this" changes context in callbacks; self is the AoiEditor
                     geometry = feature.graphic ? feature.graphic.geometry : null,
                     buffer = feature.buffer,
-                    group = feature.analysisGroup();
-
+                    deferred = new Deferred();
+                
                 if (buffer) {
                     self.bufferGraphics.remove(buffer);
+                    feature.buffer = null;
                 }
 
-                if (group) {
-                    //get all features of the same group
-                    //buffer them individually
-                }
                 if (geometry && feature.bufferDistance() > 0) {
-                    
                     //first, simplify polygons
                     //seems to be always necessary
                     this.simplifyGeometry(geometry).then(
@@ -419,24 +447,28 @@ define([
                             esriConfig.defaults.geometryService.buffer(params,
                                 function (bufferedGeometries) {
                                     //we don't really need forEach here, we just have one...for now
-                                    bufferedGeometries.forEach(function (bufferedGeometry) {
-                                        var graphic = new Graphic(bufferedGeometry);
-                                        graphic.feature = feature; //back-reference from buffer is to the feature it is a buffer of
-                                        self.bufferGraphics.add(graphic);
-                                        feature.buffer = graphic;
-                                    });
+                                    //bufferedGeometries.forEach(function (bufferedGeometry) {
+                                    var bufferedGeometry = bufferedGeometries[0],
+                                        graphic = new Graphic(bufferedGeometry);
+                                    graphic.feature = feature; //cross-reference from buffer is to the feature it is a buffer of
+                                    feature.buffer = graphic;
+                                    self.bufferGraphics.add(graphic);
+                                    deferred.resolve(graphic);
+                                    //});
                                 },
-                                function (err, a) {
-                                    debugger;
+                                function (err) {
+                                    deferred.reject(err);
                                 });
                         },
                         function (err) {
-                            debugger;
+                            deferred.reject(err);
                         });
                 } else {
-                    //buffer distance set to 0, or no geometry
+                    //buffer distance set to 0, or no geometry, delete the buffer
                     feature.buffer = null;
+                    deferred.resolve(null);
                 }
+                return deferred;
             },
 
             _knockoutifyAoiEditor: function () {
