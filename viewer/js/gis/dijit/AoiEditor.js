@@ -16,6 +16,7 @@ define([
     'dojo/topic',
     'dojo/store/Memory',
     'dojo/Deferred',
+    'dojo/promise/all',
 
     'dojo/text!./AoiEditor/templates/Sidebar.html', // template for the widget in left panel, and some dialogs
     'dojo/text!./AoiEditor/templates/Dialog.html', // template for the open AOI dialog
@@ -27,6 +28,9 @@ define([
     'esri/toolbars/draw',
     'esri/toolbars/edit',
 
+    'esri/geometry/Extent',
+
+    'esri/layers/FeatureLayer',
     'esri/layers/GraphicsLayer',
     'esri/graphic',
 
@@ -37,6 +41,11 @@ define([
     'esri/Color',
 
     'esri/tasks/BufferParameters',
+    'esri/tasks/query',
+
+    './js/config/projects.js', //TODO put in app.js paths?
+
+    'proj4js/proj4',
 
     'dijit/form/Form',
     'dijit/form/FilteringSelect',
@@ -48,13 +57,16 @@ define([
     'xstyle/css!./LayerLoader/css/layerLoader.css'
 ],
     function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog, ConfirmDialog, DateTextBox, request, lang, on, query, dom, //eslint-disable-line no-unused-vars
-        domClass, html, topic, Memory, Deferred, AoiEditorSidebarTemplate, AoiEditorDialogTemplate, //eslint-disable-line no-unused-vars
-        Add, Delete, Update, Draw, Edit, GraphicsLayer, Graphic, SimpleRenderer,
+        domClass, html, topic, Memory, Deferred, all, AoiEditorSidebarTemplate, AoiEditorDialogTemplate, //eslint-disable-line no-unused-vars
+        Add, Delete, Update, Draw, Edit, Extent, FeatureLayer, GraphicsLayer, Graphic, SimpleRenderer,
         SimpleMarkerSymbol,
         SimpleLineSymbol,
         SimpleFillSymbol, 
         Color,
-        BufferParameters
+        BufferParameters,
+        Query,
+        projects,
+        proj4
     ) { //eslint-disable-line no-unused-vars
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
             widgetsInTemplate: true,
@@ -62,6 +74,8 @@ define([
             topicID: 'AoiEditor',
             baseClass: 'AoiEditor',
             map: this.map,
+            layerNames: ['analysisArea', 'polygon', 'polyline', 'point'], //preprended with "aoi_" as id of layer, referenced in layers object as self.layers.analysisArea, etc.
+            layers: {}, //caches the layers
 
             constructor: function (options) {
                 this.currentAuthority = options.currentAuthority;
@@ -90,6 +104,14 @@ define([
                 });
             },
 
+            //FOR TESTING ONLY
+            test: function (id) {
+                this.createAoi();
+                this.currentAoi().id = id;
+                this._loadAoiFeatures();
+                this.currentAoi().showFeatureList();
+            },
+
             lastEditAt: null, //tracks last time an edit was made, used for timeout-based updating of buffers, starting immediately after draw-complete, or 3 seconds after vertext-drag-end
 
             _loadAoiLayers: function (aoiModel) {
@@ -114,13 +136,17 @@ define([
             postCreate: function () {
                 this.inherited(arguments);
                 //todo post create code goes here
-                this._createGraphicLayers();
+                //this._createGraphicLayers();
 
 
             },
 
             startup: function () {
                 this.inherited(arguments);
+                //this.proj4 = proj4;
+                //for debugging only
+                //window.proj4 = proj4;
+                this._createGraphicLayers();
                 //this entire widget will be hidden if user doesn't have at least one aoi auth, so don't need to worry about index out of bounds
                 if (!this.currentAuthority() || this.currentAuthority().aoiEditor === false) {
                     this.currentAuthority(this.aoiAuthorities[0]);
@@ -129,44 +155,44 @@ define([
                 this._knockoutifyAoiEditor();
             },
 
-            _setupEditor: function() {
+            _setupEditor: function () {
                 var self = this; //closure so we can access this.draw etc.
                 this.draw = new Draw(this.map); //draw toolbar, not shown in UI, but utilized by our UI
                 this.edit = new Edit(this.map);
-                
+
                 //event handler for draw complete, creates a new feature when user finishes digitizing
+                //
                 this.draw.on('draw-complete', function (event) {
+                    var layer = self.layers[event.geometry.type],
+                        aoi = self.currentAoi();
+
                     //toggle back to default map click mode
                     topic.publish('mapClickMode/setDefault');
                     self.draw.deactivate();
                     //if something has gotten wildly out of sorts, bail
-                    if (!self.currentAoi()) {
+                    if (!layer || !aoi) {
                         return;
                     }
+
                     //construct a feature
                     var f = self._constructFeature(event);
-                    //todo move the following into _constructFeature
-                    //put a graphic on the map
-                    f.graphic = new Graphic(f.geometry);
-                    //back-reference
-                    f.graphic.feature = f;
-                    switch (f.geometry.type) {
-                        case "point":
-                            self.pointGraphics.add(f.graphic);
-                            break;
-                        case "polyline":
-                            self.polylineGraphics.add(f.graphic);
-                            break;
-                        case "polygon":
-                            self.polygonGraphics.add(f.graphic);
-                            break;
-                    }
+                    
+                    //save to server
+                    layer.applyEdits([f.graphic], null, null, function(a,u,d) {
+                        //todo check a and make sure successfull
+                        //make it active
+                        aoi.currentFeature(f);
 
-                    //make it active
-                    self.currentAoi().currentFeature(f);
+                        //push it to features observableArray
+                        aoi.features.push(f);
 
-                    //push it to features collection
-                    self.currentAoi().features.push(f);
+                    }, function(e) {
+                        debugger;
+                    });
+
+                    //todo does this draw now or what? refresh the layer or something?
+
+                    //todo add to undo stack
 
                     //buffer it
                     self.bufferFeature(f);
@@ -174,7 +200,10 @@ define([
 
                 //event handler function for vertext move and delete
                 var vertexChanged = function (evt) {
-                    var delay = 2000; //number of seconds to give the user before we automatically rebuffer
+                    var delay = 2000, //number of seconds to give the user before we automatically rebuffer
+                        graphic = evt.graphic,
+                        feature = graphic.feature;
+
                     self.lastEditAt = new Date();
                     self.vertexMoving = false;
                     //update buffer after short delay
@@ -185,6 +214,8 @@ define([
                             duration = now.getTime() - self.lastEditAt.getTime(); //# of milliseconds since the last time vertex move stop happened
                         if (duration >= delay && !self.vertexMoving) {
                             self.bufferFeature(self.currentAoi().currentFeature());
+                            //save to database
+                            feature.updateDatabase();
                         }
                     }, delay);
                 };
@@ -204,6 +235,8 @@ define([
                     vertexChanged(evt);
                 }, this);
                 this.edit.on('vertex-first-move', function (evt) {
+                    this.lastEditAt = new Date();
+                    this.vertexMoving = true;
                     deleteBuffer(evt);
                 });
                 this.edit.on('vertex-move', function (evt) {
@@ -225,11 +258,12 @@ define([
                 //this.currentFeature = this._constructFeature(featureType);
             },
 
-            //todo etc.
+            //clears features from the map. It doesn't destroy them or affect the AOI model.
             clearFeatures: function () {
                 this.pointGraphics.clear();
                 this.polylineGraphics.clear();
                 this.polygonGraphics.clear();
+                this.bufferGraphics.clear();
             },
 
             _constructAoiModel: function (aoi) {
@@ -270,17 +304,11 @@ define([
                 aoi.showAuthoritySelection = ko.pureComputed(function () {
                     return !aoi.id && this.aoiAuthorities.length > 1; //TODO lose this reference to app
                 }, this);
-                var features = ko.observableArray();
-                if (aoi.features) {
-                    aoi.features.forEach(function (f) {
-                        features.push(this._constructFeature(f));
-                    }, this);
-                }
-                aoi.features = features;
+                aoi.features = ko.observableArray();
                 aoi.currentFeature = ko.observable();
                 aoi.analysisGroups = ko.computed(function () {
                     return ko.utils.arrayMap(ko.utils.arrayFilter(
-                        aoi.features(), function(f) {
+                        aoi.features(), function (f) {
                             return f.analysisGroup();
                         }), function (f) {
                             return f.analysisGroup();
@@ -298,25 +326,196 @@ define([
                 return aoi;
             },
 
+            _loadAoiFeatures: function () {
+                var self = this,
+                    aoi = this.currentAoi(),
+                    promises = []; //tracks on-update-end for all layers, zooms to unioned extent when done
+
+                //remove existing layers from the map
+                self.layerNames.forEach(function(layerName) {
+                    if (self.layers[layerName]) {
+                        self.map.removeLayer(self.layers[layerName]);
+                        delete self.layers[layerName];
+                    }
+                });
+
+                if (!aoi) {
+                    return;
+                }
+
+                self.layerNames.forEach(function (layerName) {
+                    var url = projects.aoiLayers[layerName].url,
+                        deferred = new Deferred(),
+                        layer = new FeatureLayer(url,
+                        {
+                            id: 'aoi_' + layerName,
+                            outFields: '*',
+                            definitionExpression: 'FK_PROJECT = ' + aoi.id,
+                            mode: FeatureLayer.MODE_SNAPSHOT //gets all features! TODO or does it? What happens if it's not in the current map's extent?
+                        });
+                    self.layers[layerName] = layer;
+                    promises.push(deferred);
+
+                    on.once(layer, 'update-end', function(info) {
+                        deferred.resolve(info.target);
+                    });
+
+                    self.map.addLayer(layer);
+                });
+
+                //for debugging only
+                window.layers = self.layers;
+
+                all(promises).then(function (layers) {
+                    //extract all features
+                    var allGraphics = [],
+                        unionOfExtents,
+                        featuresKo = [],
+                        onLayerClick = function (evt) {
+                            //subscription on currentFeature does this edit.activate(2, evt.graphic);
+                            if (self.currentAoi() && evt.graphic && evt.graphic.feature) {
+                                event.stopPropagation(evt);
+                                self.currentAoi().currentFeature(evt.graphic.feature);
+                            }
+                        };
+
+                    layers.forEach(function (layer) {
+                        allGraphics = allGraphics.concat(layer.graphics);
+                        on(layer, 'click', onLayerClick);
+                    });
+
+                    //union extents, but only those with actual extents
+                    for (var i = 0; i < allGraphics.length; i++) { //todo switch to foreach; this way to simplify debugging
+                        var graphic = allGraphics[i],
+                            geometry = graphic.geometry,
+                            featureKO = self._constructFeature(graphic),
+                            extent;
+                        featuresKo.push(featureKO);
+                        if (geometry) {
+                            if (geometry.type === 'point') {
+                                extent = new Extent(geometry.x, geometry.y, geometry.x, geometry.y, geometry.spatialReference);
+                            } else {
+                                extent = geometry.getExtent();
+                            }
+                            if (extent) {
+                                unionOfExtents = unionOfExtents ? unionOfExtents.union(extent) : extent;
+                            }
+                        }
+                    }
+                    if (unionOfExtents) {
+                        //todo this fails if there's just one point. See zoomToFeature for example, may need to centerAndZoom; in theory even if there's just one point, there will be a buffer of that point in S_AOI, so  might not be an issue
+                        unionOfExtents = unionOfExtents.expand(1.5);
+                        topic.publish('layerLoader/zoomToExtent', unionOfExtents);
+                    }
+
+                    aoi.features(featuresKo);
+
+                });
+
+
+
+                //on.once(self.map, 'layers-add-result', function (layersAddResult) {
+                //    debugger;
+                //    var promises = [];
+                //    layersAddResult.layers.forEach(function (addedLayer) {
+                //        aoi.layers[addedLayer.layer.id] = addedLayer.layer;
+                //        var query = new Query()
+                //        query.outSpatialReference = self.map.spatialReference;
+                //        on(addedLayer.layer, 'click', onLayerClick);
+                //        promises.push(addedLayer.layer.queryFeatures(query));
+                //    });
+
+                //    all(promises).then(function (featureSets) {
+                //        //extract all features
+                //        var features = [],
+                //            unionOfExtents,
+                //            featuresKo = [];
+                //        featureSets.forEach(function (featureSet) {
+                //            features = features.concat(featureSet.features);
+                //        });
+
+                //        //union extents, but only those with actual extents
+                //        for (var i = 0; i < features.length; i++) { //todo switch to foreach; this way to simplify debugging
+                //            var feature = features[i],
+                //                geometry = feature.geometry,
+                //                featureKO = self._constructFeature(feature),
+                //                extent;
+                //            featuresKo.push(featureKO);
+                //            if (geometry) {
+                //                if (geometry.type === 'point') {
+                //                    extent = new Extent(geometry.x, geometry.x, geometry.y, geometry.y, geometry.spatialReference);
+                //                } else {
+                //                    extent = geometry.getExtent();
+                //                }
+                //                if (extent) {
+                //                    unionOfExtents = unionOfExtents ? unionOfExtents.union(extent) : extent;
+                //                }
+                //            }
+                //        }
+                //        if (unionOfExtents) {
+                //            //todo this fails if there's just one point. See zoomToFeature 
+                //            unionOfExtents = unionOfExtents.expand(1.5);
+                //            topic.publish('layerLoader/zoomToExtent', extent);
+                //        }
+
+                //        aoi.features(featuresKo);
+                //    });
+
+
+
+                //});
+
+
+                    //todo remove layers from other aois
+
+                    //sync clinking graphics in map with features
+
+
+
+                //when all promises to query are resolved, we get the features, knockoutify them, union extents, zoom map, 
+            },
+
             //constructs a feature either from a draw-end event, or when loading from server
             //
 
             _constructFeature: function (featureOrEvent) {
                 if (!featureOrEvent) return null;
-                var feature = null,
-                    self = this;
-                if (featureOrEvent.geometry) {
+                var self = this,
+                    type = featureOrEvent.geometry.type,
+                    aoi = self.currentAoi(),
                     feature = {
-                        type: featureOrEvent.geometry.type,
-                        name: 'Feature ' + this._nextFeatureNumber(),
-                        geometry: featureOrEvent.geometry
+                        name: (featureOrEvent.attributes ? featureOrEvent.attributes.FEATURE_NAME : 'Feature ' + this._nextFeatureNumber()),
+                        bufferDistance: featureOrEvent.attributes && featureOrEvent.attributes.BUFFER_DISTANCE ? featureOrEvent.attributes.BUFFER_DISTANCE : 100, //todo cache the last-entered unit and use for newly digitized features
+                        bufferUnit: featureOrEvent.attributes && featureOrEvent.attributes.BUFFER_DISTANCE_UNITS ? featureOrEvent.attributes.BUFFER_DISTANCE_UNITS /*todo convert to unit object, we'll store the word, must convert to the object with id */ : { id: 9002, name: 'Ft' }, //TODO cache the last-entered unit
+                        analysisGroup: featureOrEvent.attributes && featureOrEvent.attributes.FK_PROJECT_ALT ? featureOrEvent.attributes.FK_PROJECT_ALT : null,
+                        type: type,
+                        geometry: featureOrEvent.geometry,
+                        graphic: featureOrEvent.attributes ? featureOrEvent : new Graphic(featureOrEvent.geometry)
+                        //graphicsLayer: type === 'point' ? self.pointGraphics : type === 'polyline' ? self.polylineGraphics : type === 'polygon' ? self.polygonGraphics : null
+                    };
+
+                //back-reference, supports clicking map or model
+                feature.graphic.feature = feature;
+                
+                if (!featureOrEvent.attributes) {
+                    //result from draw-end event, construct attributes
+                    feature.graphic.attributes = {
+                        OBJECTID: null,
+                        BUFFER_DISTANCE: 100, //TODO get default
+                        BUFFER_DISTANCE_UNITS: 'Ft', //TODO cache the last-entered unit
+                        FEATURE_NAME: feature.name,
+                        FK_PROJECT: aoi.id
                     }
-                } //todo else whatever we have to do to get it from the server
+                }
+
+                //put it on the map
+                //note: this will throw null reference exception if type not in point, polyline or polygon
+                //feature.graphicsLayer.add(feature.graphic);
 
                 /* eslint-disable no-undef */
                 feature.name = ko.observable(feature.name);
-                feature.bufferDistance = ko.observable(feature.bufferDistance || 100); //TODO cache the last-entered distance
-                feature.bufferUnit = ko.observable(feature.bufferUnit || { id: 9002, name: 'Ft' }); //TODO cache the last-entered unit
+                feature.bufferDistance = ko.observable(feature.bufferDistance);
+                feature.bufferUnit = ko.observable(feature.bufferUnit);
                 feature._analysisGroup = ko.observable(feature.analysisGroup);
                 feature.analysisGroup = ko.pureComputed({
                     read: function () {
@@ -338,7 +537,8 @@ define([
                         //todo zoom/pan if not in current extent
                         var geometry = feature.graphic ? feature.graphic.geometry : { getExtent: function () { return null } }, //pseudo object with null extent
                             testExtent = feature.type === 'point' ? geometry : geometry.getExtent(); //contains method expects a point or an extent
-
+                        //project, our features are stored in 3087, needs to be in 3857/102100, which makes no sense
+                        //debugger;
                         if (testExtent && !self.map.extent.contains(testExtent)) {
                             if (feature.type === 'point') {
                                 //center at
@@ -351,10 +551,36 @@ define([
                     }
                 };
 
-                feature.bufferDistance.subscribe(function(oldValue, newValue) {
+                feature.bufferDistance.subscribe(function(newValue) {
                     self.bufferFeature(feature);
+                    feature.graphic.attributes.BUFFER_DISTANCE = newValue;
+                    feature.updateDatabase();
                 },"changed");
 
+                //TODO
+                //feature.bufferUnit.subscribe..
+
+                feature.name.subscribe(function(newValue) {
+                    feature.graphic.attributes.FEATURE_NAME = newValue;
+                    feature.updateDatabase();
+                },'changed');
+
+                feature.updateDatabase = function() {
+                    var graphic = feature.graphic,
+                        layer = graphic._layer;
+                    layer.applyEdits(null, [graphic], null, function(a,u,d) {
+                        //debugger;
+                    }, function(e) {
+                        debugger;
+                    });
+                    //todo add to undo stack
+                };
+
+                feature.delete = function() {
+                    //TODO delete from features collection?
+                    //now or after callback?
+                };
+                //no add function, handled elsewhere
 
                 /* eslint-enable no-undef */
                 return feature;
@@ -503,25 +729,26 @@ define([
 
             },
 
+            ////mostly not used, 
             _createGraphicLayers: function () {
                 var self = this;
-                // points
-                this.pointGraphics = new GraphicsLayer({
-                    id: this.id + '_Points',
-                    title: this.id + ' Points'
-                });
+            //    // points
+            //    this.pointGraphics = new GraphicsLayer({
+            //        id: this.id + '_Points',
+            //        title: this.id + ' Points'
+            //    });
 
-                // polyline
-                this.polylineGraphics = new GraphicsLayer({
-                    id: this.id + '_Lines',
-                    title: this.id + ' Lines'
-                });
+            //    // polyline
+            //    this.polylineGraphics = new GraphicsLayer({
+            //        id: this.id + '_Lines',
+            //        title: this.id + ' Lines'
+            //    });
 
-                // polygons
-                this.polygonGraphics = new GraphicsLayer({
-                    id: this.id + '_Polygons',
-                    title: this.id + ' Polygons'
-                });
+            //    // polygons
+            //    this.polygonGraphics = new GraphicsLayer({
+            //        id: this.id + '_Polygons',
+            //        title: this.id + ' Polygons'
+            //    });
 
                 // buffers
                 this.bufferGraphics = new GraphicsLayer({
@@ -529,9 +756,9 @@ define([
                     title: this.id + ' Buffers'
                 });
 
-                this.map.addLayer(this.polygonGraphics);
-                this.map.addLayer(this.polylineGraphics);
-                this.map.addLayer(this.pointGraphics);
+            //    this.map.addLayer(this.polygonGraphics);
+            //    this.map.addLayer(this.polylineGraphics);
+            //    this.map.addLayer(this.pointGraphics);
                 this.map.addLayer(this.bufferGraphics);
 
                 var f = function (evt) {
@@ -542,46 +769,46 @@ define([
                     }
                 }
 
-                on(this.pointGraphics, 'click', f);
-                on(this.polylineGraphics, 'click', f);
-                on(this.polygonGraphics, 'click', f);
+            //    on(this.pointGraphics, 'click', f);
+            //    on(this.polylineGraphics, 'click', f);
+            //    on(this.polygonGraphics, 'click', f);
                 on(this.bufferGraphics, 'click', f);
 
-                this._createGraphicLayersRenderers();
-            },
-            _createGraphicLayersRenderers() {
-                //create renderers
-                var markerSymbol = new SimpleMarkerSymbol({
-                    style: 'esriSMSCircle',
-                    color: [0, 255, 197, 127],
-                    size: 5,
-                    outline: {
-                        color: [0, 255, 197, 255],
-                        width: 0.75
-                    }
-                });
-                var pointRenderer = new SimpleRenderer(markerSymbol);
-                this.pointGraphics.setRenderer(pointRenderer);
+            //    this._createGraphicLayersRenderers();
+            //},
+            //_createGraphicLayersRenderers() {
+            //    //create renderers
+            //    var markerSymbol = new SimpleMarkerSymbol({
+            //        style: 'esriSMSCircle',
+            //        color: [0, 255, 197, 127],
+            //        size: 5,
+            //        outline: {
+            //            color: [0, 255, 197, 255],
+            //            width: 0.75
+            //        }
+            //    });
+            //    var pointRenderer = new SimpleRenderer(markerSymbol);
+            //    this.pointGraphics.setRenderer(pointRenderer);
 
-                var polylineSymbol = new SimpleLineSymbol({
-                    style: 'esriSLSSolid ',
-                    color: [0, 255, 197, 255],
-                    width: 1
-                });
-                var polylineRenderer = new SimpleRenderer(polylineSymbol);
-                this.polylineGraphics.setRenderer(polylineRenderer);
+            //    var polylineSymbol = new SimpleLineSymbol({
+            //        style: 'esriSLSSolid ',
+            //        color: [0, 255, 197, 255],
+            //        width: 1
+            //    });
+            //    var polylineRenderer = new SimpleRenderer(polylineSymbol);
+            //    this.polylineGraphics.setRenderer(polylineRenderer);
 
-                var fillSymbol = new SimpleFillSymbol({
-                    style: 'esriSFSSolid',
-                    color: [0, 255, 197, 63],
-                    outline: {
-                        style: 'esriSLSSolid ',
-                        color: [0, 255, 197, 255],
-                        width: 0.75
-                    }
-                });
-                var polygonRenderer = new SimpleRenderer(fillSymbol);
-                this.polygonGraphics.setRenderer(polygonRenderer);
+            //    var fillSymbol = new SimpleFillSymbol({
+            //        style: 'esriSFSSolid',
+            //        color: [0, 255, 197, 63],
+            //        outline: {
+            //            style: 'esriSLSSolid ',
+            //            color: [0, 255, 197, 255],
+            //            width: 0.75
+            //        }
+            //    });
+            //    var polygonRenderer = new SimpleRenderer(fillSymbol);
+            //    this.polygonGraphics.setRenderer(polygonRenderer);
 
                 var bufferSymbol = new SimpleFillSymbol({
                     style: 'esriSFSSolid',
@@ -595,7 +822,7 @@ define([
                 var bufferRenderer = new SimpleRenderer(bufferSymbol);
                 this.bufferGraphics.setRenderer(bufferRenderer);
 
-                //todo separate symbols for "active" feature? If/when switching from using graphics/graphicslayers to storing features, the selectionSymbol would be the way to go.
+            //    //todo separate symbols for "active" feature? If/when switching from using graphics/graphicslayers to storing features, the selectionSymbol would be the way to go.
             }
         });
     });
