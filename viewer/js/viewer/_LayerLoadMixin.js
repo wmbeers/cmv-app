@@ -66,6 +66,7 @@ define([
 
             //topics called from other places use topic layerLoader/... for clarity
             topic.subscribe('layerLoader/addProjectToMap', lang.hitch(this, 'addProjectToMap'));
+            topic.subscribe('layerLoader/addAoiToMap', lang.hitch(this, 'addAoiToMap'));
             topic.subscribe('layerLoader/addLayerFromLayerDef', lang.hitch(this, 'addLayerFromLayerDef'));
             topic.subscribe('layerLoader/addLayerFromCategoryDef', lang.hitch(this, 'addLayerFromCategoryDef'));
             topic.subscribe('layerLoader/saveMap', lang.hitch(this, 'saveMap'));
@@ -74,6 +75,7 @@ define([
             topic.subscribe('layerLoader/clearUserLayers', lang.hitch(this, 'clearUserLayers'));
             topic.subscribe('layerLoader/zoomToMgrsPoint', lang.hitch(this, 'zoomToMgrsPoint'));
             topic.subscribe('layerLoader/zoomToLatLong', lang.hitch(this, 'zoomToLatLong'));
+            topic.subscribe('layerLoader/zoomToExtent', lang.hitch(this, 'zoomToExtent'));
 
             //load the coordinateFormatter
             coordinateFormatter.load();
@@ -431,8 +433,8 @@ define([
 
         /**
          * Adds a layer to the map
-         * @param  {Object} layer An instance of a subclass of the base class esri/layers/Layer (.e.g FeatureLayer, ArcGisDynamicMapServiceLayer)
-         * the layer object must be created with the constructLayer method and have the added layerDef object added to it.
+         * @param  {Object} layer An instance of a subclass of the base class esri/layers/Layer (.e.g FeatureLayer, ArcGisDynamicMapServiceLayer).
+         * NOTE: the layer object must have a layerDef property, such those created with the constructLayer method.
          * @param {boolean} zoomOnLoad Optional parameter, if true the map will toom to the extent of the layer after it is loaded
          * @param {boolean} suppressGrowl Optional parameter, if false, the growler message that shows up after the layer loads is not shown; if true or missing, the growler message is shown.
          * @return {Object}  A Deferred that will be resolved after the layer is loaded in the map
@@ -805,6 +807,74 @@ define([
             return deferred;
         },
 
+        //adds an AOI to the map
+        addAoiToMap: function (aoi) {
+            var self = this, //so we don't lose track buried down in callbacks
+                definitionExpression = 'FK_PROJECT = ' + aoi.id,
+                deferred = new Deferred(),
+                promises = [],
+                layerNames = ['analysisArea','polygon','polyline','point'];
+
+            //mixin properties from projects.aoiLayers into new objects, load them in the map
+            layerNames.forEach(function (layerName) {
+                var layerDef = {
+                    id: 'aoi_' + aoi.id + '_' + layerName,
+                    url: projects.aoiLayers[layerName].url,
+                    name: (aoi.name || 'AOI ' + aoi.id) + ' ' + projects.aoiLayers[layerName].name,
+                    type: 'feature'
+                };
+                layer = self.constructLayer(layerDef, definitionExpression);
+                var promise = self.addLayer(layer, false, true);
+
+                promises.push(promise);
+            });
+
+            //when all promises to load layers are resolved, we query their extents, union them with a second array of promises
+            all(promises).then(function (layers) {
+                var queryExtentPromises = [],
+                    q = new Query({
+                        where: '1=1' //definitionExpression doesn't need to be re-applied
+                    });
+                layers.forEach(function(layer) {
+                    queryExtentPromises.push(layer.queryExtent(q));
+                });
+
+                all(queryExtentPromises).then(function (extentReplies) {
+                    //union extents, but only those with actual extents
+                    var unionOfExtents;
+                    for (var i=0; i<extentReplies.length; i++) {
+                        var extentReply = extentReplies[i];
+                        if (extentReply.count > 0) {
+                            if (unionOfExtents) {
+                                unionOfExtents = unionOfExtents.union(extentReply.extent);
+                            } else {
+                                unionOfExtents = extentReply.extent;
+                            }
+                        }
+                    }
+                    if (unionOfExtents) {
+                        unionOfExtents = unionOfExtents.expand(1.5);
+                        self.zoomToExtent(unionOfExtents).then(function() {
+                            deferred.resolve(layers);
+                        });
+                    } else {
+                        //todo alert no features
+                        deferred.resolve(layers);
+                    }
+                });
+            });
+
+            deferred.then(function(layers) {
+                topic.publish('layerLoader/layersChanged');
+                topic.publish('layerLoader/aoiAdded', layers);
+            }, function(err) {
+                topic.publish('layerLoader/addAoiFailed', err);
+            });
+
+            return deferred;
+        },
+
+
         /**
          * Saves to the referenced map to the server, including the layer configuration (via getLayerConfig) and the map extent.
          * Subscribed to topic layerLoader/saveMap.
@@ -856,7 +926,7 @@ define([
 
             //load from server
             //eslint-disable-next-line no-undef
-            MapDAO.getBeanById(savedMapId, {
+            MapDAO.getSavedMapBeanById(savedMapId, {
                 callback: function (savedMap) {
                     if (savedMap) {
                         self._loadMap(savedMap, clearMapFirst, deferred);
@@ -951,7 +1021,7 @@ define([
         },
 
         /**
-         * Callback function from MapDAO.getBeanById call made in LoadMap function.
+         * Callback function from MapDAO.getSavedMapBeanById call made in LoadMap function.
          * @param {object} savedMap The SavedMapBean returned from the DWR call
          * @param {boolean} clearMapFirst Optional, if true, all user layers will be removed from the map before loading new layers; if false or absent, layers from the saved map will be added on top of the layers already in the map.
          * @param {object} deferred The Deferred object to be resolved when the map is done loading

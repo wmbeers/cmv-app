@@ -383,10 +383,78 @@ define([
             },
             {
                 type: 'feature',
+                url: 'https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/AOIDEV_INPUT/FeatureServer/1',
+                title: 'Area of Interest Points',
+                options: {
+                    id: 'aoiP',
+                    opacity: 1.0,
+                    visible: true,
+                    outFields: ['*'],
+                    imageParameters: buildImageParameters({
+                        layerIds: [0, 7],
+                        layerOption: 'show'
+                    }),
+                    mode: 1
+                },
+                editorLayerInfos: {
+                    exclude: false,
+                    disableGeometryUpdate: false
+                },
+                legendLayerInfos: {
+                    exclude: false,
+                    layerInfo: {
+                        title: 'AOI Points'
+                    }
+                },
+                layerControlLayerInfos: {
+                    //layerGroup: 'Project Data',
+                    menu: [{
+                        label: 'Open Attribute Table',
+                        topic: 'openTable',
+                        iconClass: 'fa fa-table fa-fw'
+                    }]
+                }
+            },
+            {
+                type: 'feature',
+                url: 'https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/AOIDEV_INPUT/FeatureServer/2',
+                title: 'Area of Interest Lines',
+                options: {
+                    id: 'aoiL',
+                    opacity: 1.0,
+                    visible: true,
+                    outFields: ['*'],
+                    imageParameters: buildImageParameters({
+                        layerIds: [0, 7],
+                        layerOption: 'show'
+                    }),
+                    mode: 1
+                },
+                editorLayerInfos: {
+                    exclude: false,
+                    disableGeometryUpdate: false
+                },
+                legendLayerInfos: {
+                    exclude: false,
+                    layerInfo: {
+                        title: 'AOI Polylines'
+                    }
+                },
+                layerControlLayerInfos: {
+                    //layerGroup: 'Project Data',
+                    menu: [{
+                        label: 'Open Attribute Table',
+                        topic: 'openTable',
+                        iconClass: 'fa fa-table fa-fw'
+                    }]
+                }
+            },
+            {
+                type: 'feature',
                 url: 'https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/AOIDEV_INPUT/FeatureServer/3',
                 title: 'Area of Interest Polygons',
                 options: {
-                    id: 'aoiL',
+                    id: 'aoiA',
                     opacity: 1.0,
                     visible: true,
                     outFields: ['*'],

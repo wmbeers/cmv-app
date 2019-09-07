@@ -43,7 +43,8 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Buffer</th>
+                            <th colspan="2">Buffer</th>
+                            <th>Analysis Area</th>
                         </tr>
                     </thead>
                     <tbody data-bind="foreach: features">
@@ -52,13 +53,17 @@
                             <td>
                                 <input type="text" data-bind="value: name" />
                             </td>
-                            <td>Current</td>
+                            <td><input type="number" data-bind="value: bufferDistance" style="width: 4em" /></td>
+                            <td><select data-bind="options: $root.bufferUnitArray, optionsText: 'name', value: bufferUnit" style="width: 6em" /></td>
+
                         </tr>
                         <!-- /ko -->
                         <!-- ko ifnot: selected -->
                         <tr data-bind="click: select">
                             <td data-bind="text: name"></td>
-                            <td>Other</td>
+                            <td colspan="2" data-bind="text: bufferText"></td>
+                            <td data-bind="text: analysisArea"></td>
+
                         </tr>
                         <!-- /ko -->
                     </tbody>
@@ -68,6 +73,14 @@
                     Point
                 </button>
 
+                <button data-dojo-type="dijit/form/Button" data-bind="click: function() { $root.digitizeFeature('polyline'); }">
+                    Line
+                </button>
+
+                <button data-dojo-type="dijit/form/Button" data-bind="click: function() { $root.digitizeFeature('freehandpolyline'); }">
+                    FH Line
+                </button>
+
                 <button data-dojo-type="dijit/form/Button" data-bind="click: function() { $root.digitizeFeature('polygon'); }">
                     Polygon
                 </button>
@@ -75,6 +88,28 @@
                 <button data-dojo-type="dijit/form/Button" data-bind="click: function() { $root.digitizeFeature('freehandpolygon'); }">
                     FH Polygon
                 </button>
+
+                <br />
+
+                <button data-dojo-type="dijit/form/Button" data-bind="click: showAnalysisOptions">
+                    Next
+                </button>
+
+            </div>
+
+            <div data-bind="visible: mode() === 'analysisOptions'">
+
+                <button data-dojo-type="dijit/form/Button" data-bind="click: saveAnalysisAreas">
+                    Test Create Analysis Areas
+                </button>
+
+
+
+
+                <button data-dojo-type="dijit/form/Button" data-bind="click: showFeatureList">
+                    Back
+                </button>
+
             </div>
 
         </div>

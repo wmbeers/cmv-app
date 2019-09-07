@@ -12,7 +12,7 @@ function (declare) {
         hasProjectEditAuthority: false,
         hasViewDraftAuthority: false,
         authorities: [],
-        currentAuthority: ko.observable, //eslint-disable-line no-undef
+        currentAuthority: ko.observable(), //eslint-disable-line no-undef
 
         startup: function () {
             //post-process authorities to determine which controls and layers are included--dynamic changes to interpretation of viewer.js
