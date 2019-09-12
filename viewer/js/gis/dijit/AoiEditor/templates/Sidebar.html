@@ -2,7 +2,7 @@
     <div id="aoiEditorSidebar">
         <div data-bind="visible: currentAoi() == null">
             <button data-dojo-type="dijit/form/Button"
-                    data-dojo-attach-event="onClick:openAOI"
+                    data-dojo-attach-event="onClick:showOpenAoiDialog"
                     data-dojo-attach-point="toggleBTN">
                 Open
             </button>
@@ -15,27 +15,28 @@
         </div>
 
         <div data-bind="with: currentAoi">
+            <div>
+                <button data-bind="click: unload" style="float:right">X</button>
+            </div>
+
             <div data-bind="visible: mode()=='editName'">
                 <label for="aoiName">Name</label>
-                <input id="aoiName" type="text" data-bind="value: name" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-props="name:'aoiName',trim:true,required:true,style:'width:100%;'" data-dojo-attach-point="aoiName" />
+                <input id="aoiName" type="text" data-bind="value: name" style="width:100%" />   
                 <label for="aoiDescription">Description</label>
                 <textarea id="aoiDescription" data-bind="value: description" style="width:100%"></textarea>
                 <label for="expirationDate">Keep Until</label>
-                <input id="expirationDate" data-bind="value: expirationDate" data-dojo-type="dijit/form/TextBox" style="width:100%" />
-                <label for="org">Identity</label>
-                <select id="org"  style="width:100%"  data-dojo-type="dijit/form/Select">
-                    <option value="1">District 1</option>
-                </select>
+                <input id="expirationDateTextBox" data-bind="jqDatepicker: expirationDate" data-dojo-attach-point="expirationDateTextBox" class="dijitTextBox" style="width:100%" />
+                <span data-bind="visible: id==-1 && $root.authorities.length > 1">
+                    <label for="org">Organization</label>
+                    <select data-bind="options: $root.authorities, value: $root.currentAuthority, optionsText: 'orgName'"></select>
+                </span>
 
                 <br />
 
-                <button data-dojo-type="dijit/form/Button" data-bind="click: showFeatureList">
+                <button data-dojo-type="dijit/form/Button" data-bind="click: saveAndShowFeatureList">
                     Next
                 </button>
 
-                <button data-dojo-type="dijit/form/Button">
-                    Cancel
-                </button>
             </div>
 
             <div data-bind="visible: mode() == 'editFeatures'">
@@ -44,7 +45,7 @@
                         <tr>
                             <th>Name</th>
                             <th colspan="2">Buffer</th>
-                            <th>Analysis Area</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody data-bind="foreach: features">
@@ -55,41 +56,48 @@
                             </td>
                             <td><input type="number" data-bind="value: bufferDistance" style="width: 4em" /></td>
                             <td><select data-bind="options: $root.bufferUnitArray, optionsText: 'name', value: bufferUnit" style="width: 6em" /></td>
-
+                            <td><button data-bind="click: deleteFeature">Delete</button></td>
                         </tr>
                         <!-- /ko -->
                         <!-- ko ifnot: selected -->
                         <tr data-bind="click: select">
                             <td data-bind="text: name"></td>
                             <td colspan="2" data-bind="text: bufferText"></td>
-                            <td data-bind="text: analysisArea"></td>
-
+                            <td></td>
                         </tr>
-                        <!-- /ko -->
+                        <!-- /ko --> 
                     </tbody>
                 </table>
-
-                <button data-dojo-type="dijit/form/Button" data-bind="click: function() { $root.digitizeFeature('point'); }">
+                <span data-bind="text: $root.drawToolGeometryType"></span>
+                <button data-bind="click: function() { $root.activateDrawTool('point'); }">
                     Point
                 </button>
 
-                <button data-dojo-type="dijit/form/Button" data-bind="click: function() { $root.digitizeFeature('polyline'); }">
+                <button data-bind="click: function() { $root.activateDrawTool('polyline'); }">
                     Line
                 </button>
 
-                <button data-dojo-type="dijit/form/Button" data-bind="click: function() { $root.digitizeFeature('freehandpolyline'); }">
+                <button data-bind="click: function() { $root.activateDrawTool('freehandpolyline'); }">
                     FH Line
                 </button>
 
-                <button data-dojo-type="dijit/form/Button" data-bind="click: function() { $root.digitizeFeature('polygon'); }">
+                <button data-bind="click: function() { $root.activateDrawTool('polygon'); }">
                     Polygon
                 </button>
 
-                <button data-dojo-type="dijit/form/Button" data-bind="click: function() { $root.digitizeFeature('freehandpolygon'); }">
+                <button data-bind="click: function() { $root.activateDrawTool('freehandpolygon'); }">
                     FH Polygon
                 </button>
 
+                <button data-bind="click: $root.deactivateDrawTool, visible: $root.drawToolActive">
+                    Cancel
+                </button>
+
                 <br />
+
+                <button data-dojo-type="dijit/form/Button" data-bind="click: showNameAndDescription">
+                    Back
+                </button>
 
                 <button data-dojo-type="dijit/form/Button" data-bind="click: showAnalysisOptions">
                     Next
@@ -99,11 +107,13 @@
 
             <div data-bind="visible: mode() === 'analysisOptions'">
 
+
+
                 <button data-dojo-type="dijit/form/Button" data-bind="click: saveAnalysisAreas">
                     Test Create Analysis Areas
                 </button>
 
-
+                <br />
 
 
                 <button data-dojo-type="dijit/form/Button" data-bind="click: showFeatureList">

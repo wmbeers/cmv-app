@@ -1,3 +1,37 @@
-﻿<div id="AoiDialog">
-    TODO
+﻿<div id="openAoiDialog">
+    <style>
+        tr.previewed {
+            outline: 1px dotted black;
+        }
+    </style>
+    <div>
+        Show
+        <input type="radio" id="filterOptionMy" name="filterOption" value="my" data-bind="checked: filterOption" /><label for="filterOptionMy">Only mine</label>
+        <input type="radio" id="filterOptionAll" name="filterOption" value="all" data-bind="checked: filterOption" /><label for="filterOptionAll">All for 
+            <span data-bind="text: currentAuthority().orgName, visible: authorities.length === 1"></span>
+            <select data-bind="options: authorities, value: currentAuthority, optionsText: 'orgName', visible: authorities.length > 1"></select>
+        </label>
+        <span id="videoLink" style="float: right;"></span>
+    </div>
+    <div style="height: 305px; width: 500px; overflow: auto">
+        <table class="editAttributeTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Exp. Date</th>
+                    <th>Edited</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: filteredAois">
+                <tr data-bind="css: {'previewed': previewed()}">
+                    <td data-bind="text: name"></td>
+                    <td data-bind="dateString: expirationDate"></td>
+                    <td data-bind="dateString: modDate"></td>
+                    <td><button data-bind="click: load">load</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
 </div>

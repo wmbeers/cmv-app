@@ -2,10 +2,13 @@ define([
     'dojo/_base/declare',
     'dijit/_WidgetBase',
     'dijit/_TemplatedMixin',
+    'dijit/form/DateTextBox',
+    'jquery',
+    'jqueryUi',
+    'koBindings',
     'dijit/_WidgetsInTemplateMixin',
     'dijit/Dialog',
     'dijit/ConfirmDialog',
-    'dijit/form/DateTextBox',
     'dojo/request',
     'dojo/_base/lang',
     'dojo/on',
@@ -56,12 +59,13 @@ define([
 
     'xstyle/css!./LayerLoader/css/layerLoader.css'
 ],
-    function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog, ConfirmDialog, DateTextBox, request, lang, on, query, dom, //eslint-disable-line no-unused-vars
-        domClass, html, topic, Memory, Deferred, all, AoiEditorSidebarTemplate, AoiEditorDialogTemplate, //eslint-disable-line no-unused-vars
+    function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, koBindings,
+        _WidgetsInTemplateMixin, Dialog, ConfirmDialog, request, lang, on, query, dom, //eslint-disable-line no-unused-vars
+        domClass, html, topic, Memory, Deferred, all, AoiEditorSidebarTemplate, OpenAoiDialogTemplate, //eslint-disable-line no-unused-vars
         Add, Delete, Update, Draw, Edit, Extent, FeatureLayer, GraphicsLayer, Graphic, SimpleRenderer,
         SimpleMarkerSymbol,
         SimpleLineSymbol,
-        SimpleFillSymbol, 
+        SimpleFillSymbol,
         Color,
         BufferParameters,
         Query,
@@ -88,6 +92,25 @@ define([
                 meters: { id: 9001, name: 'Meters', abbreviation: 'm' },
                 kilometers: { id: 9036, name: 'Kilometers', abbreviation: 'km' },
             },
+            projectTypes: [
+                { id: 1, abbreviation: 'NDS', name: 'Needs' },
+                { id: 2, abbreviation: 'NFE', name: 'Not for ETAT' },
+                { id: 3, abbreviation: 'TICE', name: 'Type I CE' },
+                { id: 4, abbreviation: 'CF', name: 'Cost Feasible' },
+                { id: 5, abbreviation: 'UCFP', name: 'Ultimate Cost Feasible Project' },
+                { id: 6, abbreviation: 'LRTP', name: 'Long Range Transportation Plan' },
+                { id: 7, abbreviation: 'NMSA', name: 'Non Major State Action' },
+                { id: 8, abbreviation: 'AOI', name: 'Area of Interest' },
+                { id: 9, abbreviation: 'CORR', name: 'Corridor Study' },
+                { id: 10, abbreviation: 'SIS', name: 'SIS Designation Change' },
+                { id: 11, abbreviation: 'OAOI', name: 'Other Area of Interest' },
+                { id: 12, abbreviation: 'ERT', name: 'Emergency Response Tool' },
+                { id: 13, abbreviation: 'MCORES', name: 'Multi-use Corridors of Regional Economic Significance' },
+                { id: 14, abbreviation: 'TRANSIT', name: 'Transit' },
+                { id: 15, abbreviation: 'BRIDGE', name: 'Bridge' },
+                { id: 16, abbreviation: 'FREIGHT', name: 'Freight' },
+                { id: 17, abbreviation: 'RAIL', name: 'Rail' }
+            ],
             //bufferUnitArray: [bufferUnits.feet, bufferUnits.miles, bufferUnits.meters, bufferUnits.kilometers], //for binding to drop-down
             //lastUnit: bufferUnits.feet,
             lastBufferDistance: 100,
@@ -96,16 +119,18 @@ define([
                 this.currentAuthority = options.currentAuthority;
             },
 
-            //knockout-bound observable properties, will be assigned in _knockoutify method
-            aois: null,
-            currentAoi: null,
-            filterAois: null,
-
             //Dialogs. Broader scope needed for these dialogs to support closing when option is selected, so declaring these here
-            openAoiDialog: null,
+            openAoiDialog: new Dialog({
+                id: 'aoiEditor_open_dialog',
+                title: 'Open Area of Interest',
+                content: OpenAoiDialogTemplate
+            }),
 
-            openAOI: function () {
-                //todo
+            showOpenAoiDialog: function () {
+                var self = this;
+                this.listAois().then(function () {
+                    self.openAoiDialog.show();
+                });
             },
 
             createAoi: function () {
@@ -114,18 +139,91 @@ define([
                 aoi.mode('editName');
             },
 
-            //FOR TESTING ONLY
-            test: function (id) {
-                this.createAoi();
-                this.currentAoi().id = id;
-                this._loadAoiFeatures();
-                this.currentAoi().showFeatureList();
+            clearAoiPreview: function () {
+                var self = this;
+                ko.utils.arrayForEach(this.aois(), function (a) {
+                    if (a.layers) {
+                        self.clearAoiLayers(a);
+                    }
+                    a.previewed(false);
+                });
+            },
+
+            unloadCurrentAoi: function () {
+                this.clearAoiLayers();
+                this.bufferGraphics.clear();
+                this.currentAoi(null);
+            },
+
+            previewAoi: function (aoi) {
+                var self = this,
+                    promises = [],
+                    q = new Query({
+                        where: '1=1' //definitionExpression doesn't need to be re-applied
+                    });
+
+                this.clearAoiPreview();
+
+                aoi.previewed(true);
+
+                if (aoi.layers && aoi.extent) {
+                    this.map.addLayer(aoi.layers.polygon);
+                    this.map.addLayer(aoi.layers.polyline);
+                    this.map.addLayer(aoi.layers.point);
+
+                    topic.publish('layerLoader/zoomToExtent', aoi.extent.expand(1.5));
+                    return;
+                } else {
+                    aoi.layers = {};
+                }
+
+                this.featureTypes.forEach(function (layerName) {
+                    var url = projects.aoiLayers[layerName].url,
+                        deferred = new Deferred(),
+                        layer = new FeatureLayer(url,
+                            {
+                                id: 'aoi_' + layerName,
+                                outFields: '*',
+                                definitionExpression: 'FK_PROJECT = ' + aoi.id,
+                                mode: FeatureLayer.MODE_ONDEMAND
+                            });
+                    aoi.layers[layerName] = layer;
+                    deferred = layer.queryExtent(q);
+                    promises.push(deferred);
+                });
+
+                all(promises).then(function (extentReplies) {
+                    //union extents, but only those with actual extents
+                    var unionOfExtents;
+                    for (var i = 0; i < extentReplies.length; i++) {
+                        var extentReply = extentReplies[i];
+                        if (extentReply.count > 0) {
+                            if (unionOfExtents) {
+                                unionOfExtents = unionOfExtents.union(extentReply.extent);
+                            } else {
+                                unionOfExtents = extentReply.extent;
+                            }
+                        }
+                    }
+                    if (unionOfExtents) {
+                        aoi.extent = unionOfExtents;
+                        topic.publish('layerLoader/zoomToExtent', aoi.extent.expand(1.5));
+
+                        self.map.addLayer(aoi.layers.polygon);
+                        self.map.addLayer(aoi.layers.polyline);
+                        self.map.addLayer(aoi.layers.point);
+                    }
+                });
+
             },
 
             loadAoi: function (id) {
                 var self = this;
                 //get from server
                 //eslint-disable-next-line no-undef
+
+                this.clearAoiPreview();
+
                 MapDAO.getAoiModel(id, {
                     callback: function (aoi) {
                         if (aoi) {
@@ -138,7 +236,6 @@ define([
                                 source: 'AoiEditor.loadAoi',
                                 error: 'Invalid AOI ID'
                             });
-
                         }
                     },
                     errorHandler: function (message, exception) {
@@ -146,9 +243,6 @@ define([
                             source: 'AoiEditor.loadAoi',
                             error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
                         });
-                        if (savedMap.deferred) {
-                            savedMap.deferred.reject(message);
-                        }
                     }
                 });
 
@@ -181,7 +275,7 @@ define([
 
                 this.bufferUnitArray = [this.bufferUnits.feet, this.bufferUnits.miles, this.bufferUnits.meters, this.bufferUnits.kilometers]; //for binding to drop-down
                 this.lastUnit = this.bufferUnits.feet;
-            
+
                 //this.proj4 = proj4;
                 //for debugging only
                 //window.proj4 = proj4;
@@ -199,15 +293,38 @@ define([
                 this.draw = new Draw(this.map); //draw toolbar, not shown in UI, but utilized by our UI
                 this.edit = new Edit(this.map);
 
+                //customizing the draw toolbar so the UI can remind user what they're doing, and have ability to cancel
+                self.drawToolGeometryType = ko.observable(); //independent of draw._geometryType, but we keep it in sync
+                //user clicks the Point, Line, Freehand Line, Polygon or Freehand Polygon digitize button
+                self.activateDrawTool = function (geometryType) {
+                    //pass the word onto the draw tool
+                    self.draw.activate(geometryType);
+                    //sync up with geometryType observable
+                    self.drawToolGeometryType(geometryType);
+                    //todo turn off identify
+                    topic.publish('mapClickMode/setCurrent', 'digitize');
+                    //hide buffers
+                    this.bufferGraphics.setVisibility(false);
+                };
+                self.deactivateDrawTool = function () {
+                    //pass the word onto the draw tool
+                    self.draw.deactivate();
+                    //sync up with geometryType observable
+                    self.drawToolGeometryType(null);
+                    //restore buffers
+                    this.bufferGraphics.setVisibility(true);
+                };
+                self.drawToolActive = ko.pureComputed(function () {
+                    return self.drawToolGeometryType() != null;
+                });
                 //event handler for draw complete, creates a new feature when user finishes digitizing
-                //
                 this.draw.on('draw-complete', function (event) {
                     var layer = self.layers[event.geometry.type],
                         aoi = self.currentAoi();
 
                     //toggle back to default map click mode
                     topic.publish('mapClickMode/setDefault');
-                    self.draw.deactivate();
+                    self.deactivateDrawTool();
                     //if something has gotten wildly out of sorts, bail
                     if (!layer || !aoi) {
                         return;
@@ -215,9 +332,9 @@ define([
 
                     //construct a feature
                     var f = self._constructFeature(event);
-                    
+
                     //save to server
-                    layer.applyEdits([f.graphic], null, null, function(a,u,d) {
+                    layer.applyEdits([f.graphic], null, null, function (a, u, d) {
                         //todo check a and make sure successfull
                         //make it active
                         aoi.currentFeature(f);
@@ -225,7 +342,7 @@ define([
                         //push it to features observableArray
                         aoi.features.push(f);
 
-                    }, function(e) {
+                    }, function (e) {
                         debugger;
                     });
 
@@ -248,7 +365,7 @@ define([
                         var now = new Date(),
                             duration = now.getTime() - self.lastEditAt.getTime(); //# of milliseconds since the last time vertex move stop happened
                         if (duration >= delay && !self.vertexMoving) {
-                            self.bufferFeature(self.currentAoi().currentFeature());
+                            self.bufferFeature(feature);
                             //save to database
                             feature.updateDatabase();
                         }
@@ -278,48 +395,37 @@ define([
                     this.lastEditAt = new Date();
                     this.vertexMoving = true;
                 }, this);
+                this.edit.on('graphic-move-start', function (evt) {
+                    deleteBuffer(evt);
+                });
+                this.edit.on('graphic-move-stop', function (evt) {
+                    self.bufferFeature(evt.graphic.feature);
+                    //save to database
+                    evt.graphic.feature.updateDatabase();
+                });
+                
                 //TODO we can also support scaling, etc.
                 //TODO handle merge/split  
             },
 
-            //user clicks the Point, Line, Freehand Line, Polygon or Freehand Polygon digitize button
-            digitizeFeature: function (toolName) {
-                //toolname is one of the draw tools
-                this.draw.activate(toolName);
-                //todo turn off identify
-                topic.publish('mapClickMode/setCurrent', 'digitize');
-                //hides the dialog, constructs stub of feature, puts map in click-to-digitize- mode, shows tips in sidebar, along with cancel button
-                //onDrawFinish event creates a point feature, hides tip and shows the features list, with newly created feature with default name selected, saves to point feature class
-                //this.currentFeature = this._constructFeature(featureType);
-            },
-
-            //clears features from the map. It doesn't destroy them or affect the AOI model.
-            clearFeatures: function () {
-                this.pointGraphics.clear();
-                this.polylineGraphics.clear();
-                this.polygonGraphics.clear();
-                this.bufferGraphics.clear();
-            },
-
             _constructAoiModel: function (aoi) {
-                var self = this;
+                var self = this; //maintains a reference to the root model
                 aoi = aoi || { id: -1 /*signifies new*/, name: null, type: null, expirationDate: null, orgUserId: null, description: null, features: [] };
 
                 if (!aoi.expirationDate) {
                     //default date is current date + 30 days TODO confirm this
                     //TODO for demo purposes only
-                    aoi.expirationDate = '09/15/2019'; //new Date();
-                    //aoi.expirationDate.setDate(aoi.expirationDate.getDate() + 30);
+                    aoi.expirationDate = new Date();
+                    aoi.expirationDate.setDate(aoi.expirationDate.getDate() + 30);
                 }
                 var authority = null;
                 if (aoi.orgUserId) {
                     //loading existing--if we allow loading all aois for all of the current user's orgUsers, rather than having to select to filter them, we don't need this bit
                     //about tracking authority, and just use currentAuthority
                     authority = this.authorities.find(function (auth) {
-                        return auth.orgUserId === aoi.orgUserId;
+                        return auth.orgUserId === aoi.orgUserId || aoi.orgId == auth.orgId;
                     });
-                } else {
-                    authority = this.currentAuthority(); //default
+                    this.currentAuthority(authority);
                 }
                 /* eslint-disable no-undef */
                 aoi.name = ko.observable(aoi.name);
@@ -329,30 +435,78 @@ define([
 
                 //navigation
                 aoi.mode = ko.observable();
-                aoi.showFeatureList = function () {
-                    //todo validate name, etc.
-                    //save, and wait for callback to update id
-                    aoi.mode('editFeatures');
-                    //todo if features.length === 0 show the new feature dialog
+
+                aoi.showNameAndDescription = function () {
+                    aoi.mode('editName');
                 };
+
+                aoi.showFeatureList = function () {
+                    aoi.mode('editFeatures');
+                };
+
+                aoi.unload = function() {
+                    self.unloadCurrentAoi();
+                };
+
+                aoi.saveAndShowFeatureList = function () {
+                    //todo validate name, etc.
+                    var aoiModel = {
+                        id: aoi.id,
+                        name: aoi.name(),
+                        description: aoi.description(),
+                        projectTypeId: 8, //todo aoi.projectTypeId(),
+                        expirationDate: aoi.expirationDate(),
+                        orgUserId: self.currentAuthority().orgUserId
+                    };
+                    MapDAO.saveAoiHeader(aoiModel, {
+                        callback: function (id) {
+                            aoi.id = id;
+                            aoi.showFeatureList();
+                        },
+                        errorHandler: function (msg) {
+                            debugger;
+                        }
+                    });
+
+                };
+
                 aoi.showAnalysisOptions = function () {
                     //todo validate >0 features, features have buffers, etc.
                     aoi.mode('analysisOptions');
                 };
 
-                aoi.authority = ko.observable(authority);
                 aoi.showAuthoritySelection = ko.pureComputed(function () {
                     return !aoi.id && this.authorities.length > 1; //TODO lose this reference to app
                 }, this);
+
+                //all of the features, as models, regardless of geometry, distinct from, but related to, the features in layers.point.graphics, layers.polyline.graphics, and layers.polygon.graphics
                 aoi.features = ko.observableArray();
                 aoi.currentFeature = ko.observable();
+
+                aoi._nextFeatureNumber = function () {
+                    var n = 0,
+                        rx = /(\d+)/;
+                    ko.utils.arrayForEach(aoi.features(), function (f) {
+                        var r = rx.exec(f.name());
+                        if (r) {
+                            //convert string to number
+                            r = parseInt(r[0], 10);
+                            if (r > n) {
+                                n = r;
+                            }
+                        }
+                    });
+                    n++;
+                    return n;
+                };
+
                 aoi.analysisAreas = ko.computed(function () {
                     var analysisAreas = [];
 
                     ko.utils.arrayForEach(aoi.features(), function (f) {
                         if (f.analysisArea() && analysisAreas.indexOf(f.analysisArea()) < 0) {
                             analysisAreas.push(f.analysisArea());
-                        }    return f.analysisArea();
+                        } return f.analysisArea();
                     });
 
                     return analysisAreas;
@@ -366,14 +520,14 @@ define([
                 });
 
                 aoi.getAnalysisAreaModel = function (name) {
-                    return ko.utils.arrayFirst(aoi.analysisAreas(), function(m) {
+                    return ko.utils.arrayFirst(aoi.analysisAreas(), function (m) {
                         return m.name() === name;
                     });
                 };
 
                 aoi.getAnalysisAreaFeature = function (name) {
-                    return ko.utils.arrayFirst(self.layers.analysisArea.graphics, function(f) {
-                        return f.attributes.NAME === name;
+                    return ko.utils.arrayFirst(self.layers.analysisArea.graphics, function (f) {
+                        return f.attributes.FEATURE_NAME === name;
                     });
                 };
 
@@ -382,39 +536,39 @@ define([
                  * arrays, ready for applyEdits. Makes external calls to geometryService to simplify and union.
                  */
                 aoi._buildAnalysisAreaFeatureEdits = function () {
+                    //build analysis areas from features that don't already have one
+                    //(this is the default, typical arrangement, one feature = one analysisArea, 
+                    // unless user chooses to group features)
                     aoi._buildAnalysisAreasFromFeatures();
-                    //get union of buffers of features, group by analysisArea
-                    //remove any analysisArea features not currently represented
+
                     var analysisAreaFeatures = self.layers.analysisArea.graphics,
                         analysisAreaModels = aoi.analysisAreas(),
                         result = {
                             adds: [],
                             updates: [],
                             deletes: ko.utils.arrayFilter(analysisAreaFeatures, function (f) {
-                                var existing = aoi.getAnalysisAreaModel(f.attributes.NAME)
+                                var existing = aoi.getAnalysisAreaModel(f.attributes.FEATURE_NAME)
                                 return !existing;
                             }) //analysisArea features that don't currently have a match in named analysis areas
                         },
-                        deferred = new Deferred(),
-                        promises = [];
+                        deferred = new Deferred(); //the overall deferred to be resolved when we've got the edits all built
+                        window.buildPromises = [];  //TODO closure scope, set to global for debugging
 
                     //loop through models to add or update
-                    //todo switch to forEach, for ease of debugging I'm currently using this for loop
-                    for (var i = 0; i<analysisAreaModels.length; i++) {
-                        var analysisAreaModel = analysisAreaModels[i],
+                    analysisAreaModels.forEach(function (analysisAreaModel) {
+                        var buildPromise = new Deferred(),
                             geometries = ko.utils.arrayMap(analysisAreaModel.features(), function (f) {
                                 return f.buffer ? f.buffer.geometry : f.graphic.geometry;
-                            }),
-                            promise = new Deferred();
+                            });
 
-                        promises.push(promise);
+                        window.buildPromises.push(buildPromise);
 
                         //simplify
                         esriConfig.defaults.geometryService.simplify(geometries).then(function (simplifiedGeometries) {
                             //Note, just a union request would do the job, but maybe this is useful for multiple buffers?
                             var params = new BufferParameters();
-                            
-                            params.distances = [0]; 
+
+                            params.distances = [0];
                             params.outSpatialReference = self.map.spatialReference; //todo this should maybe be Albers
                             params.unit = 9002;
                             params.geometries = simplifiedGeometries;
@@ -427,12 +581,14 @@ define([
                                     var analysisAreaFeature = aoi.getAnalysisAreaFeature(analysisAreaModel.name());
                                     if (analysisAreaFeature) {
                                         result.updates.push(analysisAreaFeature);
-                                        promise.resolve();
+                                        analysisAreaFeature.geometry = bufferedGeometries[0]; //todo if we can create multiple buffers in one go with different buffer distances, will need to foreach through those
+                                        analysisAreaFeature.sourceFeatures = analysisAreaModel.features(); //for later update of features to cross reference
+                                        buildPromise.resolve(analysisAreaFeature);
                                     } else {
                                         analysisAreaFeature = new Graphic(bufferedGeometries[0]); //todo if we can create multiple buffers in one go with different buffer distances, will need to foreach through those
                                         //get ID from sequence
                                         MapDAO.getNextAnalysisAreaId({
-                                            callback: function(id) {
+                                            callback: function (id) {
                                                 analysisAreaFeature.attributes = {
                                                     OBJECTID: null,
                                                     BUFFER_DISTANCE: 1,
@@ -441,7 +597,8 @@ define([
                                                     FK_PROJECT_ALT: id
                                                 };
                                                 result.adds.push(analysisAreaFeature);
-                                                promise.resolve();
+                                                analysisAreaFeature.sourceFeatures = analysisAreaModel.features; //for later update of features to cross reference
+                                                buildPromise.resolve(analysisAreaFeature);
                                             }
                                         });
                                     }
@@ -450,21 +607,24 @@ define([
                                     promise.reject(err);
                                 }
                             );
-
-
                         });
-                    } // end loop through analysisAreaModels
+                    }); // end loop through analysisAreaModels
 
-                    all(promises).then(function () {
+
+                    //the overall deferred for this function is resolved when all the deferreds to build analyisAreas are resolved
+                    all(window.buildPromises).then(function (featuresAddedOrUpdated) {
                         deferred.resolve(result);
+                    }, function (err) {
+                        //todo!
+                        debugger;
                     });
-
+                    
                     return deferred;
 
                 };
 
                 //construct analysisAreas for features that don't already have one, using the feature's name as the analysisArea name
-                aoi._buildAnalysisAreasFromFeatures = function() {
+                aoi._buildAnalysisAreasFromFeatures = function () {
                     ko.utils.arrayForEach(aoi.features(), function (f) {
                         if (!f.analysisArea()) {
                             self._addFeatureToAnalysisArea(f, f.name());
@@ -474,10 +634,17 @@ define([
 
                 aoi.saveAnalysisAreas = function () {
                     aoi._buildAnalysisAreaFeatureEdits().then(function (edits) {
-                        self.layers.analysisArea.applyEdits(edits.adds, edits.updates, edits.deletes, function(a,u,d) {
-                            ko.utils.arrayForEach(a, function (analysisAreaFeature) {
-                            })
-                        }, function(e) {
+                        self.layers.analysisArea.applyEdits(edits.adds, edits.updates, edits.deletes, function (a, u, d) {
+                            //update all features 
+                            edits.adds.concat(edits.updates).forEach(function (aa) {
+                                aa.sourceFeatures.forEach(function (f) {
+                                    f.graphic.attributes.FK_PROJECT_ALT = aa.attributes.FK_PROJECT_ALT;
+                                    f.updateDatabase();
+                                });
+                            });
+                            //todo, something more than this but what?
+                            console.log('added ' + a.length + ' features, updated ' + u.length + ' features, and deleted ' + d.length + ' features');
+                        }, function (e) {
                             debugger;
                         });;
                     });
@@ -487,21 +654,29 @@ define([
                 return aoi;
             },
 
+            clearAoiLayers: function (layerOwner) {
+                layerOwner = layerOwner || this;
+                //remove existing layers from the map
+                if (!layerOwner.layers) return;
+                if (layerOwner.layers.analysisArea) {
+                    this.map.removeLayer(layerOwner.layers.analysisArea);
+                    //delete layerOwner.layers.analysisArea;
+                }
+                this.featureTypes.forEach(function (layerName) {
+                    if (layerOwner.layers[layerName]) {
+                        this.map.removeLayer(layerOwner.layers[layerName]);
+                        //delete this.layers[layerName];
+                    }
+                }, this);
+
+            },
+
             _loadAoiFeatures: function () {
                 var self = this,
-                    aoi = this.currentAoi();
+                    aoi = this.currentAoi(),
+                    loadPromises = []; //collection of promises resolved on update-end of the three editable layers (point, polyline and polygon), zooms to unioned extent when done
 
-                //remove existing layers from the map
-                if (self.layers.analysisArea) {
-                    self.map.removeLayer(self.layers.analysisArea);
-                    delete self.layers.analysisArea;
-                }
-                self.featureTypes.forEach(function(layerName) {
-                    if (self.layers[layerName]) {
-                        self.map.removeLayer(self.layers[layerName]);
-                        delete self.layers[layerName];
-                    }
-                });
+                this.clearAoiLayers();
 
                 if (!aoi) {
                     return;
@@ -509,28 +684,30 @@ define([
 
                 //get analysisAreas first
                 self.layers.analysisArea = new FeatureLayer(projects.aoiLayers.analysisArea.url, {
-                    id: 'aoi_analysisAreas',
+                    id: 'aoi_analysisArea_' + aoi.id,
                     outFields: '*',
                     definitionExpression: 'FK_PROJECT = ' + aoi.id,
-                    //visible: false,
-                    mode: FeatureLayer.MODE_SNAPSHOT 
+                    //note: can't be invisble, and must be loaded in map for update-end to work.
+                    //visible: false, //not actually loaded in map, so don't need to make invisible
+                    mode: FeatureLayer.MODE_SNAPSHOT
                 });
+
                 on.once(self.layers.analysisArea, 'update-end', function () {
                     //we now have self.layers.analysisArea.graphics as array of the analysis areas as GIS features
                     //get the rest of the features and build relationships
-                    var promises = []; //tracks on-update-end for all layers, zooms to unioned extent when done
+                    self.layers.analysisArea.setVisibility(false);
                     self.featureTypes.forEach(function (layerName) {
                         var url = projects.aoiLayers[layerName].url,
                             deferred = new Deferred(),
                             layer = new FeatureLayer(url,
                                 {
-                                    id: 'aoi_' + layerName,
+                                    id: 'aoi_' + layerName + '_' + aoi.id,
                                     outFields: '*',
                                     definitionExpression: 'FK_PROJECT = ' + aoi.id,
                                     mode: FeatureLayer.MODE_SNAPSHOT //gets all features! TODO or does it? What happens if it's not in the current map's extent?
                                 });
                         self.layers[layerName] = layer;
-                        promises.push(deferred);
+                        loadPromises.push(deferred);
 
                         on.once(layer, 'update-end', function (info) {
                             deferred.resolve(info.target);
@@ -539,17 +716,15 @@ define([
                         self.map.addLayer(layer);
                     });
 
-                    //for debugging only
-                    window.promises = promises;
-
-                    all(promises).then(function (layers) {
+                    //when update-end has fired for all editable layers, we can convert their graphics into feature models
+                    all(loadPromises).then(function (layers) {
                         //extract all features
                         var allGraphics = [],
                             unionOfExtents,
                             featuresKo = [],
                             onLayerClick = function (evt) {
                                 //subscription on currentFeature does this edit.activate(2, evt.graphic);
-                                if (self.currentAoi() && evt.graphic && evt.graphic.feature) {
+                                if (self.currentAoi() && evt.graphic && evt.graphic.feature && !self.drawToolActive()) {
                                     event.stopPropagation(evt);
                                     self.currentAoi().currentFeature(evt.graphic.feature);
                                 }
@@ -578,17 +753,41 @@ define([
                                 }
                             }
                         }
-                        if (unionOfExtents) {
-                            //todo this fails if there's just one point. See zoomToFeature for example, may need to centerAndZoom; in theory even if there's just one point, there will be a buffer of that point in S_AOI, so  might not be an issue
-                            unionOfExtents = unionOfExtents.expand(1.5);
-                            topic.publish('layerLoader/zoomToExtent', unionOfExtents);
-                        }
-
+                        aoi.extent = unionOfExtents; //facilitates zooming to the aoi
+                        aoi.zoomTo = function () {
+                            if (aoi.extent) {
+                                //todo this fails if there's just one point. See zoomToFeature for example, may need to centerAndZoom; in theory even if there's just one point, there will be a buffer of that point in S_AOI, so  might not be an issue
+                                topic.publish('layerLoader/zoomToExtent', aoi.extent.expand(1.5));
+                            } else {
+                                topic.publish('growler/growl', 'Area of Interest has no features');
+                            }
+                        };
+                        aoi.zoomTo();
                         aoi.features(featuresKo);
-
+                        
+                        //tie to S_AOI record only after it's added to features observableArray
+                        aoi.features().forEach(function(feature) {
+                            if (feature.analysisAreaId) {
+                                //do we already have it loaded?
+                                var analysisAreaFeature = self.layers.analysisArea.graphics.find(function (aaf) {
+                                        return aaf.attributes.FK_PROJECT_ALT === feature.analysisAreaId;
+                                    });
+                               if (analysisAreaFeature) {
+                                    var analysisArea = aoi.getAnalysisAreaModel(analysisAreaFeature.attributes.FEATURE_NAME);
+                                    if (analysisArea) {
+                                        self._addFeatureToAnalysisArea(feature, analysisArea);
+                                    } else {
+                                        self._addFeatureToAnalysisArea(feature, analysisAreaFeature.attributes.FEATURE_NAME);
+                                    }
+                                } else {
+                                    //the possibility of it not existing really should only happen during development when things can be all out of sync
+                                    debugger;
+                                }
+                            }
+                        });
                     });
 
-                }, function(e) {
+                }, function (e) {
                     debugger;
                 });
 
@@ -647,16 +846,16 @@ define([
                 //});
 
 
-                    //todo remove layers from other aois
+                //todo remove layers from other aois
 
-                    //sync clinking graphics in map with features
+                //sync clinking graphics in map with features
 
 
 
                 //when all promises to query are resolved, we get the features, knockoutify them, union extents, zoom map, 
             },
 
-            //constructs a feature either from a draw-end event, or when loading from server
+            //constructs a feature either from a draw-complete event, or when loading from server
             //
 
             _constructFeature: function (featureOrEvent) {
@@ -665,7 +864,7 @@ define([
                     type = featureOrEvent.geometry.type,
                     aoi = self.currentAoi(),
                     feature = {
-                        name: (featureOrEvent.attributes ? featureOrEvent.attributes.FEATURE_NAME : 'Feature ' + this._nextFeatureNumber()),
+                        name: (featureOrEvent.attributes ? featureOrEvent.attributes.FEATURE_NAME : 'Feature ' + aoi._nextFeatureNumber()),
                         bufferDistance: featureOrEvent.attributes && featureOrEvent.attributes.BUFFER_DISTANCE ? featureOrEvent.attributes.BUFFER_DISTANCE : self.lastBufferDistance,
                         bufferUnit: featureOrEvent.attributes && featureOrEvent.attributes.BUFFER_DISTANCE_UNITS ? self.bufferUnits[featureOrEvent.attributes.BUFFER_DISTANCE_UNITS.toLowerCase()] : null || self.lastUnit, //TODO cache the last-entered unit
                         analysisAreaId: featureOrEvent.attributes && featureOrEvent.attributes.FK_PROJECT_ALT ? featureOrEvent.attributes.FK_PROJECT_ALT : null,
@@ -677,32 +876,15 @@ define([
 
                 //back-reference, supports clicking map or model
                 feature.graphic.feature = feature;
-                
+
                 if (!featureOrEvent.attributes) {
-                    //result from draw-end event, construct attributes
+                    //result from draw-complete event, construct attributes
                     feature.graphic.attributes = {
                         OBJECTID: null,
                         BUFFER_DISTANCE: self.lastBufferDistance,
                         BUFFER_DISTANCE_UNITS: self.lastUnit.name,
                         FEATURE_NAME: feature.name,
                         FK_PROJECT: aoi.id
-                    }
-                }
-
-                //tie to S_AOI record
-                if (feature.analysisAreaId) {
-                    var analysisArea = { id: feature.analysisAreaId, name: null },
-                        analysisAreaFeature = self.layers.analysisArea.graphics.find(function (aaf) {
-                            return aaf.attributes.FK_PROJECT_ALT === analysisArea.id;
-                        });
-                    if (analysisAreaFeature) {
-                        analysisArea.name = analysisAreaFeature.attributes.FEATURE_NAME;
-                    } else {
-                        analysisArea.name = feature.graphic.attributes.FK_PRJ_ALT; //punt
-                    }
-                    //name might still be null (only during development, really, when our FK constraints are disabled)
-                    if (analysisArea.name) {
-                        self._addFeatureToAnalysisArea(analysisArea);
                     }
                 }
 
@@ -716,7 +898,9 @@ define([
                     }
                     return '-';
                 });
+
                 feature.analysisArea = ko.observable(feature.analysisArea);
+                
                 feature.selected = ko.pureComputed(function () {
                     return self.currentAoi() && self.currentAoi().currentFeature() === feature;
                 });
@@ -742,42 +926,42 @@ define([
                     }
                 };
 
-                feature.bufferDistance.subscribe(function(newValue) {
+                feature.bufferDistance.subscribe(function (newValue) {
                     self.bufferFeature(feature);
                     feature.graphic.attributes.BUFFER_DISTANCE = newValue;
                     if (newValue) {
                         self.lastBufferDistance = newValue;
                     }
                     feature.updateDatabase();
-                },"changed");
+                }, "changed");
 
-                feature.bufferUnit.subscribe(function(newValue) {
+                feature.bufferUnit.subscribe(function (newValue) {
                     self.bufferFeature(feature);
                     feature.graphic.attributes.BUFFER_DISTANCE_UNITS = newValue.name;
                     if (newValue) {
                         self.lastUnit = newValue;
                     }
                     feature.updateDatabase();
-                },"changed");
+                }, "changed");
 
 
-                feature.name.subscribe(function(newValue) {
+                feature.name.subscribe(function (newValue) {
                     feature.graphic.attributes.FEATURE_NAME = newValue;
                     feature.updateDatabase();
-                },'changed');
+                }, 'changed');
 
-                feature.updateDatabase = function() {
+                feature.updateDatabase = function () {
                     var graphic = feature.graphic,
                         layer = graphic._layer;
-                    layer.applyEdits(null, [graphic], null, function(a,u,d) {
+                    layer.applyEdits(null, [graphic], null, function (a, u, d) {
                         //debugger;
-                    }, function(e) {
+                    }, function (e) {
                         debugger;
                     });
                     //todo add to undo stack
                 };
 
-                feature.delete = function () {
+                feature.deleteFeature = function () {
                     //todo confirm?
                     //todo add to undo stack
                     var graphic = feature.graphic,
@@ -825,32 +1009,47 @@ define([
                         analysisArea.features = ko.pureComputed(function () {
                             return ko.utils.arrayFilter(this.currentAoi().features(), function (f) {
                                 return f.analysisArea() === analysisArea;
-                                });
+                            });
                         }, this);
                     }
                 }
                 feature.analysisArea(analysisArea);
-                //todo update buffer
                 return analysisArea;
             },
 
-            listAois: function (orgId, includeExpired) {
+            listAois: function () {
+                var self = this,
+                    deferred = new Deferred(),
+                    orgId = this.filterOption() === 'my' ? null : this.currentAuthority().orgId,
+                    includeExpired = this.includeExpired();
+
                 //todo DWR call to get list of AOIs with basic properties of  id, name, type and description
                 //eslint-disable-next-line no-undef
                 MapDAO.getAreaOfInterestList(orgId, includeExpired, {
                     callback: function (aois) {
-                        debugger;
+                        aois.forEach(function (aoi) {
+                            //add functions
+                            aoi.load = function () {
+                                self.loadAoi(aoi.id);
+                                self.openAoiDialog.hide();
+                            };
+                            aoi.preview = function () {
+                                self.previewAoi(aoi);
+                            };
+                            aoi.previewed = ko.observable(false);
+                        });
+                        self.aois(aois);
+                        deferred.resolve();
                     },
                     errorHandler: function (message, exception) {
                         topic.publish('viewer/handleError', {
                             source: 'AoiEditor.listAois',
                             error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
                         });
-                        if (savedMap.deferred) {
-                            savedMap.deferred.reject(message);
-                        }
+                        deferred.reject(message);
                     }
                 });
+                return deferred;
             },
 
             simplifyGeometry: function (geometry) {
@@ -871,7 +1070,7 @@ define([
                         deferred.reject('Missing geometry, unable to simplify.');
                     }, 100);
                 }
-                return deferred;                            
+                return deferred;
             },
 
             /**
@@ -886,7 +1085,7 @@ define([
                     geometry = feature.graphic ? feature.graphic.geometry : null,
                     buffer = feature.buffer,
                     deferred = new Deferred();
-                
+
                 if (buffer) {
                     self.bufferGraphics.remove(buffer);
                     feature.buffer = null;
@@ -932,32 +1131,40 @@ define([
             },
 
             _knockoutifyAoiEditor: function () {
+                var self = this;
                 /* eslint-disable no-undef */
-                this.aois = ko.observable();
-                this.currentAoi = ko.observable();
-                this.filterAois = ko.observable(false);
 
-                this._nextFeatureNumber = ko.pureComputed(function () {
-                    var n = 0,
-                        rx = /(\d+)/;
-                    if (this.currentAoi()) {
-                        ko.utils.arrayForEach(this.currentAoi().features(), function (f) {
-                            var r = rx.exec(f.name());
-                            if (r) {
-                                //convert string to number
-                                r = parseInt(r[0], 10);
-                                if (r > n) {
-                                    n = r;
-                                }
-                            }
+                this.aois = ko.observableArray();
+                this.currentAoi = ko.observable(); //TODO it might be clearer if we just promoted everything defined under currentAoi, because it's not like we toggle between them or anything
+                this.filterOption = ko.observable('my'); //my or all
+                this.includeExpired = ko.observable(false);
+                this.filteredAois = ko.pureComputed(function () {
+                    var filterOption = this.filterOption(),
+                        currentAuthority = this.currentAuthority();
+
+                    if (this.filterOption() === 'my') {
+                        var orgUserIds = ko.utils.arrayMap(this.authorities, function (a) {
+                            return a.orgUserId;
+                        });
+                        return ko.utils.arrayFilter(this.aois(), function (aoi) {
+                            return orgUserIds.indexOf(aoi.orgUserId) >= 0;
+                            //return authorization.userId === aoi.userId;
+                        });
+                    } else {
+                        return ko.utils.arrayFilter(this.aois(), function (aoi) {
+                            return aoi.orgId === currentAuthority.orgId;
                         });
                     }
-                    n++;
-                    return n;
                 }, this);
+
 
                 //apply knockout bindings
                 ko.applyBindings(this, dom.byId('aoiEditorSidebar'));
+                //apply knockout bindings to dialog
+                ko.applyBindings(this, dom.byId('openAoiDialog'));
+
+                this.filterOption.subscribe(this.listAois, this);
+                this.currentAuthority.subscribe(this.listAois, this);
 
                 /* eslint-enable no-undef */
 
@@ -966,23 +1173,23 @@ define([
             ////mostly not used, 
             _createGraphicLayers: function () {
                 var self = this;
-            //    // points
-            //    this.pointGraphics = new GraphicsLayer({
-            //        id: this.id + '_Points',
-            //        title: this.id + ' Points'
-            //    });
+                //    // points
+                //    this.pointGraphics = new GraphicsLayer({
+                //        id: this.id + '_Points',
+                //        title: this.id + ' Points'
+                //    });
 
-            //    // polyline
-            //    this.polylineGraphics = new GraphicsLayer({
-            //        id: this.id + '_Lines',
-            //        title: this.id + ' Lines'
-            //    });
+                //    // polyline
+                //    this.polylineGraphics = new GraphicsLayer({
+                //        id: this.id + '_Lines',
+                //        title: this.id + ' Lines'
+                //    });
 
-            //    // polygons
-            //    this.polygonGraphics = new GraphicsLayer({
-            //        id: this.id + '_Polygons',
-            //        title: this.id + ' Polygons'
-            //    });
+                //    // polygons
+                //    this.polygonGraphics = new GraphicsLayer({
+                //        id: this.id + '_Polygons',
+                //        title: this.id + ' Polygons'
+                //    });
 
                 // buffers
                 this.bufferGraphics = new GraphicsLayer({
@@ -990,9 +1197,9 @@ define([
                     title: this.id + ' Buffers'
                 });
 
-            //    this.map.addLayer(this.polygonGraphics);
-            //    this.map.addLayer(this.polylineGraphics);
-            //    this.map.addLayer(this.pointGraphics);
+                //    this.map.addLayer(this.polygonGraphics);
+                //    this.map.addLayer(this.polylineGraphics);
+                //    this.map.addLayer(this.pointGraphics);
                 this.map.addLayer(this.bufferGraphics);
 
                 var f = function (evt) {
@@ -1003,46 +1210,46 @@ define([
                     }
                 }
 
-            //    on(this.pointGraphics, 'click', f);
-            //    on(this.polylineGraphics, 'click', f);
-            //    on(this.polygonGraphics, 'click', f);
+                //    on(this.pointGraphics, 'click', f);
+                //    on(this.polylineGraphics, 'click', f);
+                //    on(this.polygonGraphics, 'click', f);
                 on(this.bufferGraphics, 'click', f);
 
-            //    this._createGraphicLayersRenderers();
-            //},
-            //_createGraphicLayersRenderers() {
-            //    //create renderers
-            //    var markerSymbol = new SimpleMarkerSymbol({
-            //        style: 'esriSMSCircle',
-            //        color: [0, 255, 197, 127],
-            //        size: 5,
-            //        outline: {
-            //            color: [0, 255, 197, 255],
-            //            width: 0.75
-            //        }
-            //    });
-            //    var pointRenderer = new SimpleRenderer(markerSymbol);
-            //    this.pointGraphics.setRenderer(pointRenderer);
+                //    this._createGraphicLayersRenderers();
+                //},
+                //_createGraphicLayersRenderers() {
+                //    //create renderers
+                //    var markerSymbol = new SimpleMarkerSymbol({
+                //        style: 'esriSMSCircle',
+                //        color: [0, 255, 197, 127],
+                //        size: 5,
+                //        outline: {
+                //            color: [0, 255, 197, 255],
+                //            width: 0.75
+                //        }
+                //    });
+                //    var pointRenderer = new SimpleRenderer(markerSymbol);
+                //    this.pointGraphics.setRenderer(pointRenderer);
 
-            //    var polylineSymbol = new SimpleLineSymbol({
-            //        style: 'esriSLSSolid ',
-            //        color: [0, 255, 197, 255],
-            //        width: 1
-            //    });
-            //    var polylineRenderer = new SimpleRenderer(polylineSymbol);
-            //    this.polylineGraphics.setRenderer(polylineRenderer);
+                //    var polylineSymbol = new SimpleLineSymbol({
+                //        style: 'esriSLSSolid ',
+                //        color: [0, 255, 197, 255],
+                //        width: 1
+                //    });
+                //    var polylineRenderer = new SimpleRenderer(polylineSymbol);
+                //    this.polylineGraphics.setRenderer(polylineRenderer);
 
-            //    var fillSymbol = new SimpleFillSymbol({
-            //        style: 'esriSFSSolid',
-            //        color: [0, 255, 197, 63],
-            //        outline: {
-            //            style: 'esriSLSSolid ',
-            //            color: [0, 255, 197, 255],
-            //            width: 0.75
-            //        }
-            //    });
-            //    var polygonRenderer = new SimpleRenderer(fillSymbol);
-            //    this.polygonGraphics.setRenderer(polygonRenderer);
+                //    var fillSymbol = new SimpleFillSymbol({
+                //        style: 'esriSFSSolid',
+                //        color: [0, 255, 197, 63],
+                //        outline: {
+                //            style: 'esriSLSSolid ',
+                //            color: [0, 255, 197, 255],
+                //            width: 0.75
+                //        }
+                //    });
+                //    var polygonRenderer = new SimpleRenderer(fillSymbol);
+                //    this.polygonGraphics.setRenderer(polygonRenderer);
 
                 var bufferSymbol = new SimpleFillSymbol({
                     style: 'esriSFSSolid',
@@ -1056,7 +1263,7 @@ define([
                 var bufferRenderer = new SimpleRenderer(bufferSymbol);
                 this.bufferGraphics.setRenderer(bufferRenderer);
 
-            //    //todo separate symbols for "active" feature? If/when switching from using graphics/graphicslayers to storing features, the selectionSymbol would be the way to go.
+                //    //todo separate symbols for "active" feature? If/when switching from using graphics/graphicslayers to storing features, the selectionSymbol would be the way to go.
             }
         });
     });

@@ -388,7 +388,7 @@ define([
                 options: {
                     id: 'aoiP',
                     opacity: 1.0,
-                    visible: true,
+                    visible: false,
                     outFields: ['*'],
                     imageParameters: buildImageParameters({
                         layerIds: [0, 7],
@@ -422,7 +422,7 @@ define([
                 options: {
                     id: 'aoiL',
                     opacity: 1.0,
-                    visible: true,
+                    visible: false,
                     outFields: ['*'],
                     imageParameters: buildImageParameters({
                         layerIds: [0, 7],
@@ -456,7 +456,7 @@ define([
                 options: {
                     id: 'aoiA',
                     opacity: 1.0,
-                    visible: true,
+                    visible: false,
                     outFields: ['*'],
                     imageParameters: buildImageParameters({
                         layerIds: [0, 7],
@@ -472,6 +472,40 @@ define([
                     exclude: false,
                     layerInfo: {
                         title: 'AOI Polygons'
+                    }
+                },
+                layerControlLayerInfos: {
+                    //layerGroup: 'Project Data',
+                    menu: [{
+                        label: 'Open Attribute Table',
+                        topic: 'openTable',
+                        iconClass: 'fa fa-table fa-fw'
+                    }]
+                }
+            },
+            {
+                type: 'feature',
+                url: 'https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/AOIDEV_INPUT/FeatureServer/4',
+                title: 'Area of Interest Analysis Areas',
+                options: {
+                    id: 'aoiAA',
+                    opacity: 1.0,
+                    visible: false,
+                    outFields: ['*'],
+                    imageParameters: buildImageParameters({
+                        layerIds: [0, 7],
+                        layerOption: 'show'
+                    }),
+                    mode: 1
+                },
+                editorLayerInfos: {
+                    exclude: false,
+                    disableGeometryUpdate: false
+                },
+                legendLayerInfos: {
+                    exclude: false,
+                    layerInfo: {
+                        title: 'AOI Analysis Areas'
                     }
                 },
                 layerControlLayerInfos: {
