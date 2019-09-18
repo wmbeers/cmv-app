@@ -193,7 +193,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             }
         ],
         getProjectTypeById: function (id) {
-            return ko.utils.arrayFirst(this.projectTypes, function (pt) {
+            return this.projectTypes.find(function (pt) {
                 return pt.id === id;
             });
         },
@@ -227,7 +227,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
 
         clearAoiPreview: function () {
             var self = this;
-            ko.utils.arrayForEach(this.aois(), function (a) {
+            this.aois().forEach(function (a) {
                 if (a.layers) {
                     self.clearAoiLayers(a);
                 }
@@ -282,7 +282,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
 
             all(promises).then(function (extentReplies) {
                 //union extents, but only those with actual extents
-                var unionOfExtents;
+                var unionOfExtents = null;
                 for (var i = 0; i < extentReplies.length; i++) {
                     var extentReply = extentReplies[i];
                     if (extentReply.count > 0) {
@@ -312,6 +312,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
 
             this.clearAoiPreview();
 
+            //eslint-disable-next-line no-undef
             MapDAO.getAoiModel(id, {
                 callback: function (aoi) {
                     if (aoi) {
@@ -337,18 +338,6 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
         },
 
         lastEditAt: null, //tracks last time an edit was made, used for timeout-based updating of buffers, starting immediately after draw-complete, or 3 seconds after vertext-drag-end
-
-        _constructFeatureLayer: function (layerId, aoiId) {
-            var layer = new FeatureLayer('https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/AOIDEV_INPUT/FeatureServer/' + layerId, {
-                opacity: 0.75,
-                mode: FeatureLayer.MODE_ONDEMAND,
-                infoTemplate: new InfoTemplate(null, '${*}'),
-                id: 'aoi_' + aoiId + '_' + layerId,
-                definitionQuery: '1=1' //TODO
-            });
-            return this.map.addLayer(layer);
-
-        },
 
         postCreate: function () {
             this.inherited(arguments);
@@ -382,9 +371,11 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             this.edit = new Edit(this.map);
 
             //customizing the draw toolbar so the UI can remind user what they're doing, and have ability to cancel
+            /*eslint-disable no-undef*/
             self.drawToolGeometryType = ko.observable(null); //independent of draw._geometryType, but we keep it in sync
 
             self.drawMode = ko.observable('draw'); //either 'draw' or 'split', controls what happens in draw-complete
+            /*eslint-enable no-undef*/
 
             //user clicks the Point, Line, Freehand Line, Polygon or Freehand Polygon digitize button
             self.activateDrawTool = function (geometryType) {
@@ -477,6 +468,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                     layer = geometry ? self.layers[geometry.type] : null; //gets the pointer to the layer containing the feature being split, not the polyline used to split it
 
                     if (geometry && cutter) {
+                        //eslint-disable-next-line no-undef
                         esriConfig.defaults.geometryService.cut([geometry], cutter,
                             function (result) {
                                 //for our purposes, we're only cutting one geometry object at a time, so we can ignore the cutIndexes property of result
@@ -1170,12 +1162,13 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             }
             if (typeof analysisArea === 'string') {
                 //first check to see if it exists
-                var existingGroup = ko.utils.arrayFirst(this.currentAoi().analysisAreas(), function (ag) {
+                var existingGroup = this.currentAoi().analysisAreas().find(function (ag) {
                     return ag.name() === analysisArea;
                 });
                 if (existingGroup) {
                     analysisArea = existingGroup;
                 } else {
+                    /*eslint-disable no-undef*/
                     analysisArea = {
                         name: ko.observable(analysisArea), //observable so that user can rename it
                         buffer: null //doesn't need to be observable
@@ -1185,6 +1178,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                             return f.analysisArea() === analysisArea;
                         });
                     }, this);
+                    /*eslint-enable no-undef*/
                 }
             }
             feature.analysisArea(analysisArea);
@@ -1211,10 +1205,11 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                             self.loadAoi(aoi.id);
                             self.openAoiDialog.hide();
                         };
+                        //todo fix or dekruft aoi preview
                         aoi.preview = function () {
                             self.previewAoi(aoi);
                         };
-                        aoi.previewed = ko.observable(false);
+                        aoi.previewed = ko.observable(false); //eslint-disable-line no-undef
                     });
                     self.aois(aois);
                     deferred.resolve();
@@ -1231,10 +1226,10 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
         },
 
         simplifyGeometry: function (geometry) {
-            var deferred;
+            var deferred = null;
             if (geometry) {
                 if (geometry.type === 'polygon') {
-                    deferred = esriConfig.defaults.geometryService.simplify([geometry]);
+                    deferred = esriConfig.defaults.geometryService.simplify([geometry]); //eslint-disable-line no-undef
                 } else {
                     //todo do we need to simplify polylines?
                     deferred = new Deferred();
@@ -1281,6 +1276,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                         params.unit = feature.bufferUnit().id;
                         params.geometries = simplifiedGeometries; //We're only doing one at a time, but buffer expects an array. 
 
+                        //eslint-disable-next-line no-undef
                         esriConfig.defaults.geometryService.buffer(params,
                             function (bufferedGeometries) {
                                 //we don't really need forEach here, we just have one...for now
