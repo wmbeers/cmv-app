@@ -1,5 +1,16 @@
 <div>
     <div id="aoiEditorSidebar">
+        <script type="text/html" id="geometry-type-icon">
+            <!--ko if: type==='point'-->
+            <svg overflow="hidden" width="25" height="25" style="touch-action: none;"><defs></defs><circle fill="rgb(34, 171, 0)" fill-opacity="1" stroke="rgb(0, 0, 0)" stroke-opacity="1" stroke-width="1.3333333333333333" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" cx="0" cy="0" r="2.6666666666666665" fill-rule="evenodd" stroke-dasharray="none" dojoGfxStrokeStyle="solid" transform="matrix(1.00000000,0.00000000,0.00000000,1.00000000,15.00000000,15.00000000)"></circle></svg>
+            <!-- /ko -->
+            <!--ko if: type==='polyline'-->
+            <svg overflow="hidden" width="25" height="25" style="touch-action: none;"><defs></defs><path fill="none" fill-opacity="0" stroke="rgb(33, 0, 130)" stroke-opacity="1" stroke-width="1.3333333333333333" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" path="M -7,0 L 7,0 E" d="M-7 0L 7 0" stroke-dasharray="none" dojoGfxStrokeStyle="solid" transform="matrix(1.00000000,0.00000000,0.00000000,1.00000000,15.00000000,15.00000000)"></path></svg>
+            <!-- /ko -->
+            <!--ko if: type==='polygon'-->
+            <svg overflow="hidden" width="25" height="25" style="touch-action: none;"><defs></defs><path fill="rgb(255, 255, 115)" fill-opacity="1" stroke="rgb(110, 110, 110)" stroke-opacity="1" stroke-width="0.5333333333333333" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" path="M -7,-7 L 7,0 L 7,7 L -7,7 L -7,-7 Z" d="M-7-7L 7 0L 7 7L-7 7L-7-7Z" fill-rule="evenodd" stroke-dasharray="none" dojoGfxStrokeStyle="solid" transform="matrix(1.00000000,0.00000000,0.00000000,1.00000000,15.00000000,15.00000000)"></path></svg>
+            <!-- /ko -->
+        </script>
         <div data-bind="visible: currentAoi() == null">
             <button data-dojo-type="dijit/form/Button"
                     data-dojo-attach-event="onClick:showOpenAoiDialog"
@@ -16,19 +27,21 @@
 
         <div data-bind="with: currentAoi">
             <div>
-                <button data-bind="click: unload" style="float:right">X</button>
+                <span data-bind="click: unload" style="float:right" class="fa fa-window-close"></span>
             </div>
 
             <div data-bind="visible: mode()=='editName'">
                 <label for="aoiName">Name</label>
-                <input id="aoiName" type="text" data-bind="value: name" style="width:100%" />   
+                <input id="aoiName" type="text" data-bind="value: name" style="width:100%" />
+                <label for="aoiType">Type</label>
+                <select id="aoiType" data-bind="options: $root.projectTypes, value: projectTypeId, optionsValue: 'id', optionsText: 'name'" style="width:100%"></select>
                 <label for="aoiDescription">Description</label>
                 <textarea id="aoiDescription" data-bind="value: description" style="width:100%"></textarea>
                 <label for="expirationDate">Keep Until</label>
                 <input id="expirationDateTextBox" data-bind="jqDatepicker: expirationDate" data-dojo-attach-point="expirationDateTextBox" class="dijitTextBox" style="width:100%" />
                 <span data-bind="visible: id==-1 && $root.authorities.length > 1">
                     <label for="org">Organization</label>
-                    <select data-bind="options: $root.authorities, value: $root.currentAuthority, optionsText: 'orgName'"></select>
+                    <select data-bind="options: $root.authorities, value: $root.currentAuthority, optionsText: 'orgName'" style="width:100%"></select>
                 </span>
 
                 <br />
@@ -43,55 +56,83 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th colspan="2">Name</th>
                             <th colspan="2">Buffer</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody data-bind="foreach: features">
                         <!-- ko if: selected -->
                         <tr>
+                            <td data-bind="template: {name: 'geometry-type-icon', data: geometry}"></td>
                             <td>
-                                <input type="text" data-bind="value: name" />
+                                <input type="text" data-bind="value: name" style="width: 95px" />
                             </td>
-                            <td><input type="number" data-bind="value: bufferDistance" style="width: 4em" /></td>
+                            <td><input type="number" data-bind="value: bufferDistance" style="width: 3em" /></td>
                             <td><select data-bind="options: $root.bufferUnitArray, optionsText: 'name', value: bufferUnit" style="width: 6em" /></td>
-                            <td><button data-bind="click: deleteFeature">Delete</button></td>
                         </tr>
                         <!-- /ko -->
                         <!-- ko ifnot: selected -->
                         <tr data-bind="click: select">
+                            <td data-bind="template: {name: 'geometry-type-icon', data: geometry}"></td>
                             <td data-bind="text: name"></td>
                             <td colspan="2" data-bind="text: bufferText"></td>
-                            <td></td>
                         </tr>
-                        <!-- /ko --> 
+                        <!-- /ko -->
                     </tbody>
                 </table>
-                <span data-bind="text: $root.drawToolGeometryType"></span>
-                <button data-bind="click: function() { $root.activateDrawTool('point'); }">
-                    Point
-                </button>
 
-                <button data-bind="click: function() { $root.activateDrawTool('polyline'); }">
-                    Line
-                </button>
+                <fieldset data-bind="visible: !$root.drawToolActive()">
+                    <!-- Todo move these to a dialog -->
+                    <legend>Add New</legend>
+                    <button data-bind="click: function() { $root.activateDrawTool('point'); }">
+                        Point
+                    </button>
 
-                <button data-bind="click: function() { $root.activateDrawTool('freehandpolyline'); }">
-                    FH Line
-                </button>
+                    <button data-bind="click: function() { $root.activateDrawTool('polyline'); }">
+                        Line
+                    </button>
 
-                <button data-bind="click: function() { $root.activateDrawTool('polygon'); }">
-                    Polygon
-                </button>
+                    <button data-bind="click: function() { $root.activateDrawTool('freehandpolyline'); }">
+                        FH Line
+                    </button>
 
-                <button data-bind="click: function() { $root.activateDrawTool('freehandpolygon'); }">
-                    FH Polygon
-                </button>
+                    <button data-bind="click: function() { $root.activateDrawTool('polygon'); }">
+                        Polygon
+                    </button>
 
-                <button data-bind="click: $root.deactivateDrawTool, visible: $root.drawToolActive">
-                    Cancel
-                </button>
+                    <button data-bind="click: function() { $root.activateDrawTool('freehandpolygon'); }">
+                        FH Polygon
+                    </button>
+                    <!--End part going to dialog-->
+
+                </fieldset>
+
+                <div data-bind="visible:  $root.drawToolActive()">
+                    <button data-bind="click: $root.deactivateDrawTool" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-cut fa-fw'">
+                        <span data-bind="visible: $root.drawMode() === 'draw'">
+                            Cancel Draw
+                        </span>
+
+                        <span data-bind="visible: $root.drawMode() === 'split'">
+                            Cancel Split
+                        </span>
+                    </button>
+                </div>
+
+                <div data-bind="with: currentFeature">
+                    <fieldset>
+                        <legend>Editing <span data-bind="text: name"></span></legend>
+                        <div data-bind="visible: canSplit">
+                            <!-- visible binding on a dojo button renders an empty button frame, so have to wrap it -->
+                            <button data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-cut fa-fw'" data-bind="click: function() { $root.activateSplitTool(); }">
+                                Split
+                            </button>
+                        </div>
+                        <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-trash fa-fw'" data-bind="click: deleteFeature">
+                            Delete
+                        </div>
+                    </fieldset>
+                </div>
 
                 <br />
 

@@ -813,18 +813,18 @@ define([
                 definitionExpression = 'FK_PROJECT = ' + aoi.id,
                 deferred = new Deferred(),
                 promises = [],
-                layerNames = ['analysisArea','polygon','polyline','point'];
+                layerNames = ['analysisArea', 'polygon', 'polyline', 'point'];
 
             //mixin properties from projects.aoiLayers into new objects, load them in the map
             layerNames.forEach(function (layerName) {
                 var layerDef = {
-                    id: 'aoi_' + aoi.id + '_' + layerName,
-                    url: projects.aoiLayers[layerName].url,
-                    name: (aoi.name || 'AOI ' + aoi.id) + ' ' + projects.aoiLayers[layerName].name,
-                    type: 'feature'
-                };
-                layer = self.constructLayer(layerDef, definitionExpression);
-                var promise = self.addLayer(layer, false, true);
+                        id: 'aoi_' + aoi.id + '_' + layerName,
+                        url: projects.aoiLayers[layerName].url,
+                        name: (aoi.name || 'AOI ' + aoi.id) + ' ' + projects.aoiLayers[layerName].name,
+                        type: 'feature'
+                    },
+                    layer = self.constructLayer(layerDef, definitionExpression),
+                    promise = self.addLayer(layer, false, true);
 
                 promises.push(promise);
             });
@@ -835,14 +835,14 @@ define([
                     q = new Query({
                         where: '1=1' //definitionExpression doesn't need to be re-applied
                     });
-                layers.forEach(function(layer) {
+                layers.forEach(function (layer) {
                     queryExtentPromises.push(layer.queryExtent(q));
                 });
 
                 all(queryExtentPromises).then(function (extentReplies) {
                     //union extents, but only those with actual extents
-                    var unionOfExtents;
-                    for (var i=0; i<extentReplies.length; i++) {
+                    var unionOfExtents = null;
+                    for (var i = 0; i < extentReplies.length; i++) {
                         var extentReply = extentReplies[i];
                         if (extentReply.count > 0) {
                             if (unionOfExtents) {
@@ -854,7 +854,7 @@ define([
                     }
                     if (unionOfExtents) {
                         unionOfExtents = unionOfExtents.expand(1.5);
-                        self.zoomToExtent(unionOfExtents).then(function() {
+                        self.zoomToExtent(unionOfExtents).then(function () {
                             deferred.resolve(layers);
                         });
                     } else {
@@ -864,10 +864,10 @@ define([
                 });
             });
 
-            deferred.then(function(layers) {
+            deferred.then(function (layers) {
                 topic.publish('layerLoader/layersChanged');
                 topic.publish('layerLoader/aoiAdded', layers);
-            }, function(err) {
+            }, function (err) {
                 topic.publish('layerLoader/addAoiFailed', err);
             });
 
@@ -1400,7 +1400,7 @@ define([
             var point = new Point(coordinates);
 
             zoomLevel = zoomLevel || this.map.getMaxZoom() - 4;
-            if (zoomLevel < app.map.getMinZoom() || zoomLevel > app.map.getMaxZoom()) {
+            if (zoomLevel < this.map.getMinZoom() || zoomLevel > this.map.getMaxZoom()) {
                 zoomLevel = null;
             }
 
