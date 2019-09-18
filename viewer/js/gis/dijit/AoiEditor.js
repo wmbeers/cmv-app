@@ -84,29 +84,113 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             {id: 9036, name: 'Kilometers', abbreviation: 'KM'},
         ],*/
         bufferUnits: {
-            feet: {id: 9002, name: 'Feet', abbreviation: 'ft'}, //for simplicity of converting from strings
-            miles: {id: 9093, name: 'Miles', abbreviation: 'mi'},
-            meters: {id: 9001, name: 'Meters', abbreviation: 'm'},
-            kilometers: {id: 9036, name: 'Kilometers', abbreviation: 'km'}
+            feet: {
+                id: 9002,
+                name: 'Feet',
+                abbreviation: 'ft'
+            }, 
+            miles: {
+                id: 9093,
+                name: 'Miles',
+                abbreviation: 'mi'
+            },
+            meters: {
+                id: 9001,
+                name: 'Meters',
+                abbreviation: 'm'
+            },
+            kilometers: {
+                id: 9036,
+                name: 'Kilometers',
+                abbreviation: 'km'
+            }
         },
         projectTypes: [
-            {id: 8, abbreviation: 'AOI', name: 'Area of Interest'},
-            {id: 15, abbreviation: 'BRIDGE', name: 'Bridge'},
-            {id: 4, abbreviation: 'CF', name: 'Cost Feasible'},
-            {id: 9, abbreviation: 'CORR', name: 'Corridor Study'},
-            {id: 12, abbreviation: 'ERT', name: 'Emergency Response Tool'},
-            {id: 16, abbreviation: 'FREIGHT', name: 'Freight'},
-            {id: 6, abbreviation: 'LRTP', name: 'Long Range Transportation Plan'},
-            {id: 13, abbreviation: 'MCORES', name: 'Multi-use Corridors of Regional Economic Significance'},
-            {id: 1, abbreviation: 'NDS', name: 'Needs'},
-            {id: 2, abbreviation: 'NFE', name: 'Not for ETAT'},
-            {id: 7, abbreviation: 'NMSA', name: 'Non Major State Action'},
-            {id: 11, abbreviation: 'OAOI', name: 'Other Area of Interest'},
-            {id: 17, abbreviation: 'RAIL', name: 'Rail'},
-            {id: 10, abbreviation: 'SIS', name: 'SIS Designation Change'},
-            {id: 3, abbreviation: 'TICE', name: 'Type I CE'},
-            {id: 14, abbreviation: 'TRANSIT', name: 'Transit'},
-            {id: 5, abbreviation: 'UCFP', name: 'Ultimate Cost Feasible Project'}
+            {
+                id: 8,
+                abbreviation: 'AOI',
+                name: 'Area of Interest'
+            },
+            {
+                id: 15,
+                abbreviation: 'BRIDGE',
+                name: 'Bridge'
+            },
+            {
+                id: 4,
+                abbreviation: 'CF',
+                name: 'Cost Feasible'
+            },
+            {
+                id: 9,
+                abbreviation: 'CORR',
+                name: 'Corridor Study'
+            },
+            {
+                id: 12,
+                abbreviation: 'ERT',
+                name: 'Emergency Response Tool'
+            },
+            {
+                id: 16,
+                abbreviation: 'FREIGHT',
+                name: 'Freight'
+            },
+            {
+                id: 6,
+                abbreviation: 'LRTP',
+                name: 'Long Range Transportation Plan'
+            },
+            {
+                id: 13,
+                abbreviation: 'MCORES',
+                name: 'Multi-use Corridors of Regional Economic Significance'
+            },
+            {
+                id: 1,
+                abbreviation: 'NDS',
+                name: 'Needs'
+            },
+            {
+                id: 2,
+                abbreviation: 'NFE',
+                name: 'Not for ETAT'
+            },
+            {
+                id: 7,
+                abbreviation: 'NMSA',
+                name: 'Non Major State Action'
+            },
+            {
+                id: 11,
+                abbreviation: 'OAOI',
+                name: 'Other Area of Interest'
+            },
+            {
+                id: 17,
+                abbreviation: 'RAIL',
+                name: 'Rail'
+            },
+            {
+                id: 10,
+                abbreviation: 'SIS',
+                name: 'SIS Designation Change'
+            },
+            {
+                id: 3,
+                abbreviation: 'TICE',
+                name: 'Type I CE'
+            },
+            {
+                id: 14,
+                abbreviation: 'TRANSIT',
+                name: 'Transit'
+            },
+            {
+                id: 5,
+                abbreviation: 'UCFP',
+                name: 'Ultimate Cost Feasible Project'
+            }
         ],
         getProjectTypeById: function (id) {
             return ko.utils.arrayFirst(this.projectTypes, function (pt) {
@@ -154,6 +238,8 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
         unloadCurrentAoi: function () {
             this.clearAoiLayers();
             this.bufferGraphics.clear();
+            this.deactivateDrawTool();
+            this.edit.deactivate();
             this.currentAoi(null);
         },
 
@@ -177,7 +263,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                 return;
             }
             aoi.layers = {};
-            
+
 
             this.featureTypes.forEach(function (layerName) {
                 var url = projects.aoiLayers[layerName].url,
@@ -346,6 +432,8 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             self.drawToolActive = ko.pureComputed(function () { //eslint-disable-line no-undef
                 return self.drawToolGeometryType() !== null;
             });
+
+
             //event handler for draw complete, creates a new feature when user finishes digitizing, or splits a feature when user finishes drawing a line for splitting
             this.draw.on('draw-complete', function (event) {
                 var aoi = self.currentAoi(),
@@ -357,7 +445,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                 if (!aoi) {
                     return;
                 }
-                    
+
                 if (self.drawMode() === 'draw') {
                     //construct a feature
                     var f = self._constructFeature(event);
@@ -387,9 +475,9 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                         //the event.geometry is the cutter
                         cutter = event.geometry;
                     layer = geometry ? self.layers[geometry.type] : null; //gets the pointer to the layer containing the feature being split, not the polyline used to split it
-    
+
                     if (geometry && cutter) {
-                        esriConfig.defaults.geometryService.cut([geometry], cutter, 
+                        esriConfig.defaults.geometryService.cut([geometry], cutter,
                             function (result) {
                                 //for our purposes, we're only cutting one geometry object at a time, so we can ignore the cutIndexes property of result
                                 //but for reference, because it's poorly documented, the cutIndexes is an array that indicates which of the geometries
@@ -427,11 +515,10 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                                         });
                                         //todo add to undo stack
 
-                                    }, function (e) {
-                                        console.log(e);
+                                    }, function () {
                                         //todo
                                     });
-                                        
+
                                 }
                             },
                             function () {
@@ -444,7 +531,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             });
 
             //event handler function for vertext move and delete
-            var vertexChanged = function (evt) {
+            this.vertexChanged = function (evt) {
                 var delay = 2000, //number of seconds to give the user before we automatically rebuffer
                     graphic = evt.graphic,
                     feature = graphic.feature;
@@ -461,48 +548,50 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                         self.bufferFeature(feature);
                         //save to database
                         feature.updateDatabase();
+
                     }
                 }, delay);
             };
 
-            var deleteBuffer = function (evt) {
-                //remove the buffer graphic
-                var buffer = evt.graphic.feature.buffer;
-                if (buffer) {
-                    self.bufferGraphics.remove(buffer);
-                }
-            };
-
-            this.edit.on('vertex-move-stop', vertexChanged, this);
+            this.edit.on('vertex-move-stop', this.vertexChanged, this);
             this.edit.on('vertex-delete', function (evt) {
-                deleteBuffer(evt);
+                //hide buffers
+                self.bufferGraphics.setVisibility(false);
+                //update last changed
                 self.lastEditAt = new Date();
-                vertexChanged(evt);
-            }, this);
-            this.edit.on('vertex-first-move', function (evt) {
+                //update feature and buffer
+                self.vertexChanged(evt);
+            });
+            this.edit.on('vertex-first-move', function () {
+                //hide buffers
+                self.bufferGraphics.setVisibility(false);
+                //update last changed
                 self.lastEditAt = new Date();
+                //update feature and buffer
                 self.vertexMoving = true;
-                deleteBuffer(evt);
-            }, this);
+            });
             this.edit.on('vertex-move', function () {
+                //update last changed
                 self.lastEditAt = new Date();
                 self.vertexMoving = true;
-            }, this);
-            this.edit.on('graphic-move-start', function (evt) {
-                deleteBuffer(evt);
-            }, this);
+            });
+            this.edit.on('graphic-move-start', function () {
+                //hide buffers
+                self.bufferGraphics.setVisibility(false);
+            });
             this.edit.on('graphic-move-stop', function (evt) {
                 self.bufferFeature(evt.graphic.feature);
                 //save to database
                 evt.graphic.feature.updateDatabase();
-            }, this);
-                
+            });
+
             //TODO we can also support move and scaling, etc.
         },
 
-        _constructAoiModel: function (aoi) {
+        //eslint-disable-next-line max-statements
+        _constructAoiModel: function (aoi) { 
             var self = this; //maintains a reference to the root model
-            aoi = aoi || {id: -1 /*signifies new*/, name: null, type: null, expirationDate: null, orgUserId: null, description: null, features: []};
+            aoi = aoi || {id: -1 /*signifies new*/, name: null, projectTypeId: null, expirationDate: null, orgUserId: null, description: null, features: []};
 
             if (!aoi.expirationDate) {
                 //default date is current date + 30 days TODO confirm this
@@ -526,6 +615,8 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             aoi.projectTypeId = ko.observable(aoi.projectTypeId);
             aoi.expirationDate = ko.observable(aoi.expirationDate);
 
+            self._cacheAoiProperties(aoi);
+
             //navigation
             aoi.mode = ko.observable();
 
@@ -541,26 +632,41 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                 self.unloadCurrentAoi();
             };
 
-            aoi.saveAndShowFeatureList = function () {
-                //todo validate name, etc.
-                var aoiModel = {
-                    id: aoi.id,
-                    name: aoi.name(),
-                    description: aoi.description(),
-                    projectTypeId: aoi.projectTypeId(),
-                    expirationDate: aoi.expirationDate(),
-                    orgUserId: self.currentAuthority().orgUserId
-                };
-                MapDAO.saveAoiHeader(aoiModel, {
-                    callback: function (id) {
-                        aoi.id = id;
-                        aoi.showFeatureList();
-                    },
-                    errorHandler: function () {
-                        //todo
-                    }
-                });
+            aoi.saveAoiHeader = function () {
+                //todo validate name, etc. reject deferred if not valid
+                var deferred = new Deferred(),
+                    aoiModel = {
+                        id: aoi.id,
+                        name: aoi.name(),
+                        description: aoi.description(),
+                        projectTypeId: aoi.projectTypeId(),
+                        expirationDate: aoi.expirationDate(),
+                        orgUserId: self.currentAuthority().orgUserId
+                    };
+                //if no changes
+                if (aoiModel.name === aoi.cachedOriginal.name &&
+                    aoiModel.description === aoi.cachedOriginal.description &&
+                    aoiModel.projectTypeId === aoi.cachedOriginal.projectTypeId &&
+                    aoiModel.expirationDate === aoi.cachedOriginal.expirationDate) {
+                    deferred.resolve(false); //indicates no change was necessary, not something we really use
+                } else {
+                    MapDAO.saveAoiHeader(aoiModel, {
+                        callback: function (id) {
+                            aoi.id = id;
+                            deferred.resolve(true);
+                        },
+                        errorHandler: function (err) {
+                            deferred.reject(err);
+                        }
+                    });
+                }
+                return deferred;
+            };
 
+            aoi.saveAndShowFeatureList = function () {
+                aoi.saveAoiHeader().then(function () {
+                    aoi.showFeatureList();
+                });
             };
 
             aoi.showAnalysisOptions = function () {
@@ -702,7 +808,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                 }, function () {
                     //todo!
                 });
-                    
+
                 return deferred;
 
             };
@@ -736,6 +842,19 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
 
             /* eslint-enable no-undef */
             return aoi;
+        },
+
+        _cacheAoiProperties: function (aoi) {
+            //cached header, used to determine if we need to save
+            aoi.cachedOriginal = {
+                name: aoi.name(),
+                description: aoi.description(),
+                projectTypeId: aoi.projectTypeId(),
+                expirationDate: aoi.expirationDate()
+            };
+
+            //todo cached analysis properties
+
         },
 
         clearAoiLayers: function (layerOwner) {
@@ -1030,6 +1149,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                 layer.applyEdits(null, null, [graphic], function () {
                     self.currentAoi().features.remove(feature);
                     self.currentAoi().currentFeature(null); //todo or activate next feature?
+                    self.edit.deactivate();
                 }, function () {
                     //todo
                 });
@@ -1170,6 +1290,8 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                                 graphic.feature = feature; //cross-reference from buffer is to the feature it is a buffer of
                                 feature.buffer = graphic;
                                 self.bufferGraphics.add(graphic);
+                                //show buffers
+                                self.bufferGraphics.setVisibility(true);
                                 deferred.resolve(graphic);
                                 //});
                             },
