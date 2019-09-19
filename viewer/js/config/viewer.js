@@ -548,7 +548,7 @@ define([
                     expanded: true, // || has('phone') ? true : false,
                     allPlaceholder: 'Find address, place, county or district',
                     //enableSourcesMenu: true,
-                    addLayersFromMap: true, //doesn't seem to to anything
+                    addLayersFromMap: false, //doesn't seem to to anything
                     //exactMatch: true,
                     sources: [
                         {
@@ -561,6 +561,15 @@ define([
                                 minScale: 300000,
                                 distance: 50000
                             },
+                            searchExtent: new Extent({
+                                xmin: -87.79,
+                                ymin: 24.38,
+                                xmax: -79.8,
+                                ymax: 31.1,
+                                spatialReference: {
+                                    wkid: 4326
+                                }
+                            }),
                             placeholder: 'Find address or place',
                             highlightSymbol: {
                                 url: 'https://js.arcgis.com/3.27/esri/dijit/Search/images/search-pointer.png',
