@@ -809,6 +809,7 @@ define([
 
         //adds an AOI to the map
         addAoiToMap: function (aoi) {
+            debugger;
             var self = this, //so we don't lose track buried down in callbacks
                 definitionExpression = 'FK_PROJECT = ' + aoi.id,
                 deferred = new Deferred(),

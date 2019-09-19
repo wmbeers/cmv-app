@@ -571,7 +571,7 @@ define([
                                 }
                             }),
                             placeholder: 'Find address or place',
-                            highlightSymbol: {
+                            highlightSymbol: { /*TODO this isn't showing up*/
                                 url: 'https://js.arcgis.com/3.27/esri/dijit/Search/images/search-pointer.png',
                                 width: 36, height: 36, xoffset: 9, yoffset: 18
                             }

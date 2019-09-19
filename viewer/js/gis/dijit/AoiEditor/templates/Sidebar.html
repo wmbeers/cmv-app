@@ -14,14 +14,21 @@
         <div data-bind="visible: currentAoi() == null">
             <button data-dojo-type="dijit/form/Button"
                     data-dojo-attach-event="onClick:showOpenAoiDialog"
-                    data-dojo-attach-point="toggleBTN">
+                    data-dojo-attach-point="showOpenAoiDialogButton">
                 Open
             </button>
 
             <button data-dojo-type="dijit/form/Button"
                     data-dojo-attach-event="onClick:createAoi"
-                    data-dojo-attach-point="toggleBTN">
+                    data-dojo-attach-point="createAoiButton">
                 Create
+            </button>
+
+            <button data-dojo-type="dijit/form/Button"
+                    data-dojo-props="iconClass:'fa fa-map-marker-alt fa-fw'"
+                    data-dojo-attach-point="digitizePointButtonFoo"
+                    data-dojo-attach-event="onClick:digitizePoint">
+                Draw Point on Map
             </button>
         </div>
 

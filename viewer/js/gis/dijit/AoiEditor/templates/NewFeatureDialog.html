@@ -1,0 +1,38 @@
+﻿<div class="newFeatureDijit" id="newFeatureDijit">
+    <script>console.log('newFeatureDijit');</script>
+    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="containerNode" class="newFeatureContainer">
+        <div class="newFeatureNode">
+            <div data-dojo-type="dijit/layout/TabContainer" class="newFeatureTabContainer">
+                <div data-dojo-type="dijit/layout/ContentPane" title="New Point">
+                    <button data-dojo-type="dijit/form/Button" 
+                            data-dojo-props="iconClass:'fa fa-map-marker-alt fa-fw'" 
+                            data-dojo-attach-point="digitizePointButton"
+                            data-bind="click:digitizePoint">
+                            <!--data-dojo-attach-event="onClick:digitizePoint" does not work -->
+                        Draw Point on Map
+                    </button>
+                    <hr />
+                    extract roadway [      ] mp [      ]
+                    <hr />
+                    <label for="addressToPoint">Address</label>
+                    <input type="text" data-dojo-type="dijit/form/TextBox" data-dojo-attach-point="addressToPoint" id="addressToPoint" />
+                    <label for="latLong">Lat/Long</label>
+                    <input type="text" data-dojo-type="dijit/form/TextBox" data-dojo-attach-point="latLong" id="latLong" />
+                    <button type="button" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-map-marker-alt fa-fw'">
+                        Go
+                    </button>
+
+
+                </div>
+                <div data-dojo-type="dijit/layout/ContentPane" title="New Line">
+                    polyline button | freehand polyline button
+                    <hr />
+                    extract roadway [      ] bmp [      ] emp [       ]
+                </div>
+                <div data-dojo-type="dijit/layout/ContentPane" title="new Polygon">
+                    polygon button | freehand polygon button
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

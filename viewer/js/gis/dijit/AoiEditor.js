@@ -23,6 +23,7 @@ define([
 
     'dojo/text!./AoiEditor/templates/Sidebar.html', // template for the widget in left panel, and some dialogs
     'dojo/text!./AoiEditor/templates/Dialog.html', // template for the open AOI dialog
+    'dojo/text!./AoiEditor/templates/NewFeatureDialog.html', // template for the new feature dialog
 
     'esri/dijit/editing/Add',
     'esri/dijit/editing/Delete',
@@ -45,6 +46,7 @@ define([
 
     'esri/tasks/BufferParameters',
     'esri/tasks/query',
+    'esri/tasks/locator',
 
     './js/config/projects.js', //TODO put in app.js paths?
 
@@ -54,12 +56,15 @@ define([
     'dijit/form/ValidationTextBox',
     'dijit/form/TextBox',
     'dijit/form/Select',
+    'dijit/layout/TabContainer',
+    'dijit/layout/ContentPane',
 
-    'xstyle/css!./LayerLoader/css/layerLoader.css'
+    'xstyle/css!./AoiEditor/css/AoiEditor.css'
 ],
 function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, koBindings,
     _WidgetsInTemplateMixin, Dialog, ConfirmDialog, request, lang, on, query, dom, //eslint-disable-line no-unused-vars
     domClass, html, topic, Memory, Deferred, all, AoiEditorSidebarTemplate, OpenAoiDialogTemplate, //eslint-disable-line no-unused-vars
+    NewFeatureDialogTemplate,
     Add, Delete, Update, Draw, Edit, Extent, FeatureLayer, GraphicsLayer, Graphic, SimpleRenderer,
     SimpleMarkerSymbol,
     SimpleLineSymbol,
@@ -67,6 +72,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
     Color,
     BufferParameters,
     Query,
+    Locator,
     projects
 ) { //eslint-disable-line no-unused-vars
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
@@ -88,7 +94,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                 id: 9002,
                 name: 'Feet',
                 abbreviation: 'ft'
-            }, 
+            },
             miles: {
                 id: 9093,
                 name: 'Miles',
@@ -197,6 +203,21 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                 return pt.id === id;
             });
         },
+        selectionSymbols: {
+            point:
+                new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_CIRCLE, 12, 
+                    new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
+                        new Color([0, 168, 132, 1]), 2),
+                    new Color([0, 255, 197, 0.5])),
+            polyline:
+                new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
+                    new Color([0, 255, 197, 1]), 2),
+            polygon:
+                new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, 
+                    new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
+                        new Color([0, 168, 132, 1]), 2),
+                    new Color([0, 255, 197, 0.5]))
+        },
         //bufferUnitArray: [bufferUnits.feet, bufferUnits.miles, bufferUnits.meters, bufferUnits.kilometers], //for binding to drop-down
         //lastUnit: bufferUnits.feet,
         lastBufferDistance: 100,
@@ -217,6 +238,16 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             this.listAois().then(function () {
                 self.openAoiDialog.show();
             });
+        },
+
+        newFeatureDialog: new Dialog({
+            id: 'aoiEditor_new_feature_dialog',
+            title: 'New Feature',
+            content: NewFeatureDialogTemplate
+        }),
+
+        showNewFeatureDialog: function () {
+            self.newFeatureDialog.show();
         },
 
         createAoi: function () {
@@ -365,10 +396,53 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             this._knockoutifyAoiEditor();
         },
 
+        getLocatorSuggestions: function (searchTerm) {
+            var locator = new Locator('https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer');
+            return locator.suggestLocations({
+                text: searchTerm,
+                location: this.map.extent.getCenter().normalize(),
+                distance: 50000,
+                searchExtent: new Extent({
+                    xmin: -87.79,
+                    ymin: 24.38,
+                    xmax: -79.8,
+                    ymax: 31.1,
+                    spatialReference: {
+                        wkid: 4326
+                    }
+                })
+            });
+        },
+
+        getLocatorAddressToLocations: function (address) {
+            var locator = new Locator('https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer');
+            return locator.addressToLocations({
+                address: {
+                    SingleLine: address //Note: if we switch to a different server a different format for the address may be needed
+                },
+                countryCode: 'US',
+                searchExtent: new Extent({
+                    xmin: -87.79,
+                    ymin: 24.38,
+                    xmax: -79.8,
+                    ymax: 31.1,
+                    spatialReference: {
+                        wkid: 4326
+                    }
+                })
+            });
+        },
+
+        digitizePoint: function () {
+            this.newFeatureDialog.hide();
+            this.activateDrawTool('point');
+        },
+
         _setupEditor: function () {
             var self = this; //closure so we can access this.draw etc.
             this.draw = new Draw(this.map); //draw toolbar, not shown in UI, but utilized by our UI
             this.edit = new Edit(this.map);
+
 
             //customizing the draw toolbar so the UI can remind user what they're doing, and have ability to cancel
             /*eslint-disable no-undef*/
@@ -377,7 +451,6 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             self.drawMode = ko.observable('draw'); //either 'draw' or 'split', controls what happens in draw-complete
             /*eslint-enable no-undef*/
 
-            //user clicks the Point, Line, Freehand Line, Polygon or Freehand Polygon digitize button
             self.activateDrawTool = function (geometryType) {
                 //put us in draw-new-feature mode.
                 self.drawMode('draw');
@@ -693,11 +766,20 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                 return analysisAreas;
             });
             aoi.currentFeature.subscribe(function (f) {
+                self.layers.point.clearSelection();
+                self.layers.polyline.clearSelection();
+                self.layers.polygon.clearSelection();
                 if (f && f.graphic) {
                     if (f.type === 'polygon' || f.type === 'polyline') {
                         self.edit.activate(2, f.graphic);
                     } else {
                         self.edit.activate(1, f.graphic);
+                    }
+                    //select it
+                    if (f.graphic.attributes && f.graphic.attributes.OBJECTID) {
+                        var query = new Query();
+                        query.objectIds = [f.graphic.attributes.OBJECTID];
+                        self.layers[f.type].selectFeatures(query); //highlights it
                     }
                 }
             });
@@ -924,6 +1006,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                                 definitionExpression: 'FK_PROJECT = ' + aoi.id,
                                 mode: FeatureLayer.MODE_SNAPSHOT //gets all features! TODO or does it? What happens if it's not in the current map's extent?
                             });
+                    layer.setSelectionSymbol(self.selectionSymbols[layerName]);
                     self.layers[layerName] = layer;
                     loadPromises.push(deferred);
 
@@ -1309,10 +1392,10 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
         _knockoutifyAoiEditor: function () {
             /* eslint-disable no-undef */
 
-            this.aois = ko.observableArray();
+            this.aois = ko.observableArray(); //the list of aois loaded into the open-aoi dialog, not the full aoi model.
             this.currentAoi = ko.observable(); //TODO it might be clearer if we just promoted everything defined under currentAoi, because it's not like we toggle between them or anything
             this.filterOption = ko.observable('my'); //my or all
-            this.includeExpired = ko.observable(false);
+            this.includeExpired = ko.observable(false); //if true, expired AOIs are listed; any other value or null only non-expired AOIs are shown.
             this.filteredAois = ko.pureComputed(function () {
                 var filterOption = this.filterOption(),
                     currentAuthority = this.currentAuthority();
@@ -1334,8 +1417,10 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
 
             //apply knockout bindings
             ko.applyBindings(this, dom.byId('aoiEditorSidebar'));
-            //apply knockout bindings to dialog
+            //apply knockout bindings to open AOI dialog
             ko.applyBindings(this, dom.byId('openAoiDialog'));
+            //apply knockout bindings to new feature dialog
+            ko.applyBindings(this, dom.byId('newFeatureDijit'));
 
             this.filterOption.subscribe(this.listAois, this);
             this.currentAuthority.subscribe(this.listAois, this);
