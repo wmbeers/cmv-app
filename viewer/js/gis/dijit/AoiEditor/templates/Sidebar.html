@@ -11,30 +11,25 @@
             <svg overflow="hidden" width="25" height="25" style="touch-action: none;"><defs></defs><path fill="rgb(255, 255, 115)" fill-opacity="1" stroke="rgb(110, 110, 110)" stroke-opacity="1" stroke-width="0.5333333333333333" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" path="M -7,-7 L 7,0 L 7,7 L -7,7 L -7,-7 Z" d="M-7-7L 7 0L 7 7L-7 7L-7-7Z" fill-rule="evenodd" stroke-dasharray="none" dojoGfxStrokeStyle="solid" transform="matrix(1.00000000,0.00000000,0.00000000,1.00000000,15.00000000,15.00000000)"></path></svg>
             <!-- /ko -->
         </script>
-        <div data-bind="visible: currentAoi() == null">
+        <div data-bind="visible: mode() == 'default'">
             <button data-dojo-type="dijit/form/Button"
+                    data-dojo-props="iconClass:'fa fa-folder-open fa-fw'"
                     data-dojo-attach-event="onClick:showOpenAoiDialog"
                     data-dojo-attach-point="showOpenAoiDialogButton">
                 Open
             </button>
 
             <button data-dojo-type="dijit/form/Button"
+                    data-dojo-props="iconClass:'fa fa-plus-circle fa-fw'"
                     data-dojo-attach-event="onClick:createAoi"
                     data-dojo-attach-point="createAoiButton">
                 Create
             </button>
-
-            <button data-dojo-type="dijit/form/Button"
-                    data-dojo-props="iconClass:'fa fa-map-marker-alt fa-fw'"
-                    data-dojo-attach-point="digitizePointButtonFoo"
-                    data-dojo-attach-event="onClick:digitizePoint">
-                Draw Point on Map
-            </button>
         </div>
 
-        <div data-bind="with: currentAoi">
+        <div data-bind="visible: mode() != 'default'">
             <div>
-                <span data-bind="click: unload" style="float:right" class="fa fa-window-close"></span>
+                <span data-bind="click: unloadCurrentAoi" style="float:right" class="fa fa-window-close"></span>
             </div>
 
             <div data-bind="visible: mode()=='editName'">
@@ -63,11 +58,12 @@
                 <table>
                     <thead>
                         <tr>
-                            <th colspan="2">Name</th>
+                            <th data-bind="css: {'dgrid-sort-up': !featureSortDescending(), 'dgrid-sort-down': featureSortDescending()}, click: sortFeaturesByType">Type<span class="ui-icon dgrid-sort-arrow" data-bind="visible: featureSortOption()==='type'">&nbsp;</span></th>
+                            <th data-bind="css: {'dgrid-sort-up': !featureSortDescending(), 'dgrid-sort-down': featureSortDescending()}, click: sortFeaturesByName">Name<span class="ui-icon dgrid-sort-arrow" data-bind="visible: featureSortOption()==='name'">&nbsp;</span></th>
                             <th colspan="2">Buffer</th>
                         </tr>
                     </thead>
-                    <tbody data-bind="foreach: features">
+                    <tbody data-bind="foreach: sortedFeatures">
                         <!-- ko if: selected -->
                         <tr>
                             <td data-bind="template: {name: 'geometry-type-icon', data: geometry}"></td>
@@ -87,6 +83,13 @@
                         <!-- /ko -->
                     </tbody>
                 </table>
+
+                <button data-dojo-type="dijit/form/Button"
+                        data-dojo-props="iconClass:'fa fa-plus-circle fa-fw'"
+                        data-bind="click: $root.showNewFeatureDialog"
+                        data-dojo-attach-point="addFeatureButton">
+                    Add Feature
+                </button>
 
                 <fieldset data-bind="visible: !$root.drawToolActive()">
                     <!-- Todo move these to a dialog -->
@@ -155,14 +158,11 @@
 
             <div data-bind="visible: mode() === 'analysisOptions'">
 
-
-
                 <button data-dojo-type="dijit/form/Button" data-bind="click: saveAnalysisAreas">
                     Test Create Analysis Areas
                 </button>
 
                 <br />
-
 
                 <button data-dojo-type="dijit/form/Button" data-bind="click: showFeatureList">
                     Back
@@ -172,8 +172,5 @@
 
         </div>
 
-        <div>
-
-        </div>
     </div>
 </div>

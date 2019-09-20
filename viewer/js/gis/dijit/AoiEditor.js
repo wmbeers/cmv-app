@@ -12,7 +12,6 @@ define([
     'dojo/request',
     'dojo/_base/lang',
     'dojo/on',
-    'dojo/query',
     'dojo/dom',
     'dojo/dom-class',
     'dojo/html',
@@ -62,7 +61,7 @@ define([
     'xstyle/css!./AoiEditor/css/AoiEditor.css'
 ],
 function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, koBindings,
-    _WidgetsInTemplateMixin, Dialog, ConfirmDialog, request, lang, on, query, dom, //eslint-disable-line no-unused-vars
+    _WidgetsInTemplateMixin, Dialog, ConfirmDialog, request, lang, on, dom, //eslint-disable-line no-unused-vars
     domClass, html, topic, Memory, Deferred, all, AoiEditorSidebarTemplate, OpenAoiDialogTemplate, //eslint-disable-line no-unused-vars
     NewFeatureDialogTemplate,
     Add, Delete, Update, Draw, Edit, Extent, FeatureLayer, GraphicsLayer, Graphic, SimpleRenderer,
@@ -247,15 +246,96 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
         }),
 
         showNewFeatureDialog: function () {
-            self.newFeatureDialog.show();
+            this.newFeatureDialog.show();
+        },
+
+        aoiId: null, //the ID of the current AOI being edited, if one is loaded
+
+        //navigation functions
+        //mode observable defined in knockoutify
+        showNameAndDescription: function () {
+            this.mode('editName');
+        },
+
+        showFeatureList: function () {
+            this.mode('editFeatures');
+        },
+
+        saveAndShowFeatureList: function () {
+            var self = this;
+            this.saveAoiHeader().then(function () {
+                self.showFeatureList();
+            });
+        },
+
+        showAnalysisOptions: function () {
+            //todo validate >0 features, features have buffers, etc.
+            this.mode('analysisOptions');
         },
 
         createAoi: function () {
-            var aoi = this._constructAoiModel();
-            this.currentAoi(aoi);
-            aoi.mode('editName');
+            this.loadAoiModel(null); //an empty AOI is used to populate
+            this.mode('editName');
         },
 
+        saveAoiHeader: function () {
+            //todo validate name, etc. reject deferred if not valid
+            var self = this,
+                deferred = new Deferred(),
+                aoiModel = {
+                    id: this.aoiId,
+                    name: this.name(),
+                    description: this.description(),
+                    projectTypeId: this.projectTypeId(),
+                    expirationDate: this.expirationDate(),
+                    orgUserId: self.currentAuthority().orgUserId
+                };
+            //if no changes
+            if (aoiModel.id && aoiModel.id > 0 &&
+                aoiModel.name === this.cachedOriginal.name &&
+                aoiModel.description === this.cachedOriginal.description &&
+                aoiModel.projectTypeId === this.cachedOriginal.projectTypeId &&
+                aoiModel.expirationDate === this.cachedOriginal.expirationDate) {
+                deferred.resolve(false); //indicates no change was necessary, not something we really use
+            } else {
+                //eslint-disable-next-line no-undef
+                MapDAO.saveAoiHeader(aoiModel, {
+                    callback: function (id) {
+                        self.aoiId = id;
+                        deferred.resolve(true);
+                    },
+                    errorHandler: function (err) {
+                        deferred.reject(err);
+                    }
+                });
+            }
+            return deferred;
+        },
+
+        //saving features happens automatically
+
+        //save analysis areas to AOIs
+        saveAnalysisAreas: function () {
+            var self = this;
+            this._buildAnalysisAreaFeatureEdits().then(function (edits) {
+                self.layers.analysisArea.applyEdits(edits.adds, edits.updates, edits.deletes, function () {
+                    //update all features 
+                    edits.adds.concat(edits.updates).forEach(function (aa) {
+                        aa.sourceFeatures.forEach(function (f) {
+                            f.graphic.attributes.FK_PROJECT_ALT = aa.attributes.FK_PROJECT_ALT;
+                            f.updateDatabase();
+                        });
+                    });
+                    //todo, something more than this but what?
+                    //console.log('added ' + a.length + ' features, updated ' + u.length + ' features, and deleted ' + d.length + ' features');
+                }, function () {
+                    //todo
+                });
+            });
+        },
+
+
+        //todo remove
         clearAoiPreview: function () {
             var self = this;
             this.aois().forEach(function (a) {
@@ -271,7 +351,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             this.bufferGraphics.clear();
             this.deactivateDrawTool();
             this.edit.deactivate();
-            this.currentAoi(null);
+            this.mode('default');
         },
 
         previewAoi: function (aoi) {
@@ -347,10 +427,8 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             MapDAO.getAoiModel(id, {
                 callback: function (aoi) {
                     if (aoi) {
-                        aoi = self._constructAoiModel(aoi);
-                        self.currentAoi(aoi);
-                        self._loadAoiFeatures();
-                        aoi.mode('editName');
+                        self.loadAoiModel(aoi);
+                        self.mode('editName');
                     } else {
                         topic.publish('viewer/handleError', {
                             source: 'AoiEditor.loadAoi',
@@ -457,7 +535,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                 //deactivate edit toolbar
                 self.edit.deactivate();
                 //clear out current feature
-                self.currentAoi().currentFeature(null);
+                self.currentFeature(null);
                 //pass the word onto the draw tool
                 self.draw.activate(geometryType);
                 //sync up with geometryType observable
@@ -500,16 +578,11 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
 
             //event handler for draw complete, creates a new feature when user finishes digitizing, or splits a feature when user finishes drawing a line for splitting
             this.draw.on('draw-complete', function (event) {
-                var aoi = self.currentAoi(),
-                    layer = self.layers[event.geometry.type]; //note: only applys in draw mode, gets redefined in split mode
+                var layer = self.layers[event.geometry.type]; //note: only applys in draw mode, gets redefined in split mode
                 //toggle back to default map click mode
                 topic.publish('mapClickMode/setDefault');
                 self.deactivateDrawTool();
-                //if something has gotten wildly out of sorts, bail
-                if (!aoi) {
-                    return;
-                }
-
+                
                 if (self.drawMode() === 'draw') {
                     //construct a feature
                     var f = self._constructFeature(event);
@@ -521,10 +594,10 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                         }
 
                         //make it active
-                        aoi.currentFeature(f);
+                        self.currentFeature(f);
 
                         //push it to features observableArray
-                        aoi.features.push(f);
+                        self.features.push(f);
 
                         //todo add to undo stack
 
@@ -534,7 +607,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                 } else {
                     //split mode
                     //the currentFeature().geometry is the geometry to be cut
-                    var currentFeature = aoi.currentFeature(),
+                    var currentFeature = self.currentFeature(),
                         geometry = currentFeature ? currentFeature.graphic.geometry : null,
                         //the event.geometry is the cutter
                         cutter = event.geometry;
@@ -576,7 +649,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                                             //todo check a and u and make sure successfull
                                         }
                                         adds.forEach(function (addedFeature) {
-                                            aoi.features.push(addedFeature.feature);
+                                            self.features.push(addedFeature.feature);
                                         });
                                         //todo add to undo stack
 
@@ -653,14 +726,133 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             //TODO we can also support move and scaling, etc.
         },
 
-        //eslint-disable-next-line max-statements
-        _constructAoiModel: function (aoi) { 
-            var self = this; //maintains a reference to the root model
-            aoi = aoi || {id: -1 /*signifies new*/, name: null, projectTypeId: null, expirationDate: null, orgUserId: null, description: null, features: []};
+        
+        //construct analysisAreas for features that don't already have one, using the feature's name as the analysisArea name
+        _buildAnalysisAreasFromFeatures: function () {
+            this.features().forEach(function (f) {
+                if (!f.analysisArea()) {
+                    this._addFeatureToAnalysisArea(f, f.name());
+                }
+            }, this);
+        },
 
+        /**
+         * Builds the adds, edits and deletes arrays of analysisAreas; returns a deferred object that, when resolved, passes the 
+         * arrays, ready for applyEdits. Makes external calls to geometryService to simplify and union.
+         * @returns {Deferred} Deferred object, which, when resolved, will pass in a result with adds, updates and deletes array properties.
+         */
+        _buildAnalysisAreaFeatureEdits: function () {
+            var self = this;
+            //build analysis areas from features that don't already have one
+            //(this is the default, typical arrangement, one feature = one analysisArea, 
+            // unless user chooses to group features)
+            this._buildAnalysisAreasFromFeatures();
+
+            var analysisAreaFeatures = this.layers.analysisArea.graphics,
+                analysisAreaModels = this.analysisAreas(), //analysis areas observable defined in knockoutify
+                result = {
+                    adds: [],
+                    updates: [],
+                    deletes: analysisAreaFeatures.filter(function (f) {
+                        return !this.getAnalysisAreaModel(f.attributes.FEATURE_NAME);
+                    }, this) //analysisArea features that don't currently have a match in named analysis areas
+                },
+                deferred = new Deferred(), //the overall deferred to be resolved when we've got the edits all built
+                buildPromises = [];
+
+            //loop through models to add or update
+            analysisAreaModels.forEach(function (analysisAreaModel) {
+                var buildPromise = new Deferred(),
+                    geometries = analysisAreaModel.features().map(function (f) {
+                        return f.buffer ? f.buffer.geometry : f.graphic.geometry;
+                    });
+
+                buildPromises.push(buildPromise);
+
+                //simplify
+                //eslint-disable-next-line no-undef
+                esriConfig.defaults.geometryService.simplify(geometries).then(function (simplifiedGeometries) {
+                    //Note, just a union request would do the job, but maybe this is useful for multiple buffers?
+                    var params = new BufferParameters();
+
+                    params.distances = [0];
+                    params.outSpatialReference = self.map.spatialReference; //todo this should maybe be Albers
+                    params.unit = 9002;
+                    params.geometries = simplifiedGeometries;
+                    params.unionResults = true;
+
+                    //eslint-disable-next-line no-undef
+                    esriConfig.defaults.geometryService.buffer(params,
+                        function (bufferedGeometries) {
+                            //todo save to s_aoi
+                            //search for existing feature by name
+                            var analysisAreaFeature = this.getAnalysisAreaFeature(analysisAreaModel.name());
+                            if (analysisAreaFeature) {
+                                result.updates.push(analysisAreaFeature);
+                                analysisAreaFeature.geometry = bufferedGeometries[0]; //todo if we can create multiple buffers in one go with different buffer distances, will need to foreach through those
+                                analysisAreaFeature.sourceFeatures = analysisAreaModel.features(); //for later update of features to cross reference
+                                buildPromise.resolve(analysisAreaFeature);
+                            } else {
+                                analysisAreaFeature = new Graphic(bufferedGeometries[0]); //todo if we can create multiple buffers in one go with different buffer distances, will need to foreach through those
+                                //get ID from sequence
+                                //eslint-disable-next-line no-undef
+                                MapDAO.getNextAnalysisAreaId({
+                                    callback: function (id) {
+                                        analysisAreaFeature.attributes = {
+                                            OBJECTID: null,
+                                            BUFFER_DISTANCE: 1,
+                                            FEATURE_NAME: analysisAreaModel.name(),
+                                            FK_PROJECT: self.aoiId,
+                                            FK_PROJECT_ALT: id
+                                        };
+                                        result.adds.push(analysisAreaFeature);
+                                        analysisAreaFeature.sourceFeatures = analysisAreaModel.features(); //for later update of features to cross reference
+                                        buildPromise.resolve(analysisAreaFeature);
+                                    }
+                                });
+                            }
+                        },
+                        function (err) {
+                            buildPromise.reject(err);
+                        }
+                    );
+                });
+            }); // end loop through analysisAreaModels
+
+
+            //the overall deferred for this function is resolved when all the deferreds to build analyisAreas are resolved
+            all(buildPromises).then(function () {
+                deferred.resolve(result);
+            }, function () {
+                //todo!
+            });
+
+            return deferred;
+
+        },
+
+        //gets an analysis area model from the analysisAreas observable array by name
+        getAnalysisAreaModel: function (name) {
+            return this.analysisAreas().find(function (m) {
+                return m.name() === name;
+            });
+        },
+
+        //gets an analysis area feature from the analysis areas feature layer by name
+        getAnalysisAreaFeature: function (name) {
+            return self.layers.analysisArea.graphics.find(function (f) {
+                return f.attributes.FEATURE_NAME === name;
+            });
+        },
+
+        //loads up our observable properties from the referenced aoi
+        loadAoiModel: function (aoi) { 
+            aoi = aoi || {id: -1 /*signifies new*/, name: null, projectTypeId: null, expirationDate: null, orgUserId: null, description: null, features: []};
+            
+            this.aoiId = aoi.id;
+            
             if (!aoi.expirationDate) {
                 //default date is current date + 30 days TODO confirm this
-                //TODO for demo purposes only
                 aoi.expirationDate = new Date();
                 aoi.expirationDate.setDate(aoi.expirationDate.getDate() + 30);
             }
@@ -674,257 +866,23 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                 this.currentAuthority(authority);
             }
 
-            /* eslint-disable no-undef */
-            aoi.name = ko.observable(aoi.name);
-            aoi.description = ko.observable(aoi.description);
-            aoi.projectTypeId = ko.observable(aoi.projectTypeId);
-            aoi.expirationDate = ko.observable(aoi.expirationDate);
+            this.name(aoi.name);
+            this.description(aoi.description);
+            this.projectTypeId(aoi.projectTypeId);
+            this.expirationDate(aoi.expirationDate);
 
-            self._cacheAoiProperties(aoi);
+            this._cacheAoiProperties(aoi);
 
-            //navigation
-            aoi.mode = ko.observable();
-
-            aoi.showNameAndDescription = function () {
-                aoi.mode('editName');
-            };
-
-            aoi.showFeatureList = function () {
-                aoi.mode('editFeatures');
-            };
-
-            aoi.unload = function () {
-                self.unloadCurrentAoi();
-            };
-
-            aoi.saveAoiHeader = function () {
-                //todo validate name, etc. reject deferred if not valid
-                var deferred = new Deferred(),
-                    aoiModel = {
-                        id: aoi.id,
-                        name: aoi.name(),
-                        description: aoi.description(),
-                        projectTypeId: aoi.projectTypeId(),
-                        expirationDate: aoi.expirationDate(),
-                        orgUserId: self.currentAuthority().orgUserId
-                    };
-                //if no changes
-                if (aoiModel.name === aoi.cachedOriginal.name &&
-                    aoiModel.description === aoi.cachedOriginal.description &&
-                    aoiModel.projectTypeId === aoi.cachedOriginal.projectTypeId &&
-                    aoiModel.expirationDate === aoi.cachedOriginal.expirationDate) {
-                    deferred.resolve(false); //indicates no change was necessary, not something we really use
-                } else {
-                    MapDAO.saveAoiHeader(aoiModel, {
-                        callback: function (id) {
-                            aoi.id = id;
-                            deferred.resolve(true);
-                        },
-                        errorHandler: function (err) {
-                            deferred.reject(err);
-                        }
-                    });
-                }
-                return deferred;
-            };
-
-            aoi.saveAndShowFeatureList = function () {
-                aoi.saveAoiHeader().then(function () {
-                    aoi.showFeatureList();
-                });
-            };
-
-            aoi.showAnalysisOptions = function () {
-                //todo validate >0 features, features have buffers, etc.
-                aoi.mode('analysisOptions');
-            };
-
-            aoi.showAuthoritySelection = ko.pureComputed(function () {
-                return !aoi.id && this.authorities.length > 1; //TODO lose this reference to app
-            }, this);
-
-            //all of the features, as models, regardless of geometry, distinct from, but related to, the features in layers.point.graphics, layers.polyline.graphics, and layers.polygon.graphics
-            aoi.features = ko.observableArray();
-            aoi.currentFeature = ko.observable();
-
-            aoi.canSplitCurrentFeature = ko.pureComputed(function () {
-                var cf = aoi.currentFeature(),
-                    gt = cf && cf.geometry ? cf.geometry.type : null;
-
-                return gt === 'polygon' || gt === 'polyline';
-            });
-
-            aoi.analysisAreas = ko.computed(function () {
-                var analysisAreas = [];
-
-                ko.utils.arrayForEach(aoi.features(), function (f) {
-                    if (f.analysisArea() && analysisAreas.indexOf(f.analysisArea()) < 0) {
-                        analysisAreas.push(f.analysisArea());
-                    } return f.analysisArea();
-                });
-
-                return analysisAreas;
-            });
-            aoi.currentFeature.subscribe(function (f) {
-                self.layers.point.clearSelection();
-                self.layers.polyline.clearSelection();
-                self.layers.polygon.clearSelection();
-                if (f && f.graphic) {
-                    if (f.type === 'polygon' || f.type === 'polyline') {
-                        self.edit.activate(2, f.graphic);
-                    } else {
-                        self.edit.activate(1, f.graphic);
-                    }
-                    //select it
-                    if (f.graphic.attributes && f.graphic.attributes.OBJECTID) {
-                        var query = new Query();
-                        query.objectIds = [f.graphic.attributes.OBJECTID];
-                        self.layers[f.type].selectFeatures(query); //highlights it
-                    }
-                }
-            });
-
-            aoi.getAnalysisAreaModel = function (name) {
-                return ko.utils.arrayFirst(aoi.analysisAreas(), function (m) {
-                    return m.name() === name;
-                });
-            };
-
-            aoi.getAnalysisAreaFeature = function (name) {
-                return ko.utils.arrayFirst(self.layers.analysisArea.graphics, function (f) {
-                    return f.attributes.FEATURE_NAME === name;
-                });
-            };
-
-            /**
-             * Builds the adds, edits and deletes arrays of analysisAreas; returns a deferred object that, when resolved, passes the 
-             * arrays, ready for applyEdits. Makes external calls to geometryService to simplify and union.
-             * @returns {Deferred} Deferred object, which, when resolved, will pass in a result with adds, updates and deletes array properties.
-             */
-            aoi._buildAnalysisAreaFeatureEdits = function () {
-                //build analysis areas from features that don't already have one
-                //(this is the default, typical arrangement, one feature = one analysisArea, 
-                // unless user chooses to group features)
-                aoi._buildAnalysisAreasFromFeatures();
-
-                var analysisAreaFeatures = self.layers.analysisArea.graphics,
-                    analysisAreaModels = aoi.analysisAreas(),
-                    result = {
-                        adds: [],
-                        updates: [],
-                        deletes: ko.utils.arrayFilter(analysisAreaFeatures, function (f) {
-                            return !aoi.getAnalysisAreaModel(f.attributes.FEATURE_NAME);
-                        }) //analysisArea features that don't currently have a match in named analysis areas
-                    },
-                    deferred = new Deferred(), //the overall deferred to be resolved when we've got the edits all built
-                    buildPromises = [];
-
-                //loop through models to add or update
-                analysisAreaModels.forEach(function (analysisAreaModel) {
-                    var buildPromise = new Deferred(),
-                        geometries = ko.utils.arrayMap(analysisAreaModel.features(), function (f) {
-                            return f.buffer ? f.buffer.geometry : f.graphic.geometry;
-                        });
-
-                    window.buildPromises.push(buildPromise);
-
-                    //simplify
-                    esriConfig.defaults.geometryService.simplify(geometries).then(function (simplifiedGeometries) {
-                        //Note, just a union request would do the job, but maybe this is useful for multiple buffers?
-                        var params = new BufferParameters();
-
-                        params.distances = [0];
-                        params.outSpatialReference = self.map.spatialReference; //todo this should maybe be Albers
-                        params.unit = 9002;
-                        params.geometries = simplifiedGeometries;
-                        params.unionResults = true;
-
-                        esriConfig.defaults.geometryService.buffer(params,
-                            function (bufferedGeometries) {
-                                //todo save to s_aoi
-                                //search for existing feature by name
-                                var analysisAreaFeature = aoi.getAnalysisAreaFeature(analysisAreaModel.name());
-                                if (analysisAreaFeature) {
-                                    result.updates.push(analysisAreaFeature);
-                                    analysisAreaFeature.geometry = bufferedGeometries[0]; //todo if we can create multiple buffers in one go with different buffer distances, will need to foreach through those
-                                    analysisAreaFeature.sourceFeatures = analysisAreaModel.features(); //for later update of features to cross reference
-                                    buildPromise.resolve(analysisAreaFeature);
-                                } else {
-                                    analysisAreaFeature = new Graphic(bufferedGeometries[0]); //todo if we can create multiple buffers in one go with different buffer distances, will need to foreach through those
-                                    //get ID from sequence
-                                    MapDAO.getNextAnalysisAreaId({
-                                        callback: function (id) {
-                                            analysisAreaFeature.attributes = {
-                                                OBJECTID: null,
-                                                BUFFER_DISTANCE: 1,
-                                                FEATURE_NAME: analysisAreaModel.name(),
-                                                FK_PROJECT: aoi.id,
-                                                FK_PROJECT_ALT: id
-                                            };
-                                            result.adds.push(analysisAreaFeature);
-                                            analysisAreaFeature.sourceFeatures = analysisAreaModel.features(); //for later update of features to cross reference
-                                            buildPromise.resolve(analysisAreaFeature);
-                                        }
-                                    });
-                                }
-                            },
-                            function (err) {
-                                promise.reject(err);
-                            }
-                        );
-                    });
-                }); // end loop through analysisAreaModels
-
-
-                //the overall deferred for this function is resolved when all the deferreds to build analyisAreas are resolved
-                all(buildPromises).then(function () {
-                    deferred.resolve(result);
-                }, function () {
-                    //todo!
-                });
-
-                return deferred;
-
-            };
-
-            //construct analysisAreas for features that don't already have one, using the feature's name as the analysisArea name
-            aoi._buildAnalysisAreasFromFeatures = function () {
-                ko.utils.arrayForEach(aoi.features(), function (f) {
-                    if (!f.analysisArea()) {
-                        self._addFeatureToAnalysisArea(f, f.name());
-                    }
-                });
-            };
-
-            aoi.saveAnalysisAreas = function () {
-                aoi._buildAnalysisAreaFeatureEdits().then(function (edits) {
-                    self.layers.analysisArea.applyEdits(edits.adds, edits.updates, edits.deletes, function () {
-                        //update all features 
-                        edits.adds.concat(edits.updates).forEach(function (aa) {
-                            aa.sourceFeatures.forEach(function (f) {
-                                f.graphic.attributes.FK_PROJECT_ALT = aa.attributes.FK_PROJECT_ALT;
-                                f.updateDatabase();
-                            });
-                        });
-                        //todo, something more than this but what?
-                        //console.log('added ' + a.length + ' features, updated ' + u.length + ' features, and deleted ' + d.length + ' features');
-                    }, function () {
-                        //todo
-                    });
-                });
-            };
-
-            /* eslint-enable no-undef */
-            return aoi;
+            return this._loadAoiFeatures();
         },
 
-        _cacheAoiProperties: function (aoi) {
+        _cacheAoiProperties: function () {
             //cached header, used to determine if we need to save
-            aoi.cachedOriginal = {
-                name: aoi.name(),
-                description: aoi.description(),
-                projectTypeId: aoi.projectTypeId(),
-                expirationDate: aoi.expirationDate()
+            this.cachedOriginal = {
+                name: this.name(),
+                description: this.description(),
+                projectTypeId: this.projectTypeId(),
+                expirationDate: this.expirationDate()
             };
 
             //todo cached analysis properties
@@ -951,13 +909,9 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
         },
 
         _nextFeatureNumber: function () {
-            var aoi = this.currentAoi(),
-                n = 0,
+            var n = 0,
                 rx = /(\d+)/;
-            if (!aoi) {
-                return 1;
-            }
-            aoi.features().forEach(function (f) {
+            this.features().forEach(function (f) {
                 var r = rx.exec(f.name());
                 if (r) {
                     //convert string to number
@@ -972,21 +926,16 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
         },
 
         _loadAoiFeatures: function () {
-            var self = this,
-                aoi = this.currentAoi(),
+            var self = this, //keeps a reference to the aoiEditor model
                 loadPromises = []; //collection of promises resolved on update-end of the three editable layers (point, polyline and polygon), zooms to unioned extent when done
 
             this.clearAoiLayers();
 
-            if (!aoi) {
-                return;
-            }
-
             //get analysisAreas first
             self.layers.analysisArea = new FeatureLayer(projects.aoiLayers.analysisArea.url, {
-                id: 'aoi_analysisArea_' + aoi.id,
+                id: 'aoi_analysisArea_' + this.aoiId,
                 outFields: '*',
-                definitionExpression: 'FK_PROJECT = ' + aoi.id,
+                definitionExpression: 'FK_PROJECT = ' + this.aoiId,
                 //note: can't be invisble, and must be loaded in map for update-end to work.
                 //visible: false, //not actually loaded in map, so don't need to make invisible
                 mode: FeatureLayer.MODE_SNAPSHOT
@@ -1001,10 +950,10 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                         deferred = new Deferred(),
                         layer = new FeatureLayer(url,
                             {
-                                id: 'aoi_' + layerName + '_' + aoi.id,
+                                id: 'aoi_' + layerName + '_' + self.aoiId,
                                 outFields: '*',
-                                definitionExpression: 'FK_PROJECT = ' + aoi.id,
-                                mode: FeatureLayer.MODE_SNAPSHOT //gets all features! TODO or does it? What happens if it's not in the current map's extent?
+                                definitionExpression: 'FK_PROJECT = ' + self.aoiId,
+                                mode: FeatureLayer.MODE_SNAPSHOT
                             });
                     layer.setSelectionSymbol(self.selectionSymbols[layerName]);
                     self.layers[layerName] = layer;
@@ -1025,9 +974,9 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                         featuresKo = [],
                         onLayerClick = function (evt) { //eslint-disable-line func-style
                             //subscription on currentFeature does this edit.activate(2, evt.graphic);
-                            if (self.currentAoi() && evt.graphic && evt.graphic.feature && !self.drawToolActive()) {
+                            if (evt.graphic && evt.graphic.feature && !self.drawToolActive()) {
                                 event.stopPropagation(evt);
-                                self.currentAoi().currentFeature(evt.graphic.feature);
+                                self.currentFeature(evt.graphic.feature);
                             }
                         };
 
@@ -1054,27 +1003,19 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                             }
                         }
                     }
-                    aoi.extent = unionOfExtents; //facilitates zooming to the aoi
-                    aoi.zoomTo = function () {
-                        if (aoi.extent) {
-                            //todo this fails if there's just one point. See zoomToFeature for example, may need to centerAndZoom; in theory even if there's just one point, there will be a buffer of that point in S_AOI, so  might not be an issue
-                            topic.publish('layerLoader/zoomToExtent', aoi.extent.expand(1.5));
-                        } else {
-                            topic.publish('growler/growl', 'Area of Interest has no features');
-                        }
-                    };
-                    aoi.zoomTo();
-                    aoi.features(featuresKo);
+                    self.extent = unionOfExtents; //facilitates zooming to the aoi
+                    self.zoomTo();
+                    self.features(featuresKo);
                         
                     //tie to S_AOI record only after it's added to features observableArray
-                    aoi.features().forEach(function (feature) {
+                    self.features().forEach(function (feature) {
                         if (feature.analysisAreaId) {
                             //do we already have it loaded?
                             var analysisAreaFeature = self.layers.analysisArea.graphics.find(function (aaf) {
                                 return aaf.attributes.FK_PROJECT_ALT === feature.analysisAreaId;
                             });
                             if (analysisAreaFeature) {
-                                var analysisArea = aoi.getAnalysisAreaModel(analysisAreaFeature.attributes.FEATURE_NAME);
+                                var analysisArea = self.getAnalysisAreaModel(analysisAreaFeature.attributes.FEATURE_NAME);
                                 if (analysisArea) {
                                     self._addFeatureToAnalysisArea(feature, analysisArea);
                                 } else {
@@ -1102,7 +1043,6 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                 return null;
             }
             var self = this,
-                aoi = self.currentAoi(),
                 feature = {
                     geometry: featureOrEvent.geometry, //all sources have a geometry property
                     type: featureOrEvent.geometry.type,
@@ -1127,7 +1067,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                     BUFFER_DISTANCE: feature.bufferDistance,
                     BUFFER_DISTANCE_UNITS: feature.bufferUnit.name,
                     FEATURE_NAME: feature.name,
-                    FK_PROJECT: aoi ? aoi.id : null //never null in practice, but used this way during development
+                    FK_PROJECT: self.aoiId
                 });
             }
 
@@ -1148,30 +1088,28 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             feature.analysisArea = ko.observable(feature.analysisArea);
                 
             feature.selected = ko.pureComputed(function () {
-                return self.currentAoi() && self.currentAoi().currentFeature() === feature;
+                return self.currentFeature() === feature;
             });
             //happens when user clicks on a feature in the table of features, but not when clicking on the map;
             //a different function handles that, but doesn't include the zoom/pan
             feature.select = function () {
-                if (self.currentAoi()) {
-                    self.currentAoi().currentFeature(feature);
-                    //todo zoom/pan if not in current extent
-                    var geometry = feature.graphic ? feature.graphic.geometry : {
-                            getExtent: function () {
-                                return null;
-                            }
-                        }, //pseudo object with getExtent function that returns null extent
-                        testExtent = geometry.type === 'point' ? geometry : geometry.getExtent(); //contains method expects a point or an extent
-                    //project, our features are stored in 3087, needs to be in 3857/102100, which makes no sense
-                    //debugger;
-                    if (testExtent && !self.map.extent.contains(testExtent)) {
-                        if (geometry.type === 'point') {
-                            //center at
-                            self.map.centerAt(testExtent);
-                        } else {
-                            //zoom to buffer around extent
-                            self.map.setExtent(testExtent.expand(2));
+                self.currentFeature(feature);
+                //todo zoom/pan if not in current extent
+                var geometry = feature.graphic ? feature.graphic.geometry : {
+                        getExtent: function () {
+                            return null;
                         }
+                    }, //pseudo object with getExtent function that returns null extent
+                    testExtent = geometry.type === 'point' ? geometry : geometry.getExtent(); //contains method expects a point or an extent
+                //project, our features are stored in 3087, needs to be in 3857/102100, which makes no sense
+                //debugger;
+                if (testExtent && !self.map.extent.contains(testExtent)) {
+                    if (geometry.type === 'point') {
+                        //center at
+                        self.map.centerAt(testExtent);
+                    } else {
+                        //zoom to buffer around extent
+                        self.map.setExtent(testExtent.expand(2));
                     }
                 }
             };
@@ -1222,9 +1160,10 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                     self.bufferGraphics.remove(buffer);
                 }
                 layer.applyEdits(null, null, [graphic], function () {
-                    self.currentAoi().features.remove(feature);
-                    self.currentAoi().currentFeature(null); //todo or activate next feature?
+                    self.features.remove(feature);
+                    self.currentFeature(null); //todo or activate next feature?
                     self.edit.deactivate();
+                    feature = null;
                 }, function () {
                     //todo
                 });
@@ -1245,7 +1184,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             }
             if (typeof analysisArea === 'string') {
                 //first check to see if it exists
-                var existingGroup = this.currentAoi().analysisAreas().find(function (ag) {
+                var existingGroup = this.analysisAreas().find(function (ag) {
                     return ag.name() === analysisArea;
                 });
                 if (existingGroup) {
@@ -1257,7 +1196,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                         buffer: null //doesn't need to be observable
                     };
                     analysisArea.features = ko.pureComputed(function () {
-                        return ko.utils.arrayFilter(this.currentAoi().features(), function (f) {
+                        return ko.utils.arrayFilter(this.features(), function (f) {
                             return f.analysisArea() === analysisArea;
                         });
                     }, this);
@@ -1389,44 +1328,154 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             return deferred;
         },
 
+        zoomTo: function () {
+            if (this.extent) {
+                //todo this fails if there's just one point. See zoomToFeature for example, may need to centerAndZoom; in theory even if there's just one point, there will be a buffer of that point in S_AOI, so  might not be an issue
+                topic.publish('layerLoader/zoomToExtent', this.extent.expand(1.5));
+            } else {
+                topic.publish('growler/growl', 'Area of Interest has no features');
+            }
+        },
+
         _knockoutifyAoiEditor: function () {
+            var self = this;
             /* eslint-disable no-undef */
+            //basic properties
+            this.name = ko.observable();
+            this.description = ko.observable();
+            this.projectTypeId = ko.observable();
+            this.expirationDate = ko.observable();
 
-            this.aois = ko.observableArray(); //the list of aois loaded into the open-aoi dialog, not the full aoi model.
-            this.currentAoi = ko.observable(); //TODO it might be clearer if we just promoted everything defined under currentAoi, because it's not like we toggle between them or anything
-            this.filterOption = ko.observable('my'); //my or all
-            this.includeExpired = ko.observable(false); //if true, expired AOIs are listed; any other value or null only non-expired AOIs are shown.
-            this.filteredAois = ko.pureComputed(function () {
-                var filterOption = this.filterOption(),
-                    currentAuthority = this.currentAuthority();
-
-                if (filterOption === 'my') {
-                    var orgUserIds = ko.utils.arrayMap(this.authorities, function (a) {
-                        return a.orgUserId;
-                    });
-                    return ko.utils.arrayFilter(this.aois(), function (aoi) {
-                        return orgUserIds.indexOf(aoi.orgUserId) >= 0;
-                        //return authorization.userId === aoi.userId;
-                    });
+            //all of the features, as models, regardless of geometry, distinct from, but related to, the features in layers.point.graphics, layers.polyline.graphics, and layers.polygon.graphics
+            this.features = ko.observableArray();
+            //sorted list of features
+            this.featureSortOption = ko.observable('name'); //name, type, or analysisArea
+            //functions for toggling sort
+            this.sortFeaturesBy = function (option) {
+                if (this.featureSortOption() === option) {
+                    this.featureSortDescending(!this.featureSortDescending());
+                } else {
+                    this.featureSortOption(option);
+                    this.featureSortDescending(false);
                 }
-                return ko.utils.arrayFilter(this.aois(), function (aoi) {
-                    return aoi.orgId === currentAuthority.orgId;
+            };
+            this.sortFeaturesByName = function () {
+                this.sortFeaturesBy('name');
+            };
+            this.sortFeaturesByType = function () {
+                this.sortFeaturesBy('type');
+            };
+            this.featureSortDescending = ko.observable(false);
+            //for class binding
+            this.featureSortClass = ko.pureComputed(function () {
+                return this.featureSortDescending() ? 'dgrid-sort-down' : 'dgid-sort-up';
+            }, this);
+            this.sortedFeatures = ko.pureComputed(function () {
+                var sortOption = this.featureSortOption() || 'name', //default sort by name
+                    featureTypes = ['point', 'polyline', 'polygon'],
+                    sortDescending = this.featureSortDescending(); //default sort ascending
+                return this.features().sort(function (a, b) {
+                    var comp = 0,
+                        aVal = null,
+                        bVal = null;
+
+                    if (sortOption === 'name') {
+                        aVal = a.name();
+                        bVal = b.name();
+                    } else if (sortOption === 'type') {
+                        //convert point=0, polyline=1, polygon=2 for usual organization of features, not alphabetically
+                        aVal = featureTypes.indexOf(a.type);
+                        bVal = featureTypes.indexOf(b.type);
+                        // because our featureTypes array is ordered with polygon first, reverse the sort
+                    } else if (sortOption === 'analysisArea') {
+                        aVal = a.analysisArea() ? a.analysisArea().name : a.name();
+                        bVal = b.analysisArea() ? b.analysisArea().name : b.name();
+                    }
+                    comp = (aVal < bVal) ? -1 : (aVal > bVal) ? 1 : 0;
+                    if (sortOption === 'type' && comp === 0) {
+                        //sort by name to break type ties
+                        aVal = a.name();
+                        bVal = b.name();
+                        comp = (aVal < bVal) ? -1 : (aVal > bVal) ? 1 : 0;
+                    }
+                    //flip direction for descending
+                    if (sortDescending) {
+                        comp *= -1;
+                    }
+
+                    return comp;
                 });
             }, this);
+            //the active, highlighted feature in the table and map
+            this.currentFeature = ko.observable(); 
 
+            //syncs selection of features in the table and map, and initiates the appropriate editing function
+            this.currentFeature.subscribe(function (f) {
+                self.layers.point.clearSelection();
+                self.layers.polyline.clearSelection();
+                self.layers.polygon.clearSelection();
+                if (f && f.graphic) {
+                    if (f.type === 'polygon' || f.type === 'polyline') {
+                        self.edit.activate(2, f.graphic);
+                    } else {
+                        self.edit.activate(1, f.graphic);
+                    }
+                    //select it
+                    if (f.graphic.attributes && f.graphic.attributes.OBJECTID) {
+                        var query = new Query();
+                        query.objectIds = [f.graphic.attributes.OBJECTID];
+                        self.layers[f.type].selectFeatures(query); //highlights it
+                    }
+                }
+            });
 
-            //apply knockout bindings
+            //Controls display of Split button; computes whether the current feature can be split, true if there is a current feature selected that is a polyline or polygon;
+            //false if no feature selected or only point selected. 
+            this.canSplitCurrentFeature = ko.pureComputed(function () {
+                var cf = this.currentFeature(),
+                    gt = cf && cf.geometry ? cf.geometry.type : null;
+
+                return gt === 'polygon' || gt === 'polyline';
+            }, this);
+
+            //facilitates navigation
+            this.mode = ko.observable('default');
+
+            //options for opening existing AOI
+            this.aois = ko.observableArray(); //the list of aois loaded into the open-aoi dialog, not the full aoi model.
+            this.filterOption = ko.observable('my'); //my or all
+            //this.currentAuthority is synced with the global observable when the widgets start up
+            this.includeExpired = ko.observable(false); //if true, expired AOIs are listed; any other value or null only non-expired AOIs are shown.
+
+            //if user is authorized, and working on a new AOI, we show a drop-down for selecting the orgUser identity
+            this.showAuthoritySelection = ko.pureComputed(function () {
+                return !this.aoiId && this.authorities.length > 1;
+            }, this);
+
+            //when user changes filter option or current authority, re-list the aois
+            this.filterOption.subscribe(this.listAois, this);
+            this.currentAuthority.subscribe(this.listAois, this);
+            this.includeExpired.subscribe(this.listAois, this);
+
+            //analysis areas are defined based on the features
+            this.analysisAreas = ko.pureComputed(function () {
+                var analysisAreas = [];
+                this.features().forEach(function (f) {
+                    if (f.analysisArea() && analysisAreas.indexOf(f.analysisArea()) < 0) {
+                        analysisAreas.push(f.analysisArea());
+                    } return f.analysisArea();
+                });
+                return analysisAreas;
+            }, this);
+
+            //apply knockout bindings to sidebar
             ko.applyBindings(this, dom.byId('aoiEditorSidebar'));
             //apply knockout bindings to open AOI dialog
             ko.applyBindings(this, dom.byId('openAoiDialog'));
             //apply knockout bindings to new feature dialog
             ko.applyBindings(this, dom.byId('newFeatureDijit'));
 
-            this.filterOption.subscribe(this.listAois, this);
-            this.currentAuthority.subscribe(this.listAois, this);
-
             /* eslint-enable no-undef */
-
         },
 
         ////mostly not used, 
@@ -1443,9 +1492,9 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
 
             on(this.bufferGraphics, 'click', function (evt) {
                 //subscription on currentFeature does this edit.activate(2, evt.graphic);
-                if (self.currentAoi() && evt.graphic && evt.graphic.feature) {
+                if (evt.graphic && evt.graphic.feature) {
                     event.stopPropagation(evt);
-                    self.currentAoi().currentFeature(evt.graphic.feature);
+                    self.currentFeature(evt.graphic.feature);
                 }
             });
 

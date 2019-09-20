@@ -360,11 +360,11 @@ define([
                     imageServiceParameters: isp
                 });
                 //TODO 
-                    //{
-                    //    imageServiceParameters: {
-                    //        format: 'png32'
-                    //    }
-                    //});
+                //{
+                //    imageServiceParameters: {
+                //        format: 'png32'
+                //    }
+                //});
             } else if (layerDef.type === 'vectortile') {
                 layer = new VectorTileLayer(layerDef.url);
             } else {
@@ -809,7 +809,6 @@ define([
 
         //adds an AOI to the map
         addAoiToMap: function (aoi) {
-            debugger;
             var self = this, //so we don't lose track buried down in callbacks
                 definitionExpression = 'FK_PROJECT = ' + aoi.id,
                 deferred = new Deferred(),

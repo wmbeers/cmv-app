@@ -12,6 +12,8 @@
 /// Refer to http://www.jqueryui.com for more information about each widget.
 ///</summary>
 
+//disable eslint no-undef rule because we reference knockout, jquery, and moment
+/* eslint-disable no-undef */
 ko.afterInitialBindingCallbacks = [];
 
 ko.afterInitialBindingTrigger = function () {
@@ -73,8 +75,6 @@ ko.bindingHandlers.jqAccordion = {
         jQuery(element).accordion('option', valueAccessor()).accordion('refresh');
     }
 };
-
-
 
 ko.bindingHandlers.jqDatepicker = {
     init: function (element, valueAccessor, allBindingsAccessor) {
@@ -225,13 +225,13 @@ ko.bindingHandlers.jqTooltip = {
 //For binding date objects to text, thanks to http://www.aaronkjackson.com/2012/04/formatting-dates-with-knockoutjs/
 //depends on date.js
 ko.bindingHandlers.dateString = {
-    update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+    update: function (element, valueAccessor, allBindingsAccessor) {
         var value = valueAccessor(),
             allBindings = allBindingsAccessor();
         var valueUnwrapped = ko.utils.unwrapObservable(value);
         var pattern = allBindings.datePattern || 'mm/dd/yy';
         var valueToWrite = '';
-        if (valueUnwrapped != null) {
+        if (valueUnwrapped !== null) {
             if (valueUnwrapped instanceof Date && !isNaN(valueUnwrapped.valueOf())) {
                 valueToWrite = jQuery.datepicker.formatDate(pattern, valueUnwrapped);
             } else {
@@ -240,7 +240,7 @@ ko.bindingHandlers.dateString = {
             }
         }
 
-        if (element.nodeName == 'INPUT') {
+        if (element.nodeName === 'INPUT') {
             jQuery(element).val(valueToWrite);
         } else {
             jQuery(element).text(valueToWrite);
@@ -249,20 +249,19 @@ ko.bindingHandlers.dateString = {
 };
 
 ko.bindingHandlers.fileSizeString = {
-    update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
-        var value = valueAccessor();
-        var valueUnwrapped = ko.utils.unwrapObservable(value);
+    update: function (element, valueAccessor) {
+        var value = valueAccessor(),
+            valueUnwrapped = ko.utils.unwrapObservable(value);
 
-        if (valueUnwrapped == null) {
+        if (valueUnwrapped === null) {
             jQuery(element).text('');
-        }
-        else {
+        } else {
             var units = ['B', 'KB', 'MB', 'GB'];
             var order = 0;
             value = valueUnwrapped;
             while (value >= 1024 && order + 1 < units.length) {
                 order++;
-                value = value / 1024;
+                value /= 1024;
             }
             //round two decimals and convert to string
             value = value.toFixed(2);
@@ -276,7 +275,7 @@ ko.bindingHandlers.fileSizeString = {
             jQuery(element).html(value);
         }
     }
-}
+};
 
 ko.observableArray.fn.setAt = function (index, value) {
     this.valueWillMutate();
@@ -293,7 +292,9 @@ ko.observableArray.fn.insertAt = function (index, value) {
 //use to prevent binding in a particular area. Useful if you have a knockout-bound velocity component inserted within a larger data-bound area of the page
 ko.bindingHandlers.stopBinding = {
     init: function () {
-        return { controlsDescendantBindings: true };
+        return {
+            controlsDescendantBindings: true
+        };
     }
 };
 ko.virtualElements.allowedBindings.stopBinding = true;
@@ -302,13 +303,19 @@ ko.virtualElements.allowedBindings.stopBinding = true;
 //for null or empty/whitespace string
 ko.observable.fn.isNullOrWhiteSpace = function () {
     var o = ko.utils.unwrapObservable(this);
-    if (o == null) return true;
-    if (typeof o == 'string') {
-        if (o === '') return true;
-        if (o.replace(/^\s+|\s+jQuery/g, '').length == 0) return true;
+    if (o === null) {
+        return true;
+    }
+    if (typeof o === 'string') {
+        if (o === '') {
+            return true;
+        }
+        if (o.replace(/^\s+|\s+jQuery/g, '').length === 0) {
+            return true;
+        }
     }
     return false;
-}
+};
 ko.computed.fn.isNullOrWhiteSpace = ko.observable.fn.isNullOrWhiteSpace;
 
 //makes sure you're only typing numbers
@@ -316,18 +323,28 @@ ko.computed.fn.isNullOrWhiteSpace = ko.observable.fn.isNullOrWhiteSpace;
 ko.bindingHandlers.numeric = {
     init: function (element, valueAccessor) {
         var va = valueAccessor();
-        var options = { allowDecimal: false, allowNegative: false, allowComma: false };
+        var options = {
+            allowDecimal: false,
+            allowNegative: false,
+            allowComma: false
+        };
 
-        if (va != null && typeof va == 'object') {
-            if (va.allowDecimal != null && typeof va.allowDecimal == 'boolean') options.allowDecimal = va.allowDecimal;
-            if (va.allowNegative != null && typeof va.allowNegative == 'boolean') options.allowNegative = va.allowNegative;
-            if (va.allowComma != null && typeof va.allowComma == 'boolean') options.allowComma = va.allowComma;
+        if (va !== null && typeof va === 'object') {
+            if (va.allowDecimal !== null && typeof va.allowDecimal === 'boolean') {
+                options.allowDecimal = va.allowDecimal;
+            }
+            if (va.allowNegative !== null && typeof va.allowNegative === 'boolean') {
+                options.allowNegative = va.allowNegative;
+            }
+            if (va.allowComma !== null && typeof va.allowComma === 'boolean') {
+                options.allowComma = va.allowComma;
+            }
         }
         jQuery(element).on('keydown', function (event) {
             //to figure out if user has already typed a decimal or negative, while handling selection in case they're replacing text with
             //what they've typed, see what the new text would be
             var cv = element.value;
-            if (element.selectionStart != element.selectionEnd) {
+            if (element.selectionStart !== element.selectionEnd) {
                 cv = cv.substring(0, element.selectionStart) + cv.substring(element.selectionEnd);
             }
 
@@ -341,7 +358,7 @@ ko.bindingHandlers.numeric = {
                 (options.allowDecimal && cv.indexOf('.') === -1 && (event.keyCode === 190 || event.keyCode === 110)) ||
                 // Allow: - subtract (109) or dash (189) if allowNegative == true and user hasn't already typed one
                 // (note: if user has selected all the text e.g. '-3333' and types '-', that is allowed)
-                (options.allowNegative && element.selectionStart == 0 && cv.indexOf('-') === -1 && (event.keyCode === 109 || event.keyCode === 189)) ||
+                (options.allowNegative && element.selectionStart === 0 && cv.indexOf('-') === -1 && (event.keyCode === 109 || event.keyCode === 189)) ||
                 // Allow: home, end, left, right
                 (event.keyCode >= 35 && event.keyCode <= 39)) {
                 // let it happen, don't do anything
@@ -467,3 +484,4 @@ ko.utils.convertDateFromBrowserToServer = function (dd) {
     }
     return dd;
 };
+/* eslint-enable no-undef */
