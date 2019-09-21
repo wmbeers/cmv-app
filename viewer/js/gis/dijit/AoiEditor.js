@@ -9,7 +9,6 @@ define([
     'dijit/_WidgetsInTemplateMixin',
     'dijit/Dialog',
     'dijit/ConfirmDialog',
-    'dojo/request',
     'dojo/_base/lang',
     'dojo/on',
     'dojo/dom',
@@ -61,7 +60,7 @@ define([
     'xstyle/css!./AoiEditor/css/AoiEditor.css'
 ],
 function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, koBindings,
-    _WidgetsInTemplateMixin, Dialog, ConfirmDialog, request, lang, on, dom, //eslint-disable-line no-unused-vars
+    _WidgetsInTemplateMixin, Dialog, ConfirmDialog, lang, on, dom, //eslint-disable-line no-unused-vars
     domClass, html, topic, Memory, Deferred, all, AoiEditorSidebarTemplate, OpenAoiDialogTemplate, //eslint-disable-line no-unused-vars
     NewFeatureDialogTemplate,
     Add, Delete, Update, Draw, Edit, Extent, FeatureLayer, GraphicsLayer, Graphic, SimpleRenderer,
@@ -204,7 +203,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
         },
         selectionSymbols: {
             point:
-                new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_CIRCLE, 12, 
+                new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_CIRCLE, 12,
                     new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
                         new Color([0, 168, 132, 1]), 2),
                     new Color([0, 255, 197, 0.5])),
@@ -212,7 +211,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                 new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
                     new Color([0, 255, 197, 1]), 2),
             polygon:
-                new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, 
+                new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID,
                     new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
                         new Color([0, 168, 132, 1]), 2),
                     new Color([0, 255, 197, 0.5]))
@@ -472,8 +471,16 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             }
             this._setupEditor();
             this._knockoutifyAoiEditor();
+            
         },
 
+        //geolocation functions for adding points
+
+        /**
+         * Gets suggested addresses that match the search term, focussed on the current map location, with a Florida extent
+         * @param {any} searchTerm User-entered address to search for.
+         * @returns {Deferred} a Deferred object. Refer to ESRI JSAPI documentation for suggestLocations.
+         */
         getLocatorSuggestions: function (searchTerm) {
             var locator = new Locator('https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer');
             return locator.suggestLocations({
@@ -492,6 +499,11 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             });
         },
 
+        /**
+         * Gets a location from the provided address.
+         * @param {any} address The address to convert to a location.
+         * @returns {Deferred} a Deferred object. Refer to ESRI JSAPI documentation for addressToLocations.
+         */
         getLocatorAddressToLocations: function (address) {
             var locator = new Locator('https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer');
             return locator.addressToLocations({
@@ -509,6 +521,34 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                     }
                 })
             });
+        },
+
+        addPointFromAddress: function (address) {
+            var self = this;
+            if (address) {
+                this.getLocatorAddressToLocations(address).then(
+                    function (findAddressCandidatesResult) {
+                        if (findAddressCandidatesResult && findAddressCandidatesResult.candidates && findAddressCandidatesResult.candidates.length > 0) {
+                            //assume the first match is the only/best match
+                            var candidate = findAddressCandidatesResult.candidates[0],
+                                point = candidate.location, //a point object
+                                featureStub = {
+                                    geometry: point,
+                                    name: candidate.address
+                                },
+                                feature = self._constructFeature(featureStub);
+                            self.features.push(feature);
+                        } else {
+                            topic.publish('growler/growlError', 'Error getting location from address: no location found');
+                        }
+                    },
+                    function (err) {
+                        topic.publish('growler/growlError', 'Error getting location from address: ' + err);
+                    }
+                );
+            } else {
+                //todo, but what?
+            }
         },
 
         digitizePoint: function () {
@@ -1056,9 +1096,9 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                 feature.analysisAreaId = featureOrEvent.attributes.FK_PROJECT_ALT;
                 feature.graphic = featureOrEvent;
             } else {                    
-                //featureOrEvent is the event argument for on-draw-complete
-                //either from draw or cut operation
-                feature.name = 'Feature ' + self._nextFeatureNumber();
+                //featureOrEvent is the event argument for on-draw-complete (either from draw or cut operation),
+                //or from address-auto-complete, which we manufacture as a object with a name property
+                feature.name = featureOrEvent.name || 'Feature ' + self._nextFeatureNumber();
                 feature.bufferDistance = featureOrEvent.sourceFeature ? featureOrEvent.sourceFeature.bufferDistance() : self.lastBufferDistance;
                 feature.bufferUnit = featureOrEvent.sourceFeature ? featureOrEvent.sourceFeature.bufferUnit() : self.lastUnit;
                 //todo keep it in the same group feature.analysisAreaId = featureOrEvent.sourceFeature ? featureOrEvent.sourceFeature.ana
@@ -1474,6 +1514,37 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             ko.applyBindings(this, dom.byId('openAoiDialog'));
             //apply knockout bindings to new feature dialog
             ko.applyBindings(this, dom.byId('newFeatureDijit'));
+
+            //not using knockout for binding autocomplete for address, but sticking this function here
+            //to keep things tidy.
+            jQuery('#addressToPoint').autocomplete({
+                /**
+                 * jQuery Autocomplete source function for auto-completing addresses and ultimately getting coordinate.
+                 * @param {string} request the term user has entered into the field
+                 * @param {function} response a reference to the callback function to invoke after getting a response from autocomplete
+                 * @returns {void}
+                 */
+                source: function (request, response) {
+                    self.getLocatorSuggestions(request.term)
+                        .then(
+                            function (suggestions) {
+                                //post-process to array of strings, pulling the "text" property out of each the suggestions
+                                var addresses = suggestions.map(function (suggestion) {
+                                    return suggestion.text;
+                                });
+                                response(addresses); //jQuery auto-complete takes over from here
+                            },
+                            function (err) {
+                                topic.publish('growler/growlError', 'Error getting address: ' + err);
+                                response([]);
+                            }
+                        );
+                },
+                select: function (event, ui) {
+                    self.addPointFromAddress(ui.item.value);
+                }
+            });
+
 
             /* eslint-enable no-undef */
         },
