@@ -58,6 +58,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <th><input type="checkbox" data-bind="triState: featuresVisible" /></th>
                             <th data-bind="css: {'dgrid-sort-up': !featureSortDescending(), 'dgrid-sort-down': featureSortDescending()}, click: sortFeaturesByType">Type<span class="ui-icon dgrid-sort-arrow" data-bind="visible: featureSortOption()==='type'">&nbsp;</span></th>
                             <th data-bind="css: {'dgrid-sort-up': !featureSortDescending(), 'dgrid-sort-down': featureSortDescending()}, click: sortFeaturesByName">Name<span class="ui-icon dgrid-sort-arrow" data-bind="visible: featureSortOption()==='name'">&nbsp;</span></th>
                             <th colspan="2">Buffer</th>
@@ -66,6 +67,7 @@
                     <tbody data-bind="foreach: sortedFeatures">
                         <!-- ko if: selected -->
                         <tr>
+                            <td><input type="checkbox" checked disabled /></td>
                             <td data-bind="template: {name: 'geometry-type-icon', data: geometry}"></td>
                             <td>
                                 <input type="text" data-bind="value: name" style="width: 95px" />
@@ -75,10 +77,11 @@
                         </tr>
                         <!-- /ko -->
                         <!-- ko ifnot: selected -->
-                        <tr data-bind="click: select">
-                            <td data-bind="template: {name: 'geometry-type-icon', data: geometry}"></td>
-                            <td data-bind="text: name"></td>
-                            <td colspan="2" data-bind="text: bufferText"></td>
+                        <tr>
+                            <td><input type="checkbox" data-bind="checked: visible" /></td>
+                            <td data-bind="click: select, template: {name: 'geometry-type-icon', data: geometry}"></td>
+                            <td data-bind="click: select, text: name"></td>
+                            <td colspan="2" data-bind="click: select, text: bufferText"></td>
                         </tr>
                         <!-- /ko -->
                     </tbody>
@@ -90,32 +93,6 @@
                         data-dojo-attach-point="addFeatureButton">
                     Add Feature
                 </button>
-
-                <fieldset data-bind="visible: !$root.drawToolActive()">
-                    <!-- Todo move these to a dialog -->
-                    <legend>Add New</legend>
-                    <button data-bind="click: function() { $root.activateDrawTool('point'); }">
-                        Point
-                    </button>
-
-                    <button data-bind="click: function() { $root.activateDrawTool('polyline'); }">
-                        Line
-                    </button>
-
-                    <button data-bind="click: function() { $root.activateDrawTool('freehandpolyline'); }">
-                        FH Line
-                    </button>
-
-                    <button data-bind="click: function() { $root.activateDrawTool('polygon'); }">
-                        Polygon
-                    </button>
-
-                    <button data-bind="click: function() { $root.activateDrawTool('freehandpolygon'); }">
-                        FH Polygon
-                    </button>
-                    <!--End part going to dialog-->
-
-                </fieldset>
 
                 <div data-bind="visible:  $root.drawToolActive()">
                     <button data-bind="click: $root.deactivateDrawTool" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-cut fa-fw'">

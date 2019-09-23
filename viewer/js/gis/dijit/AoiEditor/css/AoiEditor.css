@@ -11,11 +11,15 @@
 }
 
 .newFeatureDijit .newFeatureNode {
-    height: 280px;
-    width: 300px;
+    height: 300px;
+    width: 350px;
 }
 
 .newFeatureDijit .newFeatureTabContainer {
     height: 100%;
     width: 100%;
+}
+
+.arcgisSearch .searchGroup .searchInput {
+    width: 220px;
 }

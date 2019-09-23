@@ -2,10 +2,13 @@ define([
     'dojo/_base/declare',
     'dijit/_WidgetBase',
     'dijit/_TemplatedMixin',
-    'dijit/form/DateTextBox',
+    'dijit/form/ValidationTextBox',
     'jquery',
-    'jqueryUi',
+    'jqueryUi', /*for datepicker*/
     'koBindings',
+
+    'gis/plugins/LatLongParser',
+
     'dijit/_WidgetsInTemplateMixin',
     'dijit/Dialog',
     'dijit/ConfirmDialog',
@@ -27,10 +30,13 @@ define([
     'esri/dijit/editing/Delete',
     'esri/dijit/editing/Update',
 
+    'esri/dijit/Search',
+
     'esri/toolbars/draw',
     'esri/toolbars/edit',
 
     'esri/geometry/Extent',
+    'esri/geometry/Point',
 
     'esri/layers/FeatureLayer',
     'esri/layers/GraphicsLayer',
@@ -59,11 +65,14 @@ define([
 
     'xstyle/css!./AoiEditor/css/AoiEditor.css'
 ],
-function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, koBindings,
+function (declare, _WidgetBase, _TemplatedMixin, ValidationTextBox, jquery, jqueryUi, koBindings, LatLongParser,
     _WidgetsInTemplateMixin, Dialog, ConfirmDialog, lang, on, dom, //eslint-disable-line no-unused-vars
     domClass, html, topic, Memory, Deferred, all, AoiEditorSidebarTemplate, OpenAoiDialogTemplate, //eslint-disable-line no-unused-vars
     NewFeatureDialogTemplate,
-    Add, Delete, Update, Draw, Edit, Extent, FeatureLayer, GraphicsLayer, Graphic, SimpleRenderer,
+    Add, Delete, Update,
+    Search,
+    Draw, Edit, Extent, Point,
+    FeatureLayer, GraphicsLayer, Graphic, SimpleRenderer,
     SimpleMarkerSymbol,
     SimpleLineSymbol,
     SimpleFillSymbol,
@@ -241,7 +250,8 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
         newFeatureDialog: new Dialog({
             id: 'aoiEditor_new_feature_dialog',
             title: 'New Feature',
-            content: NewFeatureDialogTemplate
+            content: NewFeatureDialogTemplate//,
+            //style: 'width: 350px; height: 300px'
         }),
 
         showNewFeatureDialog: function () {
@@ -322,7 +332,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                     edits.adds.concat(edits.updates).forEach(function (aa) {
                         aa.sourceFeatures.forEach(function (f) {
                             f.graphic.attributes.FK_PROJECT_ALT = aa.attributes.FK_PROJECT_ALT;
-                            f.updateDatabase();
+                            f.applyUpdate();
                         });
                     });
                     //todo, something more than this but what?
@@ -472,88 +482,205 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             this._setupEditor();
             this._knockoutifyAoiEditor();
             
+
+            this.addressToPointSearch = new Search({
+                maxResults: 4, // just because > 4 gets clipped in bottom of dialog
+                sources: [
+                    {
+                        locator: new Locator('//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer'),
+                        singleLineFieldName: 'SingleLine',
+                        outFields: ['Addr_type'],
+                        name: 'Esri World Geocoder',
+                        countryCode: 'US',
+                        localSearchOptions: {
+                            minScale: 300000,
+                            distance: 50000
+                        },
+                        searchExtent: new Extent({
+                            xmin: -87.79,
+                            ymin: 24.38,
+                            xmax: -79.8,
+                            ymax: 31.1,
+                            spatialReference: {
+                                wkid: 4326
+                            }
+                        }),
+                        placeholder: 'Create point from address or place',
+                        highlightSymbol: { /*TODO this isn't showing up*/
+                            url: 'https://js.arcgis.com/3.27/esri/dijit/Search/images/search-pointer.png',
+                            width: 36, height: 36, xoffset: 9, yoffset: 18
+                        }
+                    }
+                ]
+            }, 'addressToPoint');
+            this.addressToPointSearch.startup(); //todo maybe define this when the dialog opens?
+
+            var self = this; //todo move to top or find some other way to maintain context
+
+            on(this.addressToPointSearch, 'select-result', function (e) {
+                self.map.setExtent(e.result.extent);
+                e.result.feature.name = e.result.name;
+                var feature = self._constructFeature(e.result.feature);
+                self._addFeatureToLayer(feature);
+                self.newFeatureDialog.hide();
+            });
+
         },
 
-        //geolocation functions for adding points
+        //save to server
+        _addFeatureToLayer: function (feature) {
+            var self = this,
+                layer = self.layers[feature.type],
+                deferred = new Deferred();
+            layer.applyEdits([feature.graphic], null, null, function (addResult) {
+                if (!addResult || addResult.length === 0) {
+                    //todo warn user and handle situation. Not sure if this actually happens
+                }
+
+                //make it active
+                self.currentFeature(feature);
+
+                //push it to features observableArray
+                self.features.push(feature);
+
+                //todo add to undo stack
+
+                deferred.resolve(feature);
+
+            }, function (err) {
+                //todo
+                deferred.reject(err);
+            });
+            return deferred;
+        },
+
+        //geolocation functions for adding points, not used
 
         /**
          * Gets suggested addresses that match the search term, focussed on the current map location, with a Florida extent
          * @param {any} searchTerm User-entered address to search for.
          * @returns {Deferred} a Deferred object. Refer to ESRI JSAPI documentation for suggestLocations.
          */
-        getLocatorSuggestions: function (searchTerm) {
-            var locator = new Locator('https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer');
-            return locator.suggestLocations({
-                text: searchTerm,
-                location: this.map.extent.getCenter().normalize(),
-                distance: 50000,
-                searchExtent: new Extent({
-                    xmin: -87.79,
-                    ymin: 24.38,
-                    xmax: -79.8,
-                    ymax: 31.1,
-                    spatialReference: {
-                        wkid: 4326
-                    }
-                })
-            });
-        },
+        //getLocatorSuggestions: function (searchTerm) {
+        //    var locator = new Locator('https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer');
+        //    return locator.suggestLocations({
+        //        text: searchTerm,
+        //        location: this.map.extent.getCenter().normalize(),
+        //        distance: 50000,
+        //        searchExtent: new Extent({
+        //            xmin: -87.79,
+        //            ymin: 24.38,
+        //            xmax: -79.8,
+        //            ymax: 31.1,
+        //            spatialReference: {
+        //                wkid: 4326
+        //            }
+        //        })
+        //    });
+        //},
 
-        /**
-         * Gets a location from the provided address.
-         * @param {any} address The address to convert to a location.
-         * @returns {Deferred} a Deferred object. Refer to ESRI JSAPI documentation for addressToLocations.
-         */
-        getLocatorAddressToLocations: function (address) {
-            var locator = new Locator('https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer');
-            return locator.addressToLocations({
-                address: {
-                    SingleLine: address //Note: if we switch to a different server a different format for the address may be needed
-                },
-                countryCode: 'US',
-                searchExtent: new Extent({
-                    xmin: -87.79,
-                    ymin: 24.38,
-                    xmax: -79.8,
-                    ymax: 31.1,
-                    spatialReference: {
-                        wkid: 4326
-                    }
-                })
-            });
-        },
+        ///**
+        // * Gets a location from the provided address.
+        // * @param {any} address The address to convert to a location.
+        // * @returns {Deferred} a Deferred object. Refer to ESRI JSAPI documentation for addressToLocations.
+        // */
+        //getLocatorAddressToLocations: function (address) {
+        //    var locator = new Locator('https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer');
+        //    return locator.addressToLocations({
+        //        address: {
+        //            SingleLine: address //Note: if we switch to a different server a different format for the address may be needed
+        //        },
+        //        countryCode: 'US',
+        //        searchExtent: new Extent({
+        //            xmin: -87.79,
+        //            ymin: 24.38,
+        //            xmax: -79.8,
+        //            ymax: 31.1,
+        //            spatialReference: {
+        //                wkid: 4326
+        //            }
+        //        })
+        //    });
+        //},
 
-        addPointFromAddress: function (address) {
-            var self = this;
-            if (address) {
-                this.getLocatorAddressToLocations(address).then(
-                    function (findAddressCandidatesResult) {
-                        if (findAddressCandidatesResult && findAddressCandidatesResult.candidates && findAddressCandidatesResult.candidates.length > 0) {
-                            //assume the first match is the only/best match
-                            var candidate = findAddressCandidatesResult.candidates[0],
-                                point = candidate.location, //a point object
-                                featureStub = {
-                                    geometry: point,
-                                    name: candidate.address
-                                },
-                                feature = self._constructFeature(featureStub);
-                            self.features.push(feature);
-                        } else {
-                            topic.publish('growler/growlError', 'Error getting location from address: no location found');
-                        }
-                    },
-                    function (err) {
-                        topic.publish('growler/growlError', 'Error getting location from address: ' + err);
-                    }
-                );
-            } else {
-                //todo, but what?
-            }
-        },
+        //addPointFromAddress: function (address) {
+        //    var self = this;
+        //    if (address) {
+        //        this.getLocatorAddressToLocations(address).then(
+        //            function (findAddressCandidatesResult) {
+        //                if (findAddressCandidatesResult && findAddressCandidatesResult.candidates && findAddressCandidatesResult.candidates.length > 0) {
+        //                    //assume the first match is the only/best match
+        //                    var candidate = findAddressCandidatesResult.candidates[0],
+        //                        point = candidate.location, //a point object
+        //                        featureStub = {
+        //                            geometry: point,
+        //                            name: candidate.address
+        //                        },
+        //                        feature = self._constructFeature(featureStub);
+        //                    self.features.push(feature);
+        //                } else {
+        //                    topic.publish('growler/growlError', 'Error getting location from address: no location found');
+        //                }
+        //            },
+        //            function (err) {
+        //                topic.publish('growler/growlError', 'Error getting location from address: ' + err);
+        //            }
+        //        );
+        //    } else {
+        //        //todo, but what?
+        //    }
+        //},
 
         digitizePoint: function () {
             this.newFeatureDialog.hide();
             this.activateDrawTool('point');
+        },
+
+        extractPoint: function () {
+            topic.publish('growler/growl', 'Extract coming soon!');
+        },
+
+        extractLine: function () {
+            topic.publish('growler/growl', 'Extract coming soon!');
+        },
+
+        latLongToPoint: function () {
+            var llInput = this.latLongValidationTextBox.get('value'),
+                p = LatLongParser.interpretCoordinates(llInput);
+            if (!p) {
+                //surely there's a purely dojo way to do this, but documentation is impenetrable
+                this._latLongValid = false;
+                this.latLongValidationTextBox.validate(); //forces display of invalid
+                return;
+            }
+            //have an object with x and y properties, flesh this out into a thing that can be passed to _constructFeature;
+            var featureStub = {
+                    geometry: new Point(p.x, p.y),
+                    name: llInput
+                },
+                feature = this._constructFeature(featureStub);
+            this._addFeatureToLayer(feature);
+            this.newFeatureDialog.hide();
+        },
+
+        digitizeLine: function () {
+            this.newFeatureDialog.hide();
+            this.activateDrawTool('polyline');
+        },
+
+        digitizeFreehandLine: function () {
+            this.newFeatureDialog.hide();
+            this.activateDrawTool('freehandpolyline');
+        },
+
+        digitizePolygon: function () {
+            this.newFeatureDialog.hide();
+            this.activateDrawTool('polygon');
+        },
+
+        digitizeFreehandPolygon: function () {
+            this.newFeatureDialog.hide();
+            this.activateDrawTool('freehandpolygon');
         },
 
         _setupEditor: function () {
@@ -626,24 +753,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                 if (self.drawMode() === 'draw') {
                     //construct a feature
                     var f = self._constructFeature(event);
-
-                    //save to server
-                    layer.applyEdits([f.graphic], null, null, function (addResult) {
-                        if (!addResult || addResult.length === 0) {
-                            //todo check a and make sure successfull
-                        }
-
-                        //make it active
-                        self.currentFeature(f);
-
-                        //push it to features observableArray
-                        self.features.push(f);
-
-                        //todo add to undo stack
-
-                    }, function () {
-                        //todo
-                    });
+                    self._addFeatureToLayer(f);
                 } else {
                     //split mode
                     //the currentFeature().geometry is the geometry to be cut
@@ -696,7 +806,6 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                                     }, function () {
                                         //todo
                                     });
-
                                 }
                             },
                             function () {
@@ -725,7 +834,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                     if (duration >= delay && !self.vertexMoving) {
                         self.bufferFeature(feature);
                         //save to database
-                        feature.updateDatabase();
+                        feature.applyUpdate();
 
                     }
                 }, delay);
@@ -760,7 +869,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             this.edit.on('graphic-move-stop', function (evt) {
                 self.bufferFeature(evt.graphic.feature);
                 //save to database
-                evt.graphic.feature.updateDatabase();
+                evt.graphic.feature.applyUpdate();
             });
 
             //TODO we can also support move and scaling, etc.
@@ -1116,6 +1225,13 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
 
             /* eslint-disable no-undef */
             feature.name = ko.observable(feature.name);
+            feature.visible = ko.observable(true);
+            feature.visible.subscribe(function (visible) {
+                feature.graphic.visible = visible;
+                feature.buffer.visible = visible;
+                feature.graphic.getLayer().redraw();
+                self.bufferGraphics.redraw();
+            }, 'change');
             feature.bufferDistance = ko.observable(feature.bufferDistance);
             feature.bufferUnit = ko.observable(feature.bufferUnit);
             feature.bufferText = ko.pureComputed(function () {
@@ -1160,7 +1276,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                 if (newValue) {
                     self.lastBufferDistance = newValue;
                 }
-                feature.updateDatabase();
+                feature.applyUpdate();
             }, 'changed');
 
             feature.bufferUnit.subscribe(function (newValue) {
@@ -1169,23 +1285,25 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                 if (newValue) {
                     self.lastUnit = newValue;
                 }
-                feature.updateDatabase();
+                feature.applyUpdate();
             }, 'changed');
 
             feature.name.subscribe(function (newValue) {
                 feature.graphic.attributes.FEATURE_NAME = newValue;
-                feature.updateDatabase();
+                feature.applyUpdate();
             }, 'changed');
 
-            feature.updateDatabase = function () {
+            feature.applyUpdate = function () {
                 var graphic = feature.graphic,
-                    layer = graphic._layer;
-                layer.applyEdits(null, [graphic], null, function () {
-                    //todo
-                }, function () {
-                    //todo
+                    layer = graphic._layer,
+                    deferred = new Deferred();
+                layer.applyEdits(null, [graphic], null, function (adds, updates) {
+                    //todo add to undo stack
+                    deferred.resolve(updates[0]);
+                }, function (err) {
+                    deferred.reject(err)
                 });
-                //todo add to undo stack
+                return deferred; //Todo, we don't really do anything with this deferred
             };
 
             feature.deleteFeature = function () {
@@ -1377,6 +1495,7 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             }
         },
 
+        //eslint-disable-next-line max-statements
         _knockoutifyAoiEditor: function () {
             var self = this;
             /* eslint-disable no-undef */
@@ -1467,7 +1586,48 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
                         self.layers[f.type].selectFeatures(query); //highlights it
                     }
                 }
+                window.setTimeout(function () {
+                    self.updateFeatureVisibility();
+                }, 100);
             });
+
+            //bound to the toggle all features visible checkbox
+            this.featuresVisible = ko.pureComputed({
+                read: function () {
+                    var featureCount = this.features().length,
+                        visibleFeatureCount = this.features().filter(function (feature) {
+                            return feature.visible();
+                        }).length;
+                    if (featureCount === 0) {
+                        return true;
+                    }
+                    if (featureCount === visibleFeatureCount) {
+                        return true; //all visible, or no features
+                    }
+                    if (visibleFeatureCount === 0) {
+                        return false; //none visible
+                    }
+                    return null; //indeterminate, some visible, some invisible
+                },
+                write: function (val) {
+                    //prevent writing
+                    this.features().forEach(function (feature) {
+                        feature.visible(val);
+                    });
+                }
+            }, this);
+
+            //function to handle changing visibility while forcing the current feature to always be visible
+            this.updateFeatureVisibility = function () {
+                this.features().forEach(function (feature) {
+                    feature.graphic.visible = feature.selected() || feature.visible();
+                    feature.buffer.visible = feature.graphic.visible;
+                }, this);
+                this.layers.point.redraw();
+                this.layers.polyline.redraw();
+                this.layers.polygon.redraw();
+                this.bufferGraphics.redraw();
+            },
 
             //Controls display of Split button; computes whether the current feature can be split, true if there is a current feature selected that is a polyline or polygon;
             //false if no feature selected or only point selected. 
@@ -1497,6 +1657,22 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
             this.currentAuthority.subscribe(this.listAois, this);
             this.includeExpired.subscribe(this.listAois, this);
 
+            //for extract and lat/long tools
+            this.roadwayId = ko.observable();
+            this.milepost = ko.observable(); //either the milepost on the point tab, or the begin milepost on the line tab
+            this.endMilepost = ko.observable();
+
+            this._latLongValid = true;
+            this.latLongValidationTextBox = new ValidationTextBox({
+                validator: function (value, constraints) {
+                    console.log('ll validate ' + value);
+                    return self._latLongValid;
+                },
+                onInput: function (event) {
+                    self._latLongValid = true; //validation happens only on clicking the "Go" button
+                }
+            }, dom.byId('latLongInput'));
+
             //analysis areas are defined based on the features
             this.analysisAreas = ko.pureComputed(function () {
                 var analysisAreas = [];
@@ -1517,33 +1693,33 @@ function (declare, _WidgetBase, _TemplatedMixin, DateTextBox, jquery, jqueryUi, 
 
             //not using knockout for binding autocomplete for address, but sticking this function here
             //to keep things tidy.
-            jQuery('#addressToPoint').autocomplete({
-                /**
-                 * jQuery Autocomplete source function for auto-completing addresses and ultimately getting coordinate.
-                 * @param {string} request the term user has entered into the field
-                 * @param {function} response a reference to the callback function to invoke after getting a response from autocomplete
-                 * @returns {void}
-                 */
-                source: function (request, response) {
-                    self.getLocatorSuggestions(request.term)
-                        .then(
-                            function (suggestions) {
-                                //post-process to array of strings, pulling the "text" property out of each the suggestions
-                                var addresses = suggestions.map(function (suggestion) {
-                                    return suggestion.text;
-                                });
-                                response(addresses); //jQuery auto-complete takes over from here
-                            },
-                            function (err) {
-                                topic.publish('growler/growlError', 'Error getting address: ' + err);
-                                response([]);
-                            }
-                        );
-                },
-                select: function (event, ui) {
-                    self.addPointFromAddress(ui.item.value);
-                }
-            });
+            //jQuery('#addressToPoint').autocomplete({
+            //    /**
+            //     * jQuery Autocomplete source function for auto-completing addresses and ultimately getting coordinate.
+            //     * @param {string} request the term user has entered into the field
+            //     * @param {function} response a reference to the callback function to invoke after getting a response from autocomplete
+            //     * @returns {void}
+            //     */
+            //    source: function (request, response) {
+            //        self.getLocatorSuggestions(request.term)
+            //            .then(
+            //                function (suggestions) {
+            //                    //post-process to array of strings, pulling the "text" property out of each the suggestions
+            //                    var addresses = suggestions.map(function (suggestion) {
+            //                        return suggestion.text;
+            //                    });
+            //                    response(addresses); //jQuery auto-complete takes over from here
+            //                },
+            //                function (err) {
+            //                    topic.publish('growler/growlError', 'Error getting address: ' + err);
+            //                    response([]);
+            //                }
+            //            );
+            //    },
+            //    select: function (event, ui) {
+            //        self.addPointFromAddress(ui.item.value);
+            //    }
+            //});
 
 
             /* eslint-enable no-undef */
