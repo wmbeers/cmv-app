@@ -2,7 +2,6 @@ define([
     'dojo/_base/declare',
     'dijit/_WidgetBase',
     'dijit/_TemplatedMixin',
-    'dijit/form/ValidationTextBox',
     'jquery',
     'jqueryUi', /*for datepicker*/
     'koBindings',
@@ -58,6 +57,8 @@ define([
     'dijit/form/FilteringSelect',
     'dijit/form/CheckBox',
     'dijit/form/ValidationTextBox',
+    'dijit/form/Textarea',
+    'dijit/form/SimpleTextarea',
     'dijit/form/TextBox',
     'dijit/form/Select',
     'dijit/layout/TabContainer',
@@ -65,7 +66,7 @@ define([
 
     'xstyle/css!./AoiEditor/css/AoiEditor.css'
 ],
-function (declare, _WidgetBase, _TemplatedMixin, ValidationTextBox, jquery, jqueryUi, koBindings, LatLongParser,
+function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, LatLongParser,
     _WidgetsInTemplateMixin, Dialog, ConfirmDialog, lang, on, dom, //eslint-disable-line no-unused-vars
     domClass, html, topic, Memory, Deferred, all, AoiEditorSidebarTemplate, OpenAoiDialogTemplate, //eslint-disable-line no-unused-vars
     NewFeatureDialogTemplate,
@@ -80,7 +81,15 @@ function (declare, _WidgetBase, _TemplatedMixin, ValidationTextBox, jquery, jque
     BufferParameters,
     Query,
     Locator,
-    projects
+    projects,
+    Form,
+    FilteringSelect,
+    CheckBox,
+    ValidationTextBox,
+    Textarea,
+    SimpleTextarea,
+    TextBox,
+    Select
 ) { //eslint-disable-line no-unused-vars
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
         widgetsInTemplate: true,
@@ -1234,9 +1243,16 @@ function (declare, _WidgetBase, _TemplatedMixin, ValidationTextBox, jquery, jque
             }, 'change');
             feature.bufferDistance = ko.observable(feature.bufferDistance);
             feature.bufferUnit = ko.observable(feature.bufferUnit);
+            //for display
             feature.bufferText = ko.pureComputed(function () {
                 if (feature.bufferDistance() > 0 && feature.bufferUnit()) {
                     return feature.bufferDistance() + ' ' + feature.bufferUnit().abbreviation;
+                }
+                return '-';
+            });
+            feature.bufferTextLong = ko.pureComputed(function () {
+                if (feature.bufferDistance() > 0 && feature.bufferUnit()) {
+                    return feature.bufferDistance() + ' ' + feature.bufferUnit().name;
                 }
                 return '-';
             });
@@ -1502,7 +1518,59 @@ function (declare, _WidgetBase, _TemplatedMixin, ValidationTextBox, jquery, jque
             //basic properties
             this.name = ko.observable();
             this.description = ko.observable();
+            //convert it to a dojo Textarea with hack to resize it
+//             this.descriptionTextArea = new Textarea({
+//                 onChange: function (newValue) {
+//                     self.description(newValue);
+//                 }
+//             }, dom.byId('aoiDescription'));
+//             this.description.subscribe(function (newValue) {
+//                 self.descriptionTextArea.set('value', newValue);
+//                 self.descriptionTextArea.resize();
+//             });
             this.projectTypeId = ko.observable();
+            this.projectTypeSelect = new FilteringSelect({
+                store: new Memory({
+                    data: this.projectTypes
+                }),
+                onChange: function (newValue) {
+                    self.projectTypeId(newValue);
+                },
+                style: 'width: 100%'
+            }, dom.byId('projectTypeDojo'));
+            this.projectTypeSelect.startup();
+            //hack because we can't data-bind a filteringselect
+            this.projectTypeId.subscribe(function (newValue) {
+                self.projectTypeSelect.set('value', newValue);
+            });
+
+            //filtering selects for authority; there are two
+            /*this.currentAuthoritySelectSidebar = new FilteringSelect({
+                store: new Memory({
+                    data: this.authorities
+                }),
+                onChange: function (newValue) {
+                    self.currentAuthority(newValue);
+                },
+                style: 'width: 100%'
+            }, dom.byId('sidebarAuthority'));
+            this.currentAuthoritySelectSidebar.startup();
+            this.currentAuthoritySelectDialog = new FilteringSelect({
+                store: new Memory({
+                    data: this.authorities
+                }),
+                onChange: function (newValue) {
+                    self.currentAuthority(newValue);
+                },
+                style: 'width: 100%'
+            }, dom.byId('dialogAuthority'));
+            //hack because we can't data-bind a filteringselect
+            this.currentAuthority.subscribe(function (newValue) {
+                self.currentAuthoritySelectSidebar.set('value', newValue);
+                self.currentAuthoritySelectDialog`.set('value', newValue);
+            });
+            */
+
             this.expirationDate = ko.observable();
 
             //all of the features, as models, regardless of geometry, distinct from, but related to, the features in layers.point.graphics, layers.polyline.graphics, and layers.polygon.graphics
@@ -1646,6 +1714,54 @@ function (declare, _WidgetBase, _TemplatedMixin, ValidationTextBox, jquery, jque
             this.filterOption = ko.observable('my'); //my or all
             //this.currentAuthority is synced with the global observable when the widgets start up
             this.includeExpired = ko.observable(false); //if true, expired AOIs are listed; any other value or null only non-expired AOIs are shown.
+
+            this.aoiSortOption = ko.observable('name'); //name, type, expirationDate, lastEditedDate
+            //functions for toggling sort
+            this.sortAoisBy = function (option) {
+                if (this.aoiSortOption() === option) {
+                    this.aoiSortDescending(!this.aoiSortDescending());
+                } else {
+                    this.aoiSortOption(option);
+                    this.aoiSortDescending(false);
+                }
+            };
+            this.sortAoisByName = function () {
+                this.sortAoisBy('name');
+            };
+            this.sortAoisByType = function () {
+                this.sortAoisBy('typeName');
+            };
+            this.sortAoisByExpirationDate = function () {
+                this.sortAoisBy('expirationDate');
+            };
+            this.sortAoisByModDate = function () {
+                this.sortAoisBy('modDate');
+            };
+            this.aoiSortDescending = ko.observable(false);
+            this.sortedAois = ko.pureComputed(function () {
+                var sortOption = this.aoiSortOption() || 'name', //default sort by name
+                    sortDescending = this.aoiSortDescending(); //default sort ascending
+                return this.aois().sort(function (a, b) {
+                    var aVal = a[sortOption],
+                        bVal = b[sortOption],
+                        comp = (aVal < bVal) ? -1 : (aVal > bVal) ? 1 : 0;
+                    if (sortOption !== 'name' && comp === 0) {
+                        //sort by name to break ties
+                        aVal = a.name;
+                        bVal = b.name;
+                        comp = (aVal < bVal) ? -1 : (aVal > bVal) ? 1 : 0;
+                    }
+                    //flip direction for descending
+                    if (sortDescending) {
+                        comp *= -1;
+                    }
+
+                    return comp;
+                });
+            }, this);
+
+
+
 
             //if user is authorized, and working on a new AOI, we show a drop-down for selecting the orgUser identity
             this.showAuthoritySelection = ko.pureComputed(function () {

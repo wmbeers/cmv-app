@@ -202,7 +202,8 @@ define([
 
         panes: {
             left: {
-                splitter: true
+                splitter: true,
+                style: 'width: 370px'
             },
             bottom: {
                 id: 'sidebarBottom',

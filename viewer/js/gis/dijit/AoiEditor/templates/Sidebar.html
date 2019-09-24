@@ -34,13 +34,20 @@
 
             <div data-bind="visible: mode()=='editName'">
                 <label for="aoiName">Name</label>
-                <input id="aoiName" type="text" data-bind="value: name" style="width:100%" />
-                <label for="aoiType">Type</label>
-                <select id="aoiType" data-bind="options: $root.projectTypes, value: projectTypeId, optionsValue: 'id', optionsText: 'name'" style="width:100%"></select>
+                <input id="aoiName" type="text" data-dojo-type="dijit/form/TextBox" data-bind="value: name" style="width:100%" />
+                
+                <label for="projectTypeDojo">Type</label><br />
+                <select id="projectTypeDojo"></select><br />
+                
                 <label for="aoiDescription">Description</label>
-                <textarea id="aoiDescription" data-bind="value: description" style="width:100%"></textarea>
+                <textarea data-bind="value: description" data-dojo-type="dijit/form/SimpleTextarea" rows="3" id="aoiDescription" style="width:96%"></textarea>
+                
                 <label for="expirationDate">Keep Until</label>
-                <input id="expirationDateTextBox" data-bind="jqDatepicker: expirationDate" data-dojo-attach-point="expirationDateTextBox" class="dijitTextBox" style="width:100%" />
+                <div class="dijit dijitReset dijitInline dijitLeft dijitTextBox" style="width: 100%">
+                    <div class="dijitReset dijitInputField">
+                        <input id="expirationDateTextBox" data-bind="jqDatepicker: expirationDate" class="dijitReset dijitInputInner" style="width:100%; line-height: 20px; height:" />
+                    </div>
+                </div>
                 <span data-bind="visible: id==-1 && $root.authorities.length > 1">
                     <label for="org">Organization</label>
                     <select data-bind="options: $root.authorities, value: $root.currentAuthority, optionsText: 'orgName'" style="width:100%"></select>
@@ -55,33 +62,34 @@
             </div>
 
             <div data-bind="visible: mode() == 'editFeatures'">
-                <table>
+                <div id="aoi-name-label" data-bind="text: name"></div>
+                <table class="aoiList">
                     <thead>
-                        <tr>
-                            <th><input type="checkbox" data-bind="triState: featuresVisible" /></th>
-                            <th data-bind="css: {'dgrid-sort-up': !featureSortDescending(), 'dgrid-sort-down': featureSortDescending()}, click: sortFeaturesByType">Type<span class="ui-icon dgrid-sort-arrow" data-bind="visible: featureSortOption()==='type'">&nbsp;</span></th>
-                            <th data-bind="css: {'dgrid-sort-up': !featureSortDescending(), 'dgrid-sort-down': featureSortDescending()}, click: sortFeaturesByName">Name<span class="ui-icon dgrid-sort-arrow" data-bind="visible: featureSortOption()==='name'">&nbsp;</span></th>
-                            <th colspan="2">Buffer</th>
+                        <tr data-bind="css: {'dgrid-sort-up': !featureSortDescending(), 'dgrid-sort-down': featureSortDescending()}">
+                            <th class="dgrid-header dgrid-cell"><input type="checkbox" data-bind="triState: featuresVisible" /></th>
+                            <th class="dgrid-header dgrid-cell" data-bind="click: sortFeaturesByType, css: {'type-sort' : featureSortOption()==='type'}">Type<span class="ui-icon dgrid-sort-arrow" data-bind="visible: featureSortOption()==='type'">&nbsp;</span></th>
+                            <th class="dgrid-header dgrid-cell" data-bind="click: sortFeaturesByName">Name<span class="ui-icon dgrid-sort-arrow" data-bind="visible: featureSortOption()==='name'">&nbsp;</span></th>
+                            <th class="dgrid-header dgrid-cell" colspan="2">Buffer</th>
                         </tr>
                     </thead>
                     <tbody data-bind="foreach: sortedFeatures">
                         <!-- ko if: selected -->
-                        <tr>
-                            <td><input type="checkbox" checked disabled /></td>
-                            <td data-bind="template: {name: 'geometry-type-icon', data: geometry}"></td>
-                            <td>
-                                <input type="text" data-bind="value: name" style="width: 95px" />
+                        <tr class="feature-selected">
+                            <td class="dgrid-cell"><input type="checkbox" checked disabled /></td>
+                            <td class="dgrid-cell" data-bind="template: {name: 'geometry-type-icon', data: geometry}"></td>
+                            <td class="dgrid-cell">
+                                <input type="text" data-bind="value: name" />
                             </td>
-                            <td><input type="number" data-bind="value: bufferDistance" style="width: 3em" /></td>
-                            <td><select data-bind="options: $root.bufferUnitArray, optionsText: 'name', value: bufferUnit" style="width: 6em" /></td>
+                            <td class="dgrid-cell"><input type="number" data-bind="value: bufferDistance" style="width: 3em" /></td>
+                            <td class="dgrid-cell"><select data-bind="options: $root.bufferUnitArray, optionsText: 'abbreviation', value: bufferUnit, attr: {title: bufferTextLong}" style="width: 3em" /></td>
                         </tr>
                         <!-- /ko -->
                         <!-- ko ifnot: selected -->
                         <tr>
-                            <td><input type="checkbox" data-bind="checked: visible" /></td>
-                            <td data-bind="click: select, template: {name: 'geometry-type-icon', data: geometry}"></td>
-                            <td data-bind="click: select, text: name"></td>
-                            <td colspan="2" data-bind="click: select, text: bufferText"></td>
+                            <td class="dgrid-cell"><input type="checkbox" data-bind="checked: visible" /></td>
+                            <td class="dgrid-cell" data-bind="click: select, template: {name: 'geometry-type-icon', data: geometry}"></td>
+                            <td class="dgrid-cell" data-bind="click: select, text: name"></td>
+                            <td class="dgrid-cell" colspan="2" data-bind="click: select, text: bufferText, attr: {title: bufferTextLong}"></td>
                         </tr>
                         <!-- /ko -->
                     </tbody>
