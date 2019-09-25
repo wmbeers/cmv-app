@@ -119,7 +119,7 @@
                         <legend>Editing <span data-bind="text: name"></span></legend>
                         <div data-bind="visible: canSplit">
                             <!-- visible binding on a dojo button renders an empty button frame, so have to wrap it -->
-                            <button data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-cut fa-fw'" data-bind="click: function() { $root.activateSplitTool(); }">
+                            <button data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-cut fa-fw'" data-bind="click: $root.activateSplitTool">
                                 Split
                             </button>
                         </div>
@@ -127,6 +127,16 @@
                             Delete
                         </div>
                     </fieldset>
+                </div>
+
+                <div>
+                    <button data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-undo fa-fw'" data-dojo-attach-point="undoButton" data-dojo-attach-event="onClick:undo">
+                        Undo
+                    </button>
+                    <button data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-redo fa-fw'" data-dojo-attach-point="redoButton" data-dojo-attach-event="onClick:redo">
+                        Redo
+                    </button>
+
                 </div>
 
                 <br />

@@ -25,9 +25,15 @@ define([
     'dojo/text!./AoiEditor/templates/Dialog.html', // template for the open AOI dialog
     'dojo/text!./AoiEditor/templates/NewFeatureDialog.html', // template for the new feature dialog
 
+    'esri/undoManager',
+    './AoiEditor/FeatureOperations',
+    //these are handy, but know nothing about our local features observable array
     'esri/dijit/editing/Add',
     'esri/dijit/editing/Delete',
     'esri/dijit/editing/Update',
+    'esri/dijit/editing/Cut',
+    //todo delete editing/ * above
+
 
     'esri/dijit/Search',
 
@@ -70,7 +76,7 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
     _WidgetsInTemplateMixin, Dialog, ConfirmDialog, lang, on, dom, //eslint-disable-line no-unused-vars
     domClass, html, topic, Memory, Deferred, all, AoiEditorSidebarTemplate, OpenAoiDialogTemplate, //eslint-disable-line no-unused-vars
     NewFeatureDialogTemplate,
-    Add, Delete, Update,
+    UndoManager, FeatureOperations, Add, Delete, Update, Cut,
     Search,
     Draw, Edit, Extent, Point,
     FeatureLayer, GraphicsLayer, Graphic, SimpleRenderer,
@@ -219,6 +225,7 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
                 return pt.id === id;
             });
         },
+
         selectionSymbols: {
             point:
                 new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_CIRCLE, 12,
@@ -254,6 +261,38 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
             this.listAois().then(function () {
                 self.openAoiDialog.show();
             });
+        },
+        //undo/redo
+        undoManager: new UndoManager(),
+        undo: function () {
+            this.undoManager.undo();
+        },
+        redo: function () {
+            this.undoManager.redo();
+        },
+        updateUndoRedoButtons: function () {
+            var operation = null,
+                title = '';
+            if (this.undoManager.canUndo) {
+                operation = this.undoManager.peekUndo();
+                title = 'Undo ' + operation.label + ' "' +
+                    operation.feature.graphic.attributes.FEATURE_NAME + '"';
+                this.undoButton.set('title', title);
+                this.undoButton.set('disabled', false);
+            } else {
+                this.undoButton.set('title', 'Nothing to undo');
+                this.undoButton.set('disabled', true);
+            }
+            if (this.undoManager.canRedo) {
+                operation = this.undoManager.peekRedo();
+                title = 'Redo ' + operation.label + ' "' +
+                        operation.feature.graphic.attributes.FEATURE_NAME + '"';
+                this.redoButton.set('title', title);
+                this.redoButton.set('disabled', false);
+            } else {
+                this.redoButton.set('title', 'Nothing to undo');
+                this.redoButton.set('disabled', true);
+            }
         },
 
         newFeatureDialog: new Dialog({
@@ -369,6 +408,8 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
             this.bufferGraphics.clear();
             this.deactivateDrawTool();
             this.edit.deactivate();
+            this.undoManager.clearUndo();
+            this.undoManager.clearRedo();
             this.mode('default');
         },
 
@@ -490,7 +531,7 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
             }
             this._setupEditor();
             this._knockoutifyAoiEditor();
-            
+
 
             this.addressToPointSearch = new Search({
                 maxResults: 4, // just because > 4 gets clipped in bottom of dialog
@@ -530,17 +571,22 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
                 self.map.setExtent(e.result.extent);
                 e.result.feature.name = e.result.name;
                 var feature = self._constructFeature(e.result.feature);
-                self._addFeatureToLayer(feature);
+                self._addFeatureToLayer(feature, true);
                 self.newFeatureDialog.hide();
             });
 
         },
 
         //save to server
-        _addFeatureToLayer: function (feature) {
+        _addFeatureToLayer: function (feature, addToStack) {
             var self = this,
                 layer = self.layers[feature.type],
-                deferred = new Deferred();
+                deferred = new Deferred(),
+                operation = new FeatureOperations.Add(feature);
+            //new Add({
+            //    featureLayer: layer,
+            //    addedGraphics: [feature.graphic]
+            //});
             layer.applyEdits([feature.graphic], null, null, function (addResult) {
                 if (!addResult || addResult.length === 0) {
                     //todo warn user and handle situation. Not sure if this actually happens
@@ -552,8 +598,10 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
                 //push it to features observableArray
                 self.features.push(feature);
 
-                //todo add to undo stack
-
+                //Add to undo stack
+                if (addToStack !== false) {
+                    self.undoManager.add(operation);
+                }
                 deferred.resolve(feature);
 
             }, function (err) {
@@ -668,7 +716,7 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
                     name: llInput
                 },
                 feature = this._constructFeature(featureStub);
-            this._addFeatureToLayer(feature);
+            this._addFeatureToLayer(feature, true);
             this.newFeatureDialog.hide();
         },
 
@@ -696,6 +744,15 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
             var self = this; //closure so we can access this.draw etc.
             this.draw = new Draw(this.map); //draw toolbar, not shown in UI, but utilized by our UI
             this.edit = new Edit(this.map);
+
+            //on(this.undoManager, 'undo', function (a,b,c,d) {
+            //    debugger;
+            //});
+            //on(this.undoManager, 'redo', function (a, b, c, d) {
+            //    debugger;
+            //});
+
+            on(this.undoManager, 'change', lang.hitch(this, 'updateUndoRedoButtons'));
 
 
             //customizing the draw toolbar so the UI can remind user what they're doing, and have ability to cancel
@@ -758,11 +815,11 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
                 //toggle back to default map click mode
                 topic.publish('mapClickMode/setDefault');
                 self.deactivateDrawTool();
-                
+
                 if (self.drawMode() === 'draw') {
                     //construct a feature
                     var f = self._constructFeature(event);
-                    self._addFeatureToLayer(f);
+                    self._addFeatureToLayer(f, true);
                 } else {
                     //split mode
                     //the currentFeature().geometry is the geometry to be cut
@@ -863,8 +920,9 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
                 self.bufferGraphics.setVisibility(false);
                 //update last changed
                 self.lastEditAt = new Date();
-                //update feature and buffer
+                //track that we're moving vertices
                 self.vertexMoving = true;
+
             });
             this.edit.on('vertex-move', function () {
                 //update last changed
@@ -884,7 +942,7 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
             //TODO we can also support move and scaling, etc.
         },
 
-        
+
         //construct analysisAreas for features that don't already have one, using the feature's name as the analysisArea name
         _buildAnalysisAreasFromFeatures: function () {
             this.features().forEach(function (f) {
@@ -1004,11 +1062,23 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
         },
 
         //loads up our observable properties from the referenced aoi
-        loadAoiModel: function (aoi) { 
-            aoi = aoi || {id: -1 /*signifies new*/, name: null, projectTypeId: null, expirationDate: null, orgUserId: null, description: null, features: []};
-            
+        loadAoiModel: function (aoi) {
+            //shouldn't need to do this, because the unload method also does it, but just to be safe
+            this.undoManager.clearUndo();
+            this.undoManager.clearRedo();
+
+            aoi = aoi || {
+                id: -1 /*signifies new*/,
+                name: null,
+                projectTypeId: null,
+                expirationDate: null,
+                orgUserId: null,
+                description: null,
+                features: []
+            };
+
             this.aoiId = aoi.id;
-            
+
             if (!aoi.expirationDate) {
                 //default date is current date + 30 days TODO confirm this
                 aoi.expirationDate = new Date();
@@ -1164,7 +1234,7 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
                     self.extent = unionOfExtents; //facilitates zooming to the aoi
                     self.zoomTo();
                     self.features(featuresKo);
-                        
+
                     //tie to S_AOI record only after it's added to features observableArray
                     self.features().forEach(function (feature) {
                         if (feature.analysisAreaId) {
@@ -1179,7 +1249,7 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
                                 } else {
                                     self._addFeatureToAnalysisArea(feature, analysisAreaFeature.attributes.FEATURE_NAME);
                                 }
-                            //} else {
+                                //} else {
                                 //the possibility of it not existing really should only happen during development when things can be all out of sync
                                 //debugger;
                             }
@@ -1196,6 +1266,7 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
 
         //Constructs a feature either from a draw-complete event, cut operation, or when loading from server
         //It does not add the feature to the currentAoi features array, nor add it to a layer.
+        //eslint-disable-next-line max-statements
         _constructFeature: function (featureOrEvent) {
             if (!featureOrEvent) {
                 return null;
@@ -1213,7 +1284,7 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
                 feature.bufferUnit = (featureOrEvent.attributes.BUFFER_DISTANCE_UNITS ? self.bufferUnits[featureOrEvent.attributes.BUFFER_DISTANCE_UNITS.toLowerCase()] : null) || self.lastUnit; //default in case null; also converts to unit object
                 feature.analysisAreaId = featureOrEvent.attributes.FK_PROJECT_ALT;
                 feature.graphic = featureOrEvent;
-            } else {                    
+            } else {
                 //featureOrEvent is the event argument for on-draw-complete (either from draw or cut operation),
                 //or from address-auto-complete, which we manufacture as a object with a name property
                 feature.name = featureOrEvent.name || 'Feature ' + self._nextFeatureNumber();
@@ -1286,6 +1357,11 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
                 }
             };
 
+            feature.name.subscribe(function (newValue) {
+                feature.graphic.attributes.FEATURE_NAME = newValue;
+                feature.applyUpdate();
+            }, 'changed');
+
             feature.bufferDistance.subscribe(function (newValue) {
                 self.bufferFeature(feature);
                 feature.graphic.attributes.BUFFER_DISTANCE = newValue;
@@ -1304,30 +1380,47 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
                 feature.applyUpdate();
             }, 'changed');
 
-            feature.name.subscribe(function (newValue) {
-                feature.graphic.attributes.FEATURE_NAME = newValue;
-                feature.applyUpdate();
-            }, 'changed');
-
-            feature.applyUpdate = function () {
+            //using this in lieu of ko deferred for simpler control, we really only want to prevent applyUpdate in the limited
+            //circumstance of restoring values after undo/redo
+            feature.deferApplyEdits = false; //set to true when updating name, bufferDistance, bufferUnit, and analysisArea in series in the restore method
+           
+            /**
+             * Apply an update to this feature, and optionally add to stack. If the deferApplyEdits property is true
+             * then nothing happens.
+             * @param {any} addToStack //set to false when restoring an update to prevent adding to the stack.
+             * @returns {Defered} a Deferred object to be resolved when applyEdits is complete or when we short-cut based on deferApplyEdits
+             */
+            feature.applyUpdate = function (addToStack) {
                 var graphic = feature.graphic,
                     layer = graphic._layer,
+                    operation = FeatureOperations.Update(feature), //eslint-disable-line new-cap
                     deferred = new Deferred();
+                if (feature.deferApplyEdits) {
+                    deferred.resolve(false);
+                    return deferred;
+                }
+
                 layer.applyEdits(null, [graphic], null, function (adds, updates) {
                     //todo add to undo stack
-                    deferred.resolve(updates[0]);
+                    //deferred.resolve(updates[0]);
+                    //re-cache
+                    if (!(addToStack === false)) { //if null, or true, or anything other than a literal false, add to stack
+                        self.undoManager.add(operation);
+                    }
+                    deferred.resolve(true);
+                    //feature.cachePreUpdate();
                 }, function (err) {
-                    deferred.reject(err)
+                    deferred.reject(err);
                 });
-                return deferred; //Todo, we don't really do anything with this deferred
+                return deferred;
             };
 
-            feature.deleteFeature = function () {
+            feature.deleteFeature = function (addToStack) {
                 //todo confirm?
-                //todo add to undo stack
                 var graphic = feature.graphic,
                     layer = graphic._layer,
-                    buffer = feature.buffer;
+                    buffer = feature.buffer,
+                    operation = new FeatureOperations.Delete(feature);
                 self.deactivateDrawTool();
                 self.edit.deactivate();
                 if (buffer) {
@@ -1337,12 +1430,45 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
                     self.features.remove(feature);
                     self.currentFeature(null); //todo or activate next feature?
                     self.edit.deactivate();
-                    feature = null;
+                    //Add to undo stack
+                    if (addToStack !== false) {
+                        self.undoManager.add(operation);
+                    }
                 }, function () {
                     //todo
                 });
             };
             //no add function, handled elsewhere
+
+            feature.restore = function (preUpdateCache) {
+                if (preUpdateCache) {
+                    //defer applying updates
+                    feature.deferApplyEdits = true;
+                    //restore properties
+                    feature.graphic = preUpdateCache.graphic;
+                    feature.name(preUpdateCache.name);
+                    feature.bufferDistance(preUpdateCache.bufferDistance);
+                    feature.bufferUnit(preUpdateCache.bufferUnit);
+                    //feature.analysisArea(feature.preUpdate.analysisArea); //todo probably needs to be the addFeatureToAnalysisArea method
+                    feature.deferApplyEdits = false;
+                    feature.applyUpdate(false);
+                } else {
+                    //means we're restoring from deleted
+                    self._addFeatureToLayer(feature, false);
+                }
+            };
+
+            //cache original, pre-update, to support undo
+            feature.cachePreUpdate = function () {
+                feature.preUpdate = {
+                    graphic: feature.graphic.clone(),
+                    name: feature.name(),
+                    bufferDistance: feature.bufferDistance(),
+                    bufferUnit: feature.bufferUnit(),
+                    analysisArea: feature.analysisArea()
+                };
+            };
+            feature.cachePreUpdate();
 
             /* eslint-enable no-undef */
             //buffer it
@@ -1518,16 +1644,6 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
             //basic properties
             this.name = ko.observable();
             this.description = ko.observable();
-            //convert it to a dojo Textarea with hack to resize it
-//             this.descriptionTextArea = new Textarea({
-//                 onChange: function (newValue) {
-//                     self.description(newValue);
-//                 }
-//             }, dom.byId('aoiDescription'));
-//             this.description.subscribe(function (newValue) {
-//                 self.descriptionTextArea.set('value', newValue);
-//                 self.descriptionTextArea.resize();
-//             });
             this.projectTypeId = ko.observable();
             this.projectTypeSelect = new FilteringSelect({
                 store: new Memory({
@@ -1689,13 +1805,15 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
             this.updateFeatureVisibility = function () {
                 this.features().forEach(function (feature) {
                     feature.graphic.visible = feature.selected() || feature.visible();
-                    feature.buffer.visible = feature.graphic.visible;
+                    if (feature.buffer) {
+                        feature.buffer.visible = feature.graphic.visible;
+                    }
                 }, this);
                 this.layers.point.redraw();
                 this.layers.polyline.redraw();
                 this.layers.polygon.redraw();
                 this.bufferGraphics.redraw();
-            },
+            };
 
             //Controls display of Split button; computes whether the current feature can be split, true if there is a current feature selected that is a polyline or polygon;
             //false if no feature selected or only point selected. 
@@ -1760,9 +1878,6 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
                 });
             }, this);
 
-
-
-
             //if user is authorized, and working on a new AOI, we show a drop-down for selecting the orgUser identity
             this.showAuthoritySelection = ko.pureComputed(function () {
                 return !this.aoiId && this.authorities.length > 1;
@@ -1780,11 +1895,10 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
 
             this._latLongValid = true;
             this.latLongValidationTextBox = new ValidationTextBox({
-                validator: function (value, constraints) {
-                    console.log('ll validate ' + value);
+                validator: function () {
                     return self._latLongValid;
                 },
-                onInput: function (event) {
+                onInput: function () {
                     self._latLongValid = true; //validation happens only on clicking the "Go" button
                 }
             }, dom.byId('latLongInput'));
