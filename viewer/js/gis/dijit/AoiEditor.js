@@ -792,7 +792,7 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
                 //todo turn off identify
                 topic.publish('mapClickMode/setCurrent', 'digitize');
                 //hide buffers
-                this.bufferGraphics.setVisibility(false);
+                self.bufferGraphics.setVisibility(false);
             };
 
 
@@ -843,8 +843,9 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
                                     //update the geometry of the currentFeature
                                     currentFeature.graphic.setGeometry(result.geometries[0]);
                                     self.bufferFeature(currentFeature);
-                                    //make the features to add
-                                    var adds = [];
+                                    //make the features to add; note these are both essentially the same, just different things arrayed for different purposes
+                                    var addedFeatures = [],
+                                        addedGraphics = [];
                                     for (var n = 1; n < result.geometries.length; n++) {
                                         //construct a new current feature
                                         //TODO: if a polyline, further break down geometriese[n] into paths, because if 
@@ -856,19 +857,21 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
                                             geometry: result.geometries[n],
                                             sourceFeature: currentFeature
                                         });
-                                        adds.push(newFeature.graphic);
+                                        addedFeatures.push(newFeature);
+                                        addedGraphics.push(newFeature.graphic);
                                     }
 
                                     //save to server
-                                    layer.applyEdits(adds, [currentFeature.graphic], null, function (addResult, updateResult) {
+                                    layer.applyEdits(addedGraphics, [currentFeature.graphic], null, function (addResult, updateResult) {
                                         if (!addResult || addResult.length === 0 || !updateResult || updateResult.length === 0) {
                                             //todo check a and u and make sure successfull
                                         }
-                                        adds.forEach(function (addedFeature) {
-                                            self.features.push(addedFeature.feature);
+                                        addedFeatures.forEach(function (addedFeature) {
+                                            self.features.push(addedFeature);
                                         });
-                                        //todo add to undo stack
-
+                                        //add to undo stack
+                                        var operation = new FeatureOperations.Split(currentFeature, addedFeatures);
+                                        self.undoManager.add(operation);
                                     }, function () {
                                         //todo
                                     });
@@ -1392,7 +1395,7 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
              */
             feature.applyUpdate = function (addToStack) {
                 var graphic = feature.graphic,
-                    layer = graphic._layer,
+                    layer = self.layers[graphic.geometry.type],
                     operation = FeatureOperations.Update(feature), //eslint-disable-line new-cap
                     deferred = new Deferred();
                 if (feature.deferApplyEdits) {
@@ -1451,10 +1454,14 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
                     feature.bufferUnit(preUpdateCache.bufferUnit);
                     //feature.analysisArea(feature.preUpdate.analysisArea); //todo probably needs to be the addFeatureToAnalysisArea method
                     feature.deferApplyEdits = false;
-                    feature.applyUpdate(false);
+                    feature.applyUpdate(false).then (function () {
+                        self.bufferFeature(feature);
+                    });
                 } else {
                     //means we're restoring from deleted
-                    self._addFeatureToLayer(feature, false);
+                    self._addFeatureToLayer(feature, false).then (function () {
+                        self.bufferFeature(feature);
+                    });
                 }
             };
 
