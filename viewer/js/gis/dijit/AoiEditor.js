@@ -7,6 +7,7 @@ define([
     'koBindings',
 
     'gis/plugins/LatLongParser',
+    'gis/plugins/MultiPartHelper',
 
     'dijit/_WidgetsInTemplateMixin',
     'dijit/Dialog',
@@ -27,13 +28,6 @@ define([
 
     'esri/undoManager',
     './AoiEditor/FeatureOperations',
-    //these are handy, but know nothing about our local features observable array
-    'esri/dijit/editing/Add',
-    'esri/dijit/editing/Delete',
-    'esri/dijit/editing/Update',
-    'esri/dijit/editing/Cut',
-    //todo delete editing/ * above
-
 
     'esri/dijit/Search',
 
@@ -63,7 +57,6 @@ define([
     'dijit/form/FilteringSelect',
     'dijit/form/CheckBox',
     'dijit/form/ValidationTextBox',
-    'dijit/form/Textarea',
     'dijit/form/SimpleTextarea',
     'dijit/form/TextBox',
     'dijit/form/Select',
@@ -72,11 +65,11 @@ define([
 
     'xstyle/css!./AoiEditor/css/AoiEditor.css'
 ],
-function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, LatLongParser,
+function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, LatLongParser, MultiPartHelper,
     _WidgetsInTemplateMixin, Dialog, ConfirmDialog, lang, on, dom, //eslint-disable-line no-unused-vars
     domClass, html, topic, Memory, Deferred, all, AoiEditorSidebarTemplate, OpenAoiDialogTemplate, //eslint-disable-line no-unused-vars
     NewFeatureDialogTemplate,
-    UndoManager, FeatureOperations, Add, Delete, Update, Cut,
+    UndoManager, FeatureOperations,
     Search,
     Draw, Edit, Extent, Point,
     FeatureLayer, GraphicsLayer, Graphic, SimpleRenderer,
@@ -92,7 +85,6 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
     FilteringSelect,
     CheckBox,
     ValidationTextBox,
-    Textarea,
     SimpleTextarea,
     TextBox,
     Select
@@ -811,23 +803,25 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
 
             //event handler for draw complete, creates a new feature when user finishes digitizing, or splits a feature when user finishes drawing a line for splitting
             this.draw.on('draw-complete', function (event) {
-                var layer = self.layers[event.geometry.type]; //note: only applys in draw mode, gets redefined in split mode
+                var layer = self.layers[event.geometry.type], //note: only applys in draw mode, gets redefined in split mode
+                    mode = self.drawMode();
                 //toggle back to default map click mode
                 topic.publish('mapClickMode/setDefault');
                 self.deactivateDrawTool();
 
-                if (self.drawMode() === 'draw') {
+                if (mode === 'draw') {
                     //construct a feature
                     var f = self._constructFeature(event);
                     self._addFeatureToLayer(f, true);
-                } else {
-                    //split mode
+                } else if (mode === 'split') {
                     //the currentFeature().geometry is the geometry to be cut
                     var currentFeature = self.currentFeature(),
                         geometry = currentFeature ? currentFeature.graphic.geometry : null,
                         //the event.geometry is the cutter
-                        cutter = event.geometry;
-                    layer = geometry ? self.layers[geometry.type] : null; //gets the pointer to the layer containing the feature being split, not the polyline used to split it
+                        cutter = event.geometry,
+                        explodedGeometries = [];
+                    //redefine layer to be the layer containing the feature being split, not the event geometry type used to split it
+                    layer = geometry ? self.layers[geometry.type] : null; 
 
                     if (geometry && cutter) {
                         //eslint-disable-next-line no-undef
@@ -839,26 +833,42 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
                                 //For example, if we cut two geometries g1 and g2 with one line into two pieces each, the cutIndexes would be [0,0,1,1], and geometries
                                 //[g1a, g1b, g2a, g2b], where g1a and g1b were derived from g1, ang g2a and b from g2.
                                 if (result.geometries.length > 1) {
+                                    //split always returns two geometries, which may be multi-part geometries if there are multiple
+                                    //intersections of the geometry being cut and the cutting geometry
+                                    //because we want to avoid the headaches of multi-part features, we have to test whether we need to explode them
+                                    result.geometries.forEach(function (g) {
+                                        //test if multi-part
+                                        if (!MultiPartHelper.isMultiPart(g)) {
+                                            explodedGeometries.push(g);
+                                        } else {
+                                            //explode and write sub-parts
+                                            var egs = MultiPartHelper.explode(g);
+                                            egs.forEach(function (eg) {
+                                                explodedGeometries.push(eg);
+                                            });
+                                        }
+                                    });
+
                                     //assume 0 is the geometry we'll store in the current feature, and 1..N are new features
                                     //update the geometry of the currentFeature
-                                    currentFeature.graphic.setGeometry(result.geometries[0]);
+                                    currentFeature.graphic.setGeometry(explodedGeometries[0]);
+                                    //todo rename?
                                     self.bufferFeature(currentFeature);
-                                    //make the features to add; note these are both essentially the same, just different things arrayed for different purposes
+                                    //create the features and their graphics to add; note these are both essentially the same, 
+                                    //the features being a wrapper around the geometries, but for simplicity down the line 
+                                    //here I have separate arrays for different purposes; addedFeatures get added to the model's
+                                    //features array, the addedGraphics are passed to the applyEdits function.
                                     var addedFeatures = [],
                                         addedGraphics = [];
-                                    for (var n = 1; n < result.geometries.length; n++) {
+                                    for (var i = 1; i < explodedGeometries.length; i++) { //starting at 1, not 0, because we assume 0 is new graphic for current feature
                                         //construct a new current feature
-                                        //TODO: if a polyline, further break down geometriese[n] into paths, because if 
-                                        //a polyline is split by the same line more than once, it will create at least 
-                                        //one multi-part feature.
-                                        //see https://community.esri.com/thread/58239
-                                        //it's always two geometries, and one of them may be multi-part
                                         var newFeature = self._constructFeature({
-                                            geometry: result.geometries[n],
-                                            sourceFeature: currentFeature
+                                            geometry: explodedGeometries[i],
+                                            sourceFeature: currentFeature, //for copying buffer distance and unit properties
+                                            name: currentFeature.name() + ' (' + (i + 1) + ')' //e.g. "Feature X (2)"
                                         });
-                                        addedFeatures.push(newFeature);
-                                        addedGraphics.push(newFeature.graphic);
+                                        addedFeatures.push(newFeature); //for adding to model.features
+                                        addedGraphics.push(newFeature.graphic); //for use in applyEdits
                                     }
 
                                     //save to server
@@ -882,6 +892,8 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
                             }
                         );
                     }
+                } else {
+                    topic.public('growler/growlError', 'Unexepected draw mode "' + mode + '".');
                 }
 
             });
@@ -1403,10 +1415,10 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
                     return deferred;
                 }
 
-                layer.applyEdits(null, [graphic], null, function (adds, updates) {
-                    //todo add to undo stack
-                    //deferred.resolve(updates[0]);
-                    //re-cache
+                layer.applyEdits(null, [graphic], null, function (adds, updates) { //eslint-disable-line no-unused-vars "adds" var is here because that's the structure of the callback, but will always be empty
+                    if (!updates || updates.length === 0) {
+                        //todo warn user and handle situation. Not sure if this actually happens
+                    }
                     if (!(addToStack === false)) { //if null, or true, or anything other than a literal false, add to stack
                         self.undoManager.add(operation);
                     }
@@ -1421,7 +1433,7 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
             feature.deleteFeature = function (addToStack) {
                 //todo confirm?
                 var graphic = feature.graphic,
-                    layer = graphic._layer,
+                    layer = self.layers[graphic.geometry.type],
                     buffer = feature.buffer,
                     operation = new FeatureOperations.Delete(feature);
                 self.deactivateDrawTool();
