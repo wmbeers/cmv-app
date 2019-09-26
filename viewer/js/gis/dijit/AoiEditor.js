@@ -2,21 +2,19 @@ define([
     'dojo/_base/declare',
     'dijit/_WidgetBase',
     'dijit/_TemplatedMixin',
-    'jquery',
-    'jqueryUi', /*for datepicker*/
-    'koBindings',
 
     'gis/plugins/LatLongParser',
     'gis/plugins/MultiPartHelper',
 
     'dijit/_WidgetsInTemplateMixin',
     'dijit/Dialog',
-    'dijit/ConfirmDialog',
+    'dijit/ConfirmDialog', //TODO: not using this, but maybe nice for delete? Or not necessary since we have undo.
+    'dijit/form/FilteringSelect',
+    'dijit/form/ValidationTextBox',
+
     'dojo/_base/lang',
     'dojo/on',
     'dojo/dom',
-    'dojo/dom-class',
-    'dojo/html',
     'dojo/topic',
     'dojo/store/Memory',
     'dojo/Deferred',
@@ -51,23 +49,30 @@ define([
     'esri/tasks/query',
     'esri/tasks/locator',
 
-    './js/config/projects.js', //TODO put in app.js paths?
+    './js/config/projects.js',
 
-    'dijit/form/Form',
-    'dijit/form/FilteringSelect',
-    'dijit/form/CheckBox',
-    'dijit/form/ValidationTextBox',
+    //jquery and jqueryUI needed for datepicker
+    'jquery',
+    'jqueryUi',
+    'koBindings',
+
+    //following are not used in this file, but are needed in the html template files
     'dijit/form/SimpleTextarea',
     'dijit/form/TextBox',
-    'dijit/form/Select',
     'dijit/layout/TabContainer',
     'dijit/layout/ContentPane',
 
     'xstyle/css!./AoiEditor/css/AoiEditor.css'
 ],
-function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, LatLongParser, MultiPartHelper,
-    _WidgetsInTemplateMixin, Dialog, ConfirmDialog, lang, on, dom, //eslint-disable-line no-unused-vars
-    domClass, html, topic, Memory, Deferred, all, AoiEditorSidebarTemplate, OpenAoiDialogTemplate, //eslint-disable-line no-unused-vars
+function (declare, _WidgetBase, _TemplatedMixin, LatLongParser, MultiPartHelper,
+    _WidgetsInTemplateMixin, Dialog,
+    ConfirmDialog,
+    FilteringSelect,
+    ValidationTextBox,
+    lang, on, dom,
+    topic, Memory, Deferred, all,
+    AoiEditorSidebarTemplate,
+    OpenAoiDialogTemplate,
     NewFeatureDialogTemplate,
     UndoManager, FeatureOperations,
     Search,
@@ -80,14 +85,7 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
     BufferParameters,
     Query,
     Locator,
-    projects,
-    Form,
-    FilteringSelect,
-    CheckBox,
-    ValidationTextBox,
-    SimpleTextarea,
-    TextBox,
-    Select
+    projects
 ) { //eslint-disable-line no-unused-vars
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
         widgetsInTemplate: true,
@@ -97,12 +95,6 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
         map: this.map,
         featureTypes: ['polygon', 'polyline', 'point'], //preprended with "aoi_" as id of layer, referenced in layers object as self.layers.point, etc.
         layers: {}, //caches the layers
-        /*bufferUnits: [
-            {id: 9002, name: 'Feet', abbreviation: 'Ft'}, 
-            {id: 9003, name: 'Miles', abbreviation: 'Mi'},
-            {id: 9001, name: 'Meters', abbreviation: 'M'},
-            {id: 9036, name: 'Kilometers', abbreviation: 'KM'},
-        ],*/
         bufferUnits: {
             feet: {
                 id: 9002,
@@ -233,9 +225,6 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
                         new Color([0, 168, 132, 1]), 2),
                     new Color([0, 255, 197, 0.5]))
         },
-        //bufferUnitArray: [bufferUnits.feet, bufferUnits.miles, bufferUnits.meters, bufferUnits.kilometers], //for binding to drop-down
-        //lastUnit: bufferUnits.feet,
-        lastBufferDistance: 100,
 
         constructor: function (options) {
             this.currentAuthority = options.currentAuthority;
@@ -511,6 +500,10 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
             this.inherited(arguments);
 
             this.bufferUnitArray = [this.bufferUnits.feet, this.bufferUnits.miles, this.bufferUnits.meters, this.bufferUnits.kilometers]; //for binding to drop-down
+
+            //tracks the most recently entered buffer distance and units
+            //todo store in LSO?
+            this.lastBufferDistance = 100;
             this.lastUnit = this.bufferUnits.feet;
 
             //this.proj4 = proj4;
@@ -1678,33 +1671,6 @@ function (declare, _WidgetBase, _TemplatedMixin, jquery, jqueryUi, koBindings, L
             this.projectTypeId.subscribe(function (newValue) {
                 self.projectTypeSelect.set('value', newValue);
             });
-
-            //filtering selects for authority; there are two
-            /*this.currentAuthoritySelectSidebar = new FilteringSelect({
-                store: new Memory({
-                    data: this.authorities
-                }),
-                onChange: function (newValue) {
-                    self.currentAuthority(newValue);
-                },
-                style: 'width: 100%'
-            }, dom.byId('sidebarAuthority'));
-            this.currentAuthoritySelectSidebar.startup();
-            this.currentAuthoritySelectDialog = new FilteringSelect({
-                store: new Memory({
-                    data: this.authorities
-                }),
-                onChange: function (newValue) {
-                    self.currentAuthority(newValue);
-                },
-                style: 'width: 100%'
-            }, dom.byId('dialogAuthority'));
-            //hack because we can't data-bind a filteringselect
-            this.currentAuthority.subscribe(function (newValue) {
-                self.currentAuthoritySelectSidebar.set('value', newValue);
-                self.currentAuthoritySelectDialog`.set('value', newValue);
-            });
-            */
 
             this.expirationDate = ko.observable();
 
