@@ -32,33 +32,47 @@
                 <span data-bind="click: unloadCurrentAoi" style="float:right" class="fa fa-window-close"></span>
             </div>
 
-            <div data-bind="visible: mode()=='editName'">
+            <div data-dojo-type="dijit/form/Form" 
+                 data-dojo-attach-point="aoiHeaderForm"
+                 data-bind="visible: mode()=='editName'">
                 <label for="aoiName">Name</label>
-                <input id="aoiName" type="text" data-dojo-type="dijit/form/TextBox" data-bind="value: name" style="width:100%" />
-                
+                <input id="aoiName" type="text" 
+                       data-dojo-type="dijit/form/ValidationTextBox" 
+                       data-dojo-props="trim:true,required:true"
+                       data-dojo-attach-point="aoiNameVTB"
+                       data-bind="value: name" style="width:100%" />
+
                 <label for="projectTypeDojo">Type</label><br />
                 <select id="projectTypeDojo"></select><br />
-                
+
                 <label for="aoiDescription">Description</label>
                 <textarea data-bind="value: description" data-dojo-type="dijit/form/SimpleTextarea" rows="3" id="aoiDescription" style="width:96%"></textarea>
-                
+
                 <label for="expirationDate">Keep Until</label>
                 <div class="dijit dijitReset dijitInline dijitLeft dijitTextBox" style="width: 100%">
-                    <div class="dijitReset dijitInputField">
-                        <input id="expirationDateTextBox" data-bind="jqDatepicker: expirationDate" class="dijitReset dijitInputInner" style="width:100%; line-height: 20px; height:" />
+                    <div class="dijitReset dijitInputField" data-bind="css: {'dijitValidationTextBoxError': !expirationDate()}">
+                        <input id="expirationDateTextBox" data-bind="jqDatepicker: expirationDate" class="dijitReset dijitInputInner dijitJqDatepicker" />
+                        <div class="dijitReset dijitValidationContainer dijitJqDatepickerValidation">
+                        </div>
+
                     </div>
                 </div>
+
                 <span data-bind="visible: id==-1 && $root.authorities.length > 1">
                     <label for="org">Organization</label>
                     <select data-bind="options: $root.authorities, value: $root.currentAuthority, optionsText: 'orgName'" style="width:100%"></select>
                 </span>
 
-                <br />
+                <hr />
 
-                <button data-dojo-type="dijit/form/Button" data-bind="click: saveAndShowFeatureList">
-                    Next
-                </button>
-
+                <div class="buttonContainer buttonContainerRight">
+                    <button data-dojo-type="dijit/form/Button"
+                            data-bind="click: saveAndShowFeatureList"
+                            data-dojo-props="style:'text-align: right'"
+                            class="right">
+                        Next <i class="fa fa-caret-right fa-fw"></i>
+                    </button>
+                </div>
             </div>
 
             <div data-bind="visible: mode() == 'editFeatures'">
@@ -139,16 +153,21 @@
 
                 </div>
 
-                <br />
+                <hr />
+                <div class="buttonContainer buttonContainerFull">
+                    <button data-dojo-type="dijit/form/Button"
+                            data-dojo-props="iconClass:'fa fa-caret-left fa-fw'"
+                            data-bind="click: showNameAndDescription">
+                        Back
+                    </button>
 
-                <button data-dojo-type="dijit/form/Button" data-bind="click: showNameAndDescription">
-                    Back
-                </button>
-
-                <button data-dojo-type="dijit/form/Button" data-bind="click: showAnalysisOptions">
-                    Next
-                </button>
-
+                    <button data-dojo-type="dijit/form/Button"
+                            data-bind="click: showAnalysisOptions"
+                            data-dojo-props="style:'text-align: right'"
+                            class="right">
+                        Next <i class="fa fa-caret-right fa-fw"></i>
+                    </button>
+                </div>
             </div>
 
             <div data-bind="visible: mode() === 'analysisOptions'">

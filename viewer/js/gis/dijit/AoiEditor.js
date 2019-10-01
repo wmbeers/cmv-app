@@ -2,11 +2,12 @@ define([
     'dojo/_base/declare',
     'dijit/_WidgetBase',
     'dijit/_TemplatedMixin',
+    'dijit/_WidgetsInTemplateMixin',
 
     'gis/plugins/LatLongParser',
     'gis/plugins/MultiPartHelper',
+    'gis/dijit/LoadingOverlay',
 
-    'dijit/_WidgetsInTemplateMixin',
     'dijit/Dialog',
     'dijit/ConfirmDialog', //TODO: not using this, but maybe nice for delete? Or not necessary since we have undo.
     'dijit/form/FilteringSelect',
@@ -64,8 +65,11 @@ define([
 
     'xstyle/css!./AoiEditor/css/AoiEditor.css'
 ],
-function (declare, _WidgetBase, _TemplatedMixin, LatLongParser, MultiPartHelper,
-    _WidgetsInTemplateMixin, Dialog,
+function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, 
+    LatLongParser,
+    MultiPartHelper,
+    LoadingOverlay,
+    Dialog,
     ConfirmDialog,
     FilteringSelect,
     ValidationTextBox,
@@ -303,6 +307,8 @@ function (declare, _WidgetBase, _TemplatedMixin, LatLongParser, MultiPartHelper,
             var self = this;
             this.saveAoiHeader().then(function () {
                 self.showFeatureList();
+            }, function (e) {
+                debugger;
             });
         },
 
@@ -317,7 +323,6 @@ function (declare, _WidgetBase, _TemplatedMixin, LatLongParser, MultiPartHelper,
         },
 
         saveAoiHeader: function () {
-            //todo validate name, etc. reject deferred if not valid
             var self = this,
                 deferred = new Deferred(),
                 aoiModel = {
@@ -328,6 +333,14 @@ function (declare, _WidgetBase, _TemplatedMixin, LatLongParser, MultiPartHelper,
                     expirationDate: this.expirationDate(),
                     orgUserId: self.currentAuthority().orgUserId
                 };
+            //validate
+            if (!(aoiModel.name && aoiModel.projectTypeId && aoiModel.expirationDate)) {
+                deferred.reject('Missing data, cannot save AOI header.');
+                self.aoiNameVTB.validate();
+                self.projectTypeSelect.validate();
+                self.aoiHeaderForm.validate();
+                return deferred;
+            }
             //if no changes
             if (aoiModel.id && aoiModel.id > 0 &&
                 aoiModel.name === this.cachedOriginal.name &&
@@ -463,9 +476,11 @@ function (declare, _WidgetBase, _TemplatedMixin, LatLongParser, MultiPartHelper,
 
             this.clearAoiPreview();
 
+            this.loadingOverlay.show('Loading AOI');
             //eslint-disable-next-line no-undef
             MapDAO.getAoiModel(id, {
                 callback: function (aoi) {
+                    self.loadingOverlay.hide();
                     if (aoi) {
                         self.loadAoiModel(aoi);
                         self.mode('editName');
@@ -477,6 +492,7 @@ function (declare, _WidgetBase, _TemplatedMixin, LatLongParser, MultiPartHelper,
                     }
                 },
                 errorHandler: function (message, exception) {
+                    self.LoadingOverlay.hide();
                     topic.publish('viewer/handleError', {
                         source: 'AoiEditor.loadAoi',
                         error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
@@ -493,11 +509,15 @@ function (declare, _WidgetBase, _TemplatedMixin, LatLongParser, MultiPartHelper,
             //todo post create code goes here
             //this._createGraphicLayers();
 
-
         },
 
         startup: function () {
             this.inherited(arguments);
+            //for debugging
+            window.LoadingOverlay = LoadingOverlay;
+            this.loadingOverlay = new LoadingOverlay(); //this can be defined at the root level, but...
+            //TODO figure out why this doesn't work: this.sidebarLoadingOverlay = new LoadingOverlay('aoiEditorSidebar'); //...this has to be defined in startup, because the sidebar widget has to be constructed first
+
 
             this.bufferUnitArray = [this.bufferUnits.feet, this.bufferUnits.miles, this.bufferUnits.meters, this.bufferUnits.kilometers]; //for binding to drop-down
 
@@ -817,9 +837,11 @@ function (declare, _WidgetBase, _TemplatedMixin, LatLongParser, MultiPartHelper,
                     layer = geometry ? self.layers[geometry.type] : null; 
 
                     if (geometry && cutter) {
+                        self.loadingOverlay.show('Splitting features...');
                         //eslint-disable-next-line no-undef
                         esriConfig.defaults.geometryService.cut([geometry], cutter,
                             function (result) {
+                                self.loadingOverlay.hide();
                                 //for our purposes, we're only cutting one geometry object at a time, so we can ignore the cutIndexes property of result
                                 //but for reference, because it's poorly documented, the cutIndexes is an array that indicates which of the geometries
                                 //passed into the cut request were the source of the given geometry at the same place in the array of geometries returned.
@@ -865,7 +887,9 @@ function (declare, _WidgetBase, _TemplatedMixin, LatLongParser, MultiPartHelper,
                                     }
 
                                     //save to server
+                                    self.loadingOverlay.show('Saving new and updated features...');
                                     layer.applyEdits(addedGraphics, [currentFeature.graphic], null, function (addResult, updateResult) {
+                                        self.loadingOverlay.hide();
                                         if (!addResult || addResult.length === 0 || !updateResult || updateResult.length === 0) {
                                             //todo check a and u and make sure successfull
                                         }
@@ -875,20 +899,20 @@ function (declare, _WidgetBase, _TemplatedMixin, LatLongParser, MultiPartHelper,
                                         //add to undo stack
                                         var operation = new FeatureOperations.Split(currentFeature, addedFeatures);
                                         self.undoManager.add(operation);
-                                    }, function () {
-                                        //todo
+                                    }, function (err) {
+                                        self.loadingOverlay.hide();
+                                        topic.publish('growler/growlError', 'Error saving features: ' + err);
                                     });
                                 }
-                            },
-                            function () {
-                                //todo
+                            }, function (err) {
+                                self.loadingOverlay.hide();
+                                topic.publish('growler/growlError', 'Error splitting features: ' + err);
                             }
                         );
                     }
                 } else {
                     topic.public('growler/growlError', 'Unexepected draw mode "' + mode + '".');
                 }
-
             });
 
             //event handler function for vertext move and delete
@@ -1165,6 +1189,8 @@ function (declare, _WidgetBase, _TemplatedMixin, LatLongParser, MultiPartHelper,
             var self = this, //keeps a reference to the aoiEditor model
                 loadPromises = []; //collection of promises resolved on update-end of the three editable layers (point, polyline and polygon), zooms to unioned extent when done
 
+            this.loadingOverlay.show('Loading AOI Features');
+
             this.clearAoiLayers();
 
             //get analysisAreas first
@@ -1204,6 +1230,8 @@ function (declare, _WidgetBase, _TemplatedMixin, LatLongParser, MultiPartHelper,
 
                 //when update-end has fired for all editable layers, we can convert their graphics into feature models
                 all(loadPromises).then(function (layers) {
+                    self.loadingOverlay.hide();
+
                     //extract all features
                     var allGraphics = [],
                         unionOfExtents = null,
@@ -1263,6 +1291,9 @@ function (declare, _WidgetBase, _TemplatedMixin, LatLongParser, MultiPartHelper,
                             }
                         }
                     });
+                }, function (err) {
+                    self.loadingOverlay.hide();
+                    topic.publish('growler/growlError', 'Error loading AOI features: ' + err);
                 });
 
             }, function () {

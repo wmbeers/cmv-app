@@ -63,3 +63,26 @@ type-sort {
     margin-bottom: 10px;
     font-weight: bold;
 }
+
+.buttonContainerRight {
+    text-align: right;
+}
+
+.buttonContainerFull {
+    display: flex;
+    justify-content: space-between;
+}
+
+.right .dijitButtonText {
+    padding: 0 0 0 4px;
+}
+
+.dijitJqDatepicker {
+    width: 90% !important;
+}
+
+.dijitJqDatepickerValidation {
+    position: relative;
+    top: 4px;
+    right: -10px;
+}
