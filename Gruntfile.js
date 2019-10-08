@@ -96,11 +96,11 @@ module.exports = function (grunt) {
                 options: {
                     replacements: [
                         {
-                            pattern: 'https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer',
+                            pattern: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer',
                             replacement: previouslyReviewed
                         },
                         {
-                            pattern: 'https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer',
+                            pattern: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer',
                             replacement: currentlyInReview
                         },
                         {
@@ -111,7 +111,7 @@ module.exports = function (grunt) {
                             pattern: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_Drafts_Dev/MapServer/0',
                             replacement: queryDraftLayer
                         }
-                    ]
+                    ] //TODO need replacements for aoiLayers, also a way to read from DB
                 }
             }
         },
