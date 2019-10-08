@@ -633,4 +633,15 @@ ko.utils.convertDateFromBrowserToServer = function (dd) {
     }
     return dd;
 };
+
+ko.subscribable.fn.subscribeChanged = function (callback) {
+    var previousValue = null;
+    this.subscribe(function (_previousValue) {
+        previousValue = _previousValue;
+    }, this, 'beforeChange');
+    this.subscribe(function (latestValue) {
+        callback(latestValue, previousValue);
+    });
+};
+
 /* eslint-enable no-undef */

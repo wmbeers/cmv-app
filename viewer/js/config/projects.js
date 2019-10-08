@@ -16,9 +16,9 @@
                 url: 'https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/AOIDEV_INPUT/FeatureServer/3',
                 name: 'Polygons'
             },
-            analysisArea: {
+            analysisAreaBuffer: {
                 url: 'https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/AOIDEV_INPUT/FeatureServer/4',
-                name: 'Analysis Areas'
+                name: 'Analysis Area Buffers'
             }
         }
     };

@@ -32,12 +32,12 @@
                 <span data-bind="click: unloadCurrentAoi" style="float:right" class="fa fa-window-close"></span>
             </div>
 
-            <div data-dojo-type="dijit/form/Form" 
+            <div data-dojo-type="dijit/form/Form"
                  data-dojo-attach-point="aoiHeaderForm"
                  data-bind="visible: mode()=='editName'">
                 <label for="aoiName">Name</label>
-                <input id="aoiName" type="text" 
-                       data-dojo-type="dijit/form/ValidationTextBox" 
+                <input id="aoiName" type="text"
+                       data-dojo-type="dijit/form/ValidationTextBox"
                        data-dojo-props="trim:true,required:true"
                        data-dojo-attach-point="aoiNameVTB"
                        data-bind="value: name" style="width:100%" />
@@ -162,7 +162,49 @@
                     </button>
 
                     <button data-dojo-type="dijit/form/Button"
-                            data-bind="click: showAnalysisOptions"
+                            data-bind="click: showAnalysisAreas"
+                            data-dojo-props="style:'text-align: right'"
+                            class="right">
+                        Next <i class="fa fa-caret-right fa-fw"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div data-bind="visible: mode() === 'analysisAreas'">
+                <p><strong>Optional:</strong> You can group features together on this screen. Grouped features
+                are analyzed together as a single analysis area, and can contain multiple disconnected parts.</p>
+                <table class="aoiList">
+                    <thead>
+                        <tr data-bind="css: {'dgrid-sort-up': !featureSortDescending(), 'dgrid-sort-down': featureSortDescending()}">
+                            <th class="dgrid-header dgrid-cell" data-bind="click: sortFeaturesByType, css: {'type-sort' : featureSortOption()==='type'}">Type<span class="ui-icon dgrid-sort-arrow" data-bind="visible: featureSortOption()==='type'">&nbsp;</span></th>
+                            <th class="dgrid-header dgrid-cell" data-bind="click: sortFeaturesByName">Name<span class="ui-icon dgrid-sort-arrow" data-bind="visible: featureSortOption()==='name'">&nbsp;</span></th>
+                            <th class="dgrid-header dgrid-cell">Buffer</th>
+                            <th class="dgrid-header dgrid-cell" data-bind="click: sortFeaturesByAnalysisArea">Analysis Area<span class="ui-icon dgrid-sort-arrow" data-bind="visible: featureSortOption()==='analysisArea'">&nbsp;</span></th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: sortedFeatures">
+                        <tr data-bind="css: {'feature-selected': selected}, click: select">
+                            <td class="dgrid-cell" data-bind="template: {name: 'geometry-type-icon', data: geometry}"></td>
+                            <td class="dgrid-cell" data-bind="text: name"></td>
+                            <td class="dgrid-cell" data-bind="text: bufferText, attr: {title: bufferTextLong}"></td>
+                            <td class="dgrid-cell">
+                                <input type="text" data-bind="value: analysisAreaName" />
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+                <hr />
+                <div class="buttonContainer buttonContainerFull">
+                    <button data-dojo-type="dijit/form/Button"
+                            data-dojo-props="iconClass:'fa fa-caret-left fa-fw'"
+                            data-bind="click: showFeatureList">
+                        Back
+                    </button>
+
+                    <button data-dojo-type="dijit/form/Button"
+                            data-bind="click: saveAnalysisAreasAndShowAnalysisOptions"
                             data-dojo-props="style:'text-align: right'"
                             class="right">
                         Next <i class="fa fa-caret-right fa-fw"></i>
@@ -171,20 +213,50 @@
             </div>
 
             <div data-bind="visible: mode() === 'analysisOptions'">
+                <p>Select the types of reports to create.</p>
 
-                <button data-dojo-type="dijit/form/Button" data-bind="click: saveAnalysisAreas">
-                    Test Create Analysis Areas
-                </button>
+                <input type="checkbox" id="estCheckbox" data-bind="checked: studyAreaReportRequested"><label for="estCheckbox">Standard EST Study Area</label><br />
+                <input type="checkbox" id="cciCheckbox" data-bind="checked: socioCulturalDataReportRequested"><label for="cciCheckbox">Sociocultural Data Report</label><br />
+                <input type="checkbox" id="hcmCheckbox" data-bind="checked: hardCopyMapsRequested"><label for="hcmCheckbox">Hardcopy Maps</label><br />
+                <input type="checkbox" id="crdCheckbox" data-bind="checked: culturalResourcesDataReportRequested"><label for="crdCheckbox">Cultural Resources Data Report</label><br />
+                <input type="checkbox" id="ertCheckbox" data-bind="checked: emergencyResponseReportRequested"><label for="ertCheckbox">Emergency Response Report</label><br />
 
-                <br />
+                <hr />
+                <div class="buttonContainer buttonContainerFull">
+                    <button data-dojo-type="dijit/form/Button"
+                            data-dojo-props="iconClass:'fa fa-caret-left fa-fw'"
+                            data-bind="click: showAnalysisAreas">
+                        Back
+                    </button>
 
-                <button data-dojo-type="dijit/form/Button" data-bind="click: showFeatureList">
-                    Back
-                </button>
+                    <button data-dojo-type="dijit/form/Button"
+                            data-bind="click: saveAnalysisOptionsAndShowProgress"
+                            data-dojo-props="style:'text-align: right'"
+                            class="right">
+                        Run <i class="fa fa-caret-right fa-fw"></i>
+                    </button>
+                </div>
+            </div>
 
+            <div data-bind="visible: mode() === 'analysisProgress'">
+                <i>Coming soon</i>
+                <hr />
+                <div class="buttonContainer buttonContainerFull">
+                    <button data-dojo-type="dijit/form/Button"
+                            data-dojo-props="iconClass:'fa fa-caret-left fa-fw'"
+                            data-bind="click: showAnalysisOptions">
+                        Back
+                    </button>
+
+                    <button data-dojo-type="dijit/form/Button"
+                            data-bind="click: unloadCurrentAoi"
+                            data-dojo-props="style:'text-align: right'"
+                            class="right">
+                        Close <i class="fa fa-caret-right fa-fw"></i>
+                    </button>
+                </div>
             </div>
 
         </div>
-
     </div>
 </div>
