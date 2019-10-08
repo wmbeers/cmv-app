@@ -285,7 +285,7 @@ define([
         operationalLayers: [
             {
                 type: 'dynamic',
-                url: 'https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer',
+                url: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer', //TODO pull this URL from T_REST_SERVICE where SERVICE='V3_PREVIOUSLY_REVIEWED_DEV'
                 title: 'Projects (Previously Reviewed)',
                 options: {
                     id: 'previouslyReviewedProjectsLayer',
@@ -318,7 +318,7 @@ define([
             },
             {
                 type: 'dynamic',
-                url: 'https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer',
+                url: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer', //TODO pull this URL from T_REST_SERVICE where SERVICE='V3_ETAT_REVIEW_DEV'
                 title: 'Projects (Currently in Review)',
                 options: {
                     id: 'currentlyInReviewProjects',
@@ -351,7 +351,7 @@ define([
             },
             {
                 type: 'dynamic',
-                url: 'https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer',
+                url: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer', //TODO pull this URL from T_REST_SERVICE where SERVICE='V3_DRAFT_PROJECTS_DEV
                 title: 'Projects (Draft)',
                 options: {
                     id: 'draftProjects',
@@ -1026,7 +1026,8 @@ define([
                     mapClickMode: true,
                     mapRightClickMenu: true
                 }
-            },*/             /*directions: {
+            },*/
+            /*directions: {
                 include: true,
                 id: 'directions',
                 type: 'titlePane',
