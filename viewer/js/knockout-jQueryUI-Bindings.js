@@ -421,19 +421,19 @@ ko.computed.fn.isNullOrWhiteSpace = ko.observable.fn.isNullOrWhiteSpace;
 //};
 
 
-function markChecked(el) {
+function markChecked (el) {
     el.readOnly = false;
     el.indeterminate = false;
     el.checked = true;
 }
 
-function markUnchecked(el) {
+function markUnchecked (el) {
     el.readOnly = false;
     el.indeterminate = false;
     el.checked = false;
 }
 
-function markUnspecified(el) {
+function markUnspecified (el) {
     el.readOnly = true;
     el.indeterminate = true;
     el.checked = false;

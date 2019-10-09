@@ -307,8 +307,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             var self = this;
             this.saveAoiHeader().then(function () {
                 self.showFeatureList();
-            }, function (e) {
-                debugger;
             });
         },
 
@@ -376,8 +374,13 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                         self.aoiId = id;
                         deferred.resolve(true);
                     },
-                    errorHandler: function (err) {
-                        deferred.reject(err);
+                    errorHandler: function (message, exception) {
+                        self.loadingOverlay.hide();
+                        topic.publish('viewer/handleError', {
+                            source: 'AoiEditor.saveAoiHeader',
+                            error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                        });
+                        deferred.reject(message);
                     }
                 });
             }
@@ -387,7 +390,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         saveAnalysisAreasAndShowAnalysisOptions: function () {
             var self = this;
             this.saveAnalysisAreas().then(
-                function() {
+                function () {
                     self.saveAnalysisAreaBuffers().then(
                         function () {
                             self.mode('analysisOptions');
@@ -401,12 +404,13 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         //of NOT assigning features to analysisAreas is chosen, we'll need to do that here
         saveAnalysisAreas: function () {
             var promises = [], //promises to be resolved when all analysis areas are created from ungroupedFeatures.
+                deferred = null, //deferred object resolved when this is done; usually is assigned by _deleteEmptyAnalysisAreas
                 ungroupedFeatures = this.features().filter(function (f) {
                     return !f.analysisArea() || f.analysisArea().id === 0; //latter shouldn't ever be the case
                 });
 
             if (ungroupedFeatures.length === 0) {
-                return this._deleteEmptyAnalysisAreas();
+                deferred = this._deleteEmptyAnalysisAreas();
             } else {
                 ungroupedFeatures.forEach(function (f) {
                     promises.push(f.setAnalysisArea(f.name())); // self._addFeatureToAnalysisArea(f, f.name()));
@@ -416,25 +420,27 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                         return this._deleteEmptyAnalysisAreas();
                     },
                     function (e) {
-                        var deferred = new Deferred();
-                        window.setTimeout(function() {
+                        deferred = new Deferred();
+                        window.setTimeout(function () {
                             deferred.reject(e);
                         }, 10);
-                        return deferred;
                     }
                 );
             }
+
+            return deferred;
         },
 
         _deleteEmptyAnalysisAreas: function () {
             var deferred = new Deferred(),
-                emptyAnalysisAreas = this.analysisAreas().filter(function(aa) {
+                emptyAnalysisAreas = this.analysisAreas().filter(function (aa) {
                     return aa.features().length === 0;
                 });
             if (emptyAnalysisAreas.length > 0) {
                 var ids = emptyAnalysisAreas.map(function (aa) {
                     return aa.id;
                 });
+                //eslint-disable-next-line no-undef
                 MapDAO.deleteAoiAnalysisAreas(ids, this.currentAuthority().orgUserId, {
                     callback: function () {
                         deferred.resolve(true);
@@ -445,7 +451,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
                 });
             } else {
-                window.setTimeout(function() {
+                window.setTimeout(function () {
                     deferred.resolve(false);
                 }, 10);
             }
@@ -466,23 +472,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     self.layers.analysisAreaBuffer.applyEdits(edits.adds, edits.updates, edits.deletes, function () {
                         self.loadingOverlay.hide();
                         deferred.resolve();
-                        //update all features no longer necessary, we assign the FK_PROJECT_ALT values when the AoiAnalysisArea is created
-//                         edits.adds.concat(edits.updates).forEach(function (aa) {
-//                             aa.sourceFeatures.forEach(function (f) {
-//                                 f.graphic.attributes.FK_PROJECT_ALT = aa.attributes.FK_PROJECT_ALT;
-//                                 featureSavePromises.push(f.applyUpdate());
-//                             });
-//                         });
-//                         all(featureSavePromises).then(
-//                             function () {
-//                                 deferred.resolve();
-//                             },
-//                             function (err) {
-//                                 deferred.reject(err);
-//                             }
-//                         );
-                        //todo, something more than this but what?
-                        //console.log('added ' + a.length + ' features, updated ' + u.length + ' features, and deleted ' + d.length + ' features');
                     }, function (err) {
                         self.loadingOverlay.hide();
                         deferred.reject(err);
@@ -1153,7 +1142,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 buildPromises = [];
 
             //loop through models to add or update
-            analysisAreaModels.forEach(function (analysisAreaModel, index) {
+            analysisAreaModels.forEach(function (analysisAreaModel) {
                 var buildPromise = new Deferred(),
                     geometries = analysisAreaModel.features().map(function (f) {
                         return f.buffer ? f.buffer.geometry : f.graphic.geometry;
@@ -1183,6 +1172,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                                 result.updates.push(analysisAreaFeature);
                                 analysisAreaFeature.geometry = bufferedGeometries[0];  //TODO when we support multiple buffer distances this will need to change
                                 analysisAreaFeature.attributes.FK_PRJ_ALT = analysisAreaModel.altNumber; //this probably doesn't change
+                                analysisAreaFeature.attributes.ACRES = 0; // TODO if the analysis routines aren't setting this, make a separate call to a geometry service to get the acres
                                 buildPromise.resolve(analysisAreaFeature);
                             } else {
                                 //add
@@ -1193,7 +1183,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                                     FEATURE_NAME: analysisAreaModel.name(),
                                     FK_PROJECT: self.aoiId,
                                     FK_PROJECT_ALT: analysisAreaModel.id,
-                                    FK_PRJ_ALT: analysisAreaModel.altNumber
+                                    FK_PRJ_ALT: analysisAreaModel.altNumber,
+                                    ACRES: 0 // TODO if the analysis routines aren't setting this, make a separate call to a geometry service to get the acres
                                 };
                                 result.adds.push(analysisAreaFeature);
                                 buildPromise.resolve(analysisAreaFeature);
@@ -1248,7 +1239,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 orgUserId: null,
                 description: null,
                 features: [],
-                alternatives: []
+                analysisAreas: []
             };
 
             this.aoiId = aoi.id;
