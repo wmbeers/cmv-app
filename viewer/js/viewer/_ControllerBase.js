@@ -41,7 +41,6 @@ define([
          * @return {undefined}
          */
         startup: function () {
-
             // cache the inherited
             var inherited = this.getInherited(arguments);
 

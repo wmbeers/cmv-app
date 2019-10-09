@@ -1,0 +1,88 @@
+.newFeatureDijit .listdbootstrapFix {
+    padding: 0 0 0 25px;
+}
+
+.newFeatureDijit .newFeatureContainer {
+    padding: 0;
+}
+
+.floatingWidget .newFeatureDijit .newFeatureContainer {
+    padding: 5px;
+}
+
+.newFeatureDijit .newFeatureNode {
+    height: 300px;
+    width: 350px;
+}
+
+.newFeatureDijit .newFeatureTabContainer {
+    height: 100%;
+    width: 100%;
+}
+
+.arcgisSearch .searchGroup .searchInput {
+    width: 220px;
+}
+
+.aoiList {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/*applied to the Type column in feature list when sorted by by geometry type to make it wide enough to prevent wrapping the sort caret*/
+type-sort {
+    min-width: 56px;
+}
+
+.aoiList input {
+    padding: 3px 0;
+}
+/*resets styling of select element defined in flat.css */
+    .aoiList select {
+        padding: 4px 0;
+        border: 1px solid #9e9e9e;
+        -webkit-box-shadow: none; /*0 1px .5px rgba(0,0,0,.3),0 2px 2px rgba(0,0,0,.2);*/
+        box-shadow: none /*0 1px .5px rgba(0,0,0,.3),0 2px 2px rgba(0,0,0,.2)*/
+    }
+
+/*.flat select option {
+    padding: 4px 8px
+}*/
+
+.feature-selected {
+    background-color: lightcyan;
+}
+
+.aoiList th {
+    white-space: nowrap;
+}
+
+#aoi-name-label {
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.buttonContainerRight {
+    text-align: right;
+}
+
+.buttonContainerFull {
+    display: flex;
+    justify-content: space-between;
+}
+
+.right .dijitButtonText {
+    padding: 0 0 0 4px;
+}
+
+.dijitJqDatepicker {
+    width: 90% !important;
+}
+
+.dijitJqDatepickerValidation {
+    position: relative;
+    top: 4px;
+    right: -10px;
+}

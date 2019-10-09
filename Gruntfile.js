@@ -4,22 +4,34 @@ module.exports = function (grunt) {
     var target = grunt.option('target') || 'dev';
     //get host from target; if not dev or stage, user is prompted for host (assuming you have Bill's modified version of the scp grunt task)
     var host = target === 'dev' ? 'prometheus.est.vpn' :
-        target === 'stage' ? 'hyperion.est.vpn' : null;
+        target === 'stage' ? 'hyperion.est.vpn' : 
+        target === 'preprod' ? 'pandora.est.vpn' :
+        target === 'prod' ? 'calypso.est.vpn' : null;
+    var previouslyReviewed, 
+        currentlyInReview,
+        queryMmaLayer,
+        queryDraftLayer;
+    
     //get operationalLayers based on target
     //in our source it should always be dev (https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer and 
     //https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer)
     //which will be replaced with the stage or prod version
-    var previouslyReviewed = target === 'stage' ? 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Stage/MapServer' :
-        target === 'prod' ? 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Prod/MapServer' : null;
-    var currentlyInReview = target === 'stage' ? 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Stage/MapServer' :
-        target === 'prod' ? 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Prod/MapServer' : null;
-    var queryLayer = target === 'stage' ? 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_MMA_Stage/MapServer/0' :
-        target === 'prod' ? 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_MMA_Prod/MapServer/0' : null;
-        
-        
+    if (target === 'stage' || target === 'preprod') {
+        previouslyReviewed = 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Stage/MapServer';
+        currentlyInReview = 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Stage/MapServer';
+        queryMmaLayer = 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_MMA_Stage/MapServer/0';
+        queryDraftLayer = 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_Drafts_Stage/MapServer/0';
+    } else if (target === 'prod') {
+        previouslyReviewed = 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Prod/MapServer';
+        currentlyInReview = 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Prod/MapServer';
+        queryMmaLayer = 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_MMA_Prod/MapServer/0';
+        queryDraftLayer = 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_Drafts_Prod/MapServer/0';
+    }
     grunt.log.writeln ("target: " + target);
     grunt.log.writeln ("previouslyReviewed: " + previouslyReviewed);
     grunt.log.writeln ("currentlyInReview: " + currentlyInReview);
+    grunt.log.writeln ("queryMmaLayer: " + queryMmaLayer);
+    grunt.log.writeln ("queryDraftLayer: " + queryDraftLayer);
     
     // middleware for grunt.connect
     var middleware = function (connect, options, middlewares) {
@@ -84,18 +96,22 @@ module.exports = function (grunt) {
                 options: {
                     replacements: [
                         {
-                            pattern: 'https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer',
+                            pattern: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer',
                             replacement: previouslyReviewed
                         },
                         {
-                            pattern: 'https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer',
+                            pattern: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer',
                             replacement: currentlyInReview
                         },
                         {
                             pattern: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_MMA_Dev/MapServer/0',
-                            replacement: queryLayer
+                            replacement: queryMmaLayer
+                        },
+                        {
+                            pattern: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_Drafts_Dev/MapServer/0',
+                            replacement: queryDraftLayer
                         }
-                    ]
+                    ] //TODO need replacements for aoiLayers, also a way to read from DB
                 }
             }
         },
@@ -251,7 +267,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build-deploy', 'Compiles all of the assets and copies the files to the dist folder, then deploys it. User is prompted for username and password.', [/*'layerLoaderJs',*/'clean', 'copy', 'operationalLayers', 'scripts', 'stylesheets','scp']);
     grunt.registerTask('deploy', 'Deploys the dist folder. User is prompted for host (destination server), username and password.', ['scp']);
     grunt.registerTask('operationalLayers', function() {
-        if (target === 'stage' || target === 'prod') {
+        if (target === 'stage' || target === 'preprod' || target === 'prod') {
             grunt.task.run(['string-replace']);
         } else {
             grunt.log.write('Skipping string-replace');

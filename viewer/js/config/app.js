@@ -22,7 +22,9 @@
             }
         ], 
         paths: {
-            jquery: 'https://code.jquery.com/jquery-3.3.1.slim.min' //TODO copy locally and don't use CDN
+            jquery: 'https://code.jquery.com/jquery-3.3.1.min', //TODO copy locally and don't use CDN
+            jqueryUi: 'https://code.jquery.com/ui/1.12.1/jquery-ui.min', //TODO copy locally and don't use CDN
+            koBindings: path + 'js/knockout-jQueryUI-Bindings'
         }
     };
 
@@ -39,6 +41,8 @@
         'viewer/_LayoutMixin', // build and manage the Page Layout and User Interface
         
         
+        'viewer/_AuthorizationMixin', //handle authorization before loading layers and widgets
+
         'viewer/_MapMixin', // build and manage the Map
         'viewer/_WidgetsMixin', // build and manage the Widgets
 
@@ -47,7 +51,9 @@
         'viewer/_SidebarMixin', // for mobile sidebar
 
         //'config/_customMixin'
-        'viewer/_LayerLoadMixin', // custom
+        'viewer/_LayerLoadMixin',
+
+        'viewer/_EditorMixin',
 
         'viewer/_SessionMixin'
 
@@ -57,6 +63,7 @@
         _ControllerBase,
         _ConfigMixin,
         _LayoutMixin,
+        _AuthorizationMixin,
         _MapMixin,
         _WidgetsMixin,
 
@@ -64,6 +71,7 @@
 
         _SidebarMixin,
         _LayerLoadMixin,
+        _EditorMixin,
         _SessionMixin
         //_MyCustomMixin
 
@@ -79,6 +87,8 @@
             //
             _SessionMixin,
 
+            _EditorMixin,
+
             _LayerLoadMixin,
 
             // Mixin for Mobile Sidebar
@@ -89,6 +99,8 @@
             // _WebMapMixin,
             _MapMixin,
 
+            _AuthorizationMixin,
+
             // configMixin should be right before _ControllerBase so it is
             // called first to initialize the config object
             _ConfigMixin,
@@ -97,6 +109,31 @@
             _ControllerBase
         ]);
         var app = new App();
-        app.startup();
+        //call app.startup in callback from getAuthorities to avoid a race condition between the callback and things happening in _MapMixin
+        MapDAO.getAuthorities({ //eslint-disable-line no-undef
+            callback: function (authorization) {
+                app.authorization = authorization;
+                app.authorities = authorization.mapAuthorities;
+                app.hasAoiEditAuthority = authorization.aoiEditor;
+                app.hasProjectEditAuthority = authorization.projectEditor;
+                app.hasViewDraftAuthority = authorization.viewDraftProjects;
+
+                //AuthorizationMixin takes care of modifying options 
+                //defining what tools and layers are present
+
+                app.startup();
+            },
+            errorHandler: function () {
+                //TODO report the error
+                //for now just treat this as unauthorized, empty set of authorities
+                app.authorization = null;
+                app.authorities = [];
+                app.hasAoiEditAuthority = false;
+                app.hasProjectEditAuthority = false;
+                app.hasViewDraftAuthority = false;
+
+                app.startup();
+            }
+        });
     });
 })();

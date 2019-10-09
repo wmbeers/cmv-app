@@ -71,3 +71,41 @@ span.selectedItem {
     min-width: 500px;
     max-width: 700px;
 }
+
+/* Div wrapping the shared map link */
+#mapLinkDiv {
+    width: 400px;
+    height: 75px;
+}
+
+/* The shared map link itself, is an input that needs to not look like an input */
+#mapLink {
+    border: none;
+    width: 95%;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+    /* selection color when link is copied */
+    #mapLink::selection {
+        background-color: #e3edff;
+    }
+
+.hidden {
+    display: none;
+}
+
+/* todo move alert declarations to a more general location */
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert {
+    padding: 0.5rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+

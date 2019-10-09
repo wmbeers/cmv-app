@@ -4,53 +4,77 @@
     <meta charset="utf-8" />
     <title>Map Test</title>
     <script src="js/externalTest.js"></script>
+    <!--moment used for performance testing -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 </head>
 <body>
-    <h3>Basic Tests</h3>
+    <h3>Show Map</h3>
     <button onclick="showMap()">Show Map</button>
-    <button onclick="loadData()">Load Data (Method 1)</button>
-    <button onclick="loadData2()">Load Data (Method 2)</button>
-    <button onclick="showMapAndLoadData()">
-        Show Map and Load Data (Method 1)
-    </button>
-    <button onclick="showMapAndLoadData2()">
-        Show Map and Load Data (Method 2)
-    </button>
 
     <hr />
 
-    <h3>Speed Tests</h3>
-    <button onclick="testLayerDrawSpeed()">
-        Test Layer Draw Speed
-    </button>
-    <button onclick="cancelTest()">
-        Cancel Test
-    </button>
-    <div>
-        <pre id="drawSpeedResults">
-        </pre>
-    </div>
+    <h3>Layer Loading</h3>
+    <button onclick="loadLayer()">Load Data</button>
+    <button onclick="showFeature()">Load Data and Zoom</button>
+
+    <h4>Project Data</h4>
+    <label>Project ID or Project-Alt ID<input type="text" id="projectId" name="projectId" /></label><br />
+    <br />
+    <button onclick="showProject()">Show Project</button>
+
     <hr />
 
-    <h3>MGRS Tests</h3>
+
+    <h3>MGRS Test</h3>
     <label>MGRS <input type="text" id="mgrs" name="mgrs" /></label>
     <label>Zoom Level <input type="text" id="zoomLevel" name="zoomLevel" /></label>
     <label><input type="checkbox" id="inferZoom" />Infer Zoom Level</label>
     <br />
     <button onclick="zoomToMgrsPoint()">Zoom To</button>
 
-    <h3>Resource Data</h3>
-    <label>Layer Name <input type="text" id="layerName" name="layerName" /></label><br />
-    <label>Feature ID <input type="text" id="autoId" name="autoId" /></label><br />
-    <button onclick="showFeature()">Show Feature</button>
+    <hr />
+
+    <h3>Load Saved Map</h3>
+    <label>Saved Map ID <input type="text" id="savedMapId" name="savedMapId" /></label>
+    <label><input type="checkbox" id="clearBeforeLoading" />Clear Before Loading</label>
+    <br />
+    <button onclick="loadSavedMap()">Load</button>
 
     <hr />
-    <h3>Project Data</h3>
-    <label>Project ID or Project-Alt ID<input type="text" id="projectId" name="projectId" /></label><br />
-    <br />
-    <button onclick="showProject()">Show Project</button>
 
+
+
+
+    <h3>Speed Tests</h3>
+
+    <label for="layerNames">Enter layer names to test, separated by comma</label><br />
+    <textarea id="layerNames" style="width:100%"></textarea>
+    <br />
+    <button onclick="testLayerDrawSpeed()">
+        Test Layer Draw Speed
+    </button>
+    <button onclick="cancelTest()">
+        Cancel Test
+    </button>
+    <br />
+    <hr />
+
+    <label for="serviceIds">Enter service IDs to test, separated by comma</label><br />
+    <textarea id="serviceIds" style="width:100%"></textarea>
+    <br />
+    <button onclick="testServiceDrawSpeed()">
+        Test Service Draw Speed
+    </button>
+
+    <button onclick="cancelTest()">
+        Cancel Test
+    </button>
+
+    <div>
+        <pre id="drawSpeedResults">
+        </pre>
+    </div>
+    <hr />
 
 
 </body>

@@ -72,20 +72,76 @@ define([
         postCreate: function () {
             this.inherited(arguments);
             this.own(topic.subscribe('growler/growl', lang.hitch(this, 'growl')));
+            this.own(topic.subscribe('growler/growlError', lang.hitch(this, 'growlError')));
+            this.own(topic.subscribe('growler/growlUpdatable', lang.hitch(this, 'growlUpdatable')));
+            this.own(topic.subscribe('growler/updateGrowl', lang.hitch(this, 'updateGrowl')));
+            this.own(topic.subscribe('growler/removeUpdatable', lang.hitch(this, 'removeUpdatable')));
         },
         growl: function (props) {
             props = props || {};
             //Bill Beers modified to support growling with a simple string, defaulting to 3000 ms, info, no title
             if (typeof props === 'string' || props instanceof String) {
                 // it's a string, create default object
-                props = {message: props, title: null, level: 'info', timeout: 3000};
+                props = {
+                    message: props,
+                    title: null,
+                    level: 'info',
+                    timeout: 3000
+                };
             }
             lang.mixin(props, {
                 _container: this.containerNode
             });
             var g = new Growl(props);
             g.startup();
+        },
+        //Bill Beers modified to support standardized growling of error messages
+        growlError: function (message) {
+            var props = {
+                message: message,
+                title: 'Error',
+                level: 'error',
+                timeout: 0
+            };
+            lang.mixin(props, {
+                _container: this.containerNode
+            });
+            var g = new Growl(props);
+            g.startup();
+        },
+        //single instance of an updatable growl
+        _updatableGrowl: null,
+        growlUpdatable: function (props) {
+            props = props || {};
+            if (typeof props === 'string' || props instanceof String) {
+                // it's a string, create default object
+                props = {
+                    message: props,
+                    title: null,
+                    level: 'info',
+                    timeout: 0
+                };
+            }
+            lang.mixin(props, {
+                _container: this.containerNode
+            });
+            this._updatableGrowl = new Growl(props);
+            this._updatableGrowl.startup();
+        },
+        updateGrowl: function (message) {
+            if (this._updatableGrowl) {
+                this._updatableGrowl.message = message;
+                this._updatableGrowl.growlMessageNode.innerHTML = message;
+            } else {
+                this.growlUpdatable(message);
+            }
+        },
+        removeUpdatable: function () {
+            if (this._updatableGrowl) {
+                this._updatableGrowl.close();
+            }
         }
+
     });
 
     return Growler;

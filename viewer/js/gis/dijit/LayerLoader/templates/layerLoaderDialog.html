@@ -90,10 +90,15 @@
                 <p data-bind="if: layerName">
                     <a data-bind="attr: {href: '/metadata/' + layerName + '.htm'}" target="_blank">View Complete Metadata</a>
                 </p>
-                <div class="buttonContainer buttonContainerRight">
-                    <div data-bind="visible: !loaded(), click: loadLayer">
+                <div data-bind="visible: loadable" class="buttonContainer buttonContainerRight">
+                    <div data-bind="visible: !loaded() && !loadPending(), disable: loadPending, click: loadLayer">
                         <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus-square fa-fw'">
                             Add Layer to Map
+                        </div>
+                    </div>
+                    <div data-bind="visible: !loaded() && loadPending()">
+                        <div data-dojo-type="dijit/form/Button" data-dojo-props="disabled: true, iconClass:'fa fa-spinner fa-pulse fa-fw'">
+                            Loading...
                         </div>
                     </div>
                     <div data-bind="visible: loaded(), click: removeLayer">

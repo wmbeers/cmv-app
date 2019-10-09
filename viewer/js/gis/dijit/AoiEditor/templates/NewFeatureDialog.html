@@ -1,0 +1,85 @@
+﻿<div class="newFeatureDijit" id="newFeatureDijit">
+    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="containerNode" class="newFeatureContainer">
+        <div class="newFeatureNode">
+            <div data-dojo-type="dijit/layout/TabContainer" class="newFeatureTabContainer">
+                <div data-dojo-type="dijit/layout/ContentPane" title="New Point">
+                    <button data-dojo-type="dijit/form/Button"
+                            data-dojo-props="iconClass:'fa fa-map-marker-alt fa-fw'"
+                            data-bind="click:digitizePoint">
+                        Draw Point on Map
+                    </button>
+
+                    <hr />
+
+                    <label for="addressToPoint">Address</label><br />
+                    <div id="addressToPoint"></div>
+                    <!--<input type="text" data-dojo-type="dijit/form/TextBox" data-dojo-attach-point="addressToPoint" id="addressToPoint" />-->
+
+                    <hr />
+
+                    <label for="latLong">Lat/Long</label><br />
+                    <input type="text" id="latLongInput" />
+                    <button type="button" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-map-marker-alt fa-fw'" data-bind="click:latLongToPoint">
+                        Go
+                    </button>
+
+                    <hr />
+                    <div style="width: 6em; display: inline-block">
+                        <label for="roadwayIdPt" style="width: 6em; display: inline-block">Roadway</label>
+                        <input type="text" data-dojo-type="dijit/form/TextBox" id="roadwayIdPt" maxlength="8" style="width: 6em" data-bind="numeric: {}, value:roadwayId" />
+                    </div>
+                    <div style="width: 4em; display: inline-block">
+                        <label for="milepost">Milepost</label><br />
+                        <input type="text" data-dojo-type="dijit/form/TextBox" id="milepost" style="width: 4em" data-bind="numeric: {allowDecimal: true}, value:milepost" />
+                    </div>
+                    <button type="button" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-map-marker-alt fa-fw'" data-bind="click:extractPoint">
+                        Go
+                    </button>
+
+                </div>
+
+                <div data-dojo-type="dijit/layout/ContentPane" title="New Line">
+                    <button data-dojo-type="dijit/form/Button"
+                            data-dojo-props="iconClass:'fa fa-map-marker-alt fa-fw'"
+                            data-bind="click:digitizeLine">
+                        Draw Line on Map
+                    </button>
+                    <button data-dojo-type="dijit/form/Button"
+                            data-dojo-props="iconClass:'fa fa-map-marker-alt fa-fw'"
+                            data-bind="click:digitizeFreehandLine">
+                        Draw Freehand Line on Map
+                    </button>
+                    <hr />
+                    <div style="width: 6em; display: inline-block">
+                        <label for="roadwayIdLn" style="width: 6em; display: inline-block">Roadway</label><br />
+                        <input type="text" data-dojo-type="dijit/form/TextBox" id="roadwayIdLn" maxlength="8" style="width: 6em" data-bind="numeric: {}, value:roadwayId" />
+                    </div>
+                    <div style="width: 4em; display: inline-block">
+                        <label for="beginMilepost" style="width: 4em; display: inline-block">Begin Milepost</label><br />
+                        <input type="text" data-dojo-type="dijit/form/TextBox" id="beginMilepost" style="width: 4em" data-bind="numeric: {allowDecimal: true}, value:milepost" />
+                    </div>
+                    <div style="width: 4em; display: inline-block">
+                        <label for="endMilepost">End Milepost</label><br />
+                        <input type="text" data-dojo-type="dijit/form/TextBox" id="endMilepost" style="width: 4em" data-bind="numeric: {allowDecimal: true}, value:endMilepost" />
+                    </div>
+                    <button type="button" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-map-marker-alt fa-fw'" data-bind="click:extractLine">
+                        Go
+                    </button>
+                </div>
+
+                <div data-dojo-type="dijit/layout/ContentPane" title="New Polygon">
+                    <button data-dojo-type="dijit/form/Button"
+                            data-dojo-props="iconClass:'fa fa-map-marker-alt fa-fw'"
+                            data-bind="click:digitizePolygon">
+                        Draw Polygon on Map
+                    </button>
+                    <button data-dojo-type="dijit/form/Button"
+                            data-dojo-props="iconClass:'fa fa-map-marker-alt fa-fw'"
+                            data-bind="click:digitizeFreehandPolygon">
+                        Draw Freehand Polygon on Map
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

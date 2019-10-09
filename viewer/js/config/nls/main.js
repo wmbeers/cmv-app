@@ -32,8 +32,8 @@ define({
             },
             titles: {
                 header: 'Environmental Screening Tool',
-                pageTitle: 'EST Map Viewer',
-                subHeader: 'Map Viewer'
+                pageTitle: 'EST Map Viewer (Beta)',
+                subHeader: 'Map Viewer (Beta)'
             },
             widgets: {
                 bookmarks: 'Bookmarks',

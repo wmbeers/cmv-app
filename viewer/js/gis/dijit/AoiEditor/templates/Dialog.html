@@ -1,0 +1,34 @@
+﻿<div id="openAoiDialog">
+    <div>
+        <label>View</label>
+        <input type="radio" id="filterOptionMy" name="filterOption" value="my" data-bind="checked: filterOption" /><label for="filterOptionMy">Only mine</label>
+        <input type="radio" id="filterOptionAll" name="filterOption" value="all" data-bind="checked: filterOption" /><label for="filterOptionAll">All for 
+            <span data-bind="text: currentAuthority().orgName, visible: authorities.length === 1"></span>
+            <select data-bind="options: authorities, value: currentAuthority, optionsText: 'orgName', visible: authorities.length > 1, enable: filterOption() === 'all'"></select>
+        </label>
+        <span id="videoLink" style="float: right;"></span>
+    </div>
+    <div style="height: 305px; width: 500px; overflow: auto">
+        <table class="aoiList">
+            <thead>
+                <tr class="dgrid-header dgrid-cell" data-bind="css: {'dgrid-sort-up': !aoiSortDescending(), 'dgrid-sort-down': aoiSortDescending()}">
+                    <th><span data-bind="click: sortAoisByName">Name<span class="ui-icon dgrid-sort-arrow" data-bind="visible: aoiSortOption()==='name'"></span></span></th>
+                    <th data-bind="click: sortAoisByType">Type<span class="ui-icon dgrid-sort-arrow" data-bind="visible: aoiSortOption()==='typeName'"></span></th>
+                    <th data-bind="click: sortAoisByExpirationDate" title="Expiration Date">Expires<span class="ui-icon dgrid-sort-arrow" data-bind="visible: aoiSortOption()==='expirationDate'"></span></th>
+                    <th data-bind="click: sortAoisByModDate" title="Last Edited Date">Edit Date<span class="ui-icon dgrid-sort-arrow" data-bind="visible: aoiSortOption()==='modDate'"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: sortedAois">
+                <tr>
+                    <td class="dgrid-cell" data-bind="text: name"></td>
+                    <td class="dgrid-cell" data-bind="attr: {title: typeName}, text: typeAbbr"></td>
+                    <td class="dgrid-cell" data-bind="dateString: expirationDate"></td>
+                    <td class="dgrid-cell" data-bind="dateString: modDate"></td>
+                    <td class="dgrid-cell"><button data-bind="click: load">Load</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
