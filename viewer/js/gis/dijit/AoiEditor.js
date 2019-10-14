@@ -488,6 +488,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             var self = this,
                 deferred = new Deferred();
             this.loadingOverlay.show('Starting analysis...');
+            //TODO this also needs to do the intersection with regions and roads
+            //something currently done by gisEditor; could use the QUERY_REGIONS service for the former, and RCI? for roads.
             //eslint-disable-next-line no-undef
             MapDAO.saveAoiAnalysisOptions(this.toJS(),
                 {
@@ -1156,7 +1158,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     //Note, just a union request would do the job, but maybe this is useful for multiple buffers?
                     var params = new BufferParameters();
 
-                    params.distances = [1];  //TODO when we support multiple buffer distances this will need to change
+                    params.distances = [1]; //TODO when we support multiple buffer distances this will need to change
                     params.outSpatialReference = self.map.spatialReference; //todo this should maybe be Albers
                     params.unit = 9002;
                     params.geometries = simplifiedGeometries;
@@ -1170,7 +1172,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                             if (analysisAreaFeature) {
                                 //update
                                 result.updates.push(analysisAreaFeature);
-                                analysisAreaFeature.geometry = bufferedGeometries[0];  //TODO when we support multiple buffer distances this will need to change
+                                analysisAreaFeature.geometry = bufferedGeometries[0]; //TODO when we support multiple buffer distances this will need to change
                                 analysisAreaFeature.attributes.FK_PRJ_ALT = analysisAreaModel.altNumber; //this probably doesn't change
                                 analysisAreaFeature.attributes.ACRES = 0; // TODO if the analysis routines aren't setting this, make a separate call to a geometry service to get the acres
                                 buildPromise.resolve(analysisAreaFeature);

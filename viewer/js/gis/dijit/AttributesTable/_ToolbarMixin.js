@@ -253,12 +253,12 @@ define([
         refreshTableExtent: function () {
             // this.queryOptions.queryParameters.geometry = this.map.extent;
             // this.queryParameters.geometry = this.map.extent;
-//             var check = this.attributesTableViewSelectedRecordsCheck;
-//             var checked = this.attributesTableViewSelectedRecordsCheck.get('checked');
+            //   var check = this.attributesTableViewSelectedRecordsCheck;
+            //   var checked = this.attributesTableViewSelectedRecordsCheck.get('checked');
 
-//             if (checked === true) {
-//                 check.set('checked', false)
-//             }
+            //if (checked === true) {
+            //       check.set('checked', false)
+            //   }
             topic.publish(this.topicID + '/refreshTableExtent', {
                 results: this.results,
                 grid: this.grid,

@@ -8,15 +8,15 @@
     height: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0, 0, 0, 0.2);
     cursor: wait;
-    position: absolute; /* relative if not full screen?*/
+    position: absolute; /* relative if not full screen? */
 }
 
 .loading-overlay-wrapper {
-    background-color: rgba(255,255,255,1);
+    background-color: rgba(255, 255, 255, 1);
     display: block;
-    color: rgba(128,128,128,1);
+    color: rgba(128, 128, 128, 1);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -27,7 +27,7 @@
 }
 
 .loading-overlay-spinner {
-    color: rgba(128,128,128,1);
+    color: rgba(128, 128, 128, 1);
     font-size: 32px;
 }
 

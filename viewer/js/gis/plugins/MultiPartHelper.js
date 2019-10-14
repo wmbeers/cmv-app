@@ -4,6 +4,7 @@ define(['esri/geometry/Polyline'],
      * Helper class for handling multi-part geometries that get created from split operations.
      */
         return {
+            //tests if the referenced geometry is a multi-part geometry, a multipoint, or polyline > 1 path, or polygon with > 1 ring
             isMultiPart (geometry) {
                 if (!geometry) {
                     return false;

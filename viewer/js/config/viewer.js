@@ -949,37 +949,37 @@ define([
                         
                     }
                 }
-            },
-
-            editor: {
-                include: true, //todo start with this false, then if use has authority change to true before processing by _WidgetsMixin.js
-                id: 'editor',
-                type: 'titlePane',
-                path: 'gis/dijit/Editor',
-                title: i18n.viewer.widgets.editor,
-                iconClass: 'fas fa-fw fa-pencil-alt',
-                open: true,
-                position: 11,
-                options: {
-                    map: true,
-                    mapClickMode: true,
-                    editorLayerInfos: true,
-                    settings: {
-                        toolbarVisible: true,
-                        showAttributesOnClick: true,
-                        enableUndoRedo: true,
-                        createOptions: {
-                            polygonDrawTools: ['freehandpolygon', 'autocomplete'],
-                            polylineDrawTools: ['freehandpolyline']
-                        },
-                        toolbarOptions: {
-                            reshapeVisible: true,
-                            cutVisible: true,
-                            mergeVisible: true
-                        }
-                    }
-                }
             }
+
+            //editor: {
+            //    include: true,
+            //    id: 'editor',
+            //    type: 'titlePane',
+            //    path: 'gis/dijit/Editor',
+            //    title: i18n.viewer.widgets.editor,
+            //    iconClass: 'fas fa-fw fa-pencil-alt',
+            //    open: true,
+            //    position: 11,
+            //    options: {
+            //        map: true,
+            //        mapClickMode: true,
+            //        editorLayerInfos: true,
+            //        settings: {
+            //            toolbarVisible: true,
+            //            showAttributesOnClick: true,
+            //            enableUndoRedo: true,
+            //            createOptions: {
+            //                polygonDrawTools: ['freehandpolygon', 'autocomplete'],
+            //                polylineDrawTools: ['freehandpolyline']
+            //            },
+            //            toolbarOptions: {
+            //                reshapeVisible: true,
+            //                cutVisible: true,
+            //                mergeVisible: true
+            //            }
+            //        }
+            //    }
+            //}
 
             //track location, excluded
             //locateButton: {

@@ -4,6 +4,7 @@ module.exports = function (grunt) {
     var target = grunt.option('target') || 'dev';
     //get host from target; if not dev or stage, user is prompted for host (assuming you have Bill's modified version of the scp grunt task)
     var host = target === 'dev' ? 'prometheus.est.vpn' :
+        target === 'devpoke' ? 'estlapp02.geoplan.ufl.edu' :
         target === 'stage' ? 'hyperion.est.vpn' : 
         target === 'preprod' ? 'pandora.est.vpn' :
         target === 'prod' ? 'calypso.est.vpn' : null;
@@ -28,10 +29,10 @@ module.exports = function (grunt) {
         queryDraftLayer = 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_Drafts_Prod/MapServer/0';
     }
     grunt.log.writeln ("target: " + target);
-    grunt.log.writeln ("previouslyReviewed: " + previouslyReviewed);
-    grunt.log.writeln ("currentlyInReview: " + currentlyInReview);
-    grunt.log.writeln ("queryMmaLayer: " + queryMmaLayer);
-    grunt.log.writeln ("queryDraftLayer: " + queryDraftLayer);
+    grunt.log.writeln ("previouslyReviewed: " + previouslyReviewed || 'default (dev)');
+    grunt.log.writeln ("currentlyInReview: " + currentlyInReview || 'default (dev)');
+    grunt.log.writeln ("queryMmaLayer: " + queryMmaLayer || 'default (dev)');
+    grunt.log.writeln ("queryDraftLayer: " + queryDraftLayer || 'default (dev)');
     
     // middleware for grunt.connect
     var middleware = function (connect, options, middlewares) {
@@ -171,7 +172,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'dist',
-                    src: ['**/*.js', '!**/config/**'],
+                    src: ['**/*.js', '!**/config/**', '!**/MultiPartHelper.js'],
                     dest: 'dist',
                     ext: '.js'
                 }],
@@ -259,6 +260,8 @@ module.exports = function (grunt) {
     // define the tasks
     //grunt.registerTask('layerLoaderJs','exec');
     grunt.registerTask('default', 'Watches the project for changes, automatically builds them and runs a web server and opens default browser to preview.', ['eslint', 'stylelint', 'connect:dev', 'open:dev_browser', 'watch:dev']);
+    //original version, with compress, which we're not doing during development: 
+    //grunt.registerTask('build', 'Compiles all of the assets and copies the files to the build directory.', ['clean', 'copy', 'scripts', 'stylesheets', 'compress']);
     grunt.registerTask('build', 'Compiles all of the assets and copies the files to the build directory.', [/*'layerLoaderJs',*/'clean', 'copy', 'scripts', 'stylesheets']); // we don't want to zip it, 'compress']);
     grunt.registerTask('build-view', 'Compiles all of the assets and copies the files to the build directory starts a web server and opens browser to preview app.', ['clean', 'copy', 'scripts', 'stylesheets', 'compress', 'connect:build', 'open:build_browser', 'watch:build']);
     grunt.registerTask('scripts', 'Compiles the JavaScript files.', ['eslint', 'uglify']);
