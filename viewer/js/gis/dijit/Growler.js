@@ -73,6 +73,7 @@ define([
             this.inherited(arguments);
             this.own(topic.subscribe('growler/growl', lang.hitch(this, 'growl')));
             this.own(topic.subscribe('growler/growlError', lang.hitch(this, 'growlError')));
+            this.own(topic.subscribe('growler/growlWarning', lang.hitch(this, 'growlWarning')));
             this.own(topic.subscribe('growler/growlUpdatable', lang.hitch(this, 'growlUpdatable')));
             this.own(topic.subscribe('growler/updateGrowl', lang.hitch(this, 'updateGrowl')));
             this.own(topic.subscribe('growler/removeUpdatable', lang.hitch(this, 'removeUpdatable')));
@@ -95,13 +96,26 @@ define([
             var g = new Growl(props);
             g.startup();
         },
-        //Bill Beers modified to support standardized growling of error messages
+        //Bill Beers modified to support standardized growling of error and warning messages
         growlError: function (message) {
             var props = {
                 message: message,
                 title: 'Error',
                 level: 'error',
                 timeout: 0
+            };
+            lang.mixin(props, {
+                _container: this.containerNode
+            });
+            var g = new Growl(props);
+            g.startup();
+        },
+        growlWarning: function (message) {
+            var props = {
+                message: message,
+                title: 'Warning',
+                level: 'warning',
+                timeout: 3000
             };
             lang.mixin(props, {
                 _container: this.containerNode

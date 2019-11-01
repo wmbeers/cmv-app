@@ -9,7 +9,7 @@ define([
     'dijit/Dialog',
     'dojo/promise/all',
     'dojo/request',
-    './js/config/projects.js', //TODO put in app.js paths?
+    './js/config/projects.js',
     'esri/layers/ArcGISDynamicMapServiceLayer',
     'esri/layers/FeatureLayer',
     'esri/layers/RasterLayer',
@@ -821,8 +821,8 @@ define([
             layerNames.forEach(function (layerName) {
                 var layerDef = {
                         id: 'aoi_' + aoi.id + '_' + layerName,
-                        url: projects.aoiLayers[layerName].url,
-                        name: (aoi.name || 'AOI ' + aoi.id) + ' ' + projects.aoiLayers[layerName].name,
+                        url: projects.aoiLayers[layerName],
+                        name: (aoi.name || 'AOI ' + aoi.id) + ' ' + layerName,
                         type: 'feature'
                     },
                     layer = self.constructLayer(layerDef, definitionExpression),
@@ -976,16 +976,17 @@ define([
 
             if (layer.layerDef) {
                 if (subLayer) {
-                    //sublayer has id's that are just the index of the layer within the dynamic map service layer
+                    //sublayer has ids that are just the index of the layer within the dynamic map service layer
                     var subLayerDef = layer.layerDef.layerDefs[subLayer.id];
-                    layerName = subLayerDef.layerName;
+                    layerName = subLayerDef ? subLayerDef.layerName : null;
                 } else {
                     layerName = layer.layerDef.layerName;
                 }
             }
 
             if (!layerName) {
-                return; //TODO warn user something is wrong
+                //something has to be wrong with our configuration somehow.
+                topic.publish('growler/growlError', 'Error loading metadata: missing information from configuration. Please inform the help desk. layer.url=' + layer.url);
             }
 
             //metadata files are in lower case

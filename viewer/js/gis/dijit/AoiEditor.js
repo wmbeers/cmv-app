@@ -394,8 +394,14 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     self.saveAnalysisAreaBuffers().then(
                         function () {
                             self.mode('analysisOptions');
+                        },
+                        function (err) {
+                            topic.publish('growler/growlError', err);
                         }
                     );
+                },
+                function (err) {
+                    topic.publish('growler/growlError', err);
                 }
             );
         },
@@ -412,15 +418,17 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             if (ungroupedFeatures.length === 0) {
                 deferred = this._deleteEmptyAnalysisAreas();
             } else {
+                deferred = new Deferred();
                 ungroupedFeatures.forEach(function (f) {
                     promises.push(f.setAnalysisArea(f.name())); // self._addFeatureToAnalysisArea(f, f.name()));
                 });
                 all(promises).then(
                     function () {
-                        return this._deleteEmptyAnalysisAreas();
+                        this._deleteEmptyAnalysisAreas().then(function () {
+                            deferred.resolve();
+                        });
                     },
                     function (e) {
-                        deferred = new Deferred();
                         window.setTimeout(function () {
                             deferred.reject(e);
                         }, 10);
@@ -436,6 +444,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 emptyAnalysisAreas = this.analysisAreas().filter(function (aa) {
                     return aa.features().length === 0;
                 });
+
             if (emptyAnalysisAreas.length > 0) {
                 var ids = emptyAnalysisAreas.map(function (aa) {
                     return aa.id;
@@ -443,7 +452,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 //eslint-disable-next-line no-undef
                 MapDAO.deleteAoiAnalysisAreas(ids, this.currentAuthority().orgUserId, {
                     callback: function () {
-                        deferred.resolve(true);
+                        deferred.resolve();
                     },
                     errorHandler: function (err) {
                         deferred.reject(err);
@@ -452,7 +461,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 });
             } else {
                 window.setTimeout(function () {
-                    deferred.resolve(false);
+                    deferred.resolve();
                 }, 10);
             }
             return deferred;
@@ -484,9 +493,15 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             return deferred;
         },
 
+        intersectRegionsAndRoadways: function () {
+            //TODO call this
+
+        },
+
         saveAnalysisOptions: function () {
             var self = this,
                 deferred = new Deferred();
+
             this.loadingOverlay.show('Starting analysis...');
             //TODO this also needs to do the intersection with regions and roads
             //something currently done by gisEditor; could use the QUERY_REGIONS service for the former, and RCI? for roads.
@@ -510,8 +525,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 });
             return deferred;
         },
+
         saveAnalysisOptionsAndShowProgress: function () {
             var self = this;
+            //todo first call intersectRegionsAndRoadways, when resolved proceed with saveAnalysisOptions
+
             this.saveAnalysisOptions().then(function () {
                 self.mode('analysisProgress');
             });
@@ -563,7 +581,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
 
             this.featureTypes.forEach(function (layerName) {
-                var url = projects.aoiLayers[layerName].url,
+                var url = projects.aoiLayers[layerName],
                     deferred = new Deferred(),
                     layer = new FeatureLayer(url,
                         {
@@ -1241,7 +1259,14 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 orgUserId: null,
                 description: null,
                 features: [],
-                analysisAreas: []
+                analysisAreas: [],
+                //TODO do we want to default these to something other than all-false?
+                //TODO if user has ERT access only, set emergencyResponseReportRequested = true, disable other options in UI
+                studyAreaReportRequested: false,
+                socioCulturalDataReportRequested: false,
+                hardCopyMapsRequested: false,
+                culturalResourcesDataReportRequested: false,
+                emergencyResponseReportRequested: false
             };
 
             this.aoiId = aoi.id;
@@ -1329,7 +1354,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             //get analysisAreaBuffers first TODO this isn't really a necessary step anymore, and we can include this in the same loop
             //through self.featureTypes below (loop through self.layers instead)
-            self.layers.analysisAreaBuffer = new FeatureLayer(projects.aoiLayers.analysisAreaBuffer.url, {
+            self.layers.analysisAreaBuffer = new FeatureLayer(projects.aoiLayers.analysisAreaBuffer, {
                 id: 'aoi_analysisArea_' + this.aoiId,
                 outFields: '*',
                 definitionExpression: 'FK_PROJECT = ' + this.aoiId,
@@ -1339,12 +1364,16 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             });
 
             on.once(self.layers.analysisAreaBuffer, 'update-end', function () {
-                self.loadingOverlay.show('Loading AOI Features');
+                if (self.aoiId) {
+                    self.loadingOverlay.show('Loading AOI Features');
+                } else {
+                    self.LoadingOverlay.show('Setting up AOI layers');
+                }
                 //we now have self.layers.analysisAreaBuffer.graphics as array of the analysis areas as GIS features
                 //get the rest of the features and build relationships
                 self.layers.analysisAreaBuffer.setVisibility(false);
                 self.featureTypes.forEach(function (layerName) {
-                    var url = projects.aoiLayers[layerName].url,
+                    var url = projects.aoiLayers[layerName],
                         deferred = new Deferred(),
                         layer = new FeatureLayer(url,
                             {
@@ -1519,9 +1548,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
                     self.loadingOverlay.show('Saving new analysis area to database');
 
+                    var analysisAreaJS = analysisArea.toJS();
+
                     //save to non-spatial table
                     //eslint-disable-next-line no-undef
-                    MapDAO.saveAoiAnalysisArea(this.aoiId, this.currentAuthority().orgUserId, analysisArea.toJS(), {
+                    MapDAO.saveAoiAnalysisArea(self.aoiId, self.currentAuthority().orgUserId, analysisAreaJS, {
                         callback: function (analysisAreaReply) {
                             self.loadingOverlay.hide();
                             analysisArea.id = analysisAreaReply.id; //the only thing that could possibly change after saving
@@ -1602,6 +1633,9 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 }
             };
 
+            feature.nameHasFocus = ko.observable(); //used to set focus to the name textbox
+            
+            //This subscription undoes a user's attempt to enter duplicate feature names, and updates the database with the new feature name if it has changed.
             feature.name.subscribeChanged(function (latestValue, previousValue) {
                 //validate the new name is unique
                 var matchedName = self.features().find(function (f) {
@@ -1609,8 +1643,12 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 });
 
                 if (matchedName) {
-                    //todo alert user 
+                    topic.publish('growler/growlWarning', 'Warning: another feature with the name "' + latestValue + '" exists. Reverting to previous value "' + previousValue + '"');
                     feature.name(previousValue);
+                    window.setTimeout(function () {
+                        feature.select(); //if the name change event that started this all is clicking to a different feature, set it back
+                        feature.nameHasFocus(true); //sets focus on the name element
+                    }, 300);
                     return;
                 }
 
@@ -1638,7 +1676,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     self.lastBufferDistance = newValue;
                 }
                 feature.applyUpdate();
-            }, 'changed');
+            });
 
             feature.bufferUnit.subscribe(function (newValue) {
                 self.bufferFeature(feature);
@@ -1647,7 +1685,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     self.lastUnit = newValue;
                 }
                 feature.applyUpdate();
-            }, 'changed');
+            });
 
             //using this in lieu of ko deferred for simpler control, we really only want to prevent applyUpdate in the limited
             //circumstance of restoring values after undo/redo
@@ -1876,7 +1914,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             if (this.extent) {
                 //todo this fails if there's just one point. See zoomToFeature for example, may need to centerAndZoom; in theory even if there's just one point, there will be a buffer of that point in S_AOI, so  might not be an issue
                 topic.publish('layerLoader/zoomToExtent', this.extent.expand(1.5));
-            } else {
+            } else if (this.id && this.id > 0) { //only warn if loading an existing AOI, obviously a new one won't have an extent.
                 topic.publish('growler/growl', 'Area of Interest has no features');
             }
         },
@@ -2160,22 +2198,19 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                         name: this.name()
                     };
                 };
-
-
-                //TODO do we want to embed save function for an analysis area here?
             };
 
-            //analysis areas are defined based on the features, and are independent, mostly, of what's in S_AOI (via layers.analysisAreas.graphics) at the moment.
-            //this.analysisAreas = ko.pureComputed(function () {
-            //    var analysisAreas = [];
-            //    this.features().forEach(function (f) {
-            //        if (f.analysisArea() && analysisAreas.indexOf(f.analysisArea()) < 0) {
-            //            analysisAreas.push(f.analysisArea());
-            //        } return f.analysisArea();
-            //    });
-            //    return analysisAreas;
-            //}, this);
             this.analysisAreas = ko.observableArray(); //formerly known as alternatives, distinct from analysisAreaBuffers (features in S_AOI)
+
+            this.analysisAreaNames = ko.pureComputed(function () {
+                //get names from analysis areas via features. The analysisAreaName computed inserts the feature name if no analysis area is defined.
+                var analysisAreaNames = this.features().map(function (f) {
+                    return f.analysisAreaName();
+                });
+                //todo sort
+
+                return analysisAreaNames;
+            }, this);
 
             //analysis options
             this.studyAreaReportRequested = ko.observable(); 

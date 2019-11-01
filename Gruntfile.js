@@ -8,31 +8,8 @@ module.exports = function (grunt) {
         target === 'stage' ? 'hyperion.est.vpn' : 
         target === 'preprod' ? 'pandora.est.vpn' :
         target === 'prod' ? 'calypso.est.vpn' : null;
-    var previouslyReviewed, 
-        currentlyInReview,
-        queryMmaLayer,
-        queryDraftLayer;
-    
-    //get operationalLayers based on target
-    //in our source it should always be dev (https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer and 
-    //https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer)
-    //which will be replaced with the stage or prod version
-    if (target === 'stage' || target === 'preprod') {
-        previouslyReviewed = 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Stage/MapServer';
-        currentlyInReview = 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Stage/MapServer';
-        queryMmaLayer = 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_MMA_Stage/MapServer/0';
-        queryDraftLayer = 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_Drafts_Stage/MapServer/0';
-    } else if (target === 'prod') {
-        previouslyReviewed = 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Prod/MapServer';
-        currentlyInReview = 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Prod/MapServer';
-        queryMmaLayer = 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_MMA_Prod/MapServer/0';
-        queryDraftLayer = 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_Drafts_Prod/MapServer/0';
-    }
+
     grunt.log.writeln ("target: " + target);
-    grunt.log.writeln ("previouslyReviewed: " + previouslyReviewed || 'default (dev)');
-    grunt.log.writeln ("currentlyInReview: " + currentlyInReview || 'default (dev)');
-    grunt.log.writeln ("queryMmaLayer: " + queryMmaLayer || 'default (dev)');
-    grunt.log.writeln ("queryDraftLayer: " + queryDraftLayer || 'default (dev)');
     
     // middleware for grunt.connect
     var middleware = function (connect, options, middlewares) {
@@ -87,34 +64,6 @@ module.exports = function (grunt) {
                     dest: '/var/www/map'
                 }]
             },
-        },
-        'string-replace': {
-            operationalLayers: {
-                files: {
-                    'dist/js/config/viewer.js': 'viewer/js/config/viewer.js',
-                    'dist/js/config/projects.js': 'viewer/js/config/projects.js'
-                },
-                options: {
-                    replacements: [
-                        {
-                            pattern: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer',
-                            replacement: previouslyReviewed
-                        },
-                        {
-                            pattern: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer',
-                            replacement: currentlyInReview
-                        },
-                        {
-                            pattern: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_MMA_Dev/MapServer/0',
-                            replacement: queryMmaLayer
-                        },
-                        {
-                            pattern: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Query_Drafts_Dev/MapServer/0',
-                            replacement: queryDraftLayer
-                        }
-                    ] //TODO need replacements for aoiLayers, also a way to read from DB
-                }
-            }
         },
         tag: {
             banner: '/*  <%= pkg.name %>\n' +
@@ -254,11 +203,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-open');
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-scp');
-    grunt.loadNpmTasks('grunt-string-replace');
-    //grunt.loadNpmTasks('grunt-exec');
 
     // define the tasks
-    //grunt.registerTask('layerLoaderJs','exec');
     grunt.registerTask('default', 'Watches the project for changes, automatically builds them and runs a web server and opens default browser to preview.', ['eslint', 'stylelint', 'connect:dev', 'open:dev_browser', 'watch:dev']);
     //original version, with compress, which we're not doing during development: 
     //grunt.registerTask('build', 'Compiles all of the assets and copies the files to the build directory.', ['clean', 'copy', 'scripts', 'stylesheets', 'compress']);
@@ -267,13 +213,6 @@ module.exports = function (grunt) {
     grunt.registerTask('scripts', 'Compiles the JavaScript files.', ['eslint', 'uglify']);
     grunt.registerTask('stylesheets', 'Auto prefixes css and compiles the stylesheets.', ['stylelint', 'postcss', 'cssmin']);
     grunt.registerTask('lint', 'Run eslint and stylelint.', ['eslint', 'stylelint']);
-    grunt.registerTask('build-deploy', 'Compiles all of the assets and copies the files to the dist folder, then deploys it. User is prompted for username and password.', [/*'layerLoaderJs',*/'clean', 'copy', 'operationalLayers', 'scripts', 'stylesheets','scp']);
+    grunt.registerTask('build-deploy', 'Compiles all of the assets and copies the files to the dist folder, then deploys it. User is prompted for username and password.', [/*'layerLoaderJs',*/'clean', 'copy', 'scripts', 'stylesheets','scp']);
     grunt.registerTask('deploy', 'Deploys the dist folder. User is prompted for host (destination server), username and password.', ['scp']);
-    grunt.registerTask('operationalLayers', function() {
-        if (target === 'stage' || target === 'preprod' || target === 'prod') {
-            grunt.task.run(['string-replace']);
-        } else {
-            grunt.log.write('Skipping string-replace');
-        }
-    });
 };

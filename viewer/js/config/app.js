@@ -22,6 +22,7 @@
             }
         ], 
         paths: {
+            configPath: path + 'js/config',
             jquery: 'https://code.jquery.com/jquery-3.3.1.min', //TODO copy locally and don't use CDN
             jqueryUi: 'https://code.jquery.com/ui/1.12.1/jquery-ui.min', //TODO copy locally and don't use CDN
             koBindings: path + 'js/knockout-jQueryUI-Bindings'
@@ -30,6 +31,8 @@
 
     require(window.dojoConfig, [
         'dojo/_base/declare',
+
+        'gis/plugins/EstAuthorization',
 
         // minimal Base Controller
         'viewer/_ControllerBase',
@@ -58,7 +61,9 @@
         'viewer/_SessionMixin'
 
     ], function (
-        declare,
+        declare, 
+
+        EstAuthorization,
 
         _ControllerBase,
         _ConfigMixin,
@@ -110,30 +115,8 @@
         ]);
         var app = new App();
         //call app.startup in callback from getAuthorities to avoid a race condition between the callback and things happening in _MapMixin
-        MapDAO.getAuthorities({ //eslint-disable-line no-undef
-            callback: function (authorization) {
-                app.authorization = authorization;
-                app.authorities = authorization.mapAuthorities;
-                app.hasAoiEditAuthority = authorization.aoiEditor;
-                app.hasProjectEditAuthority = authorization.projectEditor;
-                app.hasViewDraftAuthority = authorization.viewDraftProjects;
-
-                //AuthorizationMixin takes care of modifying options 
-                //defining what tools and layers are present
-
-                app.startup();
-            },
-            errorHandler: function () {
-                //TODO report the error
-                //for now just treat this as unauthorized, empty set of authorities
-                app.authorization = null;
-                app.authorities = [];
-                app.hasAoiEditAuthority = false;
-                app.hasProjectEditAuthority = false;
-                app.hasViewDraftAuthority = false;
-
-                app.startup();
-            }
+        EstAuthorization.getAuthorities(app).then(function () {
+            app.startup();
         });
     });
 })();

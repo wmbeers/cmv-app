@@ -7,13 +7,15 @@ define([
     'esri/layers/ImageParameters',
     'esri/tasks/locator',
     'gis/plugins/Google',
+    './js/config/projects.js',
     'dojo/i18n!./nls/main',
     'dojo/topic',
     'dojo/sniff'
-], function (units, Extent, esriConfig, /*urlUtils,*/ GeometryService, ImageParameters, Locator, GoogleMapsLoader, i18n, topic, has) {
+], function (units, Extent, esriConfig, /*urlUtils,*/ GeometryService, ImageParameters, Locator, GoogleMapsLoader, projects, i18n, topic, has) {
     // url to your proxy page, must be on same machine hosting you app. See proxy folder for readme.
-    esriConfig.defaults.io.proxyUrl = 'proxy/proxy.ashx';
+    //esriConfig.defaults.io.proxyUrl = 'proxy/proxy.ashx';
     esriConfig.defaults.io.alwaysUseProxy = false;
+    esriConfig.defaults.io.corsEnabledServers.push('gemini.at.geoplan.ufl.edu');
     //might be needed for metadata if we want to load it in a Dialog; not necessary if just opening in new window
     esriConfig.defaults.io.corsEnabledServers.push('tasks.arcgisonline.com');
 
@@ -285,10 +287,10 @@ define([
         operationalLayers: [
             {
                 type: 'dynamic',
-                url: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Previously_Reviewed_Dev/MapServer', //TODO pull this URL from T_REST_SERVICE where SERVICE='V3_PREVIOUSLY_REVIEWED_DEV'
+                url: projects.previouslyReviewedProjectsService,
                 title: 'Projects (Previously Reviewed)',
                 options: {
-                    id: 'previouslyReviewedProjectsLayer',
+                    id: 'previouslyReviewedProjectsService',
                     opacity: 1.0,
                     visible: true,
                     outFields: ['*'],
@@ -318,10 +320,10 @@ define([
             },
             {
                 type: 'dynamic',
-                url: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_ETAT_Review_Dev/MapServer', //TODO pull this URL from T_REST_SERVICE where SERVICE='V3_ETAT_REVIEW_DEV'
+                url: projects.currentlyInReviewProjectsService,
                 title: 'Projects (Currently in Review)',
                 options: {
-                    id: 'currentlyInReviewProjects',
+                    id: 'currentlyInReviewProjectsService',
                     opacity: 1.0,
                     visible: true,
                     outFields: ['*'],
@@ -337,7 +339,7 @@ define([
                 legendLayerInfos: {
                     exclude: false,
                     layerInfo: {
-                        title: 'Projects (Previously Reviewed)'
+                        title: 'Projects (Currently in Review)'
                     }
                 },
                 layerControlLayerInfos: {
@@ -351,10 +353,10 @@ define([
             },
             {
                 type: 'dynamic',
-                url: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/v3_Draft_Projects_Dev/MapServer', //TODO pull this URL from T_REST_SERVICE where SERVICE='V3_DRAFT_PROJECTS_DEV
+                url: projects.draftProjectsService,
                 title: 'Projects (Draft)',
                 options: {
-                    id: 'draftProjects',
+                    id: 'draftProjectsService',
                     opacity: 1.0,
                     visible: true,
                     outFields: ['*'],
@@ -363,6 +365,10 @@ define([
                         layerOption: 'show'
                     }),
                     mode: 1
+                },
+                credentialKey: {
+                    userId: 'DRAFT_secure',
+                    server: 'https://gemini.at.geoplan.ufl.edu/arcgis' //TODO pull from projects.js
                 },
                 editorLayerInfos: {
                     disableGeometryUpdate: false
@@ -381,143 +387,143 @@ define([
                         iconClass: 'fa fa-table fa-fw'
                     }]
                 }
-            },
-            {
-                type: 'feature',
-                url: 'https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/AOIDEV_INPUT/FeatureServer/1',
-                title: 'Area of Interest Points',
-                options: {
-                    id: 'aoiP',
-                    opacity: 1.0,
-                    visible: false,
-                    outFields: ['*'],
-                    imageParameters: buildImageParameters({
-                        layerIds: [0, 7],
-                        layerOption: 'show'
-                    }),
-                    mode: 1
-                },
-                editorLayerInfos: {
-                    exclude: false,
-                    disableGeometryUpdate: false
-                },
-                legendLayerInfos: {
-                    exclude: false,
-                    layerInfo: {
-                        title: 'AOI Points'
-                    }
-                },
-                layerControlLayerInfos: {
-                    //layerGroup: 'Project Data',
-                    menu: [{
-                        label: 'Open Attribute Table',
-                        topic: 'openTable',
-                        iconClass: 'fa fa-table fa-fw'
-                    }]
-                }
-            },
-            {
-                type: 'feature',
-                url: 'https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/AOIDEV_INPUT/FeatureServer/2',
-                title: 'Area of Interest Lines',
-                options: {
-                    id: 'aoiL',
-                    opacity: 1.0,
-                    visible: false,
-                    outFields: ['*'],
-                    imageParameters: buildImageParameters({
-                        layerIds: [0, 7],
-                        layerOption: 'show'
-                    }),
-                    mode: 1
-                },
-                editorLayerInfos: {
-                    exclude: false,
-                    disableGeometryUpdate: false
-                },
-                legendLayerInfos: {
-                    exclude: false,
-                    layerInfo: {
-                        title: 'AOI Polylines'
-                    }
-                },
-                layerControlLayerInfos: {
-                    //layerGroup: 'Project Data',
-                    menu: [{
-                        label: 'Open Attribute Table',
-                        topic: 'openTable',
-                        iconClass: 'fa fa-table fa-fw'
-                    }]
-                }
-            },
-            {
-                type: 'feature',
-                url: 'https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/AOIDEV_INPUT/FeatureServer/3',
-                title: 'Area of Interest Polygons',
-                options: {
-                    id: 'aoiA',
-                    opacity: 1.0,
-                    visible: false,
-                    outFields: ['*'],
-                    imageParameters: buildImageParameters({
-                        layerIds: [0, 7],
-                        layerOption: 'show'
-                    }),
-                    mode: 1
-                },
-                editorLayerInfos: {
-                    exclude: false,
-                    disableGeometryUpdate: false
-                },
-                legendLayerInfos: {
-                    exclude: false,
-                    layerInfo: {
-                        title: 'AOI Polygons'
-                    }
-                },
-                layerControlLayerInfos: {
-                    //layerGroup: 'Project Data',
-                    menu: [{
-                        label: 'Open Attribute Table',
-                        topic: 'openTable',
-                        iconClass: 'fa fa-table fa-fw'
-                    }]
-                }
-            },
-            {
-                type: 'feature',
-                url: 'https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/AOIDEV_INPUT/FeatureServer/4',
-                title: 'Area of Interest Analysis Areas',
-                options: {
-                    id: 'aoiAA',
-                    opacity: 1.0,
-                    visible: false,
-                    outFields: ['*'],
-                    imageParameters: buildImageParameters({
-                        layerIds: [0, 7],
-                        layerOption: 'show'
-                    }),
-                    mode: 1
-                },
-                editorLayerInfos: {
-                    exclude: false,
-                    disableGeometryUpdate: false
-                },
-                legendLayerInfos: {
-                    exclude: false,
-                    layerInfo: {
-                        title: 'AOI Analysis Areas'
-                    }
-                },
-                layerControlLayerInfos: {
-                    //layerGroup: 'Project Data',
-                    menu: [{
-                        label: 'Open Attribute Table',
-                        topic: 'openTable',
-                        iconClass: 'fa fa-table fa-fw'
-                    }]
-                }
-            }
+            }//,
+            //{
+            //    type: 'feature',
+            //    url: 'https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/AOIDEV_INPUT/FeatureServer/1',
+            //    title: 'Area of Interest Points',
+            //    options: {
+            //        id: 'aoiP',
+            //        opacity: 1.0,
+            //        visible: false,
+            //        outFields: ['*'],
+            //        imageParameters: buildImageParameters({
+            //            layerIds: [0, 7],
+            //            layerOption: 'show'
+            //        }),
+            //        mode: 1
+            //    },
+            //    editorLayerInfos: {
+            //        exclude: false,
+            //        disableGeometryUpdate: false
+            //    },
+            //    legendLayerInfos: {
+            //        exclude: false,
+            //        layerInfo: {
+            //            title: 'AOI Points'
+            //        }
+            //    },
+            //    layerControlLayerInfos: {
+            //        //layerGroup: 'Project Data',
+            //        menu: [{
+            //            label: 'Open Attribute Table',
+            //            topic: 'openTable',
+            //            iconClass: 'fa fa-table fa-fw'
+            //        }]
+            //    }
+            //},
+            //{
+            //    type: 'feature',
+            //    url: 'https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/AOIDEV_INPUT/FeatureServer/2',
+            //    title: 'Area of Interest Lines',
+            //    options: {
+            //        id: 'aoiL',
+            //        opacity: 1.0,
+            //        visible: false,
+            //        outFields: ['*'],
+            //        imageParameters: buildImageParameters({
+            //            layerIds: [0, 7],
+            //            layerOption: 'show'
+            //        }),
+            //        mode: 1
+            //    },
+            //    editorLayerInfos: {
+            //        exclude: false,
+            //        disableGeometryUpdate: false
+            //    },
+            //    legendLayerInfos: {
+            //        exclude: false,
+            //        layerInfo: {
+            //            title: 'AOI Polylines'
+            //        }
+            //    },
+            //    layerControlLayerInfos: {
+            //        //layerGroup: 'Project Data',
+            //        menu: [{
+            //            label: 'Open Attribute Table',
+            //            topic: 'openTable',
+            //            iconClass: 'fa fa-table fa-fw'
+            //        }]
+            //    }
+            //},
+            //{
+            //    type: 'feature',
+            //    url: 'https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/AOIDEV_INPUT/FeatureServer/3',
+            //    title: 'Area of Interest Polygons',
+            //    options: {
+            //        id: 'aoiA',
+            //        opacity: 1.0,
+            //        visible: false,
+            //        outFields: ['*'],
+            //        imageParameters: buildImageParameters({
+            //            layerIds: [0, 7],
+            //            layerOption: 'show'
+            //        }),
+            //        mode: 1
+            //    },
+            //    editorLayerInfos: {
+            //        exclude: false,
+            //        disableGeometryUpdate: false
+            //    },
+            //    legendLayerInfos: {
+            //        exclude: false,
+            //        layerInfo: {
+            //            title: 'AOI Polygons'
+            //        }
+            //    },
+            //    layerControlLayerInfos: {
+            //        //layerGroup: 'Project Data',
+            //        menu: [{
+            //            label: 'Open Attribute Table',
+            //            topic: 'openTable',
+            //            iconClass: 'fa fa-table fa-fw'
+            //        }]
+            //    }
+            //},
+            //{
+            //    type: 'feature',
+            //    url: 'https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/AOIDEV_INPUT/FeatureServer/4',
+            //    title: 'Area of Interest Analysis Areas',
+            //    options: {
+            //        id: 'aoiAA',
+            //        opacity: 1.0,
+            //        visible: false,
+            //        outFields: ['*'],
+            //        imageParameters: buildImageParameters({
+            //            layerIds: [0, 7],
+            //            layerOption: 'show'
+            //        }),
+            //        mode: 1
+            //    },
+            //    editorLayerInfos: {
+            //        exclude: false,
+            //        disableGeometryUpdate: false
+            //    },
+            //    legendLayerInfos: {
+            //        exclude: false,
+            //        layerInfo: {
+            //            title: 'AOI Analysis Areas'
+            //        }
+            //    },
+            //    layerControlLayerInfos: {
+            //        //layerGroup: 'Project Data',
+            //        menu: [{
+            //            label: 'Open Attribute Table',
+            //            topic: 'openTable',
+            //            iconClass: 'fa fa-table fa-fw'
+            //        }]
+            //    }
+            //}
         ],
         // set include:true to load. For titlePane type set position the the desired order in the sidebar
         widgets: {
@@ -844,7 +850,7 @@ define([
                     field: 'DESCRIPT',
                     maxAllowableOffset: 100,
                     i18n: {
-                        selectFeature: 'Enter a County, WMD, or FDOT District Name'
+                        selectFeature: 'Enter a City, County, MPO, WMD, or FDOT District Name'
                     }
                 }
             }, //open

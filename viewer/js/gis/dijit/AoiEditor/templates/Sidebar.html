@@ -92,7 +92,7 @@
                             <td class="dgrid-cell"><input type="checkbox" checked disabled /></td>
                             <td class="dgrid-cell" data-bind="template: {name: 'geometry-type-icon', data: geometry}"></td>
                             <td class="dgrid-cell">
-                                <input type="text" data-bind="value: name" />
+                                <input type="text" data-bind="value: name, hasFocus: nameHasFocus" />
                             </td>
                             <td class="dgrid-cell"><input type="number" data-bind="value: bufferDistance" style="width: 3em" /></td>
                             <td class="dgrid-cell"><select data-bind="options: $root.bufferUnitArray, optionsText: 'abbreviation', value: bufferUnit, attr: {title: bufferTextLong}" style="width: 3em" /></td>
