@@ -5,12 +5,13 @@
 define([
     'dojo/_base/declare',
     'dojo/_base/lang',
+    'dojo/on',
     'gis/plugins/EstAuthorization',
     'esri/IdentityManager'//,
     //'esri/ServerInfo',
     //'esri/Credential'
 ], 
-function (declare, lang, EstAuthorization, esriId /*, ServerInfo, Credential*/) {
+function (declare, lang, on, EstAuthorization, esriId /*, ServerInfo, Credential*/) {
 
     return declare(null, {
         //hasAoiEditAuthority: false,        
@@ -70,6 +71,9 @@ function (declare, lang, EstAuthorization, esriId /*, ServerInfo, Credential*/) 
         },
 
         _initEsriId: function () {
+            //esriId = esriId(); //Needed when using IdentityManagerBase; remove this line if using IdentityManager.
+            app.esriId = esriId; //TODO just for testing
+
             var idObj = {
                 serverInfos: [ //TODO get this from the DWR call
                     {
@@ -104,6 +108,7 @@ function (declare, lang, EstAuthorization, esriId /*, ServerInfo, Credential*/) 
                     ssl: false,
                     scope: 'server'
                 };
+                //console.log(t.server + ' token expires in ' + ((t.expires - now) / 1000) + ' seconds at ' + new Date(t.expires));
                 minExpires = Math.min(minExpires, t.expires);
                 idObj.credentials.push(credential);
             });
@@ -111,19 +116,26 @@ function (declare, lang, EstAuthorization, esriId /*, ServerInfo, Credential*/) 
 
             esriId.initialize(idObj);
 
+            on(esriId, 'dialog-create', function () {
+                console.log('login dialog is being created'); //eslint-disable-line no-console
+                esriId.dialog.on('show', function () {
+                    console.log('login dialog is showing'); //eslint-disable-line no-console
+                    esriId.dialog.hide();
+                });
+            });
+
             //set a timeout to update it
-            var msUntilCredentialTimeout = minExpires - now - 60000; //60 seconds before the first credential expires 
+            var msUntilCredentialTimeout = minExpires - now - 180000; //180 seconds before the first credential expires; it appears that ESRI will pop up the dialog when there's less than 2 minutes to go, so I'm adding this little buffer
             if (minExpires < 8640000000000000) {
+                //console.log('Will refresh in ' + msUntilCredentialTimeout / 1000 + ' seconds');
                 window.setTimeout(this.refreshTokens.bind(this), msUntilCredentialTimeout);
             }
-
-            app.esriId = esriId; //TODO just for testing
 
             ////todo default currentAuthority based on session or something? local storage?
         },
 
         _updateTokens: function () {
-            console.log('Updating tokens');
+            //console.log('Updating tokens'); 
             //this.authorization.credentials will have been updated in EstAuthorization.getAuthorities
             //those credentials aren't the same thing, just need the tokens.
             var minExpires = 8640000000000000, //max possible timestamp, will get narrowed down in loop below
@@ -140,12 +152,15 @@ function (declare, lang, EstAuthorization, esriId /*, ServerInfo, Credential*/) 
                 } else {
                     //TODO create a new token? Can this happen?
                 }
+                //console.log('Refreshed ' + credential.server + ' token expires in ' + (credential.expires - now) + ' at ' + new Date(credential.expires));
+
                 minExpires = Math.min(minExpires, credential.expires);
             });
 
-             //set a timeout to update it
-            var msUntilCredentialTimeout = minExpires - now - 60000; //60 seconds before the first credential expires 
+            //set a timeout to update it
+            var msUntilCredentialTimeout = minExpires - now - 180000; //180 seconds before the first credential expires 
             if (minExpires < 8640000000000000) {
+                //console.log('Will refresh in ' + msUntilCredentialTimeout);
                 window.setTimeout(this.refreshTokens.bind(this), msUntilCredentialTimeout);
             }
 
@@ -153,27 +168,8 @@ function (declare, lang, EstAuthorization, esriId /*, ServerInfo, Credential*/) 
         },
 
         refreshTokens: function () {
+            console.log('Refreshing token'); //eslint-disable-line no-console
             EstAuthorization.getAuthorities(this).then(lang.hitch(this, '_updateTokens'));
-        },
-
-        checkTokens: function () {
-            var now = new Date().getTime(),
-                refreshNeeded = false;
-
-            this.esriId.credentials.forEach(function (credential) {
-                //is it going to expire in the next minute?
-                console.log(credential.expires - now);
-                if (credential.expires - now < 60000) {
-                    refreshNeeded = true;
-                    return false; //break out of loop
-                }
-                return true; //just to shut up eslint
-            });
-
-            if (refreshNeeded) {
-                console.log('Refresh Needed');
-                //this.refreshTokens();
-            }
         }
     });
 });

@@ -71,6 +71,7 @@ define([
                 self.lastActivityTime = new Date();
                 self.reLoginDialog.hide();
                 self.userNamePasswordVisible(false);
+                self.refreshTokens(); //in _AuthorizationMixin; refresh the tokens now
             };
 
             //I would prefer not to use ko here, but I just can't get regular Dojo events right in a Mixin context; would have to convert this to a widget
