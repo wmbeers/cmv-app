@@ -51,7 +51,8 @@ module.exports = function (grunt) {
         // },
         scp: {
             options: {
-                host: host
+                host: host,
+                readyTimeout: 60000
                 //host: 'prometheus.est.vpn',
                 //username: 'bill'
             },
