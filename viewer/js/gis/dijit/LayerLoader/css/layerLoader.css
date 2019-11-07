@@ -58,11 +58,6 @@ span.selectedItem {
     display: none !important;
 }
 
-.no-caret .expando {
-    display: none !important;
-}
-
-
 .buttonContainerRight {
     text-align: right;
 }
