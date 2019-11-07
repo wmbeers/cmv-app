@@ -54,6 +54,15 @@ span.selectedItem {
 	color: #FFFFFF;
 }
 
+.no-caret .expando {
+    display: none !important;
+}
+
+.no-caret .expando {
+    display: none !important;
+}
+
+
 .buttonContainerRight {
     text-align: right;
 }

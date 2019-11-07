@@ -21,6 +21,11 @@ define([
     'dojo/text!./LayerLoader/templates/searchResultsDialog.html', // template for the layer search results
     'dojo/text!./LayerLoader/templates/shareMapDialog.html', // template for the share saved map
 
+    //jquery and jqueryUI, and custom ko Bindings needed for expandable categories
+    'jquery',
+    'jqueryUi',
+    'koBindings',
+
     'dijit/form/Form',
     'dijit/form/FilteringSelect',
     'dijit/form/CheckBox',
@@ -250,6 +255,15 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
                     return scaleText;
                 });
 
+                //shim the expanded/collapsed properties of a category so we can use the same ko template
+                layerDef.expanded = ko.pureComputed(function () { // eslint-disable-line no-undef
+                    return false;
+                });
+
+                layerDef.collapsed = ko.pureComputed(function () { // eslint-disable-line no-undef
+                    return false;
+                });
+
                 //handles user clicking on a layer in the middle pane
                 layerDef.select = function () {
                     root.currentLayer(layerDef);
@@ -316,6 +330,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
             function processCategories (parent) {
                 parent.categories.forEach(function (category) {
                     root.allCategories.push(category);
+                    category.parent = parent === root ? null : parent;
                     category.layerDefs = category.layerIds.map(function (layerId) {
                         return root.layerDefs.find(function (l) {
                             return l.id === layerId;
@@ -339,10 +354,35 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
                         root.layerBrowserDialog.hide();
                     };
 
+                    //our template for "selectable" items is shared between categories and layerDefs
+                    //so we bind the expand/collapsed icons based on separate, related properties, and 
+                    //only show if there are sub-categories. 
+                    //The layerDefs versions of these both return false.
+                    category._expanded = ko.observable(false); // eslint-disable-line no-undef
+
+                    category.expanded = ko.pureComputed(function () { // eslint-disable-line no-undef
+                        return category.categories.length > 0 && category._expanded();
+                    });
+
+                    category.collapsed = ko.pureComputed(function () { // eslint-disable-line no-undef
+                        return category.categories.length > 0 && !category._expanded();
+                    });
+
                     category.select = function () {
+                        //expand it if not expanded, collapse it if it's already the current category
+                        if (!category._expanded()) {
+                            category._expanded(true);
+                        } else if (root.currentCategory() === category) {
+                            category._expanded(false);
+                        }
+                        //expand its parent
+                        if (category.parent) {
+                            category.parent._expanded(true);
+                        }
                         root.currentCategory(category);
                         root.currentLayer(category.layerDefs.length > 0 ? category.layerDefs[0] : null);
                     };
+
 
                     category.isSelected = ko.pureComputed(function () { // eslint-disable-line no-undef
                         return root.currentCategory() === category;
