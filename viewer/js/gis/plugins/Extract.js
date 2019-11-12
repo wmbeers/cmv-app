@@ -209,7 +209,7 @@ function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphi
 
             
             //quick check that distance is valid
-            if (beginMilePost && endMilePost) {
+            if (beginMilePost >= 0 && endMilePost) {
                 if (distance < beginMilePost) {
                     setTimeout(function () {
                         deferred.reject('Distance requested (' + distance + ') is less than BEGIN_POST value ' + beginMilePost);
