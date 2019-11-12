@@ -554,7 +554,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this.clearAoiLayers();
             this.bufferGraphics.clear();
             this.extractGraphics.clear();
-            this.deactivateDrawTool();
+            this.deactivateExtract(); //deactivates draw tool too
             this.edit.deactivate();
             this.undoManager.clearUndo();
             this.undoManager.clearRedo();
@@ -929,6 +929,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         interactiveExtract: function () {
             this.newFeatureDialog.hide();
             this.extractGraphics.clear();
+            this.extract.addRciBasemapToMap();
             this.activateDrawTool('extract1');
         },
 
@@ -958,23 +959,18 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
 
             //customizing the draw toolbar so the UI can remind user what they're doing, and have ability to cancel
-            /*eslint-disable no-undef*/
-            self.drawToolGeometryType = ko.observable(null); //independent of draw._geometryType, but we keep it in sync
+            //eslint-disable-next-line no-undef
+            self.drawMode = ko.observable(); //either null, 'draw', 'extract1', 'extract2', or 'split'; controls what happens in draw-complete and visibility of cancel buttons in sidebar
 
-            self.drawMode = ko.observable('draw'); //either 'draw', 'extract1', 'extract2', or 'split', controls what happens in draw-complete
-            /*eslint-enable no-undef*/
-
-            self.activateDrawTool = function (geometryType) {
+            self.activateDrawTool = function (mode) {
                 //put us in draw-new-feature mode.
-                self.drawMode(geometryType.startsWith('extract') ? geometryType : 'draw');
+                self.drawMode(mode.startsWith('extract') ? mode : 'draw');
                 //deactivate edit toolbar
                 self.edit.deactivate();
                 //clear out current feature
                 self.currentFeature(null);
                 //pass the word onto the draw tool
-                self.draw.activate(geometryType.startsWith('extract') ? 'point' : geometryType);
-                //sync up with geometryType observable
-                self.drawToolGeometryType(geometryType);
+                self.draw.activate(mode.startsWith('extract') ? 'point' : mode);
                 //todo turn off identify
                 topic.publish('mapClickMode/setCurrent', 'digitize');
                 //hide buffers
@@ -1001,15 +997,15 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             self.deactivateDrawTool = function () {
                 //pass the word onto the draw tool
                 self.draw.deactivate();
-                //sync up with geometryType observable
-                self.drawToolGeometryType(null);
+                self.drawMode(null);
                 //restore buffers
                 self.bufferGraphics.setVisibility(true);
             };
-            self.drawToolActive = ko.pureComputed(function () { //eslint-disable-line no-undef
-                return self.drawToolGeometryType() !== null;
-            });
 
+            self.deactivateExtract = function () {
+                self.deactivateDrawTool();
+                self.extractGraphics.clear();
+            };
 
             //event handler for draw complete, creates a new feature when user finishes digitizing, or splits a feature when user finishes drawing a line for splitting
             this.draw.on('draw-complete', function (event) {
@@ -1031,8 +1027,12 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 } else if (mode === 'extract2') {
                     //extract the line
                     self.extractGraphics.add(new Graphic(event.geometry));
+                    self.loadingOverlay.show('Extracting line...');
                     self.extract.extractRouteBetweenPoints(self.extractPoint1, event.geometry).then(
                         function (polyline) {
+                            self.loadingOverlay.hide();
+                            self.deactivateExtract(); //hides the points
+                            self.extractPoint1 = null; //superfluous, but just to keep things tidy
                             var ef = self._constructFeature({
                                 geometry: polyline,
                                 name: 'Extracted Line ' + self._nextFeatureNumber() //TODO can we do better? Maybe the return from extractRouteBetweenPoints could also do identify, etc.?
@@ -1040,6 +1040,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                             self._addFeatureToLayer(ef, true);
                         },
                         function (e) {
+                            self.loadingOverlay.hide();
                             topic.publish('growler/growlError', 'Error extracting roadway: ' + e);
                         }
                     );
@@ -1471,7 +1472,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                         featuresKo = [],
                         onLayerClick = function (evt) { //eslint-disable-line func-style
                             //subscription on currentFeature does this edit.activate(2, evt.graphic);
-                            if (evt.graphic && evt.graphic.feature && !self.drawToolActive()) {
+                            if (evt.graphic && evt.graphic.feature && !self.drawMode()) {
                                 event.stopPropagation(evt);
                                 self.currentFeature(evt.graphic.feature);
                             }
@@ -1797,7 +1798,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     layer = self.layers[graphic.geometry.type],
                     buffer = feature.buffer,
                     operation = new FeatureOperations.Delete(feature);
-                self.deactivateDrawTool();
+                self.deactivateExtract(); //deactivates draw tool too
                 self.edit.deactivate();
                 if (buffer) {
                     self.bufferGraphics.remove(buffer);

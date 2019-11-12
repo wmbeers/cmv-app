@@ -1,5 +1,6 @@
 define([
     'dojo/Deferred',
+    'dojo/topic',
     'esri/tasks/FeatureSet',
     'esri/tasks/RouteParameters',
     'esri/tasks/RouteTask',
@@ -12,11 +13,21 @@ define([
     'esri/tasks/GeometryService',
     'esri/tasks/LengthsParameters'
 ],
-function (Deferred, FeatureSet, RouteParameters, RouteTask, Query, Graphic, QueryTask, Point, PolyLine, projection, GeometryService, LengthsParameters) {
+function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphic, QueryTask, Point, PolyLine, projection, GeometryService, LengthsParameters) {
     /**
     * Helper class for extracting points routes from the FDOT basemap.
     */
     return {
+
+        addRciBasemapToMap: function () {
+            var rciService = {
+                id: 7311,
+                type: 'dynamic',
+                name: 'RCI Basemap',
+                url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI_Base/MapServer/'
+            };
+            topic.publish('layerLoader/addLayerFromCategoryDef', rciService);
+        },
 
         /**
          * Gets the roadway feature from the basemap with the specified roadway ID

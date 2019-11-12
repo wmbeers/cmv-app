@@ -115,16 +115,22 @@
                         data-dojo-attach-point="addFeatureButton">
                     Add Feature
                 </button>
-
-                <div data-bind="visible:  $root.drawToolActive()">
+                <!--Note buttons have to be wrapped in a data-bound div, or they still render as empty buttons. Thanks, Dojo.-->
+                <div data-bind="visible: $root.drawMode() === 'draw'">
                     <button data-bind="click: $root.deactivateDrawTool" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-cut fa-fw'">
-                        <span data-bind="visible: $root.drawMode() === 'draw'">
-                            Cancel Draw
-                        </span>
+                        Cancel Draw
+                    </button>
+                </div>
 
-                        <span data-bind="visible: $root.drawMode() === 'split'">
-                            Cancel Split
-                        </span>
+                <div data-bind="visible: $root.drawMode() === 'split'">
+                    <button data-bind="click: $root.deactivateDrawTool" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-cut fa-fw'">
+                        Cancel Split
+                    </button>
+                </div>
+
+                <div data-bind="visible: $root.drawMode() === 'extract1' || $root.drawMode() === 'extract2'">
+                    <button data-bind="click: $root.deactivateExtract" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-cut fa-fw'">
+                        Cancel Extract
                     </button>
                 </div>
 
@@ -171,8 +177,10 @@
             </div>
 
             <div data-bind="visible: mode() === 'analysisAreas'">
-                <p><strong>Optional:</strong> You can group features together on this screen. Grouped features
-                are analyzed together as a single analysis area, and can contain multiple disconnected parts.</p>
+                <p>
+                    <strong>Optional:</strong> You can group features together on this screen. Grouped features
+                    are analyzed together as a single analysis area, and can contain multiple disconnected parts.
+                </p>
                 <table class="aoiList">
                     <thead>
                         <tr data-bind="css: {'dgrid-sort-up': !featureSortDescending(), 'dgrid-sort-down': featureSortDescending()}">
@@ -256,7 +264,6 @@
                     </button>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

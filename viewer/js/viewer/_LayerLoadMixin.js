@@ -656,7 +656,7 @@ define([
         },
 
         /**
-         * Lists to topic layerLoader/addLayerFromCategoryDef
+         * Listens to topic layerLoader/addLayerFromCategoryDef
          * @param {object} categoryDef a layerDef object found in layerLoader.js
          * @return {object} Deffered instance
          */
