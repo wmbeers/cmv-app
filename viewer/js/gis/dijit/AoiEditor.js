@@ -6,6 +6,7 @@ define([
 
     'gis/plugins/LatLongParser',
     'gis/plugins/MultiPartHelper',
+    'gis/plugins/Extract',
     'gis/dijit/LoadingOverlay',
 
     'dijit/Dialog',
@@ -68,6 +69,7 @@ define([
 function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, 
     LatLongParser,
     MultiPartHelper,
+    Extract,
     LoadingOverlay,
     Dialog,
     ConfirmDialog,
@@ -551,6 +553,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this.analysisAreas.removeAll();
             this.clearAoiLayers();
             this.bufferGraphics.clear();
+            this.extractGraphics.clear();
             this.deactivateDrawTool();
             this.edit.deactivate();
             this.undoManager.clearUndo();
@@ -664,6 +667,9 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
         startup: function () {
             this.inherited(arguments);
+            //for testing only TODO remove this and next line
+            this.extract = Extract;
+
             this.loadingOverlay = new LoadingOverlay(); //this can be defined at the root level, but...
             //TODO figure out why this doesn't work: this.sidebarLoadingOverlay = new LoadingOverlay('aoiEditorSidebar'); //...this has to be defined in startup, because the sidebar widget has to be constructed first
 
@@ -848,11 +854,47 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         },
 
         extractPoint: function () {
-            topic.publish('growler/growl', 'Extract coming soon!');
+            var self = this;
+            self.loadingOverlay.show('Extracting point...');
+
+            this.extract.extractPoint(this.roadwayId(), this.milepost()).then(
+                function (p) {
+                    self.loadingOverlay.hide();
+                    //construct a feature
+                    var o = {
+                        name: self.roadwayId() + ' @ ' + self.milepost(),
+                        geometry: p
+                    };
+                    var f = self._constructFeature(o);
+                    self._addFeatureToLayer(f, true);
+                    self.map.centerAt(p);
+                    self.newFeatureDialog.hide();
+                }, function (e) {
+                    self.loadingOverlay.hide();
+                    topic.publish('growler/growlError', e);
+                });
         },
 
         extractLine: function () {
-            topic.publish('growler/growl', 'Extract coming soon!');
+            var self = this;
+            self.loadingOverlay.show('Extracting line...');
+
+            this.extract.extractLine(this.roadwayId(), this.milepost(), this.endMilepost()).then(
+                function (pl) {
+                    self.loadingOverlay.hide();
+                    //construct a feature
+                    var o = {
+                        name: self.roadwayId() + ' from ' + self.milepost() + ' to ' + self.endMilepost(),
+                        geometry: pl
+                    };
+                    var f = self._constructFeature(o);
+                    self._addFeatureToLayer(f, true);
+                    self.map.setExtent(pl.getExtent());
+                    self.newFeatureDialog.hide();
+                }, function (e) {
+                    topic.publish('growler/growlError', e);
+                    self.loadingOverlay.hide();
+                });
         },
 
         latLongToPoint: function () {
@@ -884,6 +926,12 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this.activateDrawTool('freehandpolyline');
         },
 
+        interactiveExtract: function () {
+            this.newFeatureDialog.hide();
+            this.extractGraphics.clear();
+            this.activateDrawTool('extract1');
+        },
+
         digitizePolygon: function () {
             this.newFeatureDialog.hide();
             this.activateDrawTool('polygon');
@@ -913,18 +961,18 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             /*eslint-disable no-undef*/
             self.drawToolGeometryType = ko.observable(null); //independent of draw._geometryType, but we keep it in sync
 
-            self.drawMode = ko.observable('draw'); //either 'draw' or 'split', controls what happens in draw-complete
+            self.drawMode = ko.observable('draw'); //either 'draw', 'extract1', 'extract2', or 'split', controls what happens in draw-complete
             /*eslint-enable no-undef*/
 
             self.activateDrawTool = function (geometryType) {
                 //put us in draw-new-feature mode.
-                self.drawMode('draw');
+                self.drawMode(geometryType.startsWith('extract') ? geometryType : 'draw');
                 //deactivate edit toolbar
                 self.edit.deactivate();
                 //clear out current feature
                 self.currentFeature(null);
                 //pass the word onto the draw tool
-                self.draw.activate(geometryType);
+                self.draw.activate(geometryType.startsWith('extract') ? 'point' : geometryType);
                 //sync up with geometryType observable
                 self.drawToolGeometryType(geometryType);
                 //todo turn off identify
@@ -975,6 +1023,26 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     //construct a feature
                     var f = self._constructFeature(event);
                     self._addFeatureToLayer(f, true);
+                } else if (mode === 'extract1') {
+                    self.extractPoint1 = event.geometry; //cache the first point
+                    self.extractGraphics.add(new Graphic(event.geometry));
+                    //queue up drawing the second point
+                    self.activateDrawTool('extract2');
+                } else if (mode === 'extract2') {
+                    //extract the line
+                    self.extractGraphics.add(new Graphic(event.geometry));
+                    self.extract.extractRouteBetweenPoints(self.extractPoint1, event.geometry).then(
+                        function (polyline) {
+                            var ef = self._constructFeature({
+                                geometry: polyline,
+                                name: 'Extracted Line ' + self._nextFeatureNumber() //TODO can we do better? Maybe the return from extractRouteBetweenPoints could also do identify, etc.?
+                            });
+                            self._addFeatureToLayer(ef, true);
+                        },
+                        function (e) {
+                            topic.publish('growler/growlError', 'Error extracting roadway: ' + e);
+                        }
+                    );
                 } else if (mode === 'split') {
                     //the currentFeature().geometry is the geometry to be cut
                     var currentFeature = self.currentFeature(),
@@ -1329,12 +1397,12 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
         _nextFeatureNumber: function () {
             var n = 0,
-                rx = /(\d+)/;
+                rx = /Feature|Extracted Line (\d+)/;
             this.features().forEach(function (f) {
                 var r = rx.exec(f.name());
                 if (r) {
                     //convert string to number
-                    r = parseInt(r[0], 10);
+                    r = parseInt(r[1], 10);
                     if (r > n) {
                         n = r;
                     }
@@ -2260,7 +2328,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             /* eslint-enable no-undef */
         },
 
-        ////mostly not used, 
         _createGraphicLayers: function () {
             var self = this;
            
@@ -2292,7 +2359,21 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             var bufferRenderer = new SimpleRenderer(bufferSymbol);
             this.bufferGraphics.setRenderer(bufferRenderer);
 
-            //    //todo separate symbols for "active" feature? If/when switching from using graphics/graphicslayers to storing features, the selectionSymbol would be the way to go.
+            // extract points (drawn on map during interactive extract from RCI)
+            this.extractGraphics = new GraphicsLayer({
+                id: this.id + '_extractPoints',
+                title: this.id + '_extractPoints'
+            });
+
+            var extractSymbol = new SimpleMarkerSymbol({
+                style: '',
+                color: [0, 115, 25, 255]
+            });
+            var pointRenderer = new SimpleRenderer(extractSymbol);
+            this.extractGraphics.setRenderer(pointRenderer);
+
+            this.map.addLayer(this.extractGraphics);
+
         }
     });
 });
