@@ -1,7 +1,7 @@
 <div id="layerLoader">
     <h3>Resource Data</h3>
 
-    <label>Search Layers</label>
+    <label>Search Layers</label><br />
     <input id="searchNode" type="text" data-dojo-type="dijit/form/TextBox" data-dojo-attach-point="searchNode" data-dojo-attach-event="keydown: handleSearchKeyDown" />
     <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-search fa-fw', showLabel: false" data-dojo-attach-event="click: handleSearch">Search</div>
     <br />
@@ -12,7 +12,7 @@
     <hr />
 
     <h3>ETDM Projects</h3>
-    <label>Project ID</label>
+    <label>Project ID</label><br />
     <input type="text" data-dojo-attach-point="projectAltId" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-event="keyup: handleProjectKeyUp" data-dojo-props="regExp:'\\d+-{0,1}\\d{0,2}',intermediateChanges:true" style="width: 150px"/>
     <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus fa-fw', showLabel: false" data-dojo-attach-event="click: addProject">
         Add Project
