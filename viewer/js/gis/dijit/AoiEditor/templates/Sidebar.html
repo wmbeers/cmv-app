@@ -117,25 +117,25 @@
                 </button>
                 <!--Note buttons have to be wrapped in a data-bound div, or they still render as empty buttons. Thanks, Dojo.-->
                 <div data-bind="visible: $root.drawMode() === 'draw'">
-                    <button data-bind="click: $root.deactivateDrawTool" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-cut fa-fw'">
+                    <button data-bind="click: $root.deactivateDrawTool" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-stop-circle fa-fw'">
                         Cancel Draw
                     </button>
                 </div>
 
                 <div data-bind="visible: $root.drawMode() === 'split'">
-                    <button data-bind="click: $root.deactivateDrawTool" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-cut fa-fw'">
+                    <button data-bind="click: $root.deactivateDrawTool" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-stop-circle fa-fw'">
                         Cancel Split
                     </button>
                 </div>
 
                 <div data-bind="visible: $root.drawMode() === 'extract1' || $root.drawMode() === 'extract2'">
-                    <button data-bind="click: $root.deactivateExtract" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-cut fa-fw'">
+                    <button data-bind="click: $root.deactivateExtract" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-stop-circle fa-fw'">
                         Cancel Extract
                     </button>
                 </div>
 
                 <div data-bind="with: currentFeature">
-                    <fieldset>
+                    <fieldset data-bind="visible: !$root.drawMode()">
                         <legend>Editing <span data-bind="text: name"></span></legend>
                         <div data-bind="visible: canSplit">
                             <!-- visible binding on a dojo button renders an empty button frame, so have to wrap it -->

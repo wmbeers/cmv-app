@@ -985,8 +985,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 self.edit.deactivate();
                 //pass the word onto the draw tool
                 self.draw.activate(geometryType);
-                //sync up with geometryType observable
-                self.drawToolGeometryType(geometryType);
                 //todo turn off identify
                 topic.publish('mapClickMode/setCurrent', 'digitize');
                 //hide buffers

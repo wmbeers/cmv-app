@@ -32,7 +32,7 @@
                         <label for="milepost">Milepost</label><br />
                         <input type="text" data-dojo-type="dijit/form/TextBox" id="milepost" style="width: 4em" data-bind="numeric: {allowDecimal: true}, value:milepost" />
                     </div>
-                    <button type="button" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-map-marker-alt fa-fw'" data-bind="click:extractPoint">
+                    <button type="button" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-arrow-alt-circle-down fa-fw'" data-bind="click:extractPoint">
                         Go
                     </button>
 
@@ -40,17 +40,17 @@
 
                 <div data-dojo-type="dijit/layout/ContentPane" title="New Line">
                     <button data-dojo-type="dijit/form/Button"
-                            data-dojo-props="iconClass:'fa fa-map-marker-alt fa-fw'"
+                            data-dojo-props="iconClass:'fa fa-code-branch fa-fw'"
                             data-bind="click:digitizeLine">
                         Draw Line on Map
                     </button>
                     <button data-dojo-type="dijit/form/Button"
-                            data-dojo-props="iconClass:'fa fa-map-marker-alt fa-fw'"
+                            data-dojo-props="iconClass:'fa fa-pen fa-fw'"
                             data-bind="click:digitizeFreehandLine">
                         Draw Freehand Line on Map
                     </button>
                     <button data-dojo-type="dijit/form/Button"
-                            data-dojo-props="iconClass:'fa fa-map-marker-alt fa-fw'"
+                            data-dojo-props="iconClass:'fa fa-arrow-alt-circle-down fa-fw'"
                             data-bind="click:interactiveExtract">
                         Extract from RCI Basemap
                     </button>
@@ -67,19 +67,19 @@
                         <label for="endMilepost">End Milepost</label><br />
                         <input type="text" data-dojo-type="dijit/form/TextBox" id="endMilepost" style="width: 4em" data-bind="numeric: {allowDecimal: true}, value:endMilepost" />
                     </div>
-                    <button type="button" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-map-marker-alt fa-fw'" data-bind="click:extractLine">
+                    <button type="button" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-arrow-alt-circle-down fa-fw'" data-bind="click:extractLine">
                         Go
                     </button>
                 </div>
 
                 <div data-dojo-type="dijit/layout/ContentPane" title="New Polygon">
                     <button data-dojo-type="dijit/form/Button"
-                            data-dojo-props="iconClass:'fa fa-map-marker-alt fa-fw'"
+                            data-dojo-props="iconClass:'fa fa-draw-polygon fa-fw'"
                             data-bind="click:digitizePolygon">
                         Draw Polygon on Map
                     </button>
                     <button data-dojo-type="dijit/form/Button"
-                            data-dojo-props="iconClass:'fa fa-map-marker-alt fa-fw'"
+                            data-dojo-props="iconClass:'fa fa-pen fa-fw'"
                             data-bind="click:digitizeFreehandPolygon">
                         Draw Freehand Polygon on Map
                     </button>
