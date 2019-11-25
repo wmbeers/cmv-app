@@ -783,7 +783,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             self.extractPointError(null);
             self.loadingOverlay.show('Extracting point...');
 
-            this.extract.extractPoint2(this.roadwayId(), this.milepost()).then(
+            this.extract.extractPoint(this.roadwayId(), this.milepost()).then(
                 function (p) {
                     self.loadingOverlay.hide();
                     //construct a feature
@@ -806,7 +806,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             self.extractLineError(null);
             self.loadingOverlay.show('Extracting line...');
 
-            this.extract.extractLine2(this.roadwayId(), this.milepost(), this.endMilepost()).then(
+            this.extract.extractLine(this.roadwayId(), this.milepost(), this.endMilepost()).then(
                 function (polyLines) {
                     var extent = null;
                     self.loadingOverlay.hide();
@@ -960,12 +960,12 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     self._addFeatureToLayer(f, true);
                 } else if (mode === 'extract1') {
                     self.extractPoint1 = event.geometry; //cache the first point
-                    //self.extractGraphics.add(new Graphic(event.geometry));
+                    self.extractGraphics.add(new Graphic(event.geometry));
                     //queue up drawing the second point
                     self.activateDrawTool('extract2');
                 } else if (mode === 'extract2') {
                     //extract the line
-                    //self.extractGraphics.add(new Graphic(event.geometry));
+                    self.extractGraphics.add(new Graphic(event.geometry));
                     self.loadingOverlay.show('Extracting line...');
                     self.extract.extractRouteBetweenPoints(self.extractPoint1, event.geometry).then(
                         function (polyline) {
