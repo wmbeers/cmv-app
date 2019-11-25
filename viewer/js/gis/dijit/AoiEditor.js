@@ -290,6 +290,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         }),
 
         showNewFeatureDialog: function () {
+            this.extractPointError(null);
+            this.extractLineError(null);
             this.newFeatureDialog.show();
         },
 
@@ -771,83 +773,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             return deferred;
         },
 
-        //geolocation functions for adding points, not used
-
-        /**
-         * Gets suggested addresses that match the search term, focussed on the current map location, with a Florida extent
-         * @param {any} searchTerm User-entered address to search for.
-         * @returns {Deferred} a Deferred object. Refer to ESRI JSAPI documentation for suggestLocations.
-         */
-        //getLocatorSuggestions: function (searchTerm) {
-        //    var locator = new Locator('https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer');
-        //    return locator.suggestLocations({
-        //        text: searchTerm,
-        //        location: this.map.extent.getCenter().normalize(),
-        //        distance: 50000,
-        //        searchExtent: new Extent({
-        //            xmin: -87.79,
-        //            ymin: 24.38,
-        //            xmax: -79.8,
-        //            ymax: 31.1,
-        //            spatialReference: {
-        //                wkid: 4326
-        //            }
-        //        })
-        //    });
-        //},
-
-        ///**
-        // * Gets a location from the provided address.
-        // * @param {any} address The address to convert to a location.
-        // * @returns {Deferred} a Deferred object. Refer to ESRI JSAPI documentation for addressToLocations.
-        // */
-        //getLocatorAddressToLocations: function (address) {
-        //    var locator = new Locator('https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer');
-        //    return locator.addressToLocations({
-        //        address: {
-        //            SingleLine: address //Note: if we switch to a different server a different format for the address may be needed
-        //        },
-        //        countryCode: 'US',
-        //        searchExtent: new Extent({
-        //            xmin: -87.79,
-        //            ymin: 24.38,
-        //            xmax: -79.8,
-        //            ymax: 31.1,
-        //            spatialReference: {
-        //                wkid: 4326
-        //            }
-        //        })
-        //    });
-        //},
-
-        //addPointFromAddress: function (address) {
-        //    var self = this;
-        //    if (address) {
-        //        this.getLocatorAddressToLocations(address).then(
-        //            function (findAddressCandidatesResult) {
-        //                if (findAddressCandidatesResult && findAddressCandidatesResult.candidates && findAddressCandidatesResult.candidates.length > 0) {
-        //                    //assume the first match is the only/best match
-        //                    var candidate = findAddressCandidatesResult.candidates[0],
-        //                        point = candidate.location, //a point object
-        //                        featureStub = {
-        //                            geometry: point,
-        //                            name: candidate.address
-        //                        },
-        //                        feature = self._constructFeature(featureStub);
-        //                    self.features.push(feature);
-        //                } else {
-        //                    topic.publish('growler/growlError', 'Error getting location from address: no location found');
-        //                }
-        //            },
-        //            function (err) {
-        //                topic.publish('growler/growlError', 'Error getting location from address: ' + err);
-        //            }
-        //        );
-        //    } else {
-        //        //todo, but what?
-        //    }
-        //},
-
         digitizePoint: function () {
             this.newFeatureDialog.hide();
             this.activateDrawTool('point');
@@ -855,9 +780,10 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
         extractPoint: function () {
             var self = this;
+            self.extractPointError(null);
             self.loadingOverlay.show('Extracting point...');
 
-            this.extract.extractPoint(this.roadwayId(), this.milepost()).then(
+            this.extract.extractPoint2(this.roadwayId(), this.milepost()).then(
                 function (p) {
                     self.loadingOverlay.hide();
                     //construct a feature
@@ -871,28 +797,40 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     self.newFeatureDialog.hide();
                 }, function (e) {
                     self.loadingOverlay.hide();
-                    topic.publish('growler/growlError', e);
+                    self.extractPointError(e);
                 });
         },
 
         extractLine: function () {
             var self = this;
+            self.extractLineError(null);
             self.loadingOverlay.show('Extracting line...');
 
-            this.extract.extractLine(this.roadwayId(), this.milepost(), this.endMilepost()).then(
-                function (pl) {
+            this.extract.extractLine2(this.roadwayId(), this.milepost(), this.endMilepost()).then(
+                function (polyLines) {
+                    var extent = null;
                     self.loadingOverlay.hide();
-                    //construct a feature
-                    var o = {
-                        name: self.roadwayId() + ' from ' + self.milepost() + ' to ' + self.endMilepost(),
-                        geometry: pl
-                    };
-                    var f = self._constructFeature(o);
-                    self._addFeatureToLayer(f, true);
-                    self.map.setExtent(pl.getExtent());
-                    self.newFeatureDialog.hide();
+                    self.newFeatureDialog.hide();    
+                    //todo warn user if empty? I don't think that can happen 
+                    for (var i = 0; i < polyLines.length; i++) {
+                        //construct a feature
+                        var pl = polyLines[i],
+                            path = pl.paths[0],
+                            bmp = (polyLines.length === 1) ? self.milepost() : path[0][2].toFixed(3),
+                            emp = (polyLines.length === 1) ? self.endMilepost() : path[path.length - 1][2].toFixed(3),
+                            name = self.roadwayId() + ' from ' + bmp + ' to ' + emp,
+                            o = {
+                                name: name,
+                                geometry: pl
+                            };
+                        var f = self._constructFeature(o);
+                        self._addFeatureToLayer(f, true);
+                        extent = extent ? extent.union(pl.getExtent()) : pl.getExtent();
+                    }
+                    self.map.setExtent(extent);
+                    
                 }, function (e) {
-                    topic.publish('growler/growlError', e);
+                    self.extractLineError(e);
                     self.loadingOverlay.hide();
                 });
         },
@@ -929,6 +867,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         interactiveExtract: function () {
             this.newFeatureDialog.hide();
             this.extractGraphics.clear();
+            //TODO only if not already loaded
             this.extract.addRciBasemapToMap();
             this.activateDrawTool('extract1');
         },
@@ -998,6 +937,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 self.drawMode(null);
                 //restore buffers
                 self.bufferGraphics.setVisibility(true);
+                //toggle back to default map click mode
+                topic.publish('mapClickMode/setDefault');
             };
 
             self.deactivateExtract = function () {
@@ -1019,12 +960,12 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     self._addFeatureToLayer(f, true);
                 } else if (mode === 'extract1') {
                     self.extractPoint1 = event.geometry; //cache the first point
-                    self.extractGraphics.add(new Graphic(event.geometry));
+                    //self.extractGraphics.add(new Graphic(event.geometry));
                     //queue up drawing the second point
                     self.activateDrawTool('extract2');
                 } else if (mode === 'extract2') {
                     //extract the line
-                    self.extractGraphics.add(new Graphic(event.geometry));
+                    //self.extractGraphics.add(new Graphic(event.geometry));
                     self.loadingOverlay.show('Extracting line...');
                     self.extract.extractRouteBetweenPoints(self.extractPoint1, event.geometry).then(
                         function (polyline) {
@@ -1038,7 +979,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                             self._addFeatureToLayer(ef, true);
                         },
                         function (e) {
-                            self.loadingOverlay.hide();
+                            self.loadingOverlay.hide(); //we don't use the extractError observable b/c the dialog isn't shown.
                             topic.publish('growler/growlError', 'Error extracting roadway: ' + e);
                         }
                     );
@@ -1050,7 +991,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                         cutter = event.geometry,
                         explodedGeometries = [];
                     //redefine layer to be the layer containing the feature being split, not the event geometry type used to split it
-                    layer = geometry ? self.layers[geometry.type] : null; 
+                    layer = geometry ? self.layers[geometry.type] : null;
 
                     if (geometry && cutter) {
                         self.loadingOverlay.show('Splitting features...');
@@ -1357,7 +1298,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this.description(aoi.description);
             this.projectTypeId(aoi.projectTypeId);
             this.expirationDate(aoi.expirationDate);
-            
+
             var analysisAreaModels = [];
             aoi.analysisAreas.forEach(function (aoiAnalysisArea) {
                 analysisAreaModels.push(new this.AnalysisArea(aoiAnalysisArea)); //convert to full KO model of an analysis area
@@ -1559,7 +1500,9 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             feature.visible = ko.observable(true);
             feature.visible.subscribe(function (visible) {
                 feature.graphic.visible = visible;
-                feature.buffer.visible = visible;
+                if (feature.buffer) {
+                    feature.buffer.visible = visible;
+                }
                 feature.graphic.getLayer().redraw();
                 self.bufferGraphics.redraw();
             }, 'change');
@@ -1671,7 +1614,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             //tie to analysis area record; shouldn't result in a save of the feature
             feature.setAnalysisArea(feature.graphic.attributes.FK_PROJECT_ALT);
-                
+
             feature.selected = ko.pureComputed(function () {
                 return self.currentFeature() === feature;
             });
@@ -1701,7 +1644,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             };
 
             feature.nameHasFocus = ko.observable(); //used to set focus to the name textbox
-            
+
             //This subscription undoes a user's attempt to enter duplicate feature names, and updates the database with the new feature name if it has changed.
             feature.name.subscribeChanged(function (latestValue, previousValue) {
                 //validate the new name is unique
@@ -1757,7 +1700,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             //using this in lieu of ko deferred for simpler control, we really only want to prevent applyUpdate in the limited
             //circumstance of restoring values after undo/redo
             feature.deferApplyEdits = false; //set to true when updating name, bufferDistance, bufferUnit, and analysisArea in series in the restore method
-           
+
             /**
              * Apply an update to this feature, and optionally add to stack. If the deferApplyEdits property is true
              * then nothing happens.
@@ -1809,8 +1752,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     if (addToStack !== false) {
                         self.undoManager.add(operation);
                     }
-                }, function () {
-                    //todo
                 });
             };
             //no add function, handled elsewhere
@@ -1826,12 +1767,12 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     feature.bufferUnit(preUpdateCache.bufferUnit);
                     //feature.analysisArea(feature.preUpdate.analysisArea); //todo probably needs to be the addFeatureToAnalysisArea method
                     feature.deferApplyEdits = false;
-                    feature.applyUpdate(false).then (function () {
+                    feature.applyUpdate(false).then(function () {
                         self.bufferFeature(feature);
                     });
                 } else {
                     //means we're restoring from deleted
-                    self._addFeatureToLayer(feature, false).then (function () {
+                    self._addFeatureToLayer(feature, false).then(function () {
                         self.bufferFeature(feature);
                     });
                 }
@@ -2075,7 +2016,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 });
             }, this);
             //the active, highlighted feature in the table and map
-            this.currentFeature = ko.observable(); 
+            this.currentFeature = ko.observable();
 
             //syncs selection of features in the table and map, and initiates the appropriate editing function
             this.currentFeature.subscribe(function (f) {
@@ -2222,6 +2163,9 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this.roadwayId = ko.observable();
             this.milepost = ko.observable(); //either the milepost on the point tab, or the begin milepost on the line tab
             this.endMilepost = ko.observable();
+            this.extractPointError = ko.observable();
+            this.extractLineError = ko.observable();
+
 
             this._latLongValid = true;
             this.latLongValidationTextBox = new ValidationTextBox({
@@ -2280,7 +2224,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             }, this);
 
             //analysis options
-            this.studyAreaReportRequested = ko.observable(); 
+            this.studyAreaReportRequested = ko.observable();
             this.socioCulturalDataReportRequested = ko.observable();
             this.hardCopyMapsRequested = ko.observable();
             this.culturalResourcesDataReportRequested = ko.observable();
@@ -2329,7 +2273,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
         _createGraphicLayers: function () {
             var self = this;
-           
+
             // buffers
             this.bufferGraphics = new GraphicsLayer({
                 id: this.id + '_Buffers',
@@ -2373,6 +2317,31 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             this.map.addLayer(this.extractGraphics);
 
+            // for testing only!
+            this.roadwayGraphics = new GraphicsLayer({
+                id: 'roadways',
+                title: 'Roadways'
+            });
+
+            var lineSymbol = new SimpleLineSymbol({
+                style: '',
+                color: [20, 115, 25, 255]
+            });
+            var lineRenderer = new SimpleRenderer(lineSymbol);
+            this.roadwayGraphics.setRenderer(lineRenderer);
+
+            this.map.addLayer(this.roadwayGraphics);
+
+
+            this.milepostLabels = new GraphicsLayer({
+                id: 'mpLabels',
+                title: 'Milepost Labels'
+            });
+
+        },
+
+        renderMeasures: function (roadwayId) {
+            this.extract.renderMeasures(roadwayId, this.roadwayGraphics, this.extractGraphics);
         }
     });
 });

@@ -36,6 +36,9 @@
                         Go
                     </button>
 
+                    <div class="flat-error" data-bind="visible: extractPointError, text: extractPointError">
+                    </div>
+
                 </div>
 
                 <div data-dojo-type="dijit/layout/ContentPane" title="New Line">
@@ -70,6 +73,10 @@
                     <button type="button" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-arrow-alt-circle-down fa-fw'" data-bind="click:extractLine">
                         Go
                     </button>
+
+                    <div class="flat-error" data-bind="visible: extractLineError, text: extractLineError">
+                    </div>
+
                 </div>
 
                 <div data-dojo-type="dijit/layout/ContentPane" title="New Polygon">
