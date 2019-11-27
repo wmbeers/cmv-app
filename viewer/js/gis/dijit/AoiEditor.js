@@ -245,9 +245,17 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
         showOpenAoiDialog: function () {
             var self = this;
-            this.listAois().then(function () {
-                self.openAoiDialog.show();
-            });
+            this.loadingOverlay.show('Getting AOI list');
+            this.listAois().then(
+                function () {
+                    self.loadingOverlay.hide();
+                    self.openAoiDialog.show();
+                },
+                function (e) {
+                    self.loadingOverlay.hide();
+                    topic.publish('viewer/handleError', e);
+                }
+            );
         },
         //undo/redo
         undoManager: new UndoManager(),
@@ -669,13 +677,9 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
         startup: function () {
             this.inherited(arguments);
-            //for testing only TODO remove this and next line
-            this.extract = Extract;
 
             this.loadingOverlay = new LoadingOverlay(); //this can be defined at the root level, but...
-            //TODO figure out why this doesn't work: this.sidebarLoadingOverlay = new LoadingOverlay('aoiEditorSidebar'); //...this has to be defined in startup, because the sidebar widget has to be constructed first
-
-
+            
             this.bufferUnitArray = [this.bufferUnits.feet, this.bufferUnits.miles, this.bufferUnits.meters, this.bufferUnits.kilometers]; //for binding to drop-down
 
             //tracks the most recently entered buffer distance and units
@@ -783,7 +787,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             self.extractPointError(null);
             self.loadingOverlay.show('Extracting point...');
 
-            this.extract.extractPoint(this.roadwayId(), this.milepost()).then(
+            Extract.extractPoint(this.roadwayId(), this.milepost()).then(
                 function (p) {
                     self.loadingOverlay.hide();
                     //construct a feature
@@ -806,35 +810,49 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             self.extractLineError(null);
             self.loadingOverlay.show('Extracting line...');
 
-            this.extract.extractLine(this.roadwayId(), this.milepost(), this.endMilepost()).then(
+            Extract.extractLine(this.roadwayId(), this.milepost(), this.endMilepost()).then(
                 function (polyLines) {
-                    var extent = null;
                     self.loadingOverlay.hide();
-                    self.newFeatureDialog.hide();    
-                    //todo warn user if empty? I don't think that can happen 
-                    for (var i = 0; i < polyLines.length; i++) {
-                        //construct a feature
-                        var pl = polyLines[i],
-                            path = pl.paths[0],
-                            bmp = (polyLines.length === 1) ? self.milepost() : path[0][2].toFixed(3),
-                            emp = (polyLines.length === 1) ? self.endMilepost() : path[path.length - 1][2].toFixed(3),
-                            name = self.roadwayId() + ' from ' + bmp + ' to ' + emp,
-                            o = {
-                                name: name,
-                                geometry: pl
-                            };
-                        var f = self._constructFeature(o);
-                        self._addFeatureToLayer(f, true);
-                        extent = extent ? extent.union(pl.getExtent()) : pl.getExtent();
-                    }
-                    self.map.setExtent(extent);
-                    
-                }, function (e) {
+                    self.newFeatureDialog.hide();
+                    self._addRoadwayFeatures(polyLines, this.roadwayId());
+                }, function (e) {   
                     self.extractLineError(e);
                     self.loadingOverlay.hide();
-                });
+                }
+            );
         },
 
+        /**
+         * Callback handler for extractLine, constructs features for each  one.
+         * @param {any} polyLines An array of polyLines extracted from the basemap
+         * @param {any} roadwayId The ID of the roadway, used for labeling features.
+         * @returns {void}
+         */
+        _addRoadwayFeatures: function (polyLines, roadwayId) {
+            var extent = null;
+            //todo warn user if empty? I don't think that can happen 
+            for (var i = 0; i < polyLines.length; i++) {
+                //construct a feature
+                var pl = polyLines[i],
+                    path = pl.paths[0],
+                    bmp = path[0][2].toFixed(3),
+                    emp = path[path.length - 1][2].toFixed(3),
+                    name = roadwayId + ' from ' + bmp + ' to ' + emp,
+                    o = {
+                        name: name,
+                        geometry: pl
+                    };
+                var f = this._constructFeature(o);
+                this._addFeatureToLayer(f, true);
+                extent = extent ? extent.union(pl.getExtent()) : pl.getExtent();
+            }
+            this.map.setExtent(extent);
+        },
+
+        /**
+         * Constructs an AOI point from the lat/long value entered in latLongValidationTextBox
+         * @returns {void}
+         */
         latLongToPoint: function () {
             var llInput = this.latLongValidationTextBox.get('value'),
                 p = LatLongParser.interpretCoordinates(llInput);
@@ -854,48 +872,64 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this.newFeatureDialog.hide();
         },
 
+        /**
+         * Puts the app in draw-polyline mode
+         * @returns {void}
+         */
         digitizeLine: function () {
             this.newFeatureDialog.hide();
             this.activateDrawTool('polyline');
         },
 
+        /**
+         * Puts the app in draw-freehandpolyline mode
+         * @returns {void}
+         */
         digitizeFreehandLine: function () {
             this.newFeatureDialog.hide();
             this.activateDrawTool('freehandpolyline');
         },
 
+        /**
+         * Puts the app in interactive extract mode.
+         * @returns {void}
+         */
         interactiveExtract: function () {
             this.newFeatureDialog.hide();
             this.extractGraphics.clear();
-            //TODO only if not already loaded
-            this.extract.addRciBasemapToMap();
+            this.roadwayGraphics.clear();
+            Extract.addRciBasemapToMap();
             this.activateDrawTool('extract1');
         },
 
+        /**
+         * Puts the app in draw-polygon mode
+         * @returns {void}
+         */
         digitizePolygon: function () {
             this.newFeatureDialog.hide();
             this.activateDrawTool('polygon');
         },
 
+        /**
+         * Puts the app in draw-freehandpolygon mode
+         * @returns {void}
+         */
         digitizeFreehandPolygon: function () {
             this.newFeatureDialog.hide();
             this.activateDrawTool('freehandpolygon');
         },
 
+        /**
+         * Sets up the draw and edit toolbars, including the draw-complete event handler that handles drawing and interactive extracting.
+         * @returns {void}
+         */
         _setupEditor: function () {
             var self = this; //closure so we can access this.draw etc.
             this.draw = new Draw(this.map); //draw toolbar, not shown in UI, but utilized by our UI
             this.edit = new Edit(this.map);
 
-            //on(this.undoManager, 'undo', function (a,b,c,d) {
-            //    debugger;
-            //});
-            //on(this.undoManager, 'redo', function (a, b, c, d) {
-            //    debugger;
-            //});
-
             on(this.undoManager, 'change', lang.hitch(this, 'updateUndoRedoButtons'));
-
 
             //customizing the draw toolbar so the UI can remind user what they're doing, and have ability to cancel
             //eslint-disable-next-line no-undef
@@ -910,10 +944,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 self.currentFeature(null);
                 //pass the word onto the draw tool
                 self.draw.activate(mode.startsWith('extract') ? 'point' : mode);
-                //todo turn off identify
+                //turn off identify
                 topic.publish('mapClickMode/setCurrent', 'digitize');
                 //hide buffers
-                this.bufferGraphics.setVisibility(false);
+                self.bufferGraphics.setVisibility(false);
+
             };
 
             self.activateSplitTool = function (geometryType) {
@@ -924,12 +959,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 self.edit.deactivate();
                 //pass the word onto the draw tool
                 self.draw.activate(geometryType);
-                //todo turn off identify
+                //turn off identify
                 topic.publish('mapClickMode/setCurrent', 'digitize');
                 //hide buffers
                 self.bufferGraphics.setVisibility(false);
             };
-
 
             self.deactivateDrawTool = function () {
                 //pass the word onto the draw tool
@@ -937,52 +971,96 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 self.drawMode(null);
                 //restore buffers
                 self.bufferGraphics.setVisibility(true);
-                //toggle back to default map click mode
+                //toggle back to default map click mode. The brief delay prevents identify from jumping on the bandwagon after extract
                 topic.publish('mapClickMode/setDefault');
             };
 
             self.deactivateExtract = function () {
                 self.deactivateDrawTool();
                 self.extractGraphics.clear();
+                self.roadwayGraphics.clear();
             };
+
+            self.roadwayGraphics.on('click', function (event) {
+                self.selectedRoadway = event.graphic;
+            });
 
             //event handler for draw complete, creates a new feature when user finishes digitizing, or splits a feature when user finishes drawing a line for splitting
             this.draw.on('draw-complete', function (event) {
                 var layer = self.layers[event.geometry.type], //note: only applys in draw mode, gets redefined in split mode
                     mode = self.drawMode();
-                //toggle back to default map click mode
-                topic.publish('mapClickMode/setDefault');
-                self.deactivateDrawTool();
+                //toggle back to default map click mode, except when extracting
+                if (!(mode || '').startsWith('extract')) {
+                    self.deactivateDrawTool();
+                }
 
                 if (mode === 'draw') {
                     //construct a feature
                     var f = self._constructFeature(event);
                     self._addFeatureToLayer(f, true);
                 } else if (mode === 'extract1') {
-                    self.extractPoint1 = event.geometry; //cache the first point
-                    self.extractGraphics.add(new Graphic(event.geometry));
-                    //queue up drawing the second point
-                    self.activateDrawTool('extract2');
-                } else if (mode === 'extract2') {
-                    //extract the line
-                    self.extractGraphics.add(new Graphic(event.geometry));
-                    self.loadingOverlay.show('Extracting line...');
-                    self.extract.extractRouteBetweenPoints(self.extractPoint1, event.geometry).then(
-                        function (polyline) {
-                            self.loadingOverlay.hide();
-                            self.deactivateExtract(); //hides the points
-                            self.extractPoint1 = null; //superfluous, but just to keep things tidy
-                            var ef = self._constructFeature({
-                                geometry: polyline,
-                                name: 'Extracted Line ' + self._nextFeatureNumber() //TODO can we do better? Maybe the return from extractRouteBetweenPoints could also do identify, etc.?
-                            });
-                            self._addFeatureToLayer(ef, true);
+                    Extract.getRoadwayRoutesByPoint(event.geometry, self.map).then(
+                        function (reply) {
+                            if (reply.features.length > 0) {
+                                self.extractPoint1 = event.geometry; //cache the first point
+                                self.extractGraphics.add(new Graphic(event.geometry));
+
+                                //construct features
+                                for (var i = 0; i < reply.features.length; i++) {
+                                    var roadwayFeature = reply.features[i];
+                                    roadwayFeature.geometry.spatialReference = reply.spatialReference;
+                                    var roadwayGraphic = new Graphic(roadwayFeature); //creates a Graphic with a JSON object
+                                    self.roadwayGraphics.add(roadwayGraphic);
+                                }
+                                //queue up drawing the second point
+                                self.activateDrawTool('extract2');
+                            }
                         },
                         function (e) {
-                            self.loadingOverlay.hide(); //we don't use the extractError observable b/c the dialog isn't shown.
                             topic.publish('growler/growlError', 'Error extracting roadway: ' + e);
                         }
                     );
+                } else if (mode === 'extract2') {
+                    if (!self.selectedRoadway) {
+                        //TODO alert the user; stay in this mode, don't draw a point
+                        return;
+                    }
+                    //extract the line
+                    self.extractGraphics.add(new Graphic(event.geometry));
+                    self.loadingOverlay.show('Extracting line...');
+                    var roadwayLine = self.selectedRoadway.geometry.paths[0],
+                        v1 = Extract.findClosestVertexToPoint(roadwayLine, self.extractPoint1),
+                        v2 = Extract.findClosestVertexToPoint(roadwayLine, event.geometry),
+                        roadwayId = self.selectedRoadway.attributes.ROADWAY;
+                    Extract.extractLine(roadwayId, v1[2], v2[2]).then(
+                        function (polyLines) {
+                            self.loadingOverlay.hide();
+                            self._addRoadwayFeatures(polyLines, roadwayId);
+                            self.deactivateExtract(); //hides the points
+                            self.extractPoint1 = null; //superfluous, but just to keep things tidy
+                        }, function (e) {
+                            self.loadingOverlay.hide();
+                            topic.publish('growler/growlError', 'Error extracting roadway: ' + e);
+                            //todo alert user!
+                        }
+                    );
+
+                    //self.extract.extractRouteBetweenPoints2(self.extractPoint1, event.geometry, self.map).then(
+                    //    function (polyline) {
+                    //        self.loadingOverlay.hide();
+                    //        self.deactivateExtract(); //hides the points
+                    //        self.extractPoint1 = null; //superfluous, but just to keep things tidy
+                    //        var ef = self._constructFeature({
+                    //            geometry: polyline,
+                    //            name: 'Extracted Line ' + self._nextFeatureNumber() //TODO can we do better? Maybe the return from extractRouteBetweenPoints could also do identify, etc.?
+                    //        });
+                    //        self._addFeatureToLayer(ef, true);
+                    //    },
+                    //    function (e) {
+                    //        self.loadingOverlay.hide(); //we don't use the extractError observable b/c the dialog isn't shown.
+                    //        topic.publish('growler/growlError', 'Error extracting roadway: ' + e);
+                    //    }
+                    //);
                 } else if (mode === 'split') {
                     //the currentFeature().geometry is the geometry to be cut
                     var currentFeature = self.currentFeature(),
@@ -1130,7 +1208,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             //TODO we can also support move and scaling, etc.
         },
-
 
         //construct analysisAreas for features that don't already have one, using the feature's name as the analysisArea name
         //TODO this needs to be reworked
@@ -1630,8 +1707,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                         }
                     }, //pseudo object with getExtent function that returns null extent
                     testExtent = geometry.type === 'point' ? geometry : geometry.getExtent(); //contains method expects a point or an extent
-                //project, our features are stored in 3087, needs to be in 3857/102100, which makes no sense
-                //debugger;
                 if (testExtent && !self.map.extent.contains(testExtent)) {
                     if (geometry.type === 'point') {
                         //center at
@@ -2317,7 +2392,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             this.map.addLayer(this.extractGraphics);
 
-            // for testing only!
             this.roadwayGraphics = new GraphicsLayer({
                 id: 'roadways',
                 title: 'Roadways'
@@ -2325,23 +2399,15 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             var lineSymbol = new SimpleLineSymbol({
                 style: '',
-                color: [20, 115, 25, 255]
+                color: [20, 115, 25, 255],
+                width: 5
             });
             var lineRenderer = new SimpleRenderer(lineSymbol);
             this.roadwayGraphics.setRenderer(lineRenderer);
 
             this.map.addLayer(this.roadwayGraphics);
 
-
-            this.milepostLabels = new GraphicsLayer({
-                id: 'mpLabels',
-                title: 'Milepost Labels'
-            });
-
-        },
-
-        renderMeasures: function (roadwayId) {
-            this.extract.renderMeasures(roadwayId, this.roadwayGraphics, this.extractGraphics);
         }
+
     });
 });

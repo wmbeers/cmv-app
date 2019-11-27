@@ -21,18 +21,16 @@ function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphi
     */
     return {
 
+        /**
+         * Adds the RCI Basemap service to the map to aid users in interactively extracting.
+         * @returns {void}
+         */
         addRciBasemapToMap: function () {
-            /*var rciService = {
+            var rciService = {
                 id: 7311,
                 type: 'dynamic',
                 name: 'RCI Basemap',
                 url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI_Base/MapServer/'
-            };*/
-            var rciService = {
-                id: 97311, //TODO!
-                type: 'feature',
-                name: 'RCI Basemap',
-                url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI_Network/MapServer/7'
             };
             topic.publish('layerLoader/addLayerFromCategoryDef', rciService);
         },
@@ -101,15 +99,25 @@ function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphi
                 deferred.reject('Milepost values must be greater than or equal to 0');
                 return deferred;
             }
-            if (endMilePost <= beginMilePost) {
-                deferred.reject('End milepost must be greater than begin milepost');
-                return deferred;
+            if (endMilePost === beginMilePost) {
+                //it's going to be a point
+                return this.extractPoint(roadwayId, beginMilePost);
+            }
+            if (endMilePost < beginMilePost) {
+                //swap them and carry on
+                var temp = endMilePost;
+                endMilePost = beginMilePost;
+                beginMilePost = temp;
             }
 
             try {
                 this.getRoadwayWithMeasures(roadwayId).then(
                     function (reply) {
-                        deferred.resolve(self._extractPolyLinesFromPointArray(reply, beginMilePost, endMilePost));
+                        try {
+                            deferred.resolve(self._extractPolyLinesFromPointArray(reply, beginMilePost, endMilePost));
+                        } catch (e) {
+                            deferred.reject(e);
+                        }
                     },
                     function (e) {
                         deferred.reject(e);
@@ -130,7 +138,6 @@ function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphi
         getRoadwayWithMeasures: function (roadwayId) {
             var deferred = new Deferred(),
                 url = 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI_Base/MapServer/2/query?where=ROADWAY%3D' + roadwayId + '&outFields=BEGIN_POST%2C+END_POST%2C+RTLENGTH&returnGeometry=true&outSR=%7Bwkid%3D102100%7D&returnZ=false&returnM=true&f=pjson';
-            //url = 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI_Network/MapServer/7/query?where=ROADWAY%3D' + roadwayId + '&outFields=BEGIN_POST%2C+END_POST%2C+RTLENGTH&returnGeometry=true&outSR=%7Bwkid%3D102100%7D&returnZ=false&returnM=true&f=pjson';
             try {
                 jQuery.get(url, null,
                     function (reply) {
@@ -139,6 +146,63 @@ function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphi
                             deferred.resolve(reply);
                         } else {
                             deferred.reject('No roadway found with id ' + roadwayId);
+                        }
+                    }, 'json');
+            } catch (e) {
+                deferred.reject(e);
+            }
+            return deferred;
+        },
+
+        /**
+         * Gets features from the RCI basemap that intersect a 3-pixel envelope around the referenced point.
+         * @param {Point} point A point on the map where the user has clicked
+         * @param {Map} map The map the user clicked on. Used to convert the 3-pixel envelope to map units.
+         * @returns {Deferred} A deferred object to be resolved with an array of intersecting roadways.
+         */
+        getRoadwaysByPoint: function (point, map) {
+            return this.getFeaturesByPoint(point, map, 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI_Base/MapServer/2');
+        },
+
+        /**
+         * Gets features from the RCI roadway routes that intersect a 3-pixel envelope around the referenced point.
+         * @param {Point} point A point on the map where the user has clicked
+         * @param {Map} map The map the user clicked on. Used to convert the 3-pixel envelope to map units.
+         * @returns {Deferred} A deferred object to be resolved with an array of intersecting roadways.
+         */
+        getRoadwayRoutesByPoint: function (point, map) {
+            return this.getFeaturesByPoint(point, map, 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI_Network/MapServer/7');
+        },
+
+        /**
+        * Gets features from the referenced ArcGIS Server REST endpoint that intersect a 3-pixel envelope around the referenced point.
+        * @param {Point} point A point on the map where the user has clicked
+        * @param {Map} map The map the user clicked on. Used to convert the 3-pixel envelope to map units.
+        * @param {String} featureLayerURL The URL of the feature layer to query.
+        * @returns {Deferred} A deferred object to be resolved with an array of intersecting features, with measures, if supported.
+        */
+        getFeaturesByPoint: function (point, map, featureLayerURL) {
+            var deferred = new Deferred(),
+                xPixels = map.width,
+                xMapUnits = map.extent.getWidth(),
+                xRatio = xMapUnits / xPixels,
+                xDistance = xRatio * 3,
+                yPixels = map.height,
+                yMapUnits = map.extent.getHeight(),
+                yRatio = yMapUnits / yPixels,
+                yDistance = yRatio * 3,
+                xMin = point.x - xDistance,
+                yMin = point.y - yDistance,
+                xMax = point.x + xDistance,
+                yMax = point.y + yDistance,
+                url = featureLayerURL + '/query?where=1%3D1&geometry=' + xMin + '%2C' + yMin + '%2C' + xMax + '%2C' + yMax + '&geometryType=esriGeometryEnvelope&inSR=3857&spatialRel=esriSpatialRelIntersects&outFields=*&returnGeometry=true&returnTrueCurves=false&outSR=3857&returnIdsOnly=false&returnCountOnly=false&orderByFields=&returnZ=false&returnM=true&returnDistinctValues=false&&returnExtentsOnly=false&f=pjson';
+            try {
+                jQuery.get(url, null,
+                    function (reply) {
+                        if (reply.features && reply.features.length > 0) {
+                            deferred.resolve(reply);
+                        } else {
+                            deferred.reject('No features found');
                         }
                     }, 'json');
             } catch (e) {
@@ -308,15 +372,15 @@ function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphi
          * @returns {Error} Error object if given mileposts are not in the range of min BEGIN_POST to max END_POST of a set of roadway features, or null if valid
          */
         _verifyMeasures: function (roadwayFeatures, beginMilePost, endMilePost) {
-            var beginPost = roadwayFeatures.features[0].attributes.BEGIN_POST,
-                endPost = roadwayFeatures.features[roadwayFeatures.features.length - 1].attributes.END_POST;
+            var beginPost = roadwayFeatures.features[0].attributes.BEGIN_POST - 0.01, //subtract .01 miles from BEGIN_POST attribute to deal with rounding errors
+                endPost = roadwayFeatures.features[roadwayFeatures.features.length - 1].attributes.END_POST + 0.01; //add .01 miles to END_POST attribute to deal with rounding errors
             if (beginMilePost < beginPost) {
                 return new Error('Begin milepost ' + beginMilePost + ' is less than the BEGIN_POST value of the roadway (' + beginPost + ').');
             } else if (beginMilePost > endPost) {
                 return new Error('Begin milepost ' + beginMilePost + ' is greater than the END_POST value of the roadway (' + endPost + ').');
             } else if (endMilePost && endMilePost < beginPost) {
                 return new Error('End milepost ' + endMilePost + ' is less than the BEGIN_POST value of the roadway (' + beginPost + ').');
-            } else if (endMilePost && endMilePost > endPost) {
+            } else if (endMilePost && endMilePost > endPost) { 
                 return new Error('End milepost ' + endMilePost + ' is greater than the END_POST value of the roadway (' + endPost + ').');
             }
             return null;
@@ -426,6 +490,46 @@ function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphi
                 });
 
             return deferred;
+        },
+
+        /**
+         * Finds the vertex the given path that is closest to the given point.
+         * @param {Array} path An array of vertices/points (array of array [x,y,m])
+         * @param {any} point An array with [x,y], or object with x and y properties
+         * @returns {Array} The vertex (as an array of [x,y,m]) along the given path that is closest to the given point.
+         */
+        findClosestVertexToPoint: function (path, point) {
+            var closestVertex = null,
+                closestDistance = null;
+            for (var i = 0; i < path.length; i++) {
+                var vertex = path[i],
+                    distanceToPoint = this.distanceBetweenTwoPoints(vertex, point);
+                if (!closestVertex || distanceToPoint < closestDistance) {
+                    closestVertex = vertex;
+                    closestDistance = distanceToPoint;
+                }
+            }
+            return closestVertex;
+        },
+
+        /**
+         * Calculates the distance between any two points.
+         * @param {any} p1 Either an array of [x,y], or object with x and y properties
+         * @param {any} p2 Either an array of [x,y], or object with x and y properties
+         * @returns {Number} The distance between p1 and p2
+         */
+        distanceBetweenTwoPoints: function (p1, p2) {
+            //convert to object if array of [x,y]
+            if (Array.isArray(p1)) {
+                p1 = {x: p1[0], y: p1[1]};
+            }
+            if (Array.isArray(p2)) {
+                p2 = {x: p2[0], y: p2[1]};
+            }
+            var deltaX = Math.abs(p2.x - p1.x),
+                deltaY = Math.abs(p2.y - p1.y), 
+                distance = Math.sqrt((deltaX * deltaX) + (deltaY * deltaY));
+            return distance;
         }
     };
 });
