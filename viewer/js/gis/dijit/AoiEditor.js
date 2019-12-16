@@ -331,6 +331,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this.mode('analysisOptions');
         },
 
+        showAnalysisProgress: function () {
+            this.mode('analysisProgress');
+            this.checkAnalysisProgress();
+        },
+
         createAoi: function () {
             this.loadAoiModel(null); //an empty AOI is used to populate
             this.mode('editName');
@@ -400,7 +405,13 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         },
 
         saveAnalysisAreasAndShowAnalysisOptions: function () {
+            if (this.analysisRunning()) {
+                //short cut to progress, as we don't want user to change options
+                this.showAnalysisProgress();
+                return;
+            }
             var self = this;
+
             this.saveAnalysisAreas().then(
                 function () {
                     self.saveAnalysisAreaBuffers().then(
@@ -505,11 +516,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             return deferred;
         },
 
-        intersectRegionsAndRoadways: function () {
-            //TODO call this
-
-        },
-
         saveAnalysisOptions: function () {
             var self = this,
                 deferred = new Deferred();
@@ -540,10 +546,89 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
         saveAnalysisOptionsAndShowProgress: function () {
             var self = this;
-            //todo first call intersectRegionsAndRoadways, when resolved proceed with saveAnalysisOptions
 
             this.saveAnalysisOptions().then(function () {
-                self.mode('analysisProgress');
+                self.showAnalysisProgress();
+            });
+        },
+
+        checkAnalysisProgress: function () {
+            var self = this;
+            self.progressErrorCount = self.progressErrorCount || 0;
+            //eslint-disable-next-line no-undef
+            MapDAO.getProgress(this.aoiId, {
+                callback: function (p) {
+                    //a little post-processing
+                    //Note: don't think you can simplify this by just directly referring to the DWR reply, it has to be cloned to a new object
+                    //because DWR takes short-cuts, and there will be a common object like "s0={code: 1, text: 'whatever'}" re-used for each progress
+                    var gis = {
+                            code: p.progressGIS.code,
+                            text: p.progressGIS.text,
+                            running: p.progressGIS.running,
+                            title: 'Study Area Report',
+                            href: '/est/analysis/ReportOptions.do?aoiId=' + self.aoiId
+                        },
+                        hcm = {
+                            code: p.progressHCM.code,
+                            text: p.progressHCM.text,
+                            running: p.progressHCM.running,
+                            title: 'Hardcopy Maps',
+                            href: '/est/hardCopyMaps.jsp?aoiId=' + self.aoiId
+                        },
+                        cci = {
+                            code: p.progressCCI.code,
+                            text: p.progressCCI.text,
+                            running: p.progressCCI.running,
+                            title: 'Sociocultural Data Report',
+                            href: null //links are by feature, handled in sidebar.html layout
+                        },
+                        crd = {
+                            code: p.progressCRD.code,
+                            text: p.progressCRD.text,
+                            running: p.progressCRD.running,
+                            title: 'Cultural Resources Data Report',
+                            href: 'todo'
+                        },
+                        ert = {
+                            code: p.progressERT.code,
+                            text: p.progressERT.text,
+                            running: p.progressERT.running,
+                            title: 'Emergency Response Report',
+                            href: 'todo'
+                        };
+
+                    if (gis.code === 4 && p.completedGisCount > 1) {
+                        gis.text = 'Creating PDF ' + (p.completedGisCount - 1) + ' of 22';
+                    }
+
+                    if (hcm.code === 3 && p.completedHcmCount > 1) {
+                        hcm.text = 'Creating Map ' + (p.completedHcmCount - 1) + ' of 22';
+                    }
+
+                    self.progressGIS(gis);
+                    self.progressCCI(cci);
+                    self.progressHCM(hcm);
+                    self.progressCRD(crd);
+                    self.progressERT(ert);
+
+                    self.analysisRunning(p.running);
+
+                    if (p.running) {
+                        window.setTimeout(function () {
+                            self.checkAnalysisProgress();
+                        }, 15000);
+                    }
+                },
+                errorHandler: function (e) {
+                    if (self.progressErrorCount > 5) {
+                        //bail
+                        topic.publish('growler/growlError', 'Too many errors updating progress, updates will stop: ' + e);
+                    } else {
+                        topic.publish('growler/growlError', 'Error updating progress: ' + e);
+                        self.progressErrorCount++;
+                        self.checkAnalysisProgress();
+                    }
+                }
             });
         },
 
@@ -1299,6 +1384,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                             buildPromise.reject(err);
                         }
                     );
+                }, function (e) {
+                    deferred.reject(e);
                 });
             }); // end loop through analysisAreaModels
 
@@ -1330,7 +1417,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             });
         },
 
-        //loads up our observable properties from the referenced aoi
+        /**
+         * Loads values into observable properties from the referenced AOI, then loads AOI features and analysis areas.
+         * @param {any} aoi An AOI model, or null to create a new AOI model.
+         * @returns {Deferred} a Deferred object created by _loadAoiFeatures
+         */
         loadAoiModel: function (aoi) {
             //shouldn't need to do this, because the unload method also does it, but just to be safe
             this.undoManager.clearUndo();
@@ -1345,6 +1436,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 description: null,
                 features: [],
                 analysisAreas: [],
+                analysisRunning: false,
                 //TODO do we want to default these to something other than all-false?
                 //TODO if user has ERT access only, set emergencyResponseReportRequested = true, disable other options in UI
                 studyAreaReportRequested: false,
@@ -1382,6 +1474,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             }, this);
             this.analysisAreas(analysisAreaModels);
 
+            this.analysisRunning(aoi.analysisRunning);
+
             this.studyAreaReportRequested(aoi.studyAreaReportRequested);
             this.socioCulturalDataReportRequested(aoi.socioCulturalDataReportRequested);
             this.hardCopyMapsRequested(aoi.hardCopyMapsRequested);
@@ -1393,6 +1487,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             return this._loadAoiFeatures();
         },
 
+        /**
+         * Clears AOI layers from the map.
+         * @param {any} layerOwner Not currently used, was part of the abandoned "preview" function.
+         * @returns {void}
+         */
         clearAoiLayers: function (layerOwner) {
             layerOwner = layerOwner || this;
             //remove existing layers from the map
@@ -1412,14 +1511,18 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
         },
 
+        /**
+         * Gets the next number for auto-named features (e.g. "Feature 1", "Feature 2", ... "Feature N" or "Extracted Line 1" ...)
+         * @returns {Number} the next number in the sequence of auto-named features.
+         */
         _nextFeatureNumber: function () {
             var n = 0,
-                rx = /Feature|Extracted Line (\d+)/;
+                rx = /(Feature|Extracted Line) (\d+)/;
             this.features().forEach(function (f) {
                 var r = rx.exec(f.name());
                 if (r) {
                     //convert string to number
-                    r = parseInt(r[1], 10);
+                    r = parseInt(r[2], 10);
                     if (r > n) {
                         n = r;
                     }
@@ -1632,6 +1735,10 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                         }
                     });
                     analysisArea.altNumber++;
+                    
+                    //do this here, before calling saveAoiAnalysisArea, otherwise there's a race condition
+                    //resulting in the next analysisArea getting the same altNumber
+                    self.analysisAreas.push(analysisArea);
 
                     self.loadingOverlay.show('Saving new analysis area to database');
 
@@ -1643,7 +1750,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                         callback: function (analysisAreaReply) {
                             self.loadingOverlay.hide();
                             analysisArea.id = analysisAreaReply.id; //the only thing that could possibly change after saving
-                            self.analysisAreas.push(analysisArea);
                             feature.analysisArea(analysisArea);
                             //self.dummyForceRecompute(new Date());
 
@@ -2025,6 +2131,18 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 self.projectTypeSelect.set('value', newValue);
             });
 
+            this.analysisRunning = ko.observable();
+
+            this.progressCCI = ko.observable({code: 2, text: 'Checking...', running: true, title: '', href: null});
+            this.progressGIS = ko.observable({code: 2, text: 'Checking...', running: true, completedGisCount: 0, title: 'Study Area Report', href: null});
+            this.progressHCM = ko.observable({code: 2, text: 'Checking...', running: true, completedHcmCount: 0, title: '', href: null});
+            this.progressCRD = ko.observable({code: 2, text: 'Checking...', running: true, title: '', href: null});
+            this.progressERT = ko.observable({code: 2, text: 'Checking...', running: true, title: '', href: null});
+
+            this.analysisRunning.subscribe(function (newValue) {
+                this.addFeatureButton.setDisabled(newValue);
+            }, this);
+
             this.expirationDate = ko.observable();
 
             //all of the features, as models, regardless of geometry, distinct from, but related to, the features in layers.point.graphics, layers.polyline.graphics, and layers.polygon.graphics
@@ -2099,7 +2217,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 self.layers.polyline.clearSelection();
                 self.layers.polygon.clearSelection();
                 if (f && f.graphic) {
-                    if (self.mode() === 'editFeatures') {
+                    if (self.mode() === 'editFeatures' && !self.analysisRunning()) {
                         //activate edit toolbar
                         if (f.type === 'polygon' || f.type === 'polyline') {
                             //activates for vertex editing

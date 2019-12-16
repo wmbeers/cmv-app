@@ -11,6 +11,15 @@
             <svg overflow="hidden" width="25" height="25" style="touch-action: none;"><defs></defs><path fill="rgb(255, 255, 115)" fill-opacity="1" stroke="rgb(110, 110, 110)" stroke-opacity="1" stroke-width="0.5333333333333333" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" path="M -7,-7 L 7,0 L 7,7 L -7,7 L -7,-7 Z" d="M-7-7L 7 0L 7 7L-7 7L-7-7Z" fill-rule="evenodd" stroke-dasharray="none" dojoGfxStrokeStyle="solid" transform="matrix(1.00000000,0.00000000,0.00000000,1.00000000,15.00000000,15.00000000)"></path></svg>
             <!-- /ko -->
         </script>
+
+        <script type="text/html" id="progress">
+            <a data-bind="visible: (code === 5 && href), attr: {href: href}, text: title" target="_blank"></a>
+            <span data-bind="text: title, visible: code !== 5 || !href"></span>
+            <i class="fa fa-spinner fa-spin" data-bind="visible: running"></i>
+            <span data-bind="visible: code===-1" class="fa fa-exclamation-triangle"></span>
+            <span data-bind="text: text"></span>
+        </script>
+
         <div data-bind="visible: mode() == 'default'">
             <button data-dojo-type="dijit/form/Button"
                     data-dojo-props="iconClass:'fa fa-folder-open fa-fw'"
@@ -75,7 +84,10 @@
                 </div>
             </div>
 
-            <div data-bind="visible: mode() == 'editFeatures'">
+            <fieldset class="borderless" data-bind="visible: mode() == 'editFeatures', disable: analysisRunning">
+                <div class="alert alert-danger" data-bind="visible: analysisRunning">
+                    Analysis results, reports, or maps are current being generated. Editing of this AOI's features is disabled until all processes are completed.
+                </div>
                 <div id="aoi-name-label" data-bind="text: name"></div>
                 <table class="aoiList">
                     <thead>
@@ -135,7 +147,7 @@
                 </div>
 
                 <div data-bind="with: currentFeature">
-                    <fieldset data-bind="visible: !$root.drawMode()">
+                    <fieldset data-bind="visible: !$root.drawMode() && !$root.analysisRunning()">
                         <legend>Editing <span data-bind="text: name"></span></legend>
                         <div data-bind="visible: canSplit">
                             <!-- visible binding on a dojo button renders an empty button frame, so have to wrap it -->
@@ -174,9 +186,12 @@
                         Next <i class="fa fa-caret-right fa-fw"></i>
                     </button>
                 </div>
-            </div>
+            </fieldset>
 
-            <div data-bind="visible: mode() === 'analysisAreas'">
+            <fieldset class="borderless" data-bind="visible: mode() === 'analysisAreas', disable: analysisRunning">
+                <div class="alert alert-danger" data-bind="visible: analysisRunning">
+                    Analysis results, reports, or maps are current being generated. Editing of this AOI's analysis areas is disabled until all processes are completed.
+                </div>
                 <p>
                     <strong>Optional:</strong> You can group features together on this screen. Grouped features
                     are analyzed together as a single analysis area, and can contain multiple disconnected parts.
@@ -218,9 +233,9 @@
                         Next <i class="fa fa-caret-right fa-fw"></i>
                     </button>
                 </div>
-            </div>
+            </fieldset>
 
-            <div data-bind="visible: mode() === 'analysisOptions'">
+            <fieldset class="borderless" data-bind="visible: mode() === 'analysisOptions', disable: analysisRunning">
                 <p>Select the types of reports to create.</p>
 
                 <input type="checkbox" id="estCheckbox" data-bind="checked: studyAreaReportRequested"><label for="estCheckbox">Standard EST Study Area</label><br />
@@ -244,10 +259,32 @@
                         Run <i class="fa fa-caret-right fa-fw"></i>
                     </button>
                 </div>
-            </div>
+            </fieldset>
 
             <div data-bind="visible: mode() === 'analysisProgress'">
-                <i>Analysis Progress indication coming soon</i>
+                <ul class="plain-list">
+                    <li>
+                        <span data-bind="template: {name: 'progress', data: progressGIS}"></span>
+                    </li>
+                    <li>
+                        <span data-bind="template: {name: 'progress', data: progressCCI}"></span>
+                        <ul data-bind="foreach: analysisAreas, visible: progressCCI.code === 5">
+                            <li>
+                                <a data-bind="attr: {href: '/est/community/SocioculturalDataReport_pdf.do?aoiAltId=' + id}, text: name" target="_blank"></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span data-bind="template: {name: 'progress', data: progressHCM}"></span>
+                    </li>
+                    <li>
+                        <span data-bind="template: {name: 'progress', data: progressCRD}"></span>
+                    </li>
+                    <li>
+                        <span data-bind="template: {name: 'progress', data: progressERT}"></span>
+                    </li>
+
+                </ul>
                 <hr />
                 <div class="buttonContainer buttonContainerFull">
                     <button data-dojo-type="dijit/form/Button"
