@@ -5,7 +5,7 @@ define(['esri/geometry/Polyline'],
      */
         return {
             //tests if the referenced geometry is a multi-part geometry, a multipoint, or polyline > 1 path, or polygon with > 1 ring
-            isMultiPart (geometry) {
+            isMultiPart: function (geometry) {
                 if (!geometry) {
                     return false;
                 }
@@ -26,7 +26,7 @@ define(['esri/geometry/Polyline'],
                 return false;
             },
 
-            explode (geometry) {
+            explode: function (geometry) {
                 var geometries = [];
                 if (this.isMultiPart(geometry)) {
                     if (geometry.type === 'polygon') {
@@ -53,7 +53,7 @@ define(['esri/geometry/Polyline'],
                 return geometries;
             },
 
-            _getOuterAndInnerRings (geometry) {
+            _getOuterAndInnerRings: function (geometry) {
                 var r = {
                     innerRings: [],
                     outerRings: []
