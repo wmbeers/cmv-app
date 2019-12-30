@@ -6,8 +6,11 @@ module.exports = function (grunt) {
     var host = target === 'dev' ? 'prometheus.est.vpn' :
         target === 'devpoke' ? 'estlapp02.geoplan.ufl.edu' :
         target === 'stage' ? 'hyperion.est.vpn' : 
+        target === 'stagepoke' ? 'estlapp03.geoplan.ufl.edu' :
         target === 'preprod' ? 'pandora.est.vpn' :
-        target === 'prod' ? 'calypso.est.vpn' : null;
+        target === 'preprodpoke' ? 'estlapp04.geoplan.ufl.edu' :
+        target === 'prod' ? 'calypso.est.vpn' :
+        target === 'prodpoke' ? 'estlapp05.geoplan.ufl.edu' : null;
 
     grunt.log.writeln ("target: " + target);
     
@@ -75,7 +78,7 @@ module.exports = function (grunt) {
         copy: {
             build: {
                 cwd: 'viewer',
-                src: ['**'],
+                src: ['**','!**/*.mp4'],
                 dest: 'dist',
                 expand: true
             }
