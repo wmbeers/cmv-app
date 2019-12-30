@@ -6,7 +6,7 @@
             <span data-bind="text: currentAuthority().orgName, visible: authorities.length === 1"></span>
             <select data-bind="options: authorities, value: currentAuthority, optionsText: 'orgName', visible: authorities.length > 1, enable: filterOption() === 'all'"></select>
         </label>
-        <span id="videoLink" style="float: right;"></span>
+        <label><input type="checkbox" data-bind="checked: includeExpired" /> Include Expired AOIs</label>
     </div>
     <div style="height: 305px; width: 500px; overflow: auto">
         <table class="aoiList">

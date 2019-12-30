@@ -149,7 +149,8 @@ define([
             var qs = uri.indexOf('?') >= 0 ? uri.substring(uri.indexOf('?') + 1, uri.length) : '';
             qs = qs.toLowerCase();
             var qsObj = ioQuery.queryToObject(qs);
-            //acceptable arguments include loadMap, projectId
+            //acceptable arguments include loadMap, projectId, aoiid, latlon, latlong, and mgrs
+            //arguments are (for now) mutually exclusive, with preference given to the order of the arguments listed above
             //TODO expand to addLayer
             //TODO could also consider expanding to chain multiple events, like load several layers, load a saved map and add a project, etc.
             if (qsObj.loadmap) {
@@ -164,6 +165,7 @@ define([
             } else if (qsObj.mgrs) {
                 this.zoomToMgrsPoint(qsObj.mgrs, qsObj.zoomlevel);
             }
+
         },
 
         openAttributeTable: function (layerControlItem) {
@@ -817,7 +819,7 @@ define([
                 definitionExpression = 'FK_PROJECT = ' + aoi.id,
                 deferred = new Deferred(),
                 promises = [],
-                layerNames = ['analysisArea', 'polygon', 'polyline', 'point'];
+                layerNames = ['analysisAreaBuffer', 'polygon', 'polyline', 'point'];
 
             //mixin properties from projects.aoiLayers into new objects, load them in the map
             layerNames.forEach(function (layerName) {

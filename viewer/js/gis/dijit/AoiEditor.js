@@ -125,24 +125,19 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         },
         projectTypes: [
             {
-                id: 8,
-                abbreviation: 'OAOI',
-                name: 'Other Area of Interest'
-            },
-            {
                 id: 15,
                 abbreviation: 'BRIDGE',
                 name: 'Bridge'
             },
             {
-                id: 4,
-                abbreviation: 'CF',
-                name: 'Cost Feasible'
-            },
-            {
                 id: 9,
                 abbreviation: 'CORR',
                 name: 'Corridor Study'
+            },
+            {
+                id: 4,
+                abbreviation: 'CF',
+                name: 'Cost Feasible'
             },
             {
                 id: 12,
@@ -169,21 +164,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 abbreviation: 'NDS',
                 name: 'Needs'
             },
-            /*{
-                id: 2,
-                abbreviation: 'NFE',
-                name: 'Not for ETAT'
-            },*/
             {
                 id: 7,
                 abbreviation: 'NMSA',
                 name: 'Non Major State Action'
             },
-            /*{
-                id: 11,
-                abbreviation: 'OAOI',
-                name: 'Other Area of Interest'
-            },*/
             {
                 id: 17,
                 abbreviation: 'RAIL',
@@ -195,19 +180,24 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 name: 'SIS Designation Change'
             },
             {
-                id: 3,
-                abbreviation: 'TICE',
-                name: 'Type I CE'
-            },
-            {
                 id: 14,
                 abbreviation: 'TRANSIT',
                 name: 'Transit'
             },
             {
+                id: 3,
+                abbreviation: 'T1CE',
+                name: 'Type I CE'
+            },
+            {
                 id: 5,
                 abbreviation: 'UCFP',
                 name: 'Ultimate Cost Feasible Project'
+            },
+            {
+                id: 8,
+                abbreviation: 'OAOI',
+                name: 'Other Area of Interest'
             }
         ],
         getProjectTypeById: function (id) {
