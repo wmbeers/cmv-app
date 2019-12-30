@@ -53,7 +53,7 @@ function (declare, lang, on, EstAuthorization, esriId /*, ServerInfo, Credential
             //}
 
             //update widgets config to include AOI editor if user has authority
-            if (this.hasAoiEditAuthority) {
+            if (this.hasAoiEditAuthority) { 
                 this.config.widgets.aoiEditor.include = true;
                 this.config.widgets.aoiEditor.options.authorities = this.authorities.filter(function (auth) {
                     return auth.aoiEditor;
@@ -91,6 +91,14 @@ function (declare, lang, on, EstAuthorization, esriId /*, ServerInfo, Credential
                         server: 'https://pisces.at.geoplan.ufl.edu/arcgis',
                         shortLivedTokenValidity: 60,
                         tokenServiceUrl: 'https://pisces.at.geoplan.ufl.edu/arcgis/tokens/'
+                    },
+                    {
+                        adminTokenServiceUrl: 'https://aquarius.at.geoplan.ufl.edu/arcgis/admin/generateToken',
+                        currentVersion: 10.61,
+                        hasServer: true,
+                        server: 'https://aquarius.at.geoplan.ufl.edu/arcgis',
+                        shortLivedTokenValidity: 60,
+                        tokenServiceUrl: 'https://aquarius.at.geoplan.ufl.edu/arcgis/tokens/'
                     }
                 ],
                 credentials: []

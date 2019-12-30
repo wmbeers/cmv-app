@@ -22,10 +22,15 @@ function (Deferred) {
                     //defining what tools and layers are present
                     deferred.resolve();
                 },
-                errorHandler: function () {
-                    //TODO report the error
+                errorHandler: function (message, exception) {
+                    topic.publish('viewer/handleError', {
+                        source: 'AoiEditor.addFeatureToAnalysisArea',
+                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)
+                    });
                     //for now just treat this as unauthorized, empty set of authorities
-                    application.authorization = null;
+                    application.authorization = {
+                        credentials: []
+                    };
                     application.authorities = [];
                     application.hasAoiEditAuthority = false;
                     application.hasProjectEditAuthority = false;

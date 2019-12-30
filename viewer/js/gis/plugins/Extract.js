@@ -372,6 +372,11 @@ function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphi
          * @returns {Error} Error object if given mileposts are not in the range of min BEGIN_POST to max END_POST of a set of roadway features, or null if valid
          */
         _verifyMeasures: function (roadwayFeatures, beginMilePost, endMilePost) {
+            //sort, because even though it almost always has them sorted, it's not guaranteed
+            roadwayFeatures.features.sort(function (a, b) {
+                return a.attributes.BEGIN_POST - b.attributes.BEGIN_POST;
+            });
+
             var beginPost = roadwayFeatures.features[0].attributes.BEGIN_POST - 0.01, //subtract .01 miles from BEGIN_POST attribute to deal with rounding errors
                 endPost = roadwayFeatures.features[roadwayFeatures.features.length - 1].attributes.END_POST + 0.01; //add .01 miles to END_POST attribute to deal with rounding errors
             if (beginMilePost < beginPost) {

@@ -156,6 +156,8 @@ define([
                 this.loadMap(qsObj.loadmap);
             } else if (qsObj.projectid) {
                 this.addProjectToMap(qsObj.projectid);
+            } else if (qsObj.aoiid) {
+                this.addAoiToMap(qsObj.aoiid);
             } else if (qsObj.latlong || qsObj.latlon) {
                 var ll = qsObj.latlong || qsObj.latlon;
                 this.zoomToLatLong(ll, qsObj.zoomlevel);

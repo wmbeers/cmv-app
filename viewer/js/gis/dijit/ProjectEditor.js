@@ -22,8 +22,7 @@ define([
     'dojo/Deferred',
     'dojo/promise/all',
 
-    'dojo/text!./AoiEditor/templates/Sidebar.html', // template for the widget in left panel, and some dialogs
-    'dojo/text!./AoiEditor/templates/Dialog.html', // template for the open AOI dialog
+    'dojo/text!./ProjectEditor/templates/Sidebar.html', // template for the widget in left panel, and some dialogs
     'dojo/text!./AoiEditor/templates/NewFeatureDialog.html', // template for the new feature dialog
 
     'esri/undoManager',
@@ -77,7 +76,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     ValidationTextBox,
     lang, on, dom,
     topic, Memory, Deferred, all,
-    AoiEditorSidebarTemplate,
+    ProjectEditorSidebarTemplate,
     OpenAoiDialogTemplate,
     NewFeatureDialogTemplate,
     UndoManager, FeatureOperations,
@@ -96,10 +95,10 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
         widgetsInTemplate: true,
         templateString: AoiEditorSidebarTemplate,
-        topicID: 'AoiEditor',
-        baseClass: 'AoiEditor',
+        topicID: 'ProjectEditor',
+        baseClass: 'ProjectEditor',
         map: this.map,
-        featureTypes: ['polygon', 'polyline', 'point'], //preprended with "aoi_" as id of layer, referenced in layers object as self.layers.point, etc.
+        featureTypes: ['polygon', 'polyline', 'point'], //preprended with "project_" as id of layer, referenced in layers object as self.layers.point, etc.
         layers: {}, //caches the layers
         bufferUnits: {
             feet: {
@@ -126,8 +125,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         projectTypes: [
             {
                 id: 8,
-                abbreviation: 'OAOI',
-                name: 'Other Area of Interest'
+                abbreviation: 'AOI',
+                name: 'Area of Interest'
             },
             {
                 id: 15,
@@ -169,21 +168,21 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 abbreviation: 'NDS',
                 name: 'Needs'
             },
-            /*{
+            {
                 id: 2,
                 abbreviation: 'NFE',
                 name: 'Not for ETAT'
-            },*/
+            },
             {
                 id: 7,
                 abbreviation: 'NMSA',
                 name: 'Non Major State Action'
             },
-            /*{
+            {
                 id: 11,
                 abbreviation: 'OAOI',
                 name: 'Other Area of Interest'
-            },*/
+            },
             {
                 id: 17,
                 abbreviation: 'RAIL',
@@ -291,7 +290,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         },
 
         newFeatureDialog: new Dialog({
-            id: 'aoiEditor_new_feature_dialog',
+            id: 'projectEditor_new_feature_dialog',
             title: 'New Feature',
             content: NewFeatureDialogTemplate//,
             //style: 'width: 350px; height: 300px'
@@ -348,7 +347,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
         toJS: function () {
             return {
-                id: this.aoiId,
+                id: this.projectId,
                 name: this.name(),
                 description: this.description(),
                 projectTypeId: this.projectTypeId(),
@@ -370,284 +369,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this.cachedModel = this.toJS();
         },
 
-        saveAoiHeader: function () {
-            var self = this,
-                deferred = new Deferred(),
-                aoiModel = this.toJS();
-            //validate
-            if (!(aoiModel.name && aoiModel.projectTypeId && aoiModel.expirationDate)) {
-                deferred.reject('Missing data, cannot save AOI header.');
-                self.aoiNameVTB.validate();
-                self.projectTypeSelect.validate();
-                self.aoiHeaderForm.validate();
-                return deferred;
-            }
-            //if no changes
-            if (aoiModel.id && aoiModel.id > 0 &&
-                aoiModel.name === this.cachedModel.name &&
-                aoiModel.description === this.cachedModel.description &&
-                aoiModel.projectTypeId === this.cachedModel.projectTypeId &&
-                aoiModel.expirationDate === this.cachedModel.expirationDate) {
-                deferred.resolve(false); //indicates no change was necessary, not something we really use
-            } else {
-                //eslint-disable-next-line no-undef
-                MapDAO.saveAoiHeader(aoiModel, {
-                    callback: function (id) {
-                        self.aoiId = id;
-                        deferred.resolve(true);
-                    },
-                    errorHandler: function (message, exception) {
-                        self.loadingOverlay.hide();
-                        topic.publish('viewer/handleError', {
-                            source: 'AoiEditor.saveAoiHeader',
-                            error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
-                        });
-                        deferred.reject(message);
-                    }
-                });
-            }
-            return deferred;
-        },
-
-        saveAnalysisAreasAndShowAnalysisOptions: function () {
-            if (this.analysisRunning()) {
-                //short cut to progress, as we don't want user to change options
-                this.showAnalysisProgress();
-                return;
-            }
-            var self = this;
-
-            this.saveAnalysisAreas().then(
-                function () {
-                    self.saveAnalysisAreaBuffers().then(
-                        function () {
-                            self.mode('analysisOptions');
-                        },
-                        function (err) {
-                            topic.publish('growler/growlError', err);
-                        }
-                    );
-                },
-                function (err) {
-                    topic.publish('growler/growlError', err);
-                }
-            );
-        },
-
-        //Analysis areas are saved on the fly as features are added to them, but if the default, typical option
-        //of NOT assigning features to analysisAreas is chosen, we'll need to do that here
-        saveAnalysisAreas: function () {
-            var promises = [], //promises to be resolved when all analysis areas are created from ungroupedFeatures.
-                deferred = null, //deferred object resolved when this is done; usually is assigned by _deleteEmptyAnalysisAreas
-                ungroupedFeatures = this.features().filter(function (f) {
-                    return !f.analysisArea() || f.analysisArea().id === 0; //latter shouldn't ever be the case
-                });
-
-            if (ungroupedFeatures.length === 0) {
-                deferred = this._deleteEmptyAnalysisAreas();
-            } else {
-                deferred = new Deferred();
-                ungroupedFeatures.forEach(function (f) {
-                    promises.push(f.setAnalysisArea(f.name())); // self._addFeatureToAnalysisArea(f, f.name()));
-                });
-                all(promises).then(
-                    function () {
-                        self._deleteEmptyAnalysisAreas().then(function () {
-                            deferred.resolve();
-                        });
-                    },
-                    function (e) {
-                        window.setTimeout(function () {
-                            deferred.reject(e);
-                        }, 10);
-                    }
-                );
-            }
-
-            return deferred;
-        },
-
-        _deleteEmptyAnalysisAreas: function () {
-            var deferred = new Deferred(),
-                emptyAnalysisAreas = this.analysisAreas().filter(function (aa) {
-                    return aa.features().length === 0;
-                });
-
-            if (emptyAnalysisAreas.length > 0) {
-                var ids = emptyAnalysisAreas.map(function (aa) {
-                    return aa.id;
-                });
-                //eslint-disable-next-line no-undef
-                MapDAO.deleteAoiAnalysisAreas(ids, this.currentAuthority().orgUserId, {
-                    callback: function () {
-                        deferred.resolve();
-                    },
-                    errorHandler: function (err) {
-                        deferred.reject(err);
-                    }
-
-                });
-            } else {
-                window.setTimeout(function () {
-                    deferred.resolve();
-                }, 10);
-            }
-            return deferred;
-        },
-
-        /**
-         * Saves analsysis areas and updates features with references to their analysis areas.
-         * @returns {Deferred} a Deferred object to be resolved when the whole chain of events is completed.
-         **/
-        saveAnalysisAreaBuffers: function () {
-            var self = this,
-                //featureSavePromises = [],
-                deferred = new Deferred();
-            this._buildAnalysisAreaBufferEdits().then(function (edits) {
-                if (edits.adds.length || edits.updates.length || edits.deletes.length) {
-                    self.loadingOverlay.show('Saving analysis area buffers');
-                    self.layers.analysisAreaBuffer.applyEdits(edits.adds, edits.updates, edits.deletes, function () {
-                        self.loadingOverlay.hide();
-                        deferred.resolve();
-                    }, function (err) {
-                        self.loadingOverlay.hide();
-                        deferred.reject(err);
-                    });
-                } else {
-                    //nothing to save
-                    deferred.resolve();
-                }
-            });
-            return deferred;
-        },
-
-        saveAnalysisOptions: function () {
-            var self = this,
-                deferred = new Deferred();
-
-            this.loadingOverlay.show('Starting analysis...');
-            //TODO this also needs to do the intersection with regions and roads
-            //something currently done by gisEditor; could use the QUERY_REGIONS service for the former, and RCI? for roads.
-            //eslint-disable-next-line no-undef
-            MapDAO.saveAoiAnalysisOptions(this.toJS(),
-                {
-                    callback: function (result) {
-                        self.loadingOverlay.hide();
-                        if (result === 'ok') {
-                            deferred.resolve();
-                        } else {
-                            topic.publish('growler/growlError', result);
-                            deferred.reject(result);
-                        }
-                    },
-                    errorHandler: function (err) {
-                        self.loadingOverlay.hide();
-                        topic.publish('growler/growlError', err);
-                        deferred.reject(err);
-                    }
-                });
-            return deferred;
-        },
-
-        saveAnalysisOptionsAndShowProgress: function () {
-            var self = this;
-
-            this.saveAnalysisOptions().then(function () {
-                self.showAnalysisProgress();
-            });
-        },
-
-        checkAnalysisProgress: function () {
-            var self = this;
-            self.progressErrorCount = self.progressErrorCount || 0;
-            //eslint-disable-next-line no-undef
-            MapDAO.getProgress(this.aoiId, {
-                callback: function (p) {
-                    //a little post-processing
-                    //Note: don't think you can simplify this by just directly referring to the DWR reply, it has to be cloned to a new object
-                    //because DWR takes short-cuts, and there will be a common object like "s0={code: 1, text: 'whatever'}" re-used for each progress
-                    var gis = {
-                            code: p.progressGIS.code,
-                            text: p.progressGIS.text,
-                            running: p.progressGIS.running,
-                            title: 'Study Area Report',
-                            href: '/est/analysis/ReportOptions.do?aoiId=' + self.aoiId
-                        },
-                        hcm = {
-                            code: p.progressHCM.code,
-                            text: p.progressHCM.text,
-                            running: p.progressHCM.running,
-                            title: 'Hardcopy Maps',
-                            href: '/est/hardCopyMaps.jsp?aoiId=' + self.aoiId
-                        },
-                        cci = {
-                            code: p.progressCCI.code,
-                            text: p.progressCCI.text,
-                            running: p.progressCCI.running,
-                            title: 'Sociocultural Data Report',
-                            href: null //links are by feature, handled in sidebar.html layout
-                        },
-                        crd = {
-                            code: p.progressCRD.code,
-                            text: p.progressCRD.text,
-                            running: p.progressCRD.running,
-                            title: 'Cultural Resources Data Report',
-                            href: 'todo'
-                        },
-                        ert = {
-                            code: p.progressERT.code,
-                            text: p.progressERT.text,
-                            running: p.progressERT.running,
-                            title: 'Emergency Response Report',
-                            href: 'todo'
-                        };
-
-                    if (gis.code === 4 && p.completedGisCount > 1) {
-                        gis.text = 'Creating PDF ' + (p.completedGisCount - 1) + ' of 22';
-                    }
-
-                    if (hcm.code === 3 && p.completedHcmCount > 1) {
-                        hcm.text = 'Creating Map ' + (p.completedHcmCount - 1) + ' of 22';
-                    }
-
-                    self.progressGIS(gis);
-                    self.progressCCI(cci);
-                    self.progressHCM(hcm);
-                    self.progressCRD(crd);
-                    self.progressERT(ert);
-
-                    self.analysisRunning(p.running);
-
-                    if (p.running) {
-                        window.setTimeout(function () {
-                            self.checkAnalysisProgress();
-                        }, 15000);
-                    }
-                },
-                errorHandler: function (e) {
-                    if (self.progressErrorCount > 5) {
-                        //bail
-                        topic.publish('growler/growlError', 'Too many errors updating progress, updates will stop: ' + e);
-                    } else {
-                        topic.publish('growler/growlError', 'Error updating progress: ' + e);
-                        self.progressErrorCount++;
-                        self.checkAnalysisProgress();
-                    }
-                }
-            });
-        },
-
-        //todo remove
-        clearAoiPreview: function () {
-            var self = this;
-            this.aois().forEach(function (a) {
-                if (a.layers) {
-                    self.clearAoiLayers(a);
-                }
-                a.previewed(false);
-            });
-        },
-
         unloadCurrentAoi: function () {
             this.features.removeAll();
             this.analysisAreas.removeAll();
@@ -661,98 +382,30 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this.mode('default');
         },
 
-        previewAoi: function (aoi) {
-            var self = this,
-                promises = [],
-                q = new Query({
-                    where: '1=1' //definitionExpression doesn't need to be re-applied
-                });
-
-            this.clearAoiPreview();
-
-            aoi.previewed(true);
-
-            if (aoi.layers && aoi.extent) {
-                this.map.addLayer(aoi.layers.polygon);
-                this.map.addLayer(aoi.layers.polyline);
-                this.map.addLayer(aoi.layers.point);
-
-                topic.publish('layerLoader/zoomToExtent', aoi.extent.expand(1.5));
-                return;
-            }
-            aoi.layers = {};
-
-
-            this.featureTypes.forEach(function (layerName) {
-                var url = projects.aoiLayers[layerName],
-                    deferred = new Deferred(),
-                    layer = new FeatureLayer(url,
-                        {
-                            id: 'aoi_' + layerName,
-                            outFields: '*',
-                            definitionExpression: 'FK_PROJECT = ' + aoi.id,
-                            mode: FeatureLayer.MODE_ONDEMAND
-                        });
-                aoi.layers[layerName] = layer;
-                deferred = layer.queryExtent(q);
-                promises.push(deferred);
-            });
-
-            all(promises).then(function (extentReplies) {
-                //union extents, but only those with actual extents
-                var unionOfExtents = null;
-                for (var i = 0; i < extentReplies.length; i++) {
-                    var extentReply = extentReplies[i];
-                    if (extentReply.count > 0) {
-                        if (unionOfExtents) {
-                            unionOfExtents = unionOfExtents.union(extentReply.extent);
-                        } else {
-                            unionOfExtents = extentReply.extent;
-                        }
-                    }
-                }
-                if (unionOfExtents) {
-                    aoi.extent = unionOfExtents;
-                    topic.publish('layerLoader/zoomToExtent', aoi.extent.expand(1.5));
-
-                    self.map.addLayer(aoi.layers.polygon);
-                    self.map.addLayer(aoi.layers.polyline);
-                    self.map.addLayer(aoi.layers.point);
-                }
-            });
-
-        },
-
-        loadAoi: function (id, showResults) {
+        
+        loadProject: function (id) {
             var self = this;
-            //get from server
-            //eslint-disable-next-line no-undef
 
-            this.clearAoiPreview();
+            this.loadingOverlay.show('Loading Project');
 
-            this.loadingOverlay.show('Loading AOI');
             //eslint-disable-next-line no-undef
-            MapDAO.getAoiModel(id, {
-                callback: function (aoi) {
+            MapDAO.getPermissionToEditProject(id, {
+                callback: function (permission) {
                     self.loadingOverlay.hide();
-                    if (aoi) {
-                        self.loadAoiModel(aoi);
-                        if (showResults) {
-                            self.showAnalysisProgress();
-                        } else {
-                            self.mode('editName');
-                        }
+                    if (permission === 'ok') {
+                        self._loadProjectFeatures(id);
+                        self.mode('editName');
                     } else {
                         topic.publish('viewer/handleError', {
-                            source: 'AoiEditor.loadAoi',
-                            error: 'Invalid AOI ID'
+                            source: 'ProjectEditor.loadAoi',
+                            error: permission
                         });
                     }
                 },
                 errorHandler: function (message, exception) {
-                    self.loadingOverlay.hide();
+                    self.LoadingOverlay.hide();
                     topic.publish('viewer/handleError', {
-                        source: 'AoiEditor.loadAoi',
+                        source: 'ProjectEditor.loadAoi',
                         error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
                     });
                 }
@@ -908,7 +561,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 function (polyLines) {
                     self.loadingOverlay.hide();
                     self.newFeatureDialog.hide();
-                    self._addRoadwayFeatures(polyLines, self.roadwayId());
+                    self._addRoadwayFeatures(polyLines, this.roadwayId());
                 }, function (e) {   
                     self.extractLineError(e);
                     self.loadingOverlay.hide();
@@ -1427,102 +1080,25 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         },
 
         /**
-         * Loads values into observable properties from the referenced AOI, then loads AOI features and analysis areas.
-         * @param {any} aoi An AOI model, or null to create a new AOI model.
-         * @returns {Deferred} a Deferred object created by _loadAoiFeatures
-         */
-        loadAoiModel: function (aoi) {
-            //shouldn't need to do this, because the unload method also does it, but just to be safe
-            this.undoManager.clearUndo();
-            this.undoManager.clearRedo();
-
-            aoi = aoi || {
-                id: -1 /*signifies new*/,
-                name: null,
-                projectTypeId: null,
-                expirationDate: null,
-                orgUserId: null,
-                description: null,
-                features: [],
-                analysisAreas: [],
-                analysisRunning: false,
-                //TODO do we want to default these to something other than all-false?
-                //TODO if user has ERT access only, set emergencyResponseReportRequested = true, disable other options in UI
-                studyAreaReportRequested: false,
-                socioCulturalDataReportRequested: false,
-                hardCopyMapsRequested: false,
-                culturalResourcesDataReportRequested: false,
-                emergencyResponseReportRequested: false
-            };
-
-            this.aoiId = aoi.id;
-
-            if (!aoi.expirationDate) {
-                //default date is current date + 30 days TODO confirm this
-                aoi.expirationDate = new Date();
-                aoi.expirationDate.setDate(aoi.expirationDate.getDate() + 30);
-            }
-
-            if (aoi.orgUserId) {
-                //loading existing--if we allow loading all aois for all of the current user's orgUsers, rather than having to select to filter them, we don't need this bit
-                //about tracking authority, and just use currentAuthority
-                var authority = this.authorities.find(function (auth) {
-                    return auth.orgUserId === aoi.orgUserId || aoi.orgId === auth.orgId;
-                });
-                this.currentAuthority(authority);
-            }
-
-            this.name(aoi.name);
-            this.description(aoi.description);
-            this.projectTypeId(aoi.projectTypeId);
-            this.expirationDate(aoi.expirationDate);
-
-            var analysisAreaModels = [];
-            aoi.analysisAreas.forEach(function (aoiAnalysisArea) {
-                analysisAreaModels.push(new this.AnalysisArea(aoiAnalysisArea)); //convert to full KO model of an analysis area
-            }, this);
-            this.analysisAreas(analysisAreaModels);
-
-            this.analysisRunning(aoi.analysisRunning);
-
-            this.studyAreaReportRequested(aoi.studyAreaReportRequested);
-            this.socioCulturalDataReportRequested(aoi.socioCulturalDataReportRequested);
-            this.hardCopyMapsRequested(aoi.hardCopyMapsRequested);
-            this.culturalResourcesDataReportRequested(aoi.culturalResourcesDataReportRequested);
-            this.emergencyResponseReportRequested(aoi.emergencyResponseReportRequested);
-
-            this._updateAoiCache();
-
-            return this._loadAoiFeatures();
-        },
-
-        /**
-         * Clears AOI layers from the map.
-         * @param {any} layerOwner Not currently used, was part of the abandoned "preview" function.
+         * Clears project layers from the map.
          * @returns {void}
          */
-        clearAoiLayers: function (layerOwner) {
-            layerOwner = layerOwner || this;
+        clearProjectLayers: function () {
             //remove existing layers from the map
-            if (!layerOwner.layers) {
+            if (!this.layers) {
                 return;
             }
-            if (layerOwner.layers.analysisAreaBuffer) {
-                this.map.removeLayer(layerOwner.layers.analysisAreaBuffer);
-                //delete layerOwner.layers.analysisAreaBuffer;
-            }
             this.featureTypes.forEach(function (layerName) {
-                if (layerOwner.layers[layerName]) {
-                    this.map.removeLayer(layerOwner.layers[layerName]);
-                    //delete this.layers[layerName];
+                if (this.layers[layerName]) {
+                    this.map.removeLayer(this.layers[layerName]);
                 }
             }, this);
-
         },
 
         /**
          * Gets the next number for auto-named features (e.g. "Feature 1", "Feature 2", ... "Feature N" or "Extracted Line 1" ...)
          * @returns {Number} the next number in the sequence of auto-named features.
+         * TODO move to common location and share code with AOI?
          */
         _nextFeatureNumber: function () {
             var n = 0,
@@ -1541,109 +1117,85 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             return n;
         },
 
-        _loadAoiFeatures: function () {
-            var self = this, //keeps a reference to the aoiEditor model
+        _loadProjectFeatures: function () {
+            var self = this, //keeps a reference to the root model
                 loadPromises = []; //collection of promises resolved on update-end of the three editable layers (point, polyline and polygon), zooms to unioned extent when done
 
-            this.loadingOverlay.show('Loading AOI Analysis Areas');
+            this.clearProjectLayers();
 
-            this.clearAoiLayers();
+            self.loadingOverlay.show('Loading Project Features');
 
-            //get analysisAreaBuffers first TODO this isn't really a necessary step anymore, and we can include this in the same loop
-            //through self.featureTypes below (loop through self.layers instead)
-            self.layers.analysisAreaBuffer = new FeatureLayer(projects.aoiLayers.analysisAreaBuffer, {
-                id: 'aoi_analysisArea_' + this.aoiId,
-                outFields: '*',
-                definitionExpression: 'FK_PROJECT = ' + this.aoiId,
-                //note: can't be invisble, and must be loaded in map for update-end to work.
-                //visible: false, //not actually loaded in map, so don't need to make invisible
-                mode: FeatureLayer.MODE_SNAPSHOT
-            });
+            self.featureTypes.forEach(function (layerName) {
+                var url = projects.estProjectLayers[layerName],
+                    deferred = new Deferred(),
+                    layer = new FeatureLayer(url,
+                        {
+                            id: 'project_' + layerName + '_' + self.projectId,
+                            outFields: '*',
+                            definitionExpression: 'FK_PROJECT = ' + self.aoiId,
+                            mode: FeatureLayer.MODE_SNAPSHOT
+                        });
+                layer.setSelectionSymbol(self.selectionSymbols[layerName]);
+                self.layers[layerName] = layer;
+                loadPromises.push(deferred);
 
-            on.once(self.layers.analysisAreaBuffer, 'update-end', function () {
-                if (self.aoiId) {
-                    self.loadingOverlay.show('Loading AOI Features');
-                } else {
-                    self.LoadingOverlay.show('Setting up AOI layers');
-                }
-                //we now have self.layers.analysisAreaBuffer.graphics as array of the analysis areas as GIS features
-                //get the rest of the features and build relationships
-                self.layers.analysisAreaBuffer.setVisibility(false);
-                self.featureTypes.forEach(function (layerName) {
-                    var url = projects.aoiLayers[layerName],
-                        deferred = new Deferred(),
-                        layer = new FeatureLayer(url,
-                            {
-                                id: 'aoi_' + layerName + '_' + self.aoiId,
-                                outFields: '*',
-                                definitionExpression: 'FK_PROJECT = ' + self.aoiId,
-                                mode: FeatureLayer.MODE_SNAPSHOT
-                            });
-                    layer.setSelectionSymbol(self.selectionSymbols[layerName]);
-                    self.layers[layerName] = layer;
-                    loadPromises.push(deferred);
-
-                    on.once(layer, 'update-end', function (info) {
-                        deferred.resolve(info.target);
-                    });
-
-                    self.map.addLayer(layer);
+                on.once(layer, 'update-end', function (info) {
+                    deferred.resolve(info.target);
                 });
 
-                //when update-end has fired for all editable layers, we can convert their graphics into feature models
-                all(loadPromises).then(function (layers) {
-                    self.loadingOverlay.hide();
+                self.map.addLayer(layer);
+            });
 
-                    //extract all features
-                    var allGraphics = [],
-                        unionOfExtents = null,
-                        featuresKo = [],
-                        onLayerClick = function (evt) { //eslint-disable-line func-style
-                            //subscription on currentFeature does this edit.activate(2, evt.graphic);
-                            if (evt.graphic && evt.graphic.feature && !self.drawMode()) {
-                                event.stopPropagation(evt);
-                                self.currentFeature(evt.graphic.feature);
-                            }
-                        };
+            //when update-end has fired for all editable layers, we can convert their graphics into feature models
+            all(loadPromises).then(function (layers) {
+                self.loadingOverlay.hide();
 
-                    layers.forEach(function (layer) {
-                        allGraphics = allGraphics.concat(layer.graphics);
-                        on(layer, 'click', onLayerClick);
-                    });
+                //extract all features
+                var allGraphics = [],
+                    unionOfExtents = null,
+                    featuresKo = [],
+                    onLayerClick = function (evt) { //eslint-disable-line func-style
+                        //subscription on currentFeature does this edit.activate(2, evt.graphic);
+                        if (evt.graphic && evt.graphic.feature && !self.drawMode()) {
+                            event.stopPropagation(evt);
+                            self.currentFeature(evt.graphic.feature);
+                        }
+                    };
 
-                    //union extents, but only those with actual extents
-                    for (var i = 0; i < allGraphics.length; i++) { //todo switch to foreach; this way to simplify debugging
-                        var graphic = allGraphics[i],
-                            geometry = graphic.geometry,
-                            featureKO = self._constructFeature(graphic),
-                            extent = null;
-                        featuresKo.push(featureKO);
-                        if (geometry) {
-                            if (geometry.type === 'point') {
-                                extent = new Extent(geometry.x, geometry.y, geometry.x, geometry.y, geometry.spatialReference);
-                            } else {
-                                extent = geometry.getExtent();
-                            }
-                            if (extent) {
-                                unionOfExtents = unionOfExtents ? unionOfExtents.union(extent) : extent;
-                            }
+                layers.forEach(function (layer) {
+                    allGraphics = allGraphics.concat(layer.graphics);
+                    on(layer, 'click', onLayerClick);
+                });
+
+                //union extents, but only those with actual extents
+                for (var i = 0; i < allGraphics.length; i++) { //todo switch to foreach; this way to simplify debugging
+                    var graphic = allGraphics[i],
+                        geometry = graphic.geometry,
+                        featureKO = self._constructFeature(graphic),
+                        extent = null;
+                    featuresKo.push(featureKO);
+                    if (geometry) {
+                        if (geometry.type === 'point') {
+                            extent = new Extent(geometry.x, geometry.y, geometry.x, geometry.y, geometry.spatialReference);
+                        } else {
+                            extent = geometry.getExtent();
+                        }
+                        if (extent) {
+                            unionOfExtents = unionOfExtents ? unionOfExtents.union(extent) : extent;
                         }
                     }
-                    self.extent = unionOfExtents; //facilitates zooming to the aoi
-                    self.zoomTo();
-                    self.features(featuresKo);
-                    //TODO there has to be a better way than this hack:
-                    //self.dummyForceRecompute(new Date());
+                }
+                self.extent = unionOfExtents; //facilitates zooming to the aoi
+                self.zoomTo();
+                self.features(featuresKo);
+                //TODO there has to be a better way than this hack:
+                //self.dummyForceRecompute(new Date());
 
-                }, function (err) {
-                    self.loadingOverlay.hide();
-                    topic.publish('growler/growlError', 'Error loading AOI features: ' + err);
-                });
-
-            }, function (err2) {
+            }, function (err) {
                 self.loadingOverlay.hide();
-                topic.publish('growler/growlError', 'Error loading AOI analysis areas: ' + err2);
+                topic.publish('growler/growlError', 'Error loading AOI features: ' + err);
             });
+
 
             self.map.addLayer(self.layers.analysisAreaBuffer);
         },
@@ -2005,11 +1557,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                         aoi.typeName = pt.name;
                         //add functions
                         aoi.load = function () {
-                            self.loadAoi(aoi.id, false);
-                            self.openAoiDialog.hide();
-                        };
-                        aoi.loadResults = function () {
-                            self.loadAoi(aoi.id, true);
+                            self.loadAoi(aoi.id);
                             self.openAoiDialog.hide();
                         };
                         //todo fix or dekruft aoi preview

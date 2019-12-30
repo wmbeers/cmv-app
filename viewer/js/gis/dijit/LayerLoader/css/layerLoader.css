@@ -100,12 +100,6 @@ span.selectedItem {
 }
 
 /* todo move alert declarations to a more general location */
-.alert-danger {
-    color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
-}
-
 .alert {
     padding: 0.5rem 1.25rem;
     margin-bottom: 1rem;
@@ -113,3 +107,14 @@ span.selectedItem {
     border-radius: 0.25rem;
 }
 
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}

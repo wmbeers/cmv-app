@@ -17,7 +17,6 @@
                     <th data-bind="click: sortAoisByExpirationDate" title="Expiration Date">Expires<span class="ui-icon dgrid-sort-arrow" data-bind="visible: aoiSortOption()==='expirationDate'"></span></th>
                     <th data-bind="click: sortAoisByModDate" title="Last Edited Date">Edit Date<span class="ui-icon dgrid-sort-arrow" data-bind="visible: aoiSortOption()==='modDate'"></span></th>
                     <th></th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody data-bind="foreach: sortedAois">
@@ -27,7 +26,6 @@
                     <td class="dgrid-cell" data-bind="dateString: expirationDate"></td>
                     <td class="dgrid-cell" data-bind="dateString: modDate"></td>
                     <td class="dgrid-cell"><button data-bind="click: load">Load</button></td>
-                    <td class="dgrid-cell"><button data-bind="click: loadResults">Results</button></td>
                 </tr>
             </tbody>
         </table>
