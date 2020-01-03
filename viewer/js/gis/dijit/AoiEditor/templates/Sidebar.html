@@ -63,13 +63,13 @@
                        data-dojo-type="dijit/form/ValidationTextBox"
                        data-dojo-props="trim:true,required:true"
                        data-dojo-attach-point="aoiNameVTB"
-                       data-bind="value: name" style="width:100%" />
+                       data-bind="value: name" style="width:100%" maxlength="150" />
 
                 <label for="projectTypeDojo">Type</label><br />
                 <select id="projectTypeDojo"></select><br />
 
                 <label for="aoiDescription">Description</label>
-                <textarea data-bind="value: description" data-dojo-type="dijit/form/SimpleTextarea" rows="3" id="aoiDescription" style="width:96%"></textarea>
+                <textarea data-bind="value: description" data-dojo-type="dijit/form/SimpleTextarea" rows="3" id="aoiDescription" style="width:96%" maxlength="4000"></textarea>
 
                 <label for="expirationDate">Keep Until</label>
                 <div class="dijit dijitReset dijitInline dijitLeft dijitTextBox" style="width: 100%">
@@ -118,7 +118,7 @@
                             <td class="dgrid-cell"><input type="checkbox" checked disabled /></td>
                             <td class="dgrid-cell" data-bind="template: {name: 'geometry-type-icon', data: geometry}"></td>
                             <td class="dgrid-cell">
-                                <input type="text" data-bind="value: name, hasFocus: nameHasFocus" />
+                                <input type="text" data-bind="value: name, hasFocus: nameHasFocus" maxlength="50" />
                             </td>
                             <td class="dgrid-cell"><input type="number" data-bind="value: bufferDistance" style="width: 3em" /></td>
                             <td class="dgrid-cell"><select data-bind="options: $root.bufferUnitArray, optionsText: 'abbreviation', value: bufferUnit, attr: {title: bufferTextLong}" style="width: 3em" /></td>
