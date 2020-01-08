@@ -135,7 +135,7 @@ define([
         setActivity: function () {
             if (this.sessionStatus !== 'expired') {
                 this.lastActivityTime = new Date(); //todo: store as getTime? storing this way is easier to read when debugging...
-                this.resetTimeout();
+                //removing this line, it wreaks havoc with other pages if called at every little mouse move this.resetTimeout();
             }
         },
 
@@ -165,6 +165,7 @@ define([
                 this.lastActivityTime > this.lastPingTime && // 2
                 secondsSinceLastPing >= this.refreshDelaySeconds) { // 3
                 this.pingSession();
+                this.resetTimeout(); //sends the message along to other windows
             }
 
             //if we're about to expire, prompt to keep the session alive
