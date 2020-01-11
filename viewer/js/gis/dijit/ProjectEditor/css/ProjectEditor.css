@@ -33,11 +33,6 @@
     background-color: #f2f2f2;
 }
 
-/* Applied to the Type column in feature list when sorted by by geometry type to make it wide enough to prevent wrapping the sort caret */
-.type-sort {
-    min-width: 56px;
-}
-
 .aoiList input {
     padding: 3px 0;
 }

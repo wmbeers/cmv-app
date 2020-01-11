@@ -766,7 +766,7 @@ define([
                 open: true,
                 position: 0,
                 options: 'config/layerLoader'
-            }, //open
+            },
             layerControl: {
                 include: true,
                 id: 'layerControl',
@@ -823,6 +823,44 @@ define([
                     legendLayerInfos: true
                 }
             },
+
+            projectEditor: {
+                include: false, //we start with this false, then if use has authority we change to true before processing by _WidgetsMixin.js. This happens in _AuthorizationMixin.js
+                id: 'projectEditor',
+                type: 'titlePane',
+                path: 'gis/dijit/ProjectEditor',
+                canFloat: true,
+                title: 'Project Editor',
+                iconClass: 'fas fa-fw fa-pencil-alt',
+                open: true,
+                position: 3,
+                options: {
+                    map: true,
+                    mapClickMode: true,
+                    settings: {
+
+                    }
+                }
+            },
+
+            aoiEditor: {
+                include: false, //we start with this false, then if use has authority we change to true before processing by _WidgetsMixin.js. This happens in _AuthorizationMixin.js
+                id: 'aoiEditor',
+                type: 'titlePane',
+                path: 'gis/dijit/AoiEditor',
+                canFloat: true,
+                title: 'AOI Editor',
+                iconClass: 'fas fa-fw fa-pencil-alt',
+                open: true,
+                position: 4,
+                options: {
+                    map: true,
+                    mapClickMode: true,
+                    settings: {
+
+                    }
+                }
+            },
             identify: {
                 include: true,
                 id: 'identify',
@@ -832,7 +870,7 @@ define([
                 iconClass: 'fas fa-fw fa-info-circle',
                 open: false,
                 preload: true,
-                position: 4,
+                position: 5,
                 options: 'config/identify'
             },
             zoomToRegion: {
@@ -840,7 +878,7 @@ define([
                 id: 'zoomToRegion',
                 type: 'titlePane',
                 title: 'Zoom to Region',
-                position: 5,
+                position: 6,
                 open: true,
                 path: 'gis/dijit/ZoomToFeature',
                 options: {
@@ -863,7 +901,7 @@ define([
                 title: i18n.viewer.widgets.find,
                 iconClass: 'fas fa-fw fa-search',
                 open: false,
-                position: 6,
+                position: 7,
                 options: 'config/find'
             },
             bookmarks: {
@@ -874,7 +912,7 @@ define([
                 title: i18n.viewer.widgets.bookmarks,
                 iconClass: 'fas fa-fw fa-bookmark',
                 open: false,
-                position: 7,
+                position: 8,
                 options: 'config/bookmarks'
             },
             draw: {
@@ -886,7 +924,7 @@ define([
                 title: i18n.viewer.widgets.draw,
                 iconClass: 'fas fa-fw fa-paint-brush',
                 open: false,
-                position: 8,
+                position: 9,
                 options: {
                     map: true,
                     mapClickMode: true
@@ -901,7 +939,7 @@ define([
                 title: i18n.viewer.widgets.measure,
                 iconClass: 'fas fa-fw fa-expand',
                 open: false,
-                position: 9,
+                position: 10,
                 options: {
                     map: true,
                     mapClickMode: true,
@@ -918,7 +956,7 @@ define([
                 title: i18n.viewer.widgets.print,
                 iconClass: 'fas fa-fw fa-print',
                 open: false,
-                position: 10,
+                position: 11,
                 options: {
                     map: true,
                     printTaskURL: 'https://utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task',
@@ -936,77 +974,7 @@ define([
                         */
                     ]
                 }
-            },
-
-            aoiEditor: {
-                include: false, //todo start with this false, then if use has authority change to true before processing by _WidgetsMixin.js
-                id: 'aoiEditor',
-                type: 'titlePane',
-                path: 'gis/dijit/AoiEditor',
-                canFloat: true,
-                title: 'AOI Editor',
-                iconClass: 'fas fa-fw fa-pencil-alt',
-                open: true,
-                position: 3,
-                options: {
-                    map: true,
-                    mapClickMode: true,
-                    settings: {
-                        
-                    }
-                }
             }
-
-            //editor: {
-            //    include: true,
-            //    id: 'editor',
-            //    type: 'titlePane',
-            //    path: 'gis/dijit/Editor',
-            //    title: i18n.viewer.widgets.editor,
-            //    iconClass: 'fas fa-fw fa-pencil-alt',
-            //    open: true,
-            //    position: 11,
-            //    options: {
-            //        map: true,
-            //        mapClickMode: true,
-            //        editorLayerInfos: true,
-            //        settings: {
-            //            toolbarVisible: true,
-            //            showAttributesOnClick: true,
-            //            enableUndoRedo: true,
-            //            createOptions: {
-            //                polygonDrawTools: ['freehandpolygon', 'autocomplete'],
-            //                polylineDrawTools: ['freehandpolyline']
-            //            },
-            //            toolbarOptions: {
-            //                reshapeVisible: true,
-            //                cutVisible: true,
-            //                mergeVisible: true
-            //            }
-            //        }
-            //    }
-            //}
-
-            //track location, excluded
-            //locateButton: {
-            //    include: false,
-            //    id: 'locateButton',
-            //    type: 'ui',
-            //    path: 'gis/dijit/LocateButton',
-            //    placeAt: 'top-left',
-            //    position: 'last',
-            //    options: {
-            //        map: true,
-            //        publishGPSPosition: true,
-            //        highlightLocation: true,
-            //        useTracking: true,
-            //        geolocationOptions: {
-            //            maximumAge: 0,
-            //            timeout: 15000,
-            //            enableHighAccuracy: true
-            //        }
-            //    }
-            //},
 
             /* TODO: need Google Maps API key,
             streetview: {

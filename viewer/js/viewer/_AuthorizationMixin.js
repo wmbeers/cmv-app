@@ -62,6 +62,14 @@ function (declare, lang, on, EstAuthorization, esriId /*, ServerInfo, Credential
                 this.config.widgets.aoiEditor.options.currentAuthority(this.config.widgets.aoiEditor.options.authorities[0]); //todo could also cache the last used authority instead of defaulting to the first one
             }
 
+            if (this.hasProjectEditAuthority) {
+                this.config.widgets.projectEditor.include = true;
+                this.config.widgets.projectEditor.options.authorities = this.authorities.filter(function (auth) {
+                    return auth.projectEditor;
+                });
+                this.config.widgets.projectEditor.options.currentAuthority = this.currentAuthority; //a pointer to the ko observable, since we want to avoid referencing app
+                this.config.widgets.projectEditor.options.currentAuthority(this.config.widgets.projectEditor.options.authorities[0]); //todo could also cache the last used authority instead of defaulting to the first one
+            }
 
             this._initEsriId();
             
