@@ -22,8 +22,12 @@
                 Open
             </button>
 
+            <a href="ProjectEditor_Training_Video.mp4" target="_blank" style="position: relative; top: 5px; left: 15px; text-decoration:underline">Video</a>
+
             <div style="margin-top: 15px">
-                TODO instructions here
+                <p>
+                    Click the <strong>Open</strong> button to open an EST project for editing project features. The project must be in draft/editing status.
+                </p>
             </div>
         </div>
 
@@ -32,12 +36,25 @@
                 <span data-bind="click: unloadCurrentProject" style="float:right" class="fa fa-window-close"></span>
             </div>
 
-            <fieldset class="borderless">
+            <fieldset class="borderless" data-bind="visible: mode() === 'editFeatures', enable: canEdit">
                 <!--ko with: currentProjectAlt-->
                 <h4 data-bind="text: label"></h4>
                 <!--/ko-->
 
+                <div class="alert alert-warning" data-bind="visible: hasAnalysisResults">
+                    Warning: this project has already been analyzed. Any changes you make to project geometry will require re-running the analysis.
+                </div>
+
                 <h5>Features</h5>
+
+                <div class="alert alert-danger" data-bind="visible: analysisRunning">
+                    Analysis results, reports, or maps are currently being generated. Editing of this project's features is disabled until all processes are completed.
+                </div>
+
+                <div class="alert alert-danger" data-bind="visible: analysisStatus() === analysisStatuses.OTHER">
+                    This project is not in editing status.
+                </div>
+
 
                 <table class="aoiList">
                     <thead>
@@ -118,10 +135,49 @@
                 </div>
 
                 <hr />
+                <div class="buttonContainer buttonContainerRight">
+                    <button data-dojo-type="dijit/form/Button"
+                            data-bind="click: showAnalysisOption"
+                            data-dojo-props="style:'text-align: right'"
+                            class="right">
+                        Next <i class="fa fa-caret-right fa-fw"></i>
+                    </button>
+                </div>
+            </fieldset>
+
+            <fieldset class="borderless" data-bind="visible: mode() === 'analysis'">
+                <!--ko with: currentProjectAlt-->
+                <h4 data-bind="text: label"></h4>
+                <!--/ko-->
+
+                <div class="alert alert-success" data-bind="visible: analysisRunning">
+                    Analysis is currently running. You can keep this screen open to monitor progress, or close it and continue using the map while the reports are being generated. When the reports are finished, this screen will have links to the requested reports and maps.
+                </div>
+
+                <div data-bind="visible: hasAnalysisResults">
+                    <div class="alert alert-success">
+                        Analysis complete
+                    </div>
+                    <p>
+                        Click <a href="/est/analysis/ReportOptions.do?p=14417" target="_blank">here</a> to view the analysis reports.
+                    </p>
+                </div>
+
+                <div data-bind="visible: analysisStatus() === analysisStatuses.EDITING">
+                    <p>You can start GIS analysis on this screen by clicking the <strong>Start Analysis</strong> button. Note that the project editor will close, and features will not be editable until analysis is complete.</p>
+
+                    <div class="buttonContainer buttonContainerFull">
+                        <button data-dojo-type="dijit/form/Button"
+                                data-bind="click: startAnalysis">
+                            Start Analysis
+                        </button>
+                    </div>
+                </div>
+
                 <div class="buttonContainer buttonContainerFull">
                     <button data-dojo-type="dijit/form/Button"
-                            data-bind="click: unloadCurrentProject">
-                        Close
+                            data-bind="click: showEditFeatures">
+                        <i class="fa fa-caret-left fa-fw"></i> Back
                     </button>
                 </div>
             </fieldset>

@@ -118,3 +118,9 @@ span.selectedItem {
     background-color: #f8d7da;
     border-color: #f5c6cb;
 }
+
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}

@@ -97,7 +97,25 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         map: this.map,
         featureTypes: ['polygon', 'polyline', 'point'], //preprended with "project_" as id of layer, referenced in layers object as self.layers.point, etc.
         layers: {}, //caches the layers
-        
+
+        //translates the first three alt statuses, everything else is "Other" as far as we're concerned.
+        analysisStatuses: {
+            EDITING: 'Editing',
+            ANALYSIS_RUNNING: 'Ready for GIS Analysis',
+            ANALYSIS_COMPLETE: 'GIS Analysis Complete',
+            OTHER: 'Other',
+            fromEtdmStatus: function (etdmStatus) {
+                var foundStatus = null;
+                for (var s in this) {
+                    if (this[s] === etdmStatus) {
+                        foundStatus = this[s];
+                        break;
+                    }
+                }
+                return foundStatus || this.OTHER;
+            }
+        },
+
         selectionSymbols: {
             point:
                 new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_CIRCLE, 12,
@@ -143,9 +161,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         undoManager: new UndoManager(),
         undo: function () {
             this.undoManager.undo();
+            this.edit.deactivate();
         },
         redo: function () {
             this.undoManager.redo();
+            this.edit.deactivate();
         },
         updateUndoRedoButtons: function () {
             var operation = null,
@@ -200,6 +220,131 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this.projectAltId = null;
         },
 
+        enableAnalysisOption: function () {
+            return this.features.length > 0;
+        },
+        showEditFeatures: function () {
+            this.mode('editFeatures');
+        },
+
+        showAnalysisOption: function () {
+            //add to input queue (only does new/updated features; no need to wait for response; it can take a while to process, and it's ok to set the status to ready for GIS--that will wait if necessary)
+            MapDAO.addAltFeaturesToInputQueue(this.projectAltId); //eslint-disable-line no-undef
+            this.deactivateExtract(); //deactivates draw tool too
+            this.edit.deactivate();
+
+            this.mode('analysis');
+        },
+
+        startAnalysis: function () {
+            var self = this;
+            //todo loading overlay
+            MapDAO.startAnalysisForAlternative(this.projectAltId, { //eslint-disable-line no-undef
+                callback: function (reply) {
+                    if (reply === 'ok') {
+                        self.analysisStatus(self.analysisStatuses.ANALYSIS_RUNNING);
+                        //first time can take a while before status actually updates, might still be editing, so wait 45 seconds before first check
+                        window.setTimeout(function () {
+                            self.checkAnalysisProgress();
+                        }, 45000);
+                    } else {
+                        topic.publish('growler/growlError', 'Error starting analysis: ' + reply);
+                    }
+                    
+                    //self.unloadCurrentProject();
+                    //topic.publish('growler/growl', 'Analysis started. Please check the Project Status page to see progress.');
+                },
+                errorHandler: function (message, exception) {
+                    topic.publish('growler/growlError', 'Error starting analysis. Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)); //eslint-disable-line no-undef
+                }
+            });
+        },
+
+        checkAnalysisProgress: function () {
+            var self = this;
+            self.progressErrorCount = self.progressErrorCount || 0;
+            //eslint-disable-next-line no-undef
+            MapDAO.getAltAnalysisProgress(this.projectAltId, {
+                callback: function (p) {
+
+                    if (p.startsWith('Error')) {
+                        self.analysisStatuses(self.analysisStatuses.OTHER);
+                        topic.publish('growler/growlError', p); //eslint-disable-line no-undef
+                        return;
+                    }
+
+                    var s = self.analysisStatuses.fromEtdmStatus(p);
+                    self.analysisStatus(s);
+
+                    if (s === self.analysisStatuses.ANALYSIS_RUNNING) {
+                        window.setTimeout(function () {
+                            self.checkAnalysisProgress();
+                        }, 15000);
+                    }
+                },
+                errorHandler: function (e) {
+                    if (self.progressErrorCount > 5) {
+                        //bail
+                        topic.publish('growler/growlError', 'Too many errors updating progress, updates will stop: ' + e);
+                    } else {
+                        topic.publish('growler/growlError', 'Error updating progress: ' + e);
+                        self.progressErrorCount++;
+                        self.checkAnalysisProgress();
+                    }
+                }
+            });
+        },
+
+        //called from startup or external call to start editing a project
+        loadProject: function (projectId) {
+            var self = this;
+            MapDAO.getEditableAlternativeOfProjectList(projectId, { //eslint-disable-line no-undef
+                callback: function (projectList) {
+                    if (projectList.length === 0) {
+                        topic.publish('growler/growlError', 'Project ' + projectId + ' has no editable alternatives');
+                    } else {
+                        if (self.currentAuthority().orgId !== projectList[0].orgId) {
+                            //change currentAuthority
+                            var authority = self.authorities.find(function (a) {
+                                return a.orgId === projectList[0].orgId;
+                            });
+                            if (authority) {
+                                self.currentAuthority(authority);
+                            } else {
+                                topic.publish('growler/growlError', 'You are not authorized to edit this project');
+                                return;
+                            }
+                        }
+                        if (projectList.length === 1) {
+                            self.loadProjectAlt(projectList[0]);
+                        } else {
+                            //pick an alt
+                            projectList.forEach(function (projectAlt) {
+                                //combine project and alt names
+                                projectAlt.name = projectAlt.projectName + ' - ' + projectAlt.altName;
+                                projectAlt.label = '#' + projectAlt.projectId + '-' + projectAlt.altNumber + ': ' + projectAlt.name;
+
+                                //add functions
+                                projectAlt.load = function () {
+                                    self.loadProjectAlt(projectAlt);
+                                    self.openProjectDialog.hide();
+                                };
+                            });
+                            self.projects(projectList);
+                            self.openProjectDialog.show();
+                        }
+                    }
+                },
+                errorHandler: function (message, exception) {
+                    topic.publish('viewer/handleError', {
+                        source: 'ProjectEditor.listProjectAlts',
+                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                    });
+                }
+            });
+
+        },
+
         
         loadProjectAlt: function (projectAlt) {
             var self = this;
@@ -213,6 +358,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     if (permission === 'ok') {
                         self.projectAltId = projectAlt.id;
                         self.currentProjectAlt(projectAlt);
+                        self.analysisStatus(self.analysisStatuses.fromEtdmStatus(projectAlt.status));
                         self._loadProjectAltFeatures(projectAlt.id);
                         self.mode('editFeatures');
                     } else {
@@ -220,7 +366,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     }
                 },
                 errorHandler: function (message, exception) {
-                    self.LoadingOverlay.hide();
+                    self.loadingOverlay.hide();
                     topic.publish('viewer/handleError', {
                         source: 'ProjectEditor.loadProjectAlt',
                         error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
@@ -241,7 +387,9 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this.inherited(arguments);
 
             this.loadingOverlay = new LoadingOverlay(); //this can be defined at the root level, but...
-            
+
+            topic.subscribe('projectEditor/loadProject', lang.hitch(this, 'loadProject'));
+
             this._createGraphicLayers();
             //this entire widget will be hidden if user doesn't have at least one project editing auth, so don't need to worry about index out of bounds
             if (!this.currentAuthority() || this.currentAuthority().projectEditor === false) {
@@ -295,6 +443,43 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
         },
 
+        /**
+        * Handles "editproject" argument passed in the query string to do things after the editor widget is loaded. TODO
+        * @param {object} testUri optional URI to be used only during testing
+        * @returns {void}
+        */
+        _handleQueryString: function (testUri) {
+            var uri = testUri || window.location.href;
+            var qs = uri.indexOf('?') >= 0 ? uri.substring(uri.indexOf('?') + 1, uri.length) : '';
+            qs = qs.toLowerCase();
+            var qsObj = ioQuery.queryToObject(qs);
+            //acceptable arguments include loadMap, projectId, aoiid, latlon, latlong, and mgrs
+            //arguments are (for now) mutually exclusive, with preference given to the order of the arguments listed above
+            //TODO expand to addLayer
+            //TODO could also consider expanding to chain multiple events, like load several layers, load a saved map and add a project, etc.
+            if (qsObj.loadmap) {
+                this.loadMap(qsObj.loadmap);
+            } else if (qsObj.projectid) {
+                this.addProjectToMap(qsObj.projectid);
+            } else if (qsObj.editproject) {
+                if (this.hasProjectEditAuthority) {
+                    //todo this doesn't work, because projectEditor hasn't been loaded yet. topic.publish('projectEditor/loadProject', qsObj.editproject);
+
+                } else {
+                    topic.publish('growler/growlError', 'You are not authorized to edit project features');
+                }
+            } else if (qsObj.aoiid) {
+                this.addAoiToMap(qsObj.aoiid);
+            } else if (qsObj.latlong || qsObj.latlon) {
+                var ll = qsObj.latlong || qsObj.latlon;
+                this.zoomToLatLong(ll, qsObj.zoomlevel);
+            } else if (qsObj.mgrs) {
+                this.zoomToMgrsPoint(qsObj.mgrs, qsObj.zoomlevel);
+            }
+
+
+        },
+
         //save to server
         _addFeatureToLayer: function (feature, addToStack) {
             var self = this,
@@ -324,6 +509,9 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 if (addToStack !== false) {
                     self.undoManager.add(operation);
                 }
+
+                self.analysisStatus(self.analysisStatuses.EDITING);
+
                 deferred.resolve(feature);
 
             }, function (err) {
@@ -369,7 +557,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 function (polyLines) {
                     self.loadingOverlay.hide();
                     self.newFeatureDialog.hide();
-                    self._addRoadwayFeatures(polyLines, this.roadwayId());
+                    self._addRoadwayFeatures(polyLines, self.roadwayId());
                 }, function (e) {   
                     self.extractLineError(e);
                     self.loadingOverlay.hide();
@@ -547,7 +735,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     var f = self._constructFeature(event);
                     self._addFeatureToLayer(f, true);
                 } else if (mode === 'extract1') {
-                    Extract.getRoadwayRoutesByPoint(event.geometry, self.map).then(
+                    Extract.getRoadwaysByPoint(event.geometry, self.map).then(
                         function (reply) {
                             if (reply.features.length > 0) {
                                 self.extractPoint1 = event.geometry; //cache the first point
@@ -678,6 +866,9 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                                         addedFeatures.forEach(function (addedFeature) {
                                             self.features.push(addedFeature);
                                         });
+
+                                        self.analysisStatus(self.analysisStatuses.EDITING);
+
                                         //add to undo stack
                                         var operation = new FeatureOperations.Split(currentFeature, addedFeatures);
                                         self.undoManager.add(operation);
@@ -762,13 +953,13 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         },
 
         /**
-         * Gets the next number for auto-named features (e.g. "Feature 1", "Feature 2", ... "Feature N" or "Extracted Line 1" ...)
-         * @returns {Number} the next number in the sequence of auto-named features.
-         * TODO move to common location and share code with AOI?
+         * Gets the next number for auto-named features (e.g. "S-001", "S-002", ... "P-001" or "A-001" ...)
+         * @param {String} prefix The prefix of the feature name, either S, A or P
+         * @returns {String} left-padded string representing the next number in the sequence of auto-named features.
          */
-        _nextFeatureNumber: function () {
+        _nextFeatureNumber: function (prefix) {
             var n = 0,
-                rx = /(Feature|Extracted Line) (\d+)/;
+                rx = new RegExp('(' + prefix + '-)(\\d+)');
             this.features().forEach(function (f) {
                 var r = rx.exec(f.name());
                 if (r) {
@@ -780,7 +971,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 }
             });
             n++;
-            return n;
+
+            return n.toString().padStart(3, 0);
         },
 
         _loadProjectAltFeatures: function () {
@@ -880,7 +1072,9 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             } else {
                 //featureOrEvent is the event argument for on-draw-complete (either from draw or cut operation),
                 //or from address-auto-complete, which we manufacture as a object with a name property
-                feature.name = featureOrEvent.name || 'Feature ' + self._nextFeatureNumber();
+                //default names for project features include the type prefix "S" for polylines (segments), "P" for points, or "A" for polygons
+                var prefix = featureOrEvent.geometry.type === 'polyline' ? 'S' : featureOrEvent.geometry.type === 'polygon' ? 'A' : 'P';
+                feature.name = featureOrEvent.name || (prefix + '-' + self._nextFeatureNumber(prefix));
                 feature.graphic = new Graphic(featureOrEvent.geometry, null, {
                     OBJECTID: null,
                     FEATURE_NAME: feature.name,
@@ -984,6 +1178,9 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     if (!(addToStack === false)) { //if null, or true, or anything other than a literal false, add to stack
                         self.undoManager.add(operation);
                     }
+
+                    self.analysisStatus(self.analysisStatuses.EDITING);
+
                     deferred.resolve(true);
                     //feature.cachePreUpdate();
                 }, function (err) {
@@ -1047,7 +1244,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             //eslint-disable-next-line no-undef
             MapDAO.getEditableAlternativeList(orgId, {
-                //note that for simplicity's sake, this refers to "project", but what's really being edited are the features of a single project alt
                 callback: function (projectList) {
                     projectList.forEach(function (projectAlt) {
                         //combine project and alt names
@@ -1113,6 +1309,21 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this.projects = ko.observableArray(); //not really projects, but rather editable project alts.
 
             this.currentProjectAlt = ko.observable(); //doesn't do much except cache the project and alt ids and name for display; not editable
+
+            this.analysisStatus = ko.observable();
+
+            this.canEdit = ko.pureComputed(function () {
+                return self.analysisStatus() === self.analysisStatuses.EDITING || self.analysisStatus() === self.analysisStatuses.ANALYSIS_COMPLETE;
+            });
+
+            this.analysisRunning = ko.pureComputed(function () {
+                return self.analysisStatus() === self.analysisStatuses.ANALYSIS_RUNNING;
+            });
+
+            this.hasAnalysisResults = ko.pureComputed(function () {
+                //this presumes there are some sort of results available for the project if status is analysis complete or higher
+                return self.analysisStatus() === self.analysisStatuses.OTHER || self.analysisStatus() === self.analysisStatuses.ANALYSIS_COMPLETE;
+            });
 
             //all of the features, as models, regardless of geometry, distinct from, but related to, the features in layers.point.graphics, layers.polyline.graphics, and layers.polygon.graphics
             this.features = ko.observableArray();

@@ -40,13 +40,19 @@
                 Open
             </button>
 
-            <a href="AOI_Training_Video.mp4" target="_blank" style="position: relative; top: 5px; left: 15px; text-decoration:underline">Video</a>
 
             <div style="margin-top: 15px">
-                <p>
-                    Click the <strong>Create</strong> button to create a new Area of Interest (AOI),
-                    or the <strong>Open</strong> button to open an existing AOI.
-                </p>
+                Click the <strong>Create</strong> button to create a new Area of Interest (AOI),
+                or the <strong>Open</strong> button to open an existing AOI.
+            </div>
+
+            <div class="helpLinks">
+                <label>Help</label>
+                <ul>
+                    <li><a href="/assets/est/quickGuides/QuickSteps-AOI.pdf" target="_blank">Quick Steps - Getting started with the editor</a></li>
+                    <li><a href="/assets/est/quickGuides/QuickGuide-AOI.pdf" target="_blank">Quick Guide - Additional editing details</a></li>
+                    <li><a href="/assets/est/AOI/AOI_Training_Video.mp4" target="_blank">Video</a></li>
+                </ul>
             </div>
         </div>
 
@@ -258,6 +264,7 @@
                 <input type="checkbox" id="estCheckbox" data-bind="checked: studyAreaReportRequested"><label for="estCheckbox">Standard EST Study Area</label><br />
                 <input type="checkbox" id="cciCheckbox" data-bind="checked: socioCulturalDataReportRequested"><label for="cciCheckbox">Sociocultural Data Report</label><br />
                 <input type="checkbox" id="hcmCheckbox" data-bind="checked: hardCopyMapsRequested"><label for="hcmCheckbox">Hardcopy Maps</label><br />
+                <span data-bind="visible: hardCopyMapsRequested"><strong>Note:</strong> You will receive an email from the help desk when hardcopy maps are complete.<br /></span>
                 <input type="checkbox" id="crdCheckbox" data-bind="checked: culturalResourcesDataReportRequested"><label for="crdCheckbox">Cultural Resources Data Report</label><br />
                 <input type="checkbox" id="ertCheckbox" data-bind="checked: emergencyResponseReportRequested"><label for="ertCheckbox">Emergency Response Report</label><br />
 
@@ -293,7 +300,7 @@
                     <tbody>
                         <tr data-bind="template: {name: 'progress', data: progressGIS}"></tr>
                         <tr data-bind="template: {name: 'progress', data: progressCCI}"></tr>
-                        <tr data-bind="visible: progressCCI.code === 5">
+                        <tr data-bind="visible: progressCCI.code >= 4"> <!--TODO change to 5 when HCM is working again-->
                             <td colspan="2" style="margin-left: 20px">
                                 <ul data-bind="foreach: analysisAreas">
                                     <li>
@@ -303,6 +310,7 @@
                             </td>
                         </tr>
                         <tr data-bind="template: {name: 'progress', data: progressHCM}"></tr>
+                        <tr data-bind="visible: hardCopyMapsRequested"><td colspan="2"><strong>Note:</strong> You will receive an email from the help desk when hardcopy maps are complete.</td></tr>
                         <tr data-bind="template: {name: 'progress', data: progressCRD}"></tr>
                         <tr data-bind="template: {name: 'progress', data: progressERT}"></tr>
                     </tbody>

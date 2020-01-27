@@ -51,7 +51,7 @@
 }
 
 .feature-selected {
-    background-color: lightcyan;
+    background-color: lightcyan !important;
 }
 
 .aoiList th {
@@ -92,4 +92,18 @@ fieldset.borderless {
     margin: 0;
     padding: 0;
     border: none;
+}
+
+div.helpLinks {
+    padding-top: 10px;
+}
+
+div.helpLinks a {
+    text-decoration:underline;
+}
+
+div.helpLinks ul {
+    padding-top: 2px;
+    margin-top: 0;
+    padding-left: 20px;
 }

@@ -133,11 +133,11 @@ function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphi
         /**
         * Gets the raw geometry, with measures, from the basemap with the specified roadway ID, using a direct query to the AGS REST API.
         * @param {any} roadwayId The value for the desired feature's ROADWAY attribute
-        * @returns {Deferred} A Deffered object resolved with the response from the REST query, a raw object representing the feature, including the array of coordinates and measures from the basemap with the specified roadway ID, as an array of arrays, with the inner set of arrays storing coordinate x, y and m values.
+        * @returns {Deferred} A Deffered object resolved with the response from the REST query, a raw object representing the feature, including the array of coordinates and measures from the basemap with the specified roadway ID, as an array of arrays, with the inner set of arrays storing coordinate x, y and m values; also includes attributes BEGIN_POST, END_POST, RTLENGTH, FUNCLASS, AADT and CURRENTYR.
         */
         getRoadwayWithMeasures: function (roadwayId) {
             var deferred = new Deferred(),
-                url = 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI_Base/MapServer/2/query?where=ROADWAY%3D' + roadwayId + '&outFields=BEGIN_POST%2C+END_POST%2C+RTLENGTH&returnGeometry=true&outSR=%7Bwkid%3D102100%7D&returnZ=false&returnM=true&f=pjson';
+                url = 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI_Base/MapServer/2/query?where=ROADWAY%3D' + roadwayId + '&outFields=BEGIN_POST%2CEND_POST%2CRTLENGTH%2CAADT%2CFUNCLASS&returnGeometry=true&outSR=%7Bwkid%3D102100%7D&returnZ=false&returnM=true&f=pjson';
             try {
                 jQuery.get(url, null,
                     function (reply) {
@@ -165,16 +165,6 @@ function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphi
         },
 
         /**
-         * Gets features from the RCI roadway routes that intersect a 3-pixel envelope around the referenced point.
-         * @param {Point} point A point on the map where the user has clicked
-         * @param {Map} map The map the user clicked on. Used to convert the 3-pixel envelope to map units.
-         * @returns {Deferred} A deferred object to be resolved with an array of intersecting roadways.
-         */
-        getRoadwayRoutesByPoint: function (point, map) {
-            return this.getFeaturesByPoint(point, map, 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI_Network/MapServer/7');
-        },
-
-        /**
         * Gets features from the referenced ArcGIS Server REST endpoint that intersect a 3-pixel envelope around the referenced point.
         * @param {Point} point A point on the map where the user has clicked
         * @param {Map} map The map the user clicked on. Used to convert the 3-pixel envelope to map units.
@@ -199,10 +189,14 @@ function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphi
             try {
                 jQuery.get(url, null,
                     function (reply) {
-                        if (reply.features && reply.features.length > 0) {
-                            deferred.resolve(reply);
+                        if (reply.error) {
+                            deferred.reject(reply.error.message);
                         } else {
-                            deferred.reject('No features found');
+                            if (reply.features && reply.features.length > 0) {
+                                deferred.resolve(reply);
+                            } else {
+                                deferred.reject('No features found');
+                            }
                         }
                     }, 'json');
             } catch (e) {

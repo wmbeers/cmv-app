@@ -427,7 +427,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         //Analysis areas are saved on the fly as features are added to them, but if the default, typical option
         //of NOT assigning features to analysisAreas is chosen, we'll need to do that here
         saveAnalysisAreas: function () {
-            var promises = [], //promises to be resolved when all analysis areas are created from ungroupedFeatures.
+            var self = this,
+                promises = [], //promises to be resolved when all analysis areas are created from ungroupedFeatures.
                 deferred = null, //deferred object resolved when this is done; usually is assigned by _deleteEmptyAnalysisAreas
                 ungroupedFeatures = this.features().filter(function (f) {
                     return !f.analysisArea() || f.analysisArea().id === 0; //latter shouldn't ever be the case
@@ -551,7 +552,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             var self = this;
             self.progressErrorCount = self.progressErrorCount || 0;
             //eslint-disable-next-line no-undef
-            MapDAO.getProgress(this.aoiId, {
+            MapDAO.getAoiAnalysisProgress(this.aoiId, {
                 callback: function (p) {
                     //a little post-processing
                     //Note: don't think you can simplify this by just directly referring to the DWR reply, it has to be cloned to a new object
@@ -1083,7 +1084,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     var f = self._constructFeature(event);
                     self._addFeatureToLayer(f, true);
                 } else if (mode === 'extract1') {
-                    Extract.getRoadwayRoutesByPoint(event.geometry, self.map).then(
+                    Extract.getRoadwaysByPoint(event.geometry, self.map).then(
                         function (reply) {
                             if (reply.features.length > 0) {
                                 self.extractPoint1 = event.geometry; //cache the first point
