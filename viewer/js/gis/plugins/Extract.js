@@ -191,12 +191,11 @@ function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphi
                     function (reply) {
                         if (reply.error) {
                             deferred.reject(reply.error.message);
+                        } else if (reply.features && reply.features.length > 0) {
+                            deferred.resolve(reply);
                         } else {
-                            if (reply.features && reply.features.length > 0) {
-                                deferred.resolve(reply);
-                            } else {
-                                deferred.reject('No features found');
-                            }
+                            //no errors, but no features either
+                            deferred.reject('No features found');
                         }
                     }, 'json');
             } catch (e) {
