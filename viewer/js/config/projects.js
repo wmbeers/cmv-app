@@ -13,9 +13,9 @@ define(
     "polygon": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/AOIDEV_INPUT/FeatureServer/3"
   },
   "estProjectLayers": {
-    "point": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/ESTDEV_INPUT/FeatureServer/0",
-    "polyline": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/ESTDEV_INPUT/FeatureServer/1",
-    "polygon": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/ESTDEV_INPUT/FeatureServer/2"
+    "point": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/ESTDEV_INPUT_LAYERS/FeatureServer/0",
+    "polyline": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/ESTDEV_INPUT_LAYERS/FeatureServer/1",
+    "polygon": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/ESTDEV_INPUT_LAYERS/FeatureServer/2"
   }
 }
 );
