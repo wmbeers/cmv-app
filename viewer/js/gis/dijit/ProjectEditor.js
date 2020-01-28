@@ -17,6 +17,7 @@ define([
     'dojo/on',
     'dojo/dom',
     'dojo/topic',
+    'dojo/io-query',
     'dojo/store/Memory',
     'dojo/Deferred',
     'dojo/promise/all',
@@ -73,7 +74,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     FilteringSelect,
     ValidationTextBox,
     lang, on, dom,
-    topic, Memory, Deferred, all,
+    topic, ioQuery, Memory, Deferred, all,
     ProjectEditorSidebarTemplate,
     OpenProjectDialogTemplate,
     NewFeatureDialogTemplate,
@@ -441,10 +442,12 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 self.newFeatureDialog.hide();
             });
 
+            this._handleQueryString();
+
         },
 
         /**
-        * Handles "editproject" argument passed in the query string to do things after the editor widget is loaded. TODO
+        * Handles"editproject" arguments passed in the query string to do things after this widget is loaded.
         * @param {object} testUri optional URI to be used only during testing
         * @returns {void}
         */
@@ -453,31 +456,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             var qs = uri.indexOf('?') >= 0 ? uri.substring(uri.indexOf('?') + 1, uri.length) : '';
             qs = qs.toLowerCase();
             var qsObj = ioQuery.queryToObject(qs);
-            //acceptable arguments include loadMap, projectId, aoiid, latlon, latlong, and mgrs
-            //arguments are (for now) mutually exclusive, with preference given to the order of the arguments listed above
-            //TODO expand to addLayer
-            //TODO could also consider expanding to chain multiple events, like load several layers, load a saved map and add a project, etc.
-            if (qsObj.loadmap) {
-                this.loadMap(qsObj.loadmap);
-            } else if (qsObj.projectid) {
-                this.addProjectToMap(qsObj.projectid);
-            } else if (qsObj.editproject) {
-                if (this.hasProjectEditAuthority) {
-                    //todo this doesn't work, because projectEditor hasn't been loaded yet. topic.publish('projectEditor/loadProject', qsObj.editproject);
-
-                } else {
-                    topic.publish('growler/growlError', 'You are not authorized to edit project features');
-                }
-            } else if (qsObj.aoiid) {
-                this.addAoiToMap(qsObj.aoiid);
-            } else if (qsObj.latlong || qsObj.latlon) {
-                var ll = qsObj.latlong || qsObj.latlon;
-                this.zoomToLatLong(ll, qsObj.zoomlevel);
-            } else if (qsObj.mgrs) {
-                this.zoomToMgrsPoint(qsObj.mgrs, qsObj.zoomlevel);
+            if (qsObj.editproject) {
+                this.loadProject(qsObj.editproject);
+            //TODO } else if (qsObj.editalt) {
+            //TODO loadProjectAlt expects an object, need to create/call a new MapDAO method that accepts projectAltId
             }
-
-
         },
 
         //save to server
