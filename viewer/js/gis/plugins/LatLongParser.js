@@ -22,8 +22,8 @@
             switch (matches.length) {
             case 2:
                 //decimal degrees
-                d1 = matches[0];
-                d2 = matches[1];
+                d1 = parseFloat(matches[0]);
+                d2 = parseFloat(matches[1]);
                 break;
             case 4:
                 //degrees decimal minutes
