@@ -366,10 +366,6 @@ define([
                     }),
                     mode: 1
                 },
-                credentialKey: {
-                    userId: 'DRAFT_secure',
-                    server: 'https://gemini.at.geoplan.ufl.edu/arcgis' //TODO pull from projects.js
-                },
                 editorLayerInfos: {
                     disableGeometryUpdate: false
                 },
@@ -884,7 +880,7 @@ define([
                 options: {
                     map: true,
 
-                    url: 'https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/QUERY_REGIONS/MapServer/0',
+                    url: projects.queryRegionsLayer,
                     field: 'DESCRIPT',
                     maxAllowableOffset: 100,
                     i18n: {

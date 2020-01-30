@@ -3,7 +3,7 @@ define(
 {
   "queryMmaLayer": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/QUERY_MMA_DEV/MapServer/0",
   "queryDraftLayer": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/QUERY_DRAFTS_DEV/MapServer/0",
-  "queryRegionsLayer": "https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/QUERY_REGIONS/MapServer /0",
+  "queryRegionsLayer": "https://capricorn.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/QUERY_REGIONS/MapServer/0",
   "previouslyReviewedProjectsService": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/PREVIOUSLY_REVIEWED_DEV/MapServer",
   "currentlyInReviewProjectsService": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_REVIEW_DEV/MapServer",
   "eliminatedProjectsService": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer",

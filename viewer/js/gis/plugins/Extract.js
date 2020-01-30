@@ -12,10 +12,11 @@ define([
     //breaks identify 'esri/geometry/projection',
     'esri/tasks/GeometryService',
     'esri/tasks/LengthsParameters',
+    './js/config/projects.js',
     'esri/symbols/TextSymbol', //ONLY USED FOR TESTING
     'jquery'
 ],
-function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphic, QueryTask, Point, PolyLine, /*projection,*/ GeometryService, LengthsParameters, TextSymbol, jQuery) {
+function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphic, QueryTask, Point, PolyLine, /*projection,*/ GeometryService, LengthsParameters, projects, TextSymbol, jQuery) {
     /**
     * Helper class for extracting points routes from the FDOT basemap.
     */
@@ -30,7 +31,7 @@ function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphi
                 id: 7311,
                 type: 'dynamic',
                 name: 'RCI Basemap',
-                url: 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI_Base/MapServer/'
+                url: projects.rciBasemapService
             };
             topic.publish('layerLoader/addLayerFromCategoryDef', rciService);
         },
@@ -137,7 +138,7 @@ function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphi
         */
         getRoadwayWithMeasures: function (roadwayId) {
             var deferred = new Deferred(),
-                url = 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI_Base/MapServer/2/query?where=ROADWAY%3D' + roadwayId + '&outFields=BEGIN_POST%2CEND_POST%2CRTLENGTH%2CAADT%2CFUNCLASS&returnGeometry=true&outSR=%7Bwkid%3D102100%7D&returnZ=false&returnM=true&f=pjson';
+                url = projexts.rciBasemapService + '/2/query?where=ROADWAY%3D' + roadwayId + '&outFields=BEGIN_POST%2CEND_POST%2CRTLENGTH%2CAADT%2CFUNCLASS&returnGeometry=true&outSR=%7Bwkid%3D102100%7D&returnZ=false&returnM=true&f=pjson';
             try {
                 jQuery.get(url, null,
                     function (reply) {
@@ -161,7 +162,7 @@ function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphi
          * @returns {Deferred} A deferred object to be resolved with an array of intersecting roadways.
          */
         getRoadwaysByPoint: function (point, map) {
-            return this.getFeaturesByPoint(point, map, 'https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI_Base/MapServer/2');
+            return this.getFeaturesByPoint(point, map, projects.rciBasemapService + '/2');
         },
 
         /**
@@ -457,7 +458,9 @@ function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphi
         },
 
         /**
+         * DEPRECATED no longer works
          * Extracts the route from the basemap between any two points. Currently the two points must be along the same roadway. This is the method used by the interactive click-on-map extract function.
+         * @deprecated The NAServer is no longer available.
          * @param {Point} p1 The begin point 
          * @param {Point} p2 The end point
          * @returns {Polyline} The route between the specified points
