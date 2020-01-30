@@ -1,7 +1,8 @@
 define([
-    'dojo/Deferred'
+    'dojo/Deferred',
+    'dojo/topic'
 ],
-function (Deferred) {
+function (Deferred, topic) {
     /**
      * For getting user authorities, called at startup and again when refreshing tokens.
      */
@@ -24,7 +25,7 @@ function (Deferred) {
                 },
                 errorHandler: function (message, exception) {
                     topic.publish('viewer/handleError', {
-                        source: 'AoiEditor.addFeatureToAnalysisArea',
+                        source: 'EstAUthorization.getAuthorities',
                         error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)
                     });
                     //for now just treat this as unauthorized, empty set of authorities
