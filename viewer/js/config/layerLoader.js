@@ -1533,7 +1533,7 @@ define({
   },
   {
     "id": 5941,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Eliminated_Dev/MapServer/24",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer/24",
     "name": "5280 ft (1 mile)",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 1 mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "GIS Buffers\\Analysis Area Buffers\\5280 ft (1 mile)",
@@ -1617,7 +1617,7 @@ define({
   },
   {
     "id": 5940,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Eliminated_Dev/MapServer/23",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer/23",
     "name": "2640 ft (.5 mile)",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of a half mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "GIS Buffers\\Analysis Area Buffers\\2640 ft (.5 mile)",
@@ -1641,7 +1641,7 @@ define({
   },
   {
     "id": 5944,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_Review_Dev/MapServer/3",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_REVIEW_DEV/MapServer/3",
     "name": "Line Labels",
     "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on SEGMENT_ID.",
     "longName": "Analysis Area Features\\Labels\\Line Labels",
@@ -1665,7 +1665,7 @@ define({
   },
   {
     "id": 5945,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_Review_Dev/MapServer/4",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_REVIEW_DEV/MapServer/4",
     "name": "Polygons Labels",
     "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on POLY_ID.",
     "longName": "Analysis Area Features\\Labels\\Polygons Labels",
@@ -2139,7 +2139,7 @@ define({
   },
   {
     "id": 5946,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_Review_Dev/MapServer/2",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_REVIEW_DEV/MapServer/2",
     "name": "Point Labels",
     "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on POINT_ID.",
     "longName": "Analysis Area Features\\Labels\\Point Labels",
@@ -2163,7 +2163,7 @@ define({
   },
   {
     "id": 5947,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_Review_Dev/MapServer/5",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_REVIEW_DEV/MapServer/5",
     "name": "Termini",
     "description": "This dataset contains points representing the beginning and end points of unique project alternatives for planned transportation projects within the Efficient Transportation Decision Making (ETDM) Process. The project alternatives associated with these points currently have a status of ETAT Review.",
     "longName": "Analysis Area Features\\Termini",
@@ -2187,7 +2187,7 @@ define({
   },
   {
     "id": 5948,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_Review_Dev/MapServer/6",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_REVIEW_DEV/MapServer/6",
     "name": "Points",
     "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes point features of project alternatives and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ETAT_REVIEW_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these points currently have a status of ETAT Review.",
     "longName": "Analysis Area Features\\Points",
@@ -2220,7 +2220,7 @@ define({
   },
   {
     "id": 5949,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_Review_Dev/MapServer/7",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_REVIEW_DEV/MapServer/7",
     "name": "Lines",
     "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes line features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ETAT_REVIEW_POLYGONS\" for a complete representation of each project alternative. The project alternatives associated with these segments currently have a status of ETAT Review.",
     "longName": "Analysis Area Features\\Lines",
@@ -11195,7 +11195,7 @@ define({
   },
   {
     "id": 5939,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Eliminated_Dev/MapServer/22",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer/22",
     "name": "1320 ft (.25 mile)",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of a quarter mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "GIS Buffers\\Analysis Area Buffers\\1320 ft (.25 mile)",
@@ -11507,7 +11507,7 @@ define({
   },
   {
     "id": 5920,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Eliminated_Dev/MapServer/3",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer/3",
     "name": "Line Labels",
     "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on SEGMENTID. ",
     "longName": "Analysis Area Features\\Labels\\Line Labels",
@@ -11531,7 +11531,7 @@ define({
   },
   {
     "id": 5921,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Eliminated_Dev/MapServer/4",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer/4",
     "name": "Polygon Labels",
     "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on AREAID.",
     "longName": "Analysis Area Features\\Labels\\Polygon Labels",
@@ -11555,7 +11555,7 @@ define({
   },
   {
     "id": 5922,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Eliminated_Dev/MapServer/5",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer/5",
     "name": "Termini",
     "description": "This dataset contains points representing the beginning and end points of unique project alternatives for planned transportation projects within the Efficient Transportation Decision Making (ETDM) Process. The project alternatives associated with these points currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "Analysis Area Features\\Termini",
@@ -11588,7 +11588,7 @@ define({
   },
   {
     "id": 5923,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Eliminated_Dev/MapServer/6",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer/6",
     "name": "Points",
     "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes point features of project alternatives and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these points currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "Analysis Area Features\\Points",
@@ -11612,7 +11612,7 @@ define({
   },
   {
     "id": 5924,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Eliminated_Dev/MapServer/7",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer/7",
     "name": "Lines",
     "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes line features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these segments currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "Analysis Area Features\\Lines",
@@ -11636,7 +11636,7 @@ define({
   },
   {
     "id": 5925,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Eliminated_Dev/MapServer/8",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer/8",
     "name": "Polygons",
     "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes polygon features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these polygons currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "Analysis Area Features\\Polygons",
@@ -11660,7 +11660,7 @@ define({
   },
   {
     "id": 5926,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Eliminated_Dev/MapServer/9",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer/9",
     "name": "Analysis Areas",
     "description": "This dataset contains all spatial features of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer contains polygons which are based on a 1 foot buffer of all features in the project alternatives. These polygons are used for visual purposes only. These project alternatives currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "Analysis Areas",
@@ -11684,7 +11684,7 @@ define({
   },
   {
     "id": 5929,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Eliminated_Dev/MapServer/12",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer/12",
     "name": "100 ft",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 100 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "GIS Buffers\\Feature Buffers\\100 ft",
@@ -11708,7 +11708,7 @@ define({
   },
   {
     "id": 5930,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Eliminated_Dev/MapServer/14",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer/14",
     "name": "500 ft",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 500 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "GIS Buffers\\Feature Buffers\\500 ft",
@@ -11732,7 +11732,7 @@ define({
   },
   {
     "id": 5931,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Eliminated_Dev/MapServer/15",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer/15",
     "name": "1320 ft (.25 mile)",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of a quarter mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "GIS Buffers\\Feature Buffers\\1320 ft (.25 mile)",
@@ -11756,7 +11756,7 @@ define({
   },
   {
     "id": 5932,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Eliminated_Dev/MapServer/13",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer/13",
     "name": "200 ft",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 200 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "GIS Buffers\\Feature Buffers\\200 ft",
@@ -11780,7 +11780,7 @@ define({
   },
   {
     "id": 5933,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Eliminated_Dev/MapServer/16",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer/16",
     "name": "2640 ft (.5 mile)",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of a half mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "GIS Buffers\\Feature Buffers\\2640 ft (.5 mile)",
@@ -11804,7 +11804,7 @@ define({
   },
   {
     "id": 5934,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Eliminated_Dev/MapServer/17",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer/17",
     "name": "5280 ft (1 mile)",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 1 mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "GIS Buffers\\Feature Buffers\\5280 ft (1 mile)",
@@ -11828,7 +11828,7 @@ define({
   },
   {
     "id": 5936,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Eliminated_Dev/MapServer/20",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer/20",
     "name": "200 ft",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 200 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "GIS Buffers\\Analysis Area Buffers\\200 ft",
@@ -11852,7 +11852,7 @@ define({
   },
   {
     "id": 5937,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Eliminated_Dev/MapServer/21",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer/21",
     "name": "500 ft",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 500 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "GIS Buffers\\Analysis Area Buffers\\500 ft",
@@ -11876,7 +11876,7 @@ define({
   },
   {
     "id": 5938,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Eliminated_Dev/MapServer/19",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer/19",
     "name": "100 ft",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 100 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "GIS Buffers\\Analysis Area Buffers\\100 ft",
@@ -13055,7 +13055,7 @@ define({
   },
   {
     "id": 7472,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/1",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/1",
     "name": "DRAFT_SEGMENTS",
     "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes line features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these segments currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "DRAFT_SEGMENTS",
@@ -13165,7 +13165,7 @@ define({
   },
   {
     "id": 7471,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/0",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/0",
     "name": "DRAFT_POINTS",
     "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes point features of project alternatives and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these points currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "DRAFT_POINTS",
@@ -17033,7 +17033,7 @@ define({
   },
   {
     "id": 5885,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_Review_Dev/MapServer/23",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_REVIEW_DEV/MapServer/23",
     "name": "2640 ft (.5 mile)",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of a half mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of ETAT Review.",
     "longName": "GIS Buffers\\Analysis Area Buffers \\2640 ft (.5 mile)",
@@ -17057,7 +17057,7 @@ define({
   },
   {
     "id": 5886,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_Review_Dev/MapServer/21",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_REVIEW_DEV/MapServer/21",
     "name": "500 ft",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 500 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of ETAT Review.",
     "longName": "GIS Buffers\\Analysis Area Buffers \\500 ft",
@@ -17081,7 +17081,7 @@ define({
   },
   {
     "id": 5887,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_Review_Dev/MapServer/24",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_REVIEW_DEV/MapServer/24",
     "name": "5280 ft (1 mile)",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 1 mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of ETAT Review.",
     "longName": "GIS Buffers\\Analysis Area Buffers \\5280 ft (1 mile)",
@@ -17105,7 +17105,7 @@ define({
   },
   {
     "id": 5890,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Previously_Reviewed_Dev/MapServer/2",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/PREVIOUSLY_REVIEWED_DEV/MapServer/2",
     "name": "Point Labels",
     "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on POINT_ID.",
     "longName": "Analysis Area Features\\Labels\\Point Labels",
@@ -17129,7 +17129,7 @@ define({
   },
   {
     "id": 5891,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Previously_Reviewed_Dev/MapServer/3",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/PREVIOUSLY_REVIEWED_DEV/MapServer/3",
     "name": "Line Labels",
     "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on SEGMENT_ID.",
     "longName": "Analysis Area Features\\Labels\\Line Labels",
@@ -17153,7 +17153,7 @@ define({
   },
   {
     "id": 5892,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Draft_Projects_Dev/MapServer/4",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DRAFT_PROJECTS_DEV/MapServer/4",
     "name": "Polygon Labels",
     "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on AREAID. ",
     "longName": "Analysis Area Features\\Labels\\Polygon Labels",
@@ -17167,7 +17167,7 @@ define({
   },
   {
     "id": 5893,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Draft_Projects_Dev/MapServer/5",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DRAFT_PROJECTS_DEV/MapServer/5",
     "name": "Termini",
     "description": "This dataset contains points representing the beginning and end points of unique project alternatives for planned transportation projects within the Efficient Transportation Decision Making (ETDM) Process. The project alternatives associated with these points currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "Analysis Area Features\\Termini",
@@ -17181,7 +17181,7 @@ define({
   },
   {
     "id": 5896,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Draft_Projects_Dev/MapServer/2",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DRAFT_PROJECTS_DEV/MapServer/2",
     "name": "Point Labels",
     "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on POINT_ID.",
     "longName": "Analysis Area Features\\Labels\\Point Labels",
@@ -17195,7 +17195,7 @@ define({
   },
   {
     "id": 5897,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Draft_Projects_Dev/MapServer/3",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DRAFT_PROJECTS_DEV/MapServer/3",
     "name": "Line Labels",
     "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on SEGMENTID. ",
     "longName": "Analysis Area Features\\Labels\\Line Labels",
@@ -17209,7 +17209,7 @@ define({
   },
   {
     "id": 5898,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Draft_Projects_Dev/MapServer/6",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DRAFT_PROJECTS_DEV/MapServer/6",
     "name": "Points",
     "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes point features of project alternatives and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these points currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "Analysis Area Features\\Points",
@@ -17223,7 +17223,7 @@ define({
   },
   {
     "id": 5899,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Draft_Projects_Dev/MapServer/7",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DRAFT_PROJECTS_DEV/MapServer/7",
     "name": "Lines",
     "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes line features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these segments currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "Analysis Area Features\\Lines",
@@ -17237,7 +17237,7 @@ define({
   },
   {
     "id": 5900,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Draft_Projects_Dev/MapServer/8",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DRAFT_PROJECTS_DEV/MapServer/8",
     "name": "Polygons",
     "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes polygon features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these polygons currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "Analysis Area Features\\Polygons",
@@ -17251,7 +17251,7 @@ define({
   },
   {
     "id": 5901,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Draft_Projects_Dev/MapServer/9",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DRAFT_PROJECTS_DEV/MapServer/9",
     "name": "Analysis Areas",
     "description": "This dataset contains all spatial features of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer contains polygons which are based on a 1 foot buffer of all features in the project alternatives. These polygons are used for visual purposes only. These project alternatives currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "Analysis Areas",
@@ -17265,7 +17265,7 @@ define({
   },
   {
     "id": 5904,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Draft_Projects_Dev/MapServer/12",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DRAFT_PROJECTS_DEV/MapServer/12",
     "name": "100 ft",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 100 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "GIS Buffers\\Feature Buffers\\100 ft",
@@ -17279,7 +17279,7 @@ define({
   },
   {
     "id": 5905,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Draft_Projects_Dev/MapServer/13",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DRAFT_PROJECTS_DEV/MapServer/13",
     "name": "200 ft",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 200 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "GIS Buffers\\Feature Buffers\\200 ft",
@@ -17293,7 +17293,7 @@ define({
   },
   {
     "id": 5906,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Draft_Projects_Dev/MapServer/14",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DRAFT_PROJECTS_DEV/MapServer/14",
     "name": "500 ft",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 500 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "GIS Buffers\\Feature Buffers\\500 ft",
@@ -17307,7 +17307,7 @@ define({
   },
   {
     "id": 5907,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Draft_Projects_Dev/MapServer/15",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DRAFT_PROJECTS_DEV/MapServer/15",
     "name": "1320 ft",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of a quarter mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "GIS Buffers\\Feature Buffers\\1320 ft",
@@ -17321,7 +17321,7 @@ define({
   },
   {
     "id": 5908,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Draft_Projects_Dev/MapServer/16",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DRAFT_PROJECTS_DEV/MapServer/16",
     "name": "2640 ft",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of a half mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "GIS Buffers\\Feature Buffers\\2640 ft",
@@ -17335,7 +17335,7 @@ define({
   },
   {
     "id": 5909,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Draft_Projects_Dev/MapServer/17",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DRAFT_PROJECTS_DEV/MapServer/17",
     "name": "5280 ft",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 1 mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "GIS Buffers\\Feature Buffers\\5280 ft",
@@ -17349,7 +17349,7 @@ define({
   },
   {
     "id": 5911,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Draft_Projects_Dev/MapServer/19",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DRAFT_PROJECTS_DEV/MapServer/19",
     "name": "100 ft",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 100 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "GIS Buffers\\Analysis Area Buffers\\100 ft",
@@ -17363,7 +17363,7 @@ define({
   },
   {
     "id": 5912,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Draft_Projects_Dev/MapServer/20",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DRAFT_PROJECTS_DEV/MapServer/20",
     "name": "200 ft",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 200 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "GIS Buffers\\Analysis Area Buffers\\200 ft",
@@ -17377,7 +17377,7 @@ define({
   },
   {
     "id": 5913,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Draft_Projects_Dev/MapServer/21",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DRAFT_PROJECTS_DEV/MapServer/21",
     "name": "500 ft",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 500 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "GIS Buffers\\Analysis Area Buffers\\500 ft",
@@ -17391,7 +17391,7 @@ define({
   },
   {
     "id": 5914,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Draft_Projects_Dev/MapServer/22",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DRAFT_PROJECTS_DEV/MapServer/22",
     "name": "1320 ft",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of a quarter mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "GIS Buffers\\Analysis Area Buffers\\1320 ft",
@@ -17405,7 +17405,7 @@ define({
   },
   {
     "id": 5915,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Draft_Projects_Dev/MapServer/23",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DRAFT_PROJECTS_DEV/MapServer/23",
     "name": "2640 ft",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of a half mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "GIS Buffers\\Analysis Area Buffers\\2640 ft",
@@ -17419,7 +17419,7 @@ define({
   },
   {
     "id": 5916,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Draft_Projects_Dev/MapServer/24",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DRAFT_PROJECTS_DEV/MapServer/24",
     "name": "5280 ft",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 1 mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "GIS Buffers\\Analysis Area Buffers\\5280 ft",
@@ -17433,7 +17433,7 @@ define({
   },
   {
     "id": 5919,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Eliminated_Dev/MapServer/2",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer/2",
     "name": "Point Labels",
     "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on POINTID.",
     "longName": "Analysis Area Features\\Labels\\Point Labels",
@@ -17457,7 +17457,7 @@ define({
   },
   {
     "id": 5556,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_Review_Dev/MapServer/9",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_REVIEW_DEV/MapServer/9",
     "name": "Analysis Areas",
     "description": "This dataset contains all spatial features of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer contains polygons which are based on a 1 foot buffer of all features in the project alternatives. These polygons are used for visual purposes only. These project alternatives currently have a status of ETAT Review.",
     "longName": "Analysis Areas",
@@ -17490,7 +17490,7 @@ define({
   },
   {
     "id": 5558,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_Review_Dev/MapServer/8",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_REVIEW_DEV/MapServer/8",
     "name": "Polygons",
     "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes polygon features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ETAT_REVIEW_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these polygons currently have a status of ETAT Review.",
     "longName": "Analysis Area Features\\Polygons",
@@ -17523,7 +17523,7 @@ define({
   },
   {
     "id": 5560,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_Review_Dev/MapServer/12",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_REVIEW_DEV/MapServer/12",
     "name": "100 ft",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 100 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of ETAT Review.",
     "longName": "GIS Buffers\\Feature Buffers\\100 ft",
@@ -17547,7 +17547,7 @@ define({
   },
   {
     "id": 5561,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_Review_Dev/MapServer/13",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_REVIEW_DEV/MapServer/13",
     "name": "200 ft",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 200 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of ETAT Review.",
     "longName": "GIS Buffers\\Feature Buffers\\200 ft",
@@ -17571,7 +17571,7 @@ define({
   },
   {
     "id": 5562,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_Review_Dev/MapServer/14",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_REVIEW_DEV/MapServer/14",
     "name": "500 ft",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 500 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of ETAT Review.",
     "longName": "GIS Buffers\\Feature Buffers\\500 ft",
@@ -17595,7 +17595,7 @@ define({
   },
   {
     "id": 5563,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_Review_Dev/MapServer/16",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_REVIEW_DEV/MapServer/16",
     "name": "2640 ft (.5 mile)",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of a half mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of ETAT Review.",
     "longName": "GIS Buffers\\Feature Buffers\\2640 ft (.5 mile)",
@@ -17619,7 +17619,7 @@ define({
   },
   {
     "id": 5564,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_Review_Dev/MapServer/17",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_REVIEW_DEV/MapServer/17",
     "name": "5280 ft (1 mile)",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 1 mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of ETAT Review.",
     "longName": "GIS Buffers\\Feature Buffers\\5280 ft (1 mile)",
@@ -17643,7 +17643,7 @@ define({
   },
   {
     "id": 5565,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_Review_Dev/MapServer/15",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_REVIEW_DEV/MapServer/15",
     "name": "1320 ft (.25 mile)",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of a quarter mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of ETAT Review.",
     "longName": "GIS Buffers\\Feature Buffers\\1320 ft (.25 mile)",
@@ -17667,7 +17667,7 @@ define({
   },
   {
     "id": 5871,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_Review_Dev/MapServer/19",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_REVIEW_DEV/MapServer/19",
     "name": "100 ft",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 100 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of ETAT Review.",
     "longName": "GIS Buffers\\Analysis Area Buffers \\100 ft",
@@ -17691,7 +17691,7 @@ define({
   },
   {
     "id": 5872,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_Review_Dev/MapServer/20",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_REVIEW_DEV/MapServer/20",
     "name": "200 ft",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 200 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of ETAT Review.",
     "longName": "GIS Buffers\\Analysis Area Buffers \\200 ft",
@@ -17715,7 +17715,7 @@ define({
   },
   {
     "id": 5873,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Previously_Reviewed_Dev/MapServer/5",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/PREVIOUSLY_REVIEWED_DEV/MapServer/5",
     "name": "Termini",
     "description": "This dataset contains points representing the beginning and end points of unique project alternatives for planned transportation projects within the Efficient Transportation Decision Making (ETDM) Process. The project alternatives associated with these points currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
     "longName": "Analysis Area Features\\Termini",
@@ -17748,7 +17748,7 @@ define({
   },
   {
     "id": 5874,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Previously_Reviewed_Dev/MapServer/6",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/PREVIOUSLY_REVIEWED_DEV/MapServer/6",
     "name": "Points",
     "description": "\r\nThis dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes point features of project alternatives and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"NON_DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these points currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
     "longName": "Analysis Area Features\\Points",
@@ -17817,7 +17817,7 @@ define({
   },
   {
     "id": 5875,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Previously_Reviewed_Dev/MapServer/4",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/PREVIOUSLY_REVIEWED_DEV/MapServer/4",
     "name": "Polygon Labels",
     "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. This particular instance of this data displays only labels based on POLY_ID.",
     "longName": "Analysis Area Features\\Labels\\Polygon Labels",
@@ -17841,7 +17841,7 @@ define({
   },
   {
     "id": 5876,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Previously_Reviewed_Dev/MapServer/7",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/PREVIOUSLY_REVIEWED_DEV/MapServer/7",
     "name": "Lines",
     "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes line features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"NON_DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these segments currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
     "longName": "Analysis Area Features\\Lines",
@@ -17919,7 +17919,7 @@ define({
   },
   {
     "id": 5877,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Previously_Reviewed_Dev/MapServer/8",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/PREVIOUSLY_REVIEWED_DEV/MapServer/8",
     "name": "Polygons",
     "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes polygon features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"NON_DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these polygons currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
     "longName": "Analysis Area Features\\Polygons",
@@ -17988,7 +17988,7 @@ define({
   },
   {
     "id": 5879,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Previously_Reviewed_Dev/MapServer/12",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/PREVIOUSLY_REVIEWED_DEV/MapServer/12",
     "name": "100 ft",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 100 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
     "longName": "GIS Buffers\\Feature Buffers\\100 ft",
@@ -18012,7 +18012,7 @@ define({
   },
   {
     "id": 5880,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Previously_Reviewed_Dev/MapServer/9",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/PREVIOUSLY_REVIEWED_DEV/MapServer/9",
     "name": "Analysis Areas",
     "description": "This dataset contains all spatial features of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer contains polygons which are based on a 1 foot buffer of all features in the project alternatives. These polygons are used for visual purposes only. These project alternatives currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
     "longName": "Analysis Areas",
@@ -18090,7 +18090,7 @@ define({
   },
   {
     "id": 5882,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Previously_Reviewed_Dev/MapServer/13",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/PREVIOUSLY_REVIEWED_DEV/MapServer/13",
     "name": "200 ft",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 200 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
     "longName": "GIS Buffers\\Feature Buffers\\200 ft",
@@ -18114,7 +18114,7 @@ define({
   },
   {
     "id": 5883,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Previously_Reviewed_Dev/MapServer/14",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/PREVIOUSLY_REVIEWED_DEV/MapServer/14",
     "name": "500 ft",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 500 feet. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
     "longName": "GIS Buffers\\Feature Buffers\\500 ft",
@@ -18138,7 +18138,7 @@ define({
   },
   {
     "id": 5884,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_Review_Dev/MapServer/22",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ETAT_REVIEW_DEV/MapServer/22",
     "name": "1320 ft (.25 mile)",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of a quarter mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of ETAT Review.",
     "longName": "GIS Buffers\\Analysis Area Buffers \\1320 ft (.25 mile)",
@@ -18977,7 +18977,7 @@ define({
   },
   {
     "id": 6879,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/2",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/2",
     "name": "Cost Feasible",
     "description": null,
     "longName": "Cost Feasible",
@@ -18991,7 +18991,7 @@ define({
   },
   {
     "id": 6880,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/3",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/3",
     "name": "Ultimate Cost Feasible Project",
     "description": null,
     "longName": "Ultimate Cost Feasible Project",
@@ -19005,7 +19005,7 @@ define({
   },
   {
     "id": 6881,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/4",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/4",
     "name": "Long Range Transportation Plan",
     "description": null,
     "longName": "Long Range Transportation Plan",
@@ -19019,7 +19019,7 @@ define({
   },
   {
     "id": 6882,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/5",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/5",
     "name": "Non Major State Action",
     "description": null,
     "longName": "Non Major State Action",
@@ -19105,7 +19105,7 @@ define({
   },
   {
     "id": 6883,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/6",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/6",
     "name": "Other Area of Interest",
     "description": null,
     "longName": "Other Area of Interest",
@@ -19119,7 +19119,7 @@ define({
   },
   {
     "id": 6884,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/7",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/7",
     "name": "Corridor Study",
     "description": null,
     "longName": "Corridor Study",
@@ -19133,7 +19133,7 @@ define({
   },
   {
     "id": 6885,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/8",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/8",
     "name": "SIS Designation Change",
     "description": null,
     "longName": "SIS Designation Change",
@@ -19147,7 +19147,7 @@ define({
   },
   {
     "id": 6886,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/9",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/9",
     "name": "Emergency Response Tool",
     "description": null,
     "longName": "Emergency Response Tool",
@@ -19161,7 +19161,7 @@ define({
   },
   {
     "id": 6887,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/10",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/10",
     "name": "MCORES",
     "description": null,
     "longName": "MCORES",
@@ -19175,7 +19175,7 @@ define({
   },
   {
     "id": 6888,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/11",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/11",
     "name": "Transit",
     "description": null,
     "longName": "Transit",
@@ -19318,7 +19318,7 @@ define({
   },
   {
     "id": 6889,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/12",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/12",
     "name": "Bridge",
     "description": null,
     "longName": "Bridge",
@@ -19332,7 +19332,7 @@ define({
   },
   {
     "id": 6890,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/13",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/13",
     "name": "Freight",
     "description": null,
     "longName": "Freight",
@@ -19346,7 +19346,7 @@ define({
   },
   {
     "id": 6891,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/14",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/14",
     "name": "Rail",
     "description": null,
     "longName": "Rail",
@@ -19583,7 +19583,7 @@ define({
   },
   {
     "id": 7473,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/2",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/2",
     "name": "DRAFT_POLYGONS",
     "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes polygon features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these polygons currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "DRAFT_POLYGONS",
@@ -19597,7 +19597,7 @@ define({
   },
   {
     "id": 7474,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/3",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/3",
     "name": "DRAFT_ALTERNATIVES",
     "description": "This dataset contains all spatial features of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer contains polygons which are based on a 1 foot buffer of all features in the project alternatives. These polygons are used for visual purposes only. These project alternatives currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "DRAFT_ALTERNATIVES",
@@ -19611,7 +19611,7 @@ define({
   },
   {
     "id": 7475,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/4",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/4",
     "name": "NON_DRAFT_POINTS",
     "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes point features of project alternatives and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these points currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "NON_DRAFT_POINTS",
@@ -19625,7 +19625,7 @@ define({
   },
   {
     "id": 7476,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/5",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/5",
     "name": "NON_DRAFT_SEGMENTS",
     "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes line features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these segments currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "NON_DRAFT_SEGMENTS",
@@ -19639,7 +19639,7 @@ define({
   },
   {
     "id": 7477,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/6",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/6",
     "name": "NON_DRAFT_POLYGONS",
     "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes polygon features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these polygons currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "NON_DRAFT_POLYGONS",
@@ -19872,7 +19872,7 @@ define({
   },
   {
     "id": 7478,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/7",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/7",
     "name": "NON_DRAFT_ALTERNATIVES",
     "description": "This dataset contains all spatial features of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer contains polygons which are based on a 1 foot buffer of all features in the project alternatives. These polygons are used for visual purposes only. These project alternatives currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "NON_DRAFT_ALTERNATIVES",
@@ -19886,7 +19886,7 @@ define({
   },
   {
     "id": 7479,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/8",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/8",
     "name": "ELIMINATED_POINTS",
     "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes point features of project alternatives and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these points currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "ELIMINATED_POINTS",
@@ -19900,7 +19900,7 @@ define({
   },
   {
     "id": 7480,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/9",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/9",
     "name": "ELIMINATED_SEGMENTS",
     "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes line features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these segments currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "ELIMINATED_SEGMENTS",
@@ -19938,7 +19938,7 @@ define({
   },
   {
     "id": 7481,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/10",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/10",
     "name": "ELIMINATED_POLYGONS",
     "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes polygon features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these polygons currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "ELIMINATED_POLYGONS",
@@ -20307,7 +20307,7 @@ define({
   },
   {
     "id": 7482,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/11",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/11",
     "name": "ELIMINATED_ALTERNATIVES",
     "description": "This dataset contains all spatial features of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer contains polygons which are based on a 1 foot buffer of all features in the project alternatives. These polygons are used for visual purposes only. These project alternatives currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "ELIMINATED_ALTERNATIVES",
@@ -20321,7 +20321,7 @@ define({
   },
   {
     "id": 7487,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/15",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/15",
     "name": "SV_ALT_AOI_BY_TYPE",
     "description": null,
     "longName": "SV_ALT_AOI_BY_TYPE",
@@ -20463,7 +20463,7 @@ define({
   },
   {
     "id": 7483,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/16",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/16",
     "name": "CNTDEM2010",
     "description": null,
     "longName": "CNTDEM2010",
@@ -20477,7 +20477,7 @@ define({
   },
   {
     "id": 7484,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/12",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/12",
     "name": "CCI_PROFILES",
     "description": null,
     "longName": "CCI_PROFILES",
@@ -20491,7 +20491,7 @@ define({
   },
   {
     "id": 7485,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/13",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/13",
     "name": "CCI_USCDP_PROFILES",
     "description": null,
     "longName": "CCI_USCDP_PROFILES",
@@ -20565,7 +20565,7 @@ define({
   },
   {
     "id": 7486,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/14",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/14",
     "name": "SV_EST_CCI",
     "description": null,
     "longName": "SV_EST_CCI",
@@ -21111,7 +21111,7 @@ define({
   },
   {
     "id": 6872,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/0",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/0",
     "name": "Needs",
     "description": null,
     "longName": "Needs",
@@ -21125,7 +21125,7 @@ define({
   },
   {
     "id": 6873,
-    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/1",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_SV_ALT_AOI_BY_TYPE/MapServer/1",
     "name": "Type I CE",
     "description": null,
     "longName": "Type I CE",
@@ -23608,7 +23608,7 @@ define({
   },
   {
     "id": 5995,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Previously_Reviewed_Dev/MapServer/15",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/PREVIOUSLY_REVIEWED_DEV/MapServer/15",
     "name": "1320 ft (.25 mile)",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of a quarter mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
     "longName": "GIS Buffers\\Feature Buffers\\1320 ft (.25 mile)",
@@ -23632,7 +23632,7 @@ define({
   },
   {
     "id": 5996,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Previously_Reviewed_Dev/MapServer/16",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/PREVIOUSLY_REVIEWED_DEV/MapServer/16",
     "name": "2640 ft (.5 mile)",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of a half mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
     "longName": "GIS Buffers\\Feature Buffers\\2640 ft (.5 mile)",
@@ -23656,7 +23656,7 @@ define({
   },
   {
     "id": 5997,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Previously_Reviewed_Dev/MapServer/17",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/PREVIOUSLY_REVIEWED_DEV/MapServer/17",
     "name": "5280 ft (1 mile)",
     "description": "This dataset contains the GIS analysis areas for each individual feature of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The polygons in this layer, which are referred to as \"feature areas\", are created by buffering the individual features at a distance of 1 mile. The resulting buffer is a representation of each unique feature within a project alternative where prescribed GIS analyses take place. The project alternatives associated with these feature areas currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
     "longName": "GIS Buffers\\Feature Buffers\\5280 ft (1 mile)",
@@ -23680,7 +23680,7 @@ define({
   },
   {
     "id": 5999,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Previously_Reviewed_Dev/MapServer/19",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/PREVIOUSLY_REVIEWED_DEV/MapServer/19",
     "name": "100 ft",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 100 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
     "longName": "GIS Buffers\\Analysis Area Buffers\\100 ft",
@@ -23704,7 +23704,7 @@ define({
   },
   {
     "id": 6000,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Previously_Reviewed_Dev/MapServer/20",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/PREVIOUSLY_REVIEWED_DEV/MapServer/20",
     "name": "200 ft",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 200 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
     "longName": "GIS Buffers\\Analysis Area Buffers\\200 ft",
@@ -23728,7 +23728,7 @@ define({
   },
   {
     "id": 6001,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Previously_Reviewed_Dev/MapServer/21",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/PREVIOUSLY_REVIEWED_DEV/MapServer/21",
     "name": "500 ft",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 500 feet. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
     "longName": "GIS Buffers\\Analysis Area Buffers\\500 ft",
@@ -23752,7 +23752,7 @@ define({
   },
   {
     "id": 6002,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Previously_Reviewed_Dev/MapServer/22",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/PREVIOUSLY_REVIEWED_DEV/MapServer/22",
     "name": "1320 ft (.25 mile)",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of a quarter mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
     "longName": "GIS Buffers\\Analysis Area Buffers\\1320 ft (.25 mile)",
@@ -23776,7 +23776,7 @@ define({
   },
   {
     "id": 6003,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Previously_Reviewed_Dev/MapServer/23",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/PREVIOUSLY_REVIEWED_DEV/MapServer/23",
     "name": "2640 ft (.5 mile)",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of a half mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
     "longName": "GIS Buffers\\Analysis Area Buffers\\2640 ft (.5 mile)",
@@ -23800,7 +23800,7 @@ define({
   },
   {
     "id": 6004,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Previously_Reviewed_Dev/MapServer/24",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/PREVIOUSLY_REVIEWED_DEV/MapServer/24",
     "name": "5280 ft (1 mile)",
     "description": "This dataset contains GIS analysis areas for planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). The analysis areas in this layer are created by buffering all features in a project alternative at a distance of 1 mile. The resulting buffer is a seamless representation of all features within the project alternative where prescribed GIS analyses take place. These project alternatives currently have a status of \"Reviewed\", which indicates the alternative falls into 1 of the following categories: 1) ETAT Review Complete; 2) Dispute Resolution In Progress; 3) Summary Report Complete; 4) Work Program; 5) Location Design Concept Acceptance (LDCA).",
     "longName": "GIS Buffers\\Analysis Area Buffers\\5280 ft (1 mile)",
@@ -23824,7 +23824,7 @@ define({
   },
   {
     "id": 6005,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/Query_Drafts_Dev/MapServer/0",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/QUERY_DRAFTS_DEV/MapServer/0",
     "name": "Draft Analysis Areas",
     "description": "This dataset contains all spatial features of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer contains polygons which are based on a 1 foot buffer of all features in the project alternatives. These polygons are used for visual purposes only. These project alternatives currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "Draft Analysis Areas",
@@ -23838,7 +23838,7 @@ define({
   },
   {
     "id": 6006,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/Query_MMA_Dev/MapServer/0",
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/QUERY_MMA_DEV/MapServer/0",
     "name": "Milestone Max Analysis Areas",
     "description": null,
     "longName": "Milestone Max Analysis Areas",
