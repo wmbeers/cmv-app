@@ -21,6 +21,8 @@ define([
     'dojo/text!./LayerLoader/templates/searchResultsDialog.html', // template for the layer search results
     'dojo/text!./LayerLoader/templates/shareMapDialog.html', // template for the share saved map
 
+    './js/config/layerLoader.js',
+    
     //jquery and jqueryUI, and custom ko Bindings needed for expandable categories
     'jquery',
     'jqueryUi',
@@ -36,7 +38,7 @@ define([
 ],
 function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog, ConfirmDialog, request, lang, on, query, dom,
     domClass, html, topic, Memory, Deferred, layerLoaderSidebarTemplate, layerLoaderDialogTemplate, searchResultsDialogTemplate,
-    shareMapDialogTemplate
+    shareMapDialogTemplate, layerConfig
 ) {
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
         widgetsInTemplate: true,
@@ -92,6 +94,12 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
 
         postCreate: function () {
             this.inherited(arguments);
+
+            //copy categories and layerDefs from layerConfig, now that we're not passing it in as options
+            this.categories = layerConfig.categories;
+            this.layerDefs = layerConfig.layerDefs;
+            //TODO above can possibly be removed if we find references to categories and layerDefs and replace with layerConfig.catgories and layerDefs, but not sure how KO deals with it
+
             var self = this; //solves the problem of "this" meaning something different in onchange event handler
             //computeds that refers to "self"/"this" have to be added here, not in root constructor
             self.mapServiceSearchResults = ko.pureComputed(function () { // eslint-disable-line no-undef
@@ -153,6 +161,9 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
 
             //subscribe to the layerLoader/layersChanged topic, to let use know they have unsaved changes
             topic.subscribe('layerLoader/layersChanged', lang.hitch(this, 'layersChanged'));
+
+            //when running on public site, we don't load MapDAO, so don't show the options
+            self.enableSavedMaps = (typeof MapDAO !== 'undefined');
 
             //configure knockout
             //ko->dojo--load the data
@@ -328,6 +339,24 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
             //internal function to add layerDefs and functions; recursively called, starting
             //with the root model (this LayerLoader), then each root-level category, then subcategories
             function processCategories (parent) {
+
+                //remove restricted services (categories) for which the user doesn't have a credential
+                var i = parent.categories.length;
+                while (i--) {
+                    var cat = parent.categories[i];
+                    if (cat.restricted) {
+                        var credential = root.credentials.find(function (cred) { //eslint-disable-line no-loop-func
+                            return cat.url && cat.url.indexOf(cred.server) === 0;
+                        });
+                        if (typeof credential === 'undefined') {
+                            //restricted service, and we don't have a credential for the server the service is on
+                            //drop it
+                            parent.categories.splice(i, 1);
+                        }
+                    }
+                }
+
+                //parent.categories now should just have available (unrestricted, or restricted+credential) categories
                 parent.categories.forEach(function (category) {
                     root.allCategories.push(category);
                     category.parent = parent === root ? null : parent;
@@ -398,33 +427,40 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
                         processCategories(category);
                     }
 
-                }, this);
-            }
+                }, this); // end forEach through available categories
+            } // end processCategories inner function
 
             processCategories(this);
         },
 
         /**
-            * Called from startup, loads current user's saved maps from the server.
-            * @returns {object} Deferred object to be resolved after DWR callback is complete, or rejected if error.
-            */
+         * Called from startup, loads current user's saved maps from the server.
+         * @returns {object} Deferred object to be resolved after DWR callback is complete, or rejected if error.
+         */
         _loadSavedMaps: function () {
             var deferred = new Deferred();
             var self = this;
-            //eslint-disable-next-line no-undef
-            MapDAO.getSavedMapNamesForCurrentUser({
-                callback: function (savedMaps) {
-                    self.savedMaps(savedMaps);
-                    deferred.resolve();
-                },
-                errorHandler: function (message, exception) {
-                    topic.publish('viewer/handleError', {
-                        source: 'LayerLoader._loadSavedMaps',
-                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
-                    });
-                    deferred.reject();
-                }
-            });
+
+            if (self.enableSavedMaps) {
+                //eslint-disable-next-line no-undef
+                MapDAO.getSavedMapNamesForCurrentUser({
+                    callback: function (savedMaps) {
+                        self.savedMaps(savedMaps);
+                        deferred.resolve();
+                    },
+                    errorHandler: function (message, exception) {
+                        topic.publish('viewer/handleError', {
+                            source: 'LayerLoader._loadSavedMaps',
+                            error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                        });
+                        deferred.resolve(); //don't reject! The app is waiting for this deferred to be resolved before calling ko.applyBindings
+                    }
+                });
+            } else {
+                window.setTimeout(function () {
+                    deferred.resolve(); //don't reject! The app is waiting for this deferred to be resolved before calling ko.applyBindings
+                }, 100);
+            }
             return deferred;
         },
 

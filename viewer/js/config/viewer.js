@@ -761,7 +761,9 @@ define([
                 title: 'Map Loader',
                 open: true,
                 position: 0,
-                options: 'config/layerLoader'
+                options: {
+                    map: true
+                } //'config/layerLoader'
             },
             layerControl: {
                 include: true,
