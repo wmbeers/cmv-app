@@ -353,6 +353,39 @@ define([
             },
             {
                 type: 'dynamic',
+                url: projects.currentlyInReviewProjectsService,
+                title: 'Eliminated Project Alternatives',
+                options: {
+                    id: 'eliminatedProjectsService',
+                    opacity: 1.0,
+                    visible: true,
+                    outFields: ['*'],
+                    imageParameters: buildImageParameters({
+                        layerIds: [0, 7],
+                        layerOption: 'show'
+                    }),
+                    mode: 1
+                },
+                editorLayerInfos: {
+                    disableGeometryUpdate: false
+                },
+                legendLayerInfos: {
+                    exclude: false,
+                    layerInfo: {
+                        title: 'Eliminated Project Alternatives'
+                    }
+                },
+                layerControlLayerInfos: {
+                    //layerGroup: 'Project Data',
+                    menu: [{
+                        label: 'Open Attribute Table',
+                        topic: 'openTable',
+                        iconClass: 'fa fa-table fa-fw'
+                    }]
+                }
+            },
+            {
+                type: 'dynamic',
                 url: projects.draftProjectsService,
                 title: 'Projects (Draft)',
                 options: {
