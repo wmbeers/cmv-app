@@ -775,8 +775,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
             //should look like this for the search term land use:
             // /solr1/layers/select?indent=on&q=name:land%20use^10%20or%20longName:land%20use^10%20or%20description:land%20use%20or%20layerName:land%20use&wt=json
 
+            //TODO: in the future we might have some restricted_yn=Y services that only some users can see. for now, if user has no map credentials (as ONLY happens on public site), assume
+            //we filter on restricted=N
+
             var searchUrl = window.location.origin +
-                '/solr1/layers/select?q=name:"' +
+                '/solr1/layers/select?wt=json&q=(name:"' +
                 encodedSearchTerms +
                 '"^150+OR+longName:"' +
                 encodedSearchTerms +
@@ -788,7 +791,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
                 encodedSearchTerms +
                 '+OR+description:' +
                 encodedSearchTerms +
-                '&wt=json';
+                ')';
+            if (this.credentials.length === 0) {
+                searchUrl += '+AND+restricted:N';
+            }
+            
             request(searchUrl).then(function (reply) {
                 var resultDocs = JSON.parse(reply).response.docs;
                 var searchResults = [];
