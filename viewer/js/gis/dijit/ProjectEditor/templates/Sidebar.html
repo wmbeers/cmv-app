@@ -158,8 +158,8 @@
                     <div class="alert alert-success">
                         Analysis complete
                     </div>
-                    <p>
-                        Click <a href="/est/analysis/ReportOptions.do?p=14417" target="_blank">here</a> to view the analysis reports.
+                    <p data-bind="with: currentProjectAlt">
+                        Click <a data-bind="attr: {href: '/est/analysis/ReportOptions.do?p=' + projectId}" target="_blank">here</a> to view the analysis reports.
                     </p>
                 </div>
 
