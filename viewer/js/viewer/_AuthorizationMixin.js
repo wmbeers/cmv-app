@@ -71,6 +71,9 @@ function (declare, lang, on, EstAuthorization, esriId /*, ServerInfo, Credential
                 this.config.widgets.projectEditor.options.currentAuthority(this.config.widgets.projectEditor.options.authorities[0]); //todo could also cache the last used authority instead of defaulting to the first one
             }
 
+            //let LayerLoader widget know about available credentials
+            this.config.widgets.layerLoader.options.credentials = this.authorization.credentials;
+
             this._initEsriId();
             
             //call this last so that the above dynamic config changes are done first

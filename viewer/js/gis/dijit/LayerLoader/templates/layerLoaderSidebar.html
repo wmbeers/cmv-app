@@ -22,6 +22,7 @@
 
     <hr />
     <div id="layerLoaderSideBarKO">
+        <!-- ko if: enableSavedMaps -->
         <h3>My Maps</h3>
         <div data-bind="with: currentMap()">
             Current Map: <span data-bind="text: mapName"></span>
@@ -41,6 +42,7 @@
             </div>
             <!--TODO would a "clear" button make sense here, to give user option to remove all layers?-->
         </div>
+        <!-- /ko -->
     </div>
 
     <div data-dojo-type="dijit/Dialog" data-dojo-attach-point="loadMapDialog" title="Open Map" style="width: 300px; height: 200px" id="loadMapDialog">
