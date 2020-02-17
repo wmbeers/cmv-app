@@ -747,7 +747,7 @@ define([
                     draggable: false,
                     html: '<a href="#"><i class="fas fa-fw fa-info-circle"></i>link</a>'.replace('link', i18n.viewer.widgets.help),
                     domTarget: 'helpDijit',
-                    style: 'height:345px;width:450px;'
+                    style: 'height:345px;width:520px;'
                 },
                 options: {}
             },
