@@ -828,8 +828,32 @@ define([
             return deferred;
         },
 
+        addAoiToMap: function (aoiId) {
+            var self = this;
+
+            //eslint-disable-next-line no-undef
+            MapDAO.getAoiModel(aoiId, {
+                callback: function (aoi) {
+                    //todo loading overlay for this class self.loadingOverlay.hide();
+                    if (aoi) {
+                        self.addAoiModelToMap(aoi);
+                    } else {
+                        topic.publish('growler/growlError', 'Unable to load AOI with ID ' + aoiId + '. No AOI with that ID found.');
+                    }
+                },
+                errorHandler: function (message, exception) {
+                    //self.loadingOverlay.hide();
+                    topic.publish('viewer/handleError', {
+                        source: '_LayerLoadMixin/addAoiToMap',
+                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                    });
+                }
+            });
+
+        },
+
         //adds an AOI to the map
-        addAoiToMap: function (aoi) {
+        addAoiModelToMap: function (aoi) {
             var self = this, //so we don't lose track buried down in callbacks
                 definitionExpression = 'FK_PROJECT = ' + aoi.id,
                 deferred = new Deferred(),
