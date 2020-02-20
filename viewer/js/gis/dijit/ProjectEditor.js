@@ -429,7 +429,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                         }
                     }
                 ]
-            }, 'addressToPoint');
+            }, 'addressToPointP');
             this.addressToPointSearch.startup(); //todo maybe define this when the dialog opens?
 
             var self = this; //todo move to top or find some other way to maintain context
