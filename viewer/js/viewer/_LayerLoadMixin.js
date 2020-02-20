@@ -310,7 +310,7 @@ define([
          * Construct a layer based on a layerDef; layerDef might just be the ID of a layerDef contained in the config,
         // a layer name, or a URL
          * @param {any} layerDef Either a layerDef object found in the LayerLoader's layerDefs array, or a string or number that can be used to find the layer def
-         * @param {String} definitionExpression Optional definition expression to be applied to the layer
+         * @param {String|Array} definitionExpression Optional definition expression to be applied to a feature layer (as string), or array of definition expressions to be applied to a dynamic layer with setLayerDefinitions
          * @param {Boolean} includeDefinitionExpressionInTitle If true, the defition expression will be displayed in the title
          * @param {Object} renderer Optional renderer to be used to display the layer in the map
          * @returns {Object} an ArcGIS layer of some sort; specific type depends on the layer definition
@@ -397,7 +397,7 @@ define([
             layerDef.title = layerDef.name || layerDef.displayName;
             if (definitionExpression) {
                 if (layerDef.type === 'dynamic') {
-                    //TODO see https://developers.arcgis.com/javascript/3/jsapi/arcgisdynamicmapservicelayer-amd.html#setlayerdefinitions
+                    layer.setLayerDefinitions(definitionExpression);
                 } else if (layerDef.type === 'feature') {
                     layer.setDefinitionExpression(definitionExpression); //TODO need to be careful we're not overwritting any service defined def expressions. We don't have any yet, but if we do we'll need to deal with merging them together somehow.
                 }
@@ -862,10 +862,11 @@ define([
 
             //mixin properties from projects.aoiLayers into new objects, load them in the map
             layerNames.forEach(function (layerName) {
-                var layerDef = {
+                var l2 = layerName === 'analysisAreaBuffer' ? 'Analysis Areas' : ('P' + layerName.substr(1) + 's'),
+                    layerDef = {
                         id: 'aoi_' + aoi.id + '_' + layerName,
                         url: projects.aoiLayers[layerName],
-                        name: (aoi.name || 'AOI ' + aoi.id) + ' ' + layerName,
+                        name: (aoi.name || 'AOI ' + aoi.id) + ' ' + l2,
                         type: 'feature'
                     },
                     layer = self.constructLayer(layerDef, definitionExpression),
@@ -918,7 +919,6 @@ define([
 
             return deferred;
         },
-
 
         /**
          * Saves to the referenced map to the server, including the layer configuration (via getLayerConfig) and the map extent.

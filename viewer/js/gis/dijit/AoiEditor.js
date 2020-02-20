@@ -562,7 +562,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                             text: p.progressGIS.text,
                             running: p.progressGIS.running,
                             title: 'Study Area Report',
-                            href: '/est/analysis/ReportOptions.do?aoiId=' + self.aoiId
+                            //not working yet as standalone page href: '/est/analysis/ReportOptions.do?aoiId=' + self.aoiId
+                            href: '/est/analysis/CachedGisReport.do?aoiId=' + self.aoiId + '&issueId=102&crdReport=true'
                         },
                         hcm = {
                             code: p.progressHCM.code,
