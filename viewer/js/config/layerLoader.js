@@ -917,20 +917,21 @@ define({
             "name": "Conservation",
             "categories": [],
             "layerIds": [
-              686,
-              687,
-              688,
-              689,
-              690,
-              691,
-              692,
-              693,
-              694,
-              695,
-              696,
-              697,
-              698,
-              699
+              8151,
+              8153,
+              8154,
+              8155,
+              8156,
+              8157,
+              8158,
+              8159,
+              8160,
+              8161,
+              8162,
+              8163,
+              8164,
+              8165,
+              8166
             ],
             "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer",
             "serviceId": 12,
@@ -1470,16 +1471,17 @@ define({
         "name": "Political",
         "categories": [],
         "layerIds": [
-          4921,
-          4922,
-          4924,
-          4925,
-          4919,
-          5231,
-          5232,
-          5233,
-          5234,
-          5235
+          8168,
+          8169,
+          8171,
+          8172,
+          8173,
+          8175,
+          8176,
+          8177,
+          8178,
+          8179,
+          8180
         ],
         "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Administrative/MapServer",
         "serviceId": 63,
@@ -2250,20 +2252,6 @@ define({
         "width": 20
       }
     ]
-  },
-  {
-    "id": 984,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM_FEMA/MapServer/4",
-    "name": "Special Flood Hazard Areas",
-    "description": "This dataset contains information about the flood hazards within the study area. These zones are used by the Federal Emergency Management Agency (FEMA) to designate the Special Flood Hazard Area (SFHA) and for insurance rating purposes. These data are the flood hazard areas that are or will be depicted on the Flood Insurance Rate Map (FIRM). There is one polygon for each contiguous flood zone designated. This information is required for all draft Digital Flood Insurance Rate Maps. The Digital Flood Insurance Rate Map (DFIRM) Database depicts flood risk information and supporting data used to develop the risk data. The primary risk classifications used are the 1-percent-annual-chance flood event (100 year), the 0.2-percent-annual-chance flood event (500 year), and areas of minimal flood risk. The DFIRM Database is derived from Flood Insurance Studies (FISs), previously published Flood Insurance Rate Maps (FIRMs), flood hazard analyses performed in support of the FISs and FIRMs, and new mapping data, where available. The FISs and FIRMs are published by FEMA. ",
-    "longName": "Special Flood Hazard Areas",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "DFIRM_FLDHAZ",
-    "restricted": false,
-    "minScale": 24000,
-    "maxScale": 0,
-    "legendSymbols": null
   },
   {
     "id": 140,
@@ -12019,48 +12007,6 @@ define({
     ]
   },
   {
-    "id": 985,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM_FEMA/MapServer/5",
-    "name": "Other Areas of Flood Hazard",
-    "description": "This dataset contains information about the flood hazards within the study area. These zones are used by the Federal Emergency Management Agency (FEMA) to designate the Special Flood Hazard Area (SFHA) and for insurance rating purposes. These data are the flood hazard areas that are or will be depicted on the Flood Insurance Rate Map (FIRM). There is one polygon for each contiguous flood zone designated. This information is required for all draft Digital Flood Insurance Rate Maps. The Digital Flood Insurance Rate Map (DFIRM) Database depicts flood risk information and supporting data used to develop the risk data. The primary risk classifications used are the 1-percent-annual-chance flood event (100 year), the 0.2-percent-annual-chance flood event (500 year), and areas of minimal flood risk. The DFIRM Database is derived from Flood Insurance Studies (FISs), previously published Flood Insurance Rate Maps (FIRMs), flood hazard analyses performed in support of the FISs and FIRMs, and new mapping data, where available. The FISs and FIRMs are published by FEMA.",
-    "longName": "Other Areas of Flood Hazard",
-    "type": "feature",
-    "definitionQuery": "FLD_ZONE = 'X'",
-    "layerName": "DFIRM_FLDHAZ",
-    "restricted": false,
-    "minScale": 24000,
-    "maxScale": 0,
-    "legendSymbols": null
-  },
-  {
-    "id": 986,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM_FEMA/MapServer/6",
-    "name": "Special Flood Hazard Areas",
-    "description": "This dataset contains information about the flood hazards within the study area. These zones are used by the Federal Emergency Management Agency (FEMA) to designate the Special Flood Hazard Area (SFHA) and for insurance rating purposes. These data are the flood hazard areas that are or will be depicted on the Flood Insurance Rate Map (FIRM). There is one polygon for each contiguous flood zone designated. This information is required for all draft Digital Flood Insurance Rate Maps. The Digital Flood Insurance Rate Map (DFIRM) Database depicts flood risk information and supporting data used to develop the risk data. The primary risk classifications used are the 1-percent-annual-chance flood event (100 year), the 0.2-percent-annual-chance flood event (500 year), and areas of minimal flood risk. The DFIRM Database is derived from Flood Insurance Studies (FISs), previously published Flood Insurance Rate Maps (FIRMs), flood hazard analyses performed in support of the FISs and FIRMs, and new mapping data, where available. The FISs and FIRMs are published by FEMA.",
-    "longName": "Special Flood Hazard Areas",
-    "type": "feature",
-    "definitionQuery": "FLD_ZONE = 'A' OR FLD_ZONE = 'AE' OR FLD_ZONE = 'V'",
-    "layerName": "DFIRM_FLDHAZ",
-    "restricted": false,
-    "minScale": 24000,
-    "maxScale": 0,
-    "legendSymbols": null
-  },
-  {
-    "id": 987,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM_FEMA/MapServer/7",
-    "name": "Flood Hazard",
-    "description": "This dataset contains information about the flood hazards within the study area. These zones are used by the Federal Emergency Management Agency (FEMA) to designate the Special Flood Hazard Area (SFHA) and for insurance rating purposes. These data are the flood hazard areas that are or will be depicted on the Flood Insurance Rate Map (FIRM). There is one polygon for each contiguous flood zone designated. This information is required for all draft Digital Flood Insurance Rate Maps. The Digital Flood Insurance Rate Map (DFIRM) Database depicts flood risk information and supporting data used to develop the risk data. The primary risk classifications used are the 1-percent-annual-chance flood event (100 year), the 0.2-percent-annual-chance flood event (500 year), and areas of minimal flood risk. The DFIRM Database is derived from Flood Insurance Studies (FISs), previously published Flood Insurance Rate Maps (FIRMs), flood hazard analyses performed in support of the FISs and FIRMs, and new mapping data, where available. The FISs and FIRMs are published by FEMA.",
-    "longName": "Flood Hazard",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "DFIRM_FLDHAZ",
-    "restricted": false,
-    "minScale": 24000,
-    "maxScale": 0,
-    "legendSymbols": null
-  },
-  {
     "id": 323,
     "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/SCE_Polys/MapServer/0",
     "name": "Cemeteries (Polygons)",
@@ -13054,235 +13000,6 @@ define({
     ]
   },
   {
-    "id": 7488,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/1",
-    "name": "DRAFT_SEGMENTS",
-    "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes line features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these segments currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
-    "longName": "DRAFT_SEGMENTS",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "DRAFT_SEGMENTS",
-    "restricted": true,
-    "minScale": 0,
-    "maxScale": 0,
-    "legendSymbols": null
-  },
-  {
-    "id": 692,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/6",
-    "name": "National Wildlife Refuges",
-    "description": "This data layer depicts the external boundaries of lands and waters that are approved for acquisition by the U.S. Fish and Wildlife Service (USFWS) in Florida. The primary source for this information is the USFWS Realty program.",
-    "longName": "National Wildlife Refuges",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "NWRFLA",
-    "restricted": false,
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "1a3782d7eb5b42ec99964e978f714cb3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEdJREFUOI1jYaAyYKGZgf8ZGP5TahgjAwMjC7oANoX/GRj+45JDdxDtvDxq4CA1EF9aJDadjqbDUQMpNZCSdAhLVizoApQCAMW7Ek2gWnzmAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 693,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/7",
-    "name": "Aquatic Preserves",
-    "description": "Aquatic Preserves are state-owned sovereign submerged lands in areas which have exceptional biological, aesthetic, and scientific value, as described in Chapter 258.39, Florida Statutes, which have been set aside for the benefit of future generations. These areas are managed by the Florida Department of Environmental Protection's Office of Coastal and Aquatic Managed Areas. Currently, all Aquatic Preserves are also Outstanding Florida Waters (OFWs). However, it is important to note that there are three Aquatic Preserves whose OFW boundaries differ from the Aquatic Preserve boundary. These are described more specifically in the OFW rule 62-302.700: Indian River - Malabar to Vero Beach - does not include portions of Sebastian and Turkey creeks; Wekiva River - does not include portions of the St. Johns River; and Big Bend Seagrasses - the OFW rule specifies certain \"incorporated and unincorporated areas\" that are excluded from the Aquatic Preserve.",
-    "longName": "Aquatic Preserves",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "AQUAP",
-    "restricted": false,
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "6265d7894e19eb17f0bde3358cd295f0",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJNJREFUOI21lMENwCAMA4vESOzETOzETvRTJCB2mkCbF1jVxW4U4vVxxf+ApbZjWk4hrsIE73emASMycqltAucUoIbOAjh+0N0wDbmFDlGDFaqU/IcIwnTQSDpkjt7iUyCLaYzPh7ITXwAtMTVddbgZ/2zKpqFsxNSBnpiu1bPEdK+ec+0wEL2L7K0c9adpXIXTugH4Sb/ZXI6hiAAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 694,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/8",
-    "name": "Florida Managed Areas (FNAI)",
-    "description": "FLORIDA CONSERVATION LANDS (layer name FLMA): This is a polygon data layer for public (and some private) lands that the Florida Natural Areas Inventory (FNAI) has identified as having natural resource value and that are being managed at least partially for conservation purposes. The term \"Managed Area\" refers to a managed conservation land.",
-    "longName": "Florida Managed Areas (FNAI)",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "FLMA",
-    "restricted": false,
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "5cb7271ce32b5a5c96408ee3d3c7697c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFpJREFUOI1jYaAyYGFgYGBYxTDzP6UGhTGkM8INpAZYxTDzfxhDOiOKgTBbyDEMxqaaC0cNHCoG/p9+hqwEvjrzLHYDGTNNRtPhsDeQGuUi1VyIUsCSWw5iAwB2jRUyk8VN1QAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 695,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/9",
-    "name": "FWCC Management Areas",
-    "description": "This GIS data set represents the Wildlife Management Area system administered by the Florida Fish and Wildlife Conservation Commission (FWC). These data are intended as a general reference map only. More information on activities permitted in individual areas can be found from the links on FWC's Web site: http://www.myfwc.com/RECREATION/WMASites_index.htm",
-    "longName": "FWCC Management Areas",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "FWCMAS",
-    "restricted": false,
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "5ae1a7e52ceb151c44222d46affdcebb",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1MENwCAIBdBv4krO5EzMxFD2ZKNiCwR7KzcNPjn8kHG4MgDUghaFiJFu8ETVgkaMNIH9l7VJg8bz44RWjBhpRLegB1vvBRjBBBjFBBjFBBjFzKAVM4EeTAX/YJt6vg12f/AGaj3H9uG0YD050+oC5CZXh5JBHksAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 7489,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/2",
-    "name": "DRAFT_POLYGONS",
-    "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes polygon features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these polygons currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
-    "longName": "DRAFT_POLYGONS",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "DRAFT_POLYGONS",
-    "restricted": true,
-    "minScale": 0,
-    "maxScale": 0,
-    "legendSymbols": null
-  },
-  {
-    "id": 696,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/10",
-    "name": "Public Land",
-    "description": "This layer contains a selection of FLORIDA MANAGED AREAS (FNAI layer name FLMA) that are managed by the State, Local, or Federal government (note: some of these lands may be owned by Private Individual(s)). The Florida Natural Areas Inventory (FNAI) has identified these lands as having natural resource value and as lands that are being managed at least partially for conservation purposes.\r\n\r\nPublic Lands were extracted from the FNAI Managed Areas \r\nSDE Layer. The public lands were extracted by selecting all \r\nrecords with the expression: \"MATYPE2\" <> 'P'. This selection \r\nset was exported to a spatial view with the name PUBLICLAND.\r\nThe resulting layer represents all non-privately managed lands.",
-    "longName": "Public Land",
-    "type": "feature",
-    "definitionQuery": "MATYPE2 < > 'P'",
-    "layerName": "FLMA",
-    "restricted": false,
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "c0af6d86b853d7e2534575e2b21a7fa8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJhJREFUOI21VNsNwCAIhISR7P4D1J3oR2NDLS+t8qXkOO+EQLA4aBth5YP/khU8kfqEvFcGLgho3WWuCSKLQCu+C30MaQXtrNvyMfuaAhBbzmA+luU5aoqGcS3LAkux/NOQ0FLhkYaEkcKGSSmUJBapfNAlXDLYGXtDg51pQBTDCqcGO2qA56hT+N6JchyiXFt9D2G/C2fjAk+nlm6Qv59mAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 697,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/11",
-    "name": "Public Pinelands",
-    "description": "This dataset contains public pine lands that have been identified for the purpose of prescribed burning in the State of Florida. The dataset represents the intersection of 2008, 2011, 2014, and 2016 Water Management District Land Use/ Land Cover data sets with the 2018 Florida Natural Areas Inventory Public Lands boundary dataset. The following FGDL layers represent the datasets used in the creation of this layer; PUBLICLAND_APR18 (note: PUBLICLAND_APR18 is derived from FNAI FMLA), LU_NWFWMD_2016, LU_SFWMD_2008, LU_SJRWMD_2014, LU_SRWMD_2014, and LU_SWFWMD_2011.",
-    "longName": "Public Pinelands",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "PUBLIC_PINELANDS",
-    "restricted": false,
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "e1a407a1170aa6870d59dd942a71717a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgemmDP8pMWjmaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg3kEtkU6v0QAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 698,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/12",
-    "name": "Rural Land Stewardship Area (RLSA)",
-    "description": "This dataset shows the boundaries for rural land stewardship areas in the state of Florida. Currently boundaries are available for Collier and St. Lucie county.",
-    "longName": "Rural Land Stewardship Area (RLSA)",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "RLSABND",
-    "restricted": false,
-    "minScale": 500000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "e535266605c229883016d208e2940953",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE5JREFUOI1jYaAyYKGZgcX5dw5QYtCMOcoHvn5lbEBxoZdHP9mGzpgzhYGBgZZeHjVw1MBRA0cNxGrgjDnKB2BFEDng61fGBhQDYQKUAgBTWhOvuSb7MAAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 699,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/13",
-    "name": "TNC Ecological Resource Areas",
-    "description": "This dataset contains priority ecological resource areas as identified by the workshop of January 1991 sponsored by The Nature Conservancy, Florida Audubon Society and the Department of Natural Resources.",
-    "longName": "TNC Ecological Resource Areas",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "TNCERC",
-    "restricted": false,
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "Area of Conservation Interest",
-        "url": "86ba28156f8e9d589edd742e2e98d257",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6srJxMtmHt7bkMDAy09PKogaMGjho4aiBOA2FFEDlg8uTJjCgGwgQoBQDI8AxAnD0U3AAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Priority Conservation Area",
-        "url": "d864b6aa25062832f87f7ec6ed1e5b68",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC60njyZbMOO5uYyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAA1Y4MZD4s9yIAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
     "id": 700,
     "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Coastal/MapServer/3",
     "name": "Marinas in Florida",
@@ -13829,159 +13546,6 @@ define({
     ]
   },
   {
-    "id": 686,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/0",
-    "name": "Florida Forest Service Facilities",
-    "description": "This dataset contains point locations of Florida Forest Service facilities.",
-    "longName": "Florida Forest Service Facilities",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "FFS_FACILITIES",
-    "restricted": false,
-    "minScale": 500000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "47e9438896e11ac49ef4bf8c0551efeb",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAQZJREFUOI3tlDFLglEUhp8DosPFQbibkEttTkIQOIWbU1FBBNkSSL/ArZ/gKiIN/oB+g2NbES1NIsHdbkPDBQfjNPghIp/Z9yUO4jud+77w3Jd74GZYszI74GaAasyxhDBYGxDoKhwKfP0bqNYe4f0BcAL0EwMVSlhbmBne30bTtVr7OvNzuW9x7u0vDRXvH4DKgl/D+5do/sSYK2A1UOBDoQp0gUbMhc/AmYQwisni31BgDNwoZIHLuWgEVKM8VquWUl447wF50gAV9iPgE8ViE+fugXOm2+6laXiKMW1CaIlzE+BC4Q6opwU+SgjDeUOgozBQEAFNBBQYLvHffymxLb9NEv0A1CtDQy38UL4AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 687,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/1",
-    "name": "NOAA Marine Protected Areas",
-    "description": "The MPA Inventory is a comprehensive catalog that provides detailed information for existing marine protected areas in the United States. The inventory provides geospatial boundary information (in polygon format) and classification attributes that seek to define the conservation objectives, protection level, governance and related management criteria for all sites in the database. The comprehensive inventory of federal, state and territorial MPA sites provides governments and stakeholders with access to information to make better decisions about the current and future use of place-based conservation. The information also will be used to inform the development of the national system of marine protected areas as required by Executive Order 13158.",
-    "longName": "NOAA Marine Protected Areas",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "MPA",
-    "restricted": false,
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "47a82fc3087e4e91eb2a2c5e3bc8b3c8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAG5JREFUOI1jYaAyYKGhgen/KTduJiMLugAyT1q6/v/Tp42MDHgAQg3EQTi9TJphCIDVQHINw2ogJYZhGEipYRgGUmoYhoGUGka0gcQaRpSBxIfrC8IGjiZsotQMuYSNv0yEJA1caiBFHwu6AKUAAI83eWd1VGlgAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 688,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/2",
-    "name": "State Parks",
-    "description": "This feature class contains lands that make up the State Parks and State Trails in Florida as of November 1st, 2017.",
-    "longName": "State Parks",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "STPARK",
-    "restricted": false,
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "84323f49a080af3705ab744c8d47aa0a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJpJREFUOI21VEEOwCAIKwmP2v9P81Xu4EwQQUU3TtpIbW2Q8XHxb4T5Rj4lowvEGgCAnAs5Udl7mMSRlEJ5oDbVtYV169che2RVjYdZak2F1gWadFTtG4pmSeLh1kWdQk/RzP40FN28at8NJWzfSnnF5ggfKty1f5TyUig7Nl2FUZuh0VuxGR696Nj1hMn4Fx0MaPH69bEGTusBmZi7jAp3SOYAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 689,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/3",
-    "name": "National Parks Projects (LWCF)",
-    "description": "This dataset contains 2014 Approved & 2015-2018 Pending parcel boundaries of projects funded through agreements between the National Park Service and Land & Water Conservation Fund (LWCF), the Urban Park and Recreation Recovery (UPARR), State of Florida Division of Recreation and Parks (DRP), funding programs. These funded projects consist of land acquisition, rehabilitation of deteriorated recreation facilities, and recreation development projects. Please Note: The dataset naming convention has changed to match that of the FDEP LWCF Application Priority List. Park locations that have been verified are marked with the letter V in the FLAG field.",
-    "longName": "National Parks Projects (LWCF)",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "NPS_PROJECTS",
-    "restricted": false,
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "LWCF",
-        "url": "006bd0f844d2a455e9f8f8af3cd0a456",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJZJREFUOI21VEEOwCAIqwmP3hP8tTssJgyLCm6csIHaSlDwcchvhK2inZKVC0UsAAAND3nBc/YwjaMahbqgN/WcYSwfCHVBV+NhTC1VyC6wpLN4v6Fq1iQezi4aFHqKVvZdQs/mrn13KBn79A2z9pcKs/aPprw1lIzNKWHEZmj1dmyGVy+6diNhVd+RUc6aNd6/PrHAadwNW33l1lsrgwAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Other",
-        "url": "d6722fafa981b2c963438ed67b7c2c89",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAItJREFUOI21k1EOwCAIQyHh0B7BW7MvEwPFAW58aWNKnwShj0t+M9RJemvGg1issJuve6ShIA5ZJ+luzIMYaejsDPcHK02kobQwIWpgTU/l/hCZRDpq5BJGid7wQ8MIM4sfDqWDD/+wi/+asIt/NeXUUDqYR8MKZmn1Mpjl1auuXYic0ay+mooVbusBSEe9/YIF9ooAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 690,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/4",
-    "name": "National Parks and Seashores",
-    "description": "This dataset contains National Park Service unit boundaries for the State of Florida.",
-    "longName": "National Parks and Seashores",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "NPS",
-    "restricted": false,
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "6f6598b881e93e90dba476f989811ffb",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJBJREFUOI29lMsRwCAIRHHGkuzJmuzJnszJjFkX0UTDEdw3/MTLZvPHgClL+QqLQVyXYQzi0JeyFOZvYzWhB1ATVQHGmW+6hwjVsl4aSluaVs25Kc/Y1pIRoA3Kj0SWn0G7tcEHox1sNRSIUAvGoLSHKzA0ClzNcAhsIbNQtYdMbEH/PQ7WTWRx/Ns38M1EmV30DHVpc5xJuQAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 691,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/5",
-    "name": "National Marine Sanctuaries",
-    "description": "The National Marine Sanctuary Program manages a system of sanctuaries and other managed areas around the country. The legal boundaries of these sanctuaries are defined within the Code of Federal Regulations, at 15 C.F.R. Part 922 and the subparts for each national marine sanctuary. The GIS compatible digital boundary files for each national marine sanctuary are representations of those legal boundaries and are based on the best available data. These files are available for public use at locations defined in this metadata record.",
-    "longName": "National Marine Sanctuaries",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "NMARSA",
-    "restricted": false,
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "Florida Keys National Marine Sanctuary",
-        "url": "de3a4a996953684f3df4fe2f5e5f9f03",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgab/Z/6n1LDTjOmMLOgC2BSa/p/5H5ccuoNo5+VRAwepgfjSIrHpdDQdjhpIqYGUpENYsmJBF6AUAADrqiHp4CsEOQAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
     "id": 975,
     "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM/MapServer/0",
     "name": "FEMA DFIRM Panel Areas",
@@ -14172,62 +13736,6 @@ define({
         "width": 20
       }
     ]
-  },
-  {
-    "id": 980,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM_FEMA/MapServer/0",
-    "name": "DFIRM Panel",
-    "description": "This dataset contains information about the FIRM Panel areas. The spatial entities representing FIRM panels are polygons. The polygon for the FIRM panel corresponds to the panel neatlines. Panel boundaries are generally derived from USGS DOQQ boundaries. As a result, the panels are generally rectangular. FIRM panels must not overlap or have gaps within a study. In situations where a portion of a panel lies outside the jurisdiction being mapped, the user must refer to the S_Pol_Ar table to determine the portion of the panel area where the FIRM Database shows the effective flood hazard data for the mapped jurisdiction. This information is needed for the FIRM Panel Index and the following tables in the FIS report: Listing of NFIP Jurisdictions, Levees, Incorporated Letters of Map Change, and Coastal Barrier Resources System Information. The Digital Flood Insurance Rate Map (DFIRM) Database depicts flood risk information and supporting data used to develop the risk data. The primary risk classifications used are the 1-percent-annual-chance flood event (100 year), the 0.2-percent-annual-chance flood event (500 year), and areas of minimal flood risk. The DFIRM Database is derived from Flood Insurance Studies (FISs), previously published Flood Insurance Rate Maps (FIRMs), flood hazard analyses performed in support of the FISs and FIRMs, and new mapping data, where available. The FISs and FIRMs are published by FEMA.",
-    "longName": "DFIRM Panel",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "DFIRM_PANEL",
-    "restricted": false,
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": null
-  },
-  {
-    "id": 981,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM_FEMA/MapServer/1",
-    "name": "Base Floodline Elevation",
-    "description": "This dataset contains information about the Base Flood Elevations (BFE) within a study area. BFE lines indicate the rounded whole-foot water surface elevation of the 1-percent-annual-chance flood. The spatial elements representing BFE features are lines extending from Special Flood Hazard Area (SFHA) boundary to SFHA boundary. The BFE lines will have no visible gaps or overshoots between the SFHA boundary and the end of the BFE line at the publication scale of the DFIRM. However, the ends of the BFE lines are not necessarily snapped precisely to the SFHA boundary. Each BFE is represented by a single line. The Base Flood Elevation (BFE) information is required for any digital data where BFE lines will be shown on the corresponding Flood Insurance Rate Map (FIRM). Normally if there are any riverine AE zones, BFE lines are required. While BFE lines are depicted as wavy lines on the hardcopy FIRM, they should be primarily straight lines in the spatial data, although they may bend consistent with procedures described in Volume 1 of these Guidelines. The Digital Flood Insurance Rate Map (DFIRM) Database depicts flood risk information and supporting data used to develop the risk data. The primary risk classifications used are the 1-percent-annual-chance flood event (100 year), the 0.2-percent-annual-chance flood event (500 year), and areas of minimal flood risk. The DFIRM Database is derived from Flood Insurance Studies (FISs), previously published Flood Insurance Rate Maps (FIRMs), flood hazard analyses performed in support of the FISs and FIRMs, and new mapping data, where available. The FISs and FIRMs are published by FEMA. ",
-    "longName": "Base Floodline Elevation",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "DFIRM_BFE",
-    "restricted": false,
-    "minScale": 10000,
-    "maxScale": 0,
-    "legendSymbols": null
-  },
-  {
-    "id": 982,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM_FEMA/MapServer/2",
-    "name": "Base Floodline Elevation - Labels",
-    "description": "This dataset contains information about the Base Flood Elevations (BFE) within a study area. BFE lines indicate the rounded whole-foot water surface elevation of the 1-percent-annual-chance flood. The spatial elements representing BFE features are lines extending from Special Flood Hazard Area (SFHA) boundary to SFHA boundary. The BFE lines will have no visible gaps or overshoots between the SFHA boundary and the end of the BFE line at the publication scale of the DFIRM. However, the ends of the BFE lines are not necessarily snapped precisely to the SFHA boundary. Each BFE is represented by a single line. The Base Flood Elevation (BFE) information is required for any digital data where BFE lines will be shown on the corresponding Flood Insurance Rate Map (FIRM). Normally if there are any riverine AE zones, BFE lines are required. While BFE lines are depicted as wavy lines on the hardcopy FIRM, they should be primarily straight lines in the spatial data, although they may bend consistent with procedures described in Volume 1 of these Guidelines. The Digital Flood Insurance Rate Map (DFIRM) Database depicts flood risk information and supporting data used to develop the risk data. The primary risk classifications used are the 1-percent-annual-chance flood event (100 year), the 0.2-percent-annual-chance flood event (500 year), and areas of minimal flood risk. The DFIRM Database is derived from Flood Insurance Studies (FISs), previously published Flood Insurance Rate Maps (FIRMs), flood hazard analyses performed in support of the FISs and FIRMs, and new mapping data, where available. The FISs and FIRMs are published by FEMA. ",
-    "longName": "Base Floodline Elevation - Labels",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "DFIRM_BFE",
-    "restricted": false,
-    "minScale": 10000,
-    "maxScale": 0,
-    "legendSymbols": null
-  },
-  {
-    "id": 983,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/DFIRM_FEMA/MapServer/3",
-    "name": "Special Flood Hazard Lines",
-    "description": "This dataset contains information about the flood hazards within the study area. These zones are used by the Federal Emergency Management Agency (FEMA) to designate the Special Flood Hazard Area (SFHA) and for insurance rating purposes. These data are the flood hazard areas that are or will be depicted on the Flood Insurance Rate Map (FIRM). There is one polygon for each contiguous flood zone designated. This information is required for all draft Digital Flood Insurance Rate Maps. The Digital Flood Insurance Rate Map (DFIRM) Database depicts flood risk information and supporting data used to develop the risk data. The primary risk classifications used are the 1-percent-annual-chance flood event (100 year), the 0.2-percent-annual-chance flood event (500 year), and areas of minimal flood risk. The DFIRM Database is derived from Flood Insurance Studies (FISs), previously published Flood Insurance Rate Maps (FIRMs), flood hazard analyses performed in support of the FISs and FIRMs, and new mapping data, where available. The FISs and FIRMs are published by FEMA.",
-    "longName": "Special Flood Hazard Lines",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "DFIRM_FLDHAZ",
-    "restricted": false,
-    "minScale": 24000,
-    "maxScale": 0,
-    "legendSymbols": null
   },
   {
     "id": 732,
@@ -19699,30 +19207,6 @@ define({
     ]
   },
   {
-    "id": 4924,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Administrative/MapServer/4",
-    "name": "Florida House Voting Districts",
-    "description": "This dataset represents the state of Florida House district boundaries.The 2015 cartographic boundary shapefiles are simplified representations of selected geographic areas from the U.S. Census Bureau's Master Address File / Topologically Integrated Geographic Encoding and Referencing (MAF/TIGER) Database (MTDB). These boundary files are specifically designed for small-scale thematic mapping. When possible, generalization is performed with the intent to maintain the hierarchical relationships among geographies and to maintain the alignment of geographies within a file set for a given year. Geographic areas may not align with the same areas from another year. Some geographies are available as nation-based files while others are available only as state-based files. SLDL stands for State Legislative District Lower Chamber. State Legislative Districts (SLDs) are the areas from which members are elected to state legislatures. The SLDs embody the upper (senate) and lower (house) chambers of the state legislature. A unique three-character census code, identified by state participants, is assigned to each SLD within a state.The boundaries of the 2014 state legislative districts were provided by state-level participants through the RDP and reflect the districts used to elect members in or prior to the November 2014 election. The current state of Florida House representatives have been added to the attribute table; these representatives will serve from 11/07/18 - 11/03/20.",
-    "longName": "Political\\Florida House Voting Districts",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "HDIST",
-    "restricted": false,
-    "minScale": 0,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "106da2049e1a251c7d044ec6217d289d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgU6eitcoMWjf9vuHGRgY0lFcaGqjeJgCAxkYGGjp5VEDRw0cNXDUQKwG7tt+/zCsCCITpKMYCBOgFAAA0EMPM77MInYAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
     "id": 4912,
     "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/FDOT_roadways/MapServer/5",
     "name": "Local Roads",
@@ -20373,204 +19857,6 @@ define({
         "label": "> 160,000",
         "url": "7de962067ff71e599061843d69a2d05f",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADRJREFUOI1jYaAyYBk1cNRAygz8T6FZjMgGUmoYzAxGmnmZkYHKXoYLUAqGVrIZNXCQGAgAQUQEUsaxbygAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 4919,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Administrative/MapServer/6",
-    "name": "110th Congressional District Boundaries",
-    "description": "This dataset represents U.S. Congressional district boundaries for the state of Florida, as ordered by the Florida Supreme Court December 2, 2015. Between 2012 and 2015, the enacted Congressional and Senate maps were repeatedly challenged in the courts. In December of 2015, the Supreme Court of Florida and the Second Judicial Circuit Court in Leon County ordered new congressional and state senate plans, respectively. The current U.S. Congressional District representatives have been added to the attribute table; these representatives will serve during the 116th United States Congress. For Florida congressional districts prior to December 2015 see FGDL layer USDIST_2014 or prior.",
-    "longName": "Political\\110th Congressional District Boundaries",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "USDIST",
-    "restricted": false,
-    "minScale": 0,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "08711a0200f896e330d14f2fb1c86359",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgaWeitcoMah7+/3DDAwM6SgujLBRPEyBgQwMDLT08qiBowaOGjhqIFYDu7ffPwwrgsgE6SgGwgQoBQBXjQ693e1zRwAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 4921,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Administrative/MapServer/1",
-    "name": "Public Land Survey System",
-    "description": "The Public Land Survey System is a legal land reference system created to facilitate the inventory and transfer of property. This system is divided into township, range, and sections. This shapefile contains PLSS boundaries to the section level, while FPLSS_TR contains PLSS boundaries to the township and range level.",
-    "longName": "PLSS\\Public Land Survey System",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "PLSS",
-    "restricted": false,
-    "minScale": 150000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "d3c1a34140a7c99bbc1e32dab4e6d940",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYIHS/6lgFiOygdQA/xkYGBjRDWSkwDAGBgbqunDUwFEDRw0cxgZSXC5S04UoBSy55SAGAABt1gRS1LSDdQAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 4922,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Administrative/MapServer/2",
-    "name": "Public Land Survey System - Township Range",
-    "description": "The Public Land Survey System (PLSS) is a legal land reference system created to facilitate the inventory and transfer of property. This system is divided into township, range, and sections. This shapefile contains PLSS boundaries to the township and range level. Further PLSS data down to the section level can be found on the FGDL website. This dataset was created by GeoPlan using data from the Bureau of Land Management (BLM) combined with existing PLSS data to fill in known gaps.",
-    "longName": "PLSS\\Public Land Survey System - Township Range",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "PLSS_TR",
-    "restricted": false,
-    "minScale": 600000,
-    "maxScale": 150000,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "d3c1a34140a7c99bbc1e32dab4e6d940",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYIHS/6lgFiOygdQA/xkYGBjRDWSkwDAGBgbqunDUwFEDRw0cxgZSXC5S04UoBSy55SAGAABt1gRS1LSDdQAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 4925,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Administrative/MapServer/5",
-    "name": "Florida Senate Voting Districts",
-    "description": "This dataset represents Senate district boundaries for the state of Florida, as ordered by the Florida Supreme Court December 2, 2015. Between 2012 and 2015, the enacted Congressional and Senate maps were repeatedly challenged in the courts. In December of 2015, the Supreme Court of Florida and the Second Judicial Circuit Court in Leon County ordered new congressional and state senate plans, respectively. The current state of Florida Senate District representatives have been added to the attribute table; these representatives will serve during the 2019 session. For Florida senate districts prior to December 2015 see FGDL layer SDIST_2014 or prior.",
-    "longName": "Political\\Florida Senate Voting Districts",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "SDIST",
-    "restricted": false,
-    "minScale": 0,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "d9a8711d19243a1032184c32fe4ddba9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgbGeitcoMWjx9vuHGRgY0lFc6GGjeJgCAxkYGGjp5VEDRw0cNXDUQKwGLt5+/zCsCCITpKMYCBOgFAAAkt0O9Sf4q7QAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 5231,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Administrative/MapServer/8",
-    "name": "FDOT Districts",
-    "description": "This dataset contains the FDOT district boundaries. ",
-    "longName": "Admin\\FDOT Districts",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "DOTBND",
-    "restricted": false,
-    "minScale": 5000000,
-    "maxScale": 300000,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "District 1",
-        "url": "c787dc6faf67450557e85a04d060b19d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGFJREFUOI1jYaAyYGFgYGDIyclZRqlBU6ZMiYIbyMDAwGDBqGVFkYk5OcumTJkSxYIsFs3meYwcs5b+2g53DAs+heSAUQNHDRw1cBgaiFxqUGzgif/XyCq6YAClgIVxqAEAlhsWoetcQZ0AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "District 2",
-        "url": "6ff86a574ff7274fc6b276200dc5b546",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGJJREFUOI1jYaAyYGFgYGDIyclZRqlBU6ZMiYIbyMDAwCBtJmNFiYE5OTnLpkyZEsWCLGgSaX6MHMPOLD8JdwwLPoXkgFEDRw0cNXAYGohcalBs4NNTT8gqumAApYCFcagBAP+oFvPCSx3jAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "District 3",
-        "url": "be8f355a198b6c3d60fc24456a17f814",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGJJREFUOI1jYaAyYGFgYGDIyclZRqlBU6ZMiYIbyMDAwCArZWZFiYE5OTnLpkyZEsWCLGhhEHmMHMNOXFgOdwwLPoXkgFEDRw0cNXAYGohcalBs4ONnp8gqumAApYCFcagBAAHcFvYZ41MTAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "District 4",
-        "url": "cdbf5085ff9bb156e06bceb36f56ce0f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGJJREFUOI1jYaAyYGFgYGDIyclZRqlBU6ZMiYIbyMDAwPBZ3sKKEgNzchiWTZkyJYoFWXChVfQxcgyLP7YU7hgWfArJAaMGjho4auAwNBC51KDYQN6HJ8gqumAApYCFcagBAMnPFhVgMkaCAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "District 5",
-        "url": "0c55d3aabfc6aa7a14a0ec5267b83535",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGFJREFUOI1jYaAyYGFgYGDIyclZRqlBU6ZMiYIbyMDAwGAh8tmKIhNzcpZNmTIligVZLFpr4TFyzFp6LR7uGBZ8CskBowaOGjhq4DA0ELnUoNjAE294ySq6YAClgIVxqAEAnKMWJdiFeqwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "District 6",
-        "url": "f272b06678b552aa1c091399b684a97e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGJJREFUOI1jYaAyYGFgYGDIyclZRqlBU6ZMiYIbyMDAwPCZ8bMVJQbm5OQsmzJlShQLsuBWtq3HyDHM+5c33DEs+BSSA0YNHDVw1MBhaCByqUGxgbz/eckqumAApYCFcagBAAWBFkePQXmjAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "District 7",
-        "url": "868ffb3e96a43d93eb7923b86c1309e5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGJJREFUOI1jYaAyYGFgYGDIyclZRqlBU6ZMiYIbyMDAwMD89asVJQbm5OQsmzJlShQLsiDbhQvHyDHsl4EB3DEs+BSSA0YNHDVw1MBhaCByqUGxgX+5uckqumAApYCFcagBAAAtFhETsN/MAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 5232,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Administrative/MapServer/9",
-    "name": "FDOT District Boundaries",
-    "description": "This dataset contains the FDOT district boundaries.",
-    "longName": "Admin\\FDOT District Boundaries",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "DOTBND",
-    "restricted": false,
-    "minScale": 299999,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "beb8e8d51068c83c1fe5a9710ea0e377",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFNJREFUOI1jYYCCmQzp/xnwgHSGmYz45GGAhRhFpACKDMTmq8HlQrwGEhvoRBtILTASDcSWloiNIGzqhoCXh4+BxBZvQ8DL1CoU4AZS0zAGBgYGAHk5DlOnHIHwAAAAAElFTkSuQmCC",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -21698,114 +20984,6 @@ define({
         "label": "",
         "url": "a85fe56b9719062b5d1c2323030f4d71",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGBJREFUOI1jYaAyYGFgYGDIz88/Qw3DJk6caMIC4zBy8GhSYtj/H1+uMzBAXQgD7Gr618kx7Oeti3DHsOBTSA4YNXDUwFEDh6GByKUGxQbCyjOqGDhx4kQTahjGwMDAAAAhDRTHu9XQKwAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 5233,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Administrative/MapServer/10",
-    "name": "MPO Boundaries",
-    "description": "This dataset contains Florida Metropolitan Planning Organization political boundaries. This data came from a combination of sources including the Federal Highway administration Research and Innovative Technology Administration's Bureau of Transportation Statistics and the Florida Department of Transportation. GeoPlan then updates this data with changes to MPO boundaries that have been approved by the Florida Governor's Office.",
-    "longName": "Admin\\MPO Boundaries",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "MPOBND",
-    "restricted": false,
-    "minScale": 0,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "d0646ee781fb95c9e4daae9c403ece53",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgf93B06myKR3648xhjMsR3WhuN4xCgxkYGCgpZdHDRw1cNTAUQOxG/hu/TFYEUQOYAxnWI5iIEyAUgAA1joO97i+aksAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 5234,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Administrative/MapServer/11",
-    "name": "Regional Planning Council Boundaries",
-    "description": "This dataset contains the regional planning council boundaries for the state of Florida.",
-    "longName": "Admin\\Regional Planning Council Boundaries",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "RPCBND",
-    "restricted": false,
-    "minScale": 0,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "632d6a42636f00d713046dc4a8d5dd10",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jmfl/5n8GKgIWaho2aiACpDOmMxKjGVuEDlEvjxo4aiAZBlJSpA1RLw8qAwEbZAqxjBGB2QAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 5235,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Administrative/MapServer/12",
-    "name": "Water Management District Boundaries",
-    "description": "This dataset contains the Florida Water Management District boundaries.",
-    "longName": "Admin\\Water Management District Boundaries",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "WMDBND",
-    "restricted": false,
-    "minScale": 0,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "Northwest Florida Water Management District",
-        "url": "104e6ad82459e69892c28f94a41bd1e8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEpJREFUOI3t1DEOACAIQ9E28Trc/yAcqE4SXbWT4U+wvDAxYG4AgCS9QiRZoCNJIskDzMwrLCJqtl3YYIMNfgzuX8MCvnQ82LU4mvlhC+DYV7mhAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "St. Johns River Water Management District",
-        "url": "5f65bd9c1fec71b4a339999b709496e4",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE9JREFUOI1jYaAyYGFgYGD4////f0oNYmRkZIQbSA3w/////4yMjIwoBi66NIMsw+L0MuBsqrlw1MBRA0cNHMYGIpcaVDGQEoBSwMI41AAAQw8MTQnCHvAAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "South Florida Water Management District",
-        "url": "d33a2e489a50265770e222608ecb81c1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE9JREFUOI1jYaAyYGFgYGD4////f0oNYmRkZIQbSA3w/////4yMjIwoBj44sZoswxQsQuFsqrlw1MBRA0cNHMYGIpcaVDGQEoBSwMI41AAAEukMBp1xPWYAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Suwannee River Water Management District",
-        "url": "afe541c32b89c451d3c45f8cc34281d0",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE1JREFUOI3t1LENACAMA0FbYg0Gy4QMxiCmAkELrlC+SppTqhSYKwAgSa8QSS7QkSSR5AH21q6wGrFm24UJJpjgx+D+NSzgS8eDnYujASncDChUMzkPAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Southwest Florida Water Management District",
-        "url": "6b0621d203f081b19b201a2f1e502576",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE1JREFUOI3t1LENACAMA0FbYq/swmDswmSmAkELrlC+SppTqhSYKwAgSa8QSS7QkSSR5AG23q+wGrFm24UJJpjgx+D+NSzgS8eDnYujATW4DDlGpm8bAAAAAElFTkSuQmCC",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -23019,7 +22197,21 @@ define({
     ]
   },
   {
-    "id": 7791,
+    "id": 7822,
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/14",
+    "name": "SV_EST_CCI",
+    "description": null,
+    "longName": "SV_EST_CCI",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "SV_EST_CCI",
+    "restricted": true,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 8111,
     "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/15",
     "name": "SV_ALT_AOI_BY_TYPE",
     "description": null,
@@ -23033,14 +22225,56 @@ define({
     "legendSymbols": null
   },
   {
-    "id": 7792,
+    "id": 8112,
     "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/16",
+    "name": "CNTBND",
+    "description": null,
+    "longName": "CNTBND",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CNTBND",
+    "restricted": true,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 8113,
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/17",
     "name": "CNTDEM2010",
     "description": null,
     "longName": "CNTDEM2010",
     "type": "feature",
     "definitionQuery": null,
     "layerName": "CNTDEM2010",
+    "restricted": true,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 7821,
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/13",
+    "name": "CCI_USCDP_PROFILES",
+    "description": null,
+    "longName": "CCI_USCDP_PROFILES",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CCI_USCDP_PROFILES",
+    "restricted": true,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 8116,
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/12",
+    "name": "CCI_PROFILES",
+    "description": null,
+    "longName": "CCI_PROFILES",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CCI_PROFILES",
     "restricted": true,
     "minScale": 0,
     "maxScale": 0,
@@ -23239,6 +22473,20 @@ define({
     ]
   },
   {
+    "id": 8140,
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/4",
+    "name": "NON_DRAFT_POINTS",
+    "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes point features of project alternatives and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these points currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
+    "longName": "NON_DRAFT_POINTS",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "NON_DRAFT_POINTS",
+    "restricted": true,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
     "id": 6004,
     "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/PREVIOUSLY_REVIEWED_DEV/MapServer/24",
     "name": "5280 ft (1 mile)",
@@ -23397,6 +22645,78 @@ define({
     ]
   },
   {
+    "id": 8151,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/0",
+    "name": "Florida Forest Service Facilities",
+    "description": "This dataset contains point locations of Florida Forest Service facilities.",
+    "longName": "Florida Forest Service Facilities",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "FFS_FACILITIES",
+    "restricted": false,
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "47e9438896e11ac49ef4bf8c0551efeb",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAQZJREFUOI3tlDFLglEUhp8DosPFQbibkEttTkIQOIWbU1FBBNkSSL/ArZ/gKiIN/oB+g2NbES1NIsHdbkPDBQfjNPghIp/Z9yUO4jud+77w3Jd74GZYszI74GaAasyxhDBYGxDoKhwKfP0bqNYe4f0BcAL0EwMVSlhbmBne30bTtVr7OvNzuW9x7u0vDRXvH4DKgl/D+5do/sSYK2A1UOBDoQp0gUbMhc/AmYQwisni31BgDNwoZIHLuWgEVKM8VquWUl447wF50gAV9iPgE8ViE+fugXOm2+6laXiKMW1CaIlzE+BC4Q6opwU+SgjDeUOgozBQEAFNBBQYLvHffymxLb9NEv0A1CtDQy38UL4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8153,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/1",
+    "name": "NOAA Marine Protected Areas",
+    "description": "The MPA Inventory is a comprehensive catalog that provides detailed information for existing marine protected areas in the United States. The inventory provides geospatial boundary information (in polygon format) and classification attributes that seek to define the conservation objectives, protection level, governance and related management criteria for all sites in the database. The comprehensive inventory of federal, state and territorial MPA sites provides governments and stakeholders with access to information to make better decisions about the current and future use of place-based conservation. The information also will be used to inform the development of the national system of marine protected areas as required by Executive Order 13158.",
+    "longName": "NOAA Marine Protected Areas",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "MPA",
+    "restricted": false,
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "47a82fc3087e4e91eb2a2c5e3bc8b3c8",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAG5JREFUOI1jYaAyYKGhgen/KTduJiMLugAyT1q6/v/Tp42MDHgAQg3EQTi9TJphCIDVQHINw2ogJYZhGEipYRgGUmoYhoGUGka0gcQaRpSBxIfrC8IGjiZsotQMuYSNv0yEJA1caiBFHwu6AKUAAI83eWd1VGlgAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8154,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/2",
+    "name": "State Parks",
+    "description": "This feature class contains lands that make up the State Parks and State Trails in Florida as of November 1st, 2017.",
+    "longName": "State Parks",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "STPARK",
+    "restricted": false,
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "84323f49a080af3705ab744c8d47aa0a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJpJREFUOI21VEEOwCAIKwmP2v9P81Xu4EwQQUU3TtpIbW2Q8XHxb4T5Rj4lowvEGgCAnAs5Udl7mMSRlEJ5oDbVtYV169che2RVjYdZak2F1gWadFTtG4pmSeLh1kWdQk/RzP40FN28at8NJWzfSnnF5ggfKty1f5TyUig7Nl2FUZuh0VuxGR696Nj1hMn4Fx0MaPH69bEGTusBmZi7jAp3SOYAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
     "id": 3642,
     "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/30",
     "name": "FDEP NPDES Stormwater Permits",
@@ -23493,6 +22813,183 @@ define({
     ]
   },
   {
+    "id": 8155,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/3",
+    "name": "National Parks Projects (LWCF)",
+    "description": "This dataset contains 2014 Approved & 2015-2018 Pending parcel boundaries of projects funded through agreements between the National Park Service and Land & Water Conservation Fund (LWCF), the Urban Park and Recreation Recovery (UPARR), State of Florida Division of Recreation and Parks (DRP), funding programs. These funded projects consist of land acquisition, rehabilitation of deteriorated recreation facilities, and recreation development projects. Please Note: The dataset naming convention has changed to match that of the FDEP LWCF Application Priority List. Park locations that have been verified are marked with the letter V in the FLAG field.",
+    "longName": "National Parks Projects (LWCF)",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "NPS_PROJECTS",
+    "restricted": false,
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "LWCF",
+        "url": "006bd0f844d2a455e9f8f8af3cd0a456",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJZJREFUOI21VEEOwCAIqwmP3hP8tTssJgyLCm6csIHaSlDwcchvhK2inZKVC0UsAAAND3nBc/YwjaMahbqgN/WcYSwfCHVBV+NhTC1VyC6wpLN4v6Fq1iQezi4aFHqKVvZdQs/mrn13KBn79A2z9pcKs/aPprw1lIzNKWHEZmj1dmyGVy+6diNhVd+RUc6aNd6/PrHAadwNW33l1lsrgwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Other",
+        "url": "d6722fafa981b2c963438ed67b7c2c89",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAItJREFUOI21k1EOwCAIQyHh0B7BW7MvEwPFAW58aWNKnwShj0t+M9RJemvGg1issJuve6ShIA5ZJ+luzIMYaejsDPcHK02kobQwIWpgTU/l/hCZRDpq5BJGid7wQ8MIM4sfDqWDD/+wi/+asIt/NeXUUDqYR8MKZmn1Mpjl1auuXYic0ay+mooVbusBSEe9/YIF9ooAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8156,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/4",
+    "name": "National Parks and Seashores",
+    "description": "This dataset contains National Park Service unit boundaries for the State of Florida.",
+    "longName": "National Parks and Seashores",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "NPS",
+    "restricted": false,
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "6f6598b881e93e90dba476f989811ffb",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJBJREFUOI29lMsRwCAIRHHGkuzJmuzJnszJjFkX0UTDEdw3/MTLZvPHgClL+QqLQVyXYQzi0JeyFOZvYzWhB1ATVQHGmW+6hwjVsl4aSluaVs25Kc/Y1pIRoA3Kj0SWn0G7tcEHox1sNRSIUAvGoLSHKzA0ClzNcAhsIbNQtYdMbEH/PQ7WTWRx/Ns38M1EmV30DHVpc5xJuQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8157,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/5",
+    "name": "National Marine Sanctuaries",
+    "description": "The National Marine Sanctuary Program manages a system of sanctuaries and other managed areas around the country. The legal boundaries of these sanctuaries are defined within the Code of Federal Regulations, at 15 C.F.R. Part 922 and the subparts for each national marine sanctuary. The GIS compatible digital boundary files for each national marine sanctuary are representations of those legal boundaries and are based on the best available data. These files are available for public use at locations defined in this metadata record.",
+    "longName": "National Marine Sanctuaries",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "NMARSA",
+    "restricted": false,
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Florida Keys National Marine Sanctuary",
+        "url": "de3a4a996953684f3df4fe2f5e5f9f03",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgab/Z/6n1LDTjOmMLOgC2BSa/p/5H5ccuoNo5+VRAwepgfjSIrHpdDQdjhpIqYGUpENYsmJBF6AUAADrqiHp4CsEOQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8158,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/6",
+    "name": "National Wildlife Refuges",
+    "description": "This data layer depicts the external boundaries of lands and waters that are approved for acquisition by the U.S. Fish and Wildlife Service (USFWS) in Florida. The primary source for this information is the USFWS Realty program.",
+    "longName": "National Wildlife Refuges",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "NWRFLA",
+    "restricted": false,
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "1a3782d7eb5b42ec99964e978f714cb3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEdJREFUOI1jYaAyYKGZgf8ZGP5TahgjAwMjC7oANoX/GRj+45JDdxDtvDxq4CA1EF9aJDadjqbDUQMpNZCSdAhLVizoApQCAMW7Ek2gWnzmAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8159,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/7",
+    "name": "Aquatic Preserves",
+    "description": "Aquatic Preserves are state-owned sovereign submerged lands in areas which have exceptional biological, aesthetic, and scientific value, as described in Chapter 258.39, Florida Statutes, which have been set aside for the benefit of future generations. These areas are managed by the Florida Department of Environmental Protection's Office of Coastal and Aquatic Managed Areas. Currently, all Aquatic Preserves are also Outstanding Florida Waters (OFWs). However, it is important to note that there are three Aquatic Preserves whose OFW boundaries differ from the Aquatic Preserve boundary. These are described more specifically in the OFW rule 62-302.700: Indian River - Malabar to Vero Beach - does not include portions of Sebastian and Turkey creeks; Wekiva River - does not include portions of the St. Johns River; and Big Bend Seagrasses - the OFW rule specifies certain \"incorporated and unincorporated areas\" that are excluded from the Aquatic Preserve.",
+    "longName": "Aquatic Preserves",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "AQUAP",
+    "restricted": false,
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "6265d7894e19eb17f0bde3358cd295f0",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJNJREFUOI21lMENwCAMA4vESOzETOzETvRTJCB2mkCbF1jVxW4U4vVxxf+ApbZjWk4hrsIE73emASMycqltAucUoIbOAjh+0N0wDbmFDlGDFaqU/IcIwnTQSDpkjt7iUyCLaYzPh7ITXwAtMTVddbgZ/2zKpqFsxNSBnpiu1bPEdK+ec+0wEL2L7K0c9adpXIXTugH4Sb/ZXI6hiAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8160,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/8",
+    "name": "Florida Managed Areas (FNAI)",
+    "description": "FLORIDA CONSERVATION LANDS (layer name FLMA): This is a polygon data layer for public (and some private) lands that the Florida Natural Areas Inventory (FNAI) has identified as having natural resource value and that are being managed at least partially for conservation purposes. The term \"Managed Area\" refers to a managed conservation land.",
+    "longName": "Florida Managed Areas (FNAI)",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "FLMA",
+    "restricted": false,
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "5cb7271ce32b5a5c96408ee3d3c7697c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFpJREFUOI1jYaAyYGFgYGBYxTDzP6UGhTGkM8INpAZYxTDzfxhDOiOKgTBbyDEMxqaaC0cNHCoG/p9+hqwEvjrzLHYDGTNNRtPhsDeQGuUi1VyIUsCSWw5iAwB2jRUyk8VN1QAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8161,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/9",
+    "name": "FWCC Management Areas",
+    "description": "This GIS data set represents the Wildlife Management Area system administered by the Florida Fish and Wildlife Conservation Commission (FWC). These data are intended as a general reference map only. More information on activities permitted in individual areas can be found from the links on FWC's Web site: http://www.myfwc.com/RECREATION/WMASites_index.htm",
+    "longName": "FWCC Management Areas",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "FWCMAS",
+    "restricted": false,
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "5ae1a7e52ceb151c44222d46affdcebb",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1MENwCAIBdBv4krO5EzMxFD2ZKNiCwR7KzcNPjn8kHG4MgDUghaFiJFu8ETVgkaMNIH9l7VJg8bz44RWjBhpRLegB1vvBRjBBBjFBBjFBBjFzKAVM4EeTAX/YJt6vg12f/AGaj3H9uG0YD050+oC5CZXh5JBHksAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
     "id": 3951,
     "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/18",
     "name": "USEPA National Priority Site from CERCLIS",
@@ -23582,6 +23079,183 @@ define({
         "label": "",
         "url": "bd8649f7f10532129002af50272bf8f9",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAATdJREFUOI3t0T1Lw3AQx/GvbVKR4CAEHQpKQTOIi0JB6CRuThUVRNAugjiJxAe6uDr4EJykiENfgK+ho4OgiCCSwRQhi0Swwx+rjYlLC9pWa2MRB2+6ux/3WU6ixSX9g78DKtramDB3cy0Dwc9AOg7bhR+D6qA+6rgMoL0kMck2D2obfarid1VGR3iL5XZeHV6/rOzb791X2zauGoPSs+88SsfIjFQl447wLsr9gxIJzwHfAK8P7iCVQFMzwEJNXuIcOTQlrJ18TVYXBCBbxCSFpkeA2XdBHstJQLZY/67xU4aq5l7iPZ2cEQCMrfSXwdOo8JbsSGgLmWkKpSRw1DzYIU0qT96+sLo3bdIuMENMX4bwRDDQ9U6EZdx+2Fl7h0RXc0Ab4DcHmlVYpWzj5tObL8GA9ffBN2MAW29frh9SAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8162,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/10",
+    "name": "Florida State Forests",
+    "description": "This dataset represents the current Florida state forest boundaries maintained by the Florida Forestry Service.",
+    "longName": "Florida State Forests",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "STATE_FORESTS",
+    "restricted": false,
+    "minScale": 2000000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "371adf63606c5f198c8da6fe9fd86a0b",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWrFDP8pMehWLwMjioHUAqMGjho4auCogXQ2EFaeUc1AagEAhMIEuVnXjxgAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8163,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/11",
+    "name": "Public Land",
+    "description": "This layer contains a selection of FLORIDA MANAGED AREAS (FNAI layer name FLMA) that are managed by the State, Local, or Federal government (note: some of these lands may be owned by Private Individual(s)). The Florida Natural Areas Inventory (FNAI) has identified these lands as having natural resource value and as lands that are being managed at least partially for conservation purposes.\r\n\r\nPublic Lands were extracted from the FNAI Managed Areas \r\nSDE Layer. The public lands were extracted by selecting all \r\nrecords with the expression: \"MATYPE2\" <> 'P'. This selection \r\nset was exported to a spatial view with the name PUBLICLAND.\r\nThe resulting layer represents all non-privately managed lands.",
+    "longName": "Public Land",
+    "type": "feature",
+    "definitionQuery": "MATYPE2 < > 'P'",
+    "layerName": "FLMA",
+    "restricted": false,
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "c0af6d86b853d7e2534575e2b21a7fa8",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJhJREFUOI21VNsNwCAIhISR7P4D1J3oR2NDLS+t8qXkOO+EQLA4aBth5YP/khU8kfqEvFcGLgho3WWuCSKLQCu+C30MaQXtrNvyMfuaAhBbzmA+luU5aoqGcS3LAkux/NOQ0FLhkYaEkcKGSSmUJBapfNAlXDLYGXtDg51pQBTDCqcGO2qA56hT+N6JchyiXFt9D2G/C2fjAk+nlm6Qv59mAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8164,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/12",
+    "name": "Public Pinelands",
+    "description": "This dataset contains public pine lands that have been identified for the purpose of prescribed burning in the State of Florida. The dataset represents the intersection of 2008, 2011, 2014, and 2016 Water Management District Land Use/ Land Cover data sets with the 2018 Florida Natural Areas Inventory Public Lands boundary dataset. The following FGDL layers represent the datasets used in the creation of this layer; PUBLICLAND_APR18 (note: PUBLICLAND_APR18 is derived from FNAI FMLA), LU_NWFWMD_2016, LU_SFWMD_2008, LU_SJRWMD_2014, LU_SRWMD_2014, and LU_SWFWMD_2011.",
+    "longName": "Public Pinelands",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "PUBLIC_PINELANDS",
+    "restricted": false,
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "e1a407a1170aa6870d59dd942a71717a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgemmDP8pMWjmaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg3kEtkU6v0QAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8165,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/13",
+    "name": "Rural Land Stewardship Area (RLSA)",
+    "description": "This dataset shows the boundaries for rural land stewardship areas in the state of Florida. Currently boundaries are available for Collier and St. Lucie county.",
+    "longName": "Rural Land Stewardship Area (RLSA)",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "RLSABND",
+    "restricted": false,
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "e535266605c229883016d208e2940953",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE5JREFUOI1jYaAyYKGZgcX5dw5QYtCMOcoHvn5lbEBxoZdHP9mGzpgzhYGBgZZeHjVw1MBRA0cNxGrgjDnKB2BFEDng61fGBhQDYQKUAgBTWhOvuSb7MAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8166,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/14",
+    "name": "TNC Ecological Resource Areas",
+    "description": "This dataset contains priority ecological resource areas as identified by the workshop of January 1991 sponsored by The Nature Conservancy, Florida Audubon Society and the Department of Natural Resources.",
+    "longName": "TNC Ecological Resource Areas",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "TNCERC",
+    "restricted": false,
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Area of Conservation Interest",
+        "url": "86ba28156f8e9d589edd742e2e98d257",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6srJxMtmHt7bkMDAy09PKogaMGjho4aiBOA2FFEDlg8uTJjCgGwgQoBQDI8AxAnD0U3AAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Priority Conservation Area",
+        "url": "d864b6aa25062832f87f7ec6ed1e5b68",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC60njyZbMOO5uYyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAA1Y4MZD4s9yIAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8168,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Administrative/MapServer/1",
+    "name": "Public Land Survey System",
+    "description": "The Public Land Survey System is a legal land reference system created to facilitate the inventory and transfer of property. This system is divided into township, range, and sections. This shapefile contains PLSS boundaries to the section level, while FPLSS_TR contains PLSS boundaries to the township and range level.",
+    "longName": "PLSS\\Public Land Survey System",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "PLSS",
+    "restricted": false,
+    "minScale": 150000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "d3c1a34140a7c99bbc1e32dab4e6d940",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYIHS/6lgFiOygdQA/xkYGBjRDWSkwDAGBgbqunDUwFEDRw0cxgZSXC5S04UoBSy55SAGAABt1gRS1LSDdQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8169,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Administrative/MapServer/2",
+    "name": "Public Land Survey System - Township Range",
+    "description": "The Public Land Survey System (PLSS) is a legal land reference system created to facilitate the inventory and transfer of property. This system is divided into township, range, and sections. This shapefile contains PLSS boundaries to the township and range level. Further PLSS data down to the section level can be found on the FGDL website. This dataset was created by GeoPlan using data from the Bureau of Land Management (BLM) combined with existing PLSS data to fill in known gaps.",
+    "longName": "PLSS\\Public Land Survey System - Township Range",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "PLSS_TR",
+    "restricted": false,
+    "minScale": 600000,
+    "maxScale": 150000,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "d3c1a34140a7c99bbc1e32dab4e6d940",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD9JREFUOI1jYaAyYIHS/6lgFiOygdQA/xkYGBjRDWSkwDAGBgbqunDUwFEDRw0cxgZSXC5S04UoBSy55SAGAABt1gRS1LSDdQAAAABJRU5ErkJggg==",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -23702,6 +23376,228 @@ define({
         "label": "",
         "url": "8f155e66225ebd89ce93a84258aef1a6",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jYaAyYKGZgUktu99TYtC8428uMGyNdERxYV6mzQXyDdzAwMBASy+PGjhq4KiBowZiNXDe8TcXYEUQWWBrpCOKgTABSgEABLMTHQ7cpB8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8171,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Administrative/MapServer/4",
+    "name": "Florida House Voting Districts",
+    "description": "This dataset represents the state of Florida House district boundaries.The 2015 cartographic boundary shapefiles are simplified representations of selected geographic areas from the U.S. Census Bureau's Master Address File / Topologically Integrated Geographic Encoding and Referencing (MAF/TIGER) Database (MTDB). These boundary files are specifically designed for small-scale thematic mapping. When possible, generalization is performed with the intent to maintain the hierarchical relationships among geographies and to maintain the alignment of geographies within a file set for a given year. Geographic areas may not align with the same areas from another year. Some geographies are available as nation-based files while others are available only as state-based files. SLDL stands for State Legislative District Lower Chamber. State Legislative Districts (SLDs) are the areas from which members are elected to state legislatures. The SLDs embody the upper (senate) and lower (house) chambers of the state legislature. A unique three-character census code, identified by state participants, is assigned to each SLD within a state.The boundaries of the 2014 state legislative districts were provided by state-level participants through the RDP and reflect the districts used to elect members in or prior to the November 2014 election. The current state of Florida House representatives have been added to the attribute table; these representatives will serve from 11/07/18 - 11/03/20.",
+    "longName": "Political\\Florida House Voting Districts",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "HDIST",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "106da2049e1a251c7d044ec6217d289d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgU6eitcoMWjf9vuHGRgY0lFcaGqjeJgCAxkYGGjp5VEDRw0cNXDUQKwG7tt+/zCsCCITpKMYCBOgFAAA0EMPM77MInYAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8172,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Administrative/MapServer/5",
+    "name": "Florida Senate Voting Districts",
+    "description": "This dataset represents Senate district boundaries for the state of Florida, as ordered by the Florida Supreme Court December 2, 2015. Between 2012 and 2015, the enacted Congressional and Senate maps were repeatedly challenged in the courts. In December of 2015, the Supreme Court of Florida and the Second Judicial Circuit Court in Leon County ordered new congressional and state senate plans, respectively. The current state of Florida Senate District representatives have been added to the attribute table; these representatives will serve during the 2019 session. For Florida senate districts prior to December 2015 see FGDL layer SDIST_2014 or prior.",
+    "longName": "Political\\Florida Senate Voting Districts",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "SDIST",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "d9a8711d19243a1032184c32fe4ddba9",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgbGeitcoMWjx9vuHGRgY0lFc6GGjeJgCAxkYGGjp5VEDRw0cNXDUQKwGLt5+/zCsCCITpKMYCBOgFAAAkt0O9Sf4q7QAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8173,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Administrative/MapServer/6",
+    "name": "110th Congressional District Boundaries",
+    "description": "This dataset represents U.S. Congressional district boundaries for the state of Florida, as ordered by the Florida Supreme Court December 2, 2015. Between 2012 and 2015, the enacted Congressional and Senate maps were repeatedly challenged in the courts. In December of 2015, the Supreme Court of Florida and the Second Judicial Circuit Court in Leon County ordered new congressional and state senate plans, respectively. The current U.S. Congressional District representatives have been added to the attribute table; these representatives will serve during the 116th United States Congress. For Florida congressional districts prior to December 2015 see FGDL layer USDIST_2014 or prior.",
+    "longName": "Political\\110th Congressional District Boundaries",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "USDIST",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "08711a0200f896e330d14f2fb1c86359",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgaWeitcoMah7+/3DDAwM6SgujLBRPEyBgQwMDLT08qiBowaOGjhqIFYDu7ffPwwrgsgE6SgGwgQoBQBXjQ693e1zRwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8175,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Administrative/MapServer/8",
+    "name": "FDOT Districts",
+    "description": "This dataset contains the FDOT district boundaries. ",
+    "longName": "Admin\\FDOT Districts",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "DOTBND",
+    "restricted": false,
+    "minScale": 5000000,
+    "maxScale": 300000,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "District 1",
+        "url": "c787dc6faf67450557e85a04d060b19d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGFJREFUOI1jYaAyYGFgYGDIyclZRqlBU6ZMiYIbyMDAwGDBqGVFkYk5OcumTJkSxYIsFs3meYwcs5b+2g53DAs+heSAUQNHDRw1cBgaiFxqUGzgif/XyCq6YAClgIVxqAEAlhsWoetcQZ0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "District 2",
+        "url": "6ff86a574ff7274fc6b276200dc5b546",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGJJREFUOI1jYaAyYGFgYGDIyclZRqlBU6ZMiYIbyMDAwCBtJmNFiYE5OTnLpkyZEsWCLGgSaX6MHMPOLD8JdwwLPoXkgFEDRw0cNXAYGohcalBs4NNTT8gqumAApYCFcagBAP+oFvPCSx3jAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "District 3",
+        "url": "be8f355a198b6c3d60fc24456a17f814",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGJJREFUOI1jYaAyYGFgYGDIyclZRqlBU6ZMiYIbyMDAwCArZWZFiYE5OTnLpkyZEsWCLGhhEHmMHMNOXFgOdwwLPoXkgFEDRw0cNXAYGohcalBs4ONnp8gqumAApYCFcagBAAHcFvYZ41MTAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "District 4",
+        "url": "cdbf5085ff9bb156e06bceb36f56ce0f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGJJREFUOI1jYaAyYGFgYGDIyclZRqlBU6ZMiYIbyMDAwPBZ3sKKEgNzchiWTZkyJYoFWXChVfQxcgyLP7YU7hgWfArJAaMGjho4auAwNBC51KDYQN6HJ8gqumAApYCFcagBAMnPFhVgMkaCAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "District 5",
+        "url": "0c55d3aabfc6aa7a14a0ec5267b83535",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGFJREFUOI1jYaAyYGFgYGDIyclZRqlBU6ZMiYIbyMDAwGAh8tmKIhNzcpZNmTIligVZLFpr4TFyzFp6LR7uGBZ8CskBowaOGjhq4DA0ELnUoNjAE294ySq6YAClgIVxqAEAnKMWJdiFeqwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "District 6",
+        "url": "f272b06678b552aa1c091399b684a97e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGJJREFUOI1jYaAyYGFgYGDIyclZRqlBU6ZMiYIbyMDAwPCZ8bMVJQbm5OQsmzJlShQLsuBWtq3HyDHM+5c33DEs+BSSA0YNHDVw1MBhaCByqUGxgbz/eckqumAApYCFcagBAAWBFkePQXmjAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "District 7",
+        "url": "868ffb3e96a43d93eb7923b86c1309e5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAGJJREFUOI1jYaAyYGFgYGDIyclZRqlBU6ZMiYIbyMDAwMD89asVJQbm5OQsmzJlShQLsiDbhQvHyDHsl4EB3DEs+BSSA0YNHDVw1MBhaCByqUGxgX+5uckqumAApYCFcagBAAAtFhETsN/MAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8176,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Administrative/MapServer/9",
+    "name": "FDOT District Boundaries",
+    "description": "This dataset contains the FDOT district boundaries.",
+    "longName": "Admin\\FDOT District Boundaries",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "DOTBND",
+    "restricted": false,
+    "minScale": 299999,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "beb8e8d51068c83c1fe5a9710ea0e377",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFNJREFUOI1jYYCCmQzp/xnwgHSGmYz45GGAhRhFpACKDMTmq8HlQrwGEhvoRBtILTASDcSWloiNIGzqhoCXh4+BxBZvQ8DL1CoU4AZS0zAGBgYGAHk5DlOnHIHwAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8177,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Administrative/MapServer/10",
+    "name": "MPO Boundaries",
+    "description": "This dataset contains Florida Metropolitan Planning Organization political boundaries. This data came from a combination of sources including the Federal Highway administration Research and Innovative Technology Administration's Bureau of Transportation Statistics and the Florida Department of Transportation. GeoPlan then updates this data with changes to MPO boundaries that have been approved by the Florida Governor's Office.",
+    "longName": "Admin\\MPO Boundaries",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "MPOBND",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "d0646ee781fb95c9e4daae9c403ece53",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAElJREFUOI1jYaAyYKGZgf93B06myKR3648xhjMsR3WhuN4xCgxkYGCgpZdHDRw1cNTAUQOxG/hu/TFYEUQOYAxnWI5iIEyAUgAA1joO97i+aksAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8178,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Administrative/MapServer/11",
+    "name": "Regional Planning Council Boundaries",
+    "description": "This dataset contains the regional planning council boundaries for the state of Florida.",
+    "longName": "Admin\\Regional Planning Council Boundaries",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "RPCBND",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "632d6a42636f00d713046dc4a8d5dd10",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jmfl/5n8GKgIWaho2aiACpDOmMxKjGVuEDlEvjxo4aiAZBlJSpA1RLw8qAwEbZAqxjBGB2QAAAABJRU5ErkJggg==",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -23849,6 +23745,90 @@ define({
         "label": "INELIGIBLE DISCHARGES COMPETED",
         "url": "bba387e3ef339fa9767eea007fa83664",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAhRJREFUOI3V1D9oE1EcB/Dve/c/TRMNTRurIGghIEKKUBzsUqWQEgsOLo7JJcFNRxdRHBycHBwcLmQNqOjkYkVidSgKEZQKEkFRbE0T04T0cne5e+eSiqF3MYOD/uAt7/d+H3783uPx+MvB/1+gpml3B5JKMCzuix7jRHkKhIpwmW4b+jezsbnObNPYPZfNZi96goQQDQAopWT86OzVnY2PZ5llEE4eAwD02tv7Wc84OJGYPw7m3Nh6U14Z2qGqqq8B4N7zymOrXV+KzS1CCIQGCqydFhrv1pTxw/GbR1KZ6kKM3PcFAaD05OVlu7O9NHXiNAile2YkjoURmzuDWqVMOFEuPqu5TxcmSdMTLJVKgvXj+7XpUylP7NdoKIdoYh6br1aCcjiZA3DLE9R1PRmaiQuUF32x3aC8CCV6CHr963lfEMBJZeJA4I9aP+TIJLr1jenf9wZAxliI8kIbQHgUkBMkOKbh+IKEkC2zWfskhSKJUcBepwXArQ7rsNxYX7tiG11QQYRjduGYOpz+G+YkGZwUACcpcCwDnc/vIUdid3zBXC63qmnah1a1MjtKh7wS/HJhefGRLwjAJYRkALwAMPRyCMebzNRTANxhIFRVrRQKhSSABwCinhjlGmDOcjqTebuna68CVVVXi8VinDF2CcA5ADP9VBXAQ7tn3c7n8y2vWt/vK51ONwFc76+R49//YH8CP2S1butfmhQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8179,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Administrative/MapServer/12",
+    "name": "Water Management District Boundaries",
+    "description": "This dataset contains the Florida Water Management District boundaries.",
+    "longName": "Admin\\Water Management District Boundaries",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "WMDBND",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Northwest Florida Water Management District",
+        "url": "104e6ad82459e69892c28f94a41bd1e8",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEpJREFUOI3t1DEOACAIQ9E28Trc/yAcqE4SXbWT4U+wvDAxYG4AgCS9QiRZoCNJIskDzMwrLCJqtl3YYIMNfgzuX8MCvnQ82LU4mvlhC+DYV7mhAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "St. Johns River Water Management District",
+        "url": "5f65bd9c1fec71b4a339999b709496e4",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE9JREFUOI1jYaAyYGFgYGD4////f0oNYmRkZIQbSA3w/////4yMjIwoBi66NIMsw+L0MuBsqrlw1MBRA0cNHMYGIpcaVDGQEoBSwMI41AAAQw8MTQnCHvAAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "South Florida Water Management District",
+        "url": "d33a2e489a50265770e222608ecb81c1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE9JREFUOI1jYaAyYGFgYGD4////f0oNYmRkZIQbSA3w/////4yMjIwoBj44sZoswxQsQuFsqrlw1MBRA0cNHMYGIpcaVDGQEoBSwMI41AAAEukMBp1xPWYAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Suwannee River Water Management District",
+        "url": "afe541c32b89c451d3c45f8cc34281d0",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE1JREFUOI3t1LENACAMA0FbYg0Gy4QMxiCmAkELrlC+SppTqhSYKwAgSa8QSS7QkSSR5AH21q6wGrFm24UJJpjgx+D+NSzgS8eDnYujASncDChUMzkPAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Southwest Florida Water Management District",
+        "url": "6b0621d203f081b19b201a2f1e502576",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE1JREFUOI3t1LENACAMA0FbYq/swmDswmSmAkELrlC+SppTqhSYKwAgSa8QSS7QkSSR5AG23q+wGrFm24UJJpjgx+D+NSzgS8eDnYujATW4DDlGpm8bAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8180,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Administrative/MapServer/13",
+    "name": "Florida County Boundaries",
+    "description": "This dataset contains the boundaries of Florida's 67 counties. The interior county boundaries are from the US Census Bureau's TIGER data. The coastal boundaries are from the previous version of CNTBND and are used by Florida Department of Transportation's Efficient Transportation Decision Making (ETDM) process for display purposes. GeoPlan maintains 3 county boundary layers: COUNTYSHORE_AREAS, CNTBND, and COUNTY. These 3 layers will all have the same interior boundaries and different coastal boundaries. The interior boundaries come from the MAF/TIGER Database that is updated yearly by the US Census Bureau. The coastal boundaries differ in the following way: 1) COUNTYSHORE_AREAS - FWRI's detailed shoreline layer (updated periodically) 2) CNTBND - moderately generalized shoreline designed for ETDM display, sourced from historic US Census Bureau data 3) COUNTY - highly generalized shoreline designed for ETDM display, sourced from historic US Census Bureau data",
+    "longName": "Admin\\Florida County Boundaries",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CNTBND",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "966dfb094c4e21b49edb686fbaa74e2e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC5M6U8i27A5hfMYGBho6eVRA0cNHDVw1ECcBsKKIHLA5MmTGVEMhAlQCgDZVAxwE31W5gAAAABJRU5ErkJggg==",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -25569,35 +25549,7 @@ define({
     ]
   },
   {
-    "id": 7490,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/3",
-    "name": "DRAFT_ALTERNATIVES",
-    "description": "This dataset contains all spatial features of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer contains polygons which are based on a 1 foot buffer of all features in the project alternatives. These polygons are used for visual purposes only. These project alternatives currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
-    "longName": "DRAFT_ALTERNATIVES",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "DRAFT_ALTERNATIVES",
-    "restricted": true,
-    "minScale": 0,
-    "maxScale": 0,
-    "legendSymbols": null
-  },
-  {
-    "id": 7491,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/4",
-    "name": "NON_DRAFT_POINTS",
-    "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes point features of project alternatives and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these points currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
-    "longName": "NON_DRAFT_POINTS",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "NON_DRAFT_POINTS",
-    "restricted": true,
-    "minScale": 0,
-    "maxScale": 0,
-    "legendSymbols": null
-  },
-  {
-    "id": 7492,
+    "id": 7810,
     "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/0",
     "name": "DRAFT_POINTS",
     "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes point features of project alternatives and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these points currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
@@ -25611,7 +25563,49 @@ define({
     "legendSymbols": null
   },
   {
-    "id": 7493,
+    "id": 7811,
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/1",
+    "name": "DRAFT_SEGMENTS",
+    "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes line features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these segments currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "DRAFT_SEGMENTS",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "DRAFT_SEGMENTS",
+    "restricted": true,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 7812,
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/2",
+    "name": "DRAFT_POLYGONS",
+    "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes polygon features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these polygons currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "DRAFT_POLYGONS",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "DRAFT_POLYGONS",
+    "restricted": true,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 7813,
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/3",
+    "name": "DRAFT_ALTERNATIVES",
+    "description": "This dataset contains all spatial features of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer contains polygons which are based on a 1 foot buffer of all features in the project alternatives. These polygons are used for visual purposes only. These project alternatives currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
+    "longName": "DRAFT_ALTERNATIVES",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "DRAFT_ALTERNATIVES",
+    "restricted": true,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 7814,
     "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/5",
     "name": "NON_DRAFT_SEGMENTS",
     "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes line features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these segments currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
@@ -25625,7 +25619,7 @@ define({
     "legendSymbols": null
   },
   {
-    "id": 7494,
+    "id": 7815,
     "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/6",
     "name": "NON_DRAFT_POLYGONS",
     "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes polygon features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these polygons currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
@@ -25639,7 +25633,7 @@ define({
     "legendSymbols": null
   },
   {
-    "id": 7495,
+    "id": 7816,
     "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/7",
     "name": "NON_DRAFT_ALTERNATIVES",
     "description": "This dataset contains all spatial features of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer contains polygons which are based on a 1 foot buffer of all features in the project alternatives. These polygons are used for visual purposes only. These project alternatives currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
@@ -25653,7 +25647,7 @@ define({
     "legendSymbols": null
   },
   {
-    "id": 7496,
+    "id": 7817,
     "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/8",
     "name": "ELIMINATED_POINTS",
     "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes point features of project alternatives and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these points currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
@@ -25667,7 +25661,7 @@ define({
     "legendSymbols": null
   },
   {
-    "id": 7497,
+    "id": 7818,
     "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/9",
     "name": "ELIMINATED_SEGMENTS",
     "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes line features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these segments currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
@@ -25681,7 +25675,7 @@ define({
     "legendSymbols": null
   },
   {
-    "id": 7498,
+    "id": 7819,
     "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/10",
     "name": "ELIMINATED_POLYGONS",
     "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes polygon features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these polygons currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
@@ -25695,7 +25689,7 @@ define({
     "legendSymbols": null
   },
   {
-    "id": 7499,
+    "id": 7820,
     "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/11",
     "name": "ELIMINATED_ALTERNATIVES",
     "description": "This dataset contains all spatial features of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer contains polygons which are based on a 1 foot buffer of all features in the project alternatives. These polygons are used for visual purposes only. These project alternatives currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
@@ -25703,48 +25697,6 @@ define({
     "type": "feature",
     "definitionQuery": null,
     "layerName": "ELIMINATED_ALTERNATIVES",
-    "restricted": true,
-    "minScale": 0,
-    "maxScale": 0,
-    "legendSymbols": null
-  },
-  {
-    "id": 7500,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/12",
-    "name": "CCI_PROFILES",
-    "description": null,
-    "longName": "CCI_PROFILES",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CCI_PROFILES",
-    "restricted": true,
-    "minScale": 0,
-    "maxScale": 0,
-    "legendSymbols": null
-  },
-  {
-    "id": 7501,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/13",
-    "name": "CCI_USCDP_PROFILES",
-    "description": null,
-    "longName": "CCI_USCDP_PROFILES",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CCI_USCDP_PROFILES",
-    "restricted": true,
-    "minScale": 0,
-    "maxScale": 0,
-    "legendSymbols": null
-  },
-  {
-    "id": 7502,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/14",
-    "name": "SV_EST_CCI",
-    "description": null,
-    "longName": "SV_EST_CCI",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "SV_EST_CCI",
     "restricted": true,
     "minScale": 0,
     "maxScale": 0,
