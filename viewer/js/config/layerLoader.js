@@ -1798,8 +1798,8 @@ define({
       {
         "layerId": 0,
         "label": "",
-        "url": "80915368ce3d03589ae09ed3d275c7ec",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAKNJREFUOI3VlDEOgzAMRf+vUHuK0ov0Jp2o1IQjJakEEzfhInCMLu7kAQokQgzpn5w4erZj2QUOVrHmCC95mDe73UBvRawn9TyHeSsSg1lPrma49HjLrwGTganKF6hfkm+GeQNdJbfTBVfj2B8CrFsOAAYg15IXgbHRikl3wZ+UHGq544PRNBwBIDylVHsX0Dj2k9szSgATYGwfbs7yTwCkN+0L4d8yVJcD4ysAAAAASUVORK5CYII=",
+        "url": "be712541422adfd762707456c1df73ac",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHRJREFUOI3tlDsKwDAMQ2XwXX0mn9adAmqab+tCh74toCg2EVIkowDgFgEA5iJ87mEuUmvKXc2azC3CXKRpWF4bwRqeNm3Cbxvy+imGnJJ3Vl751S3DOtiPDTP5De+RHmzmZDjqwVYHtjS6Kp5xKdjdDuxxAHKFL1+HDBugAAAAAElFTkSuQmCC",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -2053,8 +2053,8 @@ define({
       {
         "layerId": 0,
         "label": "",
-        "url": "80915368ce3d03589ae09ed3d275c7ec",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAKNJREFUOI3VlDEOgzAMRf+vUHuK0ov0Jp2o1IQjJakEEzfhInCMLu7kAQokQgzpn5w4erZj2QUOVrHmCC95mDe73UBvRawn9TyHeSsSg1lPrma49HjLrwGTganKF6hfkm+GeQNdJbfTBVfj2B8CrFsOAAYg15IXgbHRikl3wZ+UHGq544PRNBwBIDylVHsX0Dj2k9szSgATYGwfbs7yTwCkN+0L4d8yVJcD4ysAAAAASUVORK5CYII=",
+        "url": "be712541422adfd762707456c1df73ac",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHRJREFUOI3tlDsKwDAMQ2XwXX0mn9adAmqab+tCh74toCg2EVIkowDgFgEA5iJ87mEuUmvKXc2azC3CXKRpWF4bwRqeNm3Cbxvy+imGnJJ3Vl751S3DOtiPDTP5De+RHmzmZDjqwVYHtjS6Kp5xKdjdDuxxAHKFL1+HDBugAAAAAElFTkSuQmCC",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -22198,7 +22198,7 @@ define({
   },
   {
     "id": 7822,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/14",
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/14",
     "name": "SV_EST_CCI",
     "description": null,
     "longName": "SV_EST_CCI",
@@ -22212,7 +22212,7 @@ define({
   },
   {
     "id": 8111,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/15",
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/15",
     "name": "SV_ALT_AOI_BY_TYPE",
     "description": null,
     "longName": "SV_ALT_AOI_BY_TYPE",
@@ -22226,7 +22226,7 @@ define({
   },
   {
     "id": 8112,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/16",
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/16",
     "name": "CNTBND",
     "description": null,
     "longName": "CNTBND",
@@ -22240,7 +22240,7 @@ define({
   },
   {
     "id": 8113,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/17",
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/17",
     "name": "CNTDEM2010",
     "description": null,
     "longName": "CNTDEM2010",
@@ -22254,7 +22254,7 @@ define({
   },
   {
     "id": 7821,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/13",
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/13",
     "name": "CCI_USCDP_PROFILES",
     "description": null,
     "longName": "CCI_USCDP_PROFILES",
@@ -22268,7 +22268,7 @@ define({
   },
   {
     "id": 8116,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/12",
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/12",
     "name": "CCI_PROFILES",
     "description": null,
     "longName": "CCI_PROFILES",
@@ -22474,7 +22474,7 @@ define({
   },
   {
     "id": 8140,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/4",
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/4",
     "name": "NON_DRAFT_POINTS",
     "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes point features of project alternatives and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these points currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "NON_DRAFT_POINTS",
@@ -25550,7 +25550,7 @@ define({
   },
   {
     "id": 7810,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/0",
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/0",
     "name": "DRAFT_POINTS",
     "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes point features of project alternatives and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these points currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "DRAFT_POINTS",
@@ -25564,7 +25564,7 @@ define({
   },
   {
     "id": 7811,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/1",
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/1",
     "name": "DRAFT_SEGMENTS",
     "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes line features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these segments currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "DRAFT_SEGMENTS",
@@ -25578,7 +25578,7 @@ define({
   },
   {
     "id": 7812,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/2",
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/2",
     "name": "DRAFT_POLYGONS",
     "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes polygon features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"DRAFT_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these polygons currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "DRAFT_POLYGONS",
@@ -25592,7 +25592,7 @@ define({
   },
   {
     "id": 7813,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/3",
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/3",
     "name": "DRAFT_ALTERNATIVES",
     "description": "This dataset contains all spatial features of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer contains polygons which are based on a 1 foot buffer of all features in the project alternatives. These polygons are used for visual purposes only. These project alternatives currently have a status of \"Draft\", which indicates the alternative falls into 1 of 5 categories: 1) Editing; 2) Ready for GIS Analysis; 3) GIS Analysis Complete; 4) FIHS Consistency Review; 5) ETDM QA/QC.",
     "longName": "DRAFT_ALTERNATIVES",
@@ -25606,7 +25606,7 @@ define({
   },
   {
     "id": 7814,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/5",
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/5",
     "name": "NON_DRAFT_SEGMENTS",
     "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes line features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these segments currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "NON_DRAFT_SEGMENTS",
@@ -25620,7 +25620,7 @@ define({
   },
   {
     "id": 7815,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/6",
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/6",
     "name": "NON_DRAFT_POLYGONS",
     "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes polygon features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these polygons currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "NON_DRAFT_POLYGONS",
@@ -25634,7 +25634,7 @@ define({
   },
   {
     "id": 7816,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/7",
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/7",
     "name": "NON_DRAFT_ALTERNATIVES",
     "description": "This dataset contains all spatial features of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer contains polygons which are based on a 1 foot buffer of all features in the project alternatives. These polygons are used for visual purposes only. These project alternatives currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "NON_DRAFT_ALTERNATIVES",
@@ -25648,7 +25648,7 @@ define({
   },
   {
     "id": 7817,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/8",
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/8",
     "name": "ELIMINATED_POINTS",
     "description": "This dataset contains points that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes point features of project alternatives and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these points currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "ELIMINATED_POINTS",
@@ -25662,7 +25662,7 @@ define({
   },
   {
     "id": 7818,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/9",
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/9",
     "name": "ELIMINATED_SEGMENTS",
     "description": "This dataset contains line segments that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes line features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these segments currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "ELIMINATED_SEGMENTS",
@@ -25676,7 +25676,7 @@ define({
   },
   {
     "id": 7819,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/10",
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/10",
     "name": "ELIMINATED_POLYGONS",
     "description": "This dataset contains footprints or study areas that are part of planned transportation project alternatives within the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer only includes polygon features of project alternatives, and therefore does not necessarily represent the entire alternative. Please see the layer and metadata \"ELIMINATED_ALTERNATIVES\" for a complete representation of each project alternative. The project alternatives associated with these polygons currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "ELIMINATED_POLYGONS",
@@ -25690,7 +25690,7 @@ define({
   },
   {
     "id": 7820,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/11",
+    "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/11",
     "name": "ELIMINATED_ALTERNATIVES",
     "description": "This dataset contains all spatial features of planned transportation project alternatives in the Efficient Transportation Decision Making (ETDM) Process. Alternatives are made up of one or more features of different geometry types (e.g. point, line, polygon). This layer contains polygons which are based on a 1 foot buffer of all features in the project alternatives. These polygons are used for visual purposes only. These project alternatives currently have a status of \"Eliminated\", which indicates the alternative has been eliminated from the ETDM process.",
     "longName": "ELIMINATED_ALTERNATIVES",
