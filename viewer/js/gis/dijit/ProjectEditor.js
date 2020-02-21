@@ -317,7 +317,13 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                             }
                         }
                         if (projectList.length === 1) {
-                            self.loadProjectAlt(projectList[0]);
+                            var a = projectList[0];
+                            //combine project and alt names
+                            a.name = a.projectName + ' - ' + a.altName;
+                            a.label = '#' + a.projectId + '-' + a.altNumber + ': ' + a.name;
+
+                            self.loadProjectAlt(a);
+
                         } else {
                             //pick an alt
                             projectList.forEach(function (projectAlt) {
