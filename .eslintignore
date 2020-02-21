@@ -5,3 +5,4 @@ viewer/js/config/layerLoader.js
 viewer/js/config/projects.js
 viewer/js/knockout-latest.js
 viewer/js/viewer/_EditorMixin.js
+viewer/js/string.polyfill.js
