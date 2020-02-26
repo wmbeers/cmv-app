@@ -448,17 +448,25 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 self.newFeatureDialog.hide();
             });
 
+            window.addEventListener('storage', lang.hitch(this, '_handleStorageMessage'));
+
             this._handleQueryString();
 
         },
 
+        _handleStorageMessage: function (e) {
+            if (e.key === 'postMessage') {
+                this._handleQueryString('?' + e.newValue);
+            }
+        },
+
         /**
         * Handles"editproject" arguments passed in the query string to do things after this widget is loaded.
-        * @param {object} testUri optional URI to be used only during testing
+        * @param {object} queryString optional queryString when calling this method from _handleStorageMessage. If not provided, uses window.location.href to get queryString
         * @returns {void}
         */
-        _handleQueryString: function (testUri) {
-            var uri = testUri || window.location.href;
+        _handleQueryString: function (queryString) {
+            var uri = queryString || window.location.href;
             var qs = uri.indexOf('?') >= 0 ? uri.substring(uri.indexOf('?') + 1, uri.length) : '';
             qs = qs.toLowerCase();
             var qsObj = ioQuery.queryToObject(qs);
@@ -468,6 +476,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             //TODO loadProjectAlt expects an object, need to create/call a new MapDAO method that accepts projectAltId
             }
         },
+
+        //TODO need something like _handleMessage from _LayerLoadMixin to handle already-loaded maps
 
         //save to server
         _addFeatureToLayer: function (feature, addToStack) {
