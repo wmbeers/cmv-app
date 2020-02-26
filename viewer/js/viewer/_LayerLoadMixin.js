@@ -90,22 +90,22 @@ define([
 
             //event listener for messages from other EST windows
             //for certain specific external functions, including loadMap, addProjectToMap, zoomToMgrsPoint, loadLayer
-            window.addEventListener('message', lang.hitch(this, '_handleMessage'));
+            //window.addEventListener('message', lang.hitch(this, '_handleMessage'));
 
             //ie still doesn't properly handle the message event; let's try LSO
             //add event listener to watch for "resetTimeout" being changed in local storage
-            if (typeof (Storage) !== 'undefined') {
-                window.addEventListener('storage', lang.hitch(this, '_handleStorageMessage'));
-            }
+            window.addEventListener('storage', lang.hitch(this, '_handleStorageMessage'));
 
             this.inherited(arguments);
         },
 
         _handleStorageMessage: function (e) {
+            console.log('_LayerLoadMixin handling storage message with key: ' + e.key + ', newValue:' + e.newValue + ', oldValue: ' + e.oldValue);
             if (e.key === 'postMessage') {
-                var obj = new Object();
-                obj.data = JSON.parse(e.newValue);
-                this._handleMessage(obj);
+                console.log('   handling postMessage');
+                this._handleQueryString('?' + e.newValue);
+            } else {
+                console.log('   we care not.');
             }
         },
 
