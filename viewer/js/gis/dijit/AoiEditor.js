@@ -563,7 +563,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                             running: p.progressGIS.running,
                             title: 'Study Area Report',
                             //not working yet as standalone page href: '/est/analysis/ReportOptions.do?aoiId=' + self.aoiId
-                            href: '/est/analysis/CachedGisReport.do?aoiId=' + self.aoiId + '&issueId=102&crdReport=true'
+                            href: '/est/analysis/CachedReports.do?aoiId=' + self.aoiId
                         },
                         hcm = {
                             code: p.progressHCM.code,
@@ -584,7 +584,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                             text: p.progressCRD.text,
                             running: p.progressCRD.running,
                             title: 'Cultural Resources Data Report',
-                            href: 'todo'
+                            href: '/est/analysis/CachedGisReport.do?aoiId=' + self.aoiId + '&issueId=102&crdReport=true'
                         },
                         ert = {
                             code: p.progressERT.code,
