@@ -9,11 +9,12 @@ define(
   "eliminatedProjectsService": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer",
   "draftProjectsService": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DRAFT_PROJECTS_DEV/MapServer",
   "rciBasemapService": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/RCI_Base/MapServer",
+  "aoiMapService": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/AOIDEV_INPUT/MapServer",
   "aoiLayers": {
-    "analysisAreaBuffer": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/AOIDEV_INPUT/FeatureServer/4",
-    "point": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/AOIDEV_INPUT/FeatureServer/1",
-    "polyline": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/AOIDEV_INPUT/FeatureServer/2",
-    "polygon": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/AOIDEV_INPUT/FeatureServer/3"
+    "analysisAreaBuffer": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/AOIDEV_INPUT/FeatureServer/3",
+    "point": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/AOIDEV_INPUT/FeatureServer/0",
+    "polyline": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/AOIDEV_INPUT/FeatureServer/1",
+    "polygon": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/AOIDEV_INPUT/FeatureServer/2"
   },
   "estProjectLayers": {
     "point": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/ESTDEV_INPUT_LAYERS/FeatureServer/0",
