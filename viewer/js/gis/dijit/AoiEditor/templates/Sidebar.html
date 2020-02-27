@@ -300,9 +300,9 @@
                     <tbody>
                         <tr data-bind="template: {name: 'progress', data: progressGIS}"></tr>
                         <tr data-bind="template: {name: 'progress', data: progressCCI}"></tr>
-                        <tr data-bind="visible: progressCCI.code >= 4"> <!--TODO change to 5 when HCM is working again-->
-                            <td colspan="2" style="margin-left: 20px">
-                                <ul data-bind="foreach: analysisAreas">
+                        <tr data-bind="visible: progressCCI().code >= 4"> <!--TODO change to 5 when HCM is working again-->
+                            <td colspan="2" style="margin-left: 10px">
+                                <ul data-bind="foreach: analysisAreas" class="no-margin">
                                     <li>
                                         <a data-bind="attr: {href: '/est/community/SocioculturalDataReport_pdf.do?aoiAltId=' + id}, text: name" target="_blank"></a>
                                     </li>
