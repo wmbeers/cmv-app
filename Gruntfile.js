@@ -3,12 +3,14 @@ module.exports = function (grunt) {
     //get target from command line, e.g. "grunt build-deploy --target=stage"; defaults to "dev" if not provided on command line
     var target = grunt.option('target') || 'dev';
     //get host from target; if not dev or stage, user is prompted for host (assuming you have Bill's modified version of the scp grunt task)
-    var host = (target === 'dev' || target === 'devpoke') ? 'estlapp02.geoplan.ufl.edu' :
-        (target === 'stage' || target === 'stagepoke') ? 'estlapp03.geoplan.ufl.edu' :
-        (target === 'preprod' || target === 'preprodpoke') ? 'estlapp04.geoplan.ufl.edu' :
-        (target === 'prod' || target === 'prodpoke') ? 'estlapp05.geoplan.ufl.edu' : 
-        target === 'pubdev' ? 'estlapp08.geoplan.ufl.edu' : 
-        (target === 'pubprod' || target === 'pub') ? 'estlapp09.geoplan.ufl.edu' : null;
+    var host = target === 'dev' ? 'prometheus.est.vpn' :
+        target === 'devpoke' ? 'estlapp02.geoplan.ufl.edu' :
+        target === 'stage' ? 'hyperion.est.vpn' : 
+        target === 'stagepoke' ? 'estlapp03.geoplan.ufl.edu' :
+        target === 'preprod' ? 'pandora.est.vpn' :
+        target === 'preprodpoke' ? 'estlapp04.geoplan.ufl.edu' :
+        target === 'prod' ? 'calypso.est.vpn' :
+        target === 'prodpoke' ? 'estlapp05.geoplan.ufl.edu' : null;
 
     grunt.log.writeln ("target: " + target);
     
