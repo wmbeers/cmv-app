@@ -56,9 +56,9 @@
         //'config/_customMixin'
         'viewer/_LayerLoadMixin',
 
-        'viewer/_EditorMixin',
+        'viewer/_EditorMixin'
 
-        'viewer/_SessionMixin'
+        //'viewer/_SessionMixin'
 
     ], function (
         declare, 
@@ -76,8 +76,8 @@
 
         _SidebarMixin,
         _LayerLoadMixin,
-        _EditorMixin,
-        _SessionMixin
+        _EditorMixin
+        //_SessionMixin
         //_MyCustomMixin
 
     ) {
@@ -90,7 +90,7 @@
             // for the most part they are interchangeable, except _ConfigMixin
             // and _ControllerBase
             //
-            _SessionMixin,
+            // _SessionMixin,
 
             _EditorMixin,
 
