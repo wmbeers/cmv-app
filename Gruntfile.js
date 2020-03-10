@@ -10,7 +10,10 @@ module.exports = function (grunt) {
         target === 'preprod' ? 'pandora.est.vpn' :
         target === 'preprodpoke' ? 'estlapp04.geoplan.ufl.edu' :
         target === 'prod' ? 'calypso.est.vpn' :
-        target === 'prodpoke' ? 'estlapp05.geoplan.ufl.edu' : null;
+        target === 'prodpoke' ? 'estlapp05.geoplan.ufl.edu' : 
+        target === 'filegen06' ? 'estlapp06.geoplan.ufl.edu' : 
+        target === 'filegen07' ? 'estlapp07.geoplan.ufl.edu' : 
+        null;
 
     grunt.log.writeln ("target: " + target);
     
