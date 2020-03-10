@@ -967,7 +967,7 @@ define([
                     //sublayer has ids that are just the index of the layer within the dynamic map service layer
                     var subLayerDef = layer.layerDef.layerDefs[subLayer.id];
                     layerName = subLayerDef ? subLayerDef.layerName : null;
-                } else if (layer.layerDef.layerDefs.length === 1) {
+                } else if (layer.layerDef.layerDefs && layer.layerDef.layerDefs.length === 1) {
                     //this is the case for dynamic map services with only one layer, CMV handles those differently
                     layerName = layer.layerDef.layerDefs[0].layerName;
                 } else {
