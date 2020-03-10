@@ -525,13 +525,14 @@ define({
             "name": "Trails",
             "categories": [],
             "layerIds": [
-              260,
-              261,
-              262,
-              263,
-              264,
-              265,
-              266
+              8460,
+              8461,
+              8462,
+              8751,
+              8458,
+              8459,
+              8752,
+              8753
             ],
             "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Trails/MapServer",
             "serviceId": 50,
@@ -3018,30 +3019,6 @@ define({
         "label": "10.01 - 40.0",
         "url": "6bcb21956ee922f09f051311c18be88b",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTNn/qfIpPR0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAEzpBCD/8FGwAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 260,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Trails/MapServer/0",
-    "name": "Great Florida Birding Trail Sites",
-    "description": "These data represent the site locations of the Great Florida Birding Trail. The GFBWT is a program of the Florida Fish and Wildlife Conservation Commission. At its core is a network of nearly 500 sites throughout Florida selected for their excellent bird watching, wildlife viewing or educational opportunities.",
-    "longName": "Great Florida Birding Trail Sites",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "GFBT",
-    "restricted": false,
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "1b3ce702018bf50c205ae6839dfc0257",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAOlJREFUOI3t0CFOQ0EQxvH/Y9dyBZpUIOtGogiCosozNJiKmh6AIxSDb9IDlKSieQdAVZIRewoI6ArSZpdBgCJd0iUYAp+dyW++jOeH4//BXwbKQs5jFQce33KVe1i/rmehDreAFYPSyARj5D9WkqWOr/ypNHKmPb3MoVtBaaTGGG29ZPRlIUutdboz6MwNEylXHrfnhsDuYCK1sxqQLD/P/fAZOPzCfCoF58BRljPmRaDu61RW0gOOP88i8T64cFPW8ISod9qVlVxhDKg4iMRHj5+FTbjmgpcy8B3dKDoGxtmdIvCb+YPgGwQhSlUyXSMFAAAAAElFTkSuQmCC",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -7444,30 +7421,6 @@ define({
     ]
   },
   {
-    "id": 263,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Trails/MapServer/3",
-    "name": "FGTS Land Trail Opportunities",
-    "description": "Land Trail Opportunities of the FGTS are corridors which represent existing, planned and conceptual non-motorized multi-use trails. These corridors form a land-based trail network of regional and state importance. The Opportunity corridors are interpreted as approximately one mile-wide to allow for flexibility in proposed trail locations. The Land Trail Opportunity map is a synthesis of trail planning efforts conducted by cities, counties, transportation planning organizations, non-profits and other agencies throughout Florida. This map does not include all existing, proposed and conceptual trails in Florida, but focuses on trails of state and regional significance to form a comprehensive connected system.",
-    "longName": "FGTS Land Trail Opportunities",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "MU_OPPS",
-    "restricted": false,
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "944e8cf0210ba92dd62a977b478cb985",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg//T0/9QwjHHmTEbauJBx5kxGqhpITTBq4KiBZAAA8b0FhTrdMisAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
     "id": 208,
     "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_2010/MapServer/6",
     "name": "2010 Hispanic Percentage",
@@ -7962,78 +7915,6 @@ define({
         "label": "501 - 1000",
         "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 264,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Trails/MapServer/4",
-    "name": "FGTS Paddling Trail Opportunities",
-    "description": "Paddling Trail Opportunity corridors represent the vision for a comprehensive water-based trail system. This data includes waterways that are designated as part of the FGTS or are appropriate for future designation. Because water trails are not consistently captured in local and regional planning efforts like land trails typically are, it is important to establish basic criteria for inclusion. To be recognized as a Paddling Trail Opportunity, the paddling corridor must meet these criteria to the greatest extent possible: be an existing or potential tourism destination due to the scenic qualities and diverse experiences, span at least three miles in length, be navigable during most months in an average year, and benefit from increased visitation without harm to the natural environment.",
-    "longName": "FGTS Paddling Trail Opportunities",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "PD_OPPS",
-    "restricted": false,
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "1f03d1ba06d9581f7668945e05386821",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/5mm/6lhGGP6aUbauJAx/TQjVQ2kJhg1cNRAMgAA8YsFhf3H0g8AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 265,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Trails/MapServer/5",
-    "name": "Existing Recreational Trails",
-    "description": "This layer is a line shapefile that includes existing recreational trails located in the State of Florida. An existing recreational trail is defined as a paved or unpaved trail for hiking, biking, equestrian, multiple use, paddling, or motorized use (ATV, OHM, ROV) that is open to the public. This does not include in-road bike lanes or sidewalks. This layer is compiled from local, state, and federal agencies and organizations.",
-    "longName": "Existing Recreational Trails",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "EXISTING_TRAILS",
-    "restricted": false,
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "c6aedb943db9f1c8360fa4a639c2d690",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/KSb/6lhWOI8dUbauDBxnjojVQ2kJhg1cNRAMgAA0YAFeHGlsRkAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 266,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Trails/MapServer/6",
-    "name": "Shared-Use Nonmotorized (SUN) Trail Network",
-    "description": "The SUN Trail dataset represents the existing, planned and conceptual paved multiuse trails for bicyclists and pedestrians, physically separated from vehicular traffic, that form a land-based statewide trail network. This map is a synthesis of trail planning efforts of municipalities, counties, transportation planning organizations, other public agencies and non-profits entities throughout Florida. This data does not include all existing, proposed and conceptual trails in Florida, but focuses on high priority linear corridors and connections of statewide and regional significance to form a comprehensive connected system. The SUN Trail data is derived from the Florida Greenways and Trails System (FGTS) Priority Land Trails Network, overseen by the Office of Greenways and Trails, modified by removal of corridors not envisioned as paved trails. FDOT defines a multiuse trail as a paved, shared use path, which is typically 12 feet wide, but may commonly vary from 10 feet to 14 or more feet depending upon physical or environmental constraints or volume of use. In some areas of extreme constraints such as at bridges or in environmentally sensitive lands where conditions require a smaller footprint, a multiuse trail may be as narrow as eight feet.",
-    "longName": "Shared-Use Nonmotorized (SUN) Trail Network",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "SUNTRAILNETWORK",
-    "restricted": false,
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "a64559c3bfbdc2b0cc73e6ebf4b13750",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgf+nN/6lhGONTX0bauJDxqS8jVQ2kJhg1cNRAMgAA8gkFhbaTkHgAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -9225,54 +9106,6 @@ define({
         "label": "Priority 4",
         "url": "9766cf30298a9132b0bf0fa892b33c45",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYKGlgf+pYB4jqgvVisk36lYvAwMDjb08auCogaMGjhqIw0BoEUQmYEQ3kJES02AAANdNBLqiEBBqAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 261,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Trails/MapServer/1",
-    "name": "FGTS Priority Trail Network (2018-2022)",
-    "description": "The Florida Greenways and Trails System (FGTS) Priority Corridors are the focused vision for trails in the state of Florida and rank higher for implementation than the Opportunity Trail Corridors. Land Trail Priority Corridors are selected from the Land Trail Opportunity map and must also support conservation of the Florida Ecological Greenway Network's six levels of priorities.",
-    "longName": "FGTS Priority Trail Network (2018-2022)",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "TRAIL_PRIO",
-    "restricted": false,
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "d97053c1a543f9c11ad0564daa3c7f41",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg//8M/6lhGCMjAyNtXMjIyMBIVQOpCUYNHDWQDAAAdmEDVPjlPH4AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 262,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Trails/MapServer/2",
-    "name": "FGTS Priority Paddling Trails (2018-2022)",
-    "description": "The Florida Greenways and Trails System (FGTS) Priority Corridors are the focused vision for trails in the state of Florida and rank higher for implementation than the Opportunity Trail Corridors. Paddling Trail Priority Corridors are selected from the Paddling Trail Opportunity map.",
-    "longName": "FGTS Priority Paddling Trails (2018-2022)",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "PD_PRIO",
-    "restricted": false,
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "7eaebe19a36c088ee99f87b93405439b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAACtJREFUOI1jYaAyYBk1cNTAwWPg///UMY6RkVYuZGSksoHUA6MGjhpIBgAA/JgCUzKg288AAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -20691,6 +20524,30 @@ define({
     ]
   },
   {
+    "id": 8753,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Trails/MapServer/7",
+    "name": "Shared-Use Nonmotorized (SUN) Trail Network",
+    "description": "The SUN Trail dataset represents the existing, planned and conceptual paved multiuse trails for bicyclists and pedestrians, physically separated from vehicular traffic, that form a land-based statewide trail network. This map is a synthesis of trail planning efforts of municipalities, counties, transportation planning organizations, other public agencies and non-profits entities throughout Florida. This data does not include all existing, proposed and conceptual trails in Florida, but focuses on high priority linear corridors and connections of statewide and regional significance to form a comprehensive connected system. The SUN Trail data is derived from the Florida Greenways and Trails System (FGTS) Priority Land Trails Network, overseen by the Office of Greenways and Trails, modified by removal of corridors not envisioned as paved trails. FDOT defines a multiuse trail as a paved, shared use path, which is typically 12 feet wide, but may commonly vary from 10 feet to 14 or more feet depending upon physical or environmental constraints or volume of use. In some areas of extreme constraints such as at bridges or in environmentally sensitive lands where conditions require a smaller footprint, a multiuse trail may be as narrow as eight feet.",
+    "longName": "Shared-Use Nonmotorized (SUN) Trail Network",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "SUNTRAILNETWORK",
+    "restricted": false,
+    "minScale": 300000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "a64559c3bfbdc2b0cc73e6ebf4b13750",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgf+nN/6lhGONTX0bauJDxqS8jVQ2kJhg1cNRAMgAA8gkFhbaTkHgAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
     "id": 3365,
     "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/BikePed/MapServer/0",
     "name": "Bike Lane",
@@ -24835,6 +24692,30 @@ define({
     ]
   },
   {
+    "id": 8458,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Trails/MapServer/4",
+    "name": "FGTS Land Trail Opportunities",
+    "description": "Land Trail Opportunities of the FGTS are corridors which represent existing, planned and conceptual non-motorized multi-use trails. These corridors form a land-based trail network of regional and state importance. The Opportunity corridors are interpreted as approximately one mile-wide to allow for flexibility in proposed trail locations. The Land Trail Opportunity map is a synthesis of trail planning efforts conducted by cities, counties, transportation planning organizations, non-profits and other agencies throughout Florida. This map does not include all existing, proposed and conceptual trails in Florida, but focuses on trails of state and regional significance to form a comprehensive connected system.",
+    "longName": "FGTS Land Trail Opportunities",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "MU_OPPS",
+    "restricted": false,
+    "minScale": 300000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "944e8cf0210ba92dd62a977b478cb985",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg//T0/9QwjHHmTEbauJBx5kxGqhpITTBq4KiBZAAA8b0FhTrdMisAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
     "id": 7810,
     "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/0",
     "name": "DRAFT_POINTS",
@@ -25054,6 +24935,222 @@ define({
         "label": "1501 - 2000",
         "url": "2968ad5e8eacfe604ae65e3ea715b1b3",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWFv8pMejEiROMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAfhoGqgM7uSoAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8459,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Trails/MapServer/5",
+    "name": "FGTS Paddling Trail Opportunities",
+    "description": "Paddling Trail Opportunity corridors represent the vision for a comprehensive water-based trail system. This data includes waterways that are designated as part of the FGTS or are appropriate for future designation. Because water trails are not consistently captured in local and regional planning efforts like land trails typically are, it is important to establish basic criteria for inclusion. To be recognized as a Paddling Trail Opportunity, the paddling corridor must meet these criteria to the greatest extent possible: be an existing or potential tourism destination due to the scenic qualities and diverse experiences, span at least three miles in length, be navigable during most months in an average year, and benefit from increased visitation without harm to the natural environment.",
+    "longName": "FGTS Paddling Trail Opportunities",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "PD_OPPS",
+    "restricted": false,
+    "minScale": 300000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "1f03d1ba06d9581f7668945e05386821",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/5mm/6lhGGP6aUbauJAx/TQjVQ2kJhg1cNRAMgAA8YsFhf3H0g8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8460,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Trails/MapServer/0",
+    "name": "Great Florida Birding Trail Sites",
+    "description": "These data represent the site locations of the Great Florida Birding Trail. The GFBWT is a program of the Florida Fish and Wildlife Conservation Commission. At its core is a network of nearly 500 sites throughout Florida selected for their excellent bird watching, wildlife viewing or educational opportunities.",
+    "longName": "Great Florida Birding Trail Sites",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "GFBT",
+    "restricted": false,
+    "minScale": 300000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "1b3ce702018bf50c205ae6839dfc0257",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAOlJREFUOI3t0CFOQ0EQxvH/Y9dyBZpUIOtGogiCosozNJiKmh6AIxSDb9IDlKSieQdAVZIRewoI6ArSZpdBgCJd0iUYAp+dyW++jOeH4//BXwbKQs5jFQce33KVe1i/rmehDreAFYPSyARj5D9WkqWOr/ypNHKmPb3MoVtBaaTGGG29ZPRlIUutdboz6MwNEylXHrfnhsDuYCK1sxqQLD/P/fAZOPzCfCoF58BRljPmRaDu61RW0gOOP88i8T64cFPW8ISod9qVlVxhDKg4iMRHj5+FTbjmgpcy8B3dKDoGxtmdIvCb+YPgGwQhSlUyXSMFAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8461,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Trails/MapServer/1",
+    "name": "Florida National Scenic Trail",
+    "description": "This layer is a line shapefile that includes the existing sections of the Florida National Scenic Trail located in the State of Florida. The Florida National Scenic Trail is one of eleven designated National Scenic Trail maintained for recreational purposes. When complete, the trail will stretch 1,300 miles from Big Cypress National Preserve to Gulf Islands National Seashore. This layer only displays sections of trail that are actively maintained and where public access is allowed. Most sections of trail in this dataset are certified as National Scenic Trail with the exception of sections currently undergoing designation or road crossings/roadwalks that cannot be designated as National Scenic Trail.",
+    "longName": "Florida National Scenic Trail",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "FNST",
+    "restricted": false,
+    "minScale": 300000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Trail",
+        "url": "9bdcc6d9642df89fe6860b007cf3469e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNRAMgz8v4rhP7UMYwxjYBwCXmYMY2CkqoHUNGzUwFEDyQQATaYDqZf4mcQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Side Trail",
+        "url": "c7da0b337ec6399289fe83a4dfa46e7f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC5JREFUOI1jYaAyYBk1cNRAcgz0XfGfaqZtjmAcCl7eHMFIXQOpDEYNHDWQDAAAFScEXcHgTfYAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Spur Trail",
+        "url": "a3ea7169327991586ba33cb5c8103dc2",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNRAMgws/n//P7UM62VUZBwCXu5lVGSkqoHUNGzUwFEDyQQA9xUFATJxP/oAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Paved Road",
+        "url": "5f5fb3945e4645b1eb2b24e35fd882b5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYBk1cNRAygz8j0WekYB+ZD2M6AZSBdDUQELewwYw9AwtL48aOFwNBABh2gJTYT2+FQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Paved Trail",
+        "url": "750be8306efa26bd10ef51c1cf9e923c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNRAMgxcyfDsP7UMC2eQYhwCXg5nkGKkqoHUNGzUwFEDyQQAjwADw2BYjPsAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Rail Trail",
+        "url": "e41ecdd3c55c6927f69b58bf2232dbf6",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADtJREFUOI1jYaAyYBk1cNRArOA/AwMDIzUNxAtoauB/EvRhU8uIbiDOcMFi2OAOQ7w+GRQuHDWQxgYCALB1BFKn7jpVAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Sand Dune",
+        "url": "f280e277dd03ef12a92f82f4b3347b78",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNRAMgz8f8/2P7UMY1Q6zDgEvMyodJiRqgZS07BRA0cNJBMAAIHTBTj+dt3DAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Levee",
+        "url": "acf458a36978528542f951df40d25087",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNRAMgwM/c/wn1qGrWZkYBwCXl7NyMBIVQOpadiogaMGkgkAJoYD/jxoDloAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Dirt Road",
+        "url": "02f4c6c846c24461cc52f084555ac7c2",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNRAMgws9mb4Ty3DercyMA4BL/duZWCkqoHUNGzUwFEDyQQAo+kElNo8KJQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8462,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Trails/MapServer/2",
+    "name": "FGTS Priority Trail Network (2018-2022)",
+    "description": "The Florida Greenways and Trails System (FGTS) Priority Corridors are the focused vision for trails in the state of Florida and rank higher for implementation than the Opportunity Trail Corridors. Land Trail Priority Corridors are selected from the Land Trail Opportunity map and must also support conservation of the Florida Ecological Greenway Network's six levels of priorities.",
+    "longName": "FGTS Priority Trail Network (2018-2022)",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "TRAIL_PRIO",
+    "restricted": false,
+    "minScale": 300000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "d97053c1a543f9c11ad0564daa3c7f41",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg//8M/6lhGCMjAyNtXMjIyMBIVQOpCUYNHDWQDAAAdmEDVPjlPH4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8751,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Trails/MapServer/3",
+    "name": "FGTS Priority Paddling Trails (2018-2022)",
+    "description": "The Florida Greenways and Trails System (FGTS) Priority Corridors are the focused vision for trails in the state of Florida and rank higher for implementation than the Opportunity Trail Corridors. Paddling Trail Priority Corridors are selected from the Paddling Trail Opportunity map.",
+    "longName": "FGTS Priority Paddling Trails (2018-2022)",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "PD_PRIO",
+    "restricted": false,
+    "minScale": 300000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "7eaebe19a36c088ee99f87b93405439b",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAACtJREFUOI1jYaAyYBk1cNTAwWPg///UMY6RkVYuZGSksoHUA6MGjhpIBgAA/JgCUzKg288AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8752,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Trails/MapServer/6",
+    "name": "Existing Recreational Trails",
+    "description": "This layer is a line shapefile that includes existing recreational trails located in the State of Florida. An existing recreational trail is defined as a paved or unpaved trail for hiking, biking, equestrian, multiple use, paddling, or motorized use (ATV, OHM, ROV) that is open to the public. This does not include in-road bike lanes or sidewalks. This layer is compiled from local, state, and federal agencies and organizations.",
+    "longName": "Existing Recreational Trails",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "EXISTING_TRAILS",
+    "restricted": false,
+    "minScale": 300000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "c6aedb943db9f1c8360fa4a639c2d690",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/KSb/6lhWOI8dUbauDBxnjojVQ2kJhg1cNRAMgAA0YAFeHGlsRkAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20

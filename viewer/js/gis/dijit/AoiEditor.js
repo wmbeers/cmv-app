@@ -445,6 +445,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     function () {
                         self._deleteEmptyAnalysisAreas().then(function () {
                             deferred.resolve();
+                        }, function (deleteError) {
+                            window.setTimeout(function () {
+                                deferred.reject(deleteError);
+                            }, 10);
+
                         });
                     },
                     function (e) {
@@ -466,7 +471,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             if (emptyAnalysisAreas.length > 0) {
                 var ids = emptyAnalysisAreas.map(function (aa) {
-                    return aa.id;
+                    return aa.id();
                 });
                 //eslint-disable-next-line no-undef
                 MapDAO.deleteAoiAnalysisAreas(ids, this.currentAuthority().orgUserId, {
@@ -1712,7 +1717,12 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 if (!analysisArea) {
                     if (feature.graphic.attributes.FK_PROJECT_ALT) { //currently has an analysisArea assigned, so nullify it
                         feature.analysisArea(null);
-                        deferred = feature.applyUpdate();
+                        feature.graphics.FK_PROJECT_ALT = null;
+                        feature.applyUpdate().then(function () {
+                            deferred.resolve();
+                        }, function (e) {
+                            deferred.reject(e);
+                        });
                     } else {
                         deferred.resolve();
                     }
@@ -1754,8 +1764,12 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                             analysisArea.id(analysisAreaReply.id); //the only thing that could possibly change after saving
                             feature.analysisArea(analysisArea);
                             //self.dummyForceRecompute(new Date());
-
-                            deferred = feature.applyUpdate();
+                            feature.graphic.attributes.FK_PROJECT_ALT = analysisAreaReply.id;
+                            feature.applyUpdate().then(function () {
+                                deferred.resolve();
+                            }, function (e) {
+                                deferred.reject(e);
+                            });
                         },
                         errorHandler: function (message, exception) {
                             self.loadingOverlay.hide();
@@ -1771,11 +1785,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     feature.analysisArea(analysisArea);
                     //self.dummyForceRecompute(new Date());
 
-                    if (feature.graphic.attributes.FK_PROJECT_ALT === analysisArea.id) {
+                    if (feature.graphic.attributes.FK_PROJECT_ALT === analysisArea.id()) {
                         //happens during loading and building our model, no update required
                         deferred.resolve();
                     } else {
-                        feature.graphic.attributes.FK_PROJECT_ALT = analysisArea.id;
+                        feature.graphic.attributes.FK_PROJECT_ALT = analysisArea.id();
                         deferred = feature.applyUpdate();
                     }
                 }
@@ -1851,16 +1865,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     feature.applyUpdate();
                 }
             });
-
-            //feature.name.subscribe(function (oldValue) {
-            //    //todo here we can prevent assigning a name that's already been used
-            //    console.log('beforeChange: feature.name=' + this.name() + ', oldValue=' + oldValue);
-            //}, feature, 'beforeChange');
-
-            //feature.name.subscribe(function (newValue) {
-            //    this.graphic.attributes.FEATURE_NAME = newValue;
-            //    this.applyUpdate();
-            //}, feature, 'change');
 
             feature.bufferDistance.subscribe(function (newValue) {
                 self.bufferFeature(feature);
