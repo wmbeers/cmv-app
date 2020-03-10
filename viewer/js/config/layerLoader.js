@@ -76,18 +76,12 @@ define({
             "name": "Census Boundaries",
             "categories": [],
             "layerIds": [
-              2353,
-              2658,
-              2345,
-              2346,
-              2347,
-              2348,
-              2349,
-              2350,
-              2351,
-              2352
+              8445,
+              8443,
+              8444,
+              8446
             ],
-            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/CENBLK/MapServer",
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Census_Boundaries/MapServer",
             "serviceId": 7,
             "restricted": false,
             "type": "dynamic"
@@ -133,18 +127,18 @@ define({
               },
               {
                 "id": 1623,
-                "name": "2017 Demographic Densities",
+                "name": "ACS Demographic Densities",
                 "categories": [],
                 "layerIds": [
-                  147,
-                  148,
-                  149,
-                  150,
-                  151,
-                  152,
-                  153
+                  8447,
+                  8448,
+                  8449,
+                  8450,
+                  8451,
+                  8181,
+                  8182
                 ],
-                "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_2017/MapServer",
+                "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_ACS/MapServer",
                 "serviceId": 33,
                 "restricted": false,
                 "type": "dynamic"
@@ -207,23 +201,23 @@ define({
               },
               {
                 "id": 1633,
-                "name": "2017 Demographic Distribution",
+                "name": "ACS Demographic Distribution",
                 "categories": [],
                 "layerIds": [
-                  169,
-                  170,
-                  157,
-                  158,
-                  159,
-                  160,
-                  171,
-                  172,
-                  173,
-                  174,
-                  175,
-                  176
+                  8183,
+                  8184,
+                  8185,
+                  8186,
+                  8187,
+                  8188,
+                  8189,
+                  8190,
+                  8431,
+                  8432,
+                  8433,
+                  8434
                 ],
-                "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2017/MapServer",
+                "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_ACS/MapServer",
                 "serviceId": 36,
                 "restricted": false,
                 "type": "dynamic"
@@ -278,19 +272,19 @@ define({
               },
               {
                 "id": 1643,
-                "name": "2017 Demographic Percentages",
+                "name": "ACS Demographic Percentages",
                 "categories": [],
                 "layerIds": [
-                  209,
-                  210,
-                  211,
-                  201,
-                  202,
-                  203,
-                  204,
-                  205
+                  8435,
+                  8436,
+                  8437,
+                  8438,
+                  8439,
+                  8440,
+                  8441,
+                  8442
                 ],
-                "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_2017/MapServer",
+                "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_ACS/MapServer",
                 "serviceId": 39,
                 "restricted": false,
                 "type": "dynamic"
@@ -342,17 +336,17 @@ define({
               },
               {
                 "id": 1653,
-                "name": "2017 Demographic Vehicles",
+                "name": "ACS Demographic Vehicles",
                 "categories": [],
                 "layerIds": [
-                  229,
-                  217,
-                  218,
-                  219,
-                  220,
-                  221
+                  8452,
+                  8453,
+                  8454,
+                  8455,
+                  8456,
+                  8457
                 ],
-                "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_2017/MapServer",
+                "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_ACS/MapServer",
                 "serviceId": 54,
                 "restricted": false,
                 "type": "dynamic"
@@ -1558,66 +1552,6 @@ define({
     ]
   },
   {
-    "id": 2345,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/CENBLK/MapServer/2",
-    "name": "2000 Percent Minority Population",
-    "description": "This dataset contains US Census Bureau 2000 data for the State of Florida. The data contains selected fields from the Summary 1 file that includes information on total population, race, sex, age, and household. This data is at the block level, the smallest unit of census data. Using GIS techniques, it is possible to summarize the data by Block Group, Tract, Traffic Analysis Zone (TAZ), Zip Code Tabulation Area (ZCTA), or County. This layer is an update to the existing 2000 Blocks, the record count and attribute information are the same, but the linework has been updated as part of the U.S. Census Bureau's MAF/TIGER Accuracy Improvement Project.",
-    "longName": "2000 Percent Minority Population",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENBLK",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 9",
-        "url": "f49c7d3e54e23e3813a6499ab3122743",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgd/+PfxPiUFcTPKMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAvn4EfaYlvQ8AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10 - 27",
-        "url": "50ee9255c61e3a6502207bcf47d1d116",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgXf+tf2nxCAVpipGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIA5nUE8jLpQHwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "28 - 52",
-        "url": "0e435cf7fb6dc695730c83719fb26858",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgQf/af2nxCB7pmuMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUADysFacewqdoAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "53 - 81",
-        "url": "c489898c5de185a379a73cb4e2a3cba0",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgVMvMvynxKBsfQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAPdsD7IANrKgAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "82 - 100",
-        "url": "32433d3347ac44289b4c737f4f11305e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgYltDP8pMWh+FQMjioHUAqMGjho4auCogXQ2EFaeUc1AagEAabcEa/Mx8GoAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
     "id": 5940,
     "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/oem_services/ELIMINATED_DEV/MapServer/23",
     "name": "2640 ft (.5 mile)",
@@ -1690,23 +1624,68 @@ define({
     ]
   },
   {
-    "id": 2346,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/CENBLK/MapServer/3",
-    "name": "2000 Minority Population Over 40 Percent",
-    "description": "This dataset contains US Census Bureau 2000 data for the State of Florida. The data contains selected fields from the Summary 1 file that includes information on total population, race, sex, age, and household. This data is at the block level, the smallest unit of census data. Using GIS techniques, it is possible to summarize the data by Block Group, Tract, Traffic Analysis Zone (TAZ), Zip Code Tabulation Area (ZCTA), or County. This layer is an update to the existing 2000 Blocks, the record count and attribute information are the same, but the linework has been updated as part of the U.S. Census Bureau's MAF/TIGER Accuracy Improvement Project.",
-    "longName": "2000 Minority Population Over 40 Percent",
+    "id": 8434,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_ACS/MapServer/11",
+    "name": "2018 Asian Population Distribution",
+    "description": "Population Asian alone - [B02001_005]",
+    "longName": "2018 Asian Population Distribution",
     "type": "feature",
     "definitionQuery": null,
-    "layerName": "CENBLK",
+    "layerName": "CENACS_2018",
     "restricted": false,
     "minScale": 100000,
     "maxScale": 0,
     "legendSymbols": [
       {
         "layerId": 0,
-        "label": "More Than 40 Percent",
-        "url": "fcec6754b1492e78f8b512e9d6af4bd2",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFRJREFUOI1jYaAyYKGZgWcYTP9TapgJw2lGFnSBMwym/00YTjMiW0QMH+YgFANhguiuJYVPWxdSA9DWwNEwpNzA0TCk3MDBH4aUuBBmCdxAZFspAQCCLoJR95GGdgAAAABJRU5ErkJggg==",
+        "label": "0 - 50",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "51 - 250",
+        "url": "269e86e54f96344362d81884f21b021d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+z/xPiUEmjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7rDl8YQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "251 - 500",
+        "url": "b5b9ede611ffb3da16d86dd1f93686f9",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen/Tf9TYtBMxtOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKmAFt0NlUIEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "501 - 1000",
+        "url": "db78d8268813b4631a95963628e82a14",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTMZ/lNkUjoDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAIKOArmqP8lxAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1001 - 2000",
+        "url": "a4a24b63bfff663882dfac8aa503882d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgabpDP8pMej0TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg6sEtlscd8cAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2001 - 5000",
+        "url": "7d75e17e5a90cd93c6981607881fe1af",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYM/yky6TQDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAKTuAx1BemcyAAAAAElFTkSuQmCC",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -1714,152 +1693,32 @@ define({
     ]
   },
   {
-    "id": 2347,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/CENBLK/MapServer/4",
-    "name": "2000 Median Age",
-    "description": "This dataset contains US Census Bureau 2000 data for the State of Florida. The data contains selected fields from the Summary 1 file that includes information on total population, race, sex, age, and household. This data is at the block level, the smallest unit of census data. Using GIS techniques, it is possible to summarize the data by Block Group, Tract, Traffic Analysis Zone (TAZ), Zip Code Tabulation Area (ZCTA), or County. This layer is an update to the existing 2000 Blocks, the record count and attribute information are the same, but the linework has been updated as part of the U.S. Census Bureau's MAF/TIGER Accuracy Improvement Project.",
-    "longName": "2000 Median Age",
+    "id": 8435,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_ACS/MapServer/0",
+    "name": "2018 Asian Percentage",
+    "description": "Percent of Persons Asian alone - ([ASIAN] /[TOTALPOP] *100)",
+    "longName": "2018 Asian Percentage",
     "type": "feature",
     "definitionQuery": null,
-    "layerName": "CENBLK",
+    "layerName": "CENACS_2018",
     "restricted": false,
     "minScale": 100000,
     "maxScale": 0,
     "legendSymbols": [
       {
         "layerId": 0,
-        "label": "0.0 - 13.0",
-        "url": "b69dde22319403fc4b2eca4506cdfd95",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgb+u//tPiUFsmkyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwKcEg88KAo0AAAAASUVORK5CYII=",
+        "label": "0 - 5.0",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
       },
       {
         "layerId": 0,
-        "label": "13.01 - 18.0",
-        "url": "fccd2e07b12339caa9591b18f6f4e1f1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgd+X/vtPiUGc0UyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA0uIEuDcC4pEAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "18.01 - 30.0",
-        "url": "d177f36fb80974ff73ca333ecf80245d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZga9Mf/6nxCCx0+yMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA/5oFOguGzN4AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "c8bf71127eb8ce174f249a4a246a7545",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgecZHvynxCBDBgVGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAI2kDo9RBBkAAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 65.0",
-        "url": "d071e175a1e6fe83a29580af3c753493",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgV0MU/9TYlAZQzYjioHUAqMGjho4auCogXQ2EFaeUc1AagEAVOMEMy94OOcAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "65.01 - 106.0",
-        "url": "afad78319ae01204dbe44218b53f8c19",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTEMKf8pMWgJwxxGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAdYgEkjHFj+MAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 2348,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/CENBLK/MapServer/5",
-    "name": "2010 Census Blocks",
-    "description": "This dataset contains the US Census Bureau 2010 Census Blocks for the State of Florida with selected fields from the 2010 Redistricting Summary File and Summary File 1. Census blocks are the smallest unit of Census data. Some of the fields included in this dataset are total population, age of the population, population by race, density and percentage of population by race, and household occupancy. This data is specifically designed for use within the Florida Department of Transportaion's Efficient Transportation Decision Making Process (ETDM) . However, the subset of redistricting and summary file fields included herein is useful for a variety of applications and uses. If you are looking for census block data with complete attribute data in its original form from Census Bureau, please see the FGDL layer CENBLK2010_SF_AUG11.",
-    "longName": "2010 Census Blocks",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENBLK2010",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "be712541422adfd762707456c1df73ac",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHRJREFUOI3tlDsKwDAMQ2XwXX0mn9adAmqab+tCh74toCg2EVIkowDgFgEA5iJ87mEuUmvKXc2azC3CXKRpWF4bwRqeNm3Cbxvy+imGnJJ3Vl751S3DOtiPDTP5De+RHmzmZDjqwVYHtjS6Kp5xKdjdDuxxAHKFL1+HDBugAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 2349,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/CENBLK/MapServer/6",
-    "name": "2010 Population Density",
-    "description": "This dataset contains the US Census Bureau 2010 Census Blocks for the State of Florida with selected fields from the 2010 Redistricting Summary File and Summary File 1. Census blocks are the smallest unit of Census data. Some of the fields included in this dataset are total population, age of the population, population by race, density and percentage of population by race, and household occupancy. This data is specifically designed for use within the Florida Department of Transportaion's Efficient Transportation Decision Making Process (ETDM) . However, the subset of redistricting and summary file fields included herein is useful for a variety of applications and uses. If you are looking for census block data with complete attribute data in its original form from Census Bureau, please see the FGDL layer CENBLK2010_SF_AUG11.",
-    "longName": "2010 Population Density",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENBLK2010",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "ec19ca5974ecdbe1a4aa28aeefb39cec",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/uHv5PiUFMyraMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA0UAEtHgAewYAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "0.501 - 2.0",
-        "url": "e8152dc37e889b0ed31ccae29b81a847",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/OLv1PiUFMxtGMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA4PIE4gZuhmYAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "51c0669a5cd5fc97a01217b285e77d06",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/WZP6nxCCmkOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAAL0FP5oQ3RwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 6.0",
-        "url": "c3901a92c1e75219a54124ab016ab678",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf86tP5TYhBTxTVGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAIoYFolv85dwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "6.01 - 10.0",
-        "url": "7506f7306131a52f85224d1b3af890b3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZga8yGf5TYpDYdAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIARA4D/2b6+K4AAAAASUVORK5CYII=",
+        "label": "5.01 - 10.0",
+        "url": "269e86e54f96344362d81884f21b021d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+z/xPiUEmjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7rDl8YQAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -1867,143 +1726,17 @@ define({
       {
         "layerId": 0,
         "label": "10.01 - 15.0",
-        "url": "ecf76da9b7b5e96082b6956b9fe854d8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTsCGf5TYpDHegZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAXbAESW9eJW0AAAAASUVORK5CYII=",
+        "url": "4ed2feb88aa9f0076621f7847dcb90a3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTP/p/+nxKB0xpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUACAAFU5vGQX8AAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
       },
       {
         "layerId": 0,
-        "label": "15.01 - 4325.0",
-        "url": "4f7d698b88a33ba8821fb4a7709bc4cd",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgW22DP8pMajqMAMjioHUAqMGjho4auCogXQ2EFaeUc1AagEAdfIEj3KC18MAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 2350,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/CENBLK/MapServer/7",
-    "name": "2010 Percent Minority Population",
-    "description": "This dataset contains the US Census Bureau 2010 Census Blocks for the State of Florida with selected fields from the 2010 Redistricting Summary File and Summary File 1. Census blocks are the smallest unit of Census data. Some of the fields included in this dataset are total population, age of the population, population by race, density and percentage of population by race, and household occupancy. This data is specifically designed for use within the Florida Department of Transportaion's Efficient Transportation Decision Making Process (ETDM) . However, the subset of redistricting and summary file fields included herein is useful for a variety of applications and uses. If you are looking for census block data with complete attribute data in its original form from Census Bureau, please see the FGDL layer CENBLK2010_SF_AUG11. ",
-    "longName": "2010 Percent Minority Population",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENBLK2010",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 9.0",
-        "url": "f49c7d3e54e23e3813a6499ab3122743",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgd/+PfxPiUFcTPKMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAvn4EfaYlvQ8AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "9.01 - 27.0",
-        "url": "77d79b96e8fdc0e5f6ad90c519a9dc4c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgXf+tf+nxCAVpkpGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIA5h4E8efrFCEAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "27.01 - 52.0",
-        "url": "0e435cf7fb6dc695730c83719fb26858",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgQf/af2nxCB7pmuMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUADysFacewqdoAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "52.01 - 81.0",
-        "url": "c489898c5de185a379a73cb4e2a3cba0",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgVMvMvynxKBsfQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAPdsD7IANrKgAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "81.01 - 100.0",
-        "url": "32433d3347ac44289b4c737f4f11305e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgYltDP8pMWh+FQMjioHUAqMGjho4auCogXQ2EFaeUc1AagEAabcEa/Mx8GoAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 2351,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/CENBLK/MapServer/8",
-    "name": "2010 Minority Population Over 40 Percent",
-    "description": "This dataset contains the US Census Bureau 2010 Census Blocks for the State of Florida with selected fields from the 2010 Redistricting Summary File and Summary File 1. Census blocks are the smallest unit of Census data. Some of the fields included in this dataset are total population, age of the population, population by race, density and percentage of population by race, and household occupancy. This data is specifically designed for use within the Florida Department of Transportaion's Efficient Transportation Decision Making Process (ETDM) . However, the subset of redistricting and summary file fields included herein is useful for a variety of applications and uses. If you are looking for census block data with complete attribute data in its original form from Census Bureau, please see the FGDL layer CENBLK2010_SF_AUG11. ",
-    "longName": "2010 Minority Population Over 40 Percent",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENBLK2010",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "More Than 40 Percent",
-        "url": "fcec6754b1492e78f8b512e9d6af4bd2",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFRJREFUOI1jYaAyYKGZgWcYTP9TapgJw2lGFnSBMwym/00YTjMiW0QMH+YgFANhguiuJYVPWxdSA9DWwNEwpNzA0TCk3MDBH4aUuBBmCdxAZFspAQCCLoJR95GGdgAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 2352,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/CENBLK/MapServer/9",
-    "name": "2010 Median Age",
-    "description": "This dataset contains the US Census Bureau 2010 Census Blocks for the State of Florida with selected fields from the 2010 Redistricting Summary File and Summary File 1. Census blocks are the smallest unit of Census data. Some of the fields included in this dataset are total population, age of the population, population by race, density and percentage of population by race, and household occupancy. This data is specifically designed for use within the Florida Department of Transportaion's Efficient Transportation Decision Making Process (ETDM) . However, the subset of redistricting and summary file fields included herein is useful for a variety of applications and uses. If you are looking for census block data with complete attribute data in its original form from Census Bureau, please see the FGDL layer CENBLK2010_SF_AUG11.",
-    "longName": "2010 Median Age",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENBLK2010",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0.0 - 13.0",
-        "url": "b69dde22319403fc4b2eca4506cdfd95",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgb+u//tPiUFsmkyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwKcEg88KAo0AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "13.01 - 18.0",
-        "url": "fccd2e07b12339caa9591b18f6f4e1f1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgd+X/vtPiUGc0UyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA0uIEuDcC4pEAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "18.01 - 30.0",
-        "url": "d177f36fb80974ff73ca333ecf80245d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZga9Mf/6nxCCx0+yMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA/5oFOguGzN4AAAAASUVORK5CYII=",
+        "label": "15.01 - 30.0",
+        "url": "b5b9ede611ffb3da16d86dd1f93686f9",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen/Tf9TYtBMxtOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKmAFt0NlUIEAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -2011,26 +1744,26 @@ define({
       {
         "layerId": 0,
         "label": "30.01 - 50.0",
-        "url": "c8bf71127eb8ce174f249a4a246a7545",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgecZHvynxCBDBgVGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAI2kDo9RBBkAAAAAASUVORK5CYII=",
+        "url": "db78d8268813b4631a95963628e82a14",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTMZ/lNkUjoDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAIKOArmqP8lxAAAAAElFTkSuQmCC",
         "contentType": "image/png",
         "height": 20,
         "width": 20
       },
       {
         "layerId": 0,
-        "label": "50.01 - 65.0",
-        "url": "d071e175a1e6fe83a29580af3c753493",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgV0MU/9TYlAZQzYjioHUAqMGjho4auCogXQ2EFaeUc1AagEAVOMEMy94OOcAAAAASUVORK5CYII=",
+        "label": "50.01 - 75.0",
+        "url": "a4a24b63bfff663882dfac8aa503882d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgabpDP8pMej0TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg6sEtlscd8cAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
       },
       {
         "layerId": 0,
-        "label": "65.01 - 106.0",
-        "url": "afad78319ae01204dbe44218b53f8c19",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTEMKf8pMWgJwxxGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAdYgEkjHFj+MAAAAASUVORK5CYII=",
+        "label": "75.01 - 100.0",
+        "url": "7d75e17e5a90cd93c6981607881fe1af",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYM/yky6TQDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAKTuAx1BemcyAAAAAElFTkSuQmCC",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -2038,83 +1771,32 @@ define({
     ]
   },
   {
-    "id": 2353,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/CENBLK/MapServer/0",
-    "name": "2000 Census Blocks",
-    "description": "This dataset contains US Census Bureau 2000 data for the State of Florida. The data contains selected fields from the Summary 1 file that includes information on total population, race, sex, age, and household. This data is at the block level, the smallest unit of census data. Using GIS techniques, it is possible to summarize the data by Block Group, Tract, Traffic Analysis Zone (TAZ), Zip Code Tabulation Area (ZCTA), or County. This layer is an update to the existing 2000 Blocks, the record count and attribute information are the same, but the linework has been updated as part of the U.S. Census Bureau's MAF/TIGER Accuracy Improvement Project.",
-    "longName": "2000 Census Blocks",
+    "id": 8436,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_ACS/MapServer/1",
+    "name": "2018 American Indian Percentage",
+    "description": "Percent of Persons American Indian and Alaska Native alone - ([AMERI_ES] /[TOTALPOP] *100)",
+    "longName": "2018 American Indian Percentage",
     "type": "feature",
     "definitionQuery": null,
-    "layerName": "CENBLK",
+    "layerName": "CENACS_2018",
     "restricted": false,
     "minScale": 100000,
     "maxScale": 0,
     "legendSymbols": [
       {
         "layerId": 0,
-        "label": "",
-        "url": "be712541422adfd762707456c1df73ac",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHRJREFUOI3tlDsKwDAMQ2XwXX0mn9adAmqab+tCh74toCg2EVIkowDgFgEA5iJ87mEuUmvKXc2azC3CXKRpWF4bwRqeNm3Cbxvy+imGnJJ3Vl751S3DOtiPDTP5De+RHmzmZDjqwVYHtjS6Kp5xKdjdDuxxAHKFL1+HDBugAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 2658,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/CENBLK/MapServer/1",
-    "name": "2000 Population Density",
-    "description": "This dataset contains US Census Bureau 2000 data for the State of Florida. The data contains selected fields from the Summary 1 file that includes information on total population, race, sex, age, and household. This data is at the block level, the smallest unit of census data. Using GIS techniques, it is possible to summarize the data by Block Group, Tract, Traffic Analysis Zone (TAZ), Zip Code Tabulation Area (ZCTA), or County. This layer is an update to the existing 2000 Blocks, the record count and attribute information are the same, but the linework has been updated as part of the U.S. Census Bureau's MAF/TIGER Accuracy Improvement Project.",
-    "longName": "2000 Population Density",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENBLK",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "ec19ca5974ecdbe1a4aa28aeefb39cec",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/uHv5PiUFMyraMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA0UAEtHgAewYAAAAASUVORK5CYII=",
+        "label": "0 - 5.0",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
       },
       {
         "layerId": 0,
-        "label": "0.501 - 2.0",
-        "url": "e8152dc37e889b0ed31ccae29b81a847",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/OLv1PiUFMxtGMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA4PIE4gZuhmYAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "51c0669a5cd5fc97a01217b285e77d06",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/WZP6nxCCmkOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAAL0FP5oQ3RwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 6.0",
-        "url": "c3901a92c1e75219a54124ab016ab678",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf86tP5TYhBTxTVGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAIoYFolv85dwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "6.01 - 10.0",
-        "url": "7506f7306131a52f85224d1b3af890b3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZga8yGf5TYpDYdAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIARA4D/2b6+K4AAAAASUVORK5CYII=",
+        "label": "5.01 - 10.0",
+        "url": "2e87d515959441d953e150b21ca2722b",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdd//fpPiUGabGyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwiYEh53uzdcAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -2122,17 +1804,278 @@ define({
       {
         "layerId": 0,
         "label": "10.01 - 15.0",
-        "url": "ecf76da9b7b5e96082b6956b9fe854d8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTsCGf5TYpDHegZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAXbAESW9eJW0AAAAASUVORK5CYII=",
+        "url": "15696a867e6eb8451c01995abd1a6669",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPP/P9PiUHpJoyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5dEE7pmdn8oAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
       },
       {
         "layerId": 0,
-        "label": "15.01 - 4325.0",
-        "url": "4f7d698b88a33ba8821fb4a7709bc4cd",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgW22DP8pMajqMAMjioHUAqMGjho4auCogXQ2EFaeUc1AagEAdfIEj3KC18MAAAAASUVORK5CYII=",
+        "label": "15.01 - 30.0",
+        "url": "f3077dc825120596548aa2c13c993933",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgaYz//+nxKDT6YyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGiwFhX8rAi0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "30.01 - 50.0",
+        "url": "bcdd8fa7af2de732ca8a3a1f2cf7ab74",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgen//1Nk0kxGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCADtvA+zRLgQAAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "50.01 - 75.0",
+        "url": "ab313847887ab4573a63531f258ba951",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYz/1Nk0ul0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAG9JBITHVKrXAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "75.01 - 100.0",
+        "url": "f29fbdacae42ad19cef1d4782ce374b9",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenp6f8pMWjmzJmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUATaIGHbGkRQ8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8437,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_ACS/MapServer/2",
+    "name": "2018 Other Percentage",
+    "description": "Percent of Persons Some other race alone - ([OTHER] /[TOTALPOP] *100)",
+    "longName": "2018 Other Percentage",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0 - 5.0",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "5.01 - 10.0",
+        "url": "ffa9698c13add278ab2da872915d41ca",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/O7/hPiUFMhh6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA2c0EzX31PVsAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "10.01 - 15.0",
+        "url": "2041440ff30fb6dab7a32a870103c64d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9npv+nxCDG9JmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAB5oFUxVnzOMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "15.01 - 30.0",
+        "url": "a360bcfed3979e1325f514b999477e72",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/TTf9TYhDjzNOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKcgFt92kn74AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "30.01 - 50.0",
+        "url": "afc9d675543ebeb9d240c07691dc7834",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWdMGf5TYpDJaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYFwEURuNcoQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "50.01 - 75.0",
+        "url": "944b2e250b0b6b4afcdef3e1fbf8e773",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNNGf5TYlD6aQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAchcEhL2N1LgAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "75.01 - 100.0",
+        "url": "e1a407a1170aa6870d59dd942a71717a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgemmDP8pMWjmaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg3kEtkU6v0QAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8438,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_ACS/MapServer/3",
+    "name": "2018 Percent Disabled (Ages 20-64)",
+    "description": "Percent Population 20 To 64 Years With a disability - ([DIS_2064]/[DIS_TOTAL] * 100)",
+    "longName": "2018 Percent Disabled (Ages 20-64)",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0 - 5",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "5.01 - 10.0",
+        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "10.01 - 15.0",
+        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "15.01 - 30.0",
+        "url": "849a07783f2f0c21502d416cb9739516",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "30.01 - 50.0",
+        "url": "cf3ae4513c82586739d1f21481ba652f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "50.01 - 75.0",
+        "url": "3d84236372e54320b0851cac08bec072",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgU6uIv8pMWjf7jeMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAgmQGt76CtaMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "75.01 - 100.0",
+        "url": "439ab76d003b4131126c5cc7b31e7e6c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgYGB/v8pMWj9+o2MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAZQAGYXS9KpcAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8439,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_ACS/MapServer/4",
+    "name": "2018 Percent Non-English Speaking Population",
+    "description": "Percent Ability to Speak English for the Population 5+ Yrs Speak English 'not at all' - ([S_NOTATALL]/[S_TOTAL] * 100)",
+    "longName": "2018 Percent Non-English Speaking Population",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0 - 2.0",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2.01 - 5.0",
+        "url": "a7e0d0de6f7836bfe12f6d16c841534a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+//9PiUEmjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwo4EiB5cX5AAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "5.01 - 10.0",
+        "url": "7a15b8a0baa96cfdc151f0aee721b370",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen///+nxKCZjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5asE7ZP4q+kAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "10.01 - 20.0",
+        "url": "aec3bd4fb5f194f4a5296b2340887731",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgWf+/6fIJBNGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCABi3A4cUTDVBAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "20.01 - 50.0",
+        "url": "6bcb21956ee922f09f051311c18be88b",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTNn/qfIpPR0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAEzpBCD/8FGwAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "50.01 - 75.0",
+        "url": "67545eec0e3c00728001f4bc57673052",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6czCxLtmG5fx8zMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAEJ8NEughbEkAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "75.01 - 100.0",
+        "url": "97bafbb90836c3250a94455f7e2d1c8d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgaGhof8pMWj16tWMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAYDIGU/87hcsAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -2470,77 +2413,77 @@ define({
     ]
   },
   {
-    "id": 157,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2017/MapServer/2",
-    "name": "2017 Other Population Distribution",
-    "description": "Population Some other race alone - [B02001_007]",
-    "longName": "2017 Other Population Distribution",
+    "id": 8440,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_ACS/MapServer/5",
+    "name": "2018 Percent Pop Over 25 with Bachelors Degree",
+    "description": "Percent Educational Attainment for the Population 25 Years and over Bachelor's degree only - ([BACHELORS]/[TOTALPOP] * 100)",
+    "longName": "2018 Percent Pop Over 25 with Bachelors Degree",
     "type": "feature",
     "definitionQuery": null,
-    "layerName": "CENACS_2017",
+    "layerName": "CENACS_2018",
     "restricted": false,
     "minScale": 100000,
     "maxScale": 0,
     "legendSymbols": [
       {
         "layerId": 0,
-        "label": "0 - 25",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "label": "0 - 5",
+        "url": "b69dde22319403fc4b2eca4506cdfd95",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgb+u//tPiUFsmkyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwKcEg88KAo0AAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
       },
       {
         "layerId": 0,
-        "label": "26 - 100",
-        "url": "ffa9698c13add278ab2da872915d41ca",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/O7/hPiUFMhh6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA2c0EzX31PVsAAAAASUVORK5CYII=",
+        "label": "5.01 - 10.0",
+        "url": "fccd2e07b12339caa9591b18f6f4e1f1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgd+X/vtPiUGc0UyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA0uIEuDcC4pEAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
       },
       {
         "layerId": 0,
-        "label": "101 - 250",
-        "url": "2041440ff30fb6dab7a32a870103c64d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9npv+nxCDG9JmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAB5oFUxVnzOMAAAAASUVORK5CYII=",
+        "label": "10.01 - 15.0",
+        "url": "d177f36fb80974ff73ca333ecf80245d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZga9Mf/6nxCCx0+yMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA/5oFOguGzN4AAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
       },
       {
         "layerId": 0,
-        "label": "251 - 500",
-        "url": "a360bcfed3979e1325f514b999477e72",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/TTf9TYhDjzNOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKcgFt92kn74AAAAASUVORK5CYII=",
+        "label": "15.01 - 30.0",
+        "url": "c8bf71127eb8ce174f249a4a246a7545",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgecZHvynxCBDBgVGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAI2kDo9RBBkAAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
       },
       {
         "layerId": 0,
-        "label": "501 - 1000",
-        "url": "afc9d675543ebeb9d240c07691dc7834",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWdMGf5TYpDJaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYFwEURuNcoQAAAAASUVORK5CYII=",
+        "label": "30.01 - 50.0",
+        "url": "d071e175a1e6fe83a29580af3c753493",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgV0MU/9TYlAZQzYjioHUAqMGjho4auCogXQ2EFaeUc1AagEAVOMEMy94OOcAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
       },
       {
         "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "944b2e250b0b6b4afcdef3e1fbf8e773",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNNGf5TYlD6aQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAchcEhL2N1LgAAAAASUVORK5CYII=",
+        "label": "50.01 - 75.0",
+        "url": "afad78319ae01204dbe44218b53f8c19",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTEMKf8pMWgJwxxGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAdYgEkjHFj+MAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
       },
       {
         "layerId": 0,
-        "label": "2501 - 5000",
-        "url": "e1a407a1170aa6870d59dd942a71717a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgemmDP8pMWjmaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg3kEtkU6v0QAAAAASUVORK5CYII=",
+        "label": "75.01 - 100.0",
+        "url": "7725d1d1c39a24d67c19e0c4080fff84",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWoMKf8pMegWwxxGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAiE4EyFJMAUIAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -3553,14 +3496,416 @@ define({
     ]
   },
   {
-    "id": 158,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2017/MapServer/3",
-    "name": "2017 Disabled (Ages 20-64) Population Distribution",
-    "description": "Population 20 to 64 Years with Income in the past 12 months below and above poverty level with a disability - ([B23024_003] + [B23024_018])",
-    "longName": "2017 Disabled (Ages 20-64) Population Distribution",
+    "id": 8183,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_ACS/MapServer/0",
+    "name": "2018 Population Distribution",
+    "description": "Total Population - [B01003_001]",
+    "longName": "2018 Population Distribution",
     "type": "feature",
     "definitionQuery": null,
-    "layerName": "CENACS_2017",
+    "layerName": "CENACS_2018",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0 - 1500",
+        "url": "799a87fb3ebcb8f4495d22cb6270cc80",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/ePfxPiUFMQvKMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwTYEhcPZT6MAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1501 - 4500",
+        "url": "e8152dc37e889b0ed31ccae29b81a847",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/OLv1PiUFMxtGMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA4PIE4gZuhmYAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "4501 - 9000",
+        "url": "51c0669a5cd5fc97a01217b285e77d06",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/WZP6nxCCmkOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAAL0FP5oQ3RwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "9001 - 16000",
+        "url": "c3901a92c1e75219a54124ab016ab678",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf86tP5TYhBTxTVGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAIoYFolv85dwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "16001 - 45000",
+        "url": "7506f7306131a52f85224d1b3af890b3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZga8yGf5TYpDYdAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIARA4D/2b6+K4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8184,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_ACS/MapServer/1",
+    "name": "2018 American Indian Population Distribution",
+    "description": "Population American Indian and Alaska Native alone - [B02001_004]",
+    "longName": "2018 American Indian Population Distribution",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0 - 25",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "26 - 50",
+        "url": "2e87d515959441d953e150b21ca2722b",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdd//fpPiUGabGyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwiYEh53uzdcAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "51 - 100",
+        "url": "15696a867e6eb8451c01995abd1a6669",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPP/P9PiUHpJoyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5dEE7pmdn8oAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "101 - 500",
+        "url": "f3077dc825120596548aa2c13c993933",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgaYz//+nxKDT6YyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGiwFhX8rAi0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "501 - 1000",
+        "url": "bcdd8fa7af2de732ca8a3a1f2cf7ab74",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgen//1Nk0kxGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCADtvA+zRLgQAAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1001 - 2500",
+        "url": "ab313847887ab4573a63531f258ba951",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYz/1Nk0ul0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAG9JBITHVKrXAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2501 - 5000",
+        "url": "f29fbdacae42ad19cef1d4782ce374b9",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenp6f8pMWjmzJmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUATaIGHbGkRQ8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 643,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Critical_Habitat/MapServer/5",
+    "name": "Cape Sable Thoroughwort Critical Habitat",
+    "description": "This data represents the U.S. Fish and Wildlife Service designation of critical habitat for the Chromolaena Frustrata (Cape Sable Thoroughwort) in the state of Florida. The final rule designation is effective as of February 7, 2014.",
+    "longName": "Cape Sable Thoroughwort Critical Habitat",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CH_CS_TWORT",
+    "restricted": false,
+    "minScale": 7500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "23217ca5ff33bc1f3258b8517025b016",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIhJREFUOI29k9ENwCAIRGniFgxrOqxz2C8TRaAHseULL3reC1rocJVfDLlyJyJqd7s8TdO/T8iV+7ht9Jom+81QQ5Jmsyb3mgm1tFqSV2QPc17DyB5mBN8cijyM4i+GCKalb4YopqcvhhFMKGEGExpKBtNMGMUMfb0Ippswg6kaWoc0HX7YJ+oBBPIRNDDTHzwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8432,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_ACS/MapServer/9",
+    "name": "2018 Non-English Speaking Population",
+    "description": "Ability to Speak English for the Population 5+ Yrs Speak English 'not at all' - [B16004_008] + [B16004_013] + [B16004_018] + [B16004_023] + [B16004_030] + [B16004_035] + [B16004_040] + [B16004_045] + [B16004_052] + [B16004_057] + [B16004_062] + [B16004_067]",
+    "longName": "2018 Non-English Speaking Population",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0 - 50",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "51 - 150",
+        "url": "a7e0d0de6f7836bfe12f6d16c841534a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+//9PiUEmjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwo4EiB5cX5AAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "151 - 400",
+        "url": "7a15b8a0baa96cfdc151f0aee721b370",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen///+nxKCZjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5asE7ZP4q+kAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "401 - 1000",
+        "url": "aec3bd4fb5f194f4a5296b2340887731",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgWf+/6fIJBNGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCABi3A4cUTDVBAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1001 - 2000",
+        "url": "6bcb21956ee922f09f051311c18be88b",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTNn/qfIpPR0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAEzpBCD/8FGwAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8433,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_ACS/MapServer/10",
+    "name": "2018 Hispanic Population Distribution",
+    "description": "Population Hispanic or Latino by Race - [B03002_012]",
+    "longName": "2018 Hispanic Population Distribution",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0 - 250",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "251 - 500",
+        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "501 - 1000",
+        "url": "4aac6323d12fdc33b5c3d877555d12d9",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//p/+nxCBGxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5HsE7X1alrgAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1001 - 2500",
+        "url": "5e67378c7229b80d2143bb3fab3166a3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nnvlPiUGM6SaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7nDp6UQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2501 - 5000",
+        "url": "75286bb0005a579ad69d3f0c7a7dc528",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfS//+nxCCTmYyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9s4FIOmpJGcAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "5001 - 10000",
+        "url": "0bf8fd236ee9ca27f271ae5a4b6b20c1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNN//+nxKD004yMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGcgFhYqxwNEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "10001 - 15000",
+        "url": "0b4e6cd5e1ac4996677435de802f431c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgekM6f8pMWgmw0xGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAcLAEhIda6BsAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 644,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Critical_Habitat/MapServer/6",
+    "name": "Proposed Carter's Small Flowered Flax Critical Habitat",
+    "description": "This data represents the U.S. Fish and Wildlife Service proposed designation of critical habitat for the Linum Carteri Carteri (Carter's Small-Flowered Flax) in the state of Florida. These proposed rules were published October 3, 2013. The final rule on the critical habitat designation is pending.",
+    "longName": "Proposed Carter's Small Flowered Flax Critical Habitat",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CH_CARTERS_FLAX",
+    "restricted": false,
+    "minScale": 7500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "23217ca5ff33bc1f3258b8517025b016",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIhJREFUOI29k9ENwCAIRGniFgxrOqxz2C8TRaAHseULL3reC1rocJVfDLlyJyJqd7s8TdO/T8iV+7ht9Jom+81QQ5Jmsyb3mgm1tFqSV2QPc17DyB5mBN8cijyM4i+GCKalb4YopqcvhhFMKGEGExpKBtNMGMUMfb0Ippswg6kaWoc0HX7YJ+oBBPIRNDDTHzwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8185,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_ACS/MapServer/2",
+    "name": "2018 Other Population Distribution",
+    "description": "Population Some other race alone - [B02001_007]",
+    "longName": "2018 Other Population Distribution",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0 - 25",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "26 - 100",
+        "url": "ffa9698c13add278ab2da872915d41ca",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/O7/hPiUFMhh6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA2c0EzX31PVsAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "101 - 250",
+        "url": "2041440ff30fb6dab7a32a870103c64d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9npv+nxCDG9JmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAB5oFUxVnzOMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "251 - 500",
+        "url": "a360bcfed3979e1325f514b999477e72",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/TTf9TYhDjzNOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKcgFt92kn74AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "501 - 1000",
+        "url": "afc9d675543ebeb9d240c07691dc7834",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWdMGf5TYpDJaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYFwEURuNcoQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1001 - 2500",
+        "url": "944b2e250b0b6b4afcdef3e1fbf8e773",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNNGf5TYlD6aQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAchcEhL2N1LgAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2501 - 5000",
+        "url": "e1a407a1170aa6870d59dd942a71717a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgemmDP8pMWjmaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg3kEtkU6v0QAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8186,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_ACS/MapServer/3",
+    "name": "2018 Disabled (Ages 20-64) Population Distribution",
+    "description": "Population 20 to 64 Years with Income in the past 12 months below and above poverty level with a disability - ([B23024_003] + [B23024_018])",
+    "longName": "2018 Disabled (Ages 20-64) Population Distribution",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
     "restricted": false,
     "minScale": 100000,
     "maxScale": 0,
@@ -3613,14 +3958,38 @@ define({
     ]
   },
   {
-    "id": 159,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2017/MapServer/4",
-    "name": "2017 Black Population Distribution",
-    "description": "Population Black or African American alone - [B02001_003]",
-    "longName": "2017 Black Population Distribution",
+    "id": 645,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Critical_Habitat/MapServer/7",
+    "name": "Bartram's Scrub-Hairstreak Butterfly Critical Habitat",
+    "description": "This data represents the U.S. Fish and Wildlife Service designation of critical habitat for the Strymon Acis (Bartram s Scrub-Hairstreak Butterfly) in the state of Florida. The final rule designation is effective as of September 11, 2014.",
+    "longName": "Bartram's Scrub-Hairstreak Butterfly Critical Habitat",
     "type": "feature",
     "definitionQuery": null,
-    "layerName": "CENACS_2017",
+    "layerName": "CH_BARTRAMS_SHS",
+    "restricted": false,
+    "minScale": 7500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "23217ca5ff33bc1f3258b8517025b016",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIhJREFUOI29k9ENwCAIRGniFgxrOqxz2C8TRaAHseULL3reC1rocJVfDLlyJyJqd7s8TdO/T8iV+7ht9Jom+81QQ5Jmsyb3mgm1tFqSV2QPc17DyB5mBN8cijyM4i+GCKalb4YopqcvhhFMKGEGExpKBtNMGMUMfb0Ippswg6kaWoc0HX7YJ+oBBPIRNDDTHzwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8187,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_ACS/MapServer/4",
+    "name": "2018 Black Population Distribution",
+    "description": "Population Black or African American alone - [B02001_003]",
+    "longName": "2018 Black Population Distribution",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
     "restricted": false,
     "minScale": 100000,
     "maxScale": 0,
@@ -3691,494 +4060,68 @@ define({
     ]
   },
   {
-    "id": 643,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Critical_Habitat/MapServer/5",
-    "name": "Cape Sable Thoroughwort Critical Habitat",
-    "description": "This data represents the U.S. Fish and Wildlife Service designation of critical habitat for the Chromolaena Frustrata (Cape Sable Thoroughwort) in the state of Florida. The final rule designation is effective as of February 7, 2014.",
-    "longName": "Cape Sable Thoroughwort Critical Habitat",
+    "id": 8188,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_ACS/MapServer/5",
+    "name": "2018 Over 65 Population Distribution",
+    "description": "Population 65 and up - [B01001_020] + [B01001_044] + [B01001_021] + [B01001_045] + [B01001_022] + [B01001_046] + [B01001_023] + [B01001_047] + [B01001_024] + [B01001_048] + [B01001_025] + [B01001_049]",
+    "longName": "2018 Over 65 Population Distribution",
     "type": "feature",
     "definitionQuery": null,
-    "layerName": "CH_CS_TWORT",
-    "restricted": false,
-    "minScale": 7500000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "23217ca5ff33bc1f3258b8517025b016",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIhJREFUOI29k9ENwCAIRGniFgxrOqxz2C8TRaAHseULL3reC1rocJVfDLlyJyJqd7s8TdO/T8iV+7ht9Jom+81QQ5Jmsyb3mgm1tFqSV2QPc17DyB5mBN8cijyM4i+GCKalb4YopqcvhhFMKGEGExpKBtNMGMUMfb0Ippswg6kaWoc0HX7YJ+oBBPIRNDDTHzwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 147,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_2017/MapServer/0",
-    "name": "2017 American Indian Population Density",
-    "description": "Density of American Indian or Alaska native population per acre - [AMERI_ES]/[ACRES]",
-    "longName": "2017 American Indian Population Density",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
+    "layerName": "CENACS_2018",
     "restricted": false,
     "minScale": 100000,
     "maxScale": 0,
     "legendSymbols": [
       {
         "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "label": "0 - 250",
+        "url": "d31cfe56cd41ce8490d204a7bea8d781",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgZ8+fvxPiUF8/PyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAvuoEfmjRLdoAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
       },
       {
         "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "2e87d515959441d953e150b21ca2722b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdd//fpPiUGabGyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwiYEh53uzdcAAAAASUVORK5CYII=",
+        "label": "251 - 500",
+        "url": "86a5d8f0993363783c820605df57617c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfOnPlPiUEmJiaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5WsE7soevtwAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
       },
       {
         "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "15696a867e6eb8451c01995abd1a6669",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPP/P9PiUHpJoyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5dEE7pmdn8oAAAAASUVORK5CYII=",
+        "label": "501 - 1000",
+        "url": "356212d41d697cbf5c63d3bade4ca802",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdu2bftPiUFeXl6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA/BsFMJroYWsAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
       },
       {
         "layerId": 0,
-        "label": "4.01 - 10.0",
-        "url": "f3077dc825120596548aa2c13c993933",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgaYz//+nxKDT6YyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGiwFhX8rAi0AAAAASUVORK5CYII=",
+        "label": "1001 - 2500",
+        "url": "0b78bef345b8cd7965a25623e2cad7b7",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnzvxPiUHp6emMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGhIFhzHeCecAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
       },
       {
         "layerId": 0,
-        "label": "10.01 - 20.0",
+        "label": "2501 - 5000",
         "url": "f29fbdacae42ad19cef1d4782ce374b9",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenp6f8pMWjmzJmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUATaIGHbGkRQ8AAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
-      }
-    ]
-  },
-  {
-    "id": 148,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_2017/MapServer/1",
-    "name": "2017 Other Population Density",
-    "description": "Density of some other race population per acre - [OTHER]/[ACRES]",
-    "longName": "2017 Other Population Density",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
       },
       {
         "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "ffa9698c13add278ab2da872915d41ca",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/O7/hPiUFMhh6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA2c0EzX31PVsAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "2041440ff30fb6dab7a32a870103c64d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9npv+nxCDG9JmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAB5oFUxVnzOMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 10.0",
-        "url": "a360bcfed3979e1325f514b999477e72",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/TTf9TYhDjzNOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKcgFt92kn74AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 20.0",
-        "url": "afc9d675543ebeb9d240c07691dc7834",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWdMGf5TYpDJaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYFwEURuNcoQAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "20.01 - 40.0",
-        "url": "944b2e250b0b6b4afcdef3e1fbf8e773",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNNGf5TYlD6aQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAchcEhL2N1LgAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "40.01 - 65.0",
-        "url": "e1a407a1170aa6870d59dd942a71717a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgemmDP8pMWjmaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg3kEtkU6v0QAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 644,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Critical_Habitat/MapServer/6",
-    "name": "Proposed Carter's Small Flowered Flax Critical Habitat",
-    "description": "This data represents the U.S. Fish and Wildlife Service proposed designation of critical habitat for the Linum Carteri Carteri (Carter's Small-Flowered Flax) in the state of Florida. These proposed rules were published October 3, 2013. The final rule on the critical habitat designation is pending.",
-    "longName": "Proposed Carter's Small Flowered Flax Critical Habitat",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CH_CARTERS_FLAX",
-    "restricted": false,
-    "minScale": 7500000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "23217ca5ff33bc1f3258b8517025b016",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIhJREFUOI29k9ENwCAIRGniFgxrOqxz2C8TRaAHseULL3reC1rocJVfDLlyJyJqd7s8TdO/T8iV+7ht9Jom+81QQ5Jmsyb3mgm1tFqSV2QPc17DyB5mBN8cijyM4i+GCKalb4YopqcvhhFMKGEGExpKBtNMGMUMfb0Ippswg6kaWoc0HX7YJ+oBBPIRNDDTHzwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 149,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_2017/MapServer/2",
-    "name": "2017 Disabled Population Density",
-    "description": "Density per acre of Population 20 To 64 Years With a disability - [DIS_2064]/[ACRES]",
-    "longName": "2017 Disabled Population Density",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 10.0",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 30.0",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 150,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_2017/MapServer/3",
-    "name": "2017 Non-English Speaking Density",
-    "description": "Density per acre of Ability to Speak English for the Population 5+ Yrs Speak English 'not at all' - [S_NOTATALL]/[ACRES]",
-    "longName": "2017 Non-English Speaking Density",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 2.0",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "a7e0d0de6f7836bfe12f6d16c841534a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+//9PiUEmjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwo4EiB5cX5AAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 6.0",
-        "url": "7a15b8a0baa96cfdc151f0aee721b370",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen///+nxKCZjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5asE7ZP4q+kAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "6.01 - 10.0",
-        "url": "aec3bd4fb5f194f4a5296b2340887731",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgWf+/6fIJBNGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCABi3A4cUTDVBAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 40.0",
-        "url": "6bcb21956ee922f09f051311c18be88b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTNn/qfIpPR0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAEzpBCD/8FGwAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 645,
-    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Critical_Habitat/MapServer/7",
-    "name": "Bartram's Scrub-Hairstreak Butterfly Critical Habitat",
-    "description": "This data represents the U.S. Fish and Wildlife Service designation of critical habitat for the Strymon Acis (Bartram s Scrub-Hairstreak Butterfly) in the state of Florida. The final rule designation is effective as of September 11, 2014.",
-    "longName": "Bartram's Scrub-Hairstreak Butterfly Critical Habitat",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CH_BARTRAMS_SHS",
-    "restricted": false,
-    "minScale": 7500000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "23217ca5ff33bc1f3258b8517025b016",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIhJREFUOI29k9ENwCAIRGniFgxrOqxz2C8TRaAHseULL3reC1rocJVfDLlyJyJqd7s8TdO/T8iV+7ht9Jom+81QQ5Jmsyb3mgm1tFqSV2QPc17DyB5mBN8cijyM4i+GCKalb4YopqcvhhFMKGEGExpKBtNMGMUMfb0Ippswg6kaWoc0HX7YJ+oBBPIRNDDTHzwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 151,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_2017/MapServer/4",
-    "name": "2017 Black Population Density",
-    "description": "Density per acre of Persons Black or African American alone - [BLACK]/[ACRES]",
-    "longName": "2017 Black Population Density",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "328ef735922ceb54a865fc1de88b6dff",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//M/ynxCBGRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIACTEDVHAdUUMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 10.0",
-        "url": "62606aa051d764c91753a98417895f8e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nMvynxCDGdAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIALEEDusWnCLAAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 20.0",
-        "url": "4f3ad950373857a348c1a8bafa3b13aa",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfSGf5TYpDJTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIATywEHyB+H0UAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "20.01 - 40.0",
-        "url": "924c04fc312b5a5f7376d3ea2dcb9c20",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPTGf5TYlD6TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYOcEUpvemfMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "40.01 - 75.0",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 152,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_2017/MapServer/5",
-    "name": "2017 Hispanic Population Density",
-    "description": "Density per acre of Persons Hispanic or Latino - [HISPANIC]/[ACRES]",
-    "longName": "2017 Hispanic Population Density",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "4aac6323d12fdc33b5c3d877555d12d9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//p/+nxCBGxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5HsE7X1alrgAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4.01 - 10.0",
-        "url": "5e67378c7229b80d2143bb3fab3166a3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nnvlPiUGM6SaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7nDp6UQAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 20.0",
-        "url": "75286bb0005a579ad69d3f0c7a7dc528",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfS//+nxCCTmYyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9s4FIOmpJGcAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "20.01 - 40.0",
-        "url": "0bf8fd236ee9ca27f271ae5a4b6b20c1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNN//+nxKD004yMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGcgFhYqxwNEAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "40.01 - 80.0",
-        "url": "0b4e6cd5e1ac4996677435de802f431c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgekM6f8pMWgmw0xGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAcLAEhIda6BsAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "80.01 - 200.0",
-        "url": "112a30234655ce822aa96a79b2c7583d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgXMY5vynxKAUhhRGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIATEAEGhBRu5AAAAAASUVORK5CYII=",
+        "label": "5001 - 35000",
+        "url": "d9c8186963e7debc4b7ce8853274bb4b",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgenp/ykyaeZMRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAG8XBITPlZdwAAAAAElFTkSuQmCC",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -4210,77 +4153,68 @@ define({
     ]
   },
   {
-    "id": 153,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_2017/MapServer/6",
-    "name": "2017 Asian Population Density",
-    "description": "Density per acre of Persons Asian alone - [ASIAN]/[ACRES]",
-    "longName": "2017 Asian Population Density",
+    "id": 8189,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_ACS/MapServer/6",
+    "name": "2018 Minority Population Distribution",
+    "description": "\"Minority Population\" is the population that lists their racial status as a race other than white alone and-or lists their ethnicity as Hispanic or Latino. That is, all people other than non-Hispanic white-alone individuals. The word \"alone\" in this case indicates that the person is of a single race, not multiracial - [TOTALPOP] - [WHITE_NH] - [TOTALPOP] - [WHITE_NH]",
+    "longName": "2018 Minority Population Distribution",
     "type": "feature",
     "definitionQuery": null,
-    "layerName": "CENACS_2017",
+    "layerName": "CENACS_2018",
     "restricted": false,
     "minScale": 100000,
     "maxScale": 0,
     "legendSymbols": [
       {
         "layerId": 0,
-        "label": "0 - 0.5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "label": "0 - 1000",
+        "url": "799a87fb3ebcb8f4495d22cb6270cc80",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/ePfxPiUFMQvKMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwTYEhcPZT6MAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
       },
       {
         "layerId": 0,
-        "label": "0.5 - 2.0",
-        "url": "269e86e54f96344362d81884f21b021d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+z/xPiUEmjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7rDl8YQAAAAASUVORK5CYII=",
+        "label": "1001 - 2500",
+        "url": "ec19ca5974ecdbe1a4aa28aeefb39cec",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/uHv5PiUFMyraMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA0UAEtHgAewYAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
       },
       {
         "layerId": 0,
-        "label": "2.01 - 4.0",
-        "url": "4ed2feb88aa9f0076621f7847dcb90a3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTP/p/+nxKB0xpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUACAAFU5vGQX8AAAAASUVORK5CYII=",
+        "label": "2501 - 5000",
+        "url": "e8152dc37e889b0ed31ccae29b81a847",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/OLv1PiUFMxtGMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA4PIE4gZuhmYAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
       },
       {
         "layerId": 0,
-        "label": "4.01 - 6.0",
-        "url": "b5b9ede611ffb3da16d86dd1f93686f9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen/Tf9TYtBMxtOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKmAFt0NlUIEAAAAASUVORK5CYII=",
+        "label": "5001 - 10000",
+        "url": "51c0669a5cd5fc97a01217b285e77d06",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/WZP6nxCCmkOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAAL0FP5oQ3RwAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
       },
       {
         "layerId": 0,
-        "label": "6.01 - 10.0",
-        "url": "db78d8268813b4631a95963628e82a14",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTMZ/lNkUjoDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAIKOArmqP8lxAAAAAElFTkSuQmCC",
+        "label": "10001 - 15000",
+        "url": "c3901a92c1e75219a54124ab016ab678",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf86tP5TYhBTxTVGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAIoYFolv85dwAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
       },
       {
         "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "a4a24b63bfff663882dfac8aa503882d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgabpDP8pMej0TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg6sEtlscd8cAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "7d75e17e5a90cd93c6981607881fe1af",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYM/yky6TQDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAKTuAx1BemcyAAAAAElFTkSuQmCC",
+        "label": "15001 - 20000",
+        "url": "fc528335a6640f60396b8ecabc801b91",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/SRf5TYhDTzDeMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUANVgF2UreWvsAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -4690,14 +4624,14 @@ define({
     ]
   },
   {
-    "id": 172,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2017/MapServer/7",
-    "name": "2017 Median Family Income Distribution",
+    "id": 8190,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_ACS/MapServer/7",
+    "name": "2018 Median Family Income Distribution",
     "description": "Median family income in the past 12 months (in 2017 inflation-adjusted dollars) - [B19113_001]",
-    "longName": "2017 Median Family Income Distribution",
+    "longName": "2018 Median Family Income Distribution",
     "type": "feature",
     "definitionQuery": null,
-    "layerName": "CENACS_2017",
+    "layerName": "CENACS_2018",
     "restricted": false,
     "minScale": 100000,
     "maxScale": 0,
@@ -4750,14 +4684,14 @@ define({
     ]
   },
   {
-    "id": 173,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2017/MapServer/8",
-    "name": "2017 Average Household Size",
+    "id": 8431,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_ACS/MapServer/8",
+    "name": "2018 Average Household Size",
     "description": "Average household size Total: Average Household Size of Occupied Housing Units by Tenure - [B25010_001]",
-    "longName": "2017 Average Household Size",
+    "longName": "2018 Average Household Size",
     "type": "feature",
     "definitionQuery": null,
-    "layerName": "CENACS_2017",
+    "layerName": "CENACS_2018",
     "restricted": false,
     "minScale": 100000,
     "maxScale": 0,
@@ -4825,21 +4759,21 @@ define({
     ]
   },
   {
-    "id": 174,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2017/MapServer/9",
-    "name": "2017 Non-English Speaking Population",
-    "description": "Ability to Speak English for the Population 5+ Yrs Speak English 'not at all' - [B16004_008] + [B16004_013] + [B16004_018] + [B16004_023] + [B16004_030] + [B16004_035] + [B16004_040] + [B16004_045] + [B16004_052] + [B16004_057] + [B16004_062] + [B16004_067]",
-    "longName": "2017 Non-English Speaking Population",
+    "id": 8181,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_ACS/MapServer/5",
+    "name": "2018 Hispanic Population Density",
+    "description": "Density per acre of Persons Hispanic or Latino - [HISPANIC]/[ACRES]",
+    "longName": "2018 Hispanic Population Density",
     "type": "feature",
     "definitionQuery": null,
-    "layerName": "CENACS_2017",
+    "layerName": "CENACS_2018",
     "restricted": false,
     "minScale": 100000,
     "maxScale": 0,
     "legendSymbols": [
       {
         "layerId": 0,
-        "label": "0 - 50",
+        "label": "0 - 0.5",
         "url": "d2db3530b340406dca5a8e3a83baac24",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
         "contentType": "image/png",
@@ -4848,67 +4782,7 @@ define({
       },
       {
         "layerId": 0,
-        "label": "51 - 150",
-        "url": "a7e0d0de6f7836bfe12f6d16c841534a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+//9PiUEmjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwo4EiB5cX5AAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "151 - 400",
-        "url": "7a15b8a0baa96cfdc151f0aee721b370",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen///+nxKCZjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5asE7ZP4q+kAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "401 - 1000",
-        "url": "aec3bd4fb5f194f4a5296b2340887731",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgWf+/6fIJBNGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCABi3A4cUTDVBAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2000",
-        "url": "6bcb21956ee922f09f051311c18be88b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTNn/qfIpPR0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAEzpBCD/8FGwAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 175,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2017/MapServer/10",
-    "name": "2017 Hispanic Population Distribution",
-    "description": "Population Hispanic or Latino by Race - [B03002_012]",
-    "longName": "2017 Hispanic Population Distribution",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 250",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
+        "label": "0.51 - 2.0",
         "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
         "contentType": "image/png",
@@ -4917,7 +4791,7 @@ define({
       },
       {
         "layerId": 0,
-        "label": "501 - 1000",
+        "label": "2.01 - 4.0",
         "url": "4aac6323d12fdc33b5c3d877555d12d9",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//p/+nxCBGxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5HsE7X1alrgAAAAASUVORK5CYII=",
         "contentType": "image/png",
@@ -4926,7 +4800,7 @@ define({
       },
       {
         "layerId": 0,
-        "label": "1001 - 2500",
+        "label": "4.01 - 10.0",
         "url": "5e67378c7229b80d2143bb3fab3166a3",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nnvlPiUGM6SaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7nDp6UQAAAAASUVORK5CYII=",
         "contentType": "image/png",
@@ -4935,7 +4809,7 @@ define({
       },
       {
         "layerId": 0,
-        "label": "2501 - 5000",
+        "label": "10.01 - 20.0",
         "url": "75286bb0005a579ad69d3f0c7a7dc528",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfS//+nxCCTmYyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9s4FIOmpJGcAAAAASUVORK5CYII=",
         "contentType": "image/png",
@@ -4944,7 +4818,7 @@ define({
       },
       {
         "layerId": 0,
-        "label": "5001 - 10000",
+        "label": "20.01 - 40.0",
         "url": "0bf8fd236ee9ca27f271ae5a4b6b20c1",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNN//+nxKD004yMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGcgFhYqxwNEAAAAASUVORK5CYII=",
         "contentType": "image/png",
@@ -4953,9 +4827,96 @@ define({
       },
       {
         "layerId": 0,
-        "label": "10001 - 15000",
+        "label": "40.01 - 80.0",
         "url": "0b4e6cd5e1ac4996677435de802f431c",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgekM6f8pMWgmw0xGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAcLAEhIda6BsAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "80.01 - 100.0",
+        "url": "112a30234655ce822aa96a79b2c7583d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgXMY5vynxKAUhhRGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIATEAEGhBRu5AAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8182,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_ACS/MapServer/6",
+    "name": "2018 Asian Population Density",
+    "description": "Density per acre of Persons Asian alone - [ASIAN]/[ACRES]",
+    "longName": "2018 Asian Population Density",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0 - 0.5",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "0.5 - 2.0",
+        "url": "269e86e54f96344362d81884f21b021d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+z/xPiUEmjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7rDl8YQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2.01 - 4.0",
+        "url": "4ed2feb88aa9f0076621f7847dcb90a3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTP/p/+nxKB0xpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUACAAFU5vGQX8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "4.01 - 6.0",
+        "url": "b5b9ede611ffb3da16d86dd1f93686f9",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen/Tf9TYtBMxtOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKmAFt0NlUIEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "6.01 - 10.0",
+        "url": "db78d8268813b4631a95963628e82a14",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTMZ/lNkUjoDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAIKOArmqP8lxAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "10.01 - 15.0",
+        "url": "a4a24b63bfff663882dfac8aa503882d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgabpDP8pMej0TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg6sEtlscd8cAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "15.01 - 30.0",
+        "url": "7d75e17e5a90cd93c6981607881fe1af",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYM/yky6TQDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAKTuAx1BemcyAAAAAElFTkSuQmCC",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -5209,66 +5170,6 @@ define({
     ]
   },
   {
-    "id": 169,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2017/MapServer/0",
-    "name": "2017 Population Distribution",
-    "description": "Total Population - [B01003_001]",
-    "longName": "2017 Population Distribution",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 1500",
-        "url": "799a87fb3ebcb8f4495d22cb6270cc80",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/ePfxPiUFMQvKMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwTYEhcPZT6MAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1501 - 4500",
-        "url": "e8152dc37e889b0ed31ccae29b81a847",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/OLv1PiUFMxtGMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA4PIE4gZuhmYAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "4501 - 9000",
-        "url": "51c0669a5cd5fc97a01217b285e77d06",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/WZP6nxCCmkOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAAL0FP5oQ3RwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "9001 - 16000",
-        "url": "c3901a92c1e75219a54124ab016ab678",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf86tP5TYhBTxTVGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAIoYFolv85dwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "16001 - 45000",
-        "url": "7506f7306131a52f85224d1b3af890b3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZga8yGf5TYpDYdAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIARA4D/2b6+K4AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
     "id": 334,
     "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Critical_Habitat/MapServer/0",
     "name": "Gulf Sturgeon Critical Habitat Lines",
@@ -5293,153 +5194,6 @@ define({
     ]
   },
   {
-    "id": 170,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2017/MapServer/1",
-    "name": "2017 American Indian Population Distribution",
-    "description": "Population American Indian and Alaska Native alone - [B02001_004]",
-    "longName": "2017 American Indian Population Distribution",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 25",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "26 - 50",
-        "url": "2e87d515959441d953e150b21ca2722b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdd//fpPiUGabGyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwiYEh53uzdcAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "15696a867e6eb8451c01995abd1a6669",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPP/P9PiUHpJoyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5dEE7pmdn8oAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 500",
-        "url": "f3077dc825120596548aa2c13c993933",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgaYz//+nxKDT6YyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGiwFhX8rAi0AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "bcdd8fa7af2de732ca8a3a1f2cf7ab74",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgen//1Nk0kxGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCADtvA+zRLgQAAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "ab313847887ab4573a63531f258ba951",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYz/1Nk0ul0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAG9JBITHVKrXAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 5000",
-        "url": "f29fbdacae42ad19cef1d4782ce374b9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenp6f8pMWjmzJmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUATaIGHbGkRQ8AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 171,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2017/MapServer/6",
-    "name": "2017 Minority Population Distribution",
-    "description": "\"Minority Population\" is the population that lists their racial status as a race other than white alone and-or lists their ethnicity as Hispanic or Latino. That is, all people other than non-Hispanic white-alone individuals. The word \"alone\" in this case indicates that the person is of a single race, not multiracial - [TOTALPOP] - [WHITE_NH] - [TOTALPOP] - [WHITE_NH]",
-    "longName": "2017 Minority Population Distribution",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 1000",
-        "url": "799a87fb3ebcb8f4495d22cb6270cc80",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/ePfxPiUFMQvKMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwTYEhcPZT6MAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "ec19ca5974ecdbe1a4aa28aeefb39cec",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/uHv5PiUFMyraMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA0UAEtHgAewYAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 5000",
-        "url": "e8152dc37e889b0ed31ccae29b81a847",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/OLv1PiUFMxtGMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA4PIE4gZuhmYAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5001 - 10000",
-        "url": "51c0669a5cd5fc97a01217b285e77d06",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/WZP6nxCCmkOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAAL0FP5oQ3RwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10001 - 15000",
-        "url": "c3901a92c1e75219a54124ab016ab678",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf86tP5TYhBTxTVGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAIoYFolv85dwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15001 - 20000",
-        "url": "fc528335a6640f60396b8ecabc801b91",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/SRf5TYhDTzDeMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUANVgF2UreWvsAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
     "id": 335,
     "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Critical_Habitat/MapServer/1",
     "name": "Mussels (8 species) Critical Habitat",
@@ -5457,75 +5211,6 @@ define({
         "label": "",
         "url": "d06d9e535ba243b7b9d6c4362fc43161",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC5JREFUOI1jYaAyYBk1cNTAQWPgipb/VDEtooaRRi6MqGGkroFUBKMGjhpIBgAAiggEJsG32AoAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 160,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2017/MapServer/5",
-    "name": "2017 Over 65 Population Distribution",
-    "description": "Population 65 and up - [B01001_020] + [B01001_044] + [B01001_021] + [B01001_045] + [B01001_022] + [B01001_046] + [B01001_023] + [B01001_047] + [B01001_024] + [B01001_048] + [B01001_025] + [B01001_049]",
-    "longName": "2017 Over 65 Population Distribution",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 250",
-        "url": "d31cfe56cd41ce8490d204a7bea8d781",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgZ8+fvxPiUF8/PyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAvuoEfmjRLdoAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "86a5d8f0993363783c820605df57617c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfOnPlPiUEmJiaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5WsE7soevtwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "356212d41d697cbf5c63d3bade4ca802",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdu2bftPiUFeXl6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA/BsFMJroYWsAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2500",
-        "url": "0b78bef345b8cd7965a25623e2cad7b7",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnzvxPiUHp6emMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGhIFhzHeCecAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2501 - 5000",
-        "url": "f29fbdacae42ad19cef1d4782ce374b9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenp6f8pMWjmzJmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUATaIGHbGkRQ8AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5001 - 35000",
-        "url": "d9c8186963e7debc4b7ce8853274bb4b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgenp/ykyaeZMRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAG8XBITPlZdwAAAAAElFTkSuQmCC",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -6091,75 +5776,6 @@ define({
       {
         "layerId": 0,
         "label": "75.01 - 100.0",
-        "url": "7d75e17e5a90cd93c6981607881fe1af",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYM/yky6TQDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAKTuAx1BemcyAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 176,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Distributions_2017/MapServer/11",
-    "name": "2017 Asian Population Distribution",
-    "description": "Population Asian alone - [B02001_005]",
-    "longName": "2017 Asian Population Distribution",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 50",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 250",
-        "url": "269e86e54f96344362d81884f21b021d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+z/xPiUEmjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7rDl8YQAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "b5b9ede611ffb3da16d86dd1f93686f9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen/Tf9TYtBMxtOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKmAFt0NlUIEAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "db78d8268813b4631a95963628e82a14",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTMZ/lNkUjoDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAIKOArmqP8lxAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 2000",
-        "url": "a4a24b63bfff663882dfac8aa503882d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgabpDP8pMej0TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg6sEtlscd8cAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2001 - 5000",
         "url": "7d75e17e5a90cd93c6981607881fe1af",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYM/yky6TQDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAKTuAx1BemcyAAAAAElFTkSuQmCC",
         "contentType": "image/png",
@@ -7006,240 +6622,6 @@ define({
     ]
   },
   {
-    "id": 217,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_2017/MapServer/1",
-    "name": "2017 Housing Units with 1 Vehicle",
-    "description": "Occupied Housing Units with 1 vehicle available - [B25044_004] + [B25044_011]",
-    "longName": "2017 Housing Units with 1 Vehicle",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 50",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 5000",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5001 - 20000",
-        "url": "2968ad5e8eacfe604ae65e3ea715b1b3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWFv8pMejEiROMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAfhoGqgM7uSoAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 202,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_2017/MapServer/4",
-    "name": "2017 Percent Non-English Speaking Population",
-    "description": "Percent Ability to Speak English for the Population 5+ Yrs Speak English 'not at all' - ([S_NOTATALL]/[S_TOTAL] * 100)",
-    "longName": "2017 Percent Non-English Speaking Population",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 2.0",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2.01 - 5.0",
-        "url": "a7e0d0de6f7836bfe12f6d16c841534a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+//9PiUEmjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwo4EiB5cX5AAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "7a15b8a0baa96cfdc151f0aee721b370",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen///+nxKCZjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5asE7ZP4q+kAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 20.0",
-        "url": "aec3bd4fb5f194f4a5296b2340887731",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgWf+/6fIJBNGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCABi3A4cUTDVBAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "20.01 - 50.0",
-        "url": "6bcb21956ee922f09f051311c18be88b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTNn/qfIpPR0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAEzpBCD/8FGwAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "67545eec0e3c00728001f4bc57673052",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6czCxLtmG5fx8zMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAEJ8NEughbEkAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "97bafbb90836c3250a94455f7e2d1c8d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgaGhof8pMWj16tWMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAYDIGU/87hcsAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 203,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_2017/MapServer/5",
-    "name": "2017 Percent Pop Over 25 with Bachelors Degree",
-    "description": "Percent Educational Attainment for the Population 25 Years and over Bachelor's degree only - ([BACHELORS]/[TOTALPOP] * 100)",
-    "longName": "2017 Percent Pop Over 25 with Bachelors Degree",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 5",
-        "url": "b69dde22319403fc4b2eca4506cdfd95",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgb+u//tPiUFsmkyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwKcEg88KAo0AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "fccd2e07b12339caa9591b18f6f4e1f1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgd+X/vtPiUGc0UyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA0uIEuDcC4pEAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "d177f36fb80974ff73ca333ecf80245d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZga9Mf/6nxCCx0+yMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA/5oFOguGzN4AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "c8bf71127eb8ce174f249a4a246a7545",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgecZHvynxCBDBgVGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAI2kDo9RBBkAAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "d071e175a1e6fe83a29580af3c753493",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgV0MU/9TYlAZQzYjioHUAqMGjho4auCogXQ2EFaeUc1AagEAVOMEMy94OOcAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "afad78319ae01204dbe44218b53f8c19",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTEMKf8pMWgJwxxGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAdYgEkjHFj+MAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "7725d1d1c39a24d67c19e0c4080fff84",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWoMKf8pMegWwxxGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAiE4EyFJMAUIAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
     "id": 650,
     "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Critical_Habitat/MapServer/12",
     "name": "Snail Kite Critical Habitat",
@@ -7281,162 +6663,6 @@ define({
         "label": "",
         "url": "3310647085915406c35be6bd833d2866",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIZJREFUOI29k9ENwCAIRDFxJPefgJ3ol4niQYHY8oUXPe8F7XS5+i+GzCJERGO05mlI/z4hs8i8bfZI0/1hiJC02arpvWZClBYleUX2MNd1GNnDzOCbQ9GHo/ibYQTT0g/DKKanb4YZzFDCCmZoKBVMM2EWM/X1MphuwgomNLQOIT38sG/UA8Rk5dfNVAZlAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 204,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_2017/MapServer/6",
-    "name": "2017 Black Percentage",
-    "description": "Percent of Persons Black or African American alone - ([BLACK] /[TOTALPOP] *100)",
-    "longName": "2017 Black Percentage",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "328ef735922ceb54a865fc1de88b6dff",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//M/ynxCBGRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIACTEDVHAdUUMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "62606aa051d764c91753a98417895f8e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nMvynxCDGdAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIALEEDusWnCLAAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "4f3ad950373857a348c1a8bafa3b13aa",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfSGf5TYpDJTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIATywEHyB+H0UAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "924c04fc312b5a5f7376d3ea2dcb9c20",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPTGf5TYlD6TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYOcEUpvemfMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 205,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_2017/MapServer/7",
-    "name": "2017 Hispanic Percentage",
-    "description": "Percent of Persons Hispanic or Latino - ([HISPANIC] /[TOTALPOP] *100)",
-    "longName": "2017 Hispanic Percentage",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0.000000 - 6.957288",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "6.957289 - 16.226071",
-        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "16.226072 - 27.655889",
-        "url": "4aac6323d12fdc33b5c3d877555d12d9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//p/+nxCBGxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5HsE7X1alrgAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "27.655890 - 41.708543",
-        "url": "5e67378c7229b80d2143bb3fab3166a3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nnvlPiUGM6SaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7nDp6UQAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "41.708544 - 59.231449",
-        "url": "75286bb0005a579ad69d3f0c7a7dc528",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfS//+nxCCTmYyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9s4FIOmpJGcAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "59.231450 - 80.370370",
-        "url": "0bf8fd236ee9ca27f271ae5a4b6b20c1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNN//+nxKD004yMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGcgFhYqxwNEAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "80.370371 - 100.000000",
-        "url": "0b4e6cd5e1ac4996677435de802f431c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgekM6f8pMWgmw0xGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAcLAEhIda6BsAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -7719,84 +6945,6 @@ define({
         "label": "80.370371 - 100.000000",
         "url": "0b4e6cd5e1ac4996677435de802f431c",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgekM6f8pMWgmw0xGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAcLAEhIda6BsAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 201,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_2017/MapServer/3",
-    "name": "2017 Percent Disabled (Ages 20-64)",
-    "description": "Percent Population 20 To 64 Years With a disability - ([DIS_2064]/[DIS_TOTAL] * 100)",
-    "longName": "2017 Percent Disabled (Ages 20-64)",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 5",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "3d84236372e54320b0851cac08bec072",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgU6uIv8pMWjf7jeMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAgmQGt76CtaMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "439ab76d003b4131126c5cc7b31e7e6c",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgYGB/v8pMWj9+o2MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAZQAGYXS9KpcAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -8140,300 +7288,6 @@ define({
     ]
   },
   {
-    "id": 220,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_2017/MapServer/4",
-    "name": "2017 Housing Units with 4 Vehicles",
-    "description": "Occupied Housing Units with 4 vehicles available - [B25044_007] + [B25044_014]",
-    "longName": "2017 Housing Units with 4 Vehicles",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 25",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "26 - 50",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 221,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_2017/MapServer/5",
-    "name": "2017 Housing Units with 5 or more Vehicles",
-    "description": "Occupied Housing Units with 5 or more vehicles available - [B25044_008] + [B25044_015]",
-    "longName": "2017 Housing Units with 5 or more Vehicles",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 25",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "26 - 50",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 75",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "76 - 100",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 150",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "151 - 300",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 218,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_2017/MapServer/2",
-    "name": "2017 Housing Units with 2 Vehicles",
-    "description": "Occupied Housing Units with 2 vehicles available - [B25044_005] + [B25044_012]",
-    "longName": "2017 Housing Units with 2 Vehicles",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 50",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 3000",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "3001 - 6000",
-        "url": "2968ad5e8eacfe604ae65e3ea715b1b3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWFv8pMejEiROMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAfhoGqgM7uSoAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 219,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_2017/MapServer/3",
-    "name": "2017 Housing Units with 3 Vehicles",
-    "description": "Occupied Housing Units with 3 vehicles available - [B25044_006] + [B25044_013]",
-    "longName": "2017 Housing Units with 3 Vehicles",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 50",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 1500",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1501 - 2000",
-        "url": "2968ad5e8eacfe604ae65e3ea715b1b3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWFv8pMejEiROMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAfhoGqgM7uSoAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
     "id": 206,
     "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_2010/MapServer/4",
     "name": "2010 Percent Pop Over 25 with Bachelors Degree",
@@ -8692,84 +7546,6 @@ define({
     ]
   },
   {
-    "id": 209,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_2017/MapServer/0",
-    "name": "2017 Asian Percentage",
-    "description": "Percent of Persons Asian alone - ([ASIAN] /[TOTALPOP] *100)",
-    "longName": "2017 Asian Percentage",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 5.0",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "269e86e54f96344362d81884f21b021d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+z/xPiUEmjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7rDl8YQAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "4ed2feb88aa9f0076621f7847dcb90a3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTP/p/+nxKB0xpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUACAAFU5vGQX8AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "b5b9ede611ffb3da16d86dd1f93686f9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen/Tf9TYtBMxtOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKmAFt0NlUIEAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "db78d8268813b4631a95963628e82a14",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTMZ/lNkUjoDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAIKOArmqP8lxAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "a4a24b63bfff663882dfac8aa503882d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgabpDP8pMej0TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg6sEtlscd8cAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "7d75e17e5a90cd93c6981607881fe1af",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYM/yky6TQDI6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAKTuAx1BemcyAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
     "id": 303,
     "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/WorkProgram/MapServer/0",
     "name": "Construction (2019-2023)",
@@ -8823,162 +7599,6 @@ define({
         "label": "2023",
         "url": "81d9efd65813237fca9c4990b25febd1",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/1UM/6lhGGMYAyNtXMgYxsBIVQOpCUYNHDWQDAAATpcDqaTdEy0AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 210,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_2017/MapServer/1",
-    "name": "2017 American Indian Percentage",
-    "description": "Percent of Persons American Indian and Alaska Native alone - ([AMERI_ES] /[TOTALPOP] *100)",
-    "longName": "2017 American Indian Percentage",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 5.0",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "2e87d515959441d953e150b21ca2722b",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdd//fpPiUGabGyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwiYEh53uzdcAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "15696a867e6eb8451c01995abd1a6669",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPP/P9PiUHpJoyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5dEE7pmdn8oAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "f3077dc825120596548aa2c13c993933",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgaYz//+nxKDT6YyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGiwFhX8rAi0AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "bcdd8fa7af2de732ca8a3a1f2cf7ab74",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgen//1Nk0kxGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCADtvA+zRLgQAAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "ab313847887ab4573a63531f258ba951",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgaYz/1Nk0ul0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAG9JBITHVKrXAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "f29fbdacae42ad19cef1d4782ce374b9",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenp6f8pMWjmzJmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUATaIGHbGkRQ8AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 211,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_2017/MapServer/2",
-    "name": "2017 Other Percentage",
-    "description": "Percent of Persons Some other race alone - ([OTHER] /[TOTALPOP] *100)",
-    "longName": "2017 Other Percentage",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 5.0",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "5.01 - 10.0",
-        "url": "ffa9698c13add278ab2da872915d41ca",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/O7/hPiUFMhh6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA2c0EzX31PVsAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "10.01 - 15.0",
-        "url": "2041440ff30fb6dab7a32a870103c64d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9npv+nxCDG9JmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAB5oFUxVnzOMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "15.01 - 30.0",
-        "url": "a360bcfed3979e1325f514b999477e72",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/TTf9TYhDjzNOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKcgFt92kn74AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "30.01 - 50.0",
-        "url": "afc9d675543ebeb9d240c07691dc7834",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWdMGf5TYpDJaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYFwEURuNcoQAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "50.01 - 75.0",
-        "url": "944b2e250b0b6b4afcdef3e1fbf8e773",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNNGf5TYlD6aQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAchcEhL2N1LgAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "75.01 - 100.0",
-        "url": "e1a407a1170aa6870d59dd942a71717a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgemmDP8pMWjmaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg3kEtkU6v0QAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -10095,84 +8715,6 @@ define({
         "label": "151 - 300",
         "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 229,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_2017/MapServer/0",
-    "name": "2017 Housing Units with No Vehicles",
-    "description": "Occupied Housing Units with No vehicle available - [B25044_003] + [B25044_010]",
-    "longName": "2017 Housing Units with No Vehicles",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerName": "CENACS_2017",
-    "restricted": false,
-    "minScale": 100000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "0 - 25",
-        "url": "d2db3530b340406dca5a8e3a83baac24",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "26 - 50",
-        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "51 - 100",
-        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "101 - 250",
-        "url": "849a07783f2f0c21502d416cb9739516",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "251 - 500",
-        "url": "cf3ae4513c82586739d1f21481ba652f",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "501 - 1000",
-        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "1001 - 1500",
-        "url": "2968ad5e8eacfe604ae65e3ea715b1b3",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWFv8pMejEiROMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAfhoGqgM7uSoAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -23086,6 +21628,162 @@ define({
     ]
   },
   {
+    "id": 8441,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_ACS/MapServer/6",
+    "name": "2018 Black Percentage",
+    "description": "Percent of Persons Black or African American alone - ([BLACK] /[TOTALPOP] *100)",
+    "longName": "2018 Black Percentage",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0 - 5",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "5.01 - 10.0",
+        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "10.01 - 15.0",
+        "url": "328ef735922ceb54a865fc1de88b6dff",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//M/ynxCBGRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIACTEDVHAdUUMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "15.01 - 30.0",
+        "url": "62606aa051d764c91753a98417895f8e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nMvynxCDGdAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIALEEDusWnCLAAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "30.01 - 50.0",
+        "url": "4f3ad950373857a348c1a8bafa3b13aa",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfSGf5TYpDJTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIATywEHyB+H0UAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "50.01 - 75.0",
+        "url": "924c04fc312b5a5f7376d3ea2dcb9c20",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPTGf5TYlD6TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYOcEUpvemfMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "75.01 - 100.0",
+        "url": "cf3ae4513c82586739d1f21481ba652f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8442,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Percentages_ACS/MapServer/7",
+    "name": "2018 Hispanic Percentage",
+    "description": "Percent of Persons Hispanic or Latino - ([HISPANIC] /[TOTALPOP] *100)",
+    "longName": "2018 Hispanic Percentage",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0 - 5",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "5.01 - 10.0",
+        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "10.01 - 15.0",
+        "url": "4aac6323d12fdc33b5c3d877555d12d9",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//p/+nxCBGxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5HsE7X1alrgAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "15.01 - 30.0",
+        "url": "5e67378c7229b80d2143bb3fab3166a3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nnvlPiUGM6SaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5TgE7nDp6UQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "30.01 - 50.0",
+        "url": "75286bb0005a579ad69d3f0c7a7dc528",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfS//+nxCCTmYyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9s4FIOmpJGcAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "50.01 - 75.0",
+        "url": "0bf8fd236ee9ca27f271ae5a4b6b20c1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNN//+nxKD004yMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGcgFhYqxwNEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "75.01 - 100.0",
+        "url": "0b4e6cd5e1ac4996677435de802f431c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgekM6f8pMWgmw0xGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAcLAEhIda6BsAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
     "id": 8162,
     "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Conservation/MapServer/10",
     "name": "Florida State Forests",
@@ -23376,6 +22074,78 @@ define({
         "label": "",
         "url": "8f155e66225ebd89ce93a84258aef1a6",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAExJREFUOI1jYaAyYKGZgUktu99TYtC8428uMGyNdERxYV6mzQXyDdzAwMBASy+PGjhq4KiBowZiNXDe8TcXYEUQWWBrpCOKgTABSgEABLMTHQ7cpB8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8443,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Census_Boundaries/MapServer/1",
+    "name": "2000 Census Block Groups",
+    "description": "This data set contains Block Groups for 2000. This layer was created for use by the Florida Department of Transportation for use in the Community Characteristics Inventory (CCI) report. The spatial portion of this data was retrieved from TIGER at the block group level. Demographic data has been collected at 100% count (Summary File 1) and sample basis (Summary File 3). A variety of GIS techniques including python scripting were used to parse, aggregate, and join the tabular demographic data to the spatial data.",
+    "longName": "2000 Census Block Groups",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENBLKGRP_2000",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "be712541422adfd762707456c1df73ac",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHRJREFUOI3tlDsKwDAMQ2XwXX0mn9adAmqab+tCh74toCg2EVIkowDgFgEA5iJ87mEuUmvKXc2azC3CXKRpWF4bwRqeNm3Cbxvy+imGnJJ3Vl751S3DOtiPDTP5De+RHmzmZDjqwVYHtjS6Kp5xKdjdDuxxAHKFL1+HDBugAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8444,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Census_Boundaries/MapServer/2",
+    "name": "2010 Census Blocks",
+    "description": "This dataset contains the US Census Bureau 2010 Census Blocks for the State of Florida with selected fields from the 2010 Redistricting Summary File and Summary File 1. Census blocks are the smallest unit of Census data. Some of the fields included in this dataset are total population, age of the population, population by race, density and percentage of population by race, and household occupancy. This data is specifically designed for use within the Florida Department of Transportaion's Efficient Transportation Decision Making Process (ETDM) . However, the subset of redistricting and summary file fields included herein is useful for a variety of applications and uses. If you are looking for census block data with complete attribute data in its original form from Census Bureau, please see the FGDL layer CENBLK2010_SF_AUG11.",
+    "longName": "2010 Census Blocks",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENBLK2010",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "be712541422adfd762707456c1df73ac",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHRJREFUOI3tlDsKwDAMQ2XwXX0mn9adAmqab+tCh74toCg2EVIkowDgFgEA5iJ87mEuUmvKXc2azC3CXKRpWF4bwRqeNm3Cbxvy+imGnJJ3Vl751S3DOtiPDTP5De+RHmzmZDjqwVYHtjS6Kp5xKdjdDuxxAHKFL1+HDBugAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8445,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Census_Boundaries/MapServer/0",
+    "name": "2000 Census Blocks",
+    "description": "This dataset contains US Census Bureau 2000 data for the State of Florida. The data contains selected fields from the Summary 1 file that includes information on total population, race, sex, age, and household. This data is at the block level, the smallest unit of census data. Using GIS techniques, it is possible to summarize the data by Block Group, Tract, Traffic Analysis Zone (TAZ), Zip Code Tabulation Area (ZCTA), or County. This layer is an update to the existing 2000 Blocks, the record count and attribute information are the same, but the linework has been updated as part of the U.S. Census Bureau's MAF/TIGER Accuracy Improvement Project.",
+    "longName": "2000 Census Blocks",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENBLK",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "be712541422adfd762707456c1df73ac",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHRJREFUOI3tlDsKwDAMQ2XwXX0mn9adAmqab+tCh74toCg2EVIkowDgFgEA5iJ87mEuUmvKXc2azC3CXKRpWF4bwRqeNm3Cbxvy+imGnJJ3Vl751S3DOtiPDTP5De+RHmzmZDjqwVYHtjS6Kp5xKdjdDuxxAHKFL1+HDBugAAAAAElFTkSuQmCC",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -23836,6 +22606,66 @@ define({
     ]
   },
   {
+    "id": 8447,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_ACS/MapServer/0",
+    "name": "2018 American Indian Population Density",
+    "description": "Density of American Indian or Alaska native population per acre - [AMERI_ES]/[ACRES]",
+    "longName": "2018 American Indian Population Density",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0 - 0.5",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "0.5 - 2.0",
+        "url": "2e87d515959441d953e150b21ca2722b",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdd//fpPiUGabGyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwiYEh53uzdcAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2.01 - 4.0",
+        "url": "15696a867e6eb8451c01995abd1a6669",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPP/P9PiUHpJoyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5dEE7pmdn8oAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "4.01 - 10.0",
+        "url": "f3077dc825120596548aa2c13c993933",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgaYz//+nxKDT6YyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAGiwFhX8rAi0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "10.01 - 20.0",
+        "url": "f29fbdacae42ad19cef1d4782ce374b9",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenp6f8pMWjmzJmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUATaIGHbGkRQ8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
     "id": 3968,
     "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/7",
     "name": "FDEP Storage Tank Contamination Monitoring",
@@ -23989,6 +22819,144 @@ define({
     ]
   },
   {
+    "id": 8448,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_ACS/MapServer/1",
+    "name": "2018 Other Population Density",
+    "description": "Density of some other race population per acre - [OTHER]/[ACRES]",
+    "longName": "2018 Other Population Density",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0 - 0.5",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "0.5 - 2.0",
+        "url": "ffa9698c13add278ab2da872915d41ca",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/O7/hPiUFMhh6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA2c0EzX31PVsAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2.01 - 4.0",
+        "url": "2041440ff30fb6dab7a32a870103c64d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9npv+nxCDG9JmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAB5oFUxVnzOMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "4.01 - 10.0",
+        "url": "a360bcfed3979e1325f514b999477e72",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/TTf9TYhDjzNOMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKcgFt92kn74AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "10.01 - 20.0",
+        "url": "afc9d675543ebeb9d240c07691dc7834",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWdMGf5TYpDJaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYFwEURuNcoQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "20.01 - 40.0",
+        "url": "944b2e250b0b6b4afcdef3e1fbf8e773",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNNGf5TYlD6aQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAchcEhL2N1LgAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "40.01 - 65.0",
+        "url": "e1a407a1170aa6870d59dd942a71717a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgemmDP8pMWjmaQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAg3kEtkU6v0QAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8449,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_ACS/MapServer/2",
+    "name": "2018 Disabled Population Density",
+    "description": "Density per acre of Population 20 To 64 Years With a disability - [DIS_2064]/[ACRES]",
+    "longName": "2018 Disabled Population Density",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0 - 0.5",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "0.5 - 2.0",
+        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2.01 - 4.0",
+        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "4.01 - 10.0",
+        "url": "849a07783f2f0c21502d416cb9739516",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "10.01 - 30.0",
+        "url": "cf3ae4513c82586739d1f21481ba652f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
     "id": 3974,
     "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Waste_Groups/MapServer/11",
     "name": "FDEP State funded Hazardous Waste Cleanup Sites",
@@ -24054,6 +23022,144 @@ define({
         "label": "",
         "url": "25772f9eb2176689d3d0cf619dff4666",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAVBJREFUOI3t0j1oFFEUxfHfjNmFuBYWA3Ft4haWBsN0KYUUAROwsbdJlULQ1o8hooiVYOPUAW3SOOksLcRiLSwsBJE0Wz3SDUSz7FhMRJRkZgN28ZTn3fN/917ujH+smf/AWj9cTDpJvy0cojBsBSZVkgahCEIr0MSaWNEIDEKKvu0PXPpWm1XE85XfRdd2uXVFTy8tlc1AB3Z0sFSwf57BXSYDtm7+GoFnr8BsNFuUyuaRdY1M5PqP1r3bYX7w5/uLj1x4TCUP8RQ7BGOZjnWLW3zaZOFe7S9/Z/UJDI1lR0WPBnaNepNeVp57/cD4BvtXa//+W85uQ65rND0QZVw+VLluMUu9f8rGHkt36u4i+XG55sOuZM58fmNul9tfib/UXoOagbFCZejyRnr4Qf733Z0MCAfWdLxUGSVRkgehsbwdWC9/Fdpg0wFPqFMI/AmR5WG7YBw+pQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8450,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_ACS/MapServer/3",
+    "name": "2018 Non-English Speaking Density",
+    "description": "Density per acre of Ability to Speak English for the Population 5+ Yrs Speak English 'not at all' - [S_NOTATALL]/[ACRES]",
+    "longName": "2018 Non-English Speaking Density",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0 - 2.0",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2.01 - 4.0",
+        "url": "a7e0d0de6f7836bfe12f6d16c841534a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+//9PiUEmjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwo4EiB5cX5AAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "4.01 - 6.0",
+        "url": "7a15b8a0baa96cfdc151f0aee721b370",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgen///+nxKCZjIyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5asE7ZP4q+kAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "6.01 - 10.0",
+        "url": "aec3bd4fb5f194f4a5296b2340887731",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgWf+/6fIJBNGRlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCABi3A4cUTDVBAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "10.01 - 40.0",
+        "url": "6bcb21956ee922f09f051311c18be88b",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgTNn/qfIpPR0RlQDqQRGDRw1cNTAUQPpbSC0PKOegVQCAEzpBCD/8FGwAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8451,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Population_Densities_ACS/MapServer/4",
+    "name": "2018 Black Population Density",
+    "description": "Density per acre of Persons Black or African American alone - [BLACK]/[ACRES]",
+    "longName": "2018 Black Population Density",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0 - 0.5",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "0.5 - 2.0",
+        "url": "0d9a2ecb866ef95a6ac3ae56fa9670b1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//z/xPiUGMjOmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA030Eu+J8VPwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2.01 - 4.0",
+        "url": "328ef735922ceb54a865fc1de88b6dff",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//M/ynxCBGRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIACTEDVHAdUUMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "4.01 - 10.0",
+        "url": "62606aa051d764c91753a98417895f8e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf9nMvynxCDGdAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIALEEDusWnCLAAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "10.01 - 20.0",
+        "url": "4f3ad950373857a348c1a8bafa3b13aa",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWfSGf5TYpDJTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIATywEHyB+H0UAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "20.01 - 40.0",
+        "url": "924c04fc312b5a5f7376d3ea2dcb9c20",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTPTGf5TYlD6TAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAYOcEUpvemfMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "40.01 - 75.0",
+        "url": "cf3ae4513c82586739d1f21481ba652f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -25453,6 +24559,186 @@ define({
     ]
   },
   {
+    "id": 8446,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Census_Boundaries/MapServer/3",
+    "name": "2010 Census Block Groups",
+    "description": "This data set contains Block Groups for 2010. This layer was created for use by the Florida Department of Transportation for use in the Community Characteristics Inventory (CCI) report. The spatial portion of this data was retrieved from TIGER at the block group level. Demographic data has been collected at 100% count (Summary File 1) and sample basis (ACS 2006-2010). A variety of GIS techniques including python scripting were used to parse, aggregate, and join the tabular demographic data to the spatial data.",
+    "longName": "2010 Census Block Groups",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENBLKGRP_2010",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "be712541422adfd762707456c1df73ac",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHRJREFUOI3tlDsKwDAMQ2XwXX0mn9adAmqab+tCh74toCg2EVIkowDgFgEA5iJ87mEuUmvKXc2azC3CXKRpWF4bwRqeNm3Cbxvy+imGnJJ3Vl751S3DOtiPDTP5De+RHmzmZDjqwVYHtjS6Kp5xKdjdDuxxAHKFL1+HDBugAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8452,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_ACS/MapServer/0",
+    "name": "2018 Housing Units with No Vehicles",
+    "description": "Occupied Housing Units with No vehicle available - [B25044_003] + [B25044_010]",
+    "longName": "2018 Housing Units with No Vehicles",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0 - 25",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "26 - 50",
+        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "51 - 100",
+        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "101 - 250",
+        "url": "849a07783f2f0c21502d416cb9739516",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "251 - 500",
+        "url": "cf3ae4513c82586739d1f21481ba652f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "501 - 1000",
+        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1001 - 1500",
+        "url": "2968ad5e8eacfe604ae65e3ea715b1b3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWFv8pMejEiROMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAfhoGqgM7uSoAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8453,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_ACS/MapServer/1",
+    "name": "2018 Housing Units with 1 Vehicle",
+    "description": "Occupied Housing Units with 1 vehicle available - [B25044_004] + [B25044_011]",
+    "longName": "2018 Housing Units with 1 Vehicle",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0 - 50",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "51 - 100",
+        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "101 - 250",
+        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "251 - 500",
+        "url": "849a07783f2f0c21502d416cb9739516",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "501 - 1000",
+        "url": "cf3ae4513c82586739d1f21481ba652f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1001 - 5000",
+        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "5001 - 20000",
+        "url": "2968ad5e8eacfe604ae65e3ea715b1b3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWFv8pMejEiROMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAfhoGqgM7uSoAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
     "id": 6068,
     "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Bridges/MapServer/1",
     "name": "National Bridge Inventory",
@@ -25619,6 +24905,162 @@ define({
     "legendSymbols": null
   },
   {
+    "id": 8454,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_ACS/MapServer/2",
+    "name": "2018 Housing Units with 2 Vehicles",
+    "description": "Occupied Housing Units with 2 vehicles available - [B25044_005] + [B25044_012]",
+    "longName": "2018 Housing Units with 2 Vehicles",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0 - 50",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "51 - 100",
+        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "101 - 250",
+        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "251 - 500",
+        "url": "849a07783f2f0c21502d416cb9739516",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "501 - 1000",
+        "url": "cf3ae4513c82586739d1f21481ba652f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1001 - 3000",
+        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "3001 - 6000",
+        "url": "2968ad5e8eacfe604ae65e3ea715b1b3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWFv8pMejEiROMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAfhoGqgM7uSoAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8455,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_ACS/MapServer/3",
+    "name": "2018 Housing Units with 3 Vehicles",
+    "description": "Occupied Housing Units with 3 vehicles available - [B25044_006] + [B25044_013]",
+    "longName": "2018 Housing Units with 3 Vehicles",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0 - 50",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "51 - 100",
+        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "101 - 250",
+        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "251 - 500",
+        "url": "849a07783f2f0c21502d416cb9739516",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "501 - 1000",
+        "url": "cf3ae4513c82586739d1f21481ba652f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1001 - 1500",
+        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "1501 - 2000",
+        "url": "2968ad5e8eacfe604ae65e3ea715b1b3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWFv8pMejEiROMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAfhoGqgM7uSoAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
     "id": 7815,
     "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/secure_services/DEV_THUMBNAIL/MapServer/6",
     "name": "NON_DRAFT_POLYGONS",
@@ -25701,6 +25143,144 @@ define({
     "minScale": 0,
     "maxScale": 0,
     "legendSymbols": null
+  },
+  {
+    "id": 8456,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_ACS/MapServer/4",
+    "name": "2018 Housing Units with 4 Vehicles",
+    "description": "Occupied Housing Units with 4 vehicles available - [B25044_007] + [B25044_014]",
+    "longName": "2018 Housing Units with 4 Vehicles",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0 - 25",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "26 - 50",
+        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "51 - 100",
+        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "101 - 250",
+        "url": "849a07783f2f0c21502d416cb9739516",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "251 - 500",
+        "url": "cf3ae4513c82586739d1f21481ba652f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "501 - 1000",
+        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 8457,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Vehicles_ACS/MapServer/5",
+    "name": "2018 Housing Units with 5 or more Vehicles",
+    "description": "Occupied Housing Units with 5 or more vehicles available - [B25044_008] + [B25044_015]",
+    "longName": "2018 Housing Units with 5 or more Vehicles",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerName": "CENACS_2018",
+    "restricted": false,
+    "minScale": 100000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "0 - 25",
+        "url": "d2db3530b340406dca5a8e3a83baac24",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//n/lPiUGMjCaMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAwigEiOf04KMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "26 - 50",
+        "url": "a1e31cb71bfa6bb1d717b5cfd533dee5",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+p/+nxCATxpmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA9jYFIAqLKTAAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "51 - 75",
+        "url": "7d80a90a5d14ec064d3eca87f857ccf8",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgWf+M/ynxCATRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAGuwDh6F3PXwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "76 - 100",
+        "url": "849a07783f2f0c21502d416cb9739516",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgTNnMvynxKD0dAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAT7cEIBW1sp4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "101 - 150",
+        "url": "cf3ae4513c82586739d1f21481ba652f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgenpDP8pMWjmTAZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAckkEhL/J7a8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "151 - 300",
+        "url": "09f9b4b6dda3a466fa0919d1b1e1f64e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgRYWDP8pMejECQZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAksgE4ii9s5oAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
   },
   {
     "id": 3000,
