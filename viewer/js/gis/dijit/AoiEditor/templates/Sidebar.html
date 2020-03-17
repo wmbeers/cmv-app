@@ -299,7 +299,7 @@
                     <tbody>
                         <tr data-bind="template: {name: 'progress', data: progressGIS}"></tr>
                         <tr data-bind="template: {name: 'progress', data: progressCCI}"></tr>
-                        <tr data-bind="visible: progressCCI().code >= 4"> <!--TODO change to 5 when HCM is working again-->
+                        <tr data-bind="visible: progressCCI().code >= 5">
                             <td colspan="2" style="margin-left: 10px">
                                 <ul data-bind="foreach: analysisAreas" class="no-margin">
                                     <li>
