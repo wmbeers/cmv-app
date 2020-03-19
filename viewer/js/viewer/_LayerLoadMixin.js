@@ -1015,28 +1015,31 @@ define([
             //metadata files are in lower case
             layerName = layerName.toLowerCase();
 
+            topic.publish('growler/growl', 'Fetching metadata for ' + displayName);
+            window.open('https://etdmpub.fla-etat.org/est/metadata/' + layerName + '.htm');
+
             //using request instead of the direct href property so we can handle errors
             //there's probably a way to handle errors with dialog.show, but Dojo documentation isn't clear on that
-            request('/est/metadata/' + layerName + '.htm', {
-                headers: {
-                    'X-Requested-With': null
-                }
-            }).then(
-                function (data) {
-                    var dlg = new Dialog({
-                        id: layerName + '_metadata',
-                        title: 'Metadata for ' + displayName,
-                        content: data
-                    });
-                    dlg.show();
-                },
-                function () {
-                    //happens when running on a local server that doesn't have /est/metadata path
-                    //so make request to pub server
-                    //using window.open to work around CORS issues
-                    topic.publish('growler/growl', 'Fetching metadata for ' + displayName);
-                    window.open('https://etdmpub.fla-etat.org/est/metadata/' + layerName + '.htm');
-                });
+            //request('/est/metadata/' + layerName + '.htm', {
+            //    headers: {
+            //        'X-Requested-With': null
+            //    }
+            //}).then(
+            //    function (data) {
+            //        var dlg = new Dialog({
+            //            id: layerName + '_metadata',
+            //            title: 'Metadata for ' + displayName,
+            //            content: data
+            //        });
+            //        dlg.show();
+            //    },
+            //    function () {
+            //        //happens when running on a local server that doesn't have /est/metadata path
+            //        //so make request to pub server
+            //        //using window.open to work around CORS issues
+            //        topic.publish('growler/growl', 'Fetching metadata for ' + displayName);
+            //        window.open('https://etdmpub.fla-etat.org/est/metadata/' + layerName + '.htm');
+            //    });
 
             //var dlg = new Dialog({
             //    id: event.subLayer.layerName + '_metadata',
