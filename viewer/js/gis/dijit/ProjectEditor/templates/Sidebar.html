@@ -27,7 +27,7 @@
                 <ul>
                     <li><a href="/assets/est/MapViewer/QuickSteps-ProjectEditor-2020-0305.pdf" target="_blank">Quick Steps - Getting started with the editor</a></li>
                     <li><a href="/assets/est/MapViewer/QuickGuide-ProjectEditor-2020-0305.pdf" target="_blank">Quick Guide - Additional editing details</a></li>
-                    <!--<li><a href="/assets/est/AOI/AOI_Training_Video.mp4" target="_blank">Video</a></li>-->
+                    <li><a href="/assets/est/AOI/AOI_Training_Video.mp4" target="_blank">Video</a></li> <!--TODO update URL-->
                 </ul>
             </div>
 
@@ -158,9 +158,14 @@
                 <!--/ko-->
 
                 <div class="alert alert-success" data-bind="visible: analysisRunning">
-                    Analysis is currently running. You can keep this screen open to monitor progress, or close it and continue using the map while the reports are being generated. When the reports are finished, this screen will have links to the requested reports and maps.
-                </div>
+                    Analysis results are currently being generated. You can close this screen and continue using the map while the reports are being generated, or you can keep this screen open, and a link to the reports will show up below.
+                    <div>
+                        <i class="fa fa-spinner fa-spin"></i>
+                        <!--span data-bind="visible: code===-1" class="fa fa-exclamation-triangle"></span-->
+                        <span data-bind="text: analysisStatusText"></span>
 
+                    </div>
+                </div>
                 <div data-bind="visible: hasAnalysisResults">
                     <div class="alert alert-success">
                         Analysis complete
@@ -171,7 +176,7 @@
                 </div>
 
                 <div data-bind="visible: analysisStatus() === analysisStatuses.EDITING">
-                    <p>You can start GIS analysis on this screen by clicking the <strong>Start Analysis</strong> button. Note that the project editor will close, and features will not be editable until analysis is complete.</p>
+                    <p>You can start GIS analysis on this screen by clicking the <strong>Start Analysis</strong> button. Note that features will not be editable until analysis is complete.</p>
 
                     <div class="buttonContainer buttonContainerFull">
                         <button data-dojo-type="dijit/form/Button"

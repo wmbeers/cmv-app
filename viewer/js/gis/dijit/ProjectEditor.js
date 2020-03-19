@@ -99,11 +99,14 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         featureTypes: ['polygon', 'polyline', 'point'], //preprended with "project_" as id of layer, referenced in layers object as self.layers.point, etc.
         layers: {}, //caches the layers
 
-        //translates the first three alt statuses, everything else is "Other" as far as we're concerned.
+        //translates the first three alt statuses, plus a couple of extra steps that aren't really ETDM status codes, but relevant here; everything else is "Other" as far as we're concerned.
         analysisStatuses: {
             EDITING: 'Editing',
             ANALYSIS_RUNNING: 'Ready for GIS Analysis',
             ANALYSIS_COMPLETE: 'GIS Analysis Complete',
+            ANALYSIS_STARTING: 'Starting analysis...',
+            PDF_GENERATING: 'Creating PDF',
+            COMPLETE: 'Complete',
             OTHER: 'Other',
             fromEtdmStatus: function (etdmStatus) {
                 var foundStatus = null;
@@ -114,6 +117,16 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     }
                 }
                 return foundStatus || this.OTHER;
+            },
+            fromProgressResultCode: function (progressResultCode) {
+                switch (progressResultCode) {
+                case -1: return this.EDITING;
+                case 0: return this.EDITING;
+                case 2: return this.ANALYSIS_RUNNING;
+                case 4: return this.PDF_GENERATING;
+                case 5: return this.COMPLETE;
+                default: return this.OTHER;
+                }
             }
         },
 
@@ -239,16 +252,17 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
         startAnalysis: function () {
             var self = this;
-            //todo loading overlay
+            self.analysisStatus(self.analysisStatuses.ANALYSIS_STARTING);
             MapDAO.startAnalysisForAlternative(this.projectAltId, { //eslint-disable-line no-undef
                 callback: function (reply) {
                     if (reply === 'ok') {
                         self.analysisStatus(self.analysisStatuses.ANALYSIS_RUNNING);
-                        //first time can take a while before status actually updates, might still be editing, so wait 45 seconds before first check
+                        //first time can take a while before status actually updates, might still be stuff going on, so wait 45 seconds before first check
                         window.setTimeout(function () {
                             self.checkAnalysisProgress();
                         }, 45000);
                     } else {
+                        self.analysisStatus(self.analysisStatuses.EDITING);
                         topic.publish('growler/growlError', 'Error starting analysis: ' + reply);
                     }
                     
@@ -256,6 +270,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     //topic.publish('growler/growl', 'Analysis started. Please check the Project Status page to see progress.');
                 },
                 errorHandler: function (message, exception) {
+                    self.analysisStatus(self.analysisStatuses.EDITING);
                     topic.publish('growler/growlError', 'Error starting analysis. Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)); //eslint-disable-line no-undef
                 }
             });
@@ -267,17 +282,12 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             //eslint-disable-next-line no-undef
             MapDAO.getAltAnalysisProgress(this.projectAltId, {
                 callback: function (p) {
+                    var s = self.analysisStatuses.fromProgressResultCode(p.progressGIS.code);
+                    self.completedGisCount(p.completedGisCount);
 
-                    if (p.startsWith('Error')) {
-                        self.analysisStatuses(self.analysisStatuses.OTHER);
-                        topic.publish('growler/growlError', p); //eslint-disable-line no-undef
-                        return;
-                    }
-
-                    var s = self.analysisStatuses.fromEtdmStatus(p);
                     self.analysisStatus(s);
 
-                    if (s === self.analysisStatuses.ANALYSIS_RUNNING) {
+                    if (self.analysisRunning()) {
                         window.setTimeout(function () {
                             self.checkAnalysisProgress();
                         }, 15000);
@@ -365,7 +375,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     if (permission === 'ok') {
                         self.projectAltId = projectAlt.id;
                         self.currentProjectAlt(projectAlt);
-                        self.analysisStatus(self.analysisStatuses.fromEtdmStatus(projectAlt.status));
+                        var s = self.analysisStatuses.fromEtdmStatus(projectAlt.status);
+                        self.analysisStatus(s);
+                        if (s === self.analysisStatuses.ANALYSIS_COMPLETE) {
+                            self.checkAnalysisProgress();
+                        }
                         self._loadProjectAltFeatures(projectAlt.id);
                         self.mode('editFeatures');
                     } else {
@@ -1311,17 +1325,29 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             this.analysisStatus = ko.observable();
 
+            this.completedGisCount = ko.observable();
+
             this.canEdit = ko.pureComputed(function () {
                 return self.analysisStatus() === self.analysisStatuses.EDITING || self.analysisStatus() === self.analysisStatuses.ANALYSIS_COMPLETE;
             });
 
             this.analysisRunning = ko.pureComputed(function () {
-                return self.analysisStatus() === self.analysisStatuses.ANALYSIS_RUNNING;
+                return self.analysisStatus() === self.analysisStatuses.ANALYSIS_STARTING || self.analysisStatus() === self.analysisStatuses.ANALYSIS_RUNNING || self.analysisStatus() === self.analysisStatuses.ANALYSIS_COMPLETE || self.analysisStatus() === self.analysisStatuses.PDF_GENERATING;
+            });
+
+            this.analysisStatusText = ko.pureComputed(function () {
+                if (self.analysisStatus() === self.analysisStatuses.ANALYSIS_RUNNING) {
+                    return 'Analyzing';
+                }
+                if (self.analysisStatus() === self.analysisStatuses.PDF_GENERATING) {
+                    return 'Creating PDF ' + (self.completedGisCount - 1) + ' of 21';
+                }
+                return self.analysisStatus();
             });
 
             this.hasAnalysisResults = ko.pureComputed(function () {
                 //this presumes there are some sort of results available for the project if status is analysis complete or higher
-                return self.analysisStatus() === self.analysisStatuses.OTHER || self.analysisStatus() === self.analysisStatuses.ANALYSIS_COMPLETE;
+                return self.analysisStatus() === self.analysisStatuses.OTHER || self.analysisStatus() === self.analysisStatuses.COMPLETE;
             });
 
             //all of the features, as models, regardless of geometry, distinct from, but related to, the features in layers.point.graphics, layers.polyline.graphics, and layers.polygon.graphics
