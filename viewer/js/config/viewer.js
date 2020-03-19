@@ -353,7 +353,7 @@ define([
             },
             {
                 type: 'dynamic',
-                url: projects.currentlyInReviewProjectsService,
+                url: projects.eliminatedProjectsService,
                 title: 'Eliminated Project Alternatives',
                 options: {
                     id: 'eliminatedProjectsService',
