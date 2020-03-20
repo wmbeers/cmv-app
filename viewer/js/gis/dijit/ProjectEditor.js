@@ -1056,8 +1056,31 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                         }
                     }
                 }
-                self.extent = unionOfExtents; //facilitates zooming to the project
-                self.zoomTo();
+                if (unionOfExtents) {
+                    self.extent = unionOfExtents; //facilitates zooming to the project
+                    self.zoomTo();
+                } else {
+                    //construct a new extent based on regions
+                    MapDAO.getProjectRegionExtent(self.currentProjectAlt().projectId, { //eslint-disable-line no-undef
+                        callback: function (extentBean) {
+                            self.loadingOverlay.hide();
+                            self.extent = new Extent({
+                                'xmin': extentBean.xmin,
+                                'ymin': extentBean.ymin,
+                                'xmax': extentBean.xmax,
+                                'ymax': extentBean.ymax,
+                                'spatialReference': {
+                                    'wkid': 3086 //albers; zoomTo will project it on down the line
+                                }
+                            });
+                            self.zoomTo();
+                        },
+                        errorHandler: function (exterr) {
+                            self.loadingOverlay.hide();
+                            topic.publish('growler/growlError', 'Error loading Project extent: ' + exterr);
+                        }
+                    });
+                }
                 self.features(featuresKo);
             }, function (err) {
                 self.loadingOverlay.hide();
