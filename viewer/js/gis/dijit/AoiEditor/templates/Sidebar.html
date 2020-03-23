@@ -265,8 +265,9 @@
                 <input type="checkbox" id="cciCheckbox" data-bind="checked: socioCulturalDataReportRequested"><label for="cciCheckbox">Sociocultural Data Report</label><br />
                 <input type="checkbox" id="hcmCheckbox" data-bind="checked: hardCopyMapsRequested"><label for="hcmCheckbox">Hardcopy Maps</label><br />
                 <input type="checkbox" id="crdCheckbox" data-bind="checked: culturalResourcesDataReportRequested"><label for="crdCheckbox">Cultural Resources Data Report</label><br />
+                <!-- per https://repo.fla-etat.org/bugzilla/show_bug.cgi?id=5555, hiding this from UI until analysis is available
                 <input type="checkbox" id="ertCheckbox" data-bind="checked: emergencyResponseReportRequested"><label for="ertCheckbox">Emergency Response Report</label><br />
-
+                -->
                 <hr />
                 <div class="buttonContainer buttonContainerFull">
                     <button data-dojo-type="dijit/form/Button"
@@ -310,7 +311,9 @@
                         </tr>
                         <tr data-bind="template: {name: 'progress', data: progressHCM}"></tr>
                         <tr data-bind="template: {name: 'progress', data: progressCRD}"></tr>
+                        <!-- per https://repo.fla-etat.org/bugzilla/show_bug.cgi?id=5555, hiding this from UI until analysis is available
                         <tr data-bind="template: {name: 'progress', data: progressERT}"></tr>
+                        -->
                     </tbody>
                 </table>
                 <hr />
