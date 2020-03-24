@@ -1363,14 +1363,27 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     return 'Analyzing';
                 }
                 if (self.analysisStatus() === self.analysisStatuses.PDF_GENERATING) {
-                    return 'Creating PDF ' + (self.completedGisCount - 1) + ' of 21';
+                    return 'Creating PDF ' + (self.completedGisCount() + 1) + ' of 22';
                 }
+                if (self.analysisStatus() === self.analysisStatuses.OTHER) {
+                    return 'Complete'; //presumably
+                }
+                //really shouldn't get this far, but just in case.
                 return self.analysisStatus();
             });
 
             this.hasAnalysisResults = ko.pureComputed(function () {
                 //this presumes there are some sort of results available for the project if status is analysis complete or higher
-                return self.analysisStatus() === self.analysisStatuses.OTHER || self.analysisStatus() === self.analysisStatuses.COMPLETE;
+                return self.analysisStatus() === self.analysisStatuses.PDF_GENERATING ||
+                       self.analysisStatus() === self.analysisStatuses.COMPLETE ||
+                       self.analysisStatus() === self.analysisStatuses.OTHER;
+            });
+
+            this.hasReports = ko.pureComputed(function () {
+                return (self.analysisStatus() === self.analysisStatuses.PDF_GENERATING ||
+                        self.analysisStatus() === self.analysisStatuses.COMPLETE || 
+                        self.analysisStatus() === self.analysisStatuses.OTHER) &&  
+                       self.completedGisCount() > 0;
             });
 
             //all of the features, as models, regardless of geometry, distinct from, but related to, the features in layers.point.graphics, layers.polyline.graphics, and layers.polygon.graphics
