@@ -2520,8 +2520,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this.map.addLayer(this.extractGraphics);
 
             this.roadwayGraphics = new GraphicsLayer({
-                id: 'roadways',
-                title: 'Roadways'
+                id: this.id + '_roadways',
+                title: this.id + '_roadways'
             });
 
             var lineSymbol = new SimpleLineSymbol({
