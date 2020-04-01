@@ -329,6 +329,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     } else {
                         if (self.currentAuthority().orgId !== projectList[0].orgId) {
                             //change currentAuthority
+                            //first set this flag so that listProjectAlts doesn't call MapDAO.getEditableAlternativeList, based on the subscription to currentAuthority observable
+                            self.suppressListProjectAlts = true;
                             var authority = self.authorities.find(function (a) {
                                 return a.orgId === projectList[0].orgId;
                             });
@@ -338,6 +340,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                                 topic.publish('growler/growlError', 'You are not authorized to edit this project');
                                 return;
                             }
+                            //release the flag suppressing listProjectAlts; has to be done in timeout to that the
+                            //subscription to listProjectAlts has time to fire.
+                            window.setTimeout(function () {
+                                self.suppressListProjectAlts = false;
+                            }, 1000);
                         }
                         if (projectList.length === 1) {
                             var a = projectList[0];
@@ -1290,6 +1297,12 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             var self = this,
                 deferred = new Deferred(),
                 orgId = this.currentAuthority().orgId;
+            if (self.suppressListProjectAlts) {
+                window.setTimeout(function () {
+                    deferred.resolve('listProjectAlts is suppressed'); //we don't really need to resolve or reject in this context; choosing resolve just so nothing is left hanging; if I choose reject an error is logged in console.
+                }, 10);
+                return deferred;
+            }
 
             //eslint-disable-next-line no-undef
             MapDAO.getEditableAlternativeList(orgId, {
