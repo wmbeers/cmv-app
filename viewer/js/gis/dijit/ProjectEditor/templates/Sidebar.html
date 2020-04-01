@@ -13,7 +13,10 @@
         </script>
 
         <div data-bind="visible: mode() == 'default'">
-            <h3>Project Features Editor</h3>
+            <span data-bind="click: showHelpDialog" style="float:right; cursor:pointer" title="Click for help" class="fa fa-question-circle"></span>
+            <h3>
+                Project Features Editor
+            </h3>
 
             <button data-dojo-type="dijit/form/Button"
                     data-dojo-props="iconClass:'fa fa-folder-open fa-fw'"
@@ -21,15 +24,6 @@
                     data-dojo-attach-point="showOpenProjectDialogButton">
                 Open
             </button>
-
-            <div class="helpLinks">
-                <label>Help</label>
-                <ul>
-                    <li><a href="/assets/est/MapViewer/QuickSteps-ProjectEditor-2020-0305.pdf" target="_blank">Quick Steps - Getting started with the editor</a></li>
-                    <li><a href="/assets/est/MapViewer/QuickGuide-ProjectEditor-2020-0305.pdf" target="_blank">Quick Guide - Additional editing details</a></li>
-                    <li><a href="/assets/videos/ProjectEditorTool-Video-20200320.mp4" target="_blank">Video</a></li>
-                </ul>
-            </div>
 
             <div style="margin-top: 15px">
                 <p>
@@ -40,7 +34,8 @@
 
         <div data-bind="visible: mode() != 'default'">
             <div>
-                <span data-bind="click: unloadCurrentProject" style="float:right" class="fa fa-window-close"></span>
+                <span data-bind="click: unloadCurrentProject" style="float:right; padding-left: 5px; cursor:pointer" title="Stop editing" class="fa fa-window-close"></span>
+                <span data-bind="click: showHelpDialog" style="float:right; cursor:pointer" title="Click for help" class="fa fa-question-circle"></span>
             </div>
 
             <fieldset class="borderless" data-bind="visible: mode() === 'editFeatures', enable: canEdit">
@@ -170,7 +165,7 @@
                 <div data-bind="visible: hasAnalysisResults">
                     <p data-bind="with: currentProjectAlt">
                         Click <a data-bind="attr: {href: '/est/analysis/ReportOptions.do?p=' + projectId}" target="_blank" style="text-decoration: underline">here</a>
-                        to 
+                        to
                         <span data-bind="visible: $parent.hasReports">view PDF reports or</span>
                         run custom analysis reports.
                     </p>

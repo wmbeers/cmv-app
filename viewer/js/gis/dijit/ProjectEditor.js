@@ -24,6 +24,7 @@ define([
 
     'dojo/text!./ProjectEditor/templates/Sidebar.html', // template for the widget in left panel, and some dialogs
     'dojo/text!./ProjectEditor/templates/Dialog.html', // template for the open project dialog
+    'dojo/text!./ProjectEditor/templates/HelpDialog.html', // template for project editor help
     'dojo/text!./ProjectEditor/templates/NewFeatureDialog.html', // template for the new feature dialog
 
     'esri/undoManager',
@@ -77,6 +78,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     topic, ioQuery, Memory, Deferred, all,
     ProjectEditorSidebarTemplate,
     OpenProjectDialogTemplate,
+    HelpDialogTemplate,
     NewFeatureDialogTemplate,
     UndoManager, FeatureOperations,
     Search,
@@ -171,6 +173,17 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 }
             );
         },
+
+        helpDialog: new Dialog({
+            id: 'projectEditor_help_dialog',
+            title: 'Project Editor Help',
+            content: HelpDialogTemplate
+        }),
+
+        showHelpDialog: function () {
+            this.helpDialog.show();
+        },
+
         //undo/redo
         undoManager: new UndoManager(),
         undo: function () {
