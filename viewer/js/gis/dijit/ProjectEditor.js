@@ -3,6 +3,7 @@ define([
     'dijit/_WidgetBase',
     'dijit/_TemplatedMixin',
     'dijit/_WidgetsInTemplateMixin',
+    'dijit/registry',
 
     'gis/plugins/LatLongParser',
     'gis/plugins/MultiPartHelper',
@@ -66,7 +67,7 @@ define([
 
     'xstyle/css!./AoiEditor/css/AoiEditor.css'
 ],
-function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, 
+function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, registry,
     LatLongParser,
     MultiPartHelper,
     Extract,
@@ -395,7 +396,16 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     if (permission.startsWith('ok')) {
                         self.projectAltId = projectAlt.id;
                         self.currentProjectAlt(projectAlt);
-                        self.studyArea(permission === 'ok-studyArea');
+                        var isStudyArea = permission === 'ok-studyArea';
+                        self.studyArea(isStudyArea);
+                        if (isStudyArea) {
+                            self.newProjectFeatureTabContainer.selectChild(self.newProjectPolygonTab);
+                            self.newProjectPointTab.set('disabled', true);
+                            self.newProjectLineTab.set('disabled', true);
+                        } else {
+                            self.newProjectPointTab.set('disabled', false);
+                            self.newProjectLineTab.set('disabled', false);
+                        }
                         var s = self.analysisStatuses.fromEtdmStatus(projectAlt.status);
                         self.analysisStatus(s);
                         if (s === self.analysisStatuses.ANALYSIS_COMPLETE) {
@@ -1630,6 +1640,15 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             ko.applyBindings(this, dom.byId('newProjectFeatureDijit'));
 
             /* eslint-enable no-undef */
+
+
+            //handles for dojo controls that can't be controlled by knockout
+            //(and even though they've got data-dojo-attach-points set, dojo doesn't recognize them unless we make the dialog into a separate widget)
+            this.newProjectFeatureTabContainer = registry.byId('newProjectFeatureTabContainer');
+            this.newProjectPointTab = registry.byId('newProjectPointTab');
+            this.newProjectLineTab = registry.byId('newProjectLineTab');
+            this.newProjectPolygonTab = registry.byId('newProjectPolygonTab');
+
         },
 
         _createGraphicLayers: function () {
