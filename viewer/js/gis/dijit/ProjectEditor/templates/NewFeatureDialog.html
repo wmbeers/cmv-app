@@ -1,9 +1,9 @@
 ﻿<div class="newFeatureDijit" id="newProjectFeatureDijit">
     <div data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="containerNode" class="newFeatureContainer">
         <div class="newFeatureNode">
-            <div data-dojo-type="dijit/layout/TabContainer" class="newFeatureTabContainer">
-                <!-- ko ifnot: studyArea-->
-                <div data-dojo-type="dijit/layout/ContentPane" title="New Point">
+            <div data-dojo-type="dijit/layout/TabContainer" class="newFeatureTabContainer" data-dojo-attach-point="newProjectFeatureTabContainer" id="newProjectFeatureTabContainer">
+                <div data-dojo-type="dijit/layout/ContentPane" title="New Point" data-dojo-attach-point="newProjectPointTab" id="newProjectPointTab">
+
                     <button data-dojo-type="dijit/form/Button"
                             data-dojo-props="iconClass:'fa fa-map-marker-alt fa-fw'"
                             data-bind="click: digitizePoint">
@@ -79,8 +79,12 @@
                     </div>
 
                 </div>
-                <!-- /ko -->
-                <div data-dojo-type="dijit/layout/ContentPane" title="New Polygon">
+
+                <div data-dojo-type="dijit/layout/ContentPane" title="New Polygon" data-dojo-attach-point="newProjectPolygonTab" id="newProjectPolygonTab">
+                    <div data-bind="visible: studyArea">
+                        This project alternative is a study area. Only polygon features are allowed.
+                    </div>
+
                     <button data-dojo-type="dijit/form/Button"
                             data-dojo-props="iconClass:'fa fa-draw-polygon fa-fw'"
                             data-bind="click:digitizePolygon">
