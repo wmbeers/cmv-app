@@ -392,9 +392,10 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             MapDAO.getPermissionToEditProjectAlt(projectAlt.id, {
                 callback: function (permission) {
                     self.loadingOverlay.hide();
-                    if (permission === 'ok') {
+                    if (permission.startsWith('ok')) {
                         self.projectAltId = projectAlt.id;
                         self.currentProjectAlt(projectAlt);
+                        self.studyArea(permission === 'ok-studyArea');
                         var s = self.analysisStatuses.fromEtdmStatus(projectAlt.status);
                         self.analysisStatus(s);
                         if (s === self.analysisStatuses.ANALYSIS_COMPLETE) {
@@ -1371,6 +1372,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this.projects = ko.observableArray(); //not really projects, but rather editable project alts.
 
             this.currentProjectAlt = ko.observable(); //doesn't do much except cache the project and alt ids and name for display; not editable
+
+            this.studyArea = ko.observable(false); //set to true when loading a project alt where studyArea='Y', prevents input of points and lines, only polygons are allowed.
 
             this.analysisStatus = ko.observable();
 
