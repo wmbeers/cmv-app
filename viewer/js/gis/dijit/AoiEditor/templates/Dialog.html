@@ -2,10 +2,11 @@
     <div style="padding-bottom: 1em">
         <label>View</label>
         <input type="radio" id="filterOptionMy" name="filterOption" value="my" data-bind="checked: filterOption" /><label for="filterOptionMy">Only mine</label>
-        <input type="radio" id="filterOptionAll" name="filterOption" value="all" data-bind="checked: filterOption" /><label for="filterOptionAll">All for 
+        <input type="radio" id="filterOptionAll" name="filterOption" value="all" data-bind="checked: filterOption" /><label for="filterOptionAll">
+            All for
             <span data-bind="text: currentAuthority().orgName, visible: authorities.length === 1"></span>
-            <select data-bind="options: authorities, value: currentAuthority, optionsText: 'orgName', visible: authorities.length > 1, enable: filterOption() === 'all'"></select>
         </label>
+        <select data-bind="options: authorities, value: currentAuthority, optionsText: 'orgName', visible: authorities.length > 1, enable: filterOption() === 'all'"></select>
         <label><input type="checkbox" data-bind="checked: includeExpired" /> Include Expired AOIs</label>
     </div>
     <div style="height: 305px; width: 500px; overflow: auto">

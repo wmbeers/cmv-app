@@ -295,7 +295,7 @@ define([
                     visible: true,
                     outFields: ['*'],
                     imageParameters: buildImageParameters({
-                        layerIds: [0, 7],
+                        layerIds: [0, 6, 7, 8],
                         layerOption: 'show'
                     }),
                     mode: 1
@@ -328,7 +328,7 @@ define([
                     visible: true,
                     outFields: ['*'],
                     imageParameters: buildImageParameters({
-                        layerIds: [0, 7],
+                        layerIds: [0, 6, 7, 8],
                         layerOption: 'show'
                     }),
                     mode: 1
@@ -361,7 +361,7 @@ define([
                     visible: true,
                     outFields: ['*'],
                     imageParameters: buildImageParameters({
-                        layerIds: [0, 7],
+                        layerIds: [0, 6, 7, 8],
                         layerOption: 'show'
                     }),
                     mode: 1
@@ -394,7 +394,7 @@ define([
                     visible: true,
                     outFields: ['*'],
                     imageParameters: buildImageParameters({
-                        layerIds: [0, 7],
+                        layerIds: [0, 6, 7, 8],
                         layerOption: 'show'
                     }),
                     mode: 1
