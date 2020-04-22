@@ -24,6 +24,7 @@ define([
 
     'dojo/text!./ProjectEditor/templates/Sidebar.html', // template for the widget in left panel, and some dialogs
     'dojo/text!./ProjectEditor/templates/Dialog.html', // template for the open project dialog
+    'dojo/text!./ProjectEditor/templates/HelpDialog.html', // template for project editor help
     'dojo/text!./ProjectEditor/templates/NewFeatureDialog.html', // template for the new feature dialog
 
     'esri/undoManager',
@@ -77,6 +78,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     topic, ioQuery, Memory, Deferred, all,
     ProjectEditorSidebarTemplate,
     OpenProjectDialogTemplate,
+    HelpDialogTemplate,
     NewFeatureDialogTemplate,
     UndoManager, FeatureOperations,
     Search,
@@ -99,11 +101,14 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         featureTypes: ['polygon', 'polyline', 'point'], //preprended with "project_" as id of layer, referenced in layers object as self.layers.point, etc.
         layers: {}, //caches the layers
 
-        //translates the first three alt statuses, everything else is "Other" as far as we're concerned.
+        //translates the first three alt statuses, plus a couple of extra steps that aren't really ETDM status codes, but relevant here; everything else is "Other" as far as we're concerned.
         analysisStatuses: {
             EDITING: 'Editing',
             ANALYSIS_RUNNING: 'Ready for GIS Analysis',
             ANALYSIS_COMPLETE: 'GIS Analysis Complete',
+            ANALYSIS_STARTING: 'Starting analysis...',
+            PDF_GENERATING: 'Creating PDF',
+            COMPLETE: 'Complete',
             OTHER: 'Other',
             fromEtdmStatus: function (etdmStatus) {
                 var foundStatus = null;
@@ -114,6 +119,16 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     }
                 }
                 return foundStatus || this.OTHER;
+            },
+            fromProgressResultCode: function (progressResultCode) {
+                switch (progressResultCode) {
+                case -1: return this.EDITING;
+                case 0: return this.EDITING;
+                case 2: return this.ANALYSIS_RUNNING;
+                case 4: return this.PDF_GENERATING;
+                case 5: return this.COMPLETE;
+                default: return this.OTHER;
+                }
             }
         },
 
@@ -158,6 +173,17 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 }
             );
         },
+
+        helpDialog: new Dialog({
+            id: 'projectEditor_help_dialog',
+            title: 'Project Editor Help',
+            content: HelpDialogTemplate
+        }),
+
+        showHelpDialog: function () {
+            this.helpDialog.show();
+        },
+
         //undo/redo
         undoManager: new UndoManager(),
         undo: function () {
@@ -239,16 +265,17 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
         startAnalysis: function () {
             var self = this;
-            //todo loading overlay
+            self.analysisStatus(self.analysisStatuses.ANALYSIS_STARTING);
             MapDAO.startAnalysisForAlternative(this.projectAltId, { //eslint-disable-line no-undef
                 callback: function (reply) {
                     if (reply === 'ok') {
                         self.analysisStatus(self.analysisStatuses.ANALYSIS_RUNNING);
-                        //first time can take a while before status actually updates, might still be editing, so wait 45 seconds before first check
+                        //first time can take a while before status actually updates, might still be stuff going on, so wait 45 seconds before first check
                         window.setTimeout(function () {
                             self.checkAnalysisProgress();
                         }, 45000);
                     } else {
+                        self.analysisStatus(self.analysisStatuses.EDITING);
                         topic.publish('growler/growlError', 'Error starting analysis: ' + reply);
                     }
                     
@@ -256,6 +283,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     //topic.publish('growler/growl', 'Analysis started. Please check the Project Status page to see progress.');
                 },
                 errorHandler: function (message, exception) {
+                    self.analysisStatus(self.analysisStatuses.EDITING);
                     topic.publish('growler/growlError', 'Error starting analysis. Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)); //eslint-disable-line no-undef
                 }
             });
@@ -267,17 +295,12 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             //eslint-disable-next-line no-undef
             MapDAO.getAltAnalysisProgress(this.projectAltId, {
                 callback: function (p) {
+                    var s = self.analysisStatuses.fromProgressResultCode(p.progressGIS.code);
+                    self.completedGisCount(p.completedGisCount);
 
-                    if (p.startsWith('Error')) {
-                        self.analysisStatuses(self.analysisStatuses.OTHER);
-                        topic.publish('growler/growlError', p); //eslint-disable-line no-undef
-                        return;
-                    }
-
-                    var s = self.analysisStatuses.fromEtdmStatus(p);
                     self.analysisStatus(s);
 
-                    if (s === self.analysisStatuses.ANALYSIS_RUNNING) {
+                    if (self.analysisRunning()) {
                         window.setTimeout(function () {
                             self.checkAnalysisProgress();
                         }, 15000);
@@ -306,6 +329,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     } else {
                         if (self.currentAuthority().orgId !== projectList[0].orgId) {
                             //change currentAuthority
+                            //first set this flag so that listProjectAlts doesn't call MapDAO.getEditableAlternativeList, based on the subscription to currentAuthority observable
+                            self.suppressListProjectAlts = true;
                             var authority = self.authorities.find(function (a) {
                                 return a.orgId === projectList[0].orgId;
                             });
@@ -315,9 +340,20 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                                 topic.publish('growler/growlError', 'You are not authorized to edit this project');
                                 return;
                             }
+                            //release the flag suppressing listProjectAlts; has to be done in timeout to that the
+                            //subscription to listProjectAlts has time to fire.
+                            window.setTimeout(function () {
+                                self.suppressListProjectAlts = false;
+                            }, 1000);
                         }
                         if (projectList.length === 1) {
-                            self.loadProjectAlt(projectList[0]);
+                            var a = projectList[0];
+                            //combine project and alt names
+                            a.name = a.projectName + ' - ' + a.altName;
+                            a.label = '#' + a.projectId + '-' + a.altNumber + ': ' + a.name;
+
+                            self.loadProjectAlt(a);
+
                         } else {
                             //pick an alt
                             projectList.forEach(function (projectAlt) {
@@ -359,7 +395,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     if (permission === 'ok') {
                         self.projectAltId = projectAlt.id;
                         self.currentProjectAlt(projectAlt);
-                        self.analysisStatus(self.analysisStatuses.fromEtdmStatus(projectAlt.status));
+                        var s = self.analysisStatuses.fromEtdmStatus(projectAlt.status);
+                        self.analysisStatus(s);
+                        if (s === self.analysisStatuses.ANALYSIS_COMPLETE) {
+                            self.checkAnalysisProgress();
+                        }
                         self._loadProjectAltFeatures(projectAlt.id);
                         self.mode('editFeatures');
                     } else {
@@ -429,7 +469,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                         }
                     }
                 ]
-            }, 'addressToPoint');
+            }, 'addressToPointP');
             this.addressToPointSearch.startup(); //todo maybe define this when the dialog opens?
 
             var self = this; //todo move to top or find some other way to maintain context
@@ -442,17 +482,25 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 self.newFeatureDialog.hide();
             });
 
+            window.addEventListener('storage', lang.hitch(this, '_handleStorageMessage'));
+
             this._handleQueryString();
 
         },
 
+        _handleStorageMessage: function (e) {
+            if (e.key === 'postMessage') {
+                this._handleQueryString('?' + e.newValue);
+            }
+        },
+
         /**
         * Handles"editproject" arguments passed in the query string to do things after this widget is loaded.
-        * @param {object} testUri optional URI to be used only during testing
+        * @param {object} queryString optional queryString when calling this method from _handleStorageMessage. If not provided, uses window.location.href to get queryString
         * @returns {void}
         */
-        _handleQueryString: function (testUri) {
-            var uri = testUri || window.location.href;
+        _handleQueryString: function (queryString) {
+            var uri = queryString || window.location.href;
             var qs = uri.indexOf('?') >= 0 ? uri.substring(uri.indexOf('?') + 1, uri.length) : '';
             qs = qs.toLowerCase();
             var qsObj = ioQuery.queryToObject(qs);
@@ -462,6 +510,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             //TODO loadProjectAlt expects an object, need to create/call a new MapDAO method that accepts projectAltId
             }
         },
+
+        //TODO need something like _handleMessage from _LayerLoadMixin to handle already-loaded maps
 
         //save to server
         _addFeatureToLayer: function (feature, addToStack) {
@@ -1026,8 +1076,31 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                         }
                     }
                 }
-                self.extent = unionOfExtents; //facilitates zooming to the project
-                self.zoomTo();
+                if (unionOfExtents) {
+                    self.extent = unionOfExtents; //facilitates zooming to the project
+                    self.zoomTo();
+                } else {
+                    //construct a new extent based on regions
+                    MapDAO.getProjectRegionExtent(self.currentProjectAlt().projectId, { //eslint-disable-line no-undef
+                        callback: function (extentBean) {
+                            self.loadingOverlay.hide();
+                            self.extent = new Extent({
+                                'xmin': extentBean.xmin,
+                                'ymin': extentBean.ymin,
+                                'xmax': extentBean.xmax,
+                                'ymax': extentBean.ymax,
+                                'spatialReference': {
+                                    'wkid': 3086 //albers; zoomTo will project it on down the line
+                                }
+                            });
+                            self.zoomTo();
+                        },
+                        errorHandler: function (exterr) {
+                            self.loadingOverlay.hide();
+                            topic.publish('growler/growlError', 'Error loading Project extent: ' + exterr);
+                        }
+                    });
+                }
                 self.features(featuresKo);
             }, function (err) {
                 self.loadingOverlay.hide();
@@ -1224,6 +1297,12 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             var self = this,
                 deferred = new Deferred(),
                 orgId = this.currentAuthority().orgId;
+            if (self.suppressListProjectAlts) {
+                window.setTimeout(function () {
+                    deferred.resolve('listProjectAlts is suppressed'); //we don't really need to resolve or reject in this context; choosing resolve just so nothing is left hanging; if I choose reject an error is logged in console.
+                }, 10);
+                return deferred;
+            }
 
             //eslint-disable-next-line no-undef
             MapDAO.getEditableAlternativeList(orgId, {
@@ -1295,17 +1374,42 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             this.analysisStatus = ko.observable();
 
+            this.completedGisCount = ko.observable();
+
             this.canEdit = ko.pureComputed(function () {
                 return self.analysisStatus() === self.analysisStatuses.EDITING || self.analysisStatus() === self.analysisStatuses.ANALYSIS_COMPLETE;
             });
 
             this.analysisRunning = ko.pureComputed(function () {
-                return self.analysisStatus() === self.analysisStatuses.ANALYSIS_RUNNING;
+                return self.analysisStatus() === self.analysisStatuses.ANALYSIS_STARTING || self.analysisStatus() === self.analysisStatuses.ANALYSIS_RUNNING || self.analysisStatus() === self.analysisStatuses.ANALYSIS_COMPLETE || self.analysisStatus() === self.analysisStatuses.PDF_GENERATING;
+            });
+
+            this.analysisStatusText = ko.pureComputed(function () {
+                if (self.analysisStatus() === self.analysisStatuses.ANALYSIS_RUNNING) {
+                    return 'Analyzing';
+                }
+                if (self.analysisStatus() === self.analysisStatuses.PDF_GENERATING) {
+                    return 'Creating PDF ' + (self.completedGisCount() + 1) + ' of 22';
+                }
+                if (self.analysisStatus() === self.analysisStatuses.OTHER) {
+                    return 'Complete'; //presumably
+                }
+                //really shouldn't get this far, but just in case.
+                return self.analysisStatus();
             });
 
             this.hasAnalysisResults = ko.pureComputed(function () {
                 //this presumes there are some sort of results available for the project if status is analysis complete or higher
-                return self.analysisStatus() === self.analysisStatuses.OTHER || self.analysisStatus() === self.analysisStatuses.ANALYSIS_COMPLETE;
+                return self.analysisStatus() === self.analysisStatuses.PDF_GENERATING ||
+                       self.analysisStatus() === self.analysisStatuses.COMPLETE ||
+                       self.analysisStatus() === self.analysisStatuses.OTHER;
+            });
+
+            this.hasReports = ko.pureComputed(function () {
+                return (self.analysisStatus() === self.analysisStatuses.PDF_GENERATING ||
+                        self.analysisStatus() === self.analysisStatuses.COMPLETE || 
+                        self.analysisStatus() === self.analysisStatuses.OTHER) &&  
+                       self.completedGisCount() > 0;
             });
 
             //all of the features, as models, regardless of geometry, distinct from, but related to, the features in layers.point.graphics, layers.polyline.graphics, and layers.polygon.graphics
@@ -1542,8 +1646,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this.map.addLayer(this.extractGraphics);
 
             this.roadwayGraphics = new GraphicsLayer({
-                id: 'roadways',
-                title: 'Roadways'
+                id: this.id + '_roadways',
+                title: this.id + '_roadways'
             });
 
             var lineSymbol = new SimpleLineSymbol({

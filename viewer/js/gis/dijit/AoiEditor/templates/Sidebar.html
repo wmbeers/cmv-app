@@ -264,10 +264,10 @@
                 <input type="checkbox" id="estCheckbox" data-bind="checked: studyAreaReportRequested"><label for="estCheckbox">Standard EST Study Area</label><br />
                 <input type="checkbox" id="cciCheckbox" data-bind="checked: socioCulturalDataReportRequested"><label for="cciCheckbox">Sociocultural Data Report</label><br />
                 <input type="checkbox" id="hcmCheckbox" data-bind="checked: hardCopyMapsRequested"><label for="hcmCheckbox">Hardcopy Maps</label><br />
-                <span data-bind="visible: hardCopyMapsRequested"><strong>Note:</strong> You will receive an email from the help desk when hardcopy maps are complete.<br /></span>
                 <input type="checkbox" id="crdCheckbox" data-bind="checked: culturalResourcesDataReportRequested"><label for="crdCheckbox">Cultural Resources Data Report</label><br />
+                <!-- per https://repo.fla-etat.org/bugzilla/show_bug.cgi?id=5555, hiding this from UI until analysis is available
                 <input type="checkbox" id="ertCheckbox" data-bind="checked: emergencyResponseReportRequested"><label for="ertCheckbox">Emergency Response Report</label><br />
-
+                -->
                 <hr />
                 <div class="buttonContainer buttonContainerFull">
                     <button data-dojo-type="dijit/form/Button"
@@ -300,19 +300,20 @@
                     <tbody>
                         <tr data-bind="template: {name: 'progress', data: progressGIS}"></tr>
                         <tr data-bind="template: {name: 'progress', data: progressCCI}"></tr>
-                        <tr data-bind="visible: progressCCI.code >= 4"> <!--TODO change to 5 when HCM is working again-->
-                            <td colspan="2" style="margin-left: 20px">
-                                <ul data-bind="foreach: analysisAreas">
+                        <tr data-bind="visible: progressCCI().code >= 5">
+                            <td colspan="2" style="margin-left: 10px">
+                                <ul data-bind="foreach: analysisAreas" class="no-margin">
                                     <li>
-                                        <a data-bind="attr: {href: '/est/community/SocioculturalDataReport_pdf.do?aoiAltId=' + id}, text: name" target="_blank"></a>
+                                        <a data-bind="attr: {href: '/est/community/SocioculturalDataReport_pdf.do?aoiAltId=' + id()}, text: name" target="_blank"></a>
                                     </li>
                                 </ul>
                             </td>
                         </tr>
                         <tr data-bind="template: {name: 'progress', data: progressHCM}"></tr>
-                        <tr data-bind="visible: hardCopyMapsRequested"><td colspan="2"><strong>Note:</strong> You will receive an email from the help desk when hardcopy maps are complete.</td></tr>
                         <tr data-bind="template: {name: 'progress', data: progressCRD}"></tr>
+                        <!-- per https://repo.fla-etat.org/bugzilla/show_bug.cgi?id=5555, hiding this from UI until analysis is available
                         <tr data-bind="template: {name: 'progress', data: progressERT}"></tr>
+                        -->
                     </tbody>
                 </table>
                 <hr />

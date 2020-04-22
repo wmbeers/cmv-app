@@ -97,14 +97,12 @@ define([
             }, 1000);
 
             //add event listener to watch for "resetTimeout" being changed in local storage
-            if (typeof (Storage) !== 'undefined') {
-                window.addEventListener('storage', function (e) {
-                    if (e.key === 'resetTimeout') {
-                        self.warnUserExpiringSoonDialog.hide();
-                        self.lastActivityTime = new Date(); //todo: store as getTime? storing this way is easier to read when debugging...
-                    }
-                });
-            }
+            window.addEventListener('storage', function (e) {
+                if (e.key === 'resetTimeout') {
+                    self.warnUserExpiringSoonDialog.hide();
+                    self.lastActivityTime = new Date(); //todo: store as getTime? storing this way is easier to read when debugging...
+                }
+            });
             
             //TODO: eventually our 408 and 403 pages will be cusotmized and we won't need to do this, but for now...
             //hack-ity hack way of seeing if we got a 408 response when waiting too long to sign in, or if the server has restarted

@@ -138,7 +138,7 @@ function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphi
         */
         getRoadwayWithMeasures: function (roadwayId) {
             var deferred = new Deferred(),
-                url = projexts.rciBasemapService + '/2/query?where=ROADWAY%3D' + roadwayId + '&outFields=BEGIN_POST%2CEND_POST%2CRTLENGTH%2CAADT%2CFUNCLASS&returnGeometry=true&outSR=%7Bwkid%3D102100%7D&returnZ=false&returnM=true&f=pjson';
+                url = projects.rciBasemapService + '/2/query?where=ROADWAY%3D' + roadwayId + '&outFields=BEGIN_POST%2CEND_POST%2CRTLENGTH%2CAADT%2CFUNCLASS&returnGeometry=true&outSR=%7Bwkid%3D102100%7D&returnZ=false&returnM=true&f=pjson';
             try {
                 jQuery.get(url, null,
                     function (reply) {

@@ -293,7 +293,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this.newFeatureDialog.show();
         },
 
-        aoiId: null, //the ID of the current AOI being edited, if one is loaded
+        aoiId: ko.observable(null), //the ID of the current AOI being edited, if one is loaded; observable so links to it work elsewhere
 
         //navigation functions
         //mode observable defined in knockoutify
@@ -338,7 +338,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
         toJS: function () {
             return {
-                id: this.aoiId,
+                id: this.aoiId(),
                 name: this.name(),
                 description: this.description(),
                 projectTypeId: this.projectTypeId(),
@@ -383,7 +383,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 //eslint-disable-next-line no-undef
                 MapDAO.saveAoiHeader(aoiModel, {
                     callback: function (id) {
-                        self.aoiId = id;
+                        self.aoiId(id);
                         deferred.resolve(true);
                     },
                     errorHandler: function (message, exception) {
@@ -431,7 +431,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 promises = [], //promises to be resolved when all analysis areas are created from ungroupedFeatures.
                 deferred = null, //deferred object resolved when this is done; usually is assigned by _deleteEmptyAnalysisAreas
                 ungroupedFeatures = this.features().filter(function (f) {
-                    return !f.analysisArea() || f.analysisArea().id === 0; //latter shouldn't ever be the case
+                    return !f.analysisArea() || f.analysisArea().id() === 0; //latter shouldn't ever be the case
                 });
 
             if (ungroupedFeatures.length === 0) {
@@ -445,6 +445,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     function () {
                         self._deleteEmptyAnalysisAreas().then(function () {
                             deferred.resolve();
+                        }, function (deleteError) {
+                            window.setTimeout(function () {
+                                deferred.reject(deleteError);
+                            }, 10);
+
                         });
                     },
                     function (e) {
@@ -466,7 +471,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             if (emptyAnalysisAreas.length > 0) {
                 var ids = emptyAnalysisAreas.map(function (aa) {
-                    return aa.id;
+                    return aa.id();
                 });
                 //eslint-disable-next-line no-undef
                 MapDAO.deleteAoiAnalysisAreas(ids, this.currentAuthority().orgUserId, {
@@ -552,7 +557,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             var self = this;
             self.progressErrorCount = self.progressErrorCount || 0;
             //eslint-disable-next-line no-undef
-            MapDAO.getAoiAnalysisProgress(this.aoiId, {
+            MapDAO.getAoiAnalysisProgress(this.aoiId(), {
                 callback: function (p) {
                     //a little post-processing
                     //Note: don't think you can simplify this by just directly referring to the DWR reply, it has to be cloned to a new object
@@ -562,14 +567,14 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                             text: p.progressGIS.text,
                             running: p.progressGIS.running,
                             title: 'Study Area Report',
-                            href: '/est/analysis/ReportOptions.do?aoiId=' + self.aoiId
+                            href: '/est/analysis/ReportOptions.do?aoiId=' + self.aoiId()
                         },
                         hcm = {
                             code: p.progressHCM.code,
                             text: p.progressHCM.text,
                             running: p.progressHCM.running,
                             title: 'Hardcopy Maps',
-                            href: '/est/hardCopyMaps.jsp?aoiId=' + self.aoiId
+                            href: '/est/hardCopyMaps.jsp?aoiId=' + self.aoiId()
                         },
                         cci = {
                             code: p.progressCCI.code,
@@ -583,7 +588,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                             text: p.progressCRD.text,
                             running: p.progressCRD.running,
                             title: 'Cultural Resources Data Report',
-                            href: 'todo'
+                            href: '/est/analysis/CachedGisReport.do?aoiId=' + self.aoiId() + '&issueId=102&crdReport=true'
                         },
                         ert = {
                             code: p.progressERT.code,
@@ -1356,7 +1361,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     esriConfig.defaults.geometryService.buffer(params,
                         function (bufferedGeometries) {
                             //search for existing feature by id and buffer distance
-                            var analysisAreaFeature = self.getAnalysisAreaBuffer(analysisAreaModel.id, 1); //TODO when we support multiple buffer distances this will need to change
+                            var analysisAreaFeature = self.getAnalysisAreaBuffer(analysisAreaModel.id(), 1); //TODO when we support multiple buffer distances this will need to change
                             if (analysisAreaFeature) {
                                 //update
                                 result.updates.push(analysisAreaFeature);
@@ -1371,8 +1376,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                                     OBJECTID: null,
                                     BUFFER_DISTANCE: 1, //TODO when we support multiple buffer distances this will need to change
                                     FEATURE_NAME: analysisAreaModel.name(),
-                                    FK_PROJECT: self.aoiId,
-                                    FK_PROJECT_ALT: analysisAreaModel.id,
+                                    FK_PROJECT: self.aoiId(),
+                                    FK_PROJECT_ALT: analysisAreaModel.id(),
                                     FK_PRJ_ALT: analysisAreaModel.altNumber,
                                     ACRES: 0 // TODO if the analysis routines aren't setting this, make a separate call to a geometry service to get the acres
                                 };
@@ -1406,7 +1411,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         //gets an analysis area model from the analysisAreas observable array by id
         getAnalysisAreaModel: function (id) {
             return this.analysisAreas().find(function (m) {
-                return m.id === id;
+                return m.id() === id;
             });
         },
 
@@ -1446,7 +1451,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 emergencyResponseReportRequested: false
             };
 
-            this.aoiId = aoi.id;
+            this.aoiId(aoi.id);
 
             if (!aoi.expirationDate) {
                 //default date is current date + 30 days TODO confirm this
@@ -1543,16 +1548,16 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             //get analysisAreaBuffers first TODO this isn't really a necessary step anymore, and we can include this in the same loop
             //through self.featureTypes below (loop through self.layers instead)
             self.layers.analysisAreaBuffer = new FeatureLayer(projects.aoiLayers.analysisAreaBuffer, {
-                id: 'aoi_analysisArea_' + this.aoiId,
+                id: 'aoi_analysisArea_' + this.aoiId(),
                 outFields: '*',
-                definitionExpression: 'FK_PROJECT = ' + this.aoiId,
+                definitionExpression: 'FK_PROJECT = ' + this.aoiId(),
                 //note: can't be invisble, and must be loaded in map for update-end to work.
                 //visible: false, //not actually loaded in map, so don't need to make invisible
                 mode: FeatureLayer.MODE_SNAPSHOT
             });
 
             on.once(self.layers.analysisAreaBuffer, 'update-end', function () {
-                if (self.aoiId) {
+                if (self.aoiId()) {
                     self.loadingOverlay.show('Loading AOI Features');
                 } else {
                     self.LoadingOverlay.show('Setting up AOI layers');
@@ -1565,9 +1570,9 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                         deferred = new Deferred(),
                         layer = new FeatureLayer(url,
                             {
-                                id: 'aoi_' + layerName + '_' + self.aoiId,
+                                id: 'aoi_' + layerName + '_' + self.aoiId(),
                                 outFields: '*',
-                                definitionExpression: 'FK_PROJECT = ' + self.aoiId,
+                                definitionExpression: 'FK_PROJECT = ' + self.aoiId(),
                                 mode: FeatureLayer.MODE_SNAPSHOT
                             });
                     layer.setSelectionSymbol(self.selectionSymbols[layerName]);
@@ -1669,7 +1674,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     BUFFER_DISTANCE: feature.bufferDistance,
                     BUFFER_DISTANCE_UNITS: feature.bufferUnit.name,
                     FEATURE_NAME: feature.name,
-                    FK_PROJECT: self.aoiId
+                    FK_PROJECT: self.aoiId()
                 });
             }
 
@@ -1711,7 +1716,12 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 if (!analysisArea) {
                     if (feature.graphic.attributes.FK_PROJECT_ALT) { //currently has an analysisArea assigned, so nullify it
                         feature.analysisArea(null);
-                        deferred = feature.applyUpdate();
+                        feature.graphics.FK_PROJECT_ALT = null;
+                        feature.applyUpdate().then(function () {
+                            deferred.resolve();
+                        }, function (e) {
+                            deferred.reject(e);
+                        });
                     } else {
                         deferred.resolve();
                     }
@@ -1721,7 +1731,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 if (typeof analysisArea === 'string' || typeof analysisArea === 'number') {
                     //first check to see if it exists, using the ID or name
                     var existing = self.analysisAreas().find(function (ag) {
-                        return ag.name() === analysisArea || ag.id === analysisArea;
+                        return ag.name() === analysisArea || ag.id() === analysisArea;
                     });
                     if (existing) {
                         return this.setAnalysisArea(existing); //call this method with the existing object
@@ -1747,14 +1757,18 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
                     //save to non-spatial table
                     //eslint-disable-next-line no-undef
-                    MapDAO.saveAoiAnalysisArea(self.aoiId, self.currentAuthority().orgUserId, analysisAreaJS, {
+                    MapDAO.saveAoiAnalysisArea(self.aoiId(), self.currentAuthority().orgUserId, analysisAreaJS, {
                         callback: function (analysisAreaReply) {
                             self.loadingOverlay.hide();
-                            analysisArea.id = analysisAreaReply.id; //the only thing that could possibly change after saving
+                            analysisArea.id(analysisAreaReply.id); //the only thing that could possibly change after saving
                             feature.analysisArea(analysisArea);
                             //self.dummyForceRecompute(new Date());
-
-                            deferred = feature.applyUpdate();
+                            feature.graphic.attributes.FK_PROJECT_ALT = analysisAreaReply.id;
+                            feature.applyUpdate().then(function () {
+                                deferred.resolve();
+                            }, function (e) {
+                                deferred.reject(e);
+                            });
                         },
                         errorHandler: function (message, exception) {
                             self.loadingOverlay.hide();
@@ -1770,11 +1784,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     feature.analysisArea(analysisArea);
                     //self.dummyForceRecompute(new Date());
 
-                    if (feature.graphic.attributes.FK_PROJECT_ALT === analysisArea.id) {
+                    if (feature.graphic.attributes.FK_PROJECT_ALT === analysisArea.id()) {
                         //happens during loading and building our model, no update required
                         deferred.resolve();
                     } else {
-                        feature.graphic.attributes.FK_PROJECT_ALT = analysisArea.id;
+                        feature.graphic.attributes.FK_PROJECT_ALT = analysisArea.id();
                         deferred = feature.applyUpdate();
                     }
                 }
@@ -1850,16 +1864,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     feature.applyUpdate();
                 }
             });
-
-            //feature.name.subscribe(function (oldValue) {
-            //    //todo here we can prevent assigning a name that's already been used
-            //    console.log('beforeChange: feature.name=' + this.name() + ', oldValue=' + oldValue);
-            //}, feature, 'beforeChange');
-
-            //feature.name.subscribe(function (newValue) {
-            //    this.graphic.attributes.FEATURE_NAME = newValue;
-            //    this.applyUpdate();
-            //}, feature, 'change');
 
             feature.bufferDistance.subscribe(function (newValue) {
                 self.bufferFeature(feature);
@@ -2349,7 +2353,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             //if user is authorized, and working on a new AOI, we show a drop-down for selecting the orgUser identity
             this.showAuthoritySelection = ko.pureComputed(function () {
-                return !this.aoiId && this.authorities.length > 1;
+                return !this.aoiId() && this.authorities.length > 1;
             }, this);
 
             //when user changes filter option or current authority, re-list the aois
@@ -2380,7 +2384,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             //constructor for analysisArea model, can be an AoiAnalysisArea from DWR load, or just a string to use as the name of a new analysis area.
             this.AnalysisArea = function (analysisArea) {
                 //"this" is now the context of an instance of an analysis area; self continues to be the root model
-                this.id = 0; //assigned >0 by server after it is saved
+                this.id = ko.observable(0); //assigned >0 by server after it is saved
                 this.name = ko.observable();
                 this.altNumber = 0; //assigned after it is saved; relatively unimportant at this point
                 this.features = ko.pureComputed(function () {
@@ -2396,13 +2400,13 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     } else {
                         //only other supported method is passing in an analysisArea (T_PROJECT_ALT_AOI) from the database
                         this.name(analysisArea.name);
-                        this.id = analysisArea.id;
+                        this.id(analysisArea.id);
                         this.altNumber = analysisArea.altNumber;
                     }
                 }
                 this.toJS = function () {
                     return {
-                        id: this.id,
+                        id: this.id(),
                         altNumber: this.altNumber,
                         name: this.name()
                     };
@@ -2516,8 +2520,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this.map.addLayer(this.extractGraphics);
 
             this.roadwayGraphics = new GraphicsLayer({
-                id: 'roadways',
-                title: 'Roadways'
+                id: this.id + '_roadways',
+                title: this.id + '_roadways'
             });
 
             var lineSymbol = new SimpleLineSymbol({

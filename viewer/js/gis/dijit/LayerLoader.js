@@ -706,12 +706,19 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
         shareMap: function () {
             if (this.hasUnsavedChanges()) {
                 //prompt user to save
-                new ConfirmDialog({
+                var cd = new ConfirmDialog({
                     title: 'Unsaved Changes',
-                    content: 'You have unsaved changes, do you want to save first?',
+                    buttonOk: 'Yes', //does nothing, see set below
+                    buttonCancel: 'No', //does nothing, see set below
+                    content: 'You have unsaved changes, do you want to save first?<br /><br />Click <strong>Yes</strong> to save and share your map with the latest changes.<br/>Click <strong>No</strong> to share the map from when it was last saved.',
                     onExecute: lang.hitch(this, '_saveAndShare'),
                     onCancel: lang.hitch(this, '_shareMap')
-                }).show();
+                });
+                cd.set({
+                    buttonOk: 'Yes',
+                    buttonCancel: 'No'
+                });
+                cd.show();
             } else {
                 this._shareMap();
             }

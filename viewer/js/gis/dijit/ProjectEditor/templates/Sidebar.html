@@ -13,7 +13,10 @@
         </script>
 
         <div data-bind="visible: mode() == 'default'">
-            <h3>Project Features Editor</h3>
+            <span data-bind="click: showHelpDialog" style="float:right; cursor:pointer" title="Click for help" class="fa fa-question-circle"></span>
+            <h3>
+                Project Features Editor
+            </h3>
 
             <button data-dojo-type="dijit/form/Button"
                     data-dojo-props="iconClass:'fa fa-folder-open fa-fw'"
@@ -22,18 +25,17 @@
                 Open
             </button>
 
-            <a href="ProjectEditor_Training_Video.mp4" target="_blank" style="position: relative; top: 5px; left: 15px; text-decoration:underline">Video</a>
-
             <div style="margin-top: 15px">
                 <p>
-                    Click the <strong>Open</strong> button to open an EST project for editing project features. The project must be in draft/editing status.
+                    Click the <strong>Open</strong> button to open an EST project for editing project features. The project must be in editing status.
                 </p>
             </div>
         </div>
 
         <div data-bind="visible: mode() != 'default'">
             <div>
-                <span data-bind="click: unloadCurrentProject" style="float:right" class="fa fa-window-close"></span>
+                <span data-bind="click: unloadCurrentProject" style="float:right; padding-left: 5px; cursor:pointer" title="Stop editing" class="fa fa-window-close"></span>
+                <span data-bind="click: showHelpDialog" style="float:right; cursor:pointer" title="Click for help" class="fa fa-question-circle"></span>
             </div>
 
             <fieldset class="borderless" data-bind="visible: mode() === 'editFeatures', enable: canEdit">
@@ -151,20 +153,26 @@
                 <!--/ko-->
 
                 <div class="alert alert-success" data-bind="visible: analysisRunning">
-                    Analysis is currently running. You can keep this screen open to monitor progress, or close it and continue using the map while the reports are being generated. When the reports are finished, this screen will have links to the requested reports and maps.
+                    Analysis results or reports are currently being generated. You can close this screen and continue using the map while the reports are being generated, or you can keep this screen open, and a link to the reports will show up below.
+                    <div>
+                        <i class="fa fa-spinner fa-spin"></i>
+                        <!--span data-bind="visible: code===-1" class="fa fa-exclamation-triangle"></span-->
+                        <span data-bind="text: analysisStatusText"></span>
+
+                    </div>
                 </div>
 
                 <div data-bind="visible: hasAnalysisResults">
-                    <div class="alert alert-success">
-                        Analysis complete
-                    </div>
                     <p data-bind="with: currentProjectAlt">
-                        Click <a data-bind="attr: {href: '/est/analysis/ReportOptions.do?p=' + projectId}" target="_blank">here</a> to view the analysis reports.
+                        Click <a data-bind="attr: {href: '/est/analysis/ReportOptions.do?p=' + projectId}" target="_blank" style="text-decoration: underline">here</a>
+                        to
+                        <span data-bind="visible: $parent.hasReports">view PDF reports or</span>
+                        run custom analysis reports.
                     </p>
                 </div>
 
                 <div data-bind="visible: analysisStatus() === analysisStatuses.EDITING">
-                    <p>You can start GIS analysis on this screen by clicking the <strong>Start Analysis</strong> button. Note that the project editor will close, and features will not be editable until analysis is complete.</p>
+                    <p>You can start GIS analysis on this screen by clicking the <strong>Start Analysis</strong> button. Note that features will not be editable until analysis is complete.</p>
 
                     <div class="buttonContainer buttonContainerFull">
                         <button data-dojo-type="dijit/form/Button"
