@@ -691,6 +691,16 @@ define([
                     mapRightClickMenu: true
                 }
             },
+            //right-click map to get street view
+            streetView: {
+                include: true,
+                type: 'invisible',
+                path: 'gis/dijit/StreetView2',
+                options: {
+                    map: true,
+                    mapRightClickMenu: true
+                }
+            },
             //floats upper right of map
             basemaps: {
                 include: true,
