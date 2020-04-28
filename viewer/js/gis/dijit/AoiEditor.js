@@ -48,7 +48,6 @@ define([
     'esri/Color',
 
     'esri/tasks/BufferParameters',
-    'esri/tasks/GeometryService',
     'esri/tasks/query',
     'esri/tasks/locator',
 
@@ -90,7 +89,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     SimpleFillSymbol,
     Color,
     BufferParameters,
-    GeometryService,
     Query,
     Locator,
     projects
@@ -769,8 +767,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
         startup: function () {
             this.inherited(arguments);
-
-            window.geometryService = GeometryService;
 
             this.loadingOverlay = new LoadingOverlay(); //this can be defined at the root level, but...
             
