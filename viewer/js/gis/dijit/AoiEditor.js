@@ -48,6 +48,7 @@ define([
     'esri/Color',
 
     'esri/tasks/BufferParameters',
+    'esri/tasks/GeometryService',
     'esri/tasks/query',
     'esri/tasks/locator',
 
@@ -89,6 +90,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     SimpleFillSymbol,
     Color,
     BufferParameters,
+    GeometryService,
     Query,
     Locator,
     projects
@@ -768,6 +770,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         startup: function () {
             this.inherited(arguments);
 
+            window.geometryService = GeometryService;
+
             this.loadingOverlay = new LoadingOverlay(); //this can be defined at the root level, but...
             
             this.bufferUnitArray = [this.bufferUnits.feet, this.bufferUnits.miles, this.bufferUnits.meters, this.bufferUnits.kilometers]; //for binding to drop-down
@@ -1354,6 +1358,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     params.distances = [1]; //TODO when we support multiple buffer distances this will need to change
                     params.outSpatialReference = self.map.spatialReference; //todo this should maybe be Albers
                     params.unit = 9002;
+                    params.geodesic = true;
                     params.geometries = simplifiedGeometries;
                     params.unionResults = true;
 
@@ -2076,6 +2081,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                         params.distances = [feature.bufferDistance()];
                         params.outSpatialReference = self.map.spatialReference;
                         params.unit = feature.bufferUnit().id;
+                        params.geodesic = true;
                         params.geometries = simplifiedGeometries; //We're only doing one at a time, but buffer expects an array. 
 
                         //eslint-disable-next-line no-undef
