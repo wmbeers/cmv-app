@@ -10,12 +10,19 @@ define([
     'dojo/promise/all',
     'dojo/request',
     './js/config/projects.js',
+    './js/config/layerLoader.js',
     'esri/layers/ArcGISDynamicMapServiceLayer',
     'esri/layers/FeatureLayer',
     'esri/layers/RasterLayer',
     'esri/layers/VectorTileLayer',
     'esri/layers/ImageParameters',
     'esri/layers/ImageServiceParameters',
+
+    //for zoom-to-point support
+    'esri/layers/GraphicsLayer',
+    'esri/graphic',
+    'esri/symbols/SimpleMarkerSymbol',
+
     'esri/request',
     'esri/tasks/ProjectParameters',
     'esri/tasks/query',
@@ -39,12 +46,16 @@ define([
     all,
     request,
     projects,
+    layerLoader,
     ArcGISDynamicMapServiceLayer,
     FeatureLayer,
     RasterLayer,
     VectorTileLayer,
     ImageParameters,
     ImageServiceParameters,
+    GraphicsLayer,
+    Graphic,
+    SimpleMarkerSymbol,
     esriRequest,
     ProjectParameters,
     Query,
@@ -88,9 +99,38 @@ define([
             //so we wait for the last widget we have to publish startupComplete
             topic.subscribe('layerLoader/startupComplete', lang.hitch(this, '_handleQueryString'));
 
+            //Note: can't do this on startup: this.map.addLayer(this.zoomPointGraphics), because this.map is defined asynchronously in _MapMixin
+            //need to use mapDeferred, also defined in _MapMixin, resolved when the map has been created
+            this.mapDeferred.then(lang.hitch(this, '_createZoomPointGraphics'));
+
             window.addEventListener('storage', lang.hitch(this, '_handleStorageMessage'));
 
             this.inherited(arguments);
+        },
+
+        _createZoomPointGraphics: function () {
+            this.zoomPointGraphics = new GraphicsLayer({
+                id: '_LayerLoadMixin_ZoomPointGraphics',
+                title: 'Zoom Point Graphics'
+            });
+
+            this.map.addLayer(this.zoomPointGraphics);
+
+            this.zoomPointSymbol = new SimpleMarkerSymbol({
+                type: 'esriSMS',
+                style: 'esriSMSCircle',
+                size: 15,
+                color: [200, 0, 200, 16],
+                angle: 0,
+                xoffset: 0,
+                yoffset: 0,
+                outline: {
+                    type: 'esriSLS',
+                    style: 'esriSLSSolid',
+                    color: [200, 0, 200, 200],
+                    width: 3
+                }
+            });
         },
 
         _handleStorageMessage: function (e) {
@@ -105,14 +145,72 @@ define([
         * @returns {void}
         */
         _handleQueryString: function (queryString) {
-            var uri = queryString || window.location.href;
-            var qs = uri.indexOf('?') >= 0 ? uri.substring(uri.indexOf('?') + 1, uri.length) : '';
-            qs = qs.toLowerCase();
-            var qsObj = ioQuery.queryToObject(qs);
+            var self = this, //so we don't lose track of the application as the appropriate closure scope
+                uri = (queryString || window.location.href),
+                qs = (uri.indexOf('?') >= 0 ? uri.substring(uri.indexOf('?') + 1, uri.length) : '').toLowerCase(),
+                qsObj = ioQuery.queryToObject(qs),
+                functions = [],
+                args = [],
+                i = 0,
+                //eslint-disable-next-line func-style
+                processNextFunction = function () {
+                    if (functions[i]) {
+                        var f = functions[i],
+                            a = args[i];
+                        f.apply(self, a).then(function () {
+                            i++;
+                            processNextFunction();
+                        });
+                    }
+                };
+
             //acceptable arguments include loadMap, projectId, aoiid, latlon, latlong, and mgrs
-            //arguments are (for now) mutually exclusive, with preference given to the order of the arguments listed above
-            //TODO expand to addLayer
+            //arguments are (for now) mutually exclusive (except for the layername/autoid pair), with preference given to the order of the arguments listed above
             //TODO could also consider expanding to chain multiple events, like load several layers, load a saved map and add a project, etc.
+            //if chaining multiples, here's some reasonable combos and orders in which they could occur:
+            /*
+             * projectid + layername (either order)
+             * aoiid + layername (either order)
+             * layername + latlong/latlon or mgrs (this is 2 combos)
+             * layername + latlong/latlon or mgrs + projectid/aoid (this is 6 combos, and ordering is important because projectid/aoiid are also going to try to zoom the feature, so latlong/latlon or mgrs have to happen last, after deferred for loading project is complete)
+             * from GIS report, the latter is most likely--the user will want to see a map with that project/aoi, with a given layer, zoomed to a specific MGRS spot
+             */
+            
+            if (qsObj.loadmap) {
+                functions.push(this.loadMap);
+                args.push([qsObj.loadmap]);
+            }
+            if (qsObj.layername) {
+                functions.push(this.addLayerByLayerName);
+                args.push([qsObj.layername]);
+            }
+            if (qsObj.projectid) {
+                //addProjectToMap accepts multiple arguments (projectAltId, zoomOnLoad, _deferred, queryDraft)
+                //we only care about the first two
+                //zoomOnLoad should be false if mgrs/latlong parameter is also included
+                functions.push(this.addProjectToMap);
+                var zoomOnLoad = true;
+                if (qsObj.mgrs || qsObj.latlong || qsObj.latlon) {
+                    zoomOnLoad = false;
+                }
+                args.push([qsObj.projectid, zoomOnLoad]);
+            }
+            if (qsObj.aoiid) {
+                functions.push(this.addAoiToMap);
+                args.push([qsObj.aoiid]);
+            }
+            //coordinate to zoom to, we don't support both at the same time, and really currently only use mgrs
+            if (qsObj.mgrs) {
+                functions.push(this.zoomToMgrsPoint);
+                args.push([qsObj.mgrs, qsObj.zoomlevel || 'infer']);
+            } else if (qsObj.latlong || qsObj.latlon) {
+                var ll = qsObj.latlong || qsObj.latlon;
+                functions.push(this.zoomToLatLong);
+                args.push([ll, qsObj.zoomlevel]);
+            }
+            processNextFunction();
+
+            /*
             if (qsObj.loadmap) {
                 this.loadMap(qsObj.loadmap);
             } else if (qsObj.projectid) {
@@ -123,9 +221,15 @@ define([
                 var ll = qsObj.latlong || qsObj.latlon;
                 this.zoomToLatLong(ll, qsObj.zoomlevel);
             } else if (qsObj.mgrs) {
-                this.zoomToMgrsPoint(qsObj.mgrs, qsObj.zoomlevel);
+                this.zoomToMgrsPoint(qsObj.mgrs, qsObj.zoomlevel || 'infer');
+            } else if (qsObj.layername) {
+                if (qsObj.autoid) {
+                    this.zoomToAutoId(qsObj.layername, qsObj.autoid);
+                } else {
+                    this.addLayer(qsObj.layername);
+                }
             }
-
+            */
         },
 
         openAttributeTable: function (layerControlItem) {
@@ -194,7 +298,10 @@ define([
          * @returns {object} a layer def with the id of sde layer name matching layerIdOrName
          */
         getLayerDef: function (layerIdOrName) {
-            var layerDefs = this.widgets.layerLoader.layerDefs,
+            //note re next line, when first loaded, before all widgets have loaded, "this.widgets.layerLoader" = true, not a 
+            //reference to the widget itself. We also load the layerDefs into this mixin, thus the || bit
+            //rationale for wanting to reference the layerLoader's layerDefs is to keep in sync what's loaded and what's not.
+            var layerDefs = this.widgets.layerLoader.layerDefs || layerLoader.layerDefs,
                 ld = null;
 
             //by numeric id, when coming from saved map
@@ -217,9 +324,8 @@ define([
 
             //not a number, so look by SDE layername, when coming from external link/function call in analysis report
             ld = layerDefs.find(function (layerDef) {
-                return layerDef.layerName === layerIdOrName;
-            });
-            //not found
+                return layerDef.layerName.toLowerCase() === layerIdOrName.toLowerCase();
+            });//not found
             if (ld === null) {
                 topic.publish('viewer/handleError', {
                     source: 'LayerLoadMixin.getLayerDef',
@@ -631,11 +737,40 @@ define([
             return this.addLayer(categoryDef.layer, false, false);
         },
 
-        //Add a project or alternative to the map, using one of the following patterns:
-        //'p' followed by a project ID (e.g. p12992 to load project #12992)
-        // number, or string that contains just numbers (e.g. 12992 or '12992' to load project #12992)
-        //'a' followed by a project alt ID (e.g. 'a9912' to load project alt 9912)
-        // string containing two numbers separated by a dash (e.g. 12992-1 to load alt 1 of project 12992)
+        //from analysis results; could use layerName and autoId to add the layer with a definitionExpression
+        //so add optional autoId argument here, build the where clause 'AUTOID=' + autoId
+        //but maybe the user wants to see all features and just highlight the autoid one?
+        //this also depends on Lex's call on whether we want to support autoid filtering at all, or instead
+        //just use MGRS, which is there in the data, but not in the analysis results.
+        /**
+         * Adds a layer by its layer name. Called typically from the GIS analysis results report, in combination with an MGRS code.
+         * @param {String} layerName The name of the layer, as defined in layerLoader.js, in the layerDef's layerName property.
+         * @returns {Deferred} A deferred object to be resolved when the layer is loaded, or rejected if not found or some other error occurs.
+         */
+        addLayerByLayerName: function (layerName) {
+            var layer = this.constructLayer(layerName),
+                deferred = new Deferred();
+            if (layer) {
+                deferred = this.addLayer(layer);
+            } else {
+                deferred.reject('Invalid layerName "' + layerName + '" property passed to addLayerByLayerName function.');
+            }
+            return deferred;
+        },
+
+        /**
+         * TODO add support for project/alt/feature milestones
+         * Add a project or alternative to the map, using one of the following patterns:
+         * 'p' followed by a project ID (e.g. p12992 to load project #12992)
+         * number, or string that contains just numbers (e.g. 12992 or '12992' to load project #12992)
+         * 'a' followed by a project alt ID (e.g. 'a9912' to load project alt 9912)
+         * string containing two numbers separated by a dash (e.g. 12992-1 to load alt 1 of project 12992)
+         * @param {any} projectAltId The project or alternative ID, as described above
+         * @param {boolean} zoomOnLoad If true (or omitted), the map will zoom to the extent of the project after loading it. If false the current map extent is maintained. It is set to false when loading a saved map, because the desired map extent is saved with the map.
+         * @param {Deferred} _deferred Optional Deferred object, created if omitted. Used when calling this function from itself to maintain the promise.
+         * @param {Boolean} queryDraft Set when calling this function from itself to indicate we should check the draft layer
+         * @return {Deferred} Deffered instance--one created by this function or passed in via _deferred argument.
+         */
         addProjectToMap: function (projectAltId, zoomOnLoad, _deferred, queryDraft) {
             var self = this, //so we don't lose track buried down in callbacks
                 isAlt = false,
@@ -773,17 +908,28 @@ define([
             return deferred;
         },
 
+        /**
+         * Adds the feature layers of the associated identified AOI to the map.
+         * @param {number} aoiId The ID of the AOI to add to the map.
+         * @returns {Deferred} A Deffered object to be resolved when the layers have been loaded.
+         */
         addAoiToMap: function (aoiId) {
-            var self = this;
+            var self = this,
+                deferred = new Deferred();
 
             //eslint-disable-next-line no-undef
             MapDAO.getAoiModel(aoiId, {
                 callback: function (aoi) {
                     //todo loading overlay for this class self.loadingOverlay.hide();
                     if (aoi) {
-                        self.addAoiModelToMap(aoi);
+                        self.addAoiModelToMap(aoi).then(function (r) {
+                            deferred.resolve(r);
+                        }, function (err) {
+                            deferred.reject(err);
+                        });
                     } else {
                         topic.publish('growler/growlError', 'Unable to load AOI with ID ' + aoiId + '. No AOI with that ID found.');
+                        deferred.reject('Unable to load AOI with ID ' + aoiId + '. No AOI with that ID found.');
                     }
                 },
                 errorHandler: function (message, exception) {
@@ -792,13 +938,18 @@ define([
                         source: '_LayerLoadMixin/addAoiToMap',
                         error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
                     });
+                    deferred.reject(message);
                 }
             });
-
+            return deferred;
         },
 
-        //adds an AOI to the map
-        addAoiModelToMap: function (aoi) {
+        /**
+         * Adds a feature layers associated with the referenced AOI model to the map
+         * @param {object} aoiModel A model of the AOI to be loaded, with at least the name and id properties
+         * @returns {Deferred} A Deferred object to be resolved when all feature layers have been loaded in the map
+         */
+        addAoiModelToMap: function (aoiModel) {
             var self = this, //so we don't lose track buried down in callbacks
                 definitionExpression = 'FK_PROJECT = ' + aoi.id,
                 deferred = new Deferred(),
@@ -809,9 +960,9 @@ define([
             layerNames.forEach(function (layerName) {
                 var l2 = layerName === 'analysisAreaBuffer' ? 'Analysis Areas' : ('P' + layerName.substr(1) + 's'),
                     layerDef = {
-                        id: 'aoi_' + aoi.id + '_' + layerName,
+                        id: 'aoi_' + aoiModel.id + '_' + layerName,
                         url: projects.aoiLayers[layerName],
-                        name: (aoi.name || 'AOI ' + aoi.id) + ' ' + l2,
+                        name: (aoiModel.name || 'AOI ' + aoiModel.id) + ' ' + l2,
                         type: 'feature'
                     },
                     layer = self.constructLayer(layerDef, definitionExpression),
@@ -908,26 +1059,29 @@ define([
          * Loads a saved map from the server.
          * @param {number} savedMapId ID of the saved map to load
          * @param {boolean} clearMapFirst Optional, if true, all user layers will be removed from the map before loading new layers; if false or absent, layers from the saved map will be added on top of the layers already in the map.
-         * @return {void}
+         * @return {Deferred} deferred object to be resolved when map is loaded
          */
         loadMap: function (savedMapId, clearMapFirst) {
             var self = this, //DWR callback loses scope of this
-                deferred = new Deferred(); // promise to be fullfilled when map is done loading and map has zoomed
+                deferred = new Deferred(), //wrapper deferred used by this function for the overall progress
+                loadDeferred = new Deferred(); // promise to be fullfilled when map is done loading and map has zoomed
 
             //load from server
             //eslint-disable-next-line no-undef
             MapDAO.getSavedMapBeanById(savedMapId, {
                 callback: function (savedMap) {
                     if (savedMap) {
-                        self._loadMap(savedMap, clearMapFirst, deferred);
-                        deferred.then(
+                        self._loadMap(savedMap, clearMapFirst, loadDeferred);
+                        loadDeferred.then(
                             function (layers) {
                                 topic.publish('growler/removeUpdatable');
                                 topic.publish('growler/growl', 'Loaded ' + layers.length + ' layers for ' + savedMap.mapName);
                                 topic.publish('layerLoader/mapLoaded', savedMap); //lets the layerloader widget know what's up when this is loaded from query string
+                                deferred.resolve();
                             },
                             function (err) {
                                 topic.publish('growler/growlError', err);
+                                deferred.reject(err);
                             },
                             function (progressMessage) {
                                 topic.publish('growler/updateGrowl', progressMessage);
@@ -938,6 +1092,7 @@ define([
                             source: 'LayerLoadMixin.loadMap',
                             error: 'Invalid Map ID (' + savedMapId + ')'
                         });
+                        deferred.reject('Invalid Map ID');
                     }
                 },
                 errorHandler: function (message, exception) {
@@ -948,6 +1103,7 @@ define([
                     deferred.reject(message);
                 }
             });
+            return deferred;
         },
         /**
          * Opens FGDL metadata for the layer included in the event argument. Listens for LayerControl/viewMetadata topic.
@@ -1402,11 +1558,11 @@ define([
                 zoomLevel = null;
             }
 
-            return (zoomLevel ? this.map.centerAndZoom(point, zoomLevel) : this.map.centerAt(point)); 
+            return this._centerAtOrZoom(point, zoomLevel);
         },
 
         /**
-         * Centers that map at a point in the Military Grid Reference System (MGRS) geocoordinate standard, and optionally zooms to the specified or inferred level.
+         * Centers the map at a point in the Military Grid Reference System (MGRS) geocoordinate standard, and optionally zooms to the specified or inferred level.
          * @param {any} mgrs A point in MGRS format.
          * @param {any} zoomLevel Number, string 'infer', or null; 
          *      If a specific number, it will be passed to the centerAndZoom function as the zoom level of the map to set; 
@@ -1460,7 +1616,7 @@ define([
                 }
             }
 
-            return (zoomLevel ? this.map.centerAndZoom(point, zoomLevel) : this.map.centerAt(point));
+            return this._centerAtOrZoom(point, zoomLevel);
         },
 
         /**
@@ -1475,6 +1631,21 @@ define([
             }
             var mgrs = coordinateFormatter.toMgrs(point, 'automatic', 5, true);
             return mgrs;
+        },
+
+        /**
+         * Centers the map at the referenced point, addes a graphic element to the map at the referenced point, and optionally zooms to the referenced zoom level
+         * @param {Point} point an ESRI point object
+         * @param {Number} zoomLevel optional zoom level to pass to centerAndZoom function. If omitted map pans to the point and stays at current zoom level
+         * @returns {Deferred} the Deferred object created by centerAndZoom or centerAt.
+         */
+        _centerAtOrZoom: function (point, zoomLevel) {
+            //add point to map
+            var graphic = new Graphic(point, this.zoomPointSymbol);
+            this.zoomPointGraphics.add(graphic);
+            //return the deferred generated by centerAndZoom or centerAt method
+            return (zoomLevel ? this.map.centerAndZoom(point, zoomLevel) : this.map.centerAt(point));
         }
+
     });
 });
