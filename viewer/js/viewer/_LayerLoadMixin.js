@@ -189,15 +189,21 @@ define([
                 //we only care about the first two
                 //zoomOnLoad should be false if mgrs/latlong parameter is also included
                 functions.push(this.addProjectToMap);
-                var zoomOnLoad = true;
+                var zoomOnLoadProject = true;
                 if (qsObj.mgrs || qsObj.latlong || qsObj.latlon) {
-                    zoomOnLoad = false;
+                    zoomOnLoadProject = false;
                 }
-                args.push([qsObj.projectid, zoomOnLoad]);
-            }
-            if (qsObj.aoiid) {
+                args.push([qsObj.projectid, zoomOnLoadProject]);
+            } else if (qsObj.aoiid) {
                 functions.push(this.addAoiToMap);
                 args.push([qsObj.aoiid]);
+            } else if (qsObj.featureid && qsObj.featuretype) {
+                functions.push(this.addProjectFeatureToMap);
+                var zoomOnLoadFeature = true;
+                if (qsObj.mgrs || qsObj.latlong || qsObj.latlon) {
+                    zoomOnLoadFeature = false;
+                }
+                args.push([qsObj.featureid, qsObj.featuretype, zoomOnLoadFeature]);
             }
             //coordinate to zoom to, we don't support both at the same time, and really currently only use mgrs
             if (qsObj.mgrs) {
@@ -759,7 +765,7 @@ define([
         },
 
         /**
-         * TODO add support for project/alt/feature milestones
+         * TODO add support for project/alt milestones
          * Add a project or alternative to the map, using one of the following patterns:
          * 'p' followed by a project ID (e.g. p12992 to load project #12992)
          * number, or string that contains just numbers (e.g. 12992 or '12992' to load project #12992)
@@ -909,6 +915,186 @@ define([
         },
 
         /**
+         * Add the project feature to the map identified by featureId and featureType
+         * @param {any} featureId The numeric ID of the feature
+         * @param {any} featureType The type of the feature, either 'point', 'line', or 'polygon'
+         * @param {boolean} zoomOnLoad If true (or omitted), the map will zoom to the extent of the project feature after loading it. If false the current map extent is maintained. It is set to false when loading a saved map, because the desired map extent is saved with the map.
+         * @param {Deferred} _deferred Optional Deferred object, created if omitted. Used when calling this function from itself to maintain the promise.
+         * @return {Deferred} Deffered instance--one created by this function or passed in via _deferred argument.
+         */
+        addProjectFeatureToMap: function (featureId, featureType, zoomOnLoad, _deferred) {
+            var self = this, //so we don't lose track buried down in callbacks
+                deferred = _deferred || new Deferred();
+
+            //default zoomOnLoad to true
+            if (typeof zoomOnLoad === 'undefined') {
+                zoomOnLoad = true;
+            }
+
+            //figure out if we're zooming to a project or a specific alt
+            if (isNaN(featureId)) {
+                //something we don't know how to handle.
+                //no features found
+                topic.publish('growler/growl', {
+                    title: 'Invalid Feature ID',
+                    message: 'Unable to parse ID ' + featureId,
+                    level: 'error'
+                });
+                deferred.cancel('Invalid feature ID');
+                return deferred;
+            }
+
+            this._findFeatureInLayers(featureId, featureType).then(
+                function (info) {
+                    var featureLayerConfig = {
+                            name: 'Feature # ' + featureId,
+                            id: ('feature_' + featureId), //internal ID, not really important, but helps with debugging
+                            url: info.url,
+                            type: 'feature',
+                            layerName: null, //only needed for metadata
+                            featureId: featureId, //needed for saving
+                            featureType: featureType
+                        },
+                        symbol = null;
+
+                    if (featureType === 'polygon') {
+                        symbol = {
+                            'type': 'esriSFS',
+                            'style': 'esriSFSSolid',
+                            'color': [255, 255, 0, 180],
+                            'outline': {
+                                'type': 'esriSLS',
+                                'style': 'esriSLSSolid',
+                                'color': [255, 255, 0, 255],
+                                'width': 3
+                            }
+                        };
+                    } else if (featureType === 'line') {
+                        symbol = {
+                            type: 'esriSLS',
+                            style: 'esriSLSSolid',
+                            color: [255, 255, 0, 180],
+                            width: 3
+                        };
+                    } else if (featureType === 'point') {
+                        symbol = {
+                            type: 'esriSMS',
+                            style: 'esriSMSCircle',
+                            size: 12,
+                            color: [255, 255, 0, 180],
+                            angle: 0,
+                            xoffset: 0,
+                            yoffset: 0,
+                            outline: {
+                                type: 'esriSLS',
+                                style: 'esriSLSSolid',
+                                color: [255, 255, 0, 255],
+                                width: 2
+                            }
+                        };
+                    }
+
+                    var featureLayer = self.constructLayer(featureLayerConfig,
+                        info.definitionQuery,
+                        false, //prevents definitionExpression from overriding title TODO cleaner method of handling this
+                        //todo just set this in the map service rather than having to code in js
+                        //currently it's the right color, but the width is too narrow
+                        new SimpleRenderer({
+                            'type': 'simple',
+                            'symbol': symbol
+                        })
+                    );
+                    //resolve deferred via addLayer method
+                    self.addLayer(featureLayer, zoomOnLoad).then(
+                        function (l) {
+                            deferred.resolve(l);
+                        },
+                        function (m) {
+                            deferred.reject(m);
+                        }
+                    );
+                },
+                function (msg) {
+                    deferred.reject(msg);
+                //},
+                //function (progressMsg) {
+                    //todo?
+                }
+            );
+            return deferred;
+        },
+
+        /**
+         * Finds the service and layer the referenced feature can be found in, searching in currently in review, previously reviewed, eliminated, and draft services
+         * @param {any} featureId The id of the feature to find.
+         * @param {any} featureType The type of feature to find.
+         * @param {any} _serviceIndex The index of the four services to try next.
+         * @param {any} _deferred The Deferred object created by this function, used only when this function calls itself.
+         * @return {Deferred} A Deferred object (either the one passed in by reference as _deferred, or a new one created by this function). When resolved, will Deferred will pass an object with the service URL and definition query.
+         */
+        _findFeatureInLayers: function (featureId, featureType, _serviceIndex, _deferred) {
+            var self = this,
+                deferred = _deferred || new Deferred(),
+                query = new Query(),
+                layerIndex = null,
+                serviceIndex = _serviceIndex || 0,
+                url = [projects.currentlyInReviewProjectsService, projects.previouslyReviewedProjectsService, projects.eliminatedProjectsService, projects.draftProjectsService][serviceIndex],
+                queryField = null;
+
+            if (featureType === 'polygon') {
+                //set layer
+                layerIndex = 8;
+                //set where
+                queryField = 'FK_POLYGON';
+            } else if (featureType === 'line') {
+                layerIndex = 7;
+                queryField = 'FK_SEGMENT';
+            } else if (featureType === 'point') {
+                layerIndex = 6;
+                queryField = 'FK_POINT';
+            } else {
+                deferred.cancel('Invalid feature type');
+                return deferred;
+            }
+
+            //of course draft and eliminated projects are different
+            if (serviceIndex === 3 || serviceIndex === 2) {
+                if (featureType === 'line') {
+                    queryField = 'SEGMENT'; //No FK_ in eliminated
+                } else {
+                    queryField = 'FK_FEATURE'; //point and polygon just have FK_FEATURE, which I wish they all had.
+                }
+            }
+
+            query.where = queryField + '=' + featureId;
+            query.returnGeometry = false;
+
+            url += '/' + layerIndex;
+            var queryTask = new QueryTask(url);
+            queryTask.executeForCount(query, function (count) {
+                if (count > 0) {
+                    deferred.resolve({
+                        url: url,
+                        definitionQuery: query.where,
+                        isDraft: (serviceIndex === 3)
+                    });
+                } else if (serviceIndex < 3 || (serviceIndex === 3 && self.hasViewDraftAuthority)) {
+                    //increment to next service
+                    serviceIndex++;
+                    //recursively call this function, passing in the new serviceIndex and existing deferred
+                    self._findFeatureInLayers(featureId, featureType, serviceIndex, deferred);
+                } else {
+                    //nowhere else to look
+                    deferred.reject('No feature found with that ID');
+                }
+            }, function (err) {
+                deferred.reject(err);
+            });
+
+            return deferred;
+        },
+
+        /**
          * Adds the feature layers of the associated identified AOI to the map.
          * @param {number} aoiId The ID of the AOI to add to the map.
          * @returns {Deferred} A Deffered object to be resolved when the layers have been loaded.
@@ -951,7 +1137,7 @@ define([
          */
         addAoiModelToMap: function (aoiModel) {
             var self = this, //so we don't lose track buried down in callbacks
-                definitionExpression = 'FK_PROJECT = ' + aoi.id,
+                definitionExpression = 'FK_PROJECT = ' + aoiModel.id,
                 deferred = new Deferred(),
                 promises = [],
                 layerNames = ['analysisAreaBuffer', 'polygon', 'polyline', 'point'];
