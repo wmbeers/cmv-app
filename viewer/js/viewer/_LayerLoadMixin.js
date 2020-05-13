@@ -141,7 +141,19 @@ define([
 
         /**
         * Handles arguments passed in the query string to do things after the map is loaded, like loading a saved map or adding a project to the map
-        * @param {object} queryString optional queryString when calling this method from _handleStorageMessage. If not provided, uses window.location.href to get queryString
+        * @param {object} queryString optional queryString when calling this method from _handleStorageMessage. If not provided, uses window.location.href to get queryString.
+        * Acceptable queryString parameters include projectid, aoiid, layername, latlon, mgrs, featureid and featuretype (both feature* must be paired).
+        * Some parameters can be combined, including:
+        *  * layername and any other parameter (e.g. projectid, aoiid, or featureid and featuretype)
+        *  * loadmap and any other parameter
+        *  * mgrs or latlon with any other parameter
+        * Zoom-to point paramters (mgrs and latlon) are mutually exclusive. If both are provided only MGRS is used.
+        * Parameters related to loading projects/aois/features are mutually exclusive, and can't be combined; if multiple ones are provided the one earliest 
+        * on the following list is used:
+        *  * projectid
+        *  * aoiid
+        *  * featureid and feature type
+        * Parameters for loading a feature (featureid and featuretype) have to be paired to zoom to a feature.
         * @returns {void}
         */
         _handleQueryString: function (queryString) {
@@ -163,27 +175,17 @@ define([
                         });
                     }
                 };
-
-            //acceptable arguments include loadMap, projectId, aoiid, latlon, latlong, and mgrs
-            //arguments are (for now) mutually exclusive (except for the layername/autoid pair), with preference given to the order of the arguments listed above
-            //TODO could also consider expanding to chain multiple events, like load several layers, load a saved map and add a project, etc.
-            //if chaining multiples, here's some reasonable combos and orders in which they could occur:
-            /*
-             * projectid + layername (either order)
-             * aoiid + layername (either order)
-             * layername + latlong/latlon or mgrs (this is 2 combos)
-             * layername + latlong/latlon or mgrs + projectid/aoid (this is 6 combos, and ordering is important because projectid/aoiid are also going to try to zoom the feature, so latlong/latlon or mgrs have to happen last, after deferred for loading project is complete)
-             * from GIS report, the latter is most likely--the user will want to see a map with that project/aoi, with a given layer, zoomed to a specific MGRS spot
-             */
-            
+            //load a saved map
             if (qsObj.loadmap) {
                 functions.push(this.loadMap);
                 args.push([qsObj.loadmap]);
             }
+            //load a layer
             if (qsObj.layername) {
                 functions.push(this.addLayerByLayerName);
                 args.push([qsObj.layername]);
             }
+            //load a project or alternative
             if (qsObj.projectid) {
                 //addProjectToMap accepts multiple arguments (projectAltId, zoomOnLoad, _deferred, queryDraft)
                 //we only care about the first two
@@ -194,9 +196,11 @@ define([
                     zoomOnLoadProject = false;
                 }
                 args.push([qsObj.projectid, zoomOnLoadProject]);
+            //load an AOI
             } else if (qsObj.aoiid) {
                 functions.push(this.addAoiToMap);
                 args.push([qsObj.aoiid]);
+            //load a project feature
             } else if (qsObj.featureid && qsObj.featuretype) {
                 functions.push(this.addProjectFeatureToMap);
                 var zoomOnLoadFeature = true;
@@ -215,27 +219,6 @@ define([
                 args.push([ll, qsObj.zoomlevel]);
             }
             processNextFunction();
-
-            /*
-            if (qsObj.loadmap) {
-                this.loadMap(qsObj.loadmap);
-            } else if (qsObj.projectid) {
-                this.addProjectToMap(qsObj.projectid);
-            } else if (qsObj.aoiid) {
-                this.addAoiToMap(qsObj.aoiid);
-            } else if (qsObj.latlong || qsObj.latlon) {
-                var ll = qsObj.latlong || qsObj.latlon;
-                this.zoomToLatLong(ll, qsObj.zoomlevel);
-            } else if (qsObj.mgrs) {
-                this.zoomToMgrsPoint(qsObj.mgrs, qsObj.zoomlevel || 'infer');
-            } else if (qsObj.layername) {
-                if (qsObj.autoid) {
-                    this.zoomToAutoId(qsObj.layername, qsObj.autoid);
-                } else {
-                    this.addLayer(qsObj.layername);
-                }
-            }
-            */
         },
 
         openAttributeTable: function (layerControlItem) {
