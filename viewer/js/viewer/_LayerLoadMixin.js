@@ -156,7 +156,7 @@ define([
         * Parameters for loading a feature (featureid and featuretype) have to be paired to zoom to a feature.
         * @returns {void}
         */
-        _handleQueryString: function (queryString) {
+        _handleQueryString: function (queryString) { //eslint-disable-line complexity
             var self = this, //so we don't lose track of the application as the appropriate closure scope
                 uri = (queryString || window.location.href),
                 qs = (uri.indexOf('?') >= 0 ? uri.substring(uri.indexOf('?') + 1, uri.length) : '').toLowerCase(),
@@ -196,10 +196,14 @@ define([
                     zoomOnLoadProject = false;
                 }
                 args.push([qsObj.projectid, zoomOnLoadProject]);
-            //load an AOI
+                //load an AOI
             } else if (qsObj.aoiid) {
                 functions.push(this.addAoiToMap);
                 args.push([qsObj.aoiid]);
+            //load an AOI analysis area
+            } else if (qsObj.aoianalysisareaid) {
+                functions.push(this.addAoiAltToMap);
+                args.push([qsObj.aoianalysisareaid]);
             //load a project feature
             } else if (qsObj.featureid && qsObj.featuretype) {
                 functions.push(this.addProjectFeatureToMap);
@@ -355,7 +359,7 @@ define([
          * @param {Object} renderer Optional renderer to be used to display the layer in the map
          * @returns {Object} an ArcGIS layer of some sort; specific type depends on the layer definition
          */
-        constructLayer: function (layerDef, definitionExpression, includeDefinitionExpressionInTitle, renderer) {
+        constructLayer: function (layerDef, definitionExpression, includeDefinitionExpressionInTitle, renderer) { //eslint-disable-line max-statements
             var layer = null,
                 visibleLayers = layerDef.visibleLayers || null; //cache the visible layers
 
@@ -1110,6 +1114,58 @@ define([
                     deferred.reject(message);
                 }
             });
+            return deferred;
+        },
+
+        /**
+         * Adds just the referenced AOI analysis area to the map.
+         * @param {number} aoiAltId Identifier of an AOI analysis area (feature in S_AOI);
+         * @returns {Deferred} A Deffered object to be resolved when the layer has been loaded.
+         */
+        addAoiAltToMap: function (aoiAltId) {
+            var self = this, //so we don't lose track buried down in callbacks
+                definitionExpression = 'FK_PROJECT_ALT = ' + aoiAltId,
+                deferred = new Deferred();
+
+            MapDAO.getAoiAnalysisAreaName(aoiAltId, { //eslint-disable-line no-undef
+                callback: function (name) {
+                    var layerDef = {
+                            id: 'aoi_analysis_area_' + aoiAltId,
+                            url: projects.aoiLayers.analysisAreaBuffer,
+                            name: name,
+                            type: 'feature'
+                        },
+                        layer = self.constructLayer(layerDef, definitionExpression);
+
+                    self.addLayer(layer, false, true).then(
+                        function () {
+                            topic.publish('layerLoader/layersChanged');
+                            topic.publish('layerLoader/aoiAdded', layer);
+                            var q = new Query({
+                                where: '1=1' //definitionExpression doesn't need to be re-applied
+                            });
+                            layer.queryExtent(q).then(
+                                function (extentReply) {
+                                    extentReply.extent.expand(1.5);
+                                    self.zoomToExtent(extentReply.extent).then(function () {
+                                        deferred.resolve(layer);
+                                    });
+                                }
+                                //todo handle error from queryExtent
+                            );
+                        },
+                        function (err) {
+                            deferred.reject(err);
+                        }
+                    );
+
+                },
+                errorHandler: function (err) {
+                    deferred.reject(err);
+                }
+            });
+                
+
             return deferred;
         },
 
