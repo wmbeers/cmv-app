@@ -595,10 +595,7 @@ define([
                         layer.layerInfos[i].layerName = layerDef.layers[i].layerName;
                     }
                 }
-                if (layerDef.layerName) {
-                    layer.layerName = layerDef.layerName;
-                }
-                //todo: put this in config? Or have some default options if not in config?
+
                 var layerControlInfo = {
                     controlOptions: {
                         expanded: false,
@@ -609,6 +606,7 @@ define([
                         noZoom: true, //we use our own zoom-to function, defined in menu below
                         mappkgDL: true,
                         allowRemove: true,
+                        //these are the menus that show up for stand-alone featureLayers
                         menu: [
                             {
                                 label: 'Open Attribute Table',
@@ -616,19 +614,20 @@ define([
                                 iconClass: 'fa fa-table fa-fw'
                             },
                             {
-                                label: 'Zoom to Layer', //TODO support i18n.zoomTo,
+                                label: 'Zoom to Layer',
                                 topic: 'zoomToLayer',
                                 iconClass: 'fas fa-fw fa-search'
-                            },
+                            }/* added below only if the layerDef has a layerName property,
                             {
                                 label: 'View Metadata',
                                 topic: 'viewMetadata',
                                 iconClass: 'fa fa-info-circle fa-fw'
-                            }
+                            }*/
                         ],
-                        //Note: the following is what's documented on the CMV site, but doesn't work, 
+                        //The subLayerMenu array contains the menu items that show up on sub-layers of a ArcGISDynamicMapServiceLayer
+                        //Note: defining it as an object with dynamic/etc properties, as shown in the rest of this comment, is 
+                        //what's documented on the CMV site, but doesn't work (or I'm not doing it right)
                         //see below for the correct way discovered via trial-and-error
-                        // gives all dynamic layers the subLayerMenu items
                         //subLayerMenu: {
                         //    dynamic: [{
                         //        label: 'Query Layer...',
@@ -640,30 +639,48 @@ define([
                         //        iconClass: 'fa fa-table fa-fw'
                         //    }]
                         //},
-                        //TODO finish working on menus
                         subLayerMenu: [
-                            //{
-                            //    label: 'Query Layer...',
-                            //    iconClass: 'fa fa-search fa-fw',
-                            //    topic: 'queryLayer'
-                            //},
                             {
                                 label: 'Open Attribute Table',
                                 topic: 'layerLoader/openAttributeTable',
                                 iconClass: 'fa fa-table fa-fw'
                             },
                             {
+                                label: 'Zoom to Layer',
+                                topic: 'zoomToLayer',
+                                iconClass: 'fas fa-fw fa-search'
+                            }/* added below only if the layerDef has a layerName property,
+                            {
                                 label: 'View Metadata',
                                 topic: 'viewMetadata',
                                 iconClass: 'fa fa-info-circle fa-fw'
-                            }
+                            }*/
                         ]
                     },
                     layer: layer,
                     title: layerDef.title,
                     type: layerDef.type
                 };
-                topic.publish('layerControl/addLayerControls', [layerControlInfo]); //TODO the whole collection of layers to be added should be passed at once for layerGroup to do anything.
+
+                if (layerDef.layerName) {
+                    layer.layerName = layerDef.layerName;
+                    layerControlInfo.controlOptions.menu.push(
+                        {
+                            label: 'View Metadata',
+                            topic: 'viewMetadata',
+                            iconClass: 'fa fa-info-circle fa-fw'
+                        }
+                    );
+                    layerControlInfo.controlOptions.subLayerMenu.push(
+                        {
+                            label: 'View Metadata',
+                            topic: 'viewMetadata',
+                            iconClass: 'fa fa-info-circle fa-fw'
+                        }
+                    );
+                }
+
+                topic.publish('layerControl/addLayerControls', [layerControlInfo]); //TODO the whole collection of layers to be added should be passed at once for layerGroup to do anything. We're not currently supporting layerGroup so this can wait.
                 topic.publish('identify/addLayerInfos', [layerControlInfo]);
                 self.legendLayerInfos.push(layerControlInfo);
 
