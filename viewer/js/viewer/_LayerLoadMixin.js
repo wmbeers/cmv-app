@@ -985,7 +985,7 @@ define([
             layerName = layerName.toLowerCase();
 
             topic.publish('growler/growl', 'Fetching metadata for ' + displayName);
-            window.open('https://etdmpub.fla-etat.org/est/metadata/' + layerName + '.htm');
+            window.open('https://etdmpub.fla-etat.org/meta/' + layerName + '.xml');
 
             //using request instead of the direct href property so we can handle errors
             //there's probably a way to handle errors with dialog.show, but Dojo documentation isn't clear on that
