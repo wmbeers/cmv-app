@@ -42,7 +42,7 @@
                 <p data-bind="text: description"></p>
                 <label data-bind="text: scaleText"></label>
                 <p data-bind="if: layerName">
-                    <a data-bind="attr: {href: '/metadata/' + layerName + '.htm'}" target="_blank">View Complete Metadata</a>
+                    <a data-bind="attr: {href: '/meta/' + layerName + '.xml'}" target="_blank">View Complete Metadata</a>
                 </p>
             </div>
             <div data-bind="visible: !loadable, foreach: categories">
