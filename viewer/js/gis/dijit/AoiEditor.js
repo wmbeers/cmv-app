@@ -293,7 +293,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this.newFeatureDialog.show();
         },
 
-        aoiId: ko.observable(null), //the ID of the current AOI being edited, if one is loaded; observable so links to it work elsewhere
+        //the ID of the current AOI being edited, if one is loaded; observable so links to it work elsewhere
+        aoiId: ko.observable(null), //eslint-disable-line no-undef
 
         //navigation functions
         //mode observable defined in knockoutify
@@ -845,7 +846,13 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             //});
             layer.applyEdits([feature.graphic], null, null, function (addResult) {
                 if (!addResult || addResult.length === 0) {
-                    //todo warn user and handle situation. Not sure if this actually happens
+                    topic.publish('growler/growlError', 'No response from applyEdits call.');
+                    deferred.reject('No response from applyEdits call.');
+                    return;
+                } else if (addResult[0].error) {
+                    topic.publish('growler/growlError', addResult[0].error);
+                    deferred.reject(addResult[0].error);
+                    return;
                 }
 
                 //make it active
