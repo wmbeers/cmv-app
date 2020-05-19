@@ -180,12 +180,7 @@ define([
                 functions.push(this.loadMap);
                 args.push([qsObj.loadmap]);
             }
-            //load a layer
-            if (qsObj.layername) {
-                functions.push(this.addLayerByLayerName);
-                args.push([qsObj.layername]);
-            }
-            //load a project or alternative
+            //load a project, alternative, AOI, AOI analysis area, or feature
             if (qsObj.projectid) {
                 //addProjectToMap accepts multiple arguments (projectAltId, zoomOnLoad, _deferred, queryDraft)
                 //we only care about the first two
@@ -212,6 +207,11 @@ define([
                     zoomOnLoadFeature = false;
                 }
                 args.push([qsObj.featureid, qsObj.featuretype, zoomOnLoadFeature]);
+            }
+            //load a layer
+            if (qsObj.layername) {
+                functions.push(this.addLayerByLayerName);
+                args.push([qsObj.layername]);
             }
             //coordinate to zoom to, we don't support both at the same time, and really currently only use mgrs
             if (qsObj.mgrs) {
