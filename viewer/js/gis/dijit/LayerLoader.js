@@ -798,6 +798,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
                 encodedSearchTerms +
                 '+OR+description:' +
                 encodedSearchTerms +
+                '+OR+topic:' +
+                encodedSearchTerms +
                 ')';
             if (this.credentials.length === 0) {
                 searchUrl += '+AND+restricted:N';
@@ -807,7 +809,10 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
                 var resultDocs = JSON.parse(reply).response.docs;
                 var searchResults = [];
                 resultDocs.forEach(function (doc) {
-                    if (doc.type === 'category') {
+                    //this business of checking if it's an array is because SOLR returns the type as an array. I don't think it should do that,
+                    //and perhaps we can fix it, so I've added a test to see if it's an array with value 'category' as a work-around,
+                    //and a test for simple string match if/when we do fix SOLR.
+                    if (doc.type && (Array.isArray(doc.type) && doc.type.indexOf('category') >= 0) || doc.type === 'category') {
                         var cat = self.allCategories.find(function (c) {
                             return ('c' + c.id) === doc.id;
                         });
