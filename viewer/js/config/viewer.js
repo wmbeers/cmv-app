@@ -1015,6 +1015,18 @@ define([
                         */
                     ]
                 }
+            },
+            dnd: {
+                include: true,
+                id: 'dnd',
+                type: 'titlePane',
+                canFloat: true,
+                path: 'gis/dijit/DnD',
+                title: 'Drag and Drop',
+                position: 3,
+                options: {
+                    map: true
+                }
             }
 
             /* TODO: need Google Maps API key,
