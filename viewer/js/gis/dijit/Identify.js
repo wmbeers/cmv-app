@@ -248,7 +248,6 @@ define([
             }
         },
         executeIdentifyTask: function (evt) {
-            debugger;
             var mapPoint = evt.mapPoint;
             var identifyParams = this.createIdentifyParams(mapPoint);
             var identifies = [];
