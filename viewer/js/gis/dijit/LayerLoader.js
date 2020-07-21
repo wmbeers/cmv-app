@@ -792,7 +792,9 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
                 encodedSearchTerms +
                 '"^100+OR+description:"' +
                 encodedSearchTerms +
-                '"^50+OR+name:' +
+                '"^50+OR+topic:"' +
+                encodedSearchTerms +
+                '"^75+OR+name:' +
                 encodedSearchTerms +
                 '+OR+longName:' +
                 encodedSearchTerms +
@@ -800,7 +802,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
                 encodedSearchTerms +
                 '+OR+topic:' +
                 encodedSearchTerms +
-                '^75)';
+                ')';
             if (this.credentials.length === 0) {
                 searchUrl += '+AND+restricted:N';
             }
