@@ -800,7 +800,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
                 encodedSearchTerms +
                 '+OR+topic:' +
                 encodedSearchTerms +
-                ')';
+                '^75)';
             if (this.credentials.length === 0) {
                 searchUrl += '+AND+restricted:N';
             }
