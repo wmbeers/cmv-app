@@ -71,6 +71,9 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
         //flags whether user wants to clear layers from the map before loading a new map
         clearMapFirst: ko.observable(false), // eslint-disable-line no-undef
 
+        //flags whether user wants to zoom to a saved map extent
+        zoomToSavedMapExtent: ko.observable(false), // eslint-disable-line no-undef
+
         //tracks whether changes have been made to the map
         hasUnsavedChanges: ko.observable(false), // eslint-disable-line no-undef
 
@@ -471,7 +474,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
         loadSelectedMap: function () {
             if (this.selectedMap()) {
                 this.currentMap(this.selectedMap());
-                topic.publish('layerLoader/loadMap', this.selectedMap().id, this.clearMapFirst());
+                topic.publish('layerLoader/loadMap', this.selectedMap().id, this.clearMapFirst(), this.zoomToSavedMapExtent());
                 this.loadMapDialog.hide();
             }
         },

@@ -114,7 +114,7 @@ define([
             //TODO expand to addLayer
             //TODO could also consider expanding to chain multiple events, like load several layers, load a saved map and add a project, etc.
             if (qsObj.loadmap) {
-                this.loadMap(qsObj.loadmap);
+                this.loadMap(qsObj.loadmap, false, true); //load map, don't clear layers, zoom to extent
             } else if (qsObj.projectid) {
                 this.addProjectToMap(qsObj.projectid);
             } else if (qsObj.aoiid) {
@@ -908,9 +908,10 @@ define([
          * Loads a saved map from the server.
          * @param {number} savedMapId ID of the saved map to load
          * @param {boolean} clearMapFirst Optional, if true, all user layers will be removed from the map before loading new layers; if false or absent, layers from the saved map will be added on top of the layers already in the map.
+         * @param {boolean} zoomToSavedMapExtent Optional, if true, all map will zoom to the saved map's extent before loading new layers; if false or absent, the map stays at the current extent.
          * @return {void}
          */
-        loadMap: function (savedMapId, clearMapFirst) {
+        loadMap: function (savedMapId, clearMapFirst, zoomToSavedMapExtent) {
             var self = this, //DWR callback loses scope of this
                 deferred = new Deferred(); // promise to be fullfilled when map is done loading and map has zoomed
 
@@ -919,7 +920,7 @@ define([
             MapDAO.getSavedMapBeanById(savedMapId, {
                 callback: function (savedMap) {
                     if (savedMap) {
-                        self._loadMap(savedMap, clearMapFirst, deferred);
+                        self._loadMap(savedMap, clearMapFirst, zoomToSavedMapExtent, deferred);
                         deferred.then(
                             function (layers) {
                                 topic.publish('growler/removeUpdatable');
@@ -1022,10 +1023,11 @@ define([
          * Callback function from MapDAO.getSavedMapBeanById call made in LoadMap function.
          * @param {object} savedMap The SavedMapBean returned from the DWR call
          * @param {boolean} clearMapFirst Optional, if true, all user layers will be removed from the map before loading new layers; if false or absent, layers from the saved map will be added on top of the layers already in the map.
+         * @param {boolean} zoomToSavedMapExtent Optional, if true, all map will zoom to the saved map's extent before loading new layers; if false or absent, the map stays at the current extent.
          * @param {object} deferred The Deferred object to be resolved when the map is done loading
          * @return {void}
          */
-        _loadMap: function (savedMap, clearMapFirst, deferred) {
+        _loadMap: function (savedMap, clearMapFirst, zoomToSavedMapExtent, deferred) {
             var self = this; //this changes context in the "then" callback
             if (savedMap) {
                 if (savedMap.layers.length === 0) {
@@ -1034,7 +1036,7 @@ define([
                 if (clearMapFirst) {
                     this.clearUserLayers();
                 }
-                if (savedMap.extent) {
+                if (zoomToSavedMapExtent && savedMap.extent) {
                     var savedMapExtent = new Extent({
                         xmin: savedMap.extent.xmin,
                         ymin: savedMap.extent.ymin,
