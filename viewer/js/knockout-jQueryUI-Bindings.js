@@ -12,8 +12,6 @@
 /// Refer to http://www.jqueryui.com for more information about each widget.
 ///</summary>
 
-//disable eslint no-undef rule because we reference knockout, jquery, and moment
-/* eslint-disable no-undef */
 ko.afterInitialBindingCallbacks = [];
 
 ko.afterInitialBindingTrigger = function () {
@@ -302,7 +300,7 @@ ko.virtualElements.allowedBindings.stopBinding = true;
 //add a new function to the knockout observable function to test
 //for null or empty/whitespace string
 //first add a stand-alone function, because we'll use that elsewhere
-function isNullOrWhiteSpace (value) {
+ko.utils.isNullOrWhiteSpace = function (value) {
     if (typeof value === 'undefined') {
         return true;
     }
@@ -315,12 +313,12 @@ function isNullOrWhiteSpace (value) {
         }
     }
     return false;
-}
+};
 
 //apply to observable
 ko.observable.fn.isNullOrWhiteSpace = function () {
     var o = ko.utils.unwrapObservable(this);
-    return isNullOrWhiteSpace(o);
+    return ko.utils.isNullOrWhiteSpace(o);
 };
 //apply to computed
 ko.computed.fn.isNullOrWhiteSpace = ko.observable.fn.isNullOrWhiteSpace;
@@ -652,4 +650,3 @@ ko.subscribable.fn.subscribeChanged = function (callback) {
     });
 };
 
-/* eslint-enable no-undef */
