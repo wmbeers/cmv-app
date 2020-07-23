@@ -301,22 +301,30 @@ ko.virtualElements.allowedBindings.stopBinding = true;
 
 //add a new function to the knockout observable function to test
 //for null or empty/whitespace string
-ko.observable.fn.isNullOrWhiteSpace = function () {
-    var o = ko.utils.unwrapObservable(this);
-    if (o === null) {
+//first add a stand-alone function, because we'll use that elsewhere
+function isNullOrWhiteSpace (value) {
+    if (typeof value === 'undefined') {
         return true;
     }
-    if (typeof o === 'string') {
-        if (o === '') {
+    if (typeof value === 'string') {
+        if (value === '') {
             return true;
         }
-        if (o.replace(/^\s+|\s+jQuery/g, '').length === 0) {
+        if (value.replace(/^\s+|\s+$/g, '').length === 0) {
             return true;
         }
     }
     return false;
+}
+
+//apply to observable
+ko.observable.fn.isNullOrWhiteSpace = function () {
+    var o = ko.utils.unwrapObservable(this);
+    return isNullOrWhiteSpace(o);
 };
+//apply to computed
 ko.computed.fn.isNullOrWhiteSpace = ko.observable.fn.isNullOrWhiteSpace;
+
 //not used, doesn't work with current version of ko
 //ko.bindingHandlers['tristate'] = {
 //    'after': ['value', 'attr'],

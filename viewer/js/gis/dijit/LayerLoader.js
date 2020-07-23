@@ -602,6 +602,10 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
         addProject: function () {
             //TODO: first a quick DWR call to check if user can see it (valid project, if draft then only show if user has draft access, etc.)
             //either do that here or in addProjectToMap function
+            if (isNullOrWhiteSpace(this.projectAltId.value)) { //eslint-disable-line no-undef
+                topic.publish('growler/growlError', 'Please enter a project ID to add to the map');
+                return;
+            }
             topic.publish('layerLoader/addProjectToMap', this.projectAltId.value);
         },
 
@@ -777,7 +781,12 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
             */
         handleSearch: function () {
             var self = this; //solves the problem of "this" meaning something different in request callback handler
-            this.searchResultsError(null);
+            self.searchResultsError(null);
+            self.searchResults([]); //clear results
+            if (isNullOrWhiteSpace(this.searchNode.displayedValue)) { //eslint-disable-line no-undef
+                topic.publish('growler/growlError', 'Please enter terms to search for in the Search Layers.');
+                return;
+            }
             //eslint-disable-next-line no-useless-escape
             var encodedSearchTerms = encodeURIComponent(this.searchNode.displayedValue.replace(/([-\+\|\!\{\}\[\]\:\^\~\*\?\(\)])/g, '\\$1')); // escape solr special chars
 
