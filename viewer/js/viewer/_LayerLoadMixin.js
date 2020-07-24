@@ -1362,8 +1362,23 @@ define([
 
             if (layer.layerDef) {
                 if (subLayer) {
-                    //sublayer has ids that are just the index of the layer within the dynamic map service layer
-                    var subLayerDef = layer.layerDef.layerDefs[subLayer.id];
+                    //sublayer has ids that are the index of the layer within the dynamic map service layer,
+                    //but that id also takes into account the folders that might be used to organize layers within
+                    //a service, while our layerDefs ignore foldrs. So you can't just do this:
+                    //var subLayerDef = layer.layerDef.layerDefs[subLayer.id];
+                    //and be assured of getting the right layerDef; you'll be off by one for each folder defined 
+                    //for the service above our current index. So this little dance gets us there:
+                    //first get the service's layers excluding folders:
+                    //var filteredLayerInfos = layer.layerInfos.filter(function (l) {return l.subLayerIds == null});
+                    //then find the index of sublayer in the filtered array
+                    //var i = filteredLayerInfos.indexOf(subLayer);
+                    //and finally use that index to get the layerDef out of our array.
+                    //var subLayerDef = layer.layerDef.layerDefs[i];
+                    //above seems to work, but I still worry about using index for anything
+                    //so I've updated LLC to write the layerIndex, and we can just use that
+                    var subLayerDef = layer.layerDef.layerDefs.find(function (ld) {
+                        return ld.layerIndex === subLayer.id;
+                    });
                     layerName = subLayerDef ? subLayerDef.layerName : null;
                 } else if (layer.layerDef.layerDefs && layer.layerDef.layerDefs.length === 1) {
                     //this is the case for dynamic map services with only one layer, CMV handles those differently
