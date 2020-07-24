@@ -543,7 +543,7 @@ define([
                         subLayerMenu: [
                             {
                                 label: 'Open Attribute Table',
-                                topic: 'layerLoader/openAttributeTable',
+                                topic: 'openAttributeTable',
                                 iconClass: 'fa fa-table fa-fw'
                             },
                             {
