@@ -661,7 +661,7 @@ define([
                     title: layerDef.title,
                     type: layerDef.type
                 };
-
+                //add metadata link for stand-alone layers (i.e. feature layers of a map service), if they've got a layerName property defined
                 if (layerDef.layerName) {
                     layer.layerName = layerDef.layerName;
                     layerControlInfo.controlOptions.menu.push(
@@ -671,6 +671,9 @@ define([
                             iconClass: 'fa fa-info-circle fa-fw'
                         }
                     );
+                }
+                //add metadata link for service layers with sub layers
+                if (layerDef.layerDefs && layerDef.layerDefs.length > 1) {
                     layerControlInfo.controlOptions.subLayerMenu.push(
                         {
                             label: 'View Metadata',
