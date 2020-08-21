@@ -118,14 +118,15 @@ module.exports = function (grunt) {
             build: {
                 src: [
 					'viewer/**/*.js', 
-					'!viewer/js/gis/dijit/DnD.js', 
+					//exclusions follow. These were in .eslintignore, but on new laptop suddenly that's not working; probably some global setting I had on old laptop.
+					'!viewer/js/gis/dijit/DnD.js', //ignoring DnD problems because we're not using it yet and I don't want to deal with potential merge conflicts if I fix then update from source
 					'!viewer/js/gis/dijit/DnD/*.js',
-					'!viewer/js/externalTest.js',
-					'!viewer/js/config/layerLoader.js',
-					'!viewer/js/config/projects.js',
-					'!viewer/js/knockout-latest.js',
-					'!viewer/js/viewer/_EditorMixin.js',
-					'!viewer/js/string.polyfill.js'
+					'!viewer/js/externalTest.js', //test file
+					'!viewer/js/config/layerLoader.js', //auto-generated config file that results in thousands of errors and warnings
+					'!viewer/js/config/projects.js', //auto-generated config file that results in thousands of errors and warnings
+					'!viewer/js/knockout-latest.js', //knockout source
+					'!viewer/js/string.polyfill.js', //meh
+					'!viewer/js/knockout-jQueryUI-Bindings.js' //has references to external libraries jQuery and moment
 				],
                 options: {
                     eslintrc: '.eslintrc'

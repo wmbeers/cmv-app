@@ -256,7 +256,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
         showAnalysisOption: function () {
             //add to input queue (only does new/updated features; no need to wait for response; it can take a while to process, and it's ok to set the status to ready for GIS--that will wait if necessary)
-            MapDAO.addAltFeaturesToInputQueue(this.projectAltId); //eslint-disable-line no-undef
+            MapDAO.addAltFeaturesToInputQueue(this.projectAltId);
             this.deactivateExtract(); //deactivates draw tool too
             this.edit.deactivate();
 
@@ -266,7 +266,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         startAnalysis: function () {
             var self = this;
             self.analysisStatus(self.analysisStatuses.ANALYSIS_STARTING);
-            MapDAO.startAnalysisForAlternative(this.projectAltId, { //eslint-disable-line no-undef
+            MapDAO.startAnalysisForAlternative(this.projectAltId, {
                 callback: function (reply) {
                     if (reply === 'ok') {
                         self.analysisStatus(self.analysisStatuses.ANALYSIS_RUNNING);
@@ -284,7 +284,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 },
                 errorHandler: function (message, exception) {
                     self.analysisStatus(self.analysisStatuses.EDITING);
-                    topic.publish('growler/growlError', 'Error starting analysis. Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)); //eslint-disable-line no-undef
+                    topic.publish('growler/growlError', 'Error starting analysis. Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2));
                 }
             });
         },
@@ -292,7 +292,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         checkAnalysisProgress: function () {
             var self = this;
             self.progressErrorCount = self.progressErrorCount || 0;
-            //eslint-disable-next-line no-undef
             MapDAO.getAltAnalysisProgress(this.projectAltId, {
                 callback: function (p) {
                     var s = self.analysisStatuses.fromProgressResultCode(p.progressGIS.code);
@@ -322,7 +321,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         //called from startup or external call to start editing a project
         loadProject: function (projectId) {
             var self = this;
-            MapDAO.getEditableAlternativeOfProjectList(projectId, { //eslint-disable-line no-undef
+            MapDAO.getEditableAlternativeOfProjectList(projectId, {
                 callback: function (projectList) {
                     if (projectList.length === 0) {
                         topic.publish('growler/growlError', 'Project ' + projectId + ' has no editable alternatives');
@@ -375,7 +374,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 errorHandler: function (message, exception) {
                     topic.publish('viewer/handleError', {
                         source: 'ProjectEditor.listProjectAlts',
-                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)
                     });
                 }
             });
@@ -388,7 +387,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             this.loadingOverlay.show('Loading Project');
 
-            //eslint-disable-next-line no-undef
             MapDAO.getPermissionToEditProjectAlt(projectAlt.id, {
                 callback: function (permission) {
                     self.loadingOverlay.hide();
@@ -411,7 +409,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     self.loadingOverlay.hide();
                     topic.publish('viewer/handleError', {
                         source: 'ProjectEditor.loadProjectAlt',
-                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)
                     });
                 }
             });
@@ -709,7 +707,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             on(this.undoManager, 'change', lang.hitch(this, 'updateUndoRedoButtons'));
 
             //customizing the draw toolbar so the UI can remind user what they're doing, and have ability to cancel
-            //eslint-disable-next-line no-undef
             self.drawMode = ko.observable(); //either null, 'draw', 'extract1', 'extract2', or 'split'; controls what happens in draw-complete and visibility of cancel buttons in sidebar
 
             self.activateDrawTool = function (mode) {
@@ -843,7 +840,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
                     if (geometry && cutter) {
                         self.loadingOverlay.show('Splitting features...');
-                        //eslint-disable-next-line no-undef
                         esriConfig.defaults.geometryService.cut([geometry], cutter,
                             function (result) {
                                 self.loadingOverlay.hide();
@@ -1082,7 +1078,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     self.zoomTo();
                 } else {
                     //construct a new extent based on regions
-                    MapDAO.getProjectRegionExtent(self.currentProjectAlt().projectId, { //eslint-disable-line no-undef
+                    MapDAO.getProjectRegionExtent(self.currentProjectAlt().projectId, {
                         callback: function (extentBean) {
                             self.loadingOverlay.hide();
                             self.extent = new Extent({
@@ -1146,7 +1142,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             //back-reference, supports clicking map or model
             feature.graphic.feature = feature;
 
-            /* eslint-disable no-undef */
             feature.name = ko.observable(feature.name);
             feature.visible = ko.observable(true);
             feature.visible.subscribe(function (visible) {
@@ -1289,8 +1284,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             };
             feature.cachePreUpdate();
 
-            /* eslint-enable no-undef */
-
             return feature;
         },
 
@@ -1305,7 +1298,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 return deferred;
             }
 
-            //eslint-disable-next-line no-undef
             MapDAO.getEditableAlternativeList(orgId, {
                 callback: function (projectList) {
                     projectList.forEach(function (projectAlt) {
@@ -1325,7 +1317,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 errorHandler: function (message, exception) {
                     topic.publish('viewer/handleError', {
                         source: 'ProjectEditor.listProjectAlts',
-                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)
                     });
                     deferred.reject(message);
                 }
@@ -1337,7 +1329,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             var deferred = null;
             if (geometry) {
                 if (geometry.type === 'polygon') {
-                    deferred = esriConfig.defaults.geometryService.simplify([geometry]); //eslint-disable-line no-undef
+                    deferred = esriConfig.defaults.geometryService.simplify([geometry]);
                 } else {
                     //todo do we need to simplify polylines?
                     deferred = new Deferred();
@@ -1366,8 +1358,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         //eslint-disable-next-line max-statements
         _knockoutifyProjectEditor: function () {
             var self = this;
-
-            /* eslint-disable no-undef */
 
             this.projects = ko.observableArray(); //not really projects, but rather editable project alts.
 
@@ -1628,8 +1618,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             ko.applyBindings(this, dom.byId('openProjectDialog'));
             //apply knockout bindings to new feature dialog
             ko.applyBindings(this, dom.byId('newProjectFeatureDijit'));
-
-            /* eslint-enable no-undef */
         },
 
         _createGraphicLayers: function () {

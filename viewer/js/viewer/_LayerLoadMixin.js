@@ -776,7 +776,6 @@ define([
         addAoiToMap: function (aoiId) {
             var self = this;
 
-            //eslint-disable-next-line no-undef
             MapDAO.getAoiModel(aoiId, {
                 callback: function (aoi) {
                     //todo loading overlay for this class self.loadingOverlay.hide();
@@ -790,7 +789,7 @@ define([
                     //self.loadingOverlay.hide();
                     topic.publish('viewer/handleError', {
                         source: '_LayerLoadMixin/addAoiToMap',
-                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)
                     });
                 }
             });
@@ -876,7 +875,6 @@ define([
             savedMap.layers = this.getLayerConfig();
             savedMap.extent = this.map.extent;
             try {
-                //eslint-disable-next-line no-undef
                 MapDAO.saveMap(savedMap, {
                     callback: function (savedMapId) {
                         savedMap.id = savedMapId;
@@ -889,7 +887,7 @@ define([
                     errorHandler: function (message, exception) {
                         topic.publish('viewer/handleError', {
                             source: 'LayerLoadMixin.saveMap',
-                            error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                            error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)
                         });
                         if (savedMap.deferred) {
                             savedMap.deferred.reject(message);
@@ -915,7 +913,6 @@ define([
                 deferred = new Deferred(); // promise to be fullfilled when map is done loading and map has zoomed
 
             //load from server
-            //eslint-disable-next-line no-undef
             MapDAO.getSavedMapBeanById(savedMapId, {
                 callback: function (savedMap) {
                     if (savedMap) {
@@ -943,7 +940,7 @@ define([
                 errorHandler: function (message, exception) {
                     topic.publish('viewer/handleError', {
                         source: 'LayerLoadMixin.loadMap',
-                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)
                     });
                     deferred.reject(message);
                 }
@@ -1182,14 +1179,13 @@ define([
                 deferred = new Deferred();
             if (extent.spatialReference === map.spatialReference) {
                 this._zoomToExtent(extent, deferred);               
-            } else if (esriConfig.defaults.geometryService) { //eslint-disable-line no-undef
+            } else if (esriConfig.defaults.geometryService) {
                 //project the extent--most often we're getting an extent from one of our layers,
                 //and the extent will be in Albers; need to project it to the Map's World Mercator coordinate system
                 var params = lang.mixin(new ProjectParameters(), {
                     geometries: [extent],
                     outSR: map.spatialReference
                 });
-                //eslint-disable-next-line no-undef
                 esriConfig.defaults.geometryService.project(params,
                     function (r) {
                         extent = new Extent(r[0]);

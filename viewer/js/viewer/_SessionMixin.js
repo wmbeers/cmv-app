@@ -75,8 +75,8 @@ define([
             };
 
             //I would prefer not to use ko here, but I just can't get regular Dojo events right in a Mixin context; would have to convert this to a widget
-            ko.applyBindings(this, dom.byId('warnUserExpiringSoonDialogTemplate')); // eslint-disable-line no-undef
-            ko.applyBindings(this, dom.byId('reLoginDialogTemplate')); // eslint-disable-line no-undef
+            ko.applyBindings(this, dom.byId('warnUserExpiringSoonDialogTemplate'));
+            ko.applyBindings(this, dom.byId('reLoginDialogTemplate'));
 
             //when user moves mouse, log that we've had some activity
             on(window, 'mousemove', function () {
@@ -85,7 +85,7 @@ define([
             //TODO probably need keyUp, etc.
 
             //sync up this applications session length with what's actually on the server
-            ETDMSession.getSessionDuration( //eslint-disable-line no-undef
+            ETDMSession.getSessionDuration(
                 function (sessionLength) {
                     self.secondsPerSession = sessionLength;
                 }
@@ -195,7 +195,6 @@ define([
 
             //pings the server to keep the session alive
             try {
-                // eslint-disable-next-line no-undef
                 ETDMSession.getSessionID({ 
                     callback: function () {
                         //really nothing to do here
@@ -248,7 +247,7 @@ define([
         },
 
         //simple observable to control what's shown on the session-expired dialog
-        userNamePasswordVisible: ko.observable(false), //eslint-disable-line no-undef
+        userNamePasswordVisible: ko.observable(false),
 
         //shows the iframe with ReLogin.do
         showLogin: function () {

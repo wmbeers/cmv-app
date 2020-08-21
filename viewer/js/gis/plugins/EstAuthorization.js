@@ -13,7 +13,7 @@ function (Deferred, topic) {
                 self = this;
 
             if (typeof MapDAO !== 'undefined') {
-                MapDAO.getAuthorities({ //eslint-disable-line no-undef
+                MapDAO.getAuthorities({
                     callback: function (authorization) {
                         self._setApplicationAuths(application, authorization);
                         deferred.resolve();
