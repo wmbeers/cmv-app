@@ -116,7 +116,17 @@ module.exports = function (grunt) {
 
         eslint: {
             build: {
-                src: ['viewer/**/*.js'],
+                src: [
+					'viewer/**/*.js', 
+					'!viewer/js/gis/dijit/DnD.js', 
+					'!viewer/js/gis/dijit/DnD/*.js',
+					'!viewer/js/externalTest.js',
+					'!viewer/js/config/layerLoader.js',
+					'!viewer/js/config/projects.js',
+					'!viewer/js/knockout-latest.js',
+					'!viewer/js/viewer/_EditorMixin.js',
+					'!viewer/js/string.polyfill.js'
+				],
                 options: {
                     eslintrc: '.eslintrc'
                 }
