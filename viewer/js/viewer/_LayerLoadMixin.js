@@ -1303,13 +1303,12 @@ define([
          * @param {number} savedMapId ID of the saved map to load
          * @param {boolean} clearMapFirst Optional, if true, all user layers will be removed from the map before loading new layers; if false or absent, layers from the saved map will be added on top of the layers already in the map.
          * @param {boolean} zoomToSavedMapExtent Optional, if true, all map will zoom to the saved map's extent before loading new layers; if false or absent, the map stays at the current extent.
-         * @return {void}
+         * @return {Deferred} deferred object resolved after map is loaded.
          */
         loadMap: function (savedMapId, clearMapFirst, zoomToSavedMapExtent) {
             var self = this, //DWR callback loses scope of this
-                deferred = new Deferred(), //wrapper deferred used by this function for the overall progress
-                loadDeferred = new Deferred(); // promise to be fullfilled when map is done loading and map has zoomed
-
+                deferred = new Deferred(); //wrapper deferred used by this function for the overall progress
+ 
             //load from server
             MapDAO.getSavedMapBeanById(savedMapId, {
                 callback: function (savedMap) {
