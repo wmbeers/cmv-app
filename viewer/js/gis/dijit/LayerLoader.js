@@ -163,6 +163,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
             var self = this; //solves the problem of "this" meaning something different in onchange event handler
             this.inherited(arguments);
 
+            this.searchNode.focus(); //hacky way of fixing the problem of the validation icon not showing up if the first thing the user does is click the search button; by forcing focus here it somehow causes dojo to handle validation correctly.
+
             //subscribe to the mapLoaded topic, published by _LayerLoadMixin when the map is loaded from query string
             topic.subscribe('layerLoader/mapLoaded', lang.hitch(this, 'mapLoaded'));
 
@@ -782,14 +784,15 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
         },
 
         /**
-            * Handles searching for layers and services, showing the search results.
-            * @returns {void}
-            */
+         * Handles searching for layers and services, showing the search results.
+         * @returns {void}
+         */
         handleSearch: function () {
             var self = this; //solves the problem of "this" meaning something different in request callback handler
             self.searchResultsError(null);
             self.searchResults([]); //clear results
             if (ko.utils.isNullOrWhiteSpace(this.searchNode.displayedValue)) {
+                this.searchNode.focus(); //put the cursor where we want the user to be
                 this.searching = true; //let's the validator function (added in postCreate) know the user is trying to search w/o entering a value. Since this only happens in response to user typing enter, or clicking the search button, we don't have spurious null validation errors showing up if a user is just tabbing through.
                 this.searchNode.validate(); //calls the validator function and adds the annotation.
                 return; //bail
