@@ -95,15 +95,23 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
         //flattened list of all categories, used for loading saved maps with references to dynamic map services
         allCategories: [],
 
+        searching: false,
+
         postCreate: function () {
             this.inherited(arguments);
+            var self = this; //needed to maintain context within the validator function and onchange event handler
+
+            this.searchNode.validator = function (value) {
+                var hasProblem = self.searching && ko.utils.isNullOrWhiteSpace(value);
+                self.searching = false; //gets set back to true in handleSearch
+                return !hasProblem;
+            };
 
             //copy categories and layerDefs from layerConfig, now that we're not passing it in as options
             this.categories = layerConfig.categories;
             this.layerDefs = layerConfig.layerDefs;
             //TODO above can possibly be removed if we find references to categories and layerDefs and replace with layerConfig.catgories and layerDefs, but not sure how KO deals with it
 
-            var self = this; //solves the problem of "this" meaning something different in onchange event handler
             //computeds that refers to "self"/"this" have to be added here, not in root constructor
             self.mapServiceSearchResults = ko.pureComputed(function () {
                 return ko.utils.arrayFilter(self.searchResults(), function (x) {
@@ -782,9 +790,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
             self.searchResultsError(null);
             self.searchResults([]); //clear results
             if (ko.utils.isNullOrWhiteSpace(this.searchNode.displayedValue)) {
-                topic.publish('growler/growlError', 'Please enter terms to search for in the Search Layers.');
-                return;
+                this.searching = true; //let's the validator function (added in postCreate) know the user is trying to search w/o entering a value. Since this only happens in response to user typing enter, or clicking the search button, we don't have spurious null validation errors showing up if a user is just tabbing through.
+                this.searchNode.validate(); //calls the validator function and adds the annotation.
+                return; //bail
             }
+
             //eslint-disable-next-line no-useless-escape
             var encodedSearchTerms = encodeURIComponent(this.searchNode.displayedValue.replace(/([-\+\|\!\{\}\[\]\:\^\~\*\?\(\)])/g, '\\$1')); // escape solr special chars
 
