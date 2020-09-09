@@ -2,8 +2,8 @@
     <h3>Resource Data</h3>
 
     <label>Search Layers</label><br />
-    <input id="searchNode" type="text" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-point="searchNode" data-dojo-attach-event="keydown: handleSearchKeyDown" />
-    <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-search fa-fw', showLabel: false" data-dojo-attach-event="click: handleSearch">Search</div>
+    <input id="searchNode" type="text" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-props="invalidMessage: 'Type search terms here'" data-dojo-attach-point="searchNode" data-dojo-attach-event="keydown: handleSearchKeyDown" />
+    <div data-dojo-attach-point="searchButton" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-search fa-fw', showLabel: false" data-dojo-attach-event="click: handleSearch">Search</div>
     <br />
     <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-columns fa-fw'" data-dojo-attach-event="click: browseLayers">
         Browse
