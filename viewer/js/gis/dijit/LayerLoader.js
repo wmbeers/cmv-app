@@ -54,40 +54,40 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
         shareMapDialog: null,
 
         //the array of saved maps (just id and mapName), loaded at startup
-        savedMaps: ko.observableArray(), // eslint-disable-line no-undef
+        savedMaps: ko.observableArray(),
 
         //represents the map selected in the loadMapDialog; not the same as the currentMap until the user clicks the open button
-        selectedMap: ko.observable(), // eslint-disable-line no-undef
+        selectedMap: ko.observable(),
 
         //represents the map currently loaded in the viewer; will just be the stub of id and mapName
-        currentMap: ko.observable(), // eslint-disable-line no-undef
+        currentMap: ko.observable(),
 
         //represents the sharable URI for the map currently loaded in the viewer, based on the map
         currentMapUri: null, //just a stub for clarity, will be assigned to pureComputed function in separate step, because it refers back to currentMap
 
         //boolean flag set to true after it's copied to windows clipboard
-        linkCopied: ko.observable(false), //eslint-disable-line no-undef
+        linkCopied: ko.observable(false),
 
         //flags whether user wants to clear layers from the map before loading a new map
-        clearMapFirst: ko.observable(false), // eslint-disable-line no-undef
+        clearMapFirst: ko.observable(false),
 
         //tracks whether changes have been made to the map
-        hasUnsavedChanges: ko.observable(false), // eslint-disable-line no-undef
+        hasUnsavedChanges: ko.observable(false),
 
         //the category currently selected in the layer browser
-        currentCategory: ko.observable(null), // eslint-disable-line no-undef
+        currentCategory: ko.observable(null),
 
         //the layer currently selected in the layer browser
-        currentLayer: ko.observable(null), // eslint-disable-line no-undef
+        currentLayer: ko.observable(null),
 
         //the array of layerDefs and categories returned from searching
-        searchResults: ko.observableArray(), // eslint-disable-line no-undef
+        searchResults: ko.observableArray(),
 
         //stores any errors that happen during search
-        searchResultsError: ko.observable(null), // eslint-disable-line no-undef
+        searchResultsError: ko.observable(null),
 
         //boolean flag for storing whether user wants detailed search results, or just layer/category names
-        showDetails: ko.observable(true), // eslint-disable-line no-undef
+        showDetails: ko.observable(true),
 
         //flattened list of all categories, used for loading saved maps with references to dynamic map services
         allCategories: [],
@@ -102,19 +102,19 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
 
             var self = this; //solves the problem of "this" meaning something different in onchange event handler
             //computeds that refers to "self"/"this" have to be added here, not in root constructor
-            self.mapServiceSearchResults = ko.pureComputed(function () { // eslint-disable-line no-undef
-                return ko.utils.arrayFilter(self.searchResults(), function (x) { // eslint-disable-line no-undef
+            self.mapServiceSearchResults = ko.pureComputed(function () {
+                return ko.utils.arrayFilter(self.searchResults(), function (x) {
                     return x.type === 'dynamic' && x.layerDefs && x.layerDefs.length > 0;
                 });
             });
 
-            self.featureLayerSearchResults = ko.pureComputed(function () { // eslint-disable-line no-undef
-                return ko.utils.arrayFilter(self.searchResults(), function (x) { // eslint-disable-line no-undef
+            self.featureLayerSearchResults = ko.pureComputed(function () {
+                return ko.utils.arrayFilter(self.searchResults(), function (x) {
                     return x.type === 'feature';
                 });
             });
 
-            self.searchResultsCount = ko.pureComputed(function () { // eslint-disable-line no-undef
+            self.searchResultsCount = ko.pureComputed(function () {
                 if (self.mapServiceSearchResults().length === 0 && self.featureLayerSearchResults().length === 0) {
                     return 'No results found';
                 }
@@ -132,7 +132,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
                 return 'Found ' + s.join(' and ');
             });
 
-            self.currentMapUri = ko.pureComputed(function () { // eslint-disable-line no-undef
+            self.currentMapUri = ko.pureComputed(function () {
                 if (self.currentMap() && self.currentMap().id && self.currentMap().id > 0) {
                     //get the base url
                     var uri = window.location.href;
@@ -207,9 +207,9 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
             //});
 
             this._loadSavedMaps().then(function () {
-                ko.applyBindings(self, dom.byId('layerLoaderSideBarKO')); // eslint-disable-line no-undef
-                ko.applyBindings(self, dom.byId('loadMapDialog')); // eslint-disable-line no-undef
-                ko.applyBindings(self, dom.byId('saveMapDialog')); // eslint-disable-line no-undef
+                ko.applyBindings(self, dom.byId('layerLoaderSideBarKO'));
+                ko.applyBindings(self, dom.byId('loadMapDialog'));
+                ko.applyBindings(self, dom.byId('saveMapDialog'));
             }); //note: we need to have this deferred and then apply bindings or the open button does nothing.
 
             //let the application know we're done starting up
@@ -249,7 +249,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
 
                 //for giving user feedback about when it is visible
                 //TODO there's probably no reason for this to be computed, it won't change. As long as this is sorted out before ko.applyBindings, it could just be a simple assignment; or it could just be something we handle in creating layerDerfs.
-                layerDef.scaleText = ko.computed(function () { // eslint-disable-line no-undef
+                layerDef.scaleText = ko.computed(function () {
                     var scaleText = '';
                     var minScale = (layerDef.layer && layerDef.layer.minScale) ? layerDef.layer.minScale : (layerDef.minScale || 0);
                     var maxScale = (layerDef.layer && layerDef.layer.maxScale) ? layerDef.layer.maxScale : (layerDef.maxScale || 0);
@@ -267,11 +267,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
                 });
 
                 //shim the expanded/collapsed properties of a category so we can use the same ko template
-                layerDef.expanded = ko.pureComputed(function () { // eslint-disable-line no-undef
+                layerDef.expanded = ko.pureComputed(function () {
                     return false;
                 });
 
-                layerDef.collapsed = ko.pureComputed(function () { // eslint-disable-line no-undef
+                layerDef.collapsed = ko.pureComputed(function () {
                     return false;
                 });
 
@@ -279,15 +279,15 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
                 layerDef.select = function () {
                     root.currentLayer(layerDef);
                 };
-                layerDef.isSelected = ko.pureComputed(function () { // eslint-disable-line no-undef
+                layerDef.isSelected = ko.pureComputed(function () {
                     return root.currentLayer() === layerDef;
                 });
 
                 //set to true when the layer is loaded into the map
-                layerDef.loaded = ko.observable(false); //eslint-disable-line no-undef
+                layerDef.loaded = ko.observable(false);
 
                 //set to true when the user requests it to be loaded into the map, before it actually gets loaded
-                layerDef.loadPending = ko.observable(false); //eslint-disable-line no-undef
+                layerDef.loadPending = ko.observable(false);
 
                 //TEMPORARY until we figure out if it's possible to load raster layers. Isn't supported in DnD, and I get "Output format not supported." error when I try to create RasterLayer
                 layerDef.loadable = layerDef.type === 'feature';
@@ -302,7 +302,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
             this._processCategories(this);
 
             //apply knockout bindings
-            ko.applyBindings(this, dom.byId('layerLoaderDialog')); // eslint-disable-line no-undef
+            ko.applyBindings(this, dom.byId('layerLoaderDialog'));
 
             //bindings appear to muck this up and set it to the last one
             this.currentCategory(this.categories[0]);
@@ -315,7 +315,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
             });
 
             //apply knockout bindings to search results
-            ko.applyBindings(this, dom.byId('searchResultsDialog')); // eslint-disable-line no-undef
+            ko.applyBindings(this, dom.byId('searchResultsDialog'));
 
             //share map dialog
             this.shareMapDialog = new Dialog({
@@ -325,7 +325,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
             });
 
             //apply knockout bindings to share map
-            ko.applyBindings(this, dom.byId('shareMapDialog')); // eslint-disable-line no-undef
+            ko.applyBindings(this, dom.byId('shareMapDialog'));
 
         },
 
@@ -387,13 +387,13 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
                     //so we bind the expand/collapsed icons based on separate, related properties, and 
                     //only show if there are sub-categories. 
                     //The layerDefs versions of these both return false.
-                    category._expanded = ko.observable(false); // eslint-disable-line no-undef
+                    category._expanded = ko.observable(false);
 
-                    category.expanded = ko.pureComputed(function () { // eslint-disable-line no-undef
+                    category.expanded = ko.pureComputed(function () {
                         return category.categories.length > 0 && category._expanded();
                     });
 
-                    category.collapsed = ko.pureComputed(function () { // eslint-disable-line no-undef
+                    category.collapsed = ko.pureComputed(function () {
                         return category.categories.length > 0 && !category._expanded();
                     });
 
@@ -413,7 +413,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
                     };
 
 
-                    category.isSelected = ko.pureComputed(function () { // eslint-disable-line no-undef
+                    category.isSelected = ko.pureComputed(function () {
                         return root.currentCategory() === category;
                     });
 
@@ -442,7 +442,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
             var self = this;
 
             if (self.enableSavedMaps) {
-                //eslint-disable-next-line no-undef
                 MapDAO.getSavedMapNamesForCurrentUser({
                     callback: function (savedMaps) {
                         self.savedMaps(savedMaps);
@@ -451,7 +450,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
                     errorHandler: function (message, exception) {
                         topic.publish('viewer/handleError', {
                             source: 'LayerLoader._loadSavedMaps',
-                            error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                            error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)
                         });
                         deferred.resolve(); //don't reject! The app is waiting for this deferred to be resolved before calling ko.applyBindings
                     }
@@ -504,7 +503,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
                 return;
             }
 
-            //eslint-disable-next-line no-undef
             MapDAO.deleteSavedMap(sm.id, {
                 callback: function (reply) {
                     //reply will be string "ok", or if we're out of sync with the database, or string starting with "Invalid map ID" (which means it was already deleted--either way, let's sync up our copy of the maps), or some other error message
@@ -522,7 +520,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
                 errorHandler: function (message, exception) {
                     topic.publish('viewer/handleError', {
                         source: 'LayerLoader._deleteSelectedMap',
-                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)
                     });
                 }
             });
@@ -599,7 +597,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
         addProject: function () {
             //TODO: first a quick DWR call to check if user can see it (valid project, if draft then only show if user has draft access, etc.)
             //either do that here or in addProjectToMap function
-            if (isNullOrWhiteSpace(this.projectAltId.value)) { //eslint-disable-line no-undef
+            if (ko.utils.isNullOrWhiteSpace(this.projectAltId.value)) {
                 topic.publish('growler/growlError', 'Please enter a project ID to add to the map');
                 return;
             }
@@ -780,10 +778,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
             var self = this; //solves the problem of "this" meaning something different in request callback handler
             self.searchResultsError(null);
             self.searchResults([]); //clear results
-            if (isNullOrWhiteSpace(this.searchNode.displayedValue)) { //eslint-disable-line no-undef
+            if (ko.utils.isNullOrWhiteSpace(this.searchNode.displayedValue)) {
                 topic.publish('growler/growlError', 'Please enter terms to search for in the Search Layers.');
                 return;
             }
+
             //eslint-disable-next-line no-useless-escape
             var encodedSearchTerms = encodeURIComponent(this.searchNode.displayedValue.replace(/([-\+\|\!\{\}\[\]\:\^\~\*\?\(\)])/g, '\\$1')); // escape solr special chars
 
