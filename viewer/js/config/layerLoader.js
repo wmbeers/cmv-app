@@ -59,6 +59,18 @@ define({
             "serviceId": 24,
             "restricted": false,
             "type": "dynamic"
+          },
+          {
+            "id": 1320,
+            "name": "Future Land Use",
+            "categories": [],
+            "layerIds": [
+              11639
+            ],
+            "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/FLU_L2_2020/MapServer",
+            "serviceId": 86,
+            "restricted": false,
+            "type": "dynamic"
           }
         ],
         "layerIds": [],
@@ -406,13 +418,14 @@ define({
         "name": "Farmland",
         "categories": [],
         "layerIds": [
-          10991,
-          10992,
-          10993,
-          10994,
-          10995
+          11989,
+          11640,
+          11641,
+          11642,
+          11643,
+          11644
         ],
-        "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Farmlands/MapServer",
+        "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Farmlands/MapServer",
         "serviceId": 17,
         "restricted": false,
         "type": "dynamic"
@@ -968,6 +981,18 @@ define({
             "serviceId": 70,
             "restricted": false,
             "type": "dynamic"
+          },
+          {
+            "id": 3730,
+            "name": "Submerged State Land Records",
+            "categories": [],
+            "layerIds": [
+              11959
+            ],
+            "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Submerged_State_Land/MapServer",
+            "serviceId": 88,
+            "restricted": false,
+            "type": "dynamic"
           }
         ],
         "layerIds": [],
@@ -1028,7 +1053,7 @@ define({
           },
           {
             "id": 3831,
-            "name": "CLIP V4",
+            "name": "Critical Lands and Waters Identification Project (CLIP) V4",
             "categories": [],
             "layerIds": [
               246,
@@ -1101,6 +1126,26 @@ define({
             ],
             "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Critical_Habitat/MapServer",
             "serviceId": 14,
+            "restricted": false,
+            "type": "dynamic"
+          },
+          {
+            "id": 3841,
+            "name": "Essential Fish Habitat",
+            "categories": [],
+            "layerIds": [
+              11646,
+              11951,
+              11952,
+              11953,
+              11954,
+              11955,
+              11956,
+              11957,
+              11958
+            ],
+            "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Essential_Fish_Habitat/MapServer",
+            "serviceId": 87,
             "restricted": false,
             "type": "dynamic"
           },
@@ -1221,23 +1266,24 @@ define({
             "name": "Habitat",
             "categories": [],
             "layerIds": [
-              11003,
-              10997,
-              10998,
-              10999,
-              11000,
-              11001,
-              11002,
-              11005,
-              11006,
-              11007,
-              11008,
-              11009,
-              11010,
-              11011,
-              10686
+              11970,
+              11974,
+              11975,
+              11976,
+              11977,
+              11978,
+              11979,
+              11980,
+              11981,
+              11982,
+              11983,
+              11988,
+              11984,
+              11985,
+              11986,
+              11987
             ],
-            "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer",
+            "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer",
             "serviceId": 21,
             "restricted": false,
             "type": "dynamic"
@@ -1396,13 +1442,13 @@ define({
                 "name": "Work Program",
                 "categories": [],
                 "layerIds": [
-                  303,
-                  304,
-                  305,
-                  306,
-                  307,
-                  308,
-                  309
+                  11632,
+                  11389,
+                  11390,
+                  11631,
+                  11633,
+                  11634,
+                  11635
                 ],
                 "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/WorkProgram/MapServer",
                 "serviceId": 58,
@@ -1512,14 +1558,17 @@ define({
             "name": "Utilities",
             "categories": [],
             "layerIds": [
-              288,
-              289,
-              290,
-              291,
-              292,
-              295,
-              293,
-              294
+              11960,
+              11961,
+              11962,
+              11963,
+              11964,
+              11965,
+              11966,
+              11967,
+              11968,
+              11972,
+              11973
             ],
             "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer",
             "serviceId": 51,
@@ -2429,14 +2478,14 @@ define({
     ]
   },
   {
-    "id": 11001,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/7",
+    "id": 11979,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/8",
     "name": "Panther Focus Area",
     "description": "This dataset contains the United States Fish and Wildlife Service Florida Panther Focus Area.",
     "longName": "Habitat Related Polygon Layers\\Panther Focus Area",
     "type": "feature",
     "definitionQuery": null,
-    "layerIndex": 7,
+    "layerIndex": 8,
     "serviceId": 21,
     "layerName": "FA_PANTHER",
     "restricted": false,
@@ -2631,8 +2680,8 @@ define({
     ]
   },
   {
-    "id": 11003,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/1",
+    "id": 11970,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/1",
     "name": "Okaloosa Darter River Ranges",
     "description": "This shapefile shows the river and stream ranges that\r\neither have been or are currently occupied by the Okaloosa\r\ndarter (Etheostoma okaloosae). The Okaloosa darter is a\r\nfederally endangered fish and is protected by the\r\nEndangered Species Act.",
     "longName": "Habitat Related Line Layers\\Okaloosa Darter River Ranges",
@@ -3288,14 +3337,14 @@ define({
     ]
   },
   {
-    "id": 11007,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/11",
+    "id": 11983,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/12",
     "name": "Rare and Imperiled Fish",
     "description": "This dataset contains watershed locations of rare and imperiled fish collections compiled from various sources. Maintaining aquatic ecosystem health is critical for the conservation of a number of rare and imperiled freshwater mussel and fish species. This project employed Geographic Information System (GIS) models to rapidly evaluate and broadly describe streams based upon systemizing up-to-date statewide multi-scale spatial data capable of characterizing aquatic species habitats. Main data sets that were used to attribute the stream network included climate, ecoregions, ecological drainage units, and HUC-12 watersheds. We developed a statewide stream habitat classification GIS data layer that is necessary for the identification of existing and potential habitats of aquatic species. The classification scheme used a set of hierarchical stream habitat abiotic characteristics presumably correlated with the fine-scale stream characteristics important for aquatic species. The nested aquatic classification system crosses landscape-level ecosystem/hydrologic units for freshwater areas. The freshwater aquatic habitat classification provides adequate detail for conducting ecological GIS modeling and large- scale statewide and ecoregional assessments, finer watershed level assessments, as well as assessments at a scale of individual stream segments.",
     "longName": "Habitat Related Polygon Layers\\Rare and Imperiled Fish",
     "type": "feature",
     "definitionQuery": null,
-    "layerIndex": 11,
+    "layerIndex": 12,
     "serviceId": 21,
     "layerName": "RARIMPWATERS",
     "restricted": false,
@@ -3793,14 +3842,14 @@ define({
     ]
   },
   {
-    "id": 11010,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/14",
+    "id": 11985,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/15",
     "name": "Scrub Jay Service Area",
     "description": null,
     "longName": "Habitat Related Polygon Layers\\Scrub Jay Service Area",
     "type": "feature",
     "definitionQuery": null,
-    "layerIndex": 14,
+    "layerIndex": 15,
     "serviceId": 21,
     "layerName": "SA_SCRUB_JAY",
     "restricted": false,
@@ -4762,14 +4811,14 @@ define({
     ]
   },
   {
-    "id": 11006,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/10",
+    "id": 11982,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/11",
     "name": "Seagrass",
     "description": "This polygon GIS data set represents a compilation of statewide seagrass data from various source agencies and scales. The data were mapped from sources ranging in date from 1987 to 2016. Not all data in this compilation are mapped from photography; some are the results of field measurements. See the \"Sources\" section for more information. The original source data sets were not all classified in the same manner; some used the Florida Land Use Cover and Forms Classification System (FLUCCS) codes 9113 for discontinuous seagrass and 9116 for continuous seagrass; some defined only presence and absence of seagrass, and some defined varying degrees of seagrass percent cover. In order to merge all of these data sources into one compilation data set, FWRI reclassified the various source data attribute schemes into two categories: \"Continuous Seagrass\" and \"Patchy (Discontinuous) Seagrass\". In areas where studies overlap, the most recent study where a given area has been interpreted is represented in this data set. This data set is not comparable to previous statewide data sets for time series studies - not all areas have been updated since the previous statewide compilation and some areas previously not mapped are now included. Please contact GIS Librarian to request the source data if you need to do a time series comparison. This data set has been updated in several areas from the previous compilation, including Naples Bay (2007), Choctawhatchee Bay (2007) and the Florida Panhandle (2010), Florida Bay (2010), portions of the Caloosahatchee, Loxahatchee, and St. Lucie Rivers (2011), Lake Worth Lagoon (2013), Rookery Bay (2014), Estero Bay and the West Coast (2014), Indian River Lagoon (2015), the Springs Coast (2016) and Southwest Florida (2016). Version 2 of the Unified Florida Reef Tract Map, with seagrass data ranging in source date from 2004-2015, has also been integrated into this compilation to represent the most recent data available from St. Lucie County to the Dry Tortugas in Florida Keys.",
     "longName": "Habitat Related Polygon Layers\\Seagrass",
     "type": "feature",
     "definitionQuery": null,
-    "layerIndex": 10,
+    "layerIndex": 11,
     "serviceId": 21,
     "layerName": "SEAGRS",
     "restricted": false,
@@ -5668,8 +5717,8 @@ define({
     ]
   },
   {
-    "id": 11000,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/6",
+    "id": 11977,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/6",
     "name": "Panama City Crayfish Range",
     "description": "This dataset contains the United States Fish and Wildlife Service (USFWS) approximate range of the Panama City Crayfish (Procambarus econfinae) for Bay County, Florida. Delineated by Ed Kempner, this version avoids the near shore and bay areas that are near saltwater. In 2014, the boundary near the old airport was expanded to include some survey points that had species occurrence. The small area increased the range by ~23 acres. In 2017, the boundary was again modified to include an area near Deer Point Elementary School (or LH conservation park area) where a positive survey was done and the FWC model shows good potential habitat. The boundary was also modified to include an area south of Hwy 231 (near Pipeline Rd) and an eastern portion (near Star Ave) to include all the Gulf Power easement . These 3 modifications added ~308 acres to the range.",
     "longName": "Habitat Related Polygon Layers\\Panama City Crayfish Range",
@@ -5685,8 +5734,8 @@ define({
       {
         "layerId": 0,
         "label": "",
-        "url": "e685fcb7e80cf05ccd002968e4ebac7d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIhJREFUOI29k8ENwCAMA12JITtMnwzDlvSFBMEJCaLNK1hgfAokHK70i2FGqQDw4L4sjenfJ8wotd3WeqbJfjJkSNKs1+ReNSFLy5IskS3Mfu1GtjAj+OpQ5GEv/mDowdT0ydCLaemDYQTTlXAH0zWUHUw1YRQz9PUimGbCHUxqqB1iuvthn6gX3Me4dGJsbUYAAAAASUVORK5CYII=",
+        "url": "e89859b14dfc839c6f0775bdc6b7825a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAI9JREFUOI21k8ENACEIBDGhSIvxaTHXpfcyMbAo4B0v3ZhlRwLTx8W/GXZ6xq1Zo1pYCqv5vFsaCqKQOz1jNW5UC9LQWRmuD2YaS0NpYULUQJruSv0hMrF01EgltBKd8E1DC9OLbw4lgw//MIt/TJjFv5qyaygZzK1hBDO0eh7M8OpF185E9mhSn01ZCrf1AudmwvfTbq27AAAAAElFTkSuQmCC",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -5954,14 +6003,14 @@ define({
     ]
   },
   {
-    "id": 291,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer/3",
+    "id": 11965,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer/5",
     "name": "FM Tower Structures",
     "description": "This dataset contains the spatial extent of FM Radio Station Transmitter sites in the state of Florida. FM stands for \"Frequency Modulation\", which refers to the means of encoding the audio signal on the carrier frequency. In some countries FM broadcast radio is referred to as \"VHF.\"",
     "longName": "FM Tower Structures",
     "type": "feature",
     "definitionQuery": null,
-    "layerIndex": 3,
+    "layerIndex": 5,
     "serviceId": 51,
     "layerName": "FMTOW",
     "restricted": false,
@@ -5971,8 +6020,8 @@ define({
       {
         "layerId": 0,
         "label": "",
-        "url": "eb4447e9034424f640167f51e79d772d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE5JREFUOI1jYaAyYBk1cIgZ+D9FS5aBXYwZU9eBZ4wTGX6RbCADM/dphj9fxTHE/+mZMjBcOkO6gWSAUQNpbCDjzNMSVDWQHDBq4CA0EACHQQyuh0NsggAAAABJRU5ErkJggg==",
+        "url": "98a53b047c2bdca45797ca0903f278a2",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAOlJREFUOI3t0rFKxEAQxvF/lnR5BwMpLH2Dq6zUSq3E5oqD4apUV+QBtLFKIyypI4Q8haVvcY2H11xzLBfksrGIgkgWsmIj+sEUy8CP2WFCfjjhP/jLQEEugCkQW+wzUBYUD0DnDQpyD8w/3gp1BJwIcqbR1y50EBTk8jP2JVeCPGq0Hg0GBLPO/SssdgaMB9uoTZRRTlChEldvEFRGrYFDpxjxgvEAA4Kqo5u4PGts5TVhTKyXLM+B44H205btnReYke1T0tOGZkF/hwfAiohyYza3NfXOCwTIyV+Bm/fq49jbKPC7+YPgG1AtPkGbzKJtAAAAAElFTkSuQmCC",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -8717,30 +8766,46 @@ define({
     ]
   },
   {
-    "id": 293,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer/6",
-    "name": "Wireless Antenna Structure",
-    "description": "This dataset contains locations from the antenna structures database that are required to register with the Federal Communications Commission (FCC). The FCC requires owners to register those antenna structures which generally are more than 60.96 meters (200 feet) in height or located near an airport.",
-    "longName": "Wireless Antenna Structure",
+    "id": 11959,
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Submerged_State_Land/MapServer/0",
+    "name": "Submerged State Land Records",
+    "description": "The Florida TIITF Land Records Spatial Index is a document based GIS layer to be displayed as a map comprised of polygons and attributes representing parcels described in deeds, leases, easements and other instruments archived in the Title Archives of the Division of State Lands, Department of Environmental Protection for the Florida Board of Trustees of the Internal Improvement Trust Fund (TIITF). The polygons represent parcels described in the archived TIITF land record documents; this is not a tax map or a representation of current ownership. The data includes acquisitions, dispositions and encumbrances. Selecting a parcel on the map may return information about several different documents associated with that parcel through out the history of State land transactions involving that parcel.",
+    "longName": "Submerged State Land Records",
     "type": "feature",
-    "definitionQuery": null,
-    "layerIndex": 6,
-    "serviceId": 51,
-    "layerName": "ANTREG",
+    "definitionQuery": "SUBMERGED_LAND_IND_TEXT = 'Y'",
+    "layerIndex": 0,
+    "serviceId": 88,
+    "layerName": "DSL_PARCEL_COMPOSITE",
     "restricted": false,
-    "minScale": 250000,
+    "minScale": 600000,
     "maxScale": 0,
     "legendSymbols": [
       {
         "layerId": 0,
         "label": "",
-        "url": "39313d83e841bee0cdd2ad332ad7c388",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAK5JREFUOI3tzj0KwkAQhuF31hVE9BiewFIrr+ABBCGQQhDscoNUVhZKwICVtWDrRawEy7SCP5Cxs5Cw6GqhkOnmg3nms3x5bAn+KahjGlyoyZzsI1AjqmRMORMCVgN2wEASjn4NMyIMo8du6JGzBrp+oKFfkHV0SEuW7N8HhRtakCtXv4bKCmg/pVtJOfiBC2YE1KkQojSBDScmrhMnKJCTEAOx8/HLDT2mBH8QvAOx9CQM27oyhwAAAABJRU5ErkJggg==",
+        "url": "9e6913243c37278a0ef361dcfd62ae0e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAKZJREFUOI1jYaAyYKGZgQ6pr/9TatiB2aKMLOgCyBaEl7EzMDAwMGSq8qGIw9RNv/0J7oiVXT9RXYgMyDUMq4HkGHZgtigjLMhYqGEYshkoBlJqGFYvU2IYhoHkGoac5HDGMimGhZex40425BiG08uUGoZhILmGZaryYU+H5BqG04XkGkYwlkk1DGfWI9cwnF6GpSVsZSNyiYIsD2PDDIYbiCsrkQoAT57lPVOTYx8AAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
       }
     ]
+  },
+  {
+    "id": 11968,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer/8",
+    "name": "Wireless Antenna Structure",
+    "description": "This dataset contains locations from the antenna structures database that are required to register with the Federal Communications Commission (FCC). The FCC requires owners to register those antenna structures which generally are more than 60.96 meters (200 feet) in height or located near an airport.",
+    "longName": "Wireless Antenna Structure",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerIndex": 8,
+    "serviceId": 51,
+    "layerName": "ANTREG",
+    "restricted": false,
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": null
   },
   {
     "id": 11368,
@@ -8771,6 +8836,32 @@ define({
         "label": "SOUTH FLORIDA ESO",
         "url": "392f6d7c1896f0db1c3d513f04064e11",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11978,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/7",
+    "name": "Telephus Spurge Range",
+    "description": "This is a dataset representing the polygonal current range boundaries for species as understood by the United States Fish and Wildlife Service for the State of Florida.",
+    "longName": "Habitat Related Polygon Layers\\Telephus Spurge Range",
+    "type": "feature",
+    "definitionQuery": "COMNAME = 'TELEPHUS SPURGE'",
+    "layerIndex": 7,
+    "serviceId": 21,
+    "layerName": "CR_USFWS_POLY",
+    "restricted": false,
+    "minScale": 500000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "c794a80ad7ae809dbd9ce3de4993289e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJJJREFUOI21k8ENACEIBM/En51ZkgVYkp359l4mBhYFvOOlG7PsSIjPxxV/M+yljVuzVHOIVFjN513SUBCG3Esbq3GqOSANnZnh+mCmkTSUFiZEDajprtgfIhNJR41YQinRCV80lDC1+OJQPPjwD734x4Re/Kspq4biwdwaWjBNq6fBNK+ede1EZI1G9dk0UuG2Xj5vAGgpt01OAAAAAElFTkSuQmCC",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -9018,6 +9109,74 @@ define({
         "label": "",
         "url": "11eca2cc3c15ab3aa394a85b7f120274",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYBk1cNTAYWtgvx7Df2oYVniJgZEFxqCGgQwMQyYMRw0c5gYCALQ6BJXj7tcNAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11973,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer/10",
+    "name": "USEIA Natural Gas Pipelines",
+    "description": "This is a polyline dataset representing the major natural gas transmission pipelines in the U.S. including interstate, intrastate, and gathering pipelines.These data were compiled by the U.S. Energy Information Administration from various sources including FERC Form 567—Annual Report of System Flow Diagrams and Capacity, and other external sources such as company web pages and industry press. Updated January 2020.",
+    "longName": "USEIA Natural Gas Pipelines",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerIndex": 10,
+    "serviceId": 51,
+    "layerName": "NATURALGAS_PIPELINES",
+    "restricted": false,
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": null
+  },
+  {
+    "id": 11962,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer/2",
+    "name": "FDEP Certified Power Plants",
+    "description": "This dataset contains Power Plant Siting Act (PPSA) Certified Power Plant locations in the State of Florida.",
+    "longName": "FDEP Certified Power Plants",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerIndex": 2,
+    "serviceId": 51,
+    "layerName": "POWER_PLANTS",
+    "restricted": false,
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "eb4447e9034424f640167f51e79d772d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE5JREFUOI1jYaAyYBk1cIgZ+D9FS5aBXYwZU9eBZ4wTGX6RbCADM/dphj9fxTHE/+mZMjBcOkO6gWSAUQNpbCDjzNMSVDWQHDBq4CA0EACHQQyuh0NsggAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11960,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer/0",
+    "name": "FDEP Public Water Supply Plants (Non-Federal)",
+    "description": "Statewide coverage of Public Water System (PWS) Plants, excluding Federally owned facilities in the State of Florida. Please Note: This data layer is updated daily by FDEP and this dataset represents a snap shot of the data available on May 29th, 2020.",
+    "longName": "FDEP Public Water Supply Plants (Non-Federal)",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerIndex": 0,
+    "serviceId": 51,
+    "layerName": "PWS_PLANTS_NONFED",
+    "restricted": false,
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "0672bfd8cd93260dfc74d2d2742fd93a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAANVJREFUOI3t0zFKA0EUBuDvYdBi1WoRG+/gDewCdhZaWwm2HsBGyA0ikjIWaeIBxCvY6A3SBWEaiyllLLJFEAy6LIjia4b3Fx9/Ma+n4+n9g78WLCfEtCOwrGNIeSBeOwD1sYMjjFuC5RRXWMNWEw4pA6gqtzm7JN6+CMa4qspLzibYbsJNbOAi57j+ZkNyjnvKGe6W4gGfYyvBZg6a9wn7S3sbsAQOcU6MFl/HDaUmUpuGu3XtOKV4XqwxpTzWtb2UtAFjnpL5h2yWktmKEn/nln8QfAdltTXIR3iI1wAAAABJRU5ErkJggg==",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -10694,14 +10853,14 @@ define({
     ]
   },
   {
-    "id": 11011,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/15",
+    "id": 11986,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/16",
     "name": "Woodstork Areas",
     "description": "This dataset contains the Florida Wood Stork core foraging areas for active nesting colonies in Southeastern USA. This dataset has been dissolved by the U.S. Fish and Wildlife Service to minimize polygons. Active nesting colonies includes nested wood storks within FL 2004-2013, GA 2004-2012, SC 2004-2010, NC 2004-2010.",
     "longName": "Habitat Related Polygon Layers\\Woodstork Areas",
     "type": "feature",
     "definitionQuery": null,
-    "layerIndex": 15,
+    "layerIndex": 16,
     "serviceId": 21,
     "layerName": "WOODSTORK_AREAS",
     "restricted": false,
@@ -11190,14 +11349,14 @@ define({
     ]
   },
   {
-    "id": 289,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer/1",
+    "id": 11963,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer/3",
     "name": "US EPA Power Plants",
     "description": "The Emissions & Generation Resource Integrated Database (eGRID) is a comprehensive inventory of environmental attributes of electric power systems. The preeminent source of air emissions data for the electric power sector, eGRID is based on available plant-specific data for all State of Florida electricity generating plants that provide power to the electric grid and report data to the U.S. government. eGRID contains air emissions data for nitrogen oxides, sulfur dioxide, carbon dioxide, and mercury. The information includes fuel consumption, generation, and emissions data, along with plant identification, location, and structural information for nearly all electric generators in the State of Florida. Please note: The EPA has recently changed the naming convention of eGRID. The current edition is named with a year corresponding to the year of the data (eGRID2016), while the publication year of the data is 2018. Those changes are reflected in the Title above. For more information on eGRID please see the following EPA documentation: https://www.epa.gov/sites/production/files/2018-02/documents/egrid2016_technicalsupportdocument_0.pdf.",
     "longName": "US EPA Power Plants",
     "type": "feature",
     "definitionQuery": null,
-    "layerIndex": 1,
+    "layerIndex": 3,
     "serviceId": 51,
     "layerName": "EPAEGRID",
     "restricted": false,
@@ -11207,8 +11366,8 @@ define({
       {
         "layerId": 0,
         "label": "",
-        "url": "379e6cba65110e9101a2627a9282ef2d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEdJREFUOI1jYaAyYBk1cIgYmMqQupeJm0kap66vDD9nMszUJ9pAZgZm5f9f/8vjcchPklxICRg1cMQaOINhhgJVDaQEjEADAQx1CtUsUZPnAAAAAElFTkSuQmCC",
+        "url": "eb4447e9034424f640167f51e79d772d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE5JREFUOI1jYaAyYBk1cIgZ+D9FS5aBXYwZU9eBZ4wTGX6RbCADM/dphj9fxTHE/+mZMjBcOkO6gWSAUQNpbCDjzNMSVDWQHDBq4CA0EACHQQyuh0NsggAAAABJRU5ErkJggg==",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -11546,378 +11705,6 @@ define({
     ]
   },
   {
-    "id": 305,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/WorkProgram/MapServer/2",
-    "name": "Environmental (2019-2023)",
-    "description": "This data set contains the FDOT Adopted Work Program (2019 - 2023) roadways designated as in the Environmental phase. These are projects where multiple alternatives are being evaluated. This data was created based on linear referencing, using the five year work program spreadsheet in conjunction with RCI Basemap Roads. This data was created based on linear referencing, using the five year work program spreadsheet in conjunction with RCI Basemap Roads. ",
-    "longName": "Environmental (2019-2023)",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerIndex": 2,
-    "serviceId": 58,
-    "layerName": "FDOT_WP_ENV",
-    "restricted": false,
-    "minScale": 0,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "2019",
-        "url": "51ff101711a59f39f9a3fc6b27e99053",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgL1OR/9QwjO30G0bauJDt9BtGqhpITTBq4KiBZAAAUHsGD92TeDEAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2020",
-        "url": "5d27beefb4363a2d4cbda6e223922786",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNTAwWRg4vfi/5QYNJ+zlxHFQGoBuIEwG6hmILXAqIGjBpIBAOxVBYcqaupXAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2021",
-        "url": "06e78d0e0760496e9492208522bbef83",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgSsyH/9QwbM4SAUbauHDOEgFGqhpITTBq4KiBZAAAPK8Foj1aO/QAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2022",
-        "url": "fa8eb7d39a0c69c392ff3fac6b3eec8d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg2YMX/6lhWJeCBCNtXNilIMFIVQOpCUYNHDWQDAAA010FFKwP7EQAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2023",
-        "url": "81d9efd65813237fca9c4990b25febd1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/1UM/6lhGGMYAyNtXMgYxsBIVQOpCUYNHDWQDAAATpcDqaTdEy0AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 303,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/WorkProgram/MapServer/0",
-    "name": "Construction (2019-2023)",
-    "description": "This data set contains the FDOT Adopted Work Program (2019 - 2023) roadways designated as in the Construction phase. These projects are actively in construction. This data was created based on linear referencing, using the five year work program spreadsheet in conjunction with RCI Basemap Roads.",
-    "longName": "Construction (2019-2023)",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerIndex": 0,
-    "serviceId": 58,
-    "layerName": "FDOT_WP_CST",
-    "restricted": false,
-    "minScale": 0,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "2019",
-        "url": "51ff101711a59f39f9a3fc6b27e99053",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgL1OR/9QwjO30G0bauJDt9BtGqhpITTBq4KiBZAAAUHsGD92TeDEAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2020",
-        "url": "5d27beefb4363a2d4cbda6e223922786",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNTAwWRg4vfi/5QYNJ+zlxHFQGoBuIEwG6hmILXAqIGjBpIBAOxVBYcqaupXAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2021",
-        "url": "06e78d0e0760496e9492208522bbef83",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgSsyH/9QwbM4SAUbauHDOEgFGqhpITTBq4KiBZAAAPK8Foj1aO/QAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2022",
-        "url": "fa8eb7d39a0c69c392ff3fac6b3eec8d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg2YMX/6lhWJeCBCNtXNilIMFIVQOpCUYNHDWQDAAA010FFKwP7EQAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2023",
-        "url": "81d9efd65813237fca9c4990b25febd1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/1UM/6lhGGMYAyNtXMgYxsBIVQOpCUYNHDWQDAAATpcDqaTdEy0AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 306,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/WorkProgram/MapServer/3",
-    "name": "PD&E (2019-2023)",
-    "description": "This data set contains the FDOT Adopted Work Program (2019 - 2023) roadways designated as in the Project Development and Environment phase. These are projects where multiple alternatives are being evaluated. This data was created based on linear referencing, using the five year work program spreadsheet in conjunction with RCI Basemap Roads.",
-    "longName": "P D and E (2019-2023)",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerIndex": 3,
-    "serviceId": 58,
-    "layerName": "FDOT_WP_PDE",
-    "restricted": false,
-    "minScale": 0,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "2019",
-        "url": "51ff101711a59f39f9a3fc6b27e99053",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgL1OR/9QwjO30G0bauJDt9BtGqhpITTBq4KiBZAAAUHsGD92TeDEAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2020",
-        "url": "5d27beefb4363a2d4cbda6e223922786",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNTAwWRg4vfi/5QYNJ+zlxHFQGoBuIEwG6hmILXAqIGjBpIBAOxVBYcqaupXAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2021",
-        "url": "06e78d0e0760496e9492208522bbef83",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgSsyH/9QwbM4SAUbauHDOEgFGqhpITTBq4KiBZAAAPK8Foj1aO/QAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2022",
-        "url": "fa8eb7d39a0c69c392ff3fac6b3eec8d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg2YMX/6lhWJeCBCNtXNilIMFIVQOpCUYNHDWQDAAA010FFKwP7EQAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2023",
-        "url": "81d9efd65813237fca9c4990b25febd1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/1UM/6lhGGMYAyNtXMgYxsBIVQOpCUYNHDWQDAAATpcDqaTdEy0AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 308,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/WorkProgram/MapServer/5",
-    "name": "Preliminary Engineering (2019-2023)",
-    "description": "This data set contains the FDOT Adopted Work Program (2019 - 2023) roadways designated as in the Preliminary Engineering phase. This is where a single preferred alternative has been selected, and during this phase, the project is actually being designed. This data was created based on linear referencing, using the five year work program spreadsheet in conjunction with RCI Basemap Roads.",
-    "longName": "Preliminary Engineering (2019-2023)",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerIndex": 5,
-    "serviceId": 58,
-    "layerName": "FDOT_WP_PE",
-    "restricted": false,
-    "minScale": 0,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "2019",
-        "url": "51ff101711a59f39f9a3fc6b27e99053",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgL1OR/9QwjO30G0bauJDt9BtGqhpITTBq4KiBZAAAUHsGD92TeDEAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2020",
-        "url": "5d27beefb4363a2d4cbda6e223922786",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNTAwWRg4vfi/5QYNJ+zlxHFQGoBuIEwG6hmILXAqIGjBpIBAOxVBYcqaupXAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2021",
-        "url": "06e78d0e0760496e9492208522bbef83",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgSsyH/9QwbM4SAUbauHDOEgFGqhpITTBq4KiBZAAAPK8Foj1aO/QAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2022",
-        "url": "fa8eb7d39a0c69c392ff3fac6b3eec8d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg2YMX/6lhWJeCBCNtXNilIMFIVQOpCUYNHDWQDAAA010FFKwP7EQAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2023",
-        "url": "81d9efd65813237fca9c4990b25febd1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/1UM/6lhGGMYAyNtXMgYxsBIVQOpCUYNHDWQDAAATpcDqaTdEy0AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 307,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/WorkProgram/MapServer/4",
-    "name": "Planning (2019-2023)",
-    "description": "This data set contains the FDOT Adopted Work Program (2019 - 2023) roadways designated as in the Planning phase. Project is in the concept and information gathering stage. This data was created based on linear referencing, using the five year work program spreadsheet in conjunction with RCI Basemap Roads.",
-    "longName": "Planning (2019-2023)",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerIndex": 4,
-    "serviceId": 58,
-    "layerName": "FDOT_WP_PLN",
-    "restricted": false,
-    "minScale": 0,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "2019",
-        "url": "51ff101711a59f39f9a3fc6b27e99053",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgL1OR/9QwjO30G0bauJDt9BtGqhpITTBq4KiBZAAAUHsGD92TeDEAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2020",
-        "url": "5d27beefb4363a2d4cbda6e223922786",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNTAwWRg4vfi/5QYNJ+zlxHFQGoBuIEwG6hmILXAqIGjBpIBAOxVBYcqaupXAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2021",
-        "url": "06e78d0e0760496e9492208522bbef83",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgSsyH/9QwbM4SAUbauHDOEgFGqhpITTBq4KiBZAAAPK8Foj1aO/QAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2022",
-        "url": "fa8eb7d39a0c69c392ff3fac6b3eec8d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg2YMX/6lhWJeCBCNtXNilIMFIVQOpCUYNHDWQDAAA010FFKwP7EQAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2023",
-        "url": "81d9efd65813237fca9c4990b25febd1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/1UM/6lhGGMYAyNtXMgYxsBIVQOpCUYNHDWQDAAATpcDqaTdEy0AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 309,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/WorkProgram/MapServer/6",
-    "name": "Right of Way (2019-2023)",
-    "description": "This data set contains the FDOT Adopted Work Program (2019 - 2023) roadways designated as in the Right of Way phase. At this phase, the Right of Way office is identifying and acquiring right-of-way for construction of the project. This data was created based on linear referencing, using the five year work program spreadsheet in conjunction with RCI Basemap Roads.",
-    "longName": "Right of Way (2019-2023)",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerIndex": 6,
-    "serviceId": 58,
-    "layerName": "FDOT_WP_ROW",
-    "restricted": false,
-    "minScale": 0,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "2019",
-        "url": "51ff101711a59f39f9a3fc6b27e99053",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgL1OR/9QwjO30G0bauJDt9BtGqhpITTBq4KiBZAAAUHsGD92TeDEAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2020",
-        "url": "5d27beefb4363a2d4cbda6e223922786",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNTAwWRg4vfi/5QYNJ+zlxHFQGoBuIEwG6hmILXAqIGjBpIBAOxVBYcqaupXAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2021",
-        "url": "06e78d0e0760496e9492208522bbef83",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgSsyH/9QwbM4SAUbauHDOEgFGqhpITTBq4KiBZAAAPK8Foj1aO/QAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2022",
-        "url": "fa8eb7d39a0c69c392ff3fac6b3eec8d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg2YMX/6lhWJeCBCNtXNilIMFIVQOpCUYNHDWQDAAA010FFKwP7EQAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2023",
-        "url": "81d9efd65813237fca9c4990b25febd1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/1UM/6lhGGMYAyNtXMgYxsBIVQOpCUYNHDWQDAAATpcDqaTdEy0AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
     "id": 10119,
     "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Species_Occurrence/MapServer/11",
     "name": "Panama City Crayfish",
@@ -11944,70 +11731,8 @@ define({
     ]
   },
   {
-    "id": 304,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/WorkProgram/MapServer/1",
-    "name": "Design Build (2019-2023)",
-    "description": "This data set contains the FDOT Adopted Work Program (2019 - 2023) roadways designated as in the Design Build phase. These are projects that are in a condensed process where the firm completing the design also construct the project. This data was created based on linear referencing, using the five year work program spreadsheet in conjunction with RCI Basemap Roads.",
-    "longName": "Design Build (2019-2023)",
-    "type": "feature",
-    "definitionQuery": null,
-    "layerIndex": 1,
-    "serviceId": 58,
-    "layerName": "FDOT_WP_DSB",
-    "restricted": false,
-    "minScale": 0,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "2019",
-        "url": "51ff101711a59f39f9a3fc6b27e99053",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgL1OR/9QwjO30G0bauJDt9BtGqhpITTBq4KiBZAAAUHsGD92TeDEAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2020",
-        "url": "5d27beefb4363a2d4cbda6e223922786",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADJJREFUOI1jYaAyYBk1cNTAwWRg4vfi/5QYNJ+zlxHFQGoBuIEwG6hmILXAqIGjBpIBAOxVBYcqaupXAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2021",
-        "url": "06e78d0e0760496e9492208522bbef83",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgSsyH/9QwbM4SAUbauHDOEgFGqhpITTBq4KiBZAAAPK8Foj1aO/QAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2022",
-        "url": "fa8eb7d39a0c69c392ff3fac6b3eec8d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg2YMX/6lhWJeCBCNtXNilIMFIVQOpCUYNHDWQDAAA010FFKwP7EQAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "2023",
-        "url": "81d9efd65813237fca9c4990b25febd1",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/1UM/6lhGGMYAyNtXMgYxsBIVQOpCUYNHDWQDAAATpcDqaTdEy0AAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
-    "id": 10999,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/5",
+    "id": 11976,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/5",
     "name": "Cape Sable Seaside Sparrow Historic Range",
     "description": "Historic range in South Florida of the Cape Sable Seaside Sparrow.",
     "longName": "Habitat Related Polygon Layers\\Cape Sable Seaside Sparrow Historic Range",
@@ -12032,8 +11757,8 @@ define({
     ]
   },
   {
-    "id": 10997,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/3",
+    "id": 11974,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/3",
     "name": "Snail Kite Priority Management Zones",
     "description": "This data represents Snail Kite priority management zones.",
     "longName": "Habitat Related Polygon Layers\\Snail Kite Priority Management Zones",
@@ -12058,8 +11783,8 @@ define({
     ]
   },
   {
-    "id": 10998,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/4",
+    "id": 11975,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/4",
     "name": "Florida Sand and Blue-Tailed Skink Suitable Habitat",
     "description": "This dataset contains suitable habitat for the Florida Sand Skink (Neoseps reynoldsi) and Blue-Tailed Mole Skink (Eumeces egregius lividus). This layer was created by University of Florida - GeoPlan Center using criteria set forth in the Peninsular Florida Species Conservation and Consultation Guide for Skinks.",
     "longName": "Habitat Related Polygon Layers\\Florida Sand and Blue-Tailed Skink Suitable Habitat",
@@ -12093,14 +11818,14 @@ define({
     ]
   },
   {
-    "id": 11005,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/9",
+    "id": 11981,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/10",
     "name": "FWC Manatee Protection Zones",
     "description": "This GIS data set represents the State of Florida manatee protection areas as described in the Florida Administrative Code (FAC) Chapter 68C-22. This GIS data set was developed to spatially represent the manatee protection areas for general reference only. In the event of conflict between this data set and the zones as described in the FAC, the descriptions in the FAC shall prevail. These state of Florida manatee protection zones may differ from manatee protections zones created by City or County authorities and/or the U.S. Fish and Wildlife Service.",
     "longName": "Habitat Related Polygon Layers\\FWC Manatee Protection Zones",
     "type": "feature",
     "definitionQuery": null,
-    "layerIndex": 9,
+    "layerIndex": 10,
     "serviceId": 21,
     "layerName": "MANATEE_ZONES",
     "restricted": false,
@@ -17242,14 +16967,14 @@ define({
     ]
   },
   {
-    "id": 10992,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Farmlands/MapServer/1",
+    "id": 11641,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Farmlands/MapServer/2",
     "name": "Prime Farmland Soil with Level 3 FLUCCS",
     "description": "This data set represents level 3 agricultural water management district land use that falls within areas that have been identified by the NRCS as prime farmland (or farmland of unique or local importance). During the process all areas less than .25 acres were removed. The following 5 water management district land use layers were used: LU_SWFWMD_2011, LU_SJRWMD_2014, LU_SFWMD_2008, LU_SRWMD_2014, LU_NWFWMD_2016. The farmland classification was taken from the spatial view based on NRCS_SOILS_NOV17.",
     "longName": "Prime Farmland Soil with Level 3 FLUCCS",
     "type": "feature",
     "definitionQuery": null,
-    "layerIndex": 1,
+    "layerIndex": 2,
     "serviceId": 17,
     "layerName": "PRIMEFARM_LU",
     "restricted": false,
@@ -17524,6 +17249,240 @@ define({
         "label": "",
         "url": "ac4b07d0a3be2a76364e1497bb03fec1",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEhJREFUOI1jYaAyYKGZgVWl6S8oMaite+ZpBgYGXxQXFhcmn6bAQAYGBlp6edTAUQNHDRw1EKuBbd0zT8OKIDKBL4qBMAFKAQC6fA3GT3LlVQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11646,
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Essential_Fish_Habitat/MapServer/1",
+    "name": "Egg Life Stage",
+    "description": "This dataset contains NOAA designated Essential Fish Habitat (EFH) surrounding the State of Florida. Essential Fish Habitat are those areas that have been identified and described by species and lifestage. Fish require healthy surroundings to survive and reproduce. Essential fish haitat includes all types of aquatic habitat - wetlands, coral reefs, sea-grasses, rivers - where fish spawn, breed, feed, or growh to maturity. EFH Mapper Data is a combination of three existing data layers: Essential Fish Habitat (EFH), Habitat Areas of Particular Concern (HAPC) and EFH Areas Protected from Fishing (EFHA).",
+    "longName": "Essential Fish Habitat\\Egg Life Stage",
+    "type": "feature",
+    "definitionQuery": "LIFESTAGE = 'EGGS'",
+    "layerIndex": 1,
+    "serviceId": 87,
+    "layerName": "ESSENTIAL_FISH_HABITAT",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "898b94a0c82dab6691b39277ce8251d3",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFBJREFUOI1jYaAyYKGZgVPq679SYtDtDx+uT5w40QTFhdn29tfJNbBg40YGBgZaennUwFEDRw0cNRCrgbc/fLgOK4LIARMnTjRBMRAmQCkAANVFFRUedyn6AAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11951,
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Essential_Fish_Habitat/MapServer/2",
+    "name": "Larvae Life Stage",
+    "description": "This dataset contains NOAA designated Essential Fish Habitat (EFH) surrounding the State of Florida. Essential Fish Habitat are those areas that have been identified and described by species and lifestage. Fish require healthy surroundings to survive and reproduce. Essential fish haitat includes all types of aquatic habitat - wetlands, coral reefs, sea-grasses, rivers - where fish spawn, breed, feed, or growh to maturity. EFH Mapper Data is a combination of three existing data layers: Essential Fish Habitat (EFH), Habitat Areas of Particular Concern (HAPC) and EFH Areas Protected from Fishing (EFHA).",
+    "longName": "Essential Fish Habitat\\Larvae Life Stage",
+    "type": "feature",
+    "definitionQuery": "LIFESTAGE = 'LARVAE'",
+    "layerIndex": 2,
+    "serviceId": 87,
+    "layerName": "ESSENTIAL_FISH_HABITAT",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "409fe04421d5b72a369bf126a82730a2",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFBJREFUOI1jYaAyYKGZgVPaCr9SYtDtl/+uT5w40QTFhdm+/NfJNbBgznsGBgZaennUwFEDRw0cNRCrgbdf/rsOK4LIARMnTjRBMRAmQCkAAAq/FUz+rWA0AAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11952,
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Essential_Fish_Habitat/MapServer/3",
+    "name": "Neonate Life Stage",
+    "description": "This dataset contains NOAA designated Essential Fish Habitat (EFH) surrounding the State of Florida. Essential Fish Habitat are those areas that have been identified and described by species and lifestage. Fish require healthy surroundings to survive and reproduce. Essential fish haitat includes all types of aquatic habitat - wetlands, coral reefs, sea-grasses, rivers - where fish spawn, breed, feed, or growh to maturity. EFH Mapper Data is a combination of three existing data layers: Essential Fish Habitat (EFH), Habitat Areas of Particular Concern (HAPC) and EFH Areas Protected from Fishing (EFHA).",
+    "longName": "Essential Fish Habitat\\Neonate Life Stage",
+    "type": "feature",
+    "definitionQuery": "LIFESTAGE = 'NEONATE'",
+    "layerIndex": 3,
+    "serviceId": 87,
+    "layerName": "ESSENTIAL_FISH_HABITAT",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "0704a86c764fb6e2f5f036fbd30d63c9",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE9JREFUOI1jYaAyYKGZga1T8r9SYtCr2wzXJ06caILiQp9sluvkGjiv4A8DAwMtvTxq4KiBowaOGojVwFe3Ga7DiiBywMSJE01QDIQJUAoAIskTYQl7x7gAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11953,
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Essential_Fish_Habitat/MapServer/4",
+    "name": "NeonateJuvenile Life Stage",
+    "description": "This dataset contains NOAA designated Essential Fish Habitat (EFH) surrounding the State of Florida. Essential Fish Habitat are those areas that have been identified and described by species and lifestage. Fish require healthy surroundings to survive and reproduce. Essential fish haitat includes all types of aquatic habitat - wetlands, coral reefs, sea-grasses, rivers - where fish spawn, breed, feed, or growh to maturity. EFH Mapper Data is a combination of three existing data layers: Essential Fish Habitat (EFH), Habitat Areas of Particular Concern (HAPC) and EFH Areas Protected from Fishing (EFHA).",
+    "longName": "Essential Fish Habitat\\Neonate/Juvenile Life Stage",
+    "type": "feature",
+    "definitionQuery": "LIFESTAGE = 'NEONATE/JUVENILE'",
+    "layerIndex": 4,
+    "serviceId": 87,
+    "layerName": "ESSENTIAL_FISH_HABITAT",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "8f01a63e3837bf4808e3345e81c65d46",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFBJREFUOI1jYaAyYKGZgfVTer9SYtCH24+uT5w40QTFhfbZ0dfJNXBjQTsDAwMtvTxq4KiBowaOGojVwA+3H12HFUHkgIkTJ5qgGAgToBQAAHgsFM8mmJFYAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11954,
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Essential_Fish_Habitat/MapServer/5",
+    "name": "Juvenile Life Stage",
+    "description": "This dataset contains NOAA designated Essential Fish Habitat (EFH) surrounding the State of Florida. Essential Fish Habitat are those areas that have been identified and described by species and lifestage. Fish require healthy surroundings to survive and reproduce. Essential fish haitat includes all types of aquatic habitat - wetlands, coral reefs, sea-grasses, rivers - where fish spawn, breed, feed, or growh to maturity. EFH Mapper Data is a combination of three existing data layers: Essential Fish Habitat (EFH), Habitat Areas of Particular Concern (HAPC) and EFH Areas Protected from Fishing (EFHA).",
+    "longName": "Essential Fish Habitat\\Juvenile Life Stage",
+    "type": "feature",
+    "definitionQuery": "LIFESTAGE = 'JUVENILE'",
+    "layerIndex": 5,
+    "serviceId": 87,
+    "layerName": "ESSENTIAL_FISH_HABITAT",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "cc72d21bd8a9530ac42558f00fe6753a",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE5JREFUOI1jYaAyYKGZgfk1U75SZNLn29cnTpxoguJCFrPs6+Sa92dvAcQMilyFBYwaOGrgqIGjBhIw8PPt67AiiBwwceJEExQDYQKUAgBd1BOSG7tilQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11955,
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Essential_Fish_Habitat/MapServer/6",
+    "name": "JuvenileAdult Life Stage",
+    "description": "This dataset contains NOAA designated Essential Fish Habitat (EFH) surrounding the State of Florida. Essential Fish Habitat are those areas that have been identified and described by species and lifestage. Fish require healthy surroundings to survive and reproduce. Essential fish haitat includes all types of aquatic habitat - wetlands, coral reefs, sea-grasses, rivers - where fish spawn, breed, feed, or growh to maturity. EFH Mapper Data is a combination of three existing data layers: Essential Fish Habitat (EFH), Habitat Areas of Particular Concern (HAPC) and EFH Areas Protected from Fishing (EFHA).",
+    "longName": "Essential Fish Habitat\\Juvenile/Adult Life Stage",
+    "type": "feature",
+    "definitionQuery": "LIFESTAGE = 'JUVENILE/ADULT'",
+    "layerIndex": 6,
+    "serviceId": 87,
+    "layerName": "ESSENTIAL_FISH_HABITAT",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "8fdb62dfe0d30c1e5ed887c41396d8c2",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE9JREFUOI1jYaAyYKGZgVOmpHylxKDbt7mvT5w40QTFhdnZc66Ta2BBQT4DAwMtvTxq4KiBowaOGojVwNu3ua/DiiBywMSJE01QDIQJUAoAy/ESnkL6rUoAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11956,
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Essential_Fish_Habitat/MapServer/7",
+    "name": "Adult Life Stage",
+    "description": "This dataset contains NOAA designated Essential Fish Habitat (EFH) surrounding the State of Florida. Essential Fish Habitat are those areas that have been identified and described by species and lifestage. Fish require healthy surroundings to survive and reproduce. Essential fish haitat includes all types of aquatic habitat - wetlands, coral reefs, sea-grasses, rivers - where fish spawn, breed, feed, or growh to maturity. EFH Mapper Data is a combination of three existing data layers: Essential Fish Habitat (EFH), Habitat Areas of Particular Concern (HAPC) and EFH Areas Protected from Fishing (EFHA).",
+    "longName": "Essential Fish Habitat\\Adult Life Stage",
+    "type": "feature",
+    "definitionQuery": "LIFESTAGE = 'ADULT'",
+    "layerIndex": 7,
+    "serviceId": 87,
+    "layerName": "ESSENTIAL_FISH_HABITAT",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "d0a510d0aa474e42af59648c5a228a54",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFBJREFUOI1jYaAyYKGZgT3Nk75SYtDjN3evT5w40QTFhZGuGdfJNbBreSkDAwMtvTxq4KiBowaOGojVwMdv7l6HFUHkgIkTJ5qgGAgToBQAAHGsFMuS8oN7AAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11957,
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Essential_Fish_Habitat/MapServer/8",
+    "name": "Spawning Adult Life Stage",
+    "description": "This dataset contains NOAA designated Essential Fish Habitat (EFH) surrounding the State of Florida. Essential Fish Habitat are those areas that have been identified and described by species and lifestage. Fish require healthy surroundings to survive and reproduce. Essential fish haitat includes all types of aquatic habitat - wetlands, coral reefs, sea-grasses, rivers - where fish spawn, breed, feed, or growh to maturity. EFH Mapper Data is a combination of three existing data layers: Essential Fish Habitat (EFH), Habitat Areas of Particular Concern (HAPC) and EFH Areas Protected from Fishing (EFHA).",
+    "longName": "Essential Fish Habitat\\Spawning Adult Life Stage",
+    "type": "feature",
+    "definitionQuery": "LIFESTAGE = 'SPAWNING ADULTS'",
+    "layerIndex": 8,
+    "serviceId": 87,
+    "layerName": "ESSENTIAL_FISH_HABITAT",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "9438681e36376c23f9392b8920ac0105",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE9JREFUOI1jYaAyYKGZgVPyu75SYtBthqfXJ06caILiwmyW0OvkGljwZwIDAwMtvTxq4KiBowaOGojVwNsMT6/DiiBywMSJE01QDIQJUAoA/+kTSVFpTLEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11958,
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Essential_Fish_Habitat/MapServer/9",
+    "name": "Spawning Eggs Larvae Life Stage",
+    "description": "This dataset contains NOAA designated Essential Fish Habitat (EFH) surrounding the State of Florida. Essential Fish Habitat are those areas that have been identified and described by species and lifestage. Fish require healthy surroundings to survive and reproduce. Essential fish haitat includes all types of aquatic habitat - wetlands, coral reefs, sea-grasses, rivers - where fish spawn, breed, feed, or growh to maturity. EFH Mapper Data is a combination of three existing data layers: Essential Fish Habitat (EFH), Habitat Areas of Particular Concern (HAPC) and EFH Areas Protected from Fishing (EFHA).",
+    "longName": "Essential Fish Habitat\\Spawning Eggs Larvae Life Stage",
+    "type": "feature",
+    "definitionQuery": "LIFESTAGE = 'SPAWNINGEGGSLARVAE'",
+    "layerIndex": 9,
+    "serviceId": 87,
+    "layerName": "ESSENTIAL_FISH_HABITAT",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "bf21178baaac7b535c6d45f4191bdbdd",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE9JREFUOI1jYaAyYKGZgVX5KV8pMegrA/f1iRMnmqC4UJ9xznVyDTz2P5+BgYGWXh41cNTAUQNHDcRq4FcG7uuwIogcMHHiRBMUA2EClAIAgAwSAc/+hlEAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -18211,14 +18170,14 @@ define({
     ]
   },
   {
-    "id": 10993,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Farmlands/MapServer/2",
+    "id": 11642,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Farmlands/MapServer/3",
     "name": "Prime Farmland Soil",
     "description": "This data set represents the prime farmland and farmland of unique and local importance based on the layer nrcs_soils. This layer is a spatial view and is created by the following sql query: FRMLNDCL = 'ALL AREAS ARE PRIME FARMLAND' OR FRMLNDCL = 'PRIME FARMLAND IF DRAINED AND EITHER PROTECTED FROM FLOODING OR NOT FREQUENTLY FLOODED DURING THE GROWING SEASON' OR FRMLNDCL = 'PRIME FARMLAND IF DRAINED' OR FRMLNDCL = 'FARMLAND OF LOCAL IMPORTANCE' OR FRMLNDCL = 'FARMLAND OF UNIQUE IMPORTANCE'",
     "longName": "Prime Farmland Soil",
     "type": "feature",
     "definitionQuery": "PRIMEFARM = 'Y'",
-    "layerIndex": 2,
+    "layerIndex": 3,
     "serviceId": 17,
     "layerName": "NRCS_SOILS",
     "restricted": false,
@@ -19739,14 +19698,14 @@ define({
     ]
   },
   {
-    "id": 10686,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/16",
+    "id": 11987,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/17",
     "name": "Black Bear Range",
     "description": "This shapefile contains a range map of the Florida Black Bear. Before settlement by Europeans, black bears occupied all of mainland Florida including some coastal islands and larger keys. The occupied range has been reduced to 6 core areas (Eglin, Apalachicola, Osceola, Ocala, St. Johns, and Big Cypress) and 2 remnant areas (Chassahowitzka and Glades/Highlands). While bears can be found in areas outside of these ranges, evidence suggests that these areas are important for bears. A home range is an area that is inhabited in search of food, water and adequate cover. This shapefile contains rare, occasional, common and abundant ranges of the Florida black bear throughout the state of Florida.",
     "longName": "Habitat Related Polygon Layers\\Black Bear Range",
     "type": "feature",
     "definitionQuery": null,
-    "layerIndex": 16,
+    "layerIndex": 17,
     "serviceId": 21,
     "layerName": "BEAR_RANGE",
     "restricted": false,
@@ -20814,14 +20773,14 @@ define({
     ]
   },
   {
-    "id": 11002,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/8",
+    "id": 11980,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/9",
     "name": "Florida Mangroves",
     "description": "This GIS data set represents mangroves in Florida. The data are reselected from land use and land cover data from Florida's water management districts.",
     "longName": "Habitat Related Polygon Layers\\Florida Mangroves",
     "type": "feature",
     "definitionQuery": null,
-    "layerIndex": 8,
+    "layerIndex": 9,
     "serviceId": 21,
     "layerName": "MANGROVES",
     "restricted": false,
@@ -21608,14 +21567,14 @@ define({
     ]
   },
   {
-    "id": 288,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer/0",
+    "id": 11961,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer/1",
     "name": "ORNL Electric Substations",
     "description": "This feature class/shapefile represents electric power substations in the State of Florida. Substations are facilities and equipment that switch, transform, or regulate electric voltage. The Substations feature class/shapefile includes taps, a location where power on a transmission line is tapped by another transmission line.",
     "longName": "ORNL Electric Substations",
     "type": "feature",
     "definitionQuery": null,
-    "layerIndex": 0,
+    "layerIndex": 1,
     "serviceId": 51,
     "layerName": "ELECTRIC_SUBSTAT",
     "restricted": false,
@@ -21625,8 +21584,8 @@ define({
       {
         "layerId": 0,
         "label": "",
-        "url": "0672bfd8cd93260dfc74d2d2742fd93a",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAANVJREFUOI3t0zFKA0EUBuDvYdBi1WoRG+/gDewCdhZaWwm2HsBGyA0ikjIWaeIBxCvY6A3SBWEaiyllLLJFEAy6LIjia4b3Fx9/Ma+n4+n9g78WLCfEtCOwrGNIeSBeOwD1sYMjjFuC5RRXWMNWEw4pA6gqtzm7JN6+CMa4qspLzibYbsJNbOAi57j+ZkNyjnvKGe6W4gGfYyvBZg6a9wn7S3sbsAQOcU6MFl/HDaUmUpuGu3XtOKV4XqwxpTzWtb2UtAFjnpL5h2yWktmKEn/nln8QfAdltTXIR3iI1wAAAABJRU5ErkJggg==",
+        "url": "379e6cba65110e9101a2627a9282ef2d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEdJREFUOI1jYaAyYBk1cIgYmMqQupeJm0kap66vDD9nMszUJ9pAZgZm5f9f/8vjcchPklxICRg1cMQaOINhhgJVDaQEjEADAQx1CtUsUZPnAAAAAElFTkSuQmCC",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -21634,30 +21593,20 @@ define({
     ]
   },
   {
-    "id": 294,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer/7",
+    "id": 11972,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer/9",
     "name": "ORNL Electric Power Transmission Lines",
     "description": "This feature class/shapefile represents electric power transmission lines in the State of Florida. Transmission Lines are the system of structures, wires, insulators and associated hardware that carry electric energy from one point to another in an electric power system. Lines are operated at relatively high voltages varying from 69 kV up to 765 kV, and are capable of transmitting large quantities of electricity over long distances. Underground transmission lines are included where sources were available.",
     "longName": "ORNL Electric Power Transmission Lines",
     "type": "feature",
     "definitionQuery": null,
-    "layerIndex": 7,
+    "layerIndex": 9,
     "serviceId": 51,
     "layerName": "POWERLINES",
     "restricted": false,
     "minScale": 250000,
     "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "95a5b3b53427d0481bfc28814b1cd2f8",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYBk1cNTAYWvgf4b//6lhGCMDIyMLjEENAxkYhkwYjho4zA0EAIJRA1QSNZufAAAAAElFTkSuQmCC",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
+    "legendSymbols": null
   },
   {
     "id": 8757,
@@ -22348,77 +22297,6 @@ define({
     ]
   },
   {
-    "id": 10995,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Farmlands/MapServer/4",
-    "name": "WMD Agricultural Lands",
-    "description": "This is a spatial view based on parent layer LU_L3_STATE_NOV18 where FLUCCS >= 2000 and FLUCCS < 3000.\r\n\r\n LU_L3_STATE_NOV18 - This dataset is an inventory of Land Uses and Land Covers classified in the State of Florida. The dataset has been derived from data created by the five Water Management Districts and the Florida Department of Environmental Protection's Bureau of Watershed Restoration. The land use and land cover classification level 3 code is defined by the Florida DOT's FLUCCS classification system. This dataset represents land use and land cover information derived from imagery for the following range of years; 2011 - 2016. Land use and land cover information provides environmental scientists an understanding of the relationships between human activities, land surface physiography and water resources. This layer was created by merging the following FGDL layers with priority given to the most recent data: LU_NWFWMD_2016, LU_SFWMD_2016, LU_SJRWMD_2014, LU_SRWMD_2014, and LU_SWFWMD_2011.\r\n",
-    "longName": "WMD Agricultural Lands",
-    "type": "feature",
-    "definitionQuery": "FLUCCS >= 2000 AND FLUCCS < 3000",
-    "layerIndex": 4,
-    "serviceId": 17,
-    "layerName": "LU_L3_STATE_FEB19",
-    "restricted": false,
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "Cropland and Pastureland",
-        "url": "75a8825f3a7a9fb16f539d01e8c91b3d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC70ncRGtmGb834xMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAA/48M4KE4MXAAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Tree Crops",
-        "url": "a97b9af743f5b8f55b7990f721de3d35",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC7k65hMtmGfKnIZGBho6eVRA0cNHDVw1ECcBsKKIHLA5MmTGVEMhAlQCgDo+wycw2xLlgAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Feeding Operations",
-        "url": "78c64656f29da1c7a98f0dc94fd0fa56",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI3t1KENADAIRFFIWPfSWZobuFUIRA0Ux5eIFzCYfM7aQACnipHUsCEX0xg2RKTz5AEHHHDAJ+gvKBNJDaAPql3DVgwwHUF4hAAAAABJRU5ErkJggg==",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Nurseries and Vineyards",
-        "url": "128bed0d25982850730d59c59fafff91",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6Ut55MtmEPj+YyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAA/YoM2PM1sXcAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Specialty Farms",
-        "url": "041dad6f7249cd94725536e5a7144660",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC7cIreFbMN8HvkwMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAyH4MP0VBBzAAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      },
-      {
-        "layerId": 0,
-        "label": "Rural Open Lands",
-        "url": "d53759819ecbcaad51fde3b67d990d31",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6c93Yy2YYlCecyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAlDMLp7/q9xQAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
     "id": 4916,
     "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/WMD_Industrial/MapServer/0",
     "name": "WMD Industrial Areas",
@@ -22625,6 +22503,77 @@ define({
         "label": "Salt Flats",
         "url": "0f34f7d97df7efa7a5bc010dbc6e82ef",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAD1JREFUOI1jYaAyYKGlgf+pYB4jigtdXTvJNmn37nIGBgYae3nUwFEDRw0cNRC7gbAiiEzAiG4gIyWmwQAAWogGQBqP5RgAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11644,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Farmlands/MapServer/5",
+    "name": "WMD Agricultural Lands",
+    "description": "This is a spatial view based on parent layer LU_L3_STATE_NOV18 where FLUCCS >= 2000 and FLUCCS < 3000.\r\n\r\n LU_L3_STATE_NOV18 - This dataset is an inventory of Land Uses and Land Covers classified in the State of Florida. The dataset has been derived from data created by the five Water Management Districts and the Florida Department of Environmental Protection's Bureau of Watershed Restoration. The land use and land cover classification level 3 code is defined by the Florida DOT's FLUCCS classification system. This dataset represents land use and land cover information derived from imagery for the following range of years; 2011 - 2016. Land use and land cover information provides environmental scientists an understanding of the relationships between human activities, land surface physiography and water resources. This layer was created by merging the following FGDL layers with priority given to the most recent data: LU_NWFWMD_2016, LU_SFWMD_2016, LU_SJRWMD_2014, LU_SRWMD_2014, and LU_SWFWMD_2011.\r\n",
+    "longName": "WMD Agricultural Lands",
+    "type": "feature",
+    "definitionQuery": "FLUCCS >= 2000 AND FLUCCS < 3000",
+    "layerIndex": 5,
+    "serviceId": 17,
+    "layerName": "LU_L3_STATE_FEB19",
+    "restricted": false,
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "Cropland and Pastureland",
+        "url": "75a8825f3a7a9fb16f539d01e8c91b3d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC70ncRGtmGb834xMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAA/48M4KE4MXAAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Tree Crops",
+        "url": "a97b9af743f5b8f55b7990f721de3d35",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC7k65hMtmGfKnIZGBho6eVRA0cNHDVw1ECcBsKKIHLA5MmTGVEMhAlQCgDo+wycw2xLlgAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Feeding Operations",
+        "url": "78c64656f29da1c7a98f0dc94fd0fa56",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI3t1KENADAIRFFIWPfSWZobuFUIRA0Ux5eIFzCYfM7aQACnipHUsCEX0xg2RKTz5AEHHHDAJ+gvKBNJDaAPql3DVgwwHUF4hAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Nurseries and Vineyards",
+        "url": "128bed0d25982850730d59c59fafff91",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6Ut55MtmEPj+YyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAA/YoM2PM1sXcAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Specialty Farms",
+        "url": "041dad6f7249cd94725536e5a7144660",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC7cIreFbMN8HvkwMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAyH4MP0VBBzAAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "Rural Open Lands",
+        "url": "d53759819ecbcaad51fde3b67d990d31",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC6c93Yy2YYlCecyMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAlDMLp7/q9xQAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -23586,14 +23535,14 @@ define({
     ]
   },
   {
-    "id": 292,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer/4",
+    "id": 11966,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer/6",
     "name": "Cellular Antenna Structure",
     "description": "This dataset contains FCC registered cellular antenna structure locations in the state of Florida.",
     "longName": "Cellular Antenna Structure",
     "type": "feature",
     "definitionQuery": null,
-    "layerIndex": 4,
+    "layerIndex": 6,
     "serviceId": 51,
     "layerName": "CELLUR",
     "restricted": false,
@@ -23603,8 +23552,8 @@ define({
       {
         "layerId": 0,
         "label": "",
-        "url": "5f86cd860271b5fa32c28f96e5c6a7ba",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAMdJREFUOI1jYaAyYBk1cIgaWMnAwNrOwPCbWgYyvrFg2BjPwRC18ADDB4oNTDdkiGT4y+DJ8ZG7ioHhaxlFBsYzMHAwsDC0Q1R+zU3SYpgy7xrDI7IN5DBlKGZgYJCDcdn4GFoYGBjiyDIw3pBBgoGBoQJZ7P9fhuh0Q5G+meffXCDZQE4Ghpb/DAw8aMJMDCxvuhgYGNxIMjDTUFrvH8vTRBx6XFMNud1mn/+6i2gDp59/eomBgYEZlysYGL7ilBkmWW94GQgAdY0qp2bVVBkAAAAASUVORK5CYII=",
+        "url": "39313d83e841bee0cdd2ad332ad7c388",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAK5JREFUOI3tzj0KwkAQhuF31hVE9BiewFIrr+ABBCGQQhDscoNUVhZKwICVtWDrRawEy7SCP5Cxs5Cw6GqhkOnmg3nms3x5bAn+KahjGlyoyZzsI1AjqmRMORMCVgN2wEASjn4NMyIMo8du6JGzBrp+oKFfkHV0SEuW7N8HhRtakCtXv4bKCmg/pVtJOfiBC2YE1KkQojSBDScmrhMnKJCTEAOx8/HLDT2mBH8QvAOx9CQM27oyhwAAAABJRU5ErkJggg==",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -23612,14 +23561,14 @@ define({
     ]
   },
   {
-    "id": 295,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer/5",
+    "id": 11967,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer/7",
     "name": "TV Broadcast Structure",
     "description": "This dataset contains FCC registered television broadcast structure locations. Previously both digital and analog structures were included. Television broadcast has since transitioned to all digital transmission.",
     "longName": "TV Broadcast Structure",
     "type": "feature",
     "definitionQuery": null,
-    "layerIndex": 5,
+    "layerIndex": 7,
     "serviceId": 51,
     "layerName": "TVBCST",
     "restricted": false,
@@ -23629,8 +23578,8 @@ define({
       {
         "layerId": 0,
         "label": "",
-        "url": "98a53b047c2bdca45797ca0903f278a2",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAOlJREFUOI3t0rFKxEAQxvF/lnR5BwMpLH2Dq6zUSq3E5oqD4apUV+QBtLFKIyypI4Q8haVvcY2H11xzLBfksrGIgkgWsmIj+sEUy8CP2WFCfjjhP/jLQEEugCkQW+wzUBYUD0DnDQpyD8w/3gp1BJwIcqbR1y50EBTk8jP2JVeCPGq0Hg0GBLPO/SssdgaMB9uoTZRRTlChEldvEFRGrYFDpxjxgvEAA4Kqo5u4PGts5TVhTKyXLM+B44H205btnReYke1T0tOGZkF/hwfAiohyYza3NfXOCwTIyV+Bm/fq49jbKPC7+YPgG1AtPkGbzKJtAAAAAElFTkSuQmCC",
+        "url": "95a5b3b53427d0481bfc28814b1cd2f8",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYBk1cNTAYWvgf4b//6lhGCMDIyMLjEENAxkYhkwYjho4zA0EAIJRA1QSNZufAAAAAElFTkSuQmCC",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -23638,14 +23587,14 @@ define({
     ]
   },
   {
-    "id": 290,
-    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer/2",
+    "id": 11964,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Utilities/MapServer/4",
     "name": "AM Tower Structures",
     "description": "This dataset contains the spatial extent of AM tower structures in the state of Florida. AM stands for \"Amplitude Modulation\", which refers to the means of encoding the audio signal on the carrier frequency. In many countries, AM radio stations are known as \"medium wave\"(MW) stations. AM stations are also sometimes referred to as \"standard broadcast stations\", since AM was the first form used to transmit broadcast radio signals to the public. AM towers are unique in that AM stations have different operations for daytime and nighttime operation. This is because AM signals go further at night, due to atmospheric changes. Usually day and night operations are at the same site, but some may use different sites. These daytime and nighttime operations lead to duplicate records at the same location. Because we are only interested in tower locations and not individual AM stations for this particular dataset duplicate records representing day/night stations were removed.",
     "longName": "AM Tower Structures",
     "type": "feature",
     "definitionQuery": null,
-    "layerIndex": 2,
+    "layerIndex": 4,
     "serviceId": 51,
     "layerName": "AMTOW",
     "restricted": false,
@@ -23655,8 +23604,8 @@ define({
       {
         "layerId": 0,
         "label": "",
-        "url": "eb4447e9034424f640167f51e79d772d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAE5JREFUOI1jYaAyYBk1cIgZ+D9FS5aBXYwZU9eBZ4wTGX6RbCADM/dphj9fxTHE/+mZMjBcOkO6gWSAUQNpbCDjzNMSVDWQHDBq4CA0EACHQQyuh0NsggAAAABJRU5ErkJggg==",
+        "url": "5f86cd860271b5fa32c28f96e5c6a7ba",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAMdJREFUOI1jYaAyYBk1cIgaWMnAwNrOwPCbWgYyvrFg2BjPwRC18ADDB4oNTDdkiGT4y+DJ8ZG7ioHhaxlFBsYzMHAwsDC0Q1R+zU3SYpgy7xrDI7IN5DBlKGZgYJCDcdn4GFoYGBjiyDIw3pBBgoGBoQJZ7P9fhuh0Q5G+meffXCDZQE4Ghpb/DAw8aMJMDCxvuhgYGNxIMjDTUFrvH8vTRBx6XFMNud1mn/+6i2gDp59/eomBgYEZlysYGL7ilBkmWW94GQgAdY0qp2bVVBkAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -25263,14 +25212,14 @@ define({
     ]
   },
   {
-    "id": 11009,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/13",
+    "id": 11984,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/14",
     "name": "Critical Wildlife Area Boundaries",
     "description": "Critical Wildlife Areas (CWAs) are established by the FWC under a Florida Administration Code rule to protect important wildlife concentrations from human disturbance during critical periods of their life cycles, such as nesting or migration. For each CWA, the boundaries and periods of time when portions of the area may be posted are defined in the CWA establishment order. Public access is prohibited within CWAs if posted, Closed to public access. Dogs, vehicles and vessels are also prohibited from posted areas. The boundary may be larger than the posted area due to the dynamic nature of habitat structure and use. Thus, the area closed each year may change.",
     "longName": "Habitat Related Polygon Layers\\Critical Wildlife Area Boundaries",
     "type": "feature",
     "definitionQuery": null,
-    "layerIndex": 13,
+    "layerIndex": 14,
     "serviceId": 21,
     "layerName": "CWABND",
     "restricted": false,
@@ -25642,32 +25591,6 @@ define({
     ]
   },
   {
-    "id": 10994,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Farmlands/MapServer/3",
-    "name": "Generalized Land Use Agriculture (Parcels Derived)",
-    "description": "This layer is a subset of LU_GEN created by the Definition Query (DQ): DESCRIPT = 'AGRICULTURAL'",
-    "longName": "Generalized Land Use Agriculture (Parcels Derived)",
-    "type": "feature",
-    "definitionQuery": "DESCRIPT = 'AGRICULTURAL'",
-    "layerIndex": 3,
-    "serviceId": 17,
-    "layerName": "LU_GEN",
-    "restricted": false,
-    "minScale": 250000,
-    "maxScale": 0,
-    "legendSymbols": [
-      {
-        "layerId": 0,
-        "label": "",
-        "url": "e3d8572821bd973af471df555ddbe90d",
-        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC7cIr+FbMN8HvowMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAyCYMPp+UBfIAAAAASUVORK5CYII=",
-        "contentType": "image/png",
-        "height": 20,
-        "width": 20
-      }
-    ]
-  },
-  {
     "id": 1693,
     "url": "https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Land_Use/MapServer/3",
     "name": "Generalized Land Use (Parcels Derived)",
@@ -25813,6 +25736,32 @@ define({
         "label": "Vacant / Residential",
         "url": "8311921059a3c762c47df0db024b47ba",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgd316c8oMai0caYUioHUAqMGjho4auCogXQ2EFaeUc1AagEAQUQF+oTaUa4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11643,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Farmlands/MapServer/4",
+    "name": "Generalized Land Use Agriculture (Parcels Derived)",
+    "description": "This dataset contains generalized agricultural land use derived from parcel specific land use for the State of Florida. This layer is a subset of generalized land use. The subset was created by selecting all the agricultural land use from each FDOT district LU_GEN_2017 layers and merging it together. This is an update to the FGDL Layer LU_GEN_AG_2015. ",
+    "longName": "Generalized Land Use Agriculture (Parcels Derived)",
+    "type": "feature",
+    "definitionQuery": "DESCRIPT = 'AGRICULTURAL'",
+    "layerIndex": 4,
+    "serviceId": 17,
+    "layerName": "LU_GEN",
+    "restricted": false,
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "e3d8572821bd973af471df555ddbe90d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEZJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC7cIr+FbMN8HvowMDDQ0sujBo4aOGrgqIE4DYQVQeSAyZMnM6IYCBOgFAAAyCYMPp+UBfIAAAAASUVORK5CYII=",
         "contentType": "image/png",
         "height": 20,
         "width": 20
@@ -26638,8 +26587,8 @@ define({
     ]
   },
   {
-    "id": 10991,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Farmlands/MapServer/0",
+    "id": 11989,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Farmlands/MapServer/0",
     "name": "Rural and Family Lands Protection Program",
     "description": "This dataset contained property that is protected under the Rural and Family Lands Protection Program (RFLPP) in the State of Florida. The Rural and Family Lands Protection Program is an agricultural land preservation program designed to protect important agricultural lands through the acquisition of permanent agricultural land conservation easements. Originally created in 2001 with the passage of the Rural and Family Lands Protection Act, the program has successfully acquired the development rights of seven active agricultural operations, accepted the donation of an active silvicultural operation and the Florida Forest Service is currently in the process of acquiring easements over additional agricultural operations. The program is designed to meet three needs: (1) Protect valuable agricultural lands. (2) Create easement documents that work together with agricultural production to ensure sustainable agricultural practices and reasonable protection of the environment without interfering with agricultural operations in such a way that could put the continued economic viability of these operations at risk. (3) Protect natural resources, not as the primary purpose, but in conjunction with the economically viable agricultural operations.",
     "longName": "Rural and Family Lands Protection Program",
@@ -26664,14 +26613,14 @@ define({
     ]
   },
   {
-    "id": 11008,
-    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/12",
+    "id": 11988,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Habitat_Groups/MapServer/13",
     "name": "Salt Marshes",
     "description": "This GIS data set represents the saltwater marsh areas in Florida. The data are a compilation of available land use and land cover information mapped by Florida's water management districts. The most recent data available as of January, 2019 are used; the photography dates are between 1999 and 2016.",
     "longName": "Habitat Related Polygon Layers\\Salt Marshes",
     "type": "feature",
     "definitionQuery": null,
-    "layerIndex": 12,
+    "layerIndex": 13,
     "serviceId": 21,
     "layerName": "SALT_MARSH",
     "restricted": false,
@@ -29256,6 +29205,690 @@ define({
         "label": "SOUTH FLORIDA ESO",
         "url": "392f6d7c1896f0db1c3d513f04064e11",
         "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgSIi/40pMejNG8azKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAl+UG99lthc4AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11389,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/WorkProgram/MapServer/1",
+    "name": "Design Build (2021-2025)",
+    "description": "This layer is a subset of FDOT_WP_2020 created by the DQ: PHASE = 'DSB'.\r\n\r\nThis data set contains the FDOT Adopted Work Program (2021 - 2025) roadways designated as in the Construction phase. These projects are actively in construction. This data was created based on linear referencing, using the five year work program spreadsheet in conjunction with RCI Basemap Roads.",
+    "longName": "Design Build (2021-2025)",
+    "type": "feature",
+    "definitionQuery": "PHASE = 'DSB'",
+    "layerIndex": 1,
+    "serviceId": 58,
+    "layerName": "FDOT_WP_2020",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "2021",
+        "url": "51ff101711a59f39f9a3fc6b27e99053",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgL1OR/9QwjO30G0bauJDt9BtGqhpITTBq4KiBZAAAUHsGD92TeDEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2022",
+        "url": "2029b5597d61404bcf1d1501a749332e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg4vfi/9QwbD5nLyNtXDifs5eRqgZSE4waOGogGQAA930Fh+Qz5HkAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2023",
+        "url": "06e78d0e0760496e9492208522bbef83",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgSsyH/9QwbM4SAUbauHDOEgFGqhpITTBq4KiBZAAAPK8Foj1aO/QAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2024",
+        "url": "fa8eb7d39a0c69c392ff3fac6b3eec8d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg2YMX/6lhWJeCBCNtXNilIMFIVQOpCUYNHDWQDAAA010FFKwP7EQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2025",
+        "url": "81d9efd65813237fca9c4990b25febd1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/1UM/6lhGGMYAyNtXMgYxsBIVQOpCUYNHDWQDAAATpcDqaTdEy0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11390,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/WorkProgram/MapServer/2",
+    "name": "Environmental (2021-2025)",
+    "description": "This layer is a subset of FDOT_WP_2020 created by the DQ: PHASE = 'ENV'.\r\n\r\nThis data set contains the FDOT Adopted Work Program (2021 - 2025) roadways designated as in the Construction phase. These projects are actively in construction. This data was created based on linear referencing, using the five year work program spreadsheet in conjunction with RCI Basemap Roads.",
+    "longName": "Environmental (2021-2025)",
+    "type": "feature",
+    "definitionQuery": "PHASE = 'ENV'",
+    "layerIndex": 2,
+    "serviceId": 58,
+    "layerName": "FDOT_WP_2020",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "2021",
+        "url": "51ff101711a59f39f9a3fc6b27e99053",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgL1OR/9QwjO30G0bauJDt9BtGqhpITTBq4KiBZAAAUHsGD92TeDEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2022",
+        "url": "2029b5597d61404bcf1d1501a749332e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg4vfi/9QwbD5nLyNtXDifs5eRqgZSE4waOGogGQAA930Fh+Qz5HkAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2023",
+        "url": "06e78d0e0760496e9492208522bbef83",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgSsyH/9QwbM4SAUbauHDOEgFGqhpITTBq4KiBZAAAPK8Foj1aO/QAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2024",
+        "url": "fa8eb7d39a0c69c392ff3fac6b3eec8d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg2YMX/6lhWJeCBCNtXNilIMFIVQOpCUYNHDWQDAAA010FFKwP7EQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2025",
+        "url": "81d9efd65813237fca9c4990b25febd1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/1UM/6lhGGMYAyNtXMgYxsBIVQOpCUYNHDWQDAAATpcDqaTdEy0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11631,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/WorkProgram/MapServer/3",
+    "name": "P D and E (2021-2025)",
+    "description": "This layer is a subset of FDOT_WP_2020 created by the DQ: PHASE = 'PDE'.\r\n\r\nThis data set contains the FDOT Adopted Work Program (2021 - 2025) roadways designated as in the Construction phase. These projects are actively in construction. This data was created based on linear referencing, using the five year work program spreadsheet in conjunction with RCI Basemap Roads.",
+    "longName": "P D and E (2021-2025)",
+    "type": "feature",
+    "definitionQuery": "PHASE = 'PDE'",
+    "layerIndex": 3,
+    "serviceId": 58,
+    "layerName": "FDOT_WP_2020",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "2021",
+        "url": "51ff101711a59f39f9a3fc6b27e99053",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgL1OR/9QwjO30G0bauJDt9BtGqhpITTBq4KiBZAAAUHsGD92TeDEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2022",
+        "url": "2029b5597d61404bcf1d1501a749332e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg4vfi/9QwbD5nLyNtXDifs5eRqgZSE4waOGogGQAA930Fh+Qz5HkAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2023",
+        "url": "06e78d0e0760496e9492208522bbef83",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgSsyH/9QwbM4SAUbauHDOEgFGqhpITTBq4KiBZAAAPK8Foj1aO/QAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2024",
+        "url": "fa8eb7d39a0c69c392ff3fac6b3eec8d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg2YMX/6lhWJeCBCNtXNilIMFIVQOpCUYNHDWQDAAA010FFKwP7EQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2025",
+        "url": "81d9efd65813237fca9c4990b25febd1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/1UM/6lhGGMYAyNtXMgYxsBIVQOpCUYNHDWQDAAATpcDqaTdEy0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11632,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/WorkProgram/MapServer/0",
+    "name": "Construction (2021-2025)",
+    "description": "This layer is a subset of FDOT_WP_2020 created by the DQ: PHASE = 'CST'.\r\n\r\nThis data set contains the FDOT Adopted Work Program (2021 - 2025) roadways designated as in the Construction phase. These projects are actively in construction. This data was created based on linear referencing, using the five year work program spreadsheet in conjunction with RCI Basemap Roads.",
+    "longName": "Construction (2021-2025)",
+    "type": "feature",
+    "definitionQuery": "PHASE = 'CST'",
+    "layerIndex": 0,
+    "serviceId": 58,
+    "layerName": "FDOT_WP_2020",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "2021",
+        "url": "51ff101711a59f39f9a3fc6b27e99053",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgL1OR/9QwjO30G0bauJDt9BtGqhpITTBq4KiBZAAAUHsGD92TeDEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2022",
+        "url": "2029b5597d61404bcf1d1501a749332e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg4vfi/9QwbD5nLyNtXDifs5eRqgZSE4waOGogGQAA930Fh+Qz5HkAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2023",
+        "url": "06e78d0e0760496e9492208522bbef83",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgSsyH/9QwbM4SAUbauHDOEgFGqhpITTBq4KiBZAAAPK8Foj1aO/QAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2024",
+        "url": "fa8eb7d39a0c69c392ff3fac6b3eec8d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg2YMX/6lhWJeCBCNtXNilIMFIVQOpCUYNHDWQDAAA010FFKwP7EQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2025",
+        "url": "81d9efd65813237fca9c4990b25febd1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/1UM/6lhGGMYAyNtXMgYxsBIVQOpCUYNHDWQDAAATpcDqaTdEy0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11633,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/WorkProgram/MapServer/4",
+    "name": "Planning (2021-2025)",
+    "description": "This layer is a subset of FDOT_WP_2020 created by the DQ: PHASE = 'PLN'.\r\n\r\nThis data set contains the FDOT Adopted Work Program (2021 - 2025) roadways designated as in the Construction phase. These projects are actively in construction. This data was created based on linear referencing, using the five year work program spreadsheet in conjunction with RCI Basemap Roads.",
+    "longName": "Planning (2021-2025)",
+    "type": "feature",
+    "definitionQuery": "PHASE = 'PLN'",
+    "layerIndex": 4,
+    "serviceId": 58,
+    "layerName": "FDOT_WP_2020",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "2021",
+        "url": "51ff101711a59f39f9a3fc6b27e99053",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgL1OR/9QwjO30G0bauJDt9BtGqhpITTBq4KiBZAAAUHsGD92TeDEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2022",
+        "url": "2029b5597d61404bcf1d1501a749332e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg4vfi/9QwbD5nLyNtXDifs5eRqgZSE4waOGogGQAA930Fh+Qz5HkAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2023",
+        "url": "06e78d0e0760496e9492208522bbef83",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgSsyH/9QwbM4SAUbauHDOEgFGqhpITTBq4KiBZAAAPK8Foj1aO/QAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2024",
+        "url": "fa8eb7d39a0c69c392ff3fac6b3eec8d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg2YMX/6lhWJeCBCNtXNilIMFIVQOpCUYNHDWQDAAA010FFKwP7EQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2025",
+        "url": "81d9efd65813237fca9c4990b25febd1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/1UM/6lhGGMYAyNtXMgYxsBIVQOpCUYNHDWQDAAATpcDqaTdEy0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11634,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/WorkProgram/MapServer/5",
+    "name": "Preliminary Engineering (2021-2025)",
+    "description": "This layer is a subset of FDOT_WP_2020 created by the DQ: PHASE = 'PE'.\r\n\r\nThis data set contains the FDOT Adopted Work Program (2021 - 2025) roadways designated as in the Construction phase. These projects are actively in construction. This data was created based on linear referencing, using the five year work program spreadsheet in conjunction with RCI Basemap Roads.",
+    "longName": "Preliminary Engineering (2021-2025)",
+    "type": "feature",
+    "definitionQuery": "PHASE = 'PE'",
+    "layerIndex": 5,
+    "serviceId": 58,
+    "layerName": "FDOT_WP_2020",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "2021",
+        "url": "51ff101711a59f39f9a3fc6b27e99053",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgL1OR/9QwjO30G0bauJDt9BtGqhpITTBq4KiBZAAAUHsGD92TeDEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2022",
+        "url": "2029b5597d61404bcf1d1501a749332e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg4vfi/9QwbD5nLyNtXDifs5eRqgZSE4waOGogGQAA930Fh+Qz5HkAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2023",
+        "url": "06e78d0e0760496e9492208522bbef83",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgSsyH/9QwbM4SAUbauHDOEgFGqhpITTBq4KiBZAAAPK8Foj1aO/QAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2024",
+        "url": "fa8eb7d39a0c69c392ff3fac6b3eec8d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg2YMX/6lhWJeCBCNtXNilIMFIVQOpCUYNHDWQDAAA010FFKwP7EQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2025",
+        "url": "81d9efd65813237fca9c4990b25febd1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/1UM/6lhGGMYAyNtXMgYxsBIVQOpCUYNHDWQDAAATpcDqaTdEy0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11635,
+    "url": "https://pisces.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/WorkProgram/MapServer/6",
+    "name": "Right of Way (2021-2025)",
+    "description": "This layer is a subset of FDOT_WP_2020 created by the DQ: PHASE = 'ROW'.\r\n\r\nThis data set contains the FDOT Adopted Work Program (2021 - 2025) roadways designated as in the Construction phase. These projects are actively in construction. This data was created based on linear referencing, using the five year work program spreadsheet in conjunction with RCI Basemap Roads.",
+    "longName": "Right of Way (2021-2025)",
+    "type": "feature",
+    "definitionQuery": "PHASE = 'ROW'",
+    "layerIndex": 6,
+    "serviceId": 58,
+    "layerName": "FDOT_WP_2020",
+    "restricted": false,
+    "minScale": 0,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "2021",
+        "url": "51ff101711a59f39f9a3fc6b27e99053",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLgL1OR/9QwjO30G0bauJDt9BtGqhpITTBq4KiBZAAAUHsGD92TeDEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2022",
+        "url": "2029b5597d61404bcf1d1501a749332e",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg4vfi/9QwbD5nLyNtXDifs5eRqgZSE4waOGogGQAA930Fh+Qz5HkAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2023",
+        "url": "06e78d0e0760496e9492208522bbef83",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJgSsyH/9QwbM4SAUbauHDOEgFGqhpITTBq4KiBZAAAPK8Foj1aO/QAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2024",
+        "url": "fa8eb7d39a0c69c392ff3fac6b3eec8d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWJg2YMX/6lhWJeCBCNtXNilIMFIVQOpCUYNHDWQDAAA010FFKwP7EQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "2025",
+        "url": "81d9efd65813237fca9c4990b25febd1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYBk1cNTAwWLg/1UM/6lhGGMYAyNtXMgYxsBIVQOpCUYNHDWQDAAATpcDqaTdEy0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11639,
+    "url": "https://leo.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/FLU_L2_2020/MapServer/0",
+    "name": "Future Land Use 2020 (Level 2)",
+    "description": "This dataset contains generalized future land use information for the State of Florida. Future land use designates intended future land use types as defined by local government. Data used to create this statewide layer were obtained from various local government data sources in Florida in 2020. Detailed local future land use categories from the original source data were generalized to create statewide future land use categories based on an intermediate level of aggregation (Level 2).",
+    "longName": "Future Land Use 2020 (Level 2)",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerIndex": 0,
+    "serviceId": 86,
+    "layerName": "FLU_L2_2020",
+    "restricted": false,
+    "minScale": 300000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "AGRICULTURE",
+        "url": "320a1d6ab1c7f561defb6fd5345d8470",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgZv/b/5PiUG+jL6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5RME7e9WCd0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "COMMERCIAL",
+        "url": "1b2b9ca7bf382c9c11e19426e6cad3c2",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgW9FRP5TYpDwmzeMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAV8kGPRJTel0AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "CONSERVATION",
+        "url": "5cef92c0ec2aaa20d33a18cdd99dfb7c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAC9JREFUOI1jYaAyYKGdgVWB/ykyqW09I6qBVAKjBo4aOGrgqIH0NhBanlHPQCoBAHAJBIdkS6LsAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "FEDERAL",
+        "url": "f5aa0ddd4d61ef253825b42de75054fc",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgZ623f8pMWj74VJGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAWkQGQaa3Up8AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "INDUSTRIAL",
+        "url": "dbe072d0d0dd4b1d5f0d854d8df641d7",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgVOnTv1PiUHZ2dmMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAHjIFk05Z+jIAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "INSTITUTIONAL",
+        "url": "94f35cc099d411a54ed3cf360311070b",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAENJREFUOI1jYaAyYKGZgbm5uf8pNWzy5MmMKC5cvryBbMMiIyF6aeflUQNHDRw1cNRAnAbCiiBywOTJkxlRDIQJUAoAr5cL919t9SAAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "MIXED USE - DOWNTOWN/URBAN CORE",
+        "url": "ed7aa25912733e1b17fceca578d819a0",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgcXeDP8pMah3KwMjioHUAqMGjho4auCogXQ2EFaeUc1AagEAd70ElLPIdusAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "MIXED USE - GENERAL",
+        "url": "e0be7db0e77acf94707834c1835fcaf1",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgZ0Frv8pMah8wm5GFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIASkYGFMCDy7UAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "MIXED USE - NEIGHBORHOOD/ACTIVITY CENTER",
+        "url": "04f338976243fa09bf531503f1e16641",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFRJREFUOI1jYaAyYKGlgf+pYB4jigs7C1zJNql8wm4GBgYae5m2Bpb172LoKnQjmk/QQHTFhPgEDSQXjIYh5WA0DCkHtDUQVgSRCRjRDWSkxDQYAABv4CxeGT/3dAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "MIXED USE - RURAL",
+        "url": "a8a284dceaa5dcab79e1041781097619",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEtJREFUOI1jYaAyYKGZgb6+vv/T08XhEjNnvmQghe/jM4cRxUBkSXL4GC6kFqCdgaSGGTofw8DRMBwNQzIMHA1Dyg2ElWdUM5BaAADDDEDW4VrZdwAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "MIXED USE - SPECIAL PLANNING AREA",
+        "url": "24ca6e08f75887866d99f17323b394fa",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEVJREFUOI1jYaAyYKGZgQ8fPvxPqWHy8vKMKC7cebmZbMPcdWsZGBho6eVRA0cNHDVw1ECcBsKKIHKAvLw8I4qBMAFKAQAdfAj+uWjkAAAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "NATIVE AMERICAN LANDS",
+        "url": "343a2baf5d2b10fc29c4ddaf4d95c4e4",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgUcZ/v+nxCBrBkZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIAHFoDju+MrFoAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "OFFICE/PROFESSIONAL",
+        "url": "906667f976d545949dfaef32ba370ae9",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf/WvPlPiUFMISKMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA1CkEvJPCN6MAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "PLANNED DEVELOPMENT",
+        "url": "9c035eb84e799272646b88125bbd87bd",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZga+K//+nxCCxXkZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIA6EAE9gobq28AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "RECREATION",
+        "url": "6f9c21685465eba5871571fda33cd983",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADNJREFUOI1jYaAyYKGZgZUnGP5Tali7BQMj7Vw4auCogaMGjho4NAxst2BgRDEQJkApAABNdATR1tjL7gAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "RESIDENTIAL RURAL (<= 0.5 DU/AC)",
+        "url": "63e820832f54618ba64e987b49d856e4",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//7/tPiUGMjE6MKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAxuoElsWJpuwAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "RESIDENTIAL VERY LOW (0.51 - 2 DU/AC)",
+        "url": "6ffa5a29ab249ef578fc297dd38f25b8",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEpJREFUOI1jYaAyYKGZgf//R/2nxCBGxmWMKAZSC4waSAsDGZdB6P9R2HUQkKeDC3G5jEj5oRgpI9DAQZsOYeUZhktwARzyVHchALGKEPq4BZSzAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "RESIDENTIAL LOW (2.01 - 5 DU/AC)",
+        "url": "328ef735922ceb54a865fc1de88b6dff",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgf//M/ynxCBGRgZGFAOpBUYNHDVw1MBRA+lsIKw8o5qB1AIACTEDVHAdUUMAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "RESIDENTIAL MEDIUM (5.01 - 12 DU/AC)",
+        "url": "e5c7904ff97ab9d4417b2c30df1f7778",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAERJREFUOI1jYaAyYKGlgf/fvEFwREQYGEjkM6IYiCxJDh+bC6kCaGcgGWGG1dujYYiQGA1D0g0cDUPKDYSVZ1QzkFoAAHuIPvpqV6S0AAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "RESIDENTIAL HIGH (> 12 DU/AC)",
+        "url": "e07b46ab86fa3414ba3bf81953d4b71d",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgbeWKv6nxCC16PuMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUAKCEFsoKVHBQAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "TRANSPORTATION/UTILITIES",
+        "url": "441d50c0631ba7a71d426027fccf4ff4",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgatWrfpPiUFhYWGMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUACIoFVK7vF30AAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "UNKNOWN",
+        "url": "e3070da6a3408de88ff2530d9946f80c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIVJREFUOI21kksKACAIRBW6/5VtFciko0W5Khkf42fI4xg/gfaAp+hQ4W+Qw7/PGTrEgqhYK03k0Nw7Cqr5uhSRuuVSw5aC84oAm6Zq2Rdkjv1MWzNksA3aAVYOl6bl0EMyKD3sDLbi+LA77R0ddmcBNG4cXh12tQDJdJFD9mc5ReD13HxMZ+8wXGjvYWYAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      },
+      {
+        "layerId": 0,
+        "label": "WATER",
+        "url": "4b99e398a87c998f10826564c25e5096",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgZsf//9PiUG+soyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA1N8EvfO3QcEAAAAASUVORK5CYII=",
+        "contentType": "image/png",
+        "height": 20,
+        "width": 20
+      }
+    ]
+  },
+  {
+    "id": 11640,
+    "url": "https://gemini.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/Farmlands/MapServer/1",
+    "name": "Irrigated Cropland and Non-Irrigated Agricultural Areas",
+    "description": "This layer maps irrigated cropland and non-irrigated agricultural areas in Florida for 2017.",
+    "longName": "Irrigated Cropland and Non-Irrigated Agricultural Areas",
+    "type": "feature",
+    "definitionQuery": null,
+    "layerIndex": 1,
+    "serviceId": 17,
+    "layerName": "FDACS_AG_LANDS",
+    "restricted": false,
+    "minScale": 250000,
+    "maxScale": 0,
+    "legendSymbols": [
+      {
+        "layerId": 0,
+        "label": "",
+        "url": "9bf9659b8a67f365629d2ffce89d378c",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAEJJREFUOI3t1CESACAIRNHdGe8tnhyLBoIFpO2PhDdQGPjcaAPd4VWMBOOGNvOaLQCdJwsUKFDgGzwvKBMJBvAOqm0GtQZY211sCwAAAABJRU5ErkJggg==",
         "contentType": "image/png",
         "height": 20,
         "width": 20
