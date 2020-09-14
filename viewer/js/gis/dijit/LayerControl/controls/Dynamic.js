@@ -106,7 +106,7 @@ define([
             });
             array.forEach(this._folderControls, function (control) {
                 control._setFolderCheckbox(state);
-            })
+            });
             this._setVisibleLayers();
         },
         // add folder/sublayer controls per layer.layerInfos
