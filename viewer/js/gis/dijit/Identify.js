@@ -127,7 +127,8 @@ define([
                     // Identify (Feature Service), create an
                     // infoTemplate for the graphic features. Create
                     // it only if one does not already exist.
-                    if (layer.capabilities && array.indexOf(layer.capabilities.toLowerCase(), 'data') < 0) {
+                    //NOPE if (layer.capabilities && array.indexOf(layer.capabilities.toLowerCase(), 'data') < 0) {
+                    if (layer.capabilities && layer.capabilities.toLowerCase().indexOf('data') < 0) {
                         if (!layer.infoTemplate) {
                             infoTemplate = this.getInfoTemplate(layer, layer.layerId);
                             if (infoTemplate) {
