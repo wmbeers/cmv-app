@@ -54,9 +54,9 @@
         'viewer/_SidebarMixin', // for mobile sidebar
 
         //'config/_customMixin'
-        'viewer/_LayerLoadMixin',
+        'viewer/_LayerLoadMixin'
 
-        'viewer/_EditorMixin'
+        //'viewer/_EditorMixin'
 
         //'viewer/_SessionMixin'
 
@@ -75,8 +75,7 @@
         // _WebMapMixin
 
         _SidebarMixin,
-        _LayerLoadMixin,
-        _EditorMixin
+        _LayerLoadMixin
         //_SessionMixin
         //_MyCustomMixin
 
