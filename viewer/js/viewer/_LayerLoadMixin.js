@@ -114,7 +114,7 @@ define([
             //TODO expand to addLayer
             //TODO could also consider expanding to chain multiple events, like load several layers, load a saved map and add a project, etc.
             if (qsObj.loadmap) {
-                this.loadMap(qsObj.loadmap);
+                this.loadMap(qsObj.loadmap, false, true); //load map, don't clear layers, zoom to extent
             } else if (qsObj.projectid) {
                 this.addProjectToMap(qsObj.projectid);
             } else if (qsObj.aoiid) {
@@ -776,7 +776,6 @@ define([
         addAoiToMap: function (aoiId) {
             var self = this;
 
-            //eslint-disable-next-line no-undef
             MapDAO.getAoiModel(aoiId, {
                 callback: function (aoi) {
                     //todo loading overlay for this class self.loadingOverlay.hide();
@@ -790,7 +789,7 @@ define([
                     //self.loadingOverlay.hide();
                     topic.publish('viewer/handleError', {
                         source: '_LayerLoadMixin/addAoiToMap',
-                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)
                     });
                 }
             });
@@ -876,7 +875,6 @@ define([
             savedMap.layers = this.getLayerConfig();
             savedMap.extent = this.map.extent;
             try {
-                //eslint-disable-next-line no-undef
                 MapDAO.saveMap(savedMap, {
                     callback: function (savedMapId) {
                         savedMap.id = savedMapId;
@@ -889,7 +887,7 @@ define([
                     errorHandler: function (message, exception) {
                         topic.publish('viewer/handleError', {
                             source: 'LayerLoadMixin.saveMap',
-                            error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                            error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)
                         });
                         if (savedMap.deferred) {
                             savedMap.deferred.reject(message);
@@ -908,18 +906,18 @@ define([
          * Loads a saved map from the server.
          * @param {number} savedMapId ID of the saved map to load
          * @param {boolean} clearMapFirst Optional, if true, all user layers will be removed from the map before loading new layers; if false or absent, layers from the saved map will be added on top of the layers already in the map.
+         * @param {boolean} zoomToSavedMapExtent Optional, if true, all map will zoom to the saved map's extent before loading new layers; if false or absent, the map stays at the current extent.
          * @return {void}
          */
-        loadMap: function (savedMapId, clearMapFirst) {
+        loadMap: function (savedMapId, clearMapFirst, zoomToSavedMapExtent) {
             var self = this, //DWR callback loses scope of this
                 deferred = new Deferred(); // promise to be fullfilled when map is done loading and map has zoomed
 
             //load from server
-            //eslint-disable-next-line no-undef
             MapDAO.getSavedMapBeanById(savedMapId, {
                 callback: function (savedMap) {
                     if (savedMap) {
-                        self._loadMap(savedMap, clearMapFirst, deferred);
+                        self._loadMap(savedMap, clearMapFirst, zoomToSavedMapExtent, deferred);
                         deferred.then(
                             function (layers) {
                                 topic.publish('growler/removeUpdatable');
@@ -943,7 +941,7 @@ define([
                 errorHandler: function (message, exception) {
                     topic.publish('viewer/handleError', {
                         source: 'LayerLoadMixin.loadMap',
-                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)
                     });
                     deferred.reject(message);
                 }
@@ -1037,10 +1035,11 @@ define([
          * Callback function from MapDAO.getSavedMapBeanById call made in LoadMap function.
          * @param {object} savedMap The SavedMapBean returned from the DWR call
          * @param {boolean} clearMapFirst Optional, if true, all user layers will be removed from the map before loading new layers; if false or absent, layers from the saved map will be added on top of the layers already in the map.
+         * @param {boolean} zoomToSavedMapExtent Optional, if true, all map will zoom to the saved map's extent before loading new layers; if false or absent, the map stays at the current extent.
          * @param {object} deferred The Deferred object to be resolved when the map is done loading
          * @return {void}
          */
-        _loadMap: function (savedMap, clearMapFirst, deferred) {
+        _loadMap: function (savedMap, clearMapFirst, zoomToSavedMapExtent, deferred) {
             var self = this; //this changes context in the "then" callback
             if (savedMap) {
                 if (savedMap.layers.length === 0) {
@@ -1049,7 +1048,7 @@ define([
                 if (clearMapFirst) {
                     this.clearUserLayers();
                 }
-                if (savedMap.extent) {
+                if (zoomToSavedMapExtent && savedMap.extent) {
                     var savedMapExtent = new Extent({
                         xmin: savedMap.extent.xmin,
                         ymin: savedMap.extent.ymin,
@@ -1182,14 +1181,13 @@ define([
                 deferred = new Deferred();
             if (extent.spatialReference === map.spatialReference) {
                 this._zoomToExtent(extent, deferred);               
-            } else if (esriConfig.defaults.geometryService) { //eslint-disable-line no-undef
+            } else if (esriConfig.defaults.geometryService) {
                 //project the extent--most often we're getting an extent from one of our layers,
                 //and the extent will be in Albers; need to project it to the Map's World Mercator coordinate system
                 var params = lang.mixin(new ProjectParameters(), {
                     geometries: [extent],
                     outSR: map.spatialReference
                 });
-                //eslint-disable-next-line no-undef
                 esriConfig.defaults.geometryService.project(params,
                     function (r) {
                         extent = new Extent(r[0]);

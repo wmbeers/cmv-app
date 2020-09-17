@@ -92,8 +92,6 @@
             //
             // _SessionMixin,
 
-            _EditorMixin,
-
             _LayerLoadMixin,
 
             // Mixin for Mobile Sidebar
