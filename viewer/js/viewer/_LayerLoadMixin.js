@@ -510,6 +510,7 @@ define([
                         noZoom: true, //we use our own zoom-to function, defined in menu below
                         mappkgDL: true,
                         allowRemove: true,
+                        expanded: true,
                         menu: [
                             {
                                 label: 'Open Attribute Table',
