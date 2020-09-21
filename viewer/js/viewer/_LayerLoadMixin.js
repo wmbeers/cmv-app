@@ -606,6 +606,7 @@ define([
                         noZoom: true, //we use our own zoom-to function, defined in menu below
                         mappkgDL: true,
                         allowRemove: true,
+                        expanded: true,
                         //these are the menus that show up for stand-alone featureLayers
                         menu: [
                             {
