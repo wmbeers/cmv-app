@@ -6,8 +6,8 @@ stash
 
 
 # Files maintained by external tool LayerLoaderConfigurator
-./viewer/js/config/layerLoader.js
-./viewer/js/config/projects.js
+viewer/js/config/layerLoader.js
+viewer/js/config/projects.js
 
 #################
 ## Eclipse
