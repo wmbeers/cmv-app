@@ -3,14 +3,10 @@ module.exports = function (grunt) {
     //get target from command line, e.g. "grunt build-deploy --target=stage"; defaults to "dev" if not provided on command line
     var target = grunt.option('target') || 'dev';
     //get host from target; if not dev or stage, user is prompted for host (assuming you have Bill's modified version of the scp grunt task)
-    var host = target === 'dev' ? 'prometheus.est.vpn' :
-        target === 'devpoke' ? 'estlapp02.geoplan.ufl.edu' :
-        target === 'stage' ? 'hyperion.est.vpn' : 
-        target === 'stagepoke' ? 'estlapp03.geoplan.ufl.edu' :
-        target === 'preprod' ? 'pandora.est.vpn' :
-        target === 'preprodpoke' ? 'estlapp04.geoplan.ufl.edu' :
-        target === 'prod' ? 'calypso.est.vpn' :
-        target === 'prodpoke' ? 'estlapp05.geoplan.ufl.edu' : 
+    var host = target === 'dev' ? 'estlapp02.geoplan.ufl.edu' :
+        target === 'stage' ? 'estlapp03.geoplan.ufl.edu' :
+        target === 'preprod' ? 'estlapp04.geoplan.ufl.edu' :
+        target === 'prod' ? 'estlapp05.geoplan.ufl.edu' : 
         target === 'filegen06' ? 'estlapp06.geoplan.ufl.edu' : 
         target === 'filegen07' ? 'estlapp07.geoplan.ufl.edu' : 
         null;
@@ -49,24 +45,31 @@ module.exports = function (grunt) {
     // grunt task config
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        gitstatus: {
-			build: {
-				options: {
-					prop: 'gitstatus.build.result',
-					callback: function (result) {
-						result.forEach(function (r) {
-							grunt.log.write ('code: ' + r.code);
-							grunt.log.write ('file: ' + r.file);
-							grunt.log.write ('descr: ' + r.descr);
-						});
+		exec: {
+            llc: {
+                command: '../llc-linux/LayerLoaderConfigurator ' + target + ' ./dist/js/config/'
+            },
+			gitFetch: {
+				command: 'git fetch'
+			},
+			gitStatusForPull: {
+				command: 'git status',
+				callback: function(err, stdOutBuffer, stdErrBuffer, callbackArgs) {
+					if (stdOutBuffer.indexOf('is behind') >= 0) {
+						grunt.task.run('exec:gitPullAndBuild');
+					}
+				}
+			},
+			gitPullAndBuild: { 
+				command: 'git pull',
+				callback: function(err, stdOutBuffer, stdErrBuffer, callbackArgs) {
+					if (stdOutBuffer.indexOf('Updating') >= 0) {
+						grunt.task.run('build-deploy-sync');
+					} else {
+						grunt.log.writeln('Nothing updated, build/deploy skipped.');
 					}
 				}
 			}
-		},
-		exec: {
-             llc: {
-                 command: '../llc-linux/LayerLoaderConfigurator ' + target + ' ./dist/js/config/'
-             }
         },
         scp: {
             options: {
@@ -93,8 +96,8 @@ module.exports = function (grunt) {
 			build: {
 				options: {
 					src: "dist/",
-					dest: "/home/bill/rsynctest", //"/var/www/map",
-					delete: false // Don't set to true! Two important config files will be deleted and not copied over. These are updated separately by LayerLoaderConfigurator
+					dest: "bill@" + host + ":/var/www/map",
+					delete: true
 				}
 			}
         },
@@ -249,7 +252,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-scp');
 	grunt.loadNpmTasks('grunt-rsync');
 	grunt.loadNpmTasks('grunt-exec');
-	grunt.loadNpmTasks('grunt-git');
 
     // define the tasks
     grunt.registerTask('default', 'Watches the project for changes, automatically builds them and runs a web server and opens default browser to preview.', ['eslint', 'stylelint', 'connect:dev', 'open:dev_browser', 'watch:dev']);
@@ -260,10 +262,11 @@ module.exports = function (grunt) {
     grunt.registerTask('scripts', 'Compiles the JavaScript files.', ['eslint', 'uglify']);
     grunt.registerTask('stylesheets', 'Auto prefixes css and compiles the stylesheets.', ['stylelint', 'postcss', 'cssmin']);
     grunt.registerTask('lint', 'Run eslint and stylelint.', ['eslint', 'stylelint']);
-    grunt.registerTask('build-deploy-sync', 'Compiles all of the assets and copies the files to the dist folder, then rsyncs it to the appropriate target. User is prompted for username and password.', [/*'layerLoaderJs',*/'clean', 'copy', 'scripts', 'stylesheets','exec:llc','rsync']);
+	//this is the main task to run for a manual build: cleans the dist folder, copies source to dist, calls scripts task to eslint and uglify JS, calls stylesheets task to lint/compile/minify css, calls LayerLoaderConfigurator, and lastly rsyncs to published folder.
+    grunt.registerTask('build-deploy-sync', 'Compiles all of the assets and copies the files to the dist folder, then rsyncs it to the appropriate target. User is prompted for username and password.', ['clean', 'copy', 'scripts', 'stylesheets','exec:llc','rsync']);
     grunt.registerTask('build-deploy', 'Compiles all of the assets and copies the files to the dist folder, then deploys it. User is prompted for username and password.', [/*'layerLoaderJs',*/'clean', 'copy', 'scripts', 'stylesheets','scp']);
     grunt.registerTask('deploy', 'Deploys the dist folder. User is prompted for host (destination server), username and password.', ['scp']);
 	grunt.registerTask('llc', 'Executes LayerLoaderConfigurator', ['exec:llc']);
-    grunt.registerTask('sync', 'Syncs the dist folder', ['rsync']);
-	grunt.registerTask('git-status', 'Get status', ['gitstatus']);
+	//This is the main task to run for a scheduled build dependent on git status. Runs fetch/status/pull, and then build-deploy-sync if anything has changed.
+	grunt.registerTask('enchilada', 'Runs git fetch & status, then if necessary (i.e. if local checkout is behind origin), git pull and build-deploy-sync', ['exec:gitFetch', 'exec:gitStatusForPull']);
 };
