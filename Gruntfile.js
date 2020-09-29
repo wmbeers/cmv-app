@@ -47,7 +47,7 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
 		exec: {
             llc: {
-                command: '../llc-linux/LayerLoaderConfigurator ' + target + ' ./dist/js/config/'
+                command: '../../../llc-linux/LayerLoaderConfigurator ' + target + ' ./dist/js/config/'
             },
 			gitFetch: {
 				command: 'git fetch'
@@ -96,7 +96,7 @@ module.exports = function (grunt) {
 			build: {
 				options: {
 					src: "dist/",
-					dest: "bill@" + host + ":/var/www/map",
+					dest: "hudson@" + host + ":/var/www/map",
 					delete: true
 				}
 			}
@@ -268,5 +268,5 @@ module.exports = function (grunt) {
     grunt.registerTask('deploy', 'Deploys the dist folder. User is prompted for host (destination server), username and password.', ['scp']);
 	grunt.registerTask('llc', 'Executes LayerLoaderConfigurator', ['exec:llc']);
 	//This is the main task to run for a scheduled build dependent on git status. Runs fetch/status/pull, and then build-deploy-sync if anything has changed.
-	grunt.registerTask('enchilada', 'Runs git fetch & status, then if necessary (i.e. if local checkout is behind origin), git pull and build-deploy-sync', ['exec:gitFetch', 'exec:gitStatusForPull']);
+	grunt.registerTask('git-build-sync', 'Runs git fetch & status, then if necessary (i.e. if local checkout is behind origin), git pull and build-deploy-sync', ['exec:gitFetch', 'exec:gitStatusForPull']);
 };
