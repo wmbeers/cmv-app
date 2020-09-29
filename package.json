@@ -9,7 +9,7 @@
     "dependencies": {
         "body-parser": "~1.19.0",
         "eslint": "~5.16.0",
-        "grunt": "1.0.x",
+        "grunt": "^1.3.0",
         "grunt-contrib-clean": "~2.0.0",
         "grunt-contrib-compress": "~1.5.0",
         "grunt-contrib-connect": "~2.1.0",
