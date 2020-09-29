@@ -4,6 +4,11 @@ node_modules
 stash
 .idea
 
+
+# Files maintained by external tool LayerLoaderConfigurator
+./viewer/js/config/layerLoader.js
+./viewer/js/config/projects.js
+
 #################
 ## Eclipse
 #################

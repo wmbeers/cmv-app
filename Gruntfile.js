@@ -44,12 +44,25 @@ module.exports = function (grunt) {
     // grunt task config
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        // exec: {
-        //     llc: {
-        //         command: './layerLoaderConfigurator/LayerLoaderConfigurator.exe ' + target + ' .\\viewer\\js\\config\\layerLoader.js',
-        //         sync: false
-        //     }
-        // },
+        gitstatus: {
+			build: {
+				options: {
+					prop: 'gitstatus.build.result',
+					callback: function (result) {
+						result.forEach(function (r) {
+							grunt.log.write ('code: ' + r.code);
+							grunt.log.write ('file: ' + r.file);
+							grunt.log.write ('descr: ' + r.descr);
+						});
+					}
+				}
+			}
+		},
+		exec: {
+             llc: {
+                 command: '../llc-linux/LayerLoaderConfigurator ' + target + ' ./dist/js/config/'
+             }
+        },
         scp: {
             options: {
                 host: host,
@@ -67,6 +80,19 @@ module.exports = function (grunt) {
                 }]
             },
         },
+		rsync: {
+            options: {
+				args: ["-u","-v"],
+                recursive: true
+            },
+			build: {
+				options: {
+					src: "dist/",
+					dest: "/home/bill/rsynctest", //"/var/www/map",
+					delete: false // Don't set to true! Two important config files will be deleted and not copied over. These are updated separately by LayerLoaderConfigurator
+				}
+			}
+        },
         tag: {
             banner: '/*  <%= pkg.name %>\n' +
                 ' *  version <%= pkg.version %>\n' +
@@ -76,7 +102,7 @@ module.exports = function (grunt) {
         copy: {
             build: {
                 cwd: 'viewer',
-                src: ['**','!**/*.mp4'],
+                src: ['**','!**/*.mp4','!**/layerLoader.js','!**/projects.js'],
                 dest: 'dist',
                 expand: true
             }
@@ -216,6 +242,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-open');
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-scp');
+	grunt.loadNpmTasks('grunt-rsync');
+	grunt.loadNpmTasks('grunt-exec');
+	grunt.loadNpmTasks('grunt-git');
 
     // define the tasks
     grunt.registerTask('default', 'Watches the project for changes, automatically builds them and runs a web server and opens default browser to preview.', ['eslint', 'stylelint', 'connect:dev', 'open:dev_browser', 'watch:dev']);
@@ -226,6 +255,10 @@ module.exports = function (grunt) {
     grunt.registerTask('scripts', 'Compiles the JavaScript files.', ['eslint', 'uglify']);
     grunt.registerTask('stylesheets', 'Auto prefixes css and compiles the stylesheets.', ['stylelint', 'postcss', 'cssmin']);
     grunt.registerTask('lint', 'Run eslint and stylelint.', ['eslint', 'stylelint']);
+    grunt.registerTask('build-deploy-sync', 'Compiles all of the assets and copies the files to the dist folder, then rsyncs it to the appropriate target. User is prompted for username and password.', [/*'layerLoaderJs',*/'clean', 'copy', 'scripts', 'stylesheets','exec:llc','rsync']);
     grunt.registerTask('build-deploy', 'Compiles all of the assets and copies the files to the dist folder, then deploys it. User is prompted for username and password.', [/*'layerLoaderJs',*/'clean', 'copy', 'scripts', 'stylesheets','scp']);
     grunt.registerTask('deploy', 'Deploys the dist folder. User is prompted for host (destination server), username and password.', ['scp']);
+	grunt.registerTask('llc', 'Executes LayerLoaderConfigurator', ['exec:llc']);
+    grunt.registerTask('sync', 'Syncs the dist folder', ['rsync']);
+	grunt.registerTask('git-status', 'Get status', ['gitstatus']);
 };
