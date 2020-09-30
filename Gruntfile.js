@@ -264,7 +264,8 @@ module.exports = function (grunt) {
     grunt.registerTask('lint', 'Run eslint and stylelint.', ['eslint', 'stylelint']);
 	//this is the main task to run for a manual build: cleans the dist folder, copies source to dist, calls scripts task to eslint and uglify JS, calls stylesheets task to lint/compile/minify css, calls LayerLoaderConfigurator, and lastly rsyncs to published folder.
     grunt.registerTask('build-deploy-sync', 'Compiles all of the assets and copies the files to the dist folder, then rsyncs it to the appropriate target. User is prompted for username and password.', ['clean', 'copy', 'scripts', 'stylesheets','exec:llc','rsync']);
-    grunt.registerTask('build-deploy', 'Compiles all of the assets and copies the files to the dist folder, then deploys it. User is prompted for username and password.', [/*'layerLoaderJs',*/'clean', 'copy', 'scripts', 'stylesheets','scp']);
+	//this is the main task to run for a manual build via command line. Same as above, but prompts for username password rather than hard-coded as Hudson user.
+    grunt.registerTask('build-deploy', 'Compiles all of the assets and copies the files to the dist folder, then deploys it. User is prompted for username and password.', ['clean', 'copy', 'scripts', 'stylesheets','exec:llc','scp']);
     grunt.registerTask('deploy', 'Deploys the dist folder. User is prompted for host (destination server), username and password.', ['scp']);
 	grunt.registerTask('llc', 'Executes LayerLoaderConfigurator', ['exec:llc']);
 	//This is the main task to run for a scheduled build dependent on git status. Runs fetch/status/pull, and then build-deploy-sync if anything has changed.
