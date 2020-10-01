@@ -502,7 +502,7 @@ define([
                 //todo: put this in config? Or have some default options if not in config?
                 var layerControlInfo = {
                     controlOptions: {
-                        expanded: false,
+                        expanded: true,
                         metadataUrl: false,
                         //includeUnspecifiedLayers: true, //TODO: if this is included, the service doesn't load properly for some reason, and no layers show up.
                         swipe: true,
