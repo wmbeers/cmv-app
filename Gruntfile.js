@@ -1,20 +1,31 @@
 /* global module */
 module.exports = function (grunt) {
     //get target from command line, e.g. "grunt build-deploy --target=stage"; defaults to "dev" if not provided on command line
-    var target = grunt.option('target') || 'dev';
+    var target = (grunt.option('target') || 'dev').replace('poke',''); //default target is dev, some versions of batch files floating around still distinguish poke server, but not applicable any more so drop that.
+	//database context used by layerloader configurator, must be dev, stage, or prod, doesn't matter if pub; special case for preprod=stage and filegens=prod handled below
+	var llcContext = target.replace('pub','');
     //get host from target; if not dev or stage, user is prompted for host (assuming you have Bill's modified version of the scp grunt task)
-    var host = (target === 'dev' || target === 'devpoke') ? 'estlapp02.geoplan.ufl.edu' :
-        (target === 'stage' || target === 'stagepoke') ? 'estlapp03.geoplan.ufl.edu' :
-        (target === 'preprod' || target === 'preprodpoke') ? 'estlapp04.geoplan.ufl.edu' :
-        (target === 'prod' || target === 'prodpoke') ? 'estlapp05.geoplan.ufl.edu' : 
-        target === 'pubdev' ? 'estlapp08.geoplan.ufl.edu' : 
-        (target === 'pubprod' || target === 'pub') ? 'estlapp09.geoplan.ufl.edu' : 
+    var host = 
+	    target === 'dev'       ? 'estlapp02.geoplan.ufl.edu' :
+        target === 'stage'     ? 'estlapp03.geoplan.ufl.edu' :
+        target === 'preprod'   ? 'estlapp04.geoplan.ufl.edu' :
+        target === 'prod'      ? 'estlapp05.geoplan.ufl.edu' : 
+        target === 'pubdev'    ? 'estlapp08.geoplan.ufl.edu' : 
+        target === 'pubprod'   ? 'estlapp09.geoplan.ufl.edu' : 
         target === 'filegen06' ? 'estlapp06.geoplan.ufl.edu' : 
         target === 'filegen07' ? 'estlapp07.geoplan.ufl.edu' : 
         null;
 
     grunt.log.writeln ("target: " + target);
-    
+    switch (target) {
+		case 'preprod':
+		    llcContext = 'stage';
+			break;
+		case 'filegen06':
+		case 'filegen07':
+		    llcContext = 'prod';
+			break;
+    } 	
     // middleware for grunt.connect
     var middleware = function (connect, options, middlewares) {
         // inject a custom middleware into the array of default middlewares for proxy page
@@ -49,7 +60,7 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
 		exec: {
             llc: {
-                command: '../../../llc-linux/LayerLoaderConfigurator ' + target + ' ./dist/js/config/'
+                command: '../../../llc-linux/LayerLoaderConfigurator ' + llcContext + ' ./dist/js/config/'
             },
 			gitFetch: {
 				command: 'git fetch'
