@@ -1,18 +1,31 @@
 /* global module */
 module.exports = function (grunt) {
     //get target from command line, e.g. "grunt build-deploy --target=stage"; defaults to "dev" if not provided on command line
-    var target = grunt.option('target') || 'dev';
+    var target = (grunt.option('target') || 'dev').replace('poke',''); //default target is dev, some versions of batch files floating around still distinguish poke server, but not applicable any more so drop that.
+	//database context used by layerloader configurator, must be dev, stage, or prod, doesn't matter if pub; special case for preprod=stage and filegens=prod handled below
+	var llcContext = target.replace('pub','');
     //get host from target; if not dev or stage, user is prompted for host (assuming you have Bill's modified version of the scp grunt task)
-    var host = target === 'dev' ? 'estlapp02.geoplan.ufl.edu' :
-        target === 'stage' ? 'estlapp03.geoplan.ufl.edu' :
-        target === 'preprod' ? 'estlapp04.geoplan.ufl.edu' :
-        target === 'prod' ? 'estlapp05.geoplan.ufl.edu' : 
+    var host = 
+	    target === 'dev'       ? 'estlapp02.geoplan.ufl.edu' :
+        target === 'stage'     ? 'estlapp03.geoplan.ufl.edu' :
+        target === 'preprod'   ? 'estlapp04.geoplan.ufl.edu' :
+        target === 'prod'      ? 'estlapp05.geoplan.ufl.edu' : 
+        target === 'pubdev'    ? 'estlapp08.geoplan.ufl.edu' : 
+        target === 'pubprod'   ? 'estlapp09.geoplan.ufl.edu' : 
         target === 'filegen06' ? 'estlapp06.geoplan.ufl.edu' : 
         target === 'filegen07' ? 'estlapp07.geoplan.ufl.edu' : 
         null;
 
     grunt.log.writeln ("target: " + target);
-    
+    switch (target) {
+		case 'preprod':
+		    llcContext = 'stage';
+			break;
+		case 'filegen06':
+		case 'filegen07':
+		    llcContext = 'prod';
+			break;
+    } 	
     // middleware for grunt.connect
     var middleware = function (connect, options, middlewares) {
         // inject a custom middleware into the array of default middlewares for proxy page
@@ -47,7 +60,7 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
 		exec: {
             llc: {
-                command: '../../../llc-linux/LayerLoaderConfigurator ' + target + ' ./dist/js/config/'
+                command: '../../../llc-linux/LayerLoaderConfigurator ' + llcContext + ' ./dist/js/config/'
             },
 			gitFetch: {
 				command: 'git fetch'
@@ -264,8 +277,7 @@ module.exports = function (grunt) {
     grunt.registerTask('lint', 'Run eslint and stylelint.', ['eslint', 'stylelint']);
 	//this is the main task to run for a manual build: cleans the dist folder, copies source to dist, calls scripts task to eslint and uglify JS, calls stylesheets task to lint/compile/minify css, calls LayerLoaderConfigurator, and lastly rsyncs to published folder.
     grunt.registerTask('build-deploy-sync', 'Compiles all of the assets and copies the files to the dist folder, then rsyncs it to the appropriate target. User is prompted for username and password.', ['clean', 'copy', 'scripts', 'stylesheets','exec:llc','rsync']);
-	//this is the main task to run for a manual build via command line. Same as above, but prompts for username password rather than hard-coded as Hudson user.
-    grunt.registerTask('build-deploy', 'Compiles all of the assets and copies the files to the dist folder, then deploys it. User is prompted for username and password.', ['clean', 'copy', 'scripts', 'stylesheets','exec:llc','scp']);
+    grunt.registerTask('build-deploy', 'Compiles all of the assets and copies the files to the dist folder, then deploys it. User is prompted for username and password.', [/*'layerLoaderJs',*/'clean', 'copy', 'scripts', 'stylesheets','scp']);
     grunt.registerTask('deploy', 'Deploys the dist folder. User is prompted for host (destination server), username and password.', ['scp']);
 	grunt.registerTask('llc', 'Executes LayerLoaderConfigurator', ['exec:llc']);
 	//This is the main task to run for a scheduled build dependent on git status. Runs fetch/status/pull, and then build-deploy-sync if anything has changed.
