@@ -608,7 +608,7 @@ define([
                                 }
                             }),
                             placeholder: 'Find address or place',
-                            highlightSymbol: new PictureMarkerSymbol('images/search-pointer.png', 36, 36).setOffset(9, 18)
+                            highlightSymbol: new PictureMarkerSymbol('https://js.arcgis.com/3.27/esri/dijit/Search/images/search-pointer.png', 36, 36).setOffset(9, 18)
                         }/*,
                         {
                             featureLayer: new FeatureLayer('https://services.arcgis.com/LBbVDC0hKPAnLRpO/ArcGIS/rest/services/countyBoundary/FeatureServer/1'),
