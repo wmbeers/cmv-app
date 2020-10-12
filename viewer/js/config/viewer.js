@@ -5,13 +5,14 @@ define([
     /*'esri/urlUtils',*/
     'esri/tasks/GeometryService',
     'esri/layers/ImageParameters',
+    'esri/symbols/PictureMarkerSymbol',
     'esri/tasks/locator',
     'gis/plugins/Google',
     './js/config/projects.js',
     'dojo/i18n!./nls/main',
     'dojo/topic',
     'dojo/sniff'
-], function (units, Extent, esriConfig, /*urlUtils,*/ GeometryService, ImageParameters, Locator, GoogleMapsLoader, projects, i18n, topic, has) {
+], function (units, Extent, esriConfig, /*urlUtils,*/ GeometryService, ImageParameters, PictureMarkerSymbol, Locator, GoogleMapsLoader, projects, i18n, topic, has) {
     // url to your proxy page, must be on same machine hosting you app. See proxy folder for readme.
     //esriConfig.defaults.io.proxyUrl = 'proxy/proxy.ashx';
     esriConfig.defaults.io.alwaysUseProxy = false;
@@ -607,10 +608,7 @@ define([
                                 }
                             }),
                             placeholder: 'Find address or place',
-                            highlightSymbol: { /*TODO this isn't showing up*/
-                                url: 'https://js.arcgis.com/3.27/esri/dijit/Search/images/search-pointer.png',
-                                width: 36, height: 36, xoffset: 9, yoffset: 18
-                            }
+                            highlightSymbol: new PictureMarkerSymbol('https://js.arcgis.com/3.27/esri/dijit/Search/images/search-pointer.png', 36, 36).setOffset(9, 18)
                         }/*,
                         {
                             featureLayer: new FeatureLayer('https://services.arcgis.com/LBbVDC0hKPAnLRpO/ArcGIS/rest/services/countyBoundary/FeatureServer/1'),
