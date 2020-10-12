@@ -56,8 +56,6 @@
         //'config/_customMixin'
         'viewer/_LayerLoadMixin',
 
-        'viewer/_EditorMixin',
-
         'viewer/_SessionMixin'
 
     ], function (
@@ -76,7 +74,6 @@
 
         _SidebarMixin,
         _LayerLoadMixin,
-        _EditorMixin,
         _SessionMixin
         //_MyCustomMixin
 
@@ -91,8 +88,6 @@
             // and _ControllerBase
             //
             _SessionMixin,
-
-            _EditorMixin,
 
             _LayerLoadMixin,
 

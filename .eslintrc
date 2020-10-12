@@ -251,6 +251,11 @@
     },
     "globals": {
         "define": true,
-        "require": true
+        "require": true,
+		"esriConfig": true, //defined in index.html
+		"ko": true,  //knockout, referenced in index.html
+		"dwr": true, //DWR utilities, referenced in index.html
+		"MapDAO": true, //DWR endpoint, referenced in index.html
+		"ETDMSession": true //DWR endpoint, referenced in index.html
     }
 }

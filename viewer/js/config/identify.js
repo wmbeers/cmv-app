@@ -15,7 +15,7 @@ define([
         mapRightClickMenu: true,
         identifyLayerInfos: true,
         identifyTolerance: 5,
-        draggable: false,
+        draggable: true,
         returnFieldName: false,
         returnUnformattedValues: false,
 

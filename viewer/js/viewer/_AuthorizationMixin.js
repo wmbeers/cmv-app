@@ -18,7 +18,7 @@ function (declare, lang, on, EstAuthorization, esriId /*, ServerInfo, Credential
         //hasProjectEditAuthority: false,
         //hasViewDraftAuthority: false,
         //authorities: [], //redefined
-        currentAuthority: ko.observable(), //eslint-disable-line no-undef
+        currentAuthority: ko.observable(),
 
         startup: function () {
             //post-process authorities to determine which controls and layers are included--dynamic changes to interpretation of viewer.js
@@ -83,7 +83,6 @@ function (declare, lang, on, EstAuthorization, esriId /*, ServerInfo, Credential
 
         _initEsriId: function () {
             //esriId = esriId(); //Needed when using IdentityManagerBase; remove this line if using IdentityManager.
-            app.esriId = esriId; //TODO just for testing
 
             var idObj = {
                 serverInfos: [ //TODO get this from the DWR call

@@ -380,7 +380,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 aoiModel.expirationDate === this.cachedModel.expirationDate) {
                 deferred.resolve(false); //indicates no change was necessary, not something we really use
             } else {
-                //eslint-disable-next-line no-undef
                 MapDAO.saveAoiHeader(aoiModel, {
                     callback: function (id) {
                         self.aoiId(id);
@@ -390,7 +389,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                         self.loadingOverlay.hide();
                         topic.publish('viewer/handleError', {
                             source: 'AoiEditor.saveAoiHeader',
-                            error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                            error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)
                         });
                         deferred.reject(message);
                     }
@@ -473,7 +472,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 var ids = emptyAnalysisAreas.map(function (aa) {
                     return aa.id();
                 });
-                //eslint-disable-next-line no-undef
                 MapDAO.deleteAoiAnalysisAreas(ids, this.currentAuthority().orgUserId, {
                     callback: function () {
                         deferred.resolve();
@@ -524,7 +522,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this.loadingOverlay.show('Starting analysis...');
             //TODO this also needs to do the intersection with regions and roads
             //something currently done by gisEditor; could use the QUERY_REGIONS service for the former, and RCI? for roads.
-            //eslint-disable-next-line no-undef
             MapDAO.saveAoiAnalysisOptions(this.toJS(),
                 {
                     callback: function (result) {
@@ -556,7 +553,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         checkAnalysisProgress: function () {
             var self = this;
             self.progressErrorCount = self.progressErrorCount || 0;
-            //eslint-disable-next-line no-undef
             MapDAO.getAoiAnalysisProgress(this.aoiId(), {
                 callback: function (p) {
                     //a little post-processing
@@ -722,12 +718,9 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         loadAoi: function (id, showResults) {
             var self = this;
             //get from server
-            //eslint-disable-next-line no-undef
-
             this.clearAoiPreview();
 
             this.loadingOverlay.show('Loading AOI');
-            //eslint-disable-next-line no-undef
             MapDAO.getAoiModel(id, {
                 callback: function (aoi) {
                     self.loadingOverlay.hide();
@@ -749,7 +742,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     self.loadingOverlay.hide();
                     topic.publish('viewer/handleError', {
                         source: 'AoiEditor.loadAoi',
-                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)
                     });
                 }
             });
@@ -1022,7 +1015,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             on(this.undoManager, 'change', lang.hitch(this, 'updateUndoRedoButtons'));
 
             //customizing the draw toolbar so the UI can remind user what they're doing, and have ability to cancel
-            //eslint-disable-next-line no-undef
             self.drawMode = ko.observable(); //either null, 'draw', 'extract1', 'extract2', or 'split'; controls what happens in draw-complete and visibility of cancel buttons in sidebar
 
             self.activateDrawTool = function (mode) {
@@ -1163,7 +1155,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
                     if (geometry && cutter) {
                         self.loadingOverlay.show('Splitting features...');
-                        //eslint-disable-next-line no-undef
                         esriConfig.defaults.geometryService.cut([geometry], cutter,
                             function (result) {
                                 self.loadingOverlay.hide();
@@ -1346,7 +1337,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 buildPromises.push(buildPromise);
 
                 //simplify
-                //eslint-disable-next-line no-undef
                 esriConfig.defaults.geometryService.simplify(geometries).then(function (simplifiedGeometries) {
                     //Note, just a union request would do the job, but maybe this is useful for multiple buffers?
                     var params = new BufferParameters();
@@ -1358,7 +1348,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     params.geometries = simplifiedGeometries;
                     params.unionResults = true;
 
-                    //eslint-disable-next-line no-undef
                     esriConfig.defaults.geometryService.buffer(params,
                         function (bufferedGeometries) {
                             //search for existing feature by id and buffer distance
@@ -1682,7 +1671,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             //back-reference, supports clicking map or model
             feature.graphic.feature = feature;
 
-            /* eslint-disable no-undef */
             feature.name = ko.observable(feature.name);
             feature.visible = ko.observable(true);
             feature.visible.subscribe(function (visible) {
@@ -1757,7 +1745,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     var analysisAreaJS = analysisArea.toJS();
 
                     //save to non-spatial table
-                    //eslint-disable-next-line no-undef
                     MapDAO.saveAoiAnalysisArea(self.aoiId(), self.currentAuthority().orgUserId, analysisAreaJS, {
                         callback: function (analysisAreaReply) {
                             self.loadingOverlay.hide();
@@ -1977,7 +1964,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             };
             feature.cachePreUpdate();
 
-            /* eslint-enable no-undef */
             //buffer it
             self.bufferFeature(feature);
 
@@ -1991,7 +1977,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 includeExpired = this.includeExpired();
 
             //todo DWR call to get list of AOIs with basic properties of  id, name, type and description
-            //eslint-disable-next-line no-undef
             MapDAO.getAreaOfInterestList(orgId, includeExpired, {
                 callback: function (aois) {
                     aois.forEach(function (aoi) {
@@ -2012,7 +1997,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                         aoi.preview = function () {
                             self.previewAoi(aoi);
                         };
-                        aoi.previewed = ko.observable(false); //eslint-disable-line no-undef
+                        aoi.previewed = ko.observable(false);
                     });
                     self.aois(aois);
                     deferred.resolve();
@@ -2020,7 +2005,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 errorHandler: function (message, exception) {
                     topic.publish('viewer/handleError', {
                         source: 'AoiEditor.listAois',
-                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2) //eslint-disable-line no-undef
+                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)
                     });
                     deferred.reject(message);
                 }
@@ -2032,7 +2017,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             var deferred = null;
             if (geometry) {
                 if (geometry.type === 'polygon') {
-                    deferred = esriConfig.defaults.geometryService.simplify([geometry]); //eslint-disable-line no-undef
+                    deferred = esriConfig.defaults.geometryService.simplify([geometry]);
                 } else {
                     //todo do we need to simplify polylines?
                     deferred = new Deferred();
@@ -2080,7 +2065,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                         params.geodesic = true;
                         params.geometries = simplifiedGeometries; //We're only doing one at a time, but buffer expects an array. 
 
-                        //eslint-disable-next-line no-undef
                         esriConfig.defaults.geometryService.buffer(params,
                             function (bufferedGeometries) {
                                 //we don't really need forEach here, we just have one...for now
@@ -2122,7 +2106,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         //eslint-disable-next-line max-statements
         _knockoutifyAoiEditor: function () {
             var self = this;
-            /* eslint-disable no-undef */
             //basic properties
             this.name = ko.observable();
             this.description = ko.observable();
@@ -2441,38 +2424,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             //apply knockout bindings to new feature dialog
             ko.applyBindings(this, dom.byId('newFeatureDijit'));
 
-            //not using knockout for binding autocomplete for address, but sticking this function here
-            //to keep things tidy.
-            //jQuery('#addressToPoint').autocomplete({
-            //    /**
-            //     * jQuery Autocomplete source function for auto-completing addresses and ultimately getting coordinate.
-            //     * @param {string} request the term user has entered into the field
-            //     * @param {function} response a reference to the callback function to invoke after getting a response from autocomplete
-            //     * @returns {void}
-            //     */
-            //    source: function (request, response) {
-            //        self.getLocatorSuggestions(request.term)
-            //            .then(
-            //                function (suggestions) {
-            //                    //post-process to array of strings, pulling the "text" property out of each the suggestions
-            //                    var addresses = suggestions.map(function (suggestion) {
-            //                        return suggestion.text;
-            //                    });
-            //                    response(addresses); //jQuery auto-complete takes over from here
-            //                },
-            //                function (err) {
-            //                    topic.publish('growler/growlError', 'Error getting address: ' + err);
-            //                    response([]);
-            //                }
-            //            );
-            //    },
-            //    select: function (event, ui) {
-            //        self.addPointFromAddress(ui.item.value);
-            //    }
-            //});
-
-
-            /* eslint-enable no-undef */
         },
 
         _createGraphicLayers: function () {
