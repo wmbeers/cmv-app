@@ -122,6 +122,20 @@ define([
                     className: 'overlayLayerContainer'
                 }, domConst.create('div'));
                 this.addChild(this._overlayContainer, 'last');
+                this._buttonContainer = new ControlContainer({
+                    className: 'fooBarFoo'
+                }, domConst.create('div'));
+                this._toggleAllOffButton = new Button({
+                    label: '<span role="presentation" class="dijitInline dijitIcon dijitMenuItemIcon far fa-fw fa-square" data-dojo-attach-point="iconNode"></span> Turn off all layers',
+                    onClick: lang.hitch(this, 'hideAllLayers')
+                }, domConst.create('div'));
+                this._buttonContainer.addChild(this._toggleAllOffButton, 'first');
+                this._toggleAllOnButton = new Button({
+                    label: '<span role="presentation" class="dijitInline dijitIcon dijitMenuItemIcon far fa-fw fa-check-square" data-dojo-attach-point="iconNode"></span> Turn on all layers',
+                    onClick: lang.hitch(this, 'showAllLayers')
+                }, domConst.create('div'));
+                this._buttonContainer.addChild(this._toggleAllOnButton, 'last');
+                this.addChild(this._buttonContainer, 'first');
             } else {
                 this.overlayReorder = false;
                 this.vectorReorder = false;
