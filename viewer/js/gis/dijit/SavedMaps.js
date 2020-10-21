@@ -31,7 +31,7 @@ define([
     'dijit/form/TextBox',
     'dijit/form/MultiSelect',
 
-    'xstyle/css!./LayerLoader/css/layerLoader.css'
+    'xstyle/css!./SavedMaps/css/savedMaps.css'
 ],
 function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog, ConfirmDialog, request, lang, on, query, dom,
     domClass, html, topic, Memory, Deferred, sidebarAndDialogsTemplate, shareMapDialogTemplate
@@ -104,6 +104,10 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
                     return uri;
                 }
                 return null;
+            }, this);
+
+            this.sharePublic.subscribe(function () {
+                this.linkCopied(false);
             }, this);
         },
 

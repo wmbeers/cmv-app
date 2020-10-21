@@ -1,6 +1,8 @@
 ﻿<div id="shareMapDialog">
     <div id="mapLinkDiv">
         <p class="tip">Copy the link below and paste it into an email to share this map.</p>
-        <input type="text" data-bind="value: currentMapUri, click: copyCurrentMapUri" id="mapLink"/><span class="fa" data-bind="click: copyCurrentMapUri, css: {'fa-copy': !linkCopied(), 'fa-check-square': linkCopied()}, attr: {title: linkCopied() ? 'Link copied to clipboard' : 'Click to copy the link to your clipboard'}"></span>
+        <input type="text" data-bind="value: currentMapUri, click: copyCurrentMapUri" disabled id="mapLink"/><span class="fa" data-bind="click: copyCurrentMapUri, css: {'fa-copy': !linkCopied(), 'fa-check-square': linkCopied()}, attr: {title: linkCopied() ? 'Link copied to clipboard' : 'Click to copy the link to your clipboard'}"></span>
+        <br /><br />
+        <input type="checkbox" data-bind="checked: sharePublic" id="sharePublicCheckbox" /><label for="sharePublicCheckbox">Share on Public Site</label>
     </div>
 </div>

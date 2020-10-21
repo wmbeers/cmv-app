@@ -1,0 +1,24 @@
+/* Note tip class is also defined in layerLoader.css; probably best to move both out of here and into general location, along with the .alerts defined in layerLoader.css */
+.tip {
+    font-size: small;
+}
+
+/* Div wrapping the shared map link */
+#mapLinkDiv {
+    width: 400px;
+    height: 98px;
+}
+
+/* The shared map link itself, is an input that needs to not look like an input */
+#mapLink {
+    border: none;
+    width: 95%;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+    /* selection color when link is copied */
+    #mapLink::selection {
+        background-color: #e3edff;
+    }
+
