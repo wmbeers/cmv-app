@@ -799,12 +799,25 @@ define([
                 type: 'titlePane',
                 canFloat: true,
                 path: 'gis/dijit/LayerLoader',
-                title: 'Map Loader',
+                title: 'Layer Loader',
                 open: true,
                 position: 0,
                 options: {
                     map: true
-                } //'config/layerLoader'
+                }
+            },
+            savedMaps: {
+                include: true,
+                id: 'savedMaps',
+                type: 'titlePane',
+                canFloat: true,
+                path: 'gis/dijit/SavedMaps',
+                title: 'Saved Maps',
+                open: true,
+                position: 1,
+                options: {
+                    map: true
+                } 
             },
             layerControl: {
                 include: true,
@@ -815,7 +828,7 @@ define([
                 title: i18n.viewer.widgets.layerControl,
                 iconClass: 'fas fa-fw fa-th-list',
                 open: true,
-                position: 1,
+                position: 2,
                 options: {
                     map: true,
                     layerControlLayerInfos: true,
@@ -856,13 +869,12 @@ define([
                 title: i18n.viewer.widgets.legend,
                 iconClass: 'far fa-fw fa-images',
                 open: false,
-                position: 2,
+                position: 3,
                 options: {
                     map: true,
                     legendLayerInfos: true
                 }
             },
-
             projectEditor: {
                 include: false, //we start with this false, then if use has authority we change to true before processing by _WidgetsMixin.js. This happens in _AuthorizationMixin.js
                 id: 'projectEditor',
@@ -872,7 +884,7 @@ define([
                 title: 'Project Editor',
                 iconClass: 'fas fa-fw fa-pencil-alt',
                 open: true,
-                position: 3,
+                position: 4,
                 options: {
                     map: true,
                     mapClickMode: true,
@@ -881,7 +893,6 @@ define([
                     }
                 }
             },
-
             aoiEditor: {
                 include: false, //we start with this false, then if use has authority we change to true before processing by _WidgetsMixin.js. This happens in _AuthorizationMixin.js
                 id: 'aoiEditor',
@@ -891,7 +902,7 @@ define([
                 title: 'AOI Editor',
                 iconClass: 'fas fa-fw fa-pencil-alt',
                 open: true,
-                position: 4,
+                position: 5,
                 options: {
                     map: true,
                     mapClickMode: true,
@@ -909,7 +920,7 @@ define([
                 iconClass: 'fas fa-fw fa-info-circle',
                 open: false,
                 preload: true,
-                position: 5,
+                position: 6,
                 options: 'config/identify'
             },
             zoomToRegion: {
@@ -917,7 +928,7 @@ define([
                 id: 'zoomToRegion',
                 type: 'titlePane',
                 title: 'Zoom to Region',
-                position: 6,
+                position: 7,
                 open: true,
                 path: 'gis/dijit/ZoomToFeature',
                 options: {
@@ -940,7 +951,7 @@ define([
                 title: i18n.viewer.widgets.find,
                 iconClass: 'fas fa-fw fa-search',
                 open: false,
-                position: 7,
+                position: 8,
                 options: 'config/find'
             },
             bookmarks: {
@@ -951,7 +962,7 @@ define([
                 title: i18n.viewer.widgets.bookmarks,
                 iconClass: 'fas fa-fw fa-bookmark',
                 open: false,
-                position: 8,
+                position: 9,
                 options: 'config/bookmarks'
             },
             draw: {
@@ -963,7 +974,7 @@ define([
                 title: i18n.viewer.widgets.draw,
                 iconClass: 'fas fa-fw fa-paint-brush',
                 open: false,
-                position: 9,
+                position: 10,
                 options: {
                     map: true,
                     mapClickMode: true
@@ -978,7 +989,7 @@ define([
                 title: i18n.viewer.widgets.measure,
                 iconClass: 'fas fa-fw fa-expand',
                 open: false,
-                position: 10,
+                position: 11,
                 options: {
                     map: true,
                     mapClickMode: true,
@@ -995,7 +1006,7 @@ define([
                 title: i18n.viewer.widgets.print,
                 iconClass: 'fas fa-fw fa-print',
                 open: false,
-                position: 11,
+                position: 12,
                 options: {
                     map: true,
                     printTaskURL: 'https://utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task',

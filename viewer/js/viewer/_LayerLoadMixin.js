@@ -71,8 +71,8 @@ define([
             topic.subscribe('layerLoader/addAoiToMap', lang.hitch(this, 'addAoiToMap'));
             topic.subscribe('layerLoader/addLayerFromLayerDef', lang.hitch(this, 'addLayerFromLayerDef'));
             topic.subscribe('layerLoader/addLayerFromCategoryDef', lang.hitch(this, 'addLayerFromCategoryDef'));
-            topic.subscribe('layerLoader/saveMap', lang.hitch(this, 'saveMap'));
-            topic.subscribe('layerLoader/loadMap', lang.hitch(this, 'loadMap'));
+            topic.subscribe('savedMaps/saveMap', lang.hitch(this, 'saveMap'));
+            topic.subscribe('savedMaps/loadMap', lang.hitch(this, 'loadMap'));
             topic.subscribe('layerLoader/removeLayer', lang.hitch(this, 'removeLayer'));
             topic.subscribe('layerLoader/clearUserLayers', lang.hitch(this, 'clearUserLayers'));
             topic.subscribe('layerLoader/zoomToMgrsPoint', lang.hitch(this, 'zoomToMgrsPoint'));
@@ -886,7 +886,7 @@ define([
 
         /**
          * Saves to the referenced map to the server, including the layer configuration (via getLayerConfig) and the map extent.
-         * Subscribed to topic layerLoader/saveMap.
+         * Subscribed to topic savedMaps/saveMap.
          * @param {object} savedMap the map to save, an object with id and mapName properties, and optionally (if testing) a Deferred to be resolved when the saveMap call is complete.
          * @returns {void}
          */
@@ -899,7 +899,6 @@ define([
                     callback: function (savedMapId) {
                         savedMap.id = savedMapId;
                         topic.publish('growler/growl', 'Saved ' + savedMap.layers.length + ' layers to ' + savedMap.mapName);
-                        topic.publish('layerLoader/mapSaved');
                         if (savedMap.deferred) {
                             savedMap.deferred.resolve();
                         }

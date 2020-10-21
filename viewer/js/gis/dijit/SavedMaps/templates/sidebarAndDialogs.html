@@ -1,0 +1,85 @@
+<div id="savedMaps">
+    <div id="savedMapsSidebar">
+        <h3>My Maps</h3>
+        <div data-bind="with: currentMap()">
+            Current Map: <span data-bind="text: mapName"></span>
+        </div>
+        <div class="buttonContainer">
+            <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-save fa-fw'" data-dojo-attach-event="click: showSaveMapDialog">
+                Save
+            </div>
+            <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-folder-open fa-fw'" data-dojo-attach-event="click: showLoadMapDialog">
+                Open
+            </div>
+            <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-external-link-alt fa-fw'" data-dojo-attach-event="click: shareMap">
+                Share
+            </div>
+            <!--TODO would a "clear" button make sense here, to give user option to remove all layers?-->
+        </div>
+    </div>
+    <h4 />
+    <div id="thematicMaps">
+        <h3>Thematic Maps</h3>
+        <select data-dojo-type="dijit/form/MultiSelect" id="thematicMaps" size="4" style="width:100%" data-bind="options: thematicMaps, optionsText: 'name', value: selectedThematicMap">
+        </select>
+        <br />
+        <div class="buttonContainer">
+            <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-folder-open fa-fw'" data-dojo-attach-event="click: loadThematicMap">
+                Open
+            </div>
+        </div>
+        <div>
+            <br />
+            <label>
+                <input type="checkbox" data-dojo-type="dijit/form/CheckBox" data-dojo-props="'class':'optionsCheckBox'" data-bind="checked: clearMapFirst" />
+                Clear map before loading
+            </label>
+        </div>
+
+    </div>
+
+    <!--Dialogs -->
+    <div data-dojo-type="dijit/Dialog" data-dojo-attach-point="loadMapDialog" title="Open Map" style="width: 300px; height: 235px" id="loadMapDialog">
+        <label>Select Map</label>
+        <input id="savedMapsDijit" type="select" data-dojo-type="dijit/form/FilteringSelect" data-dojo-props="name:'selectedMap',autoComplete:true,required:true,searchAttr:'mapName',labelAttr:'mapName',style:'width:100%;'" data-dojo-attach-point="savedMapsDijit" />
+        <br />
+        <div>
+            <br />
+            <label>
+                <input type="checkbox" data-dojo-type="dijit/form/CheckBox" data-dojo-props="'class':'optionsCheckBox'" data-bind="checked: clearMapFirst" />
+                Clear map before loading
+            </label>
+        </div>
+        <div data-dojo-attach-point="zoomToSavedMapExtentDom">
+            <br />
+            <label>
+                <input type="checkbox" data-dojo-attach-point="zoomToSavedMapExtentCheckBox" data-dojo-type="dijit/form/CheckBox" data-dojo-props="'class':'optionsCheckBox'" data-bind="checked: zoomToSavedMapExtent" />
+                Zoom to saved map extent
+            </label>
+        </div>
+        <br />
+        <div class="buttonContainer buttonContainerRight">
+            <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-folder-open fa-fw'" data-bind="click: loadSelectedMap">
+                Open
+            </div>
+            <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-trash fa-fw'" data-bind="click: deleteSelectedMap">
+                Delete
+            </div>
+        </div>
+
+    </div>
+    <div data-dojo-type="dijit/Dialog" data-dojo-attach-point="saveMapDialog" title="Save Map" style="width: 300px; height: 200px" id="saveMapDialog">
+        <label>Map Name</label>
+        <input type="text" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-props="name:'mapName',trim:true,required:true,style:'width:100%;'" data-dojo-attach-point="mapName" data-dojo-attach-event="keyup: handleMapNameKeyUp" />
+
+        <div class="buttonContainer buttonContainerRight">
+            <span class="hidden" data-dojo-attach-point="saveMapWait"><i class="fas fa-spinner fa-pulse"></i> Saving...</span>
+            <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-save fa-fw'" data-dojo-attach-event="click: saveMap">
+                Save
+            </div>
+        </div>
+
+        <div class="alert alert-danger hidden" data-dojo-attach-point="saveMapError"></div>
+
+    </div>
+</div>
