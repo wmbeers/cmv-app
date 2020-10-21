@@ -84,7 +84,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
 
             //represents the sharable URI for the map currently loaded in the viewer
             this.currentMapUri = ko.pureComputed(function () {
-                var this2 = this;
                 if (this.currentMap() && this.currentMap().id && this.currentMap().id > 0) {
                     //get the base url
                     var uri = window.location.href;
@@ -434,7 +433,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
             savedMap.deferred.then(
                 //callback
                 function () {
-                    console.log('savedMap.deferred.callback');
+                    //console.log('savedMap.deferred.callback');
                     //console.log('setting currentMap null');
                     //self.currentMap(null); //forces recomputation of currentMapUri
                     //console.log('setting currentMap to dummy');
@@ -467,9 +466,9 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
         shareMap: function () {
             if (!this.currentMap() || this.hasUnsavedChanges()) {
                 //prompt user to save
-                var content = this.currentMap() ?
-                    'You have unsaved changes, do you want to save first?<br /><br />Click <strong>Yes</strong> to save and share your map with the latest changes.<br/>Click <strong>No</strong> to share the map from when it was last saved.' :
-                    'You must first save the map before you can share it. Do you want to save first?<br /><br />Click <strong>Yes</strong> to save and share your map. Click <strong>No</strong> to cancel.';
+                var content = this.currentMap()
+                    ? 'You have unsaved changes, do you want to save first?<br /><br />Click <strong>Yes</strong> to save and share your map with the latest changes.<br/>Click <strong>No</strong> to share the map from when it was last saved.'
+                    : 'You must first save the map before you can share it. Do you want to save first?<br /><br />Click <strong>Yes</strong> to save and share your map. Click <strong>No</strong> to cancel.';
                 var cd = new ConfirmDialog({
                     title: 'Unsaved Changes',
                     buttonOk: 'Yes', //Bug in dojo ConfirmDialog, this does nothing to set the button text, see set statement below

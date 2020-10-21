@@ -123,7 +123,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
         },
 
         startup: function () {
-            var self = this; //solves the problem of "this" meaning something different in onchange event handler
             this.inherited(arguments);
 
             this.searchNode.focus(); //hacky way of fixing the problem of the validation icon not showing up if the first thing the user does is click the search button; by forcing focus here it somehow causes dojo to handle validation correctly.
@@ -231,7 +230,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
             });
 
             //apply knockout bindings to search results
-           //TODO RESTORE  ko.applyBindings(this, dom.byId('searchResultsDialog'));
+            ko.applyBindings(this, dom.byId('searchResultsDialog'));
 
         },
 
