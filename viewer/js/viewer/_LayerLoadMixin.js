@@ -142,24 +142,34 @@ define([
         /**
         * Handles arguments passed in the query string to do things after the map is loaded, like loading a saved map or adding a project to the map
         * @param {object} queryString optional queryString when calling this method from _handleStorageMessage. If not provided, uses window.location.href to get queryString.
-        * Acceptable queryString parameters include projectid, aoiid, layername, latlon, mgrs, featureid and featuretype (both feature* must be paired).
+        * Acceptable queryString parameters include:
+        * projectId: ID of the a project to load in the map (PK_PROJECT)
+        * aoiId: ID of an AOI project to load in the map (T_PROJECT_AOI.PK_PROJECT), 
+        * layerName: SDE layer name of a layer to load in the map
+        * latLon: coordinates in lat/long, wgs84 datum assumed, to center the map on. Not currently used by EST. Can be decimal degress, decimal minutes, degrees/minutes/seconds
+        * mgrs: coordinates in Miltary Grid Reference System (MGRS) coordinate system
+        * zoomLevel: zoom level to set to the map. If not provided, it is inferred based on the precision of the MGRS coordinate, or the fourth-highest zoom level if using latLon
+        * featureId: the ID of a project feature to load in the map; must be paired with valid featureType parameter
+        * featureType: the type of project feature to load in the map (point, line or polygon); must be paried with featureId
+        * featureName: the name of the project feature, used as the label of the feature's layer in the Layers widget. If not provided, label "Feature ######" is used.
         * Some parameters can be combined, including:
-        *  * layername and any other parameter (e.g. projectid, aoiid, or featureid and featuretype)
-        *  * loadmap and any other parameter
-        *  * mgrs or latlon with any other parameter
-        * Zoom-to point paramters (mgrs and latlon) are mutually exclusive. If both are provided only MGRS is used.
+        *  * layerName and any other parameter (e.g. with projectId, aoiId, or featureId/featureType)
+        *  * loadMap and any other parameter
+        *  * mgrs or latLon with any other parameter
+        * Zoom-to point paramters (mgrs and latLon) are mutually exclusive. If both are provided only mgrs value is used.
         * Parameters related to loading projects/aois/features are mutually exclusive, and can't be combined; if multiple ones are provided the one earliest 
         * on the following list is used:
-        *  * projectid
-        *  * aoiid
-        *  * featureid and feature type
-        * Parameters for loading a feature (featureid and featuretype) have to be paired to zoom to a feature.
+        *  * projectId
+        *  * aoiId
+        *  * featureId and featureType
+        * Parameters for loading a feature (featureId and featureType) have to be paired to add a feature to the map, and ideally also include 
+        * featureName. If featureName isn't provided, the feature is labeled "Feature ######" in the Layers widget.
         * @returns {void}
         */
         _handleQueryString: function (queryString) { //eslint-disable-line complexity
             var self = this, //so we don't lose track of the application as the appropriate closure scope
                 uri = (queryString || window.location.href),
-                qs = (uri.indexOf('?') >= 0 ? uri.substring(uri.indexOf('?') + 1, uri.length) : '').toLowerCase(),
+                qs = (uri.indexOf('?') >= 0 ? uri.substring(uri.indexOf('?') + 1, uri.length) : ''),
                 qsObj = ioQuery.queryToObject(qs),
                 functions = [],
                 args = [],
@@ -175,52 +185,52 @@ define([
                         });
                     }
                 };
+
             //load a saved map
-            if (qsObj.loadmap) {
+            if (qsObj.loadMap) {
                 functions.push(this.loadMap);
-                args.push([qsObj.loadmap, false, true]); //load map, don't clear layers, zoom to extent
+                args.push([qsObj.loadMap, false, true]); //load map, don't clear layers, zoom to extent
             }
             //load a project, alternative, AOI, AOI analysis area, or feature
-            if (qsObj.projectid) {
+            if (qsObj.projectId) {
                 //addProjectToMap accepts multiple arguments (projectAltId, zoomOnLoad, _deferred, queryDraft)
                 //we only care about the first two
                 //zoomOnLoad should be false if mgrs/latlong parameter is also included
                 functions.push(this.addProjectToMap);
                 var zoomOnLoadProject = true;
-                if (qsObj.mgrs || qsObj.latlong || qsObj.latlon) {
+                if (qsObj.mgrs || qsObj.latLong) {
                     zoomOnLoadProject = false;
                 }
-                args.push([qsObj.projectid, zoomOnLoadProject]);
+                args.push([qsObj.projectId, zoomOnLoadProject]);
                 //load an AOI
-            } else if (qsObj.aoiid) {
+            } else if (qsObj.aoiId) {
                 functions.push(this.addAoiToMap);
-                args.push([qsObj.aoiid]);
+                args.push([qsObj.aoiId]);
             //load an AOI analysis area
-            } else if (qsObj.aoianalysisareaid) {
+            } else if (qsObj.aoiAnalysisAreaId) {
                 functions.push(this.addAoiAltToMap);
-                args.push([qsObj.aoianalysisareaid]);
+                args.push([qsObj.aoiAnalysisAreaId]);
             //load a project feature
-            } else if (qsObj.featureid && qsObj.featuretype) {
+            } else if (qsObj.featureId && qsObj.featureType) {
                 functions.push(this.addProjectFeatureToMap);
                 var zoomOnLoadFeature = true;
-                if (qsObj.mgrs || qsObj.latlong || qsObj.latlon) {
+                if (qsObj.mgrs || qsObj.latlong) {
                     zoomOnLoadFeature = false;
                 }
-                args.push([qsObj.featureid, qsObj.featuretype, qsObj.featurename, zoomOnLoadFeature]);
+                args.push([qsObj.featureId, qsObj.featureType, qsObj.featureName, zoomOnLoadFeature]);
             }
             //load a layer
-            if (qsObj.layername) {
+            if (qsObj.layerName) {
                 functions.push(this.addLayerByLayerName);
-                args.push([qsObj.layername]);
+                args.push([qsObj.layerName]);
             }
             //coordinate to zoom to, we don't support both at the same time, and really currently only use mgrs
             if (qsObj.mgrs) {
                 functions.push(this.zoomToMgrsPoint);
-                args.push([qsObj.mgrs, qsObj.zoomlevel || 'infer']);
-            } else if (qsObj.latlong || qsObj.latlon) {
-                var ll = qsObj.latlong || qsObj.latlon;
+                args.push([qsObj.mgrs, qsObj.zoomLevel || 'infer']);
+            } else if (qsObj.latLon) {
                 functions.push(this.zoomToLatLong);
-                args.push([ll, qsObj.zoomlevel]);
+                args.push([qsObj.latLon, qsObj.zoomLevel]);
             }
             processNextFunction();
         },
