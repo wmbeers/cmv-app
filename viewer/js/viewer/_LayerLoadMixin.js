@@ -206,7 +206,7 @@ define([
                 if (qsObj.mgrs || qsObj.latlong || qsObj.latlon) {
                     zoomOnLoadFeature = false;
                 }
-                args.push([qsObj.featureid, qsObj.featuretype, zoomOnLoadFeature]);
+                args.push([qsObj.featureid, qsObj.featuretype, qsObj.featurename, zoomOnLoadFeature]);
             }
             //load a layer
             if (qsObj.layername) {
@@ -923,13 +923,14 @@ define([
 
         /**
          * Add the project feature to the map identified by featureId and featureType
-         * @param {any} featureId The numeric ID of the feature
-         * @param {any} featureType The type of the feature, either 'point', 'line', or 'polygon'
+         * @param {number} featureId The numeric ID of the feature
+         * @param {string} featureType The type of the feature, either 'point', 'line', or 'polygon'
+         * @param {string} featureName The name of the feature. If null "Feature " + featureId is used.
          * @param {boolean} zoomOnLoad If true (or omitted), the map will zoom to the extent of the project feature after loading it. If false the current map extent is maintained. It is set to false when loading a saved map, because the desired map extent is saved with the map.
          * @param {Deferred} _deferred Optional Deferred object, created if omitted. Used when calling this function from itself to maintain the promise.
          * @return {Deferred} Deffered instance--one created by this function or passed in via _deferred argument.
          */
-        addProjectFeatureToMap: function (featureId, featureType, zoomOnLoad, _deferred) {
+        addProjectFeatureToMap: function (featureId, featureType, featureName, zoomOnLoad, _deferred) {
             var self = this, //so we don't lose track buried down in callbacks
                 deferred = _deferred || new Deferred();
 
@@ -954,7 +955,7 @@ define([
             this._findFeatureInLayers(featureId, featureType).then(
                 function (info) {
                     var featureLayerConfig = {
-                            name: 'Feature # ' + featureId,
+                            name: featureName || 'Feature # ' + featureId,
                             id: ('feature_' + featureId), //internal ID, not really important, but helps with debugging
                             url: info.url,
                             type: 'feature',
