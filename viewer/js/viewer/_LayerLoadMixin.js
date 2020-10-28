@@ -143,8 +143,9 @@ define([
         * Handles arguments passed in the query string to do things after the map is loaded, like loading a saved map or adding a project to the map
         * @param {object} queryString optional queryString when calling this method from _handleStorageMessage. If not provided, uses window.location.href to get queryString.
         * Acceptable queryString parameters include:
-        * projectId: ID of the a project to load in the map (PK_PROJECT)
-        * aoiId: ID of an AOI project to load in the map (T_PROJECT_AOI.PK_PROJECT), 
+        * projectId: ID of the a project to load in the map (PK_PROJECT), or alternative (identified by PK_PROJECT_ALT prefixed with a, e.g. projectId=a33241, or as project-altnum (FK_PROJECT, PK_PRJ_ALT), e.g. projectId=3321-1
+        * aoiId: ID of an AOI project to load in the map (T_PROJECT_AOI.PK_PROJECT)
+        * aoiAnalysisAreaId: ID of an AOI project alt to load in the map
         * layerName: SDE layer name of a layer to load in the map
         * latLon: coordinates in lat/long, wgs84 datum assumed, to center the map on. Not currently used by EST. Can be decimal degress, decimal minutes, degrees/minutes/seconds
         * mgrs: coordinates in Miltary Grid Reference System (MGRS) coordinate system
@@ -853,7 +854,7 @@ define([
             query.where = definitionQuery;
             query.returnGeometry = false;
             //TODO get lex to make draft layer structure consistent
-            query.outFields = queryDraft ? ['PROJECT_ALT', 'ALT_ID'] : ['FK_PROJECT', 'FK_PROJECT_ALT', 'ALT_ID'];
+            query.outFields = queryDraft ? ['PROJECT_ALT', 'ALT_ID', 'ALT_NAME'] : ['FK_PROJECT', 'FK_PROJECT_ALT', 'ALT_ID', 'ALT_NAME'];
 
             //old way used executeForCount and just got the number of features,
             //but we really need to know, if it's an alt, the fk_project_alt value for saving it
@@ -887,7 +888,12 @@ define([
                     if (isAlt) {
                         //cache the fk_project_alt for savedMap
                         projectLayerConfig.projectAltId = queryDraft ? reply.features[0].attributes.PROJECT_ALT : reply.features[0].attributes.FK_PROJECT_ALT;
-                        projectLayerConfig.name = 'Project # ' + reply.features[0].attributes.ALT_ID;
+                        //per bug 5100, alts use the alt_name
+                        if (reply.features[0].attributes.ALT_NAME) {
+                            projectLayerConfig.name = reply.features[0].attributes.ALT_NAME;
+                        } else {
+                            projectLayerConfig.name = 'Project # ' + reply.features[0].attributes.ALT_ID;
+                        }
                     } else {
                         //cach the fk_project for savedMap
                         projectLayerConfig.projectId = queryDraft ? reply.features[0].attributes.ALT_ID.split('-')[0] : reply.features[0].attributes.FK_PROJECT;
