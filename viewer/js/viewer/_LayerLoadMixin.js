@@ -144,7 +144,8 @@ define([
         * @param {object} queryString optional queryString when calling this method from _handleStorageMessage. If not provided, uses window.location.href to get queryString.
         * Acceptable queryString parameters include:
         * projectId: ID of the a project to load in the map (PK_PROJECT), or alternative (identified by PK_PROJECT_ALT prefixed with a, e.g. projectId=a33241, or as project-altnum (FK_PROJECT, PK_PRJ_ALT), e.g. projectId=3321-1
-        * aoiId: ID of an AOI project to load in the map (T_PROJECT_AOI.PK_PROJECT), 
+        * aoiId: ID of an AOI project to load in the map (T_PROJECT_AOI.PK_PROJECT)
+        * aoiAnalysisAreaId: ID of an AOI project alt to load in the map
         * layerName: SDE layer name of a layer to load in the map
         * latLon: coordinates in lat/long, wgs84 datum assumed, to center the map on. Not currently used by EST. Can be decimal degress, decimal minutes, degrees/minutes/seconds
         * mgrs: coordinates in Miltary Grid Reference System (MGRS) coordinate system
