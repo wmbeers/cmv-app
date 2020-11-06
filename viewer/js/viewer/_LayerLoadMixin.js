@@ -651,18 +651,29 @@ define([
             return this.addLayer(categoryDef.layer, false, false);
         },
 
-        //Add a project or alternative to the map, using one of the following patterns:
-        //'p' followed by a project ID (e.g. p12992 to load project #12992)
-        // number, or string that contains just numbers (e.g. 12992 or '12992' to load project #12992)
-        //'a' followed by a project alt ID (e.g. 'a9912' to load project alt 9912)
-        // string containing two numbers separated by a dash (e.g. 12992-1 to load alt 1 of project 12992)
-        addProjectToMap: function (projectAltId, zoomOnLoad, _deferred, queryDraft) {
+
+        /**
+         * Add a project or alternative to the map, using one of the following patterns:
+         *  1. 'p' followed by a project ID (e.g. p12992 to load project #12992)
+         *  2. number, or string that contains just numbers (e.g. 12992 or '12992' to load project #12992)
+         *  3. 'a' followed by a project alt ID (e.g. 'a9912' to load project alt 9912)
+         *  4. string containing two numbers separated by a dash (e.g. 12992-1 to load alt 1 of project 12992)
+         * This method first attempts to load a project from draft, and failing that recursively calls this method switching queryDraft to false.
+         * @param {string} projectAltId Identifier of the project or alternative to load (see descripbion above for details)
+         * @param {boolean} zoomOnLoad If true, map zooms to the extent of the project/alt loaded in the map.
+         * The next two method arguments are only intended to be used when this method is called by itself, when the project isn't found in draft
+         * @param {Deferred} _deferred Optional Deferred object to be resolved once the data has been loaded in the map; if not provided, a new one is created and returned.
+         * @param {boolean} _queryDraft If true or not provided (defaults to true), and user has draft access, the "query drafts" layer (identified in projects.js as queryDraftLayer) is used, otherwise Milestone Max (projects.queryMmaLayer) is shown.
+         * @returns {Deferred} Deferred object to be resolved after project is loaded, or rejected if not found
+         */
+        addProjectToMap: function (projectAltId, zoomOnLoad, _deferred, _queryDraft) {
             var self = this, //so we don't lose track buried down in callbacks
                 isAlt = false,
                 definitionQuery = '',
                 deferred = _deferred || new Deferred(),
                 query = new Query(),
-                url = queryDraft && (this.hasProjectEditAuthority || this.hasViewDraftAuthority) ? projects.queryDraftLayer : projects.queryMmaLayer, //query task url is in the config file viewer/js/config/projects.js. 
+                queryDraft = (this.hasProjectEditAuthority || this.hasViewDraftAuthority) && _queryDraft !== false,
+                url = queryDraft ? projects.queryDraftLayer : projects.queryMmaLayer, //query task url is in the config file viewer/js/config/projects.js. 
                 queryTask = new QueryTask(url); 
 
             //default zoomOnLoad to true
@@ -724,9 +735,11 @@ define([
             queryTask.execute(query, function (reply) {
                 if (reply.features.length === 0) {                
                     //no features found
-                    if (!queryDraft && (self.hasProjectEditAuthority || self.hasViewDraftAuthority)) {
-                        //try again with draft, passing the deferred we've already created and true for the queryDraft argument
-                        self.addProjectToMap(projectAltId, zoomOnLoad, deferred, true);
+
+                    //if querying draft, try again with milestone max
+                    if (queryDraft) {
+                        //try again with Milestone max, passing the deferred we've already created and false for the queryDraft argument to force it to query from draft
+                        self.addProjectToMap(projectAltId, zoomOnLoad, deferred, false);
                     } else {
                         //not found 
                         topic.publish('growler/growl', {
