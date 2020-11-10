@@ -146,6 +146,9 @@ define([
         * projectId: ID of the a project to load in the map (PK_PROJECT), or alternative (identified by PK_PROJECT_ALT prefixed with a, e.g. projectId=a33241, or as project-altnum (FK_PROJECT, PK_PRJ_ALT), e.g. projectId=3321-1
         * aoiId: ID of an AOI project to load in the map (T_PROJECT_AOI.PK_PROJECT)
         * aoiAnalysisAreaId: ID of an AOI project alt to load in the map
+        * version: Optional; if used, must be combined with projectId parameter; If version == "milestone-max", and the referenced alt has milestoned geometry, the most recent milestone version of the geometry is loaded from the MILESTONE_MAX_ALTERNATIVES layer.
+        *  * If omitted, normal behavior applies--if draft geometry is available and user has access, the draft geometry is loaded; if no draft geometry is available, or user
+        *  * doesn't have draft access, then milestone-max geometry is loaded. IMPORTANT: if set to milestone-max and there are no milestones, nothing will be loaded, it will not retry to query the draft layer.
         * layerName: SDE layer name of a layer to load in the map
         * latLon: coordinates in lat/long, wgs84 datum assumed, to center the map on. Not currently used by EST. Can be decimal degress, decimal minutes, degrees/minutes/seconds
         * mgrs: coordinates in Miltary Grid Reference System (MGRS) coordinate system
@@ -202,7 +205,7 @@ define([
                 if (qsObj.mgrs || qsObj.latLong) {
                     zoomOnLoadProject = false;
                 }
-                args.push([qsObj.projectId, zoomOnLoadProject]);
+                args.push([qsObj.projectId, zoomOnLoadProject, qsObj.version]);
                 //load an AOI
             } else if (qsObj.aoiId) {
                 functions.push(this.addAoiToMap);
@@ -788,21 +791,22 @@ define([
          *  2. number, or string that contains just numbers (e.g. 12992 or '12992' to load project #12992)
          *  3. 'a' followed by a project alt ID (e.g. 'a9912' to load project alt 9912)
          *  4. string containing two numbers separated by a dash (e.g. 12992-1 to load alt 1 of project 12992)
-         * This method first attempts to load a project from draft, and failing that recursively calls this method switching queryDraft to false.
+         * This method first attempts to load a project from draft (except when version argument = "milestone-max"), and failing that recursively calls this method switching queryDraft to false.
          * @param {string} projectAltId Identifier of the project or alternative to load (see descripbion above for details)
          * @param {boolean} zoomOnLoad If true, map zooms to the extent of the project/alt loaded in the map.
+         * @param {string} version Optional, if it equals "milestone-max", the most recent milestone version of the geometry is loaded from the MILESTONE_MAX_ALTERNATIVES layer is shown instead of draft; otherwise normal behavior to check for draft geometry first is used.
          * The next two method arguments are only intended to be used when this method is called by itself, when the project isn't found in draft
          * @param {Deferred} _deferred Optional Deferred object to be resolved once the data has been loaded in the map; if not provided, a new one is created and returned.
          * @param {boolean} _queryDraft If true or not provided (defaults to true), and user has draft access, the "query drafts" layer (identified in projects.js as queryDraftLayer) is used, otherwise Milestone Max (projects.queryMmaLayer) is shown.
          * @returns {Deferred} Deferred object to be resolved after project is loaded, or rejected if not found
          */
-        addProjectToMap: function (projectAltId, zoomOnLoad, _deferred, _queryDraft) {
+        addProjectToMap: function (projectAltId, zoomOnLoad, version, _deferred, _queryDraft) {
             var self = this, //so we don't lose track buried down in callbacks
                 isAlt = false,
                 definitionQuery = '',
                 deferred = _deferred || new Deferred(),
                 query = new Query(),
-                queryDraft = (this.hasProjectEditAuthority || this.hasViewDraftAuthority) && _queryDraft !== false,
+                queryDraft = (this.hasProjectEditAuthority || this.hasViewDraftAuthority) && _queryDraft !== false && version !== 'milestone-max',
                 url = queryDraft ? projects.queryDraftLayer : projects.queryMmaLayer, //query task url is in the config file viewer/js/config/projects.js. 
                 queryTask = new QueryTask(url); 
 
@@ -869,7 +873,7 @@ define([
                     //if querying draft, try again with milestone max
                     if (queryDraft) {
                         //try again with Milestone max, passing the deferred we've already created and false for the queryDraft argument to force it to query from draft
-                        self.addProjectToMap(projectAltId, zoomOnLoad, deferred, false);
+                        self.addProjectToMap(projectAltId, zoomOnLoad, version, deferred, false);
                     } else {
                         //not found 
                         topic.publish('growler/growl', {
@@ -883,7 +887,7 @@ define([
                     //load it!
                     //first construct a layer config
                     var projectLayerConfig = {
-                        name: 'Project # ' + projectAltId,
+                        name: 'Project # ' + projectAltId + (queryDraft ? ' (Draft)' : ''),
                         id: ('project_' + projectAltId).replace('-', '_'), //internal ID, not really important, but helps with debugging
                         url: url,
                         type: 'feature',
@@ -894,9 +898,7 @@ define([
                         projectLayerConfig.projectAltId = queryDraft ? reply.features[0].attributes.PROJECT_ALT : reply.features[0].attributes.FK_PROJECT_ALT;
                         //per bug 5100, alts use the alt_name
                         if (reply.features[0].attributes.ALT_NAME) {
-                            projectLayerConfig.name = reply.features[0].attributes.ALT_NAME;
-                        } else {
-                            projectLayerConfig.name = 'Project # ' + reply.features[0].attributes.ALT_ID;
+                            projectLayerConfig.name = reply.features[0].attributes.ALT_NAME + (queryDraft ? ' (Draft)' : '');
                         }
                     } else {
                         //cach the fk_project for savedMap
