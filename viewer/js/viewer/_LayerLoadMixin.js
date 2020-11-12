@@ -10,12 +10,19 @@ define([
     'dojo/promise/all',
     'dojo/request',
     './js/config/projects.js',
+    './js/config/layerLoader.js',
     'esri/layers/ArcGISDynamicMapServiceLayer',
     'esri/layers/FeatureLayer',
     'esri/layers/RasterLayer',
     'esri/layers/VectorTileLayer',
     'esri/layers/ImageParameters',
     'esri/layers/ImageServiceParameters',
+
+    //for zoom-to-point support
+    'esri/layers/GraphicsLayer',
+    'esri/graphic',
+    'esri/symbols/SimpleMarkerSymbol',
+
     'esri/request',
     'esri/tasks/ProjectParameters',
     'esri/tasks/query',
@@ -39,12 +46,16 @@ define([
     all,
     request,
     projects,
+    layerLoader,
     ArcGISDynamicMapServiceLayer,
     FeatureLayer,
     RasterLayer,
     VectorTileLayer,
     ImageParameters,
     ImageServiceParameters,
+    GraphicsLayer,
+    Graphic,
+    SimpleMarkerSymbol,
     esriRequest,
     ProjectParameters,
     Query,
@@ -88,9 +99,38 @@ define([
             //so we wait for the last widget we have to publish startupComplete
             topic.subscribe('layerLoader/startupComplete', lang.hitch(this, '_handleQueryString'));
 
+            //Note: can't do this on startup: this.map.addLayer(this.zoomPointGraphics), because this.map is defined asynchronously in _MapMixin
+            //need to use mapDeferred, also defined in _MapMixin, resolved when the map has been created
+            this.mapDeferred.then(lang.hitch(this, '_createZoomPointGraphics'));
+
             window.addEventListener('storage', lang.hitch(this, '_handleStorageMessage'));
 
             this.inherited(arguments);
+        },
+
+        _createZoomPointGraphics: function () {
+            this.zoomPointGraphics = new GraphicsLayer({
+                id: '_LayerLoadMixin_ZoomPointGraphics',
+                title: 'Zoom Point Graphics'
+            });
+
+            this.map.addLayer(this.zoomPointGraphics);
+
+            this.zoomPointSymbol = new SimpleMarkerSymbol({
+                type: 'esriSMS',
+                style: 'esriSMSCircle',
+                size: 15,
+                color: [200, 0, 200, 16],
+                angle: 0,
+                xoffset: 0,
+                yoffset: 0,
+                outline: {
+                    type: 'esriSLS',
+                    style: 'esriSLSSolid',
+                    color: [200, 0, 200, 200],
+                    width: 3
+                }
+            });
         },
 
         _handleStorageMessage: function (e) {
@@ -101,31 +141,99 @@ define([
 
         /**
         * Handles arguments passed in the query string to do things after the map is loaded, like loading a saved map or adding a project to the map
-        * @param {object} queryString optional queryString when calling this method from _handleStorageMessage. If not provided, uses window.location.href to get queryString
+        * @param {object} queryString optional queryString when calling this method from _handleStorageMessage. If not provided, uses window.location.href to get queryString.
+        * Acceptable queryString parameters include:
+        * projectId: ID of the a project to load in the map (PK_PROJECT), or alternative (identified by PK_PROJECT_ALT prefixed with a, e.g. projectId=a33241, or as project-altnum (FK_PROJECT, PK_PRJ_ALT), e.g. projectId=3321-1
+        * aoiId: ID of an AOI project to load in the map (T_PROJECT_AOI.PK_PROJECT)
+        * aoiAnalysisAreaId: ID of an AOI project alt to load in the map
+        * layerName: SDE layer name of a layer to load in the map
+        * latLon: coordinates in lat/long, wgs84 datum assumed, to center the map on. Not currently used by EST. Can be decimal degress, decimal minutes, degrees/minutes/seconds
+        * mgrs: coordinates in Miltary Grid Reference System (MGRS) coordinate system
+        * zoomLevel: zoom level to set to the map. If not provided, it is inferred based on the precision of the MGRS coordinate, or the fourth-highest zoom level if using latLon
+        * featureId: the ID of a project feature to load in the map; must be paired with valid featureType parameter
+        * featureType: the type of project feature to load in the map (point, line or polygon); must be paried with featureId
+        * featureName: the name of the project feature, used as the label of the feature's layer in the Layers widget. If not provided, label "Feature ######" is used.
+        * Some parameters can be combined, including:
+        *  * layerName and any other parameter (e.g. with projectId, aoiId, or featureId/featureType)
+        *  * loadMap and any other parameter
+        *  * mgrs or latLon with any other parameter
+        * Zoom-to point paramters (mgrs and latLon) are mutually exclusive. If both are provided only mgrs value is used.
+        * Parameters related to loading projects/aois/features are mutually exclusive, and can't be combined; if multiple ones are provided the one earliest 
+        * on the following list is used:
+        *  * projectId
+        *  * aoiId
+        *  * featureId and featureType
+        * Parameters for loading a feature (featureId and featureType) have to be paired to add a feature to the map, and ideally also include 
+        * featureName. If featureName isn't provided, the feature is labeled "Feature ######" in the Layers widget.
         * @returns {void}
         */
-        _handleQueryString: function (queryString) {
-            var uri = queryString || window.location.href;
-            var qs = uri.indexOf('?') >= 0 ? uri.substring(uri.indexOf('?') + 1, uri.length) : '';
-            qs = qs.toLowerCase();
-            var qsObj = ioQuery.queryToObject(qs);
-            //acceptable arguments include loadMap, projectId, aoiid, latlon, latlong, and mgrs
-            //arguments are (for now) mutually exclusive, with preference given to the order of the arguments listed above
-            //TODO expand to addLayer
-            //TODO could also consider expanding to chain multiple events, like load several layers, load a saved map and add a project, etc.
-            if (qsObj.loadmap) {
-                this.loadMap(qsObj.loadmap, false, true); //load map, don't clear layers, zoom to extent
-            } else if (qsObj.projectid) {
-                this.addProjectToMap(qsObj.projectid);
-            } else if (qsObj.aoiid) {
-                this.addAoiToMap(qsObj.aoiid);
-            } else if (qsObj.latlong || qsObj.latlon) {
-                var ll = qsObj.latlong || qsObj.latlon;
-                this.zoomToLatLong(ll, qsObj.zoomlevel);
-            } else if (qsObj.mgrs) {
-                this.zoomToMgrsPoint(qsObj.mgrs, qsObj.zoomlevel);
-            }
+        _handleQueryString: function (queryString) { //eslint-disable-line complexity
+            var self = this, //so we don't lose track of the application as the appropriate closure scope
+                uri = (queryString || window.location.href),
+                qs = (uri.indexOf('?') >= 0 ? uri.substring(uri.indexOf('?') + 1, uri.length) : ''),
+                qsObj = ioQuery.queryToObject(qs),
+                functions = [],
+                args = [],
+                i = 0,
+                //eslint-disable-next-line func-style
+                processNextFunction = function () {
+                    if (functions[i]) {
+                        var f = functions[i],
+                            a = args[i];
+                        f.apply(self, a).then(function () {
+                            i++;
+                            processNextFunction();
+                        });
+                    }
+                };
 
+            //load a saved map
+            if (qsObj.loadMap) {
+                functions.push(this.loadMap);
+                args.push([qsObj.loadMap]);
+            }
+            //load a project, alternative, AOI, AOI analysis area, or feature
+            if (qsObj.projectId) {
+                //addProjectToMap accepts multiple arguments (projectAltId, zoomOnLoad, _deferred, queryDraft)
+                //we only care about the first two
+                //zoomOnLoad should be false if mgrs/latlong parameter is also included
+                functions.push(this.addProjectToMap);
+                var zoomOnLoadProject = true;
+                if (qsObj.mgrs || qsObj.latLong) {
+                    zoomOnLoadProject = false;
+                }
+                args.push([qsObj.projectId, zoomOnLoadProject]);
+                //load an AOI
+            } else if (qsObj.aoiId) {
+                functions.push(this.addAoiToMap);
+                args.push([qsObj.aoiId]);
+            //load an AOI analysis area
+            } else if (qsObj.aoiAnalysisAreaId) {
+                functions.push(this.addAoiAltToMap);
+                args.push([qsObj.aoiAnalysisAreaId]);
+            //load a project feature
+            } else if (qsObj.featureId && qsObj.featureType) {
+                functions.push(this.addProjectFeatureToMap);
+                var zoomOnLoadFeature = true;
+                if (qsObj.mgrs || qsObj.latlong) {
+                    zoomOnLoadFeature = false;
+                }
+                args.push([qsObj.featureId, qsObj.featureType, qsObj.featureName, zoomOnLoadFeature]);
+            }
+            //load a layer
+            if (qsObj.layerName) {
+                functions.push(this.addLayerByLayerName);
+                args.push([qsObj.layerName]);
+            }
+            //coordinate to zoom to, we don't support both at the same time, and really currently only use mgrs
+            if (qsObj.mgrs) {
+                functions.push(this.zoomToMgrsPoint);
+                args.push([qsObj.mgrs, qsObj.zoomLevel || 'infer']);
+            } else if (qsObj.latLon) {
+                functions.push(this.zoomToLatLong);
+                args.push([qsObj.latLon, qsObj.zoomLevel]);
+            }
+            processNextFunction();
         },
 
         openAttributeTable: function (layerControlItem) {
@@ -194,7 +302,10 @@ define([
          * @returns {object} a layer def with the id of sde layer name matching layerIdOrName
          */
         getLayerDef: function (layerIdOrName) {
-            var layerDefs = this.widgets.layerLoader.layerDefs,
+            //note re next line, when first loaded, before all widgets have loaded, "this.widgets.layerLoader" = true, not a 
+            //reference to the widget itself. We also load the layerDefs into this mixin, thus the || bit
+            //rationale for wanting to reference the layerLoader's layerDefs is to keep in sync what's loaded and what's not.
+            var layerDefs = this.widgets.layerLoader.layerDefs || layerLoader.layerDefs,
                 ld = null;
 
             //by numeric id, when coming from saved map
@@ -217,9 +328,8 @@ define([
 
             //not a number, so look by SDE layername, when coming from external link/function call in analysis report
             ld = layerDefs.find(function (layerDef) {
-                return layerDef.layerName === layerIdOrName;
-            });
-            //not found
+                return layerDef.layerName.toLowerCase() === layerIdOrName.toLowerCase();
+            });//not found
             if (ld === null) {
                 topic.publish('viewer/handleError', {
                     source: 'LayerLoadMixin.getLayerDef',
@@ -260,7 +370,7 @@ define([
          * @param {Object} renderer Optional renderer to be used to display the layer in the map
          * @returns {Object} an ArcGIS layer of some sort; specific type depends on the layer definition
          */
-        constructLayer: function (layerDef, definitionExpression, includeDefinitionExpressionInTitle, renderer) {
+        constructLayer: function (layerDef, definitionExpression, includeDefinitionExpressionInTitle, renderer) { //eslint-disable-line max-statements
             var layer = null,
                 visibleLayers = layerDef.visibleLayers || null; //cache the visible layers
 
@@ -651,11 +761,40 @@ define([
             return this.addLayer(categoryDef.layer, false, false);
         },
 
-        //Add a project or alternative to the map, using one of the following patterns:
-        //'p' followed by a project ID (e.g. p12992 to load project #12992)
-        // number, or string that contains just numbers (e.g. 12992 or '12992' to load project #12992)
-        //'a' followed by a project alt ID (e.g. 'a9912' to load project alt 9912)
-        // string containing two numbers separated by a dash (e.g. 12992-1 to load alt 1 of project 12992)
+        //from analysis results; could use layerName and autoId to add the layer with a definitionExpression
+        //so add optional autoId argument here, build the where clause 'AUTOID=' + autoId
+        //but maybe the user wants to see all features and just highlight the autoid one?
+        //this also depends on Lex's call on whether we want to support autoid filtering at all, or instead
+        //just use MGRS, which is there in the data, but not in the analysis results.
+        /**
+         * Adds a layer by its layer name. Called typically from the GIS analysis results report, in combination with an MGRS code.
+         * @param {String} layerName The name of the layer, as defined in layerLoader.js, in the layerDef's layerName property.
+         * @returns {Deferred} A deferred object to be resolved when the layer is loaded, or rejected if not found or some other error occurs.
+         */
+        addLayerByLayerName: function (layerName) {
+            var layer = this.constructLayer(layerName),
+                deferred = new Deferred();
+            if (layer) {
+                deferred = this.addLayer(layer);
+            } else {
+                deferred.reject('Invalid layerName "' + layerName + '" property passed to addLayerByLayerName function.');
+            }
+            return deferred;
+        },
+
+        /**
+         * TODO add support for project/alt milestones
+         * Add a project or alternative to the map, using one of the following patterns:
+         * 'p' followed by a project ID (e.g. p12992 to load project #12992)
+         * number, or string that contains just numbers (e.g. 12992 or '12992' to load project #12992)
+         * 'a' followed by a project alt ID (e.g. 'a9912' to load project alt 9912)
+         * string containing two numbers separated by a dash (e.g. 12992-1 to load alt 1 of project 12992)
+         * @param {any} projectAltId The project or alternative ID, as described above
+         * @param {boolean} zoomOnLoad If true (or omitted), the map will zoom to the extent of the project after loading it. If false the current map extent is maintained. It is set to false when loading a saved map, because the desired map extent is saved with the map.
+         * @param {Deferred} _deferred Optional Deferred object, created if omitted. Used when calling this function from itself to maintain the promise.
+         * @param {Boolean} queryDraft Set when calling this function from itself to indicate we should check the draft layer
+         * @return {Deferred} Deffered instance--one created by this function or passed in via _deferred argument.
+         */
         addProjectToMap: function (projectAltId, zoomOnLoad, _deferred, queryDraft) {
             var self = this, //so we don't lose track buried down in callbacks
                 isAlt = false,
@@ -715,7 +854,7 @@ define([
             query.where = definitionQuery;
             query.returnGeometry = false;
             //TODO get lex to make draft layer structure consistent
-            query.outFields = queryDraft ? ['PROJECT_ALT', 'ALT_ID'] : ['FK_PROJECT', 'FK_PROJECT_ALT', 'ALT_ID'];
+            query.outFields = queryDraft ? ['PROJECT_ALT', 'ALT_ID', 'ALT_NAME'] : ['FK_PROJECT', 'FK_PROJECT_ALT', 'ALT_ID', 'ALT_NAME'];
 
             //old way used executeForCount and just got the number of features,
             //but we really need to know, if it's an alt, the fk_project_alt value for saving it
@@ -749,7 +888,12 @@ define([
                     if (isAlt) {
                         //cache the fk_project_alt for savedMap
                         projectLayerConfig.projectAltId = queryDraft ? reply.features[0].attributes.PROJECT_ALT : reply.features[0].attributes.FK_PROJECT_ALT;
-                        projectLayerConfig.name = 'Project # ' + reply.features[0].attributes.ALT_ID;
+                        //per bug 5100, alts use the alt_name
+                        if (reply.features[0].attributes.ALT_NAME) {
+                            projectLayerConfig.name = reply.features[0].attributes.ALT_NAME;
+                        } else {
+                            projectLayerConfig.name = 'Project # ' + reply.features[0].attributes.ALT_ID;
+                        }
                     } else {
                         //cach the fk_project for savedMap
                         projectLayerConfig.projectId = queryDraft ? reply.features[0].attributes.ALT_ID.split('-')[0] : reply.features[0].attributes.FK_PROJECT;
@@ -793,16 +937,208 @@ define([
             return deferred;
         },
 
+        /**
+         * Add the project feature to the map identified by featureId and featureType
+         * @param {number} featureId The numeric ID of the feature
+         * @param {string} featureType The type of the feature, either 'point', 'line', or 'polygon'
+         * @param {string} featureName The name of the feature. If null "Feature " + featureId is used.
+         * @param {boolean} zoomOnLoad If true (or omitted), the map will zoom to the extent of the project feature after loading it. If false the current map extent is maintained. It is set to false when loading a saved map, because the desired map extent is saved with the map.
+         * @param {Deferred} _deferred Optional Deferred object, created if omitted. Used when calling this function from itself to maintain the promise.
+         * @return {Deferred} Deffered instance--one created by this function or passed in via _deferred argument.
+         */
+        addProjectFeatureToMap: function (featureId, featureType, featureName, zoomOnLoad, _deferred) {
+            var self = this, //so we don't lose track buried down in callbacks
+                deferred = _deferred || new Deferred();
+
+            //default zoomOnLoad to true
+            if (typeof zoomOnLoad === 'undefined') {
+                zoomOnLoad = true;
+            }
+
+            //figure out if we're zooming to a project or a specific alt
+            if (isNaN(featureId)) {
+                //something we don't know how to handle.
+                //no features found
+                topic.publish('growler/growl', {
+                    title: 'Invalid Feature ID',
+                    message: 'Unable to parse ID ' + featureId,
+                    level: 'error'
+                });
+                deferred.cancel('Invalid feature ID');
+                return deferred;
+            }
+
+            this._findFeatureInLayers(featureId, featureType).then(
+                function (info) {
+                    var featureLayerConfig = {
+                            name: featureName || 'Feature # ' + featureId,
+                            id: ('feature_' + featureId), //internal ID, not really important, but helps with debugging
+                            url: info.url,
+                            type: 'feature',
+                            layerName: null, //only needed for metadata
+                            featureId: featureId, //needed for saving
+                            featureType: featureType
+                        },
+                        symbol = null;
+
+                    if (featureType === 'polygon') {
+                        symbol = {
+                            'type': 'esriSFS',
+                            'style': 'esriSFSSolid',
+                            'color': [255, 255, 0, 180],
+                            'outline': {
+                                'type': 'esriSLS',
+                                'style': 'esriSLSSolid',
+                                'color': [255, 255, 0, 255],
+                                'width': 3
+                            }
+                        };
+                    } else if (featureType === 'line') {
+                        symbol = {
+                            type: 'esriSLS',
+                            style: 'esriSLSSolid',
+                            color: [255, 255, 0, 180],
+                            width: 3
+                        };
+                    } else if (featureType === 'point') {
+                        symbol = {
+                            type: 'esriSMS',
+                            style: 'esriSMSCircle',
+                            size: 12,
+                            color: [255, 255, 0, 180],
+                            angle: 0,
+                            xoffset: 0,
+                            yoffset: 0,
+                            outline: {
+                                type: 'esriSLS',
+                                style: 'esriSLSSolid',
+                                color: [255, 255, 0, 255],
+                                width: 2
+                            }
+                        };
+                    }
+
+                    var featureLayer = self.constructLayer(featureLayerConfig,
+                        info.definitionQuery,
+                        false, //prevents definitionExpression from overriding title TODO cleaner method of handling this
+                        //todo just set this in the map service rather than having to code in js
+                        //currently it's the right color, but the width is too narrow
+                        new SimpleRenderer({
+                            'type': 'simple',
+                            'symbol': symbol
+                        })
+                    );
+                    //resolve deferred via addLayer method
+                    self.addLayer(featureLayer, zoomOnLoad).then(
+                        function (l) {
+                            deferred.resolve(l);
+                        },
+                        function (m) {
+                            deferred.reject(m);
+                        }
+                    );
+                },
+                function (msg) {
+                    deferred.reject(msg);
+                //},
+                //function (progressMsg) {
+                    //todo?
+                }
+            );
+            return deferred;
+        },
+
+        /**
+         * Finds the service and layer the referenced feature can be found in, searching in currently in review, previously reviewed, eliminated, and draft services
+         * @param {any} featureId The id of the feature to find.
+         * @param {any} featureType The type of feature to find.
+         * @param {any} _serviceIndex The index of the four services to try next.
+         * @param {any} _deferred The Deferred object created by this function, used only when this function calls itself.
+         * @return {Deferred} A Deferred object (either the one passed in by reference as _deferred, or a new one created by this function). When resolved, will Deferred will pass an object with the service URL and definition query.
+         */
+        _findFeatureInLayers: function (featureId, featureType, _serviceIndex, _deferred) {
+            var self = this,
+                deferred = _deferred || new Deferred(),
+                query = new Query(),
+                layerIndex = null,
+                serviceIndex = _serviceIndex || 0,
+                url = [projects.currentlyInReviewProjectsService, projects.previouslyReviewedProjectsService, projects.eliminatedProjectsService, projects.draftProjectsService][serviceIndex],
+                queryField = null;
+
+            if (featureType === 'polygon') {
+                //set layer
+                layerIndex = 8;
+                //set where
+                queryField = 'FK_POLYGON';
+            } else if (featureType === 'line') {
+                layerIndex = 7;
+                queryField = 'FK_SEGMENT';
+            } else if (featureType === 'point') {
+                layerIndex = 6;
+                queryField = 'FK_POINT';
+            } else {
+                deferred.cancel('Invalid feature type');
+                return deferred;
+            }
+
+            //of course draft and eliminated projects are different
+            if (serviceIndex === 3 || serviceIndex === 2) {
+                if (featureType === 'line') {
+                    queryField = 'SEGMENT'; //No FK_ in eliminated
+                } else {
+                    queryField = 'FK_FEATURE'; //point and polygon just have FK_FEATURE, which I wish they all had.
+                }
+            }
+
+            query.where = queryField + '=' + featureId;
+            query.returnGeometry = false;
+
+            url += '/' + layerIndex;
+            var queryTask = new QueryTask(url);
+            queryTask.executeForCount(query, function (count) {
+                if (count > 0) {
+                    deferred.resolve({
+                        url: url,
+                        definitionQuery: query.where,
+                        isDraft: (serviceIndex === 3)
+                    });
+                } else if (serviceIndex < 3 || (serviceIndex === 3 && self.hasViewDraftAuthority)) {
+                    //increment to next service
+                    serviceIndex++;
+                    //recursively call this function, passing in the new serviceIndex and existing deferred
+                    self._findFeatureInLayers(featureId, featureType, serviceIndex, deferred);
+                } else {
+                    //nowhere else to look
+                    deferred.reject('No feature found with that ID');
+                }
+            }, function (err) {
+                deferred.reject(err);
+            });
+
+            return deferred;
+        },
+
+        /**
+         * Adds the feature layers of the associated identified AOI to the map.
+         * @param {number} aoiId The ID of the AOI to add to the map.
+         * @returns {Deferred} A Deffered object to be resolved when the layers have been loaded.
+         */
         addAoiToMap: function (aoiId) {
-            var self = this;
+            var self = this,
+                deferred = new Deferred();
 
             MapDAO.getAoiModel(aoiId, {
                 callback: function (aoi) {
                     //todo loading overlay for this class self.loadingOverlay.hide();
                     if (aoi) {
-                        self.addAoiModelToMap(aoi);
+                        self.addAoiModelToMap(aoi).then(function (r) {
+                            deferred.resolve(r);
+                        }, function (err) {
+                            deferred.reject(err);
+                        });
                     } else {
                         topic.publish('growler/growlError', 'Unable to load AOI with ID ' + aoiId + '. No AOI with that ID found.');
+                        deferred.reject('Unable to load AOI with ID ' + aoiId + '. No AOI with that ID found.');
                     }
                 },
                 errorHandler: function (message, exception) {
@@ -811,15 +1147,72 @@ define([
                         source: '_LayerLoadMixin/addAoiToMap',
                         error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)
                     });
+                    deferred.reject(message);
                 }
             });
-
+            return deferred;
         },
 
-        //adds an AOI to the map
-        addAoiModelToMap: function (aoi) {
+        /**
+         * Adds just the referenced AOI analysis area to the map.
+         * @param {number} aoiAltId Identifier of an AOI analysis area (feature in S_AOI);
+         * @returns {Deferred} A Deffered object to be resolved when the layer has been loaded.
+         */
+        addAoiAltToMap: function (aoiAltId) {
             var self = this, //so we don't lose track buried down in callbacks
-                definitionExpression = 'FK_PROJECT = ' + aoi.id,
+                definitionExpression = 'FK_PROJECT_ALT = ' + aoiAltId,
+                deferred = new Deferred();
+
+            MapDAO.getAoiAnalysisAreaName(aoiAltId, { //eslint-disable-line no-undef
+                callback: function (name) {
+                    var layerDef = {
+                            id: 'aoi_analysis_area_' + aoiAltId,
+                            url: projects.aoiLayers.analysisAreaBuffer,
+                            name: name,
+                            type: 'feature'
+                        },
+                        layer = self.constructLayer(layerDef, definitionExpression);
+
+                    self.addLayer(layer, false, true).then(
+                        function () {
+                            topic.publish('layerLoader/layersChanged');
+                            topic.publish('layerLoader/aoiAdded', layer);
+                            var q = new Query({
+                                where: '1=1' //definitionExpression doesn't need to be re-applied
+                            });
+                            layer.queryExtent(q).then(
+                                function (extentReply) {
+                                    extentReply.extent.expand(1.5);
+                                    self.zoomToExtent(extentReply.extent).then(function () {
+                                        deferred.resolve(layer);
+                                    });
+                                }
+                                //todo handle error from queryExtent
+                            );
+                        },
+                        function (err) {
+                            deferred.reject(err);
+                        }
+                    );
+
+                },
+                errorHandler: function (err) {
+                    deferred.reject(err);
+                }
+            });
+                
+
+            return deferred;
+        },
+
+        /**
+         * Adds a feature layers associated with the referenced AOI model to the map
+         * @param {object} aoiModel A model of the AOI to be loaded, with at least the name and id properties
+         * @returns {Deferred} A Deferred object to be resolved when all feature layers have been loaded in the map
+         */
+        addAoiModelToMap: function (aoiModel) {
+            var self = this, //so we don't lose track buried down in callbacks
+                definitionExpression = 'FK_PROJECT = ' + aoiModel.id,
                 deferred = new Deferred(),
                 promises = [],
                 layerNames = ['analysisAreaBuffer', 'polygon', 'polyline', 'point'];
@@ -828,9 +1221,9 @@ define([
             layerNames.forEach(function (layerName) {
                 var l2 = layerName === 'analysisAreaBuffer' ? 'Analysis Areas' : ('P' + layerName.substr(1) + 's'),
                     layerDef = {
-                        id: 'aoi_' + aoi.id + '_' + layerName,
+                        id: 'aoi_' + aoiModel.id + '_' + layerName,
                         url: projects.aoiLayers[layerName],
-                        name: (aoi.name || 'AOI ' + aoi.id) + ' ' + l2,
+                        name: (aoiModel.name || 'AOI ' + aoiModel.id) + ' ' + l2,
                         type: 'feature'
                     },
                     layer = self.constructLayer(layerDef, definitionExpression),
@@ -926,25 +1319,28 @@ define([
          * @param {number} savedMapId ID of the saved map to load
          * @param {boolean} clearMapFirst Optional, if true, all user layers will be removed from the map before loading new layers; if false or absent, layers from the saved map will be added on top of the layers already in the map.
          * @param {boolean} zoomToSavedMapExtent Optional, if true, all map will zoom to the saved map's extent before loading new layers; if false or absent, the map stays at the current extent.
-         * @return {void}
+         * @return {Deferred} deferred object to be resolved when map is loaded
          */
         loadMap: function (savedMapId, clearMapFirst, zoomToSavedMapExtent) {
             var self = this, //DWR callback loses scope of this
-                deferred = new Deferred(); // promise to be fullfilled when map is done loading and map has zoomed
+                deferred = new Deferred(), //wrapper deferred used by this function for the overall progress
+                loadDeferred = new Deferred(); // promise to be fullfilled when map is done loading and map has zoomed
 
             //load from server
             MapDAO.getSavedMapBeanById(savedMapId, {
                 callback: function (savedMap) {
                     if (savedMap) {
-                        self._loadMap(savedMap, clearMapFirst, zoomToSavedMapExtent, deferred);
-                        deferred.then(
+                        self._loadMap(savedMap, clearMapFirst, zoomToSavedMapExtent, loadDeferred);
+                        loadDeferred.then(
                             function (layers) {
                                 topic.publish('growler/removeUpdatable');
                                 topic.publish('growler/growl', 'Loaded ' + layers.length + ' layers for ' + savedMap.mapName);
                                 topic.publish('layerLoader/mapLoaded', savedMap); //lets the layerloader widget know what's up when this is loaded from query string
+                                deferred.resolve();
                             },
                             function (err) {
                                 topic.publish('growler/growlError', err);
+                                deferred.reject(err);
                             },
                             function (progressMessage) {
                                 topic.publish('growler/updateGrowl', progressMessage);
@@ -955,6 +1351,7 @@ define([
                             source: 'LayerLoadMixin.loadMap',
                             error: 'Invalid Map ID (' + savedMapId + ')'
                         });
+                        deferred.reject('Invalid Map ID');
                     }
                 },
                 errorHandler: function (message, exception) {
@@ -965,6 +1362,7 @@ define([
                     deferred.reject(message);
                 }
             });
+            return deferred;
         },
         /**
          * Opens FGDL metadata for the layer included in the event argument. Listens for LayerControl/viewMetadata topic.
@@ -1434,11 +1832,11 @@ define([
                 zoomLevel = null;
             }
 
-            return (zoomLevel ? this.map.centerAndZoom(point, zoomLevel) : this.map.centerAt(point)); 
+            return this._centerAtOrZoom(point, zoomLevel);
         },
 
         /**
-         * Centers that map at a point in the Military Grid Reference System (MGRS) geocoordinate standard, and optionally zooms to the specified or inferred level.
+         * Centers the map at a point in the Military Grid Reference System (MGRS) geocoordinate standard, and optionally zooms to the specified or inferred level.
          * @param {any} mgrs A point in MGRS format.
          * @param {any} zoomLevel Number, string 'infer', or null; 
          *      If a specific number, it will be passed to the centerAndZoom function as the zoom level of the map to set; 
@@ -1492,7 +1890,7 @@ define([
                 }
             }
 
-            return (zoomLevel ? this.map.centerAndZoom(point, zoomLevel) : this.map.centerAt(point));
+            return this._centerAtOrZoom(point, zoomLevel);
         },
 
         /**
@@ -1507,6 +1905,21 @@ define([
             }
             var mgrs = coordinateFormatter.toMgrs(point, 'automatic', 5, true);
             return mgrs;
+        },
+
+        /**
+         * Centers the map at the referenced point, addes a graphic element to the map at the referenced point, and optionally zooms to the referenced zoom level
+         * @param {Point} point an ESRI point object
+         * @param {Number} zoomLevel optional zoom level to pass to centerAndZoom function. If omitted map pans to the point and stays at current zoom level
+         * @returns {Deferred} the Deferred object created by centerAndZoom or centerAt.
+         */
+        _centerAtOrZoom: function (point, zoomLevel) {
+            //add point to map
+            var graphic = new Graphic(point, this.zoomPointSymbol);
+            this.zoomPointGraphics.add(graphic);
+            //return the deferred generated by centerAndZoom or centerAt method
+            return (zoomLevel ? this.map.centerAndZoom(point, zoomLevel) : this.map.centerAt(point));
         }
+
     });
 });
