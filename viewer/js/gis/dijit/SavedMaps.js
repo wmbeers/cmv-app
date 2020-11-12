@@ -221,24 +221,20 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
             //TODO DWR call. this is mockup
             self.thematicMaps([
                 {
-                    id: 1,
-                    name: 'Aquifers'
+                    id: 13,
+                    name: 'Map Information'
                 },
                 {
-                    id: 2,
-                    name: 'Cultural Resources'
+                    id: 14,
+                    name: 'Designated Regulatory Regions and Programs'
                 },
                 {
-                    id: 3,
-                    name: 'Land Use'
+                    id: 15,
+                    name: 'Natural Features'
                 },
                 {
-                    id: 4,
-                    name: 'Safety'
-                },
-                {
-                    id: 5,
-                    name: 'Water Resources'
+                    id: 16,
+                    name: 'Surface Water / Groundwater'
                 }
             ]);
             window.setTimeout(function () {
@@ -542,7 +538,9 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
         selectedThematicMap: ko.observable(),
 
         loadThematicMap: function () {
-            //TODO
+            if (this.selectedThematicMap()) {
+                topic.publish('savedMaps/loadMap', this.selectedThematicMap().id, this.clearMapFirst(), false);
+            }
         }
 
     });
