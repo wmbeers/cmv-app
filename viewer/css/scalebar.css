@@ -31,7 +31,7 @@
 .esriScalebar {
     z-index: 30;
     position: absolute;
-    width: 0px;
+    width: 0;
     height: 20px;
 }
 
@@ -114,13 +114,11 @@
 }
 
 .esriScalebarLabel {
-    font-size: 11px;
     position: absolute;
     width: 10%;
     text-align: center;
-    color: black; /*was #666666; */
-    font: Verdana;
-    font-weight: bolder;
+    color: black; /* was #666666; */
+    font: bolder 11px Verdana;
     height: 5px;
     top: -1px;
 }
@@ -139,6 +137,9 @@
 }
 
 /* add halo */
-.esriScalebarLabel, .esriScalebarLineLabel, .esriScalebarSecondNumber, .esriScaleLabelDiv {
+.esriScalebarLabel,
+.esriScalebarLineLabel,
+.esriScalebarSecondNumber,
+.esriScaleLabelDiv {
     text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
 }
