@@ -1,5 +1,6 @@
 @import url('./theme/flat/flat.css'); /* dojo's flat theme */
 @import url('./cmv.css'); /* the start of cmv theme */
+@import url('./scalebar.css'); /* override default scalebar styles */
 
 .appHeader {
     background-color: rgba(0, 116, 77, 255);
