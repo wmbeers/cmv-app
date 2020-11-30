@@ -195,6 +195,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 name: 'Ultimate Cost Feasible Project'
             },
             {
+                id: 18,
+                abbreviation: 'WATERSS',
+                name: 'Watershed Approach to Evaluate Regional Stormwater Solutions'
+            },
+            {
                 id: 8,
                 abbreviation: 'OAOI',
                 name: 'Other Area of Interest'
