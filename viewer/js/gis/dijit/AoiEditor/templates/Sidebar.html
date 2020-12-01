@@ -87,7 +87,7 @@
                     </div>
                 </div>
 
-                <span data-bind="visible: id==-1 && $root.authorities.length > 1">
+                <span data-bind="visible: aoiId() === -1 && $root.authorities.length > 1">
                     <label for="org">Organization</label>
                     <select data-bind="options: $root.authorities, value: $root.currentAuthority, optionsText: 'orgName'" style="width:100%"></select>
                 </span>
