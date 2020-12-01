@@ -18,7 +18,7 @@ function (declare, lang, on, EstAuthorization, esriId /*, ServerInfo, Credential
         //hasProjectEditAuthority: false,
         //hasViewDraftAuthority: false,
         //authorities: [], //redefined
-        currentAuthority: ko.observable(),
+        //this is no longer global, per issue 63 currentAuthority: ko.observable(),
 
         startup: function () {
             //post-process authorities to determine which controls and layers are included--dynamic changes to interpretation of viewer.js
@@ -58,8 +58,6 @@ function (declare, lang, on, EstAuthorization, esriId /*, ServerInfo, Credential
                 this.config.widgets.aoiEditor.options.authorities = this.authorities.filter(function (auth) {
                     return auth.aoiEditor;
                 });
-                this.config.widgets.aoiEditor.options.currentAuthority = this.currentAuthority; //a pointer to the ko observable, since we want to avoid referencing app
-                this.config.widgets.aoiEditor.options.currentAuthority(this.config.widgets.aoiEditor.options.authorities[0]); //todo could also cache the last used authority instead of defaulting to the first one
             }
 
             if (this.hasProjectEditAuthority) {
@@ -67,8 +65,6 @@ function (declare, lang, on, EstAuthorization, esriId /*, ServerInfo, Credential
                 this.config.widgets.projectEditor.options.authorities = this.authorities.filter(function (auth) {
                     return auth.projectEditor;
                 });
-                this.config.widgets.projectEditor.options.currentAuthority = this.currentAuthority; //a pointer to the ko observable, since we want to avoid referencing app
-                this.config.widgets.projectEditor.options.currentAuthority(this.config.widgets.projectEditor.options.authorities[0]); //todo could also cache the last used authority instead of defaulting to the first one
             }
 
             //let LayerLoader widget know about available credentials
@@ -149,7 +145,6 @@ function (declare, lang, on, EstAuthorization, esriId /*, ServerInfo, Credential
                 window.setTimeout(this.refreshTokens.bind(this), msUntilCredentialTimeout);
             }
 
-            ////todo default currentAuthority based on session or something? local storage?
         },
 
         _updateTokens: function () {
