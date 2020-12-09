@@ -608,7 +608,9 @@ define([
                 }
 
                 //fix for issue #65; arcgisProps.title is used for feature layer title in printed TOC
-                layer.arcgisProps = { title: layerDef.name};
+                layer.arcgisProps = {
+                    title: layerDef.name
+                };
 
                 var layerControlInfo = { //Note this is actually a "LayerInfo", a property passed into the layerInfos property of the LayerControl class
                     controlOptions: {
