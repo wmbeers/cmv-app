@@ -153,6 +153,8 @@ define([
         * featureId: the ID of a project feature to load in the map; must be paired with valid featureType parameter
         * featureType: the type of project feature to load in the map (point, line or polygon); must be paried with featureId
         * featureName: the name of the project feature, used as the label of the feature's layer in the Layers widget. If not provided, label "Feature ######" is used.
+        * loadMap: the ID of a saved map to load
+        * zoomToSavedMapExtent: either string "Y" or "N" flag indicating whether to zoom to the saved map extent when loading a map via loadMap parameter; defaults to "N" if not provided; ignored (and treated as "N") if latLon, mgrs, projectId, aoiId, aoiAnalysisAreaId, or featureId parameters are also provided, as the extent will be defined by those parameters.
         * Some parameters can be combined, including:
         *  * layerName and any other parameter (e.g. with projectId, aoiId, or featureId/featureType)
         *  * loadMap and any other parameter
@@ -190,7 +192,12 @@ define([
             //load a saved map
             if (qsObj.loadMap) {
                 functions.push(this.loadMap);
-                args.push([qsObj.loadMap]);
+                var zoomToSavedMapExtent = qsObj.zoomToSavedMapExtent === "Y";
+                //if certain other parameters are present, ignore this
+                if (qsObj.latLon || qsObj.mgrs || qsObj.projectId || qsObj.aoiId || qsObj.aoiAnalysisAreaId || qsObj.featureId) {
+                    zoomToSavedMapExtent = false;
+                }
+                args.push([qsObj.loadMap, true, zoomToSavedMapExtent]);
             }
             //load a project, alternative, AOI, AOI analysis area, or feature
             if (qsObj.projectId) {
