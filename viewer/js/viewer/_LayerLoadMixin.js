@@ -192,7 +192,7 @@ define([
             //load a saved map
             if (qsObj.loadMap) {
                 functions.push(this.loadMap);
-                var zoomToSavedMapExtent = qsObj.zoomToSavedMapExtent === "Y";
+                var zoomToSavedMapExtent = qsObj.zoomToSavedMapExtent === 'Y';
                 //if certain other parameters are present, ignore this
                 if (qsObj.latLon || qsObj.mgrs || qsObj.projectId || qsObj.aoiId || qsObj.aoiAnalysisAreaId || qsObj.featureId) {
                     zoomToSavedMapExtent = false;
