@@ -149,9 +149,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, regist
                     new Color([0, 255, 197, 0.5]))
         },
 
-        constructor: function (options) {
-            this.currentAuthority = options.currentAuthority;
-        },
+        currentAuthority: ko.observable(), //note per bug 5689 these are now localized to these widgets, not global
 
         //Dialogs. Broader scope needed for these dialogs to support closing when option is selected, so declaring these here
         openProjectDialog: new Dialog({
