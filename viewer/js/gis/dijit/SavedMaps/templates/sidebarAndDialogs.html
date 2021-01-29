@@ -17,11 +17,12 @@
             <!--TODO would a "clear" button make sense here, to give user option to remove all layers?-->
         </div>
     </div>
-    <h4 />
+    <hr />
     <div id="thematicMaps">
         <h3>Thematic Maps</h3>
         <select data-dojo-type="dijit/form/MultiSelect" id="thematicMaps" size="4" style="width:100%" data-bind="options: thematicMaps, optionsText: 'name', value: selectedThematicMap">
         </select>
+        <br />
         <br />
         <div class="buttonContainer">
             <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-folder-open fa-fw'" data-dojo-attach-event="click: loadThematicMap">
