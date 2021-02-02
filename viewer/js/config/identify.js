@@ -35,7 +35,7 @@ define([
         // for details on pop-up definition see: https://developers.arcgis.com/javascript/jshelp/intro_popuptemplate.html
 
         identifies: {
-            previouslyReviewedProjectsLayer: {
+            previouslyReviewedProjectsService: {
                 2: {
                     fieldInfos: [
                         {
@@ -58,7 +58,7 @@ define([
                     fieldInfos: [
                         {
                             visible: true,
-                            fieldName: 'POLY _ID',
+                            fieldName: 'POLY_ID',
                             label: 'Polygon ID'
                         }
                     ]
@@ -650,7 +650,7 @@ define([
                     ]
                 }
             },
-            currentlyInReviewProjects: {
+            currentlyInReviewProjectsService: {
                 2: {
                     fieldInfos: [
                         {
@@ -1265,6 +1265,7 @@ define([
                     ]
                 }
             }
+            //todo remaining services defined in operationalLayers section of config/viewer.js
         }
     };
 });
