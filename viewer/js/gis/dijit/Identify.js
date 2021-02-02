@@ -76,6 +76,9 @@ define([
 
             this.own(topic.subscribe('mapClickMode/currentSet', lang.hitch(this, 'setMapClickMode')));
             this.own(topic.subscribe('identify/addLayerInfos', lang.hitch(this, 'addLayerInfos')));
+            
+            //not needed this.own(topic.subscribe('identify/addLayerInfoWithIdentifyTemplate', lang.hitch(this, 'addLayerInfoWithIdentifyTemplate')));
+
             this.own(topic.subscribe('identify/removeLayerInfos', lang.hitch(this, 'removeLayerInfos')));
 
             this.map.on('click', lang.hitch(this, function (evt) {
@@ -160,6 +163,11 @@ define([
                     }));
                 }
 
+                // new, added by Bill Beers, to support dynamically adding to this widget's config
+                if (layerInfo.identifies) {
+                    this.identifies[lyrId] = layerInfo.identifies;
+                }
+
                 // rebuild the layer selection list when any layer is hidden
                 // but only if we have a UI
                 var listeners = [];
@@ -180,6 +188,19 @@ define([
                 });
             }
         },
+
+        /**
+         * DON"T NEED Initializes an infoTemplate on a layerInfo.layer object with a custom identify template TODO is there anyway we can do this without changing this CMV class?
+         * @param {any} layerInfo
+         * @param {any} identifyTemplate
+         */
+        addLayerInfoWithIdentifyTemplate: function (layerInfo, identifyTemplate) {
+            var lyrId = layerInfo.layer.id;
+            this.addLayerInfo(layerInfo);
+            //merge in dynamically added identifies
+            this.identifies[lyrId] = identifyTemplate;
+        },
+
         /**
          * handles an array of layerInfos to call removeLayerInfo for each layerInfo
          * @param {Array<layerInfo>} layerInfos The array of layer infos
@@ -253,7 +274,7 @@ define([
             var identifiedlayers = [];
             var selectedLayer = this.getSelectedLayer();
 
-            if (!this.checkForGraphicInfoTemplate(evt)) {
+            if (!this.checkForGraphicInfoTemplate(evt)) { // TODO I think this is where we can start to resolve the problem of not clicking through stacked features, only getting the topmost feature
                 // return;
                 var layer = array.filter(this.layers, function (l) {
                     return l.ref.id === evt.graphic._layer.id;
@@ -530,7 +551,7 @@ define([
 
             var layerName = this.getLayerName(layer);
             if (result) {
-                layerName = result.layerName;
+                layerName = result.layerName; //TODO I think this line is causing problems, because it turns it from the name displayed in the TOC to the internal name used by SDE
             }
 
             // from the results
