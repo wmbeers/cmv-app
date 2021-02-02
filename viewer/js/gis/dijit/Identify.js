@@ -76,9 +76,6 @@ define([
 
             this.own(topic.subscribe('mapClickMode/currentSet', lang.hitch(this, 'setMapClickMode')));
             this.own(topic.subscribe('identify/addLayerInfos', lang.hitch(this, 'addLayerInfos')));
-            
-            //not needed this.own(topic.subscribe('identify/addLayerInfoWithIdentifyTemplate', lang.hitch(this, 'addLayerInfoWithIdentifyTemplate')));
-
             this.own(topic.subscribe('identify/removeLayerInfos', lang.hitch(this, 'removeLayerInfos')));
 
             this.map.on('click', lang.hitch(this, function (evt) {
@@ -188,19 +185,6 @@ define([
                 });
             }
         },
-
-        /**
-         * DON"T NEED Initializes an infoTemplate on a layerInfo.layer object with a custom identify template TODO is there anyway we can do this without changing this CMV class?
-         * @param {any} layerInfo
-         * @param {any} identifyTemplate
-         */
-        addLayerInfoWithIdentifyTemplate: function (layerInfo, identifyTemplate) {
-            var lyrId = layerInfo.layer.id;
-            this.addLayerInfo(layerInfo);
-            //merge in dynamically added identifies
-            this.identifies[lyrId] = identifyTemplate;
-        },
-
         /**
          * handles an array of layerInfos to call removeLayerInfo for each layerInfo
          * @param {Array<layerInfo>} layerInfos The array of layer infos
