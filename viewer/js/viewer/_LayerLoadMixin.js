@@ -18,6 +18,8 @@ define([
     'esri/layers/ImageParameters',
     'esri/layers/ImageServiceParameters',
 
+    'esri/InfoTemplate',
+
     //for zoom-to-point support
     'esri/layers/GraphicsLayer',
     'esri/graphic',
@@ -53,6 +55,7 @@ define([
     VectorTileLayer,
     ImageParameters,
     ImageServiceParameters,
+    InfoTemplate,
     GraphicsLayer,
     Graphic,
     SimpleMarkerSymbol,
@@ -411,13 +414,21 @@ define([
             if (layerDef.type === 'dynamic') {
                 var ip = new ImageParameters();
                 ip.format = 'png32';
+                //if (definitionExpression && Array.isArray(definitionExpression)) {
+                //    ip.layerDefinitions = definitionExpression;
+                //}
                 layer = new ArcGISDynamicMapServiceLayer(layerDef.url,
                     {
                         //opacity: 0.75, //todo store in config?
                         //todo either use db id or just let this be autoassigned id: layerDef.name,
                         //infoTemplate: new InfoTemplate('Attributes', '${*}')
+                        infoTemplates: layerDef.infoTemplates,
                         imageParameters: ip
                     });
+                if (layerDef.infoTemplates) {
+                    //todo if the assignment above doesn't work
+                }
+
                 if (visibleLayers) {
                     layer.setVisibleLayers(visibleLayers);
                 }
@@ -607,6 +618,13 @@ define([
                     }
                 }
 
+                //only used for adding AOIs, but could be expanded if we want to override layerInfos defined by AGS in other instances
+                if (layerDef.subLayerInfos) {
+                    layerDef.subLayerInfos.forEach(function (subLayerInfo) {
+                        layer.layerInfos[subLayerInfo.index].name = subLayerInfo.name;
+                    });
+                }
+
                 //fix for issue #65; arcgisProps.title is used for feature layer title in printed TOC
                 layer.arcgisProps = {
                     title: layerDef.name
@@ -700,7 +718,17 @@ define([
                 }
 
                 topic.publish('layerControl/addLayerControls', [layerControlInfo]); //TODO the whole collection of layers to be added should be passed at once for layerGroup to do anything. We're not currently supporting layerGroup so this can wait.
+                //if (layerDef.identifies) {
+                //    topic.publish('identify/addLayerInfoWithIdentifyTemplate', layerControlInfo, layerDef.identifies);
+                //} else {
+                //    topic.publish('identify/addLayerInfos', [layerControlInfo]);
+                //}
+                if (layerDef.identifies) {
+                    layerControlInfo.identifies = layerDef.identifies;
+                }
                 topic.publish('identify/addLayerInfos', [layerControlInfo]);
+
+
                 self.legendLayerInfos.push(layerControlInfo);
 
                 if (zoomOnLoad) {
@@ -1215,7 +1243,7 @@ define([
          * @param {object} aoiModel A model of the AOI to be loaded, with at least the name and id properties
          * @returns {Deferred} A Deferred object to be resolved when all feature layers have been loaded in the map
          */
-        addAoiModelToMap: function (aoiModel) {
+        XaddAoiModelToMap: function (aoiModel) {
             var self = this, //so we don't lose track buried down in callbacks
                 definitionExpression = 'FK_PROJECT = ' + aoiModel.id,
                 deferred = new Deferred(),
@@ -1281,6 +1309,179 @@ define([
 
             return deferred;
         },
+
+        /**
+         * Adds a dynamic map service layer with definition expressions set to filter to just the referenced AOI model to the map
+         * @param {object} aoiModel A model of the AOI to be loaded, with at least the name and id properties
+         * @returns {Deferred} A Deferred object to be resolved when map service layer has been loaded in the map TODO and map zoomed
+         */
+        addAoiModelToMap: function (aoiModel) {
+            var self = this, //so we don't lose track buried down in callbacks
+                definitionExpression = 'FK_PROJECT = ' + aoiModel.id,
+                definitionExpressions = [definitionExpression, definitionExpression, definitionExpression, definitionExpression],
+                aoiName = (aoiModel.name || 'AOI ' + aoiModel.id),
+                layerDef = {
+                    id: 'aoi_' + aoiModel.id + '_service',
+                    url: projects.aoiLayers.mapService,
+                    name: aoiName,
+                    type: 'dynamic',
+                    subLayerInfos: [
+                        {
+                            index: 0,
+                            name: 'Point'
+                            //popupConfig: {
+                            //    title: 'Point feature of ' + aoiName,
+                            //    description: 'Feature <strong>{FEATURE_NAME}</strong><br />Buffer: {BUFFER_DISTANCE} {BUFFER_DISTANCE_UNITS}'
+                            //}
+                        },
+                        {
+                            index: 1,
+                            name: 'Line'
+                        },
+                        ,
+                        {
+                            index: 2,
+                            name: 'Polygon'
+                        },
+                        ,
+                        {
+                            index: 3,
+                            name: 'Analysis Area'
+                        }
+                    ],
+                    identifies: {
+                        0: {
+                            title: 'Point feature of ' + aoiName,
+                            description: 'Feature <strong>{FEATURE_NAME}</strong><br />Buffer: {BUFFER_DISTANCE} {BUFFER_DISTANCE_UNITS}',
+                            fieldInfos: [
+                                {
+                                    description: 'By George I think he\'s got it',
+                                    label: 'dotts',
+                                    visible: true,
+                                    fieldName: 'FEATURE_NAME'
+                                }
+                            ]
+                        },
+                        1: {
+                            title: 'Line feature of ' + aoiName,
+                            description: 'Feature <strong>{FEATURE_NAME}</strong><br />Buffer: {BUFFER_DISTANCE} {BUFFER_DISTANCE_UNITS}',
+                            fieldInfos: [
+                                {
+                                    description: 'By George I think he\'s got it',
+                                    label: 'squigglybits',
+                                    visible: true,
+                                    fieldName: 'FEATURE_NAME'
+                                }
+                            ]
+                        },
+                        2: {
+                            title: 'Polygon feature of ' + aoiName,
+                            description: 'Feature <strong>{FEATURE_NAME}</strong><br />Buffer: {BUFFER_DISTANCE} {BUFFER_DISTANCE_UNITS}',
+                            fieldInfos: [
+                                {
+                                    description: 'By George I think he\'s got it',
+                                    label: 'blobbish thingies',
+                                    visible: true,
+                                    fieldName: 'FEATURE_NAME'
+                                }
+                            ]
+                        },
+                        3: {
+                            title: 'Analysis Area of ' + aoiName,
+                            description: 'Feature <strong>{FEATURE_NAME}</strong><br />Buffer: {BUFFER_DISTANCE} {BUFFER_DISTANCE_UNITS}',
+                            fieldInfos: [
+                                {
+                                    description: 'By George I think he\'s got it',
+                                    label: 'bufferinos',
+                                    visible: true,
+                                    fieldName: 'FEATURE_NAME'
+                                }
+                            ]
+                        }
+                    }
+                },
+                //the actual dynamic map service layer the user will see
+                layer = self.constructLayer(layerDef, definitionExpressions),
+                pointLayerDef = {
+                    id: 'aoi_' + aoiModel.id + '_point',
+                    url: projects.aoiLayers.mapService + '/0',
+                    type: 'feature'
+                },
+                //feature layers used only for queryExtent calls, not added to the map
+                //in theory we only need to query the analysis areas (S_AOI, referred to as areaLayer below) layer
+                //but if an AOI is abandoned before completed, or something goes wrong
+                //it's possible to have point, line and polygon features from which an extent
+                //can be derived, but no analysis areas
+                pointLayer = self.constructLayer(pointLayerDef, definitionExpression),
+                lineLayerDef = {
+                    id: 'aoi_' + aoiModel.id + '_line',
+                    url: projects.aoiLayers.mapService + '/1',
+                    type: 'feature'
+                },
+                lineLayer = self.constructLayer(lineLayerDef, definitionExpression),
+                polyLayerDef = {
+                    id: 'aoi_' + aoiModel.id + '_poly',
+                    url: projects.aoiLayers.mapService + '/2',
+                    type: 'feature'
+                },
+                polyLayer = self.constructLayer(polyLayerDef, definitionExpression),
+                areaLayerDef = {
+                    id: 'aoi_' + aoiModel.id + '_area',
+                    url: projects.aoiLayers.mapService + '/3',
+                    type: 'feature'
+                },
+                areaLayer = self.constructLayer(areaLayerDef, definitionExpression),
+                featureLayers = [pointLayer, lineLayer, polyLayer, areaLayer],
+                deferred = new Deferred(), //overall deferred to be resolved when whole chain of create > add > zoom is complete
+                addLayerDeferred = self.addLayer(layer, false, true); //note second "zoom to layer" argument to addLayer call is set to false; zoomToLayer doesn't work for dynamic map service layers with definition expressions, so the custom zoom function below is used
+
+            addLayerDeferred.then(function (sl) {
+                //zoom to extent
+                var queryExtentPromises = [],
+                    q = new Query({
+                        where: '1=1' //definitionExpression doesn't need to be re-applied; however we could change this so that we do not apply it above and use it here; not sure what the difference would be
+                    });
+                featureLayers.forEach(function (featureLayer) {
+                    queryExtentPromises.push(featureLayer.queryExtent(q));
+                });
+
+                all(queryExtentPromises).then(function (extentReplies) {
+                    //union extents, but only those with actual extents
+                    var unionOfExtents = null;
+                    for (var i = 0; i < extentReplies.length; i++) {
+                        var extentReply = extentReplies[i];
+                        if (extentReply.count > 0) {
+                            if (unionOfExtents) {
+                                unionOfExtents = unionOfExtents.union(extentReply.extent);
+                            } else {
+                                unionOfExtents = extentReply.extent;
+                            }
+                        }
+                    }
+                    if (unionOfExtents) {
+                        unionOfExtents = unionOfExtents.expand(1.5);
+                        self.zoomToExtent(unionOfExtents).then(function () {
+                            deferred.resolve(sl);
+                        });
+                    } else {
+                        //todo alert no features
+                        deferred.resolve(sl);
+                    }
+
+                    topic.publish('layerLoader/layersChanged');
+                    topic.publish('layerLoader/aoiAdded', layer);
+
+                }, function (zoomErr) {
+                    topic.publish('layerLoader/addAoiFailed', zoomErr);
+                });
+
+            }, function (err) {
+                topic.publish('layerLoader/addAoiFailed', err);
+            });
+
+            return deferred;
+        },
+
 
         /**
          * Saves to the referenced map to the server, including the layer configuration (via getLayerConfig) and the map extent.
@@ -1544,7 +1745,7 @@ define([
         },
 
         /**
-         * Zooms to the extent of the referenced layer, taking the layer's definition expression into account
+         * Zooms to the extent of the referenced layer, taking the layer's definition expression into account (if it's a feature layer)
          * @param {any} layer Either an object that is a subclass of esri.Layer, or an object defined by layer control with layer property
          * @returns {object} deferred The Deferred object to be resolved when the map is done zooming
          */
