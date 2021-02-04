@@ -630,7 +630,16 @@ define([
                     title: layerDef.name
                 };
 
-                var layerControlInfo = { //Note this is actually a "LayerInfo", a property passed into the layerInfos property of the LayerControl class
+                //Build a "LayerInfo" object, a property passed into the layerInfos property of widget classes:
+                // * LayerControl widget, via layerControl/addLayerControls
+                // * Identify widget, via identify/addLayerInfos (with necessary change to Identify widget, under issue #69)
+                // * Legend widget, via self.legendLayerInfos (an app-global object that is somehow referenced by Legend widget)
+                var layerInfo = { 
+                    //layer, title and type are (I think) used by all widgets
+                    layer: layer,
+                    title: layerDef.title, 
+                    type: layerDef.type,
+                    //used by LayerControl
                     controlOptions: {
                         expanded: true,
                         metadataUrl: false,
@@ -651,7 +660,7 @@ define([
                                 label: 'Zoom to Layer',
                                 topic: 'zoomToLayer',
                                 iconClass: 'fas fa-fw fa-search'
-                            }/* added below only if the layerDef has a layerName property,
+                            }/* metadata link is added below, but only if the layerDef has a layerName property,
                             {
                                 label: 'View Metadata',
                                 topic: 'viewMetadata',
@@ -691,14 +700,13 @@ define([
                             }*/
                         ]
                     },
-                    layer: layer,
-                    title: layerDef.title,
-                    type: layerDef.type
+                    //used by Identify widget (modified under #69 to recognize this property)
+                    identifies: layerDef.identifies 
                 };
                 //add metadata link for stand-alone layers (i.e. feature layers of a map service), if they've got a layerName property defined
                 if (layerDef.layerName) {
                     layer.layerName = layerDef.layerName;
-                    layerControlInfo.controlOptions.menu.push(
+                    layerInfo.controlOptions.menu.push(
                         {
                             label: 'View Metadata',
                             topic: 'viewMetadata',
@@ -708,7 +716,7 @@ define([
                 }
                 //add metadata link for service layers with sub layers
                 if (layerDef.layerDefs && layerDef.layerDefs.length > 1) {
-                    layerControlInfo.controlOptions.subLayerMenu.push(
+                    layerInfo.controlOptions.subLayerMenu.push(
                         {
                             label: 'View Metadata',
                             topic: 'viewMetadata',
@@ -717,19 +725,10 @@ define([
                     );
                 }
 
-                topic.publish('layerControl/addLayerControls', [layerControlInfo]); //TODO the whole collection of layers to be added should be passed at once for layerGroup to do anything. We're not currently supporting layerGroup so this can wait.
-                //if (layerDef.identifies) {
-                //    topic.publish('identify/addLayerInfoWithIdentifyTemplate', layerControlInfo, layerDef.identifies);
-                //} else {
-                //    topic.publish('identify/addLayerInfos', [layerControlInfo]);
-                //}
-                if (layerDef.identifies) {
-                    layerControlInfo.identifies = layerDef.identifies;
-                }
-                topic.publish('identify/addLayerInfos', [layerControlInfo]);
-
-
-                self.legendLayerInfos.push(layerControlInfo);
+                //push info into widgets
+                topic.publish('layerControl/addLayerControls', [layerInfo]);
+                topic.publish('identify/addLayerInfos', [layerInfo]);
+                self.legendLayerInfos.push(layerInfo);
 
                 if (zoomOnLoad) {
                     //zoom to layer
