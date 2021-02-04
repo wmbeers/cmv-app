@@ -1321,7 +1321,7 @@ define([
                 aoiName = (aoiModel.name || 'AOI ' + aoiModel.id),
                 layerDef = {
                     id: 'aoi_' + aoiModel.id + '_service',
-                    url: projects.aoiLayers.mapService,
+                    url: projects.aoiMapService,
                     name: aoiName,
                     type: 'dynamic',
                     subLayerInfos: [
@@ -1403,7 +1403,7 @@ define([
                 layer = self.constructLayer(layerDef, definitionExpressions),
                 pointLayerDef = {
                     id: 'aoi_' + aoiModel.id + '_point',
-                    url: projects.aoiLayers.mapService + '/0',
+                    url: projects.aoiMapService + '/0',
                     type: 'feature'
                 },
                 //feature layers used only for queryExtent calls, not added to the map
@@ -1414,19 +1414,19 @@ define([
                 pointLayer = self.constructLayer(pointLayerDef, definitionExpression),
                 lineLayerDef = {
                     id: 'aoi_' + aoiModel.id + '_line',
-                    url: projects.aoiLayers.mapService + '/1',
+                    url: projects.aoiMapService + '/1',
                     type: 'feature'
                 },
                 lineLayer = self.constructLayer(lineLayerDef, definitionExpression),
                 polyLayerDef = {
                     id: 'aoi_' + aoiModel.id + '_poly',
-                    url: projects.aoiLayers.mapService + '/2',
+                    url: projects.aoiMapService + '/2',
                     type: 'feature'
                 },
                 polyLayer = self.constructLayer(polyLayerDef, definitionExpression),
                 areaLayerDef = {
                     id: 'aoi_' + aoiModel.id + '_area',
-                    url: projects.aoiLayers.mapService + '/3',
+                    url: projects.aoiMapService + '/3',
                     type: 'feature'
                 },
                 areaLayer = self.constructLayer(areaLayerDef, definitionExpression),
