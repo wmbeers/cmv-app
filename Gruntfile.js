@@ -228,7 +228,7 @@ module.exports = function (grunt) {
                     keepalive: true,
                     middleware: middleware
                 }
-            }
+                }
         },
         open: {
             'dev_browser': {

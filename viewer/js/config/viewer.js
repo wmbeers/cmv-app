@@ -33,7 +33,7 @@ define([
 
     // Use your own Google Maps API Key.
     // https://developers.google.com/maps/documentation/javascript/get-api-key
-    GoogleMapsLoader.KEY = 'NOT-A-REAL-API-KEY';
+    GoogleMapsLoader.KEY = GoogleMapsLoader.KEY || 'NOT-A-REAL-API-KEY';
 
     //note: buildImageParameters included with default version of viewer.js is not used, see functionally identical method in projectConfig.js
     // helper function returning ImageParameters for dynamic layers
