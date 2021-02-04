@@ -42,10 +42,9 @@ define([
                         }
                     },
                     layerControlLayerInfos: {
-                        //layerGroup: 'Project Data',
-                        menu: [{
+                        subLayerMenu: [{
                             label: 'Open Attribute Table',
-                            topic: 'openTable',
+                            topic: 'openAttributeTable',
                             iconClass: 'fa fa-table fa-fw'
                         }]
                     },
