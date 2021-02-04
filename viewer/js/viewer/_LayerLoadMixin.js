@@ -700,6 +700,13 @@ define([
                 }
 
                 topic.publish('layerControl/addLayerControls', [layerControlInfo]); //TODO the whole collection of layers to be added should be passed at once for layerGroup to do anything. We're not currently supporting layerGroup so this can wait.
+
+                //originally added in https://github.com/wmbeers/cmv-app/commit/58d2fb7d8e7d8a85cae72dcd3e715de3184b8d59 on issue 69 (project identify formatting)
+                //but needed for loading the project tree (67) as well
+                if (layerDef.identifies) {
+                    layerControlInfo.identifies = layerDef.identifies;
+                }
+
                 topic.publish('identify/addLayerInfos', [layerControlInfo]);
                 self.legendLayerInfos.push(layerControlInfo);
 
@@ -882,13 +889,70 @@ define([
                     }
                 } else {
                     //load it!
-                    //first construct a layer config
+                    //first construct a layerDef
                     var projectLayerConfig = {
                         name: 'Project # ' + projectAltId,
                         id: ('project_' + projectAltId).replace('-', '_'), //internal ID, not really important, but helps with debugging
                         url: url,
                         type: 'feature',
-                        layerName: null //only needed for metadata
+                        layerName: null, //only needed for metadata, which we don't have for projects
+                        identifies: queryDraft ?
+                            //DRAFT_ANALYSIS_AREAS
+                            {
+                                0: {
+                                    fieldInfos: [
+                                        {
+                                            fieldName: 'ALT_ID',
+                                            label: 'Project/Analysis Area ID',
+                                            visible: true
+                                        },
+                                        {
+                                            fieldName: 'ALT_NAME',
+                                            label: 'Analysis Area Name',
+                                            visible: true
+                                        },
+                                        {
+                                            fieldName: 'PRJNAME',
+                                            label: 'Project Name',
+                                            visible: true
+                                        },
+                                        {
+                                            fieldName: 'STATUS',
+                                            label: 'Current Status',
+                                            visible: true
+                                        }
+                                    ]
+                                }
+                            } :
+                            //MILESTONE_MAX_ALTERNATIVES
+                            {
+                                0: {
+                                    fieldInfos: [
+                                        {
+                                            fieldName: 'ALT_ID',
+                                            label: 'Project/Analysis Area ID',
+                                            visible: true
+                                        },
+                                        {
+                                            fieldName: 'ALT_NAME',
+                                            label: 'Analysis Area Name',
+                                            visible: true
+                                        },
+                                        {
+                                            fieldName: 'PRJNAME',
+                                            label: 'Project Name',
+                                            visible: true
+                                        },
+                                        {
+                                            fieldName: 'CURRENT_STATUS',
+                                            label: 'Current Status',
+                                            visible: true
+                                        }
+                                    ]
+                                }
+                            }
+
+                        //milestone_max_alternatives has alt_id, alt_name, prjname, current_status, current_review_start, etc.; draft_alternatives has alt_id, alt_name, prjname, status
                     };
                     if (isAlt) {
                         //cache the fk_project_alt for savedMap
