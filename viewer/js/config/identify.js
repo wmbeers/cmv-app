@@ -1,6 +1,6 @@
 define([
-    './js/config/identifyProjectDefault.js'
-], function (identifyProjectDefault) {
+    './js/config/projectConfig.js' //contains constructIdentifies function used to build the Identify widget configuration for project services
+], function (projectConfig) {
 
     //var linkTemplate = '<a href="{url}" target="_blank">{text}</a>';
     //function directionsFormatter (noValue, attributes) {
@@ -34,13 +34,12 @@ define([
 
         // for details on pop-up definition see: https://developers.arcgis.com/javascript/jshelp/intro_popuptemplate.html
 
-
-        //actual identifies configuration used Identify widget, resuses the _projectServiceIdentifyConfig model defined above
+        //identifies configuration used by Identify widget, resuses the identifyConfig model from projectConfig.js, injected above
         identifies: {
-            previouslyReviewedProjectsService: identifyProjectDefault,
-            currentlyInReviewProjectsService: identifyProjectDefault,
-            eliminatedProjectService: identifyProjectDefault,
-            draftProjectsService: identifyProjectDefault
+            previouslyReviewedProjectsService: projectConfig.constructIdentifies(true),
+            currentlyInReviewProjectsService: projectConfig.constructIdentifies(true),
+            eliminatedProjectsService: projectConfig.constructIdentifies(false),
+            draftProjectsService: projectConfig.constructIdentifies(false)
         }
     };
 });
