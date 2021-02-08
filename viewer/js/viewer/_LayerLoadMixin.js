@@ -241,17 +241,24 @@ define([
 
         openAttributeTable: function (layerControlItem) {
             //featureLayer loaded individually
-            var url = layerControlItem.layer.url,
-                title = layerControlItem.layer.name,
-                topicId = layerControlItem.layer.id,
+            var layer = layerControlItem.layer,
+                url = layer.url,
+                title = layer.name,
+                topicId = layer.id,
                 definitionExpression = '1=1';
 
             //is this a dynamic map service layer or feature layer?
             if (layerControlItem.subLayer) {
-                url += '/' + layerControlItem.subLayer.id;
-                title = layerControlItem.subLayer.name;
-                topicId += '_' + layerControlItem.subLayer.id;
-                //todo pick up subLayer definitionExpression. Not sure how this is done or if it can be done...
+                var subLayer = layerControlItem.subLayer;
+                //extend url
+                url += '/' + subLayer.id;
+                //replace title
+                title = subLayer.name;
+                //extend topicId (not sure what this is used for)
+                topicId += '_' + subLayer.id;
+                if (layer.layerDefinitions && layer.layerDefinitions.length) {
+                    definitionExpression = layer.layerDefinitions[subLayer.id];
+                }
             } else if (layerControlItem.layer.getDefinitionExpression && layerControlItem.layer.getDefinitionExpression()) {
                 definitionExpression = layerControlItem.layer.getDefinitionExpression();
             }
@@ -262,11 +269,11 @@ define([
                 queryOptions: {
                     queryParameters: {
                         url: url,
-                        maxAllowableOffset: 100, // TODO this is used for generalizing geometries. At this setting, the polygons are highly generalized
+                        maxAllowableOffset: 10, // TODO this is used for generalizing geometries. Example from CMV shows 100, but that was way too generalized; trying 10
                         where: definitionExpression,
                         geometry: this.map.extent 
-                    },
-                    idProperty: 'AUTOID' // TODO get this from the layer's fields property
+                    }//,
+                    //idProperty: 'AUTOID' // doesn't seem to be necessary; works without it and we don't have to worry about this not working with layers w/o autoid, like projects/aois
                 },
                 toolbarOptions: {
                     export: {
@@ -849,27 +856,27 @@ define([
                 if (queryDraft) {
                     definitionQuery = 'alt_id like \'' + projectAltId + '-%\'';
                 } else {
-                    definitionQuery = 'fk_project = ' + projectAltId;
+                    definitionQuery = 'fk_project=' + projectAltId;
                 }
             } else if (projectAltId.startsWith('a')) {
                 //specific alternative by fk_project_alt
                 //TODO get lex to make drafts layer have same structure with fk_project_alt field instead of project_alt
                 if (queryDraft) {
-                    definitionQuery = 'project_alt = ' + projectAltId.substr(1);
+                    definitionQuery = 'project_alt=' + projectAltId.substr(1);
                 } else {
-                    definitionQuery = 'fk_project_alt = ' + projectAltId.substr(1);
+                    definitionQuery = 'fk_project_alt=' + projectAltId.substr(1);
                 }
                 isAlt = true;
             } else if (projectAltId.indexOf('-') > 0) {
                 //specific alternative identified by project-alt pattern, like '1234-1' for alt 1 of project 1234
-                definitionQuery = 'alt_id = \'' + projectAltId + '\'';
+                definitionQuery = 'alt_id=\'' + projectAltId + '\'';
                 isAlt = true;
             } else if (projectAltId.startsWith('p')) {
                 //TODO get lex to make drafts layer have same structure with fk_project field added
                 if (queryDraft) {
                     definitionQuery = 'alt_id like \'' + projectAltId.substr(1) + '-%\'';
                 } else {
-                    definitionQuery = 'fk_project = ' + projectAltId.substr(1);
+                    definitionQuery = 'fk_project=' + projectAltId.substr(1);
                 }
             } else if (!isNaN(projectAltId)) {
                 //something we don't know how to handle.
@@ -913,10 +920,62 @@ define([
                     var projectLayerConfig = {
                         name: 'Project # ' + projectAltId,
                         id: ('project_' + projectAltId).replace('-', '_'), //internal ID, not really important, but helps with debugging
-                        url: url,
-                        type: 'feature',
-                        layerName: null //only needed for metadata
+                        url: queryDraft ? projects.draftProjectsService : projects.previouslyReviewedProjectsService, // url, TODO switch to whatever proper service we're going to use that has everything non-draft
+                        type: 'dynamic',
+                        layerName: null, //only needed for metadata
+                        title: 'Yo dawg' //todo layerInfos: 
                     };
+
+                    //convert definitionQuery into sparse array of layerDefinitions
+                    var layerDefinitions = [],
+                        layerIndexes = [2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24]; 
+
+                    layerIndexes.forEach(function (layerIndex) {
+                        layerDefinitions[layerIndex] = definitionQuery;
+                    });
+
+                    /* 
+                     type: 'dynamic',
+                    subLayerInfos: [
+                        {
+                            index: 0,
+                            name: 'Point'
+                            //popupConfig: {
+                            //    title: 'Point feature of ' + aoiName,
+                            //    description: 'Feature <strong>{FEATURE_NAME}</strong><br />Buffer: {BUFFER_DISTANCE} {BUFFER_DISTANCE_UNITS}'
+                            //}
+                        },
+                        {
+                            index: 1,
+                            name: 'Line'
+                        },
+                        ,
+                        {
+                            index: 2,
+                            name: 'Polygon'
+                        },
+                        ,
+                        {
+                            index: 3,
+                            name: 'Analysis Area'
+                        }
+                    ],
+                    identifies: {
+                        0: {
+                            title: 'Point feature of ' + aoiName,
+                            description: 'Feature <strong>{FEATURE_NAME}</strong><br />Buffer: {BUFFER_DISTANCE} {BUFFER_DISTANCE_UNITS}'
+                            /* note: fieldInfos aren't used if description is provided, leaving this comment here for reference if
+                             * we want to display it with default table
+                             * fieldInfos: [
+                                {
+                                    description: 'Unique name of a feature',
+                                    label: 'Name',
+                                    visible: true,
+                                    fieldName: 'FEATURE_NAME'
+                                }
+                            ]
+                     
+                    */
                     if (isAlt) {
                         //cache the fk_project_alt for savedMap
                         projectLayerConfig.projectAltId = queryDraft ? reply.features[0].attributes.PROJECT_ALT : reply.features[0].attributes.FK_PROJECT_ALT;
@@ -932,24 +991,24 @@ define([
                     }
                     
                     var projectLayer = self.constructLayer(projectLayerConfig, 
-                        definitionQuery,
+                        layerDefinitions, // definitionQuery,
                         false, //prevents definitionExpression from overriding title TODO cleaner method of handling this
-                        //todo just set this in the map service rather than having to code in js
+                        null //todo just set this in the map service rather than having to code in js
                         //currently it's the right color, but the width is too narrow
-                        new SimpleRenderer({
-                            'type': 'simple',
-                            'symbol': {
-                                'type': 'esriSFS',
-                                'style': 'esriSFSSolid',
-                                'color': [255, 255, 0, 180],
-                                'outline': {
-                                    'type': 'esriSLS',
-                                    'style': 'esriSLSSolid',
-                                    'color': [255, 255, 0, 255],
-                                    'width': 3
-                                }
-                            }
-                        })
+                        //new SimpleRenderer({
+                        //    'type': 'simple',
+                        //    'symbol': {
+                        //        'type': 'esriSFS',
+                        //        'style': 'esriSFSSolid',
+                        //        'color': [255, 255, 0, 180],
+                        //        'outline': {
+                        //            'type': 'esriSLS',
+                        //            'style': 'esriSLSSolid',
+                        //            'color': [255, 255, 0, 255],
+                        //            'width': 3
+                        //        }
+                        //    }
+                        //})
                     );
                     //resolve deferred via addLayer method
                     self.addLayer(projectLayer, zoomOnLoad).then(
@@ -969,6 +1028,7 @@ define([
             return deferred;
         },
 
+     
         /**
          * Add the project feature to the map identified by featureId and featureType
          * @param {number} featureId The numeric ID of the feature
@@ -1275,27 +1335,11 @@ define([
                 });
 
                 all(queryExtentPromises).then(function (extentReplies) {
-                    //union extents, but only those with actual extents
-                    var unionOfExtents = null;
-                    for (var i = 0; i < extentReplies.length; i++) {
-                        var extentReply = extentReplies[i];
-                        if (extentReply.count > 0) {
-                            if (unionOfExtents) {
-                                unionOfExtents = unionOfExtents.union(extentReply.extent);
-                            } else {
-                                unionOfExtents = extentReply.extent;
-                            }
-                        }
-                    }
-                    if (unionOfExtents) {
-                        unionOfExtents = unionOfExtents.expand(1.5);
-                        self.zoomToExtent(unionOfExtents).then(function () {
+                    self.zoomToExtents(extentReplies).then(
+                        function () { //don't really care about the reply from this method, just a diagnostic text to let us know whether it zoomed or paned
                             deferred.resolve(layers);
-                        });
-                    } else {
-                        //todo alert no features
-                        deferred.resolve(layers);
-                    }
+                        }
+                    );
                 });
             });
 
@@ -1337,12 +1381,10 @@ define([
                             index: 1,
                             name: 'Line'
                         },
-                        ,
                         {
                             index: 2,
                             name: 'Polygon'
                         },
-                        ,
                         {
                             index: 3,
                             name: 'Analysis Area'
@@ -1351,15 +1393,17 @@ define([
                     identifies: {
                         0: {
                             title: 'Point feature of ' + aoiName,
-                            description: 'Feature <strong>{FEATURE_NAME}</strong><br />Buffer: {BUFFER_DISTANCE} {BUFFER_DISTANCE_UNITS}',
-                            fieldInfos: [
+                            description: 'Feature <strong>{FEATURE_NAME}</strong><br />Buffer: {BUFFER_DISTANCE} {BUFFER_DISTANCE_UNITS}'
+                            /* note: fieldInfos aren't used if description is provided, leaving this comment here for reference if
+                             * we want to display it with default table
+                             * fieldInfos: [
                                 {
-                                    description: 'By George I think he\'s got it',
-                                    label: 'dotts',
+                                    description: 'Unique name of a feature',
+                                    label: 'Name',
                                     visible: true,
                                     fieldName: 'FEATURE_NAME'
                                 }
-                            ]
+                            ]*/
                         },
                         1: {
                             title: 'Line feature of ' + aoiName,
@@ -1375,110 +1419,76 @@ define([
                         },
                         2: {
                             title: 'Polygon feature of ' + aoiName,
-                            description: 'Feature <strong>{FEATURE_NAME}</strong><br />Buffer: {BUFFER_DISTANCE} {BUFFER_DISTANCE_UNITS}',
-                            fieldInfos: [
-                                {
-                                    description: 'By George I think he\'s got it',
-                                    label: 'blobbish thingies',
-                                    visible: true,
-                                    fieldName: 'FEATURE_NAME'
-                                }
-                            ]
+                            description: 'Feature <strong>{FEATURE_NAME}</strong><br />Buffer: {BUFFER_DISTANCE} {BUFFER_DISTANCE_UNITS}'
+                            
                         },
                         3: {
                             title: 'Analysis Area of ' + aoiName,
-                            description: 'Feature <strong>{FEATURE_NAME}</strong><br />Buffer: {BUFFER_DISTANCE} {BUFFER_DISTANCE_UNITS}',
-                            fieldInfos: [
-                                {
-                                    description: 'By George I think he\'s got it',
-                                    label: 'bufferinos',
-                                    visible: true,
-                                    fieldName: 'FEATURE_NAME'
-                                }
-                            ]
+                            description: 'Feature <strong>{FEATURE_NAME}</strong><br />Buffer: {BUFFER_DISTANCE} {BUFFER_DISTANCE_UNITS}'
                         }
                     }
                 },
                 //the actual dynamic map service layer the user will see
                 layer = self.constructLayer(layerDef, definitionExpressions),
-                pointLayerDef = {
-                    id: 'aoi_' + aoiModel.id + '_point',
-                    url: projects.aoiMapService + '/0',
-                    type: 'feature'
-                },
-                //feature layers used only for queryExtent calls, not added to the map
-                //in theory we only need to query the analysis areas (S_AOI, referred to as areaLayer below) layer
-                //but if an AOI is abandoned before completed, or something goes wrong
-                //it's possible to have point, line and polygon features from which an extent
-                //can be derived, but no analysis areas
-                pointLayer = self.constructLayer(pointLayerDef, definitionExpression),
-                lineLayerDef = {
-                    id: 'aoi_' + aoiModel.id + '_line',
-                    url: projects.aoiMapService + '/1',
-                    type: 'feature'
-                },
-                lineLayer = self.constructLayer(lineLayerDef, definitionExpression),
-                polyLayerDef = {
-                    id: 'aoi_' + aoiModel.id + '_poly',
-                    url: projects.aoiMapService + '/2',
-                    type: 'feature'
-                },
-                polyLayer = self.constructLayer(polyLayerDef, definitionExpression),
-                areaLayerDef = {
-                    id: 'aoi_' + aoiModel.id + '_area',
-                    url: projects.aoiMapService + '/3',
-                    type: 'feature'
-                },
-                areaLayer = self.constructLayer(areaLayerDef, definitionExpression),
-                featureLayers = [pointLayer, lineLayer, polyLayer, areaLayer],
-                deferred = new Deferred(), //overall deferred to be resolved when whole chain of create > add > zoom is complete
-                addLayerDeferred = self.addLayer(layer, false, true); //note second "zoom to layer" argument to addLayer call is set to false; zoomToLayer doesn't work for dynamic map service layers with definition expressions, so the custom zoom function below is used
+                ////feature layers used only for queryExtent calls, not added to the map
+                ////in theory we only need to query the analysis areas (S_AOI, referred to as areaLayer below) layer
+                ////but if an AOI is abandoned before completed, or something goes wrong
+                ////it's possible to have point, line and polygon features from which an extent
+                ////can be derived, but no analysis areas
 
-            addLayerDeferred.then(function (sl) {
-                //zoom to extent
-                var queryExtentPromises = [],
-                    q = new Query({
-                        where: '1=1' //definitionExpression doesn't need to be re-applied; however we could change this so that we do not apply it above and use it here; not sure what the difference would be
-                    });
-                featureLayers.forEach(function (featureLayer) {
-                    queryExtentPromises.push(featureLayer.queryExtent(q));
-                });
+                //pointLayerDef = {
+                //    id: 'aoi_' + aoiModel.id + '_point',
+                //    url: projects.aoiMapService + '/0',
+                //    type: 'feature'
+                //},
+                //pointLayer = self.constructLayer(pointLayerDef, definitionExpression),
+                //lineLayerDef = {
+                //    id: 'aoi_' + aoiModel.id + '_line',
+                //    url: projects.aoiMapService + '/1',
+                //    type: 'feature'
+                //},
+                //lineLayer = self.constructLayer(lineLayerDef, definitionExpression),
+                //polyLayerDef = {
+                //    id: 'aoi_' + aoiModel.id + '_poly',
+                //    url: projects.aoiMapService + '/2',
+                //    type: 'feature'
+                //},
+                //polyLayer = self.constructLayer(polyLayerDef, definitionExpression),
+                //areaLayerDef = {
+                //    id: 'aoi_' + aoiModel.id + '_area',
+                //    url: projects.aoiMapService + '/3',
+                //    type: 'feature'
+                //},
+                //areaLayer = self.constructLayer(areaLayerDef, definitionExpression),
+                //featureLayers = [pointLayer, lineLayer, polyLayer, areaLayer],
+                //deferred = new Deferred(), //overall deferred to be resolved when whole chain of create > add > zoom is complete
+                //addLayerDeferred = self.addLayer(layer, false, true); //note second "zoom to layer" argument to addLayer call is set to false; zoomToLayer doesn't work for dynamic map service layers with definition expressions, so the custom zoom function below is used
+                addLayerDeferred = self.addLayer(layer, true, true); //note second "zoom to layer" argument to addLayer call is set to false; zoomToLayer doesn't work for dynamic map service layers with definition expressions, so the custom zoom function below is used
 
-                all(queryExtentPromises).then(function (extentReplies) {
-                    //union extents, but only those with actual extents
-                    var unionOfExtents = null;
-                    for (var i = 0; i < extentReplies.length; i++) {
-                        var extentReply = extentReplies[i];
-                        if (extentReply.count > 0) {
-                            if (unionOfExtents) {
-                                unionOfExtents = unionOfExtents.union(extentReply.extent);
-                            } else {
-                                unionOfExtents = extentReply.extent;
-                            }
-                        }
-                    }
-                    if (unionOfExtents) {
-                        unionOfExtents = unionOfExtents.expand(1.5);
-                        self.zoomToExtent(unionOfExtents).then(function () {
-                            deferred.resolve(sl);
-                        });
-                    } else {
-                        //todo alert no features
-                        deferred.resolve(sl);
-                    }
+            return addLayerDeferred;
+            //addLayerDeferred.then(function (sl) {
+            //    //zoom to extent
+            //    var queryExtentPromises = [],
+            //        q = new Query({
+            //            where: '1=1' //definitionExpression doesn't need to be re-applied; however we could change this so that we do not apply it above and use it here; not sure what the difference would be
+            //        });
+            //    featureLayers.forEach(function (featureLayer) {
+            //        queryExtentPromises.push(featureLayer.queryExtent(q));
+            //    });
 
-                    topic.publish('layerLoader/layersChanged');
-                    topic.publish('layerLoader/aoiAdded', layer);
+            //    all(queryExtentPromises).then(function (extentReplies) {
+            //        self.zoomToExtents(extentReplies).then(function () {
+            //            deferred.resolve(sl);
+            //            topic.publish('layerLoader/layersChanged');
+            //            topic.publish('layerLoader/aoiAdded', layer);
+            //        });
+            //    });
 
-                }, function (zoomErr) {
-                    topic.publish('layerLoader/addAoiFailed', zoomErr);
-                });
+            //}, function (err) {
+            //    topic.publish('layerLoader/addAoiFailed', err);
+            //});
 
-            }, function (err) {
-                topic.publish('layerLoader/addAoiFailed', err);
-            });
-
-            return deferred;
+            //return deferred;
         },
 
 
@@ -1744,12 +1754,15 @@ define([
         },
 
         /**
-         * Zooms to the extent of the referenced layer, taking the layer's definition expression into account (if it's a feature layer)
+         * Zooms to the extent of the referenced layer, taking into account the layer's definition expression (if it's a feature layer)
+         * or layerDefinitions array (if it's a dynamic map service layer).
          * @param {any} layer Either an object that is a subclass of esri.Layer, or an object defined by layer control with layer property
          * @returns {object} deferred The Deferred object to be resolved when the map is done zooming
          */
         zoomToLayer: function (layer) {
-            var self = this;
+            var self = this,
+                deferred = new Deferred(),
+                query;
             //when called from the menu, "layer" argument isn't really the layer, but a structure created by layer control
             if (layer.layer) {
                 layer = layer.layer;
@@ -1757,12 +1770,9 @@ define([
 
             //test if we have a definition expression applied, and if so, query the extent and zoom in query callback
             if (layer.getDefinitionExpression && layer.getDefinitionExpression()) {
-                var deferred = new Deferred();
-                //this.zoomToExtent([layer.fullExtent]); //unfortunately, this doesn't take definitionExpression into account
-                var q = new Query({
-                    where: '1=1' //definitionExpression, if present doesn't need to be re-applied
-                });
-                layer.queryExtent(q,
+                query = new Query();
+                //query.where = '1=1' //definitionExpression, if present, doesn't need to be re-applied; nor does this '1=1' hack need to be here, because we're running the query against the layer which already is supplying the appropriate where clause
+                layer.queryExtent(query,
                     //query extent succeeded, zoom the map
                     function (r) {
                         self.zoomToExtent(r.extent).then(
@@ -1786,11 +1796,76 @@ define([
                         deferred.reject(e);
                     }
                 );
-                return deferred;
+            } else if (layer.layerDefinitions && layer.layerDefinitions.length) {
+                var extentRequests = array.map(layer.layerDefinitions, function (layerDefinition, index) {
+                    //layerDefinitions is a sparse array, using the same indexes as layers; if a given featurelayer within a service
+                    //has no layerDefinition, it will still exists as a placeholder in the array as a null, and
+                    //zoomToExtents will deal with the null value.
+                    if (!layerDefinition) {
+                        return null;
+                    }
+                    var subLayerUrl = layer.url + '/' + index,
+                        queryTask = new QueryTask(subLayerUrl);
+                    query = new Query();
+                    query.where = layerDefinition; //definitionExpression/layerDefinition, if present, DOES need to be applied for this way of doing it, w/o building reference to a feature layer
+                    return queryTask.executeForExtent(query);
+                });
+                all (extentRequests).then(
+                    function (extentReplies) {
+                        self.zoomToExtents(extentReplies).then(
+                            function (zoomResponse) {
+                                deferred.resolve(zoomResponse);
+                            }
+                        );
+                    }, function (err) {
+                        deferred.reject(err); //todo gahh be consistent about this whole flow
+                    }
+                );
+            } else {
+                //no definition expression, just zoom to the layer's full extent
+                deferred = this.zoomToExtent(layer.fullExtent); //zoomToExtent returns a deferred, we'll just use that rather than the one defined in this function
             }
 
-            //no definition expression, just zoom to the layer's full extent
-            return this.zoomToExtent(layer.fullExtent);
+            return deferred;
+        },
+
+        /**
+         * Zooms the map to the union of the extents provided via the extentReplies parameter.
+         * @param {any} extentReplies An array of one or more objects following the structure of a reply from a "executeForExtent" request,
+         * with count and extent properties. See https://developers.arcgis.com/javascript/3/jsapi/querytask-amd.html#event-execute-for-extent-complete
+         * @returns {Deferred} Deferred object, resolved when map has finished drawing at new extent.
+         */
+        zoomToExtents: function (extentReplies) {
+            var self = this,
+                deferred = new Deferred();
+            //union extents, but only those with actual extents
+            var unionOfExtents = null;
+            for (var i = 0; i < extentReplies.length; i++) {
+                var extentReply = extentReplies[i];
+                if (extentReply && extentReply.count) {
+                    if (unionOfExtents) {
+                        unionOfExtents = unionOfExtents.union(extentReply.extent);
+                    } else {
+                        unionOfExtents = extentReply.extent;
+                    }
+                }
+            }
+            if (unionOfExtents) {
+                unionOfExtents = unionOfExtents.expand(1.5);
+                self.zoomToExtent(unionOfExtents).then(
+                    function (zoomResponse) {
+                        deferred.resolve(zoomResponse);
+                    },
+                    function (err) {
+                        //todo alert user? handle error?
+                        deferred.resolve('ZoomToExtents failed with error: ' + err);
+                    }
+                );
+            } else {
+                //todo alert or something?
+                deferred.resolve('no extents');
+            }
+            return deferred;
         },
 
         /**
