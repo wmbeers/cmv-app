@@ -1,7 +1,7 @@
 define([
 //    'esri/dijit/Basemap',
 //    'esri/dijit/BasemapLayer',
-//    'dojo/i18n!./nls/main'
+//    'dojo/i18n!./nls/main' NOTE this being commented out, while commented out blocks for all-white/all-black layers, was causing this widget to not load;
 ], function (/*Basemap, BasemapLayer, i18n*/) {
 
     return {
@@ -30,28 +30,28 @@ define([
             hybrid: {},
             topo: {},
             terrain: {},
-            'all-white': {
-                title: i18n.basemaps.allWhite,
-                basemap: {
-                    baseMapLayers: [
-                        {
-                            url: 'https://tiles.arcgis.com/tiles/nGt4QxSblgDfeJn9/arcgis/rest/services/Blank_White_Basemap/VectorTileServer/resources/styles/root.json',
-                            type: 'VectorTile'
-                        }
-                    ]
-                }
-            },
-            'all-black': {
-                title: i18n.basemaps.allBlack,
-                basemap: {
-                    baseMapLayers: [
-                        {
-                            url: 'https://www.arcgis.com/sharing/rest/content/items/e3ac9818c0c344538840e51e9f33f6cc/resources/styles/root.json?f=pjson',
-                            type: 'VectorTile'
-                        }
-                    ]
-                }
-            },
+            //'all-white': {
+            //    title: i18n.basemaps.allWhite,
+            //    basemap: {
+            //        baseMapLayers: [
+            //            {
+            //                url: 'https://tiles.arcgis.com/tiles/nGt4QxSblgDfeJn9/arcgis/rest/services/Blank_White_Basemap/VectorTileServer/resources/styles/root.json',
+            //                type: 'VectorTile'
+            //            }
+            //        ]
+            //    }
+            //},
+            //'all-black': {
+            //    title: i18n.basemaps.allBlack,
+            //    basemap: {
+            //        baseMapLayers: [
+            //            {
+            //                url: 'https://www.arcgis.com/sharing/rest/content/items/e3ac9818c0c344538840e51e9f33f6cc/resources/styles/root.json?f=pjson',
+            //                type: 'VectorTile'
+            //            }
+            //        ]
+            //    }
+            //},
             'gray-vector': {}, // requires v3.16 or higher
             'dark-gray-vector': {}, // requires v3.16 or higher
             oceans: {},

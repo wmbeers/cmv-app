@@ -10,6 +10,7 @@ define([
     'dojo/promise/all',
     'dojo/request',
     './js/config/projects.js',
+    './js/config/projectConfig.js', //contains constructIdentifies function used to build the Identify widget configuration for dyanmically loaded project services
     './js/config/layerLoader.js',
     'esri/layers/ArcGISDynamicMapServiceLayer',
     'esri/layers/FeatureLayer',
@@ -48,6 +49,7 @@ define([
     all,
     request,
     projects,
+    projectConfig,
     layerLoader,
     ArcGISDynamicMapServiceLayer,
     FeatureLayer,
@@ -708,7 +710,9 @@ define([
                         ]
                     },
                     //used by Identify widget (modified under #69 to recognize this property)
-                    identifies: layerDef.identifies 
+                    identifies: layerDef.identifies,
+                    //used by Identify widget (w/o modification)
+                    layerIds: layerDef.layerIds
                 };
                 //add metadata link for stand-alone layers (i.e. feature layers of a map service), if they've got a layerName property defined
                 if (layerDef.layerName) {
@@ -923,64 +927,8 @@ define([
                         url: queryDraft ? projects.draftProjectsService : projects.previouslyReviewedProjectsService, // url, TODO switch to whatever proper service we're going to use that has everything non-draft
                         type: 'dynamic',
                         layerName: null, //only needed for metadata, which we don't have for projects
-                        //?title: 'Yo dawg' //todo layerInfos: 
-                        identifies: queryDraft ?
-                            //DRAFT_ANALYSIS_AREAS
-                            {
-                                0: {
-                                    fieldInfos: [
-                                        {
-                                            fieldName: 'ALT_ID',
-                                            label: 'Project/Analysis Area ID',
-                                            visible: true
-                                        },
-                                        {
-                                            fieldName: 'ALT_NAME',
-                                            label: 'Analysis Area Name',
-                                            visible: true
-                                        },
-                                        {
-                                            fieldName: 'PRJNAME',
-                                            label: 'Project Name',
-                                            visible: true
-                                        },
-                                        {
-                                            fieldName: 'STATUS',
-                                            label: 'Current Status',
-                                            visible: true
-                                        }
-                                    ]
-                                }
-                            } :
-                            //MILESTONE_MAX_ALTERNATIVES
-                            {
-                                0: {
-                                    fieldInfos: [
-                                        {
-                                            fieldName: 'ALT_ID',
-                                            label: 'Project/Analysis Area ID',
-                                            visible: true
-                                        },
-                                        {
-                                            fieldName: 'ALT_NAME',
-                                            label: 'Analysis Area Name',
-                                            visible: true
-                                        },
-                                        {
-                                            fieldName: 'PRJNAME',
-                                            label: 'Project Name',
-                                            visible: true
-                                        },
-                                        {
-                                            fieldName: 'CURRENT_STATUS',
-                                            label: 'Current Status',
-                                            visible: true
-                                        }
-                                    ]
-                                }
-                            }
-
-                        //milestone_max_alternatives has alt_id, alt_name, prjname, current_status, current_review_start, etc.; draft_alternatives has alt_id, alt_name, prjname, status
+                        //used by identify widget to specify which layers will have identify results
+                        layerIds: [5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24]
                     };
 
                     //convert definitionQuery into sparse array of layerDefinitions
@@ -991,48 +939,8 @@ define([
                         layerDefinitions[layerIndex] = definitionQuery;
                     });
 
-                    /* 
-                     type: 'dynamic',
-                    subLayerInfos: [
-                        {
-                            index: 0,
-                            name: 'Point'
-                            //popupConfig: {
-                            //    title: 'Point feature of ' + aoiName,
-                            //    description: 'Feature <strong>{FEATURE_NAME}</strong><br />Buffer: {BUFFER_DISTANCE} {BUFFER_DISTANCE_UNITS}'
-                            //}
-                        },
-                        {
-                            index: 1,
-                            name: 'Line'
-                        },
-                        ,
-                        {
-                            index: 2,
-                            name: 'Polygon'
-                        },
-                        ,
-                        {
-                            index: 3,
-                            name: 'Analysis Area'
-                        }
-                    ],
-                    identifies: {
-                        0: {
-                            title: 'Point feature of ' + aoiName,
-                            description: 'Feature <strong>{FEATURE_NAME}</strong><br />Buffer: {BUFFER_DISTANCE} {BUFFER_DISTANCE_UNITS}'
-                            /* note: fieldInfos aren't used if description is provided, leaving this comment here for reference if
-                             * we want to display it with default table
-                             * fieldInfos: [
-                                {
-                                    description: 'Unique name of a feature',
-                                    label: 'Name',
-                                    visible: true,
-                                    fieldName: 'FEATURE_NAME'
-                                }
-                            ]
-                     
-                    */
+                    projectLayerConfig.identifies = projectConfig.constructIdentifies(!queryDraft);
+
                     if (isAlt) {
                         //cache the fk_project_alt for savedMap
                         projectLayerConfig.projectAltId = queryDraft ? reply.features[0].attributes.PROJECT_ALT : reply.features[0].attributes.FK_PROJECT_ALT;
@@ -1071,7 +979,8 @@ define([
                     self.addLayer(projectLayer, zoomOnLoad).then(
                         function (l) {
                             deferred.resolve(l);
-                        });
+                        }
+                    );
                 }
 
             }, function (e) {

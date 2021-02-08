@@ -293,7 +293,6 @@ define([
             projectConfig.constructOperationalLayer('eliminatedProjectsService', 'Eliminated Project Alternatives'),
             projectConfig.constructOperationalLayer('draftProjectsService', 'Projects (Draft)')
         ],
-        //foo: projectConfig.foo(),
 
         // set include:true to load. For titlePane type set position the the desired order in the sidebar
         widgets: {
