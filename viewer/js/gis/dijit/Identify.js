@@ -161,6 +161,11 @@ define([
                     }));
                 }
 
+                // new, added by Bill Beers, to support dynamically adding to this widget's config
+                if (layerInfo.identifies) {
+                    this.identifies[lyrId] = layerInfo.identifies;
+                }
+
                 // rebuild the layer selection list when any layer is hidden
                 // but only if we have a UI
                 var listeners = [];
@@ -254,7 +259,7 @@ define([
             var identifiedlayers = [];
             var selectedLayer = this.getSelectedLayer();
 
-            if (!this.checkForGraphicInfoTemplate(evt)) {
+            if (!this.checkForGraphicInfoTemplate(evt)) { // TODO I think this is where we can start to resolve the problem of not clicking through stacked features, only getting the topmost feature
                 // return;
                 var layer = array.filter(this.layers, function (l) {
                     return l.ref.id === evt.graphic._layer.id;
@@ -531,7 +536,7 @@ define([
 
             var layerName = this.getLayerName(layer);
             if (result) {
-                layerName = result.layerName;
+                layerName = result.layerName; //TODO I think this line is causing problems, because it turns it from the name displayed in the TOC to the internal name used by SDE
             }
 
             // from the results

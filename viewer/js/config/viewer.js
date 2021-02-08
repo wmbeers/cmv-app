@@ -9,10 +9,11 @@ define([
     'esri/tasks/locator',
     'gis/plugins/Google',
     './js/config/projects.js',
+    './js/config/projectConfig.js',
     'dojo/i18n!./nls/main',
     'dojo/topic',
     'dojo/sniff'
-], function (units, Extent, esriConfig, /*urlUtils,*/ GeometryService, ImageParameters, PictureMarkerSymbol, Locator, GoogleMapsLoader, projects, i18n, topic, has) {
+], function (units, Extent, esriConfig, /*urlUtils,*/ GeometryService, ImageParameters, PictureMarkerSymbol, Locator, GoogleMapsLoader, projects, projectConfig, i18n, topic, has) {
     // url to your proxy page, must be on same machine hosting you app. See proxy folder for readme.
     //esriConfig.defaults.io.proxyUrl = 'proxy/proxy.ashx';
     esriConfig.defaults.io.alwaysUseProxy = false;
@@ -32,27 +33,28 @@ define([
 
     // Use your own Google Maps API Key.
     // https://developers.google.com/maps/documentation/javascript/get-api-key
-    GoogleMapsLoader.KEY = 'NOT-A-REAL-API-KEY';
+    GoogleMapsLoader.KEY = GoogleMapsLoader.KEY || 'NOT-A-REAL-API-KEY';
 
+    //note: buildImageParameters included with default version of viewer.js is not used, see functionally identical method in projectConfig.js
     // helper function returning ImageParameters for dynamic layers
     // example:
     // imageParameters: buildImageParameters({
     //     layerIds: [0],
     //     layerOption: 'show'
     // })
-    // eslint-disable-next-line no-unused-vars
-    function buildImageParameters (config) {
-        config = config || {};
-        var ip = new ImageParameters();
-        //image parameters for dynamic services, set to png32 for higher quality exports
-        ip.format = 'png32';
-        for (var key in config) {
-            if (config.hasOwnProperty(key)) {
-                ip[key] = config[key];
-            }
-        }
-        return ip;
-    }
+    // eslint-disable-next-line no-unused-vars 
+    //function buildImageParameters (config) {
+    //    config = config || {};
+    //    var ip = new ImageParameters();
+    //    //image parameters for dynamic services, set to png32 for higher quality exports
+    //    ip.format = 'png32';
+    //    for (var key in config) {
+    //        if (config.hasOwnProperty(key)) {
+    //            ip[key] = config[key];
+    //        }
+    //    }
+    //    return ip;
+    //}
 
     //some example topics for listening to menu item clicks
     //these topics publish a simple message to the growler
@@ -286,275 +288,13 @@ define([
         // The 'options' object is passed as the layers options for constructor. Title will be used in the legend only. id's must be unique and have no spaces.
         // 3 'mode' options: MODE_SNAPSHOT = 0, MODE_ONDEMAND = 1, MODE_SELECTION = 2
         operationalLayers: [
-            {
-                type: 'dynamic',
-                url: projects.previouslyReviewedProjectsService,
-                title: 'Projects (Previously Reviewed)',
-                options: {
-                    id: 'previouslyReviewedProjectsService',
-                    opacity: 1.0,
-                    visible: true,
-                    outFields: ['*'],
-                    imageParameters: buildImageParameters({
-                        layerIds: [0, 6, 7, 8],
-                        layerOption: 'show'
-                    }),
-                    mode: 1
-                },
-                editorLayerInfos: {
-                    disableGeometryUpdate: false
-                },
-                legendLayerInfos: {
-                    exclude: false,
-                    layerInfo: {
-                        title: 'Projects (Previously Reviewed)'
-                    }
-                },
-                layerControlLayerInfos: {
-                    //layerGroup: 'Project Data',
-                    menu: [{
-                        label: 'Open Attribute Table',
-                        topic: 'openTable',
-                        iconClass: 'fa fa-table fa-fw'
-                    }]
-                }
-            },
-            {
-                type: 'dynamic',
-                url: projects.currentlyInReviewProjectsService,
-                title: 'Projects (Currently in Review)',
-                options: {
-                    id: 'currentlyInReviewProjectsService',
-                    opacity: 1.0,
-                    visible: true,
-                    outFields: ['*'],
-                    imageParameters: buildImageParameters({
-                        layerIds: [0, 6, 7, 8],
-                        layerOption: 'show'
-                    }),
-                    mode: 1
-                },
-                editorLayerInfos: {
-                    disableGeometryUpdate: false
-                },
-                legendLayerInfos: {
-                    exclude: false,
-                    layerInfo: {
-                        title: 'Projects (Currently in Review)'
-                    }
-                },
-                layerControlLayerInfos: {
-                    //layerGroup: 'Project Data',
-                    menu: [{
-                        label: 'Open Attribute Table',
-                        topic: 'openTable',
-                        iconClass: 'fa fa-table fa-fw'
-                    }]
-                }
-            },
-            {
-                type: 'dynamic',
-                url: projects.eliminatedProjectsService,
-                title: 'Eliminated Project Alternatives',
-                options: {
-                    id: 'eliminatedProjectsService',
-                    opacity: 1.0,
-                    visible: true,
-                    outFields: ['*'],
-                    imageParameters: buildImageParameters({
-                        layerIds: [0, 6, 7, 8],
-                        layerOption: 'show'
-                    }),
-                    mode: 1
-                },
-                editorLayerInfos: {
-                    disableGeometryUpdate: false
-                },
-                legendLayerInfos: {
-                    exclude: false,
-                    layerInfo: {
-                        title: 'Eliminated Project Alternatives'
-                    }
-                },
-                layerControlLayerInfos: {
-                    //layerGroup: 'Project Data',
-                    menu: [{
-                        label: 'Open Attribute Table',
-                        topic: 'openTable',
-                        iconClass: 'fa fa-table fa-fw'
-                    }]
-                }
-            },
-            {
-                type: 'dynamic',
-                url: projects.draftProjectsService,
-                title: 'Projects (Draft)',
-                options: {
-                    id: 'draftProjectsService',
-                    opacity: 1.0,
-                    visible: true,
-                    outFields: ['*'],
-                    imageParameters: buildImageParameters({
-                        layerIds: [0, 6, 7, 8],
-                        layerOption: 'show'
-                    }),
-                    mode: 1
-                },
-                editorLayerInfos: {
-                    disableGeometryUpdate: false
-                },
-                legendLayerInfos: {
-                    exclude: false,
-                    layerInfo: {
-                        title: 'Projects (Draft)'
-                    }
-                },
-                layerControlLayerInfos: {
-                    //layerGroup: 'Project Data',
-                    menu: [{
-                        label: 'Open Attribute Table',
-                        topic: 'openTable',
-                        iconClass: 'fa fa-table fa-fw'
-                    }]
-                }
-            }//,
-            //{
-            //    type: 'feature',
-            //    url: 'https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/AOIDEV_INPUT/FeatureServer/1',
-            //    title: 'Area of Interest Points',
-            //    options: {
-            //        id: 'aoiP',
-            //        opacity: 1.0,
-            //        visible: false,
-            //        outFields: ['*'],
-            //        imageParameters: buildImageParameters({
-            //            layerIds: [0, 7],
-            //            layerOption: 'show'
-            //        }),
-            //        mode: 1
-            //    },
-            //    editorLayerInfos: {
-            //        exclude: false,
-            //        disableGeometryUpdate: false
-            //    },
-            //    legendLayerInfos: {
-            //        exclude: false,
-            //        layerInfo: {
-            //            title: 'AOI Points'
-            //        }
-            //    },
-            //    layerControlLayerInfos: {
-            //        //layerGroup: 'Project Data',
-            //        menu: [{
-            //            label: 'Open Attribute Table',
-            //            topic: 'openTable',
-            //            iconClass: 'fa fa-table fa-fw'
-            //        }]
-            //    }
-            //},
-            //{
-            //    type: 'feature',
-            //    url: 'https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/AOIDEV_INPUT/FeatureServer/2',
-            //    title: 'Area of Interest Lines',
-            //    options: {
-            //        id: 'aoiL',
-            //        opacity: 1.0,
-            //        visible: false,
-            //        outFields: ['*'],
-            //        imageParameters: buildImageParameters({
-            //            layerIds: [0, 7],
-            //            layerOption: 'show'
-            //        }),
-            //        mode: 1
-            //    },
-            //    editorLayerInfos: {
-            //        exclude: false,
-            //        disableGeometryUpdate: false
-            //    },
-            //    legendLayerInfos: {
-            //        exclude: false,
-            //        layerInfo: {
-            //            title: 'AOI Polylines'
-            //        }
-            //    },
-            //    layerControlLayerInfos: {
-            //        //layerGroup: 'Project Data',
-            //        menu: [{
-            //            label: 'Open Attribute Table',
-            //            topic: 'openTable',
-            //            iconClass: 'fa fa-table fa-fw'
-            //        }]
-            //    }
-            //},
-            //{
-            //    type: 'feature',
-            //    url: 'https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/AOIDEV_INPUT/FeatureServer/3',
-            //    title: 'Area of Interest Polygons',
-            //    options: {
-            //        id: 'aoiA',
-            //        opacity: 1.0,
-            //        visible: false,
-            //        outFields: ['*'],
-            //        imageParameters: buildImageParameters({
-            //            layerIds: [0, 7],
-            //            layerOption: 'show'
-            //        }),
-            //        mode: 1
-            //    },
-            //    editorLayerInfos: {
-            //        exclude: false,
-            //        disableGeometryUpdate: false
-            //    },
-            //    legendLayerInfos: {
-            //        exclude: false,
-            //        layerInfo: {
-            //            title: 'AOI Polygons'
-            //        }
-            //    },
-            //    layerControlLayerInfos: {
-            //        //layerGroup: 'Project Data',
-            //        menu: [{
-            //            label: 'Open Attribute Table',
-            //            topic: 'openTable',
-            //            iconClass: 'fa fa-table fa-fw'
-            //        }]
-            //    }
-            //},
-            //{
-            //    type: 'feature',
-            //    url: 'https://aquarius.at.geoplan.ufl.edu/arcgis/rest/services/etdm_services/AOIDEV_INPUT/FeatureServer/4',
-            //    title: 'Area of Interest Analysis Areas',
-            //    options: {
-            //        id: 'aoiAA',
-            //        opacity: 1.0,
-            //        visible: false,
-            //        outFields: ['*'],
-            //        imageParameters: buildImageParameters({
-            //            layerIds: [0, 7],
-            //            layerOption: 'show'
-            //        }),
-            //        mode: 1
-            //    },
-            //    editorLayerInfos: {
-            //        exclude: false,
-            //        disableGeometryUpdate: false
-            //    },
-            //    legendLayerInfos: {
-            //        exclude: false,
-            //        layerInfo: {
-            //            title: 'AOI Analysis Areas'
-            //        }
-            //    },
-            //    layerControlLayerInfos: {
-            //        //layerGroup: 'Project Data',
-            //        menu: [{
-            //            label: 'Open Attribute Table',
-            //            topic: 'openTable',
-            //            iconClass: 'fa fa-table fa-fw'
-            //        }]
-            //    }
-            //}
+            projectConfig.constructOperationalLayer('previouslyReviewedProjectsService', 'Projects (Previously Reviewed)'),
+            projectConfig.constructOperationalLayer('currentlyInReviewProjectsService', 'Projects (Currently in Review)'),
+            projectConfig.constructOperationalLayer('eliminatedProjectsService', 'Eliminated Project Alternatives'),
+            projectConfig.constructOperationalLayer('draftProjectsService', 'Projects (Draft)')
         ],
+        //foo: projectConfig.foo(),
+
         // set include:true to load. For titlePane type set position the the desired order in the sidebar
         widgets: {
             //handles messaging in upper right

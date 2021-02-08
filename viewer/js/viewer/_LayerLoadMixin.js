@@ -916,14 +916,71 @@ define([
                     }
                 } else {
                     //load it!
-                    //first construct a layer config
+                    //first construct a layerDef
                     var projectLayerConfig = {
                         name: 'Project # ' + projectAltId,
                         id: ('project_' + projectAltId).replace('-', '_'), //internal ID, not really important, but helps with debugging
                         url: queryDraft ? projects.draftProjectsService : projects.previouslyReviewedProjectsService, // url, TODO switch to whatever proper service we're going to use that has everything non-draft
                         type: 'dynamic',
-                        layerName: null, //only needed for metadata
-                        title: 'Yo dawg' //todo layerInfos: 
+                        layerName: null, //only needed for metadata, which we don't have for projects
+                        //?title: 'Yo dawg' //todo layerInfos: 
+                        identifies: queryDraft ?
+                            //DRAFT_ANALYSIS_AREAS
+                            {
+                                0: {
+                                    fieldInfos: [
+                                        {
+                                            fieldName: 'ALT_ID',
+                                            label: 'Project/Analysis Area ID',
+                                            visible: true
+                                        },
+                                        {
+                                            fieldName: 'ALT_NAME',
+                                            label: 'Analysis Area Name',
+                                            visible: true
+                                        },
+                                        {
+                                            fieldName: 'PRJNAME',
+                                            label: 'Project Name',
+                                            visible: true
+                                        },
+                                        {
+                                            fieldName: 'STATUS',
+                                            label: 'Current Status',
+                                            visible: true
+                                        }
+                                    ]
+                                }
+                            } :
+                            //MILESTONE_MAX_ALTERNATIVES
+                            {
+                                0: {
+                                    fieldInfos: [
+                                        {
+                                            fieldName: 'ALT_ID',
+                                            label: 'Project/Analysis Area ID',
+                                            visible: true
+                                        },
+                                        {
+                                            fieldName: 'ALT_NAME',
+                                            label: 'Analysis Area Name',
+                                            visible: true
+                                        },
+                                        {
+                                            fieldName: 'PRJNAME',
+                                            label: 'Project Name',
+                                            visible: true
+                                        },
+                                        {
+                                            fieldName: 'CURRENT_STATUS',
+                                            label: 'Current Status',
+                                            visible: true
+                                        }
+                                    ]
+                                }
+                            }
+
+                        //milestone_max_alternatives has alt_id, alt_name, prjname, current_status, current_review_start, etc.; draft_alternatives has alt_id, alt_name, prjname, status
                     };
 
                     //convert definitionQuery into sparse array of layerDefinitions
