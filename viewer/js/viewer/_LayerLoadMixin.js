@@ -1264,62 +1264,6 @@ define([
         },
 
         /**
-         * Adds a feature layers associated with the referenced AOI model to the map
-         * @param {object} aoiModel A model of the AOI to be loaded, with at least the name and id properties
-         * @returns {Deferred} A Deferred object to be resolved when all feature layers have been loaded in the map
-         */
-        XaddAoiModelToMap: function (aoiModel) {
-            var self = this, //so we don't lose track buried down in callbacks
-                definitionExpression = 'FK_PROJECT = ' + aoiModel.id,
-                deferred = new Deferred(),
-                promises = [],
-                layerNames = ['analysisAreaBuffer', 'polygon', 'polyline', 'point'];
-
-            //mixin properties from projects.aoiLayers into new objects, load them in the map
-            layerNames.forEach(function (layerName) {
-                var l2 = layerName === 'analysisAreaBuffer' ? 'Analysis Areas' : ('P' + layerName.substr(1) + 's'),
-                    layerDef = {
-                        id: 'aoi_' + aoiModel.id + '_' + layerName,
-                        url: projects.aoiLayers[layerName],
-                        name: (aoiModel.name || 'AOI ' + aoiModel.id) + ' ' + l2,
-                        type: 'feature'
-                    },
-                    layer = self.constructLayer(layerDef, definitionExpression),
-                    promise = self.addLayer(layer, false, true);
-
-                promises.push(promise);
-            });
-
-            //when all promises to load layers are resolved, we query their extents, union them with a second array of promises
-            all(promises).then(function (layers) {
-                var queryExtentPromises = [],
-                    q = new Query({
-                        where: '1=1' //definitionExpression doesn't need to be re-applied
-                    });
-                layers.forEach(function (layer) {
-                    queryExtentPromises.push(layer.queryExtent(q));
-                });
-
-                all(queryExtentPromises).then(function (extentReplies) {
-                    self.zoomToExtents(extentReplies).then(
-                        function () { //don't really care about the reply from this method, just a diagnostic text to let us know whether it zoomed or paned
-                            deferred.resolve(layers);
-                        }
-                    );
-                });
-            });
-
-            deferred.then(function (layers) {
-                topic.publish('layerLoader/layersChanged');
-                topic.publish('layerLoader/aoiAdded', layers);
-            }, function (err) {
-                topic.publish('layerLoader/addAoiFailed', err);
-            });
-
-            return deferred;
-        },
-
-        /**
          * Adds a dynamic map service layer with definition expressions set to filter to just the referenced AOI model to the map
          * @param {object} aoiModel A model of the AOI to be loaded, with at least the name and id properties
          * @returns {Deferred} A Deferred object to be resolved when map service layer has been loaded in the map TODO and map zoomed
@@ -1338,10 +1282,6 @@ define([
                         {
                             index: 0,
                             name: 'Point'
-                            //popupConfig: {
-                            //    title: 'Point feature of ' + aoiName,
-                            //    description: 'Feature <strong>{FEATURE_NAME}</strong><br />Buffer: {BUFFER_DISTANCE} {BUFFER_DISTANCE_UNITS}'
-                            //}
                         },
                         {
                             index: 1,
@@ -1396,67 +1336,10 @@ define([
                 },
                 //the actual dynamic map service layer the user will see
                 layer = self.constructLayer(layerDef, definitionExpressions),
-                ////feature layers used only for queryExtent calls, not added to the map
-                ////in theory we only need to query the analysis areas (S_AOI, referred to as areaLayer below) layer
-                ////but if an AOI is abandoned before completed, or something goes wrong
-                ////it's possible to have point, line and polygon features from which an extent
-                ////can be derived, but no analysis areas
-
-                //pointLayerDef = {
-                //    id: 'aoi_' + aoiModel.id + '_point',
-                //    url: projects.aoiMapService + '/0',
-                //    type: 'feature'
-                //},
-                //pointLayer = self.constructLayer(pointLayerDef, definitionExpression),
-                //lineLayerDef = {
-                //    id: 'aoi_' + aoiModel.id + '_line',
-                //    url: projects.aoiMapService + '/1',
-                //    type: 'feature'
-                //},
-                //lineLayer = self.constructLayer(lineLayerDef, definitionExpression),
-                //polyLayerDef = {
-                //    id: 'aoi_' + aoiModel.id + '_poly',
-                //    url: projects.aoiMapService + '/2',
-                //    type: 'feature'
-                //},
-                //polyLayer = self.constructLayer(polyLayerDef, definitionExpression),
-                //areaLayerDef = {
-                //    id: 'aoi_' + aoiModel.id + '_area',
-                //    url: projects.aoiMapService + '/3',
-                //    type: 'feature'
-                //},
-                //areaLayer = self.constructLayer(areaLayerDef, definitionExpression),
-                //featureLayers = [pointLayer, lineLayer, polyLayer, areaLayer],
-                //deferred = new Deferred(), //overall deferred to be resolved when whole chain of create > add > zoom is complete
-                //addLayerDeferred = self.addLayer(layer, false, true); //note second "zoom to layer" argument to addLayer call is set to false; zoomToLayer doesn't work for dynamic map service layers with definition expressions, so the custom zoom function below is used
                 addLayerDeferred = self.addLayer(layer, true, true); //note second "zoom to layer" argument to addLayer call is set to false; zoomToLayer doesn't work for dynamic map service layers with definition expressions, so the custom zoom function below is used
 
             return addLayerDeferred;
-            //addLayerDeferred.then(function (sl) {
-            //    //zoom to extent
-            //    var queryExtentPromises = [],
-            //        q = new Query({
-            //            where: '1=1' //definitionExpression doesn't need to be re-applied; however we could change this so that we do not apply it above and use it here; not sure what the difference would be
-            //        });
-            //    featureLayers.forEach(function (featureLayer) {
-            //        queryExtentPromises.push(featureLayer.queryExtent(q));
-            //    });
-
-            //    all(queryExtentPromises).then(function (extentReplies) {
-            //        self.zoomToExtents(extentReplies).then(function () {
-            //            deferred.resolve(sl);
-            //            topic.publish('layerLoader/layersChanged');
-            //            topic.publish('layerLoader/aoiAdded', layer);
-            //        });
-            //    });
-
-            //}, function (err) {
-            //    topic.publish('layerLoader/addAoiFailed', err);
-            //});
-
-            //return deferred;
         },
-
 
         /**
          * Saves to the referenced map to the server, including the layer configuration (via getLayerConfig) and the map extent.
