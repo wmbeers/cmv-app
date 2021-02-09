@@ -56,13 +56,13 @@ function (ImageParameters, projectUrls) {
         },
 
         /**
-        * Construct a standard configuration of a project map service for the identify widget, with tweaks to 
-        * handle the structural differences between the different services.
-        * @param {boolean} useUnderscoreInFeatureIdFieldNames Set to true when constructing for 
-        *  currently in review/previously reviewed services to use field names POINT_ID, SEGMENT_ID and POLY_ID;
-        *  omit or set to false for draft/eliminated services to use field names POINTID, SEGMENTID and AREAID;
+         * Construct a standard configuration of a project map service for the identify widget, with tweaks to 
+         * handle the structural differences between the different services.
+         * @param {boolean} useUnderscoreInFeatureIdFieldNames Set to true when constructing for 
+         *  currently in review/previously reviewed services to use field names POINT_ID, SEGMENT_ID and POLY_ID;
+         *  omit or set to false for draft/eliminated services to use field names POINTID, SEGMENTID and AREAID;
          * @returns {object} a JS object compatible with identify widget "identifies" configuration
-        */
+         */
         constructIdentifies: function (useUnderscoreInFeatureIdFieldNames) {
             var identifies = {}, //the identifies object that will be used to configure the Identify widget
                 //project name field, used several times
