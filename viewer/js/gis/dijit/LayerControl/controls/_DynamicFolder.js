@@ -9,9 +9,14 @@ define([
     'dojo/dom-attr',
     'dojo/fx',
     'dojo/html',
+    'dijit/Menu',
+    'dijit/MenuItem',
+    'dijit/MenuSeparator',
+    'dojo/topic',
     'dijit/_WidgetBase',
     'dijit/_TemplatedMixin',
-    'dojo/text!./templates/Folder.html'
+    'dojo/text!./templates/Folder.html',
+    'dojo/i18n!./../nls/resource'
 ], function (
     declare,
     lang,
@@ -23,13 +28,19 @@ define([
     domAttr,
     fx,
     html,
+    Menu,
+    MenuItem,
+    MenuSeparator,
+    topic,
     WidgetBase,
     TemplatedMixin,
-    folderTemplate
+    folderTemplate,
+    i18n
 ) {
     var _DynamicFolder = declare([WidgetBase, TemplatedMixin], {
         control: null,
         sublayerInfo: null,
+        menu: null,
         icons: null,
         // ^args
         templateString: folderTemplate,
@@ -73,6 +84,53 @@ define([
                 var layerViz = (array.indexOf(this.control.layer.visibleLayers, this.sublayerInfo.id) !== -1);
                 this._setFolderCheckbox(layerViz, checkNode, true);
             }
+
+            //set up menu
+            //this wordy property means, if anything other than explicitly set to false,
+            //then we'll add a menu
+            var defaultMenu = this.control.controlOptions.includeToggleSubLayersMenuOptionForDynamicFolders !== false;
+            if (defaultMenu || this.control.controlOptions.folderMenu &&
+                    this.control.controlOptions.folderMenu.length) {
+                this.menu = new Menu({
+                    contextMenuForWindow: false,
+                    targetNodeIds: [this.menuClickNode],
+                    leftClickToOpen: true
+                });
+                if (defaultMenu) {
+                    this.menu.addChild(new MenuItem({
+                        label: i18n.dynamicSublayersOn,
+                        iconClass: 'far fa-fw fa-check-square',
+                        onClick: lang.hitch(this, '_toggleAllSublayers', true)
+                    }));
+                    this.menu.addChild(new MenuItem({
+                        label: i18n.dynamicSublayersOff,
+                        iconClass: 'far fa-fw fa-square',
+                        onClick: lang.hitch(this, '_toggleAllSublayers', false)
+                    }));
+                    this.menu.addChild(new MenuSeparator());
+                }
+                if (this.control.controlOptions.folderMenu &&
+                        this.control.controlOptions.folderMenu.length) {
+                    array.forEach(this.control.controlOptions.folderMenu, lang.hitch(this, '_addMenuItem'));
+                }
+                this.menu.startup();
+            } else {
+                domClass.add(this.menuClickNode, 'hidden');
+            }
+        },
+
+        _addMenuItem: function (menuItem) {
+            //create the menu item
+            var item = new MenuItem(menuItem);
+            item.set('onClick', lang.hitch(this, function () {
+                topic.publish('layerControl/' + menuItem.topic, {
+                    layer: this.control.layer,
+                    subLayer: this.sublayerInfo,
+                    iconNode: this.iconNode,
+                    menuItem: item
+                });
+            }));
+            this.menu.addChild(item);
         },
 
         // add on event to expandClickNode
@@ -95,6 +153,18 @@ define([
                     domClass.replace(iconNode, i.folder, i.folderOpen);
                 }
             })));
+        },
+
+        // toggle all sublayers on/off; differs from _setFolderCheckbox in that it temporarily overrides ignoreDynamicGroupVisibility
+        _toggleAllSublayers: function (state) {
+            //cache default state of this obscure property
+            var _ignoreDynamicGroupVisibility = this.control.controlOptions.ignoreDynamicGroupVisibility;
+            //specify it's true, so that _setFolderCheckbox behaves like we want it to
+            this.control.controlOptions.ignoreDynamicGroupVisibility = true;
+            //let this existing method do the work
+            this._setFolderCheckbox(state, this.checkNode, false);
+            //restore the desired state
+            this.control.controlOptions.ignoreDynamicGroupVisibility = _ignoreDynamicGroupVisibility;
         },
 
         // toggles visibility of all sub layers

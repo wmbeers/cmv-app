@@ -374,9 +374,8 @@ define([
         },
 
         /**
-         * Construct a layer based on a layerDef; layerDef might just be the ID of a layerDef contained in the config,
-        // a layer name, or a URL
-         * @param {any} layerDef Either a layerDef object found in the LayerLoader's layerDefs array, or a string or number that can be used to find the layer def
+         * Construct a layer based on a layerDef; layerDef might just be the ID of a layerDef contained in the config, a layer name, or a URL
+         * @param {any} layerDef Either a layerDef object found in the LayerLoader's layerDefs array, or a string or number that can be used to find the layerDef
          * @param {String|Array} definitionExpression Optional definition expression to be applied to a feature layer (as string), or array of definition expressions to be applied to a dynamic layer with setLayerDefinitions
          * @param {Boolean} includeDefinitionExpressionInTitle If true, the defition expression will be displayed in the title
          * @param {Object} renderer Optional renderer to be used to display the layer in the map
@@ -652,13 +651,23 @@ define([
                     controlOptions: {
                         expanded: true,
                         metadataUrl: false,
-                        //includeUnspecifiedLayers: true, //TODO: if this is included, the service doesn't load properly for some reason, and no layers show up.
+                        //includeUnspecifiedLayers: true, //note: if this is included, the service doesn't load properly for some reason, and no layers show up.
                         swipe: true,
                         noMenu: false,
                         noZoom: true, //we use our own zoom-to function, defined in menu below
                         mappkgDL: true,
                         allowRemove: true,
-                        //these are the menus that show up for stand-alone featureLayers
+                        //Note: ignoreDynamicGroupVisibility is supposed to default to true, but that defaulting is handled in _MapMixin,
+                        //when operational layers are read from config/ viewer.js, in methods not called from here, so we have to set it to true explicitly
+                        //practical upshot of it being false is that clicking to change a folder's visibility doesn't cascade to visibility checkboxes of layers 
+                        //within the folder.
+                        //NOW THAT SAID, the other option for making layers loaded via this method here consistent with operational layers
+                        //would be to specifiy ignoreDynamicGroupVisibility: false in viewer.js (now refactored out to projectConfig.js)
+                        //or as a basic configuration in viewer.js (essentially setting app.ignoreDynamicGroupVisibility = false).
+                        //OR leave it up to user preference--crteate a pref dialog that lets user's decide how they want it to behave.
+                        //Tricky bit is I don't think you can change it once loaded, so we'd need some sort of message to refresh the browser.
+                        ignoreDynamicGroupVisibility: true, 
+                        //these are the menus that show up for stand-alone featureLayers; they do not appear at the root of a dynamic layer
                         menu: [
                             {
                                 label: 'Open Attribute Table',
@@ -669,7 +678,8 @@ define([
                                 label: 'Zoom to Layer',
                                 topic: 'zoomToLayer',
                                 iconClass: 'fas fa-fw fa-search'
-                            }/* metadata link is added below, but only if the layerDef has a layerName property,
+                            }
+                            /* metadata link is added below, but only if the layerDef has a layerName property,
                             {
                                 label: 'View Metadata',
                                 topic: 'viewMetadata',
@@ -677,20 +687,6 @@ define([
                             }*/
                         ],
                         //The subLayerMenu array contains the menu items that show up on sub-layers of a ArcGISDynamicMapServiceLayer
-                        //Note: defining it as an object with dynamic/etc properties, as shown in the rest of this comment, is 
-                        //what's documented on the CMV site, but doesn't work (or I'm not doing it right)
-                        //see below for the correct way discovered via trial-and-error
-                        //subLayerMenu: {
-                        //    dynamic: [{
-                        //        label: 'Query Layer...',
-                        //        iconClass: 'fa fa-search fa-fw',
-                        //        topic: 'queryLayer'
-                        //    }, {
-                        //        label: 'Open Attribute Table',
-                        //        topic: 'openTable',
-                        //        iconClass: 'fa fa-table fa-fw'
-                        //    }]
-                        //},
                         subLayerMenu: [
                             {
                                 label: 'Open Attribute Table',
@@ -707,7 +703,14 @@ define([
                                 topic: 'viewMetadata',
                                 iconClass: 'fa fa-info-circle fa-fw'
                             }*/
-                        ]
+                        ]/* if we want to add custom menu items,
+                        folderMenu: [
+                            {
+                                label: 'Boo!',
+                                topic: 'toggleFolderOrSomething',
+                                iconClass: 'fa fa-table fa-fw'
+                            }
+                        ]*/
                     },
                     //used by Identify widget (modified under #69 to recognize this property)
                     identifies: layerDef.identifies,
@@ -1273,6 +1276,9 @@ define([
                 definitionExpression = 'FK_PROJECT = ' + aoiModel.id,
                 definitionExpressions = [definitionExpression, definitionExpression, definitionExpression, definitionExpression],
                 aoiName = (aoiModel.name || 'AOI ' + aoiModel.id),
+                popupTemplateString = 'Name: <strong>{FEATURE_NAME}</strong><br />' +
+                    'Buffer: <strong>{ BUFFER_DISTANCE } { BUFFER_DISTANCE_UNITS }</strong><br />' +
+                    '<span class="bill_here">Progress here</span>',
                 layerDef = {
                     id: 'aoi_' + aoiModel.id + '_service',
                     url: projects.aoiMapService,
@@ -1299,7 +1305,7 @@ define([
                     identifies: {
                         0: {
                             title: 'Point feature of ' + aoiName,
-                            description: 'Feature <strong>{FEATURE_NAME}</strong><br />Buffer: {BUFFER_DISTANCE} {BUFFER_DISTANCE_UNITS}'
+                            description: popupTemplateString
                             /* note: fieldInfos aren't used if description is provided, leaving this comment here for reference if
                              * we want to display it with default table
                              * fieldInfos: [
@@ -1313,26 +1319,25 @@ define([
                         },
                         1: {
                             title: 'Line feature of ' + aoiName,
-                            description: 'Feature <strong>{FEATURE_NAME}</strong><br />Buffer: {BUFFER_DISTANCE} {BUFFER_DISTANCE_UNITS}',
-                            fieldInfos: [
-                                {
-                                    description: 'By George I think he\'s got it',
-                                    label: 'squigglybits',
-                                    visible: true,
-                                    fieldName: 'FEATURE_NAME'
-                                }
-                            ]
+                            description: popupTemplateString
                         },
                         2: {
                             title: 'Polygon feature of ' + aoiName,
-                            description: 'Feature <strong>{FEATURE_NAME}</strong><br />Buffer: {BUFFER_DISTANCE} {BUFFER_DISTANCE_UNITS}'
+                            description: popupTemplateString
                             
                         },
                         3: {
                             title: 'Analysis Area of ' + aoiName,
-                            description: 'Feature <strong>{FEATURE_NAME}</strong><br />Buffer: {BUFFER_DISTANCE} {BUFFER_DISTANCE_UNITS}'
+                            description: popupTemplateString
                         }
-                    }
+                    }, //end identifies
+                    menu: [
+                        {
+                            label: 'AOI Custom Menu Option',
+                            topic: 'toggleFolderOrSomething',
+                            iconClass: 'fa fa-table fa-fw'
+                        }
+                    ]
                 },
                 //the actual dynamic map service layer the user will see
                 layer = self.constructLayer(layerDef, definitionExpressions),
