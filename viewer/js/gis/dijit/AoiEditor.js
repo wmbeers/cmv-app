@@ -53,6 +53,8 @@ define([
 
     './js/config/projects.js',
 
+    './js/gis/dijit/_AoiProgressMonitor.js',
+
     //jquery and jqueryUI needed for datepicker
     'jquery',
     'jqueryUi',
@@ -91,7 +93,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     BufferParameters,
     Query,
     Locator,
-    projects
+    projects,
+    AoiProgressMonitor
 ) { //eslint-disable-line no-unused-vars
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
         widgetsInTemplate: true,
@@ -547,7 +550,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 self.showAnalysisProgress();
             });
         },
-
+        /* Moved into _AoiProgressMonitor
         checkAnalysisProgress: function () {
             var self = this;
             self.progressErrorCount = self.progressErrorCount || 0;
@@ -626,7 +629,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 }
             });
         },
-
+        */
         //todo remove
         clearAoiPreview: function () {
             var self = this;
@@ -713,6 +716,16 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
         },
 
+        loadAoiResults: function () {
+            //todo, the idea here is to load the AOI as a dynamic map service layer, via _LayerLoadMixin addAoiToMap, 
+            //and show AOI results
+            //One idea that's just popped into my head: extend the layer control class with a new template with links to results.
+            //have to handle the results-still-processing, like we do when showing the results here. Ideally reproducing this 
+            //widget's "results" tab inside the layer control, below the root folder, or perhaps above?
+            //failing that, or perhaps better, is a slimmed down version of this widget's dialog?
+            //the thing I want to support is the ability for users w/o authority to edit a given AOI still see the AOI's results. 
+        },
+
         loadAoi: function (id, showResults) {
             var self = this;
             //get from server
@@ -751,9 +764,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
         postCreate: function () {
             this.inherited(arguments);
-            //todo post create code goes here
-            //this._createGraphicLayers();
-
+            this.progressMonitor = new AoiProgressMonitor(this);
         },
 
         startup: function () {
@@ -2123,6 +2134,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 self.projectTypeSelect.set('value', newValue);
             });
 
+            /*moved into _AoiProgressMonitor.js
             this.analysisRunning = ko.observable();
 
             this.progressCCI = ko.observable({code: 2, text: 'Checking...', running: true, title: '', href: null});
@@ -2130,6 +2142,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this.progressHCM = ko.observable({code: 2, text: 'Checking...', running: true, completedHcmCount: 0, title: '', href: null});
             this.progressCRD = ko.observable({code: 2, text: 'Checking...', running: true, title: '', href: null});
             this.progressERT = ko.observable({code: 2, text: 'Checking...', running: true, title: '', href: null});
+            */
 
             this.analysisRunning.subscribe(function (newValue) {
                 this.addFeatureButton.setDisabled(newValue);
