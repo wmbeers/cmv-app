@@ -286,6 +286,37 @@
             </fieldset>
 
             <div data-bind="visible: mode() === 'analysisProgress'">
+                <h3>Features and Analysis Areas</h3>
+                <div>
+                    <table class="aoiList">
+                        <thead>
+                            <tr data-bind="css: {'dgrid-sort-up': !featureSortDescending(), 'dgrid-sort-down': featureSortDescending()}">
+                                <th class="dgrid-header dgrid-cell"><input type="checkbox" data-bind="triState: featuresVisible" /></th>
+                                <th class="dgrid-header dgrid-cell" data-bind="click: sortFeaturesByType, css: {'type-sort' : featureSortOption()==='type'}">Type<span class="ui-icon dgrid-sort-arrow" data-bind="visible: featureSortOption()==='type'">&nbsp;</span></th>
+                                <th class="dgrid-header dgrid-cell" data-bind="click: sortFeaturesByName">Name<span class="ui-icon dgrid-sort-arrow" data-bind="visible: featureSortOption()==='name'">&nbsp;</span></th>
+                                <th class="dgrid-header dgrid-cell">Buffer</th>
+                                <th class="dgrid-header dgrid-cell" data-bind="click: sortFeaturesByAnalysisArea">Analysis Area<span class="ui-icon dgrid-sort-arrow" data-bind="visible: featureSortOption()==='analysisArea'">&nbsp;</span></th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: sortedFeatures">
+                            <tr data-bind="css: {'feature-selected': selected}, click: select">
+                                <td class="dgrid-cell">
+                                    <!-- ko if: selected -->
+                                    <input type="checkbox" checked disabled />
+                                    <!-- /ko -->
+                                    <!-- ko ifnot: selected -->
+                                        <input type="checkbox" data-bind="checked: visible" />
+                                    <!-- /ko -->
+                                </td>
+                                <td class="dgrid-cell" data-bind="template: {name: 'geometry-type-icon', data: geometry}"></td>
+                                <td class="dgrid-cell" data-bind="text: name"></td>
+                                <td class="dgrid-cell" data-bind="text: bufferText, attr: {title: bufferTextLong}"></td>
+                                <td class="dgrid-cell" data-bind="text: analysisAreaName"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
                 <h3>Results</h3>
                 <div class="alert alert-success" data-bind="visible: analysisRunning">
                     Analysis results, reports, or maps are currently being generated. You can keep this screen open to monitor progress, or close it and continue using the map while the reports are being generated. When the reports are finished, this screen will have links to the requested reports and maps.
