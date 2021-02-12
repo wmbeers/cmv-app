@@ -1805,7 +1805,11 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             //happens when user clicks on a feature in the table of features, but not when clicking on the map;
             //a different function handles that, but doesn't include the zoom/pan
-            feature.select = function () {
+            feature.select = function (data, event) {
+                if (event.ctrlKey) {
+                    self.currentFeature(null);
+                    return;
+                }
                 self.currentFeature(feature);
                 //todo zoom/pan if not in current extent
                 var geometry = feature.graphic ? feature.graphic.geometry : {
@@ -2436,6 +2440,10 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this.map.addLayer(this.bufferGraphics);
 
             on(this.bufferGraphics, 'click', function (evt) {
+                if (evt.ctrlKey) {
+                    self.currentFeature(null);
+                    return;
+                }
                 //subscription on currentFeature does this edit.activate(2, evt.graphic);
                 if (evt.graphic && evt.graphic.feature) {
                     event.stopPropagation(evt);

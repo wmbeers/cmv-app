@@ -299,7 +299,12 @@
                             </tr>
                         </thead>
                         <tbody data-bind="foreach: sortedFeatures">
-                            <tr data-bind="css: {'feature-selected': selected}, click: select">
+                            <!-- todo make selectable work, currently it interferes with visibility
+                                having an enabled checkbox for the current feature causes things to go haywire, so for now I'm disabling current feature
+                                probably need to clear it when this page shows if we keep this capability off here, and disable click
+                                on features, or change the feature click handler to not do anything in this mode
+                            <tr data-bind="css: {'feature-selected': selected}, click: select">-->
+                            <tr>
                                 <td class="dgrid-cell">
                                     <!-- ko if: selected -->
                                     <input type="checkbox" checked disabled />
