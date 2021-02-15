@@ -397,6 +397,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         },
 
         saveAnalysisAreasAndShowAnalysisOptions: function () {
+            this.currentFeature(null); // feature selection on analysis results screen doesn't work right, so I'm going to disable it, as it isn't really relevant on that screen anyway. This line just clears the selection.
+
             if (this.analysisRunning()) {
                 //short cut to progress, as we don't want user to change options
                 this.showAnalysisProgress();
