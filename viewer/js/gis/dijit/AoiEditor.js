@@ -248,20 +248,31 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         //undo/redo
         undoManager: new UndoManager(),
         undo: function () {
+            var self = this;
+            if (self.drawMode()) {
+                return;
+            }
             this.undoManager.undo();
         },
         redo: function () {
+            var self = this;
+            if (self.drawMode()) {
+                return;
+            }
             this.undoManager.redo();
         },
         updateUndoRedoButtons: function () {
-            var operation = null,
-                title = '';
+            var self = this,
+                operation = null,
+                title = '',
+                isDrawing = self.drawMode() ? true : false; //drawMode will be something like 'draw', or null if not currently drawing. this converts to simple true/false, and only allows enabling undo/redo buttons if not drawing
+                
             if (this.undoManager.canUndo) {
                 operation = this.undoManager.peekUndo();
                 title = 'Undo ' + operation.label + ' "' +
                     operation.feature.graphic.attributes.FEATURE_NAME + '"';
                 this.undoButton.set('title', title);
-                this.undoButton.set('disabled', false);
+                this.undoButton.set('disabled', isDrawing);
             } else {
                 this.undoButton.set('title', 'Nothing to undo');
                 this.undoButton.set('disabled', true);
@@ -271,7 +282,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 title = 'Redo ' + operation.label + ' "' +
                     operation.feature.graphic.attributes.FEATURE_NAME + '"';
                 this.redoButton.set('title', title);
-                this.redoButton.set('disabled', false);
+                this.redoButton.set('disabled', isDrawing);
             } else {
                 this.redoButton.set('title', 'Nothing to undo');
                 this.redoButton.set('disabled', true);
@@ -310,8 +321,60 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             });
         },
 
+        /*
+         * Todo: stuff before you leave the feature editor
+         * Make sure the draw tool isn't currently active, and if it is, handle it thusly:
+         *  * Drawing a point, or an incomplete polygon or line (check draw._geometryType property and draw._graphic.geometry.rings)? Just cancel out adding the feature (set drawMode null, and the draw-complete event handler never gets called)
+         *  * Drawing a line or polygon and have min # of features already (2 for line, 3 for poly)? Finish the drawing with this.draw.finishDrawing(); draw-complete event handler takes it from there
+         *  
+         *  
+         * validate that
+         *  * there is at least one feature
+         *  * all features have names
+         *  * names are unique (currently we have a post-edit-restore-original-name thing going on)
+         *  * Features aren't some half-baked thing with incomplete geometry
+         * And....what.
+         *  
+         *  Conceptually I think this is a reasonable way to handle clicking next halfway
+         *  if drawMode is draw, and we have valid geometry, call finishDrawing
+         *  if drawMode is draw, and we don't have valid geometry, just cancel--they haven't put that much effort in; OR alert them and force them to cancel?
+         *  and where and how to alert them? growler is no good, maybe, up next to the Cancel Draw button?
+         *  After consultation going for the latter.
+         *  and really, just keep it simple, if draw mode is on, disable everything! There's a really good case for that; digitizing is a complex
+         *  action that needs to be completed or affirmatively cancelled (could even bind Esc to the Cancel Drawing button)
+         *  
+         *
+
+        drawToolHasValidGeometry: function () {
+            if (this.drawMode() !== 'draw') {
+                return false; // could also return null as a sort of "N/A" answer?
+            }
+            var geometry = this.draw._graphic ? this.draw._graphic.geometry : null,
+                geometryType = this.draw._geometryType,
+                vertexCount = geometry ? (geometryType === 'polyline' ? geometry.paths[0].length : geometryType === 'polygon' ? geometry.rings[0].length : 0) : 0,
+                //note minVetexCount seems like it should be one fewer, but the last one is the one under the cursor and won't be included in the output 
+                minVertexCount = geometryType === 'polyline' ? 3 : geometryType === 'polygon' ? 4 : 2;
+            return vertexCount > minVertexCount;
+        },
+
+        
+        validateFeaturesAndShowAnalysisAreas: function () {
+            //todo, check that all features have names, names are unique, features aren't some half-baked thing
+            if (this.drawMode() === 'draw' && ) {
+                this.currentFeatureGeometryComplete(false);
+            }
+
+        },
+
+        handleDrawInterruption: function () {
+            if (this.drawMode() === 'draw') { //either null, 'draw', 'extract1', 'extract2', or 'split'; controls what happens in draw-complete and visibility of cancel buttons in sidebar
+                //drawing a point, or an incomplete polygon or line? Just cancel out of this whole process.
+                //drawing a line or polygon, and we already have enough vertices, just carry on
+            }
+        },
+         */
+
         showAnalysisAreas: function () {
-            //todo validate >0 features, features have buffers, etc.
             this.mode('analysisAreas');
         },
 
@@ -1015,6 +1078,30 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             //customizing the draw toolbar so the UI can remind user what they're doing, and have ability to cancel
             self.drawMode = ko.observable(); //either null, 'draw', 'extract1', 'extract2', or 'split'; controls what happens in draw-complete and visibility of cancel buttons in sidebar
 
+            self.drawMode.subscribe(function (newMode) {
+                var title = '',
+                    isDrawing = newMode ? true : false; //convert null to false, anything else to true
+
+                switch (newMode) {
+                case 'draw':
+                    title = 'Please complete drawing the new feature, or click the Cancel Draw button';
+                    break;
+                case 'split':
+                    title = 'Please complete the split feature operation, or click the Cancel Split button';
+                    break;
+                case 'extract1':
+                case 'extract2':
+                    title = 'Please complete extracting the new feature, or click the Cancel Extract button';
+                    break;
+                default:
+                    title = ''; //I know it's already set, but lint whines about it.
+                }
+                self.featureScreenBackButton.set('title', title);
+                self.featureScreenBackButton.set('disabled', isDrawing);
+                self.featureScreenNextButton.set('title', title);
+                self.featureScreenNextButton.set('disabled', isDrawing);
+            });
+
             self.activateDrawTool = function (mode) {
                 //put us in draw-new-feature mode.
                 self.drawMode(mode.startsWith('extract') ? mode : 'draw');
@@ -1028,7 +1115,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 topic.publish('mapClickMode/setCurrent', 'digitize');
                 //hide buffers
                 self.bufferGraphics.setVisibility(false);
-
+                //disable undo/redo during drawing
+                self.updateUndoRedoButtons();
             };
 
             self.activateSplitTool = function (geometryType) {
@@ -1043,6 +1131,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 topic.publish('mapClickMode/setCurrent', 'digitize');
                 //hide buffers
                 self.bufferGraphics.setVisibility(false);
+                //disable undo/redo during drawing
+                self.updateUndoRedoButtons();
             };
 
             self.deactivateDrawTool = function () {
@@ -1053,6 +1143,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 self.bufferGraphics.setVisibility(true);
                 //toggle back to default map click mode. The brief delay prevents identify from jumping on the bandwagon after extract
                 topic.publish('mapClickMode/setDefault');
+                //re-enable (if possible) undo/redo buttons
+                self.updateUndoRedoButtons();
             };
 
             self.deactivateExtract = function () {
@@ -1067,7 +1159,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             //event handler for draw complete, creates a new feature when user finishes digitizing, or splits a feature when user finishes drawing a line for splitting
             this.draw.on('draw-complete', function (event) {
-                var layer = self.layers[event.geometry.type], //note: only applys in draw mode, gets redefined in split mode
+                var layer = self.layers[event.geometry.type], //note: only applies in draw mode, gets redefined in split mode
                     mode = self.drawMode();
                 //toggle back to default map click mode, except when extracting
                 if (!(mode || '').startsWith('extract')) {
@@ -1806,6 +1898,9 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             //happens when user clicks on a feature in the table of features, but not when clicking on the map;
             //a different function handles that, but doesn't include the zoom/pan
             feature.select = function () {
+                if (self.drawMode()) {
+                    return;
+                }
                 self.currentFeature(feature);
                 //todo zoom/pan if not in current extent
                 var geometry = feature.graphic ? feature.graphic.geometry : {
@@ -2437,7 +2532,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             on(this.bufferGraphics, 'click', function (evt) {
                 //subscription on currentFeature does this edit.activate(2, evt.graphic);
-                if (evt.graphic && evt.graphic.feature) {
+                if (evt.graphic && evt.graphic.feature && !self.drawMode()) {
                     event.stopPropagation(evt);
                     self.currentFeature(evt.graphic.feature);
                 }

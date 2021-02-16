@@ -141,13 +141,16 @@
                     </tbody>
                 </table>
 
-                <button data-dojo-type="dijit/form/Button"
-                        data-dojo-props="iconClass:'fa fa-plus-circle fa-fw'"
-                        data-bind="click: $root.showNewFeatureDialog"
-                        data-dojo-attach-point="addFeatureButton">
-                    Add Feature
-                </button>
                 <!--Note buttons have to be wrapped in a data-bound div, or they still render as empty buttons. Thanks, Dojo.-->
+                <div data-bind="visible: $root.drawMode() == null">
+                    <button data-dojo-type="dijit/form/Button"
+                            data-dojo-props="iconClass:'fa fa-plus-circle fa-fw'"
+                            data-bind="click: $root.showNewFeatureDialog"
+                            data-dojo-attach-point="addFeatureButton">
+                        Add Feature
+                    </button>
+                </div>
+
                 <div data-bind="visible: $root.drawMode() === 'draw'">
                     <button data-bind="click: $root.deactivateDrawTool" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-stop-circle fa-fw'">
                         Cancel Draw
@@ -188,19 +191,20 @@
                     <button data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-redo fa-fw'" data-dojo-attach-point="redoButton" data-dojo-attach-event="onClick:redo">
                         Redo
                     </button>
-
                 </div>
 
                 <hr />
                 <div class="buttonContainer buttonContainerFull">
                     <button data-dojo-type="dijit/form/Button"
                             data-dojo-props="iconClass:'fa fa-caret-left fa-fw'"
-                            data-bind="click: showNameAndDescription">
+                            data-dojo-attach-point="featureScreenBackButton"
+                            data-bind="click: showNameAndDescription, disable: drawMode">
                         Back
                     </button>
 
                     <button data-dojo-type="dijit/form/Button"
-                            data-bind="click: showAnalysisAreas"
+                            data-dojo-attach-point="featureScreenNextButton"
+                            data-bind="click: showAnalysisAreas, disable: drawMode"
                             data-dojo-props="style:'text-align: right'"
                             class="right">
                         Next <i class="fa fa-caret-right fa-fw"></i>
