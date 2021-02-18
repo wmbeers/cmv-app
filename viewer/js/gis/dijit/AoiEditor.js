@@ -321,59 +321,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             });
         },
 
-        /*
-         * Todo: stuff before you leave the feature editor
-         * Make sure the draw tool isn't currently active, and if it is, handle it thusly:
-         *  * Drawing a point, or an incomplete polygon or line (check draw._geometryType property and draw._graphic.geometry.rings)? Just cancel out adding the feature (set drawMode null, and the draw-complete event handler never gets called)
-         *  * Drawing a line or polygon and have min # of features already (2 for line, 3 for poly)? Finish the drawing with this.draw.finishDrawing(); draw-complete event handler takes it from there
-         *  
-         *  
-         * validate that
-         *  * there is at least one feature
-         *  * all features have names
-         *  * names are unique (currently we have a post-edit-restore-original-name thing going on)
-         *  * Features aren't some half-baked thing with incomplete geometry
-         * And....what.
-         *  
-         *  Conceptually I think this is a reasonable way to handle clicking next halfway
-         *  if drawMode is draw, and we have valid geometry, call finishDrawing
-         *  if drawMode is draw, and we don't have valid geometry, just cancel--they haven't put that much effort in; OR alert them and force them to cancel?
-         *  and where and how to alert them? growler is no good, maybe, up next to the Cancel Draw button?
-         *  After consultation going for the latter.
-         *  and really, just keep it simple, if draw mode is on, disable everything! There's a really good case for that; digitizing is a complex
-         *  action that needs to be completed or affirmatively cancelled (could even bind Esc to the Cancel Drawing button)
-         *  
-         *
-
-        drawToolHasValidGeometry: function () {
-            if (this.drawMode() !== 'draw') {
-                return false; // could also return null as a sort of "N/A" answer?
-            }
-            var geometry = this.draw._graphic ? this.draw._graphic.geometry : null,
-                geometryType = this.draw._geometryType,
-                vertexCount = geometry ? (geometryType === 'polyline' ? geometry.paths[0].length : geometryType === 'polygon' ? geometry.rings[0].length : 0) : 0,
-                //note minVetexCount seems like it should be one fewer, but the last one is the one under the cursor and won't be included in the output 
-                minVertexCount = geometryType === 'polyline' ? 3 : geometryType === 'polygon' ? 4 : 2;
-            return vertexCount > minVertexCount;
-        },
-
-        
-        validateFeaturesAndShowAnalysisAreas: function () {
-            //todo, check that all features have names, names are unique, features aren't some half-baked thing
-            if (this.drawMode() === 'draw' && ) {
-                this.currentFeatureGeometryComplete(false);
-            }
-
-        },
-
-        handleDrawInterruption: function () {
-            if (this.drawMode() === 'draw') { //either null, 'draw', 'extract1', 'extract2', or 'split'; controls what happens in draw-complete and visibility of cancel buttons in sidebar
-                //drawing a point, or an incomplete polygon or line? Just cancel out of this whole process.
-                //drawing a line or polygon, and we already have enough vertices, just carry on
-            }
-        },
-         */
-
         validateFeatureNameIsUnique: function () {
             var uniqueNames = [],
                 duplicateNames = [];
@@ -393,7 +340,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                         }
                     });
                 }, this);
-                return false; //
             }
         },
 
@@ -405,7 +351,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
         validateFeatureBufferDistances: function () {
             this.features().forEach(function (f) {
-                var val = parseInt(f.bufferDistance()),
+                var val = parseInt(f.bufferDistance(), 10),
                     valIsNaN = isNaN(val);
                 f.hasInvalidBufferDistance(valIsNaN || val < f.minBufferDistance() || (f.maxBufferDistance() && val > f.maxBufferDistance()));
                 //don't call validateBufferDistance, it's dependent the same way validateName is f.validateBufferDistance();
@@ -418,9 +364,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this.validateFeatureBufferDistances();
         },
 
-
-
-        validateFeaturesAndMoveNext() {
+        validateFeaturesAndMoveNext: function () {
             this.validateFeatures();
             var featureWithError = ko.utils.arrayFirst(this.features(), function (f) {
                 return f.hasError();
@@ -528,8 +472,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             this.saveAnalysisAreas().then(
                 function () {
-                    window.d = self.saveAnalysisAreaBuffers();
-                    d.then(
+                    self.saveAnalysisAreaBuffers().then(
                         function () {
                             self.mode('analysisOptions');
                         },
@@ -1838,7 +1781,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 if (feature.bufferDistance() > 0 && feature.bufferUnit()) {
                     return feature.bufferDistance() + ' ' + feature.bufferUnit().abbreviation;
                 }
-                return '0';
+                return '-';
             });
             feature.bufferTextLong = ko.pureComputed(function () {
                 if (feature.bufferDistance() > 0 && feature.bufferUnit()) {
@@ -1878,7 +1821,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 return null;
             });
 
-            feature.hasError = ko.pureComputed(function() {
+            feature.hasError = ko.pureComputed(function () {
                 return feature.nameValidationErrorMessage() || feature.hasInvalidBufferDistance();
             });
 
@@ -1895,7 +1838,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     otherFeatures = [];
                 
                 //populate other features
-                 self.features().forEach(function (f2) {
+                self.features().forEach(function (f2) {
                     if (f !== f2) {
                         otherFeatures.push(f2);
                     }
@@ -1935,7 +1878,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             feature.validateBufferDistance = function (f, e) {
                 //f is just a reference back to this feature, we could ignore it like above, or use it like below. TODO pick one!
                 //e is the event, from which we can get the raw input element to get the value the user is currently typing
-                var val = parseInt(e.delegateTarget.value),
+                var val = parseInt(e.delegateTarget.value, 10),
                     valIsNaN = isNaN(val);
                 f.hasInvalidBufferDistance(valIsNaN || val < f.minBufferDistance() || (f.maxBufferDistance() && val > f.maxBufferDistance()));
                 //or could do this, but it's really annoying if the user is trying to delete the last digit just so they can type a different one
@@ -1944,7 +1887,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             feature.bufferValidationErrorMessage = ko.pureComputed(function () {
                 if (feature.hasInvalidBufferDistance()) {
-                    if (feature.type == 'polygon') {
+                    if (feature.type === 'polygon') {
                         return 'Buffer distance must be greater than or equal to 0 for polygons'; //todo if we start using maxBufferDistance then add that to the message
                     }
                     return 'Buffer distance must be greater than or equal to 1 for ' + feature.type + 's';
@@ -2064,10 +2007,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             //a different function handles that, but doesn't include the zoom/pan, because the feature must be visible
             //for the user to have clicked on it.
             feature.select = function () {
-                console.log('selecting ' + feature.name());
                 //can't change active feature while drawing
                 if (self.drawMode()) {
-                    console.log(' or not...');
                     return;
                 }
                 //note we could here prevent leaving current feature if it isn't invalid, but instead I'm opting to just show errors and prevent leaving wizard page
@@ -2092,44 +2033,17 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             feature.nameHasFocus = ko.observable(); //used to set focus to the name textbox
 
-            //This subscription undoes a user's attempt to enter duplicate feature names, and updates the database with the new feature name if it has changed.
-            feature.name.subscribeChanged(function (latestValue, previousValue) {
-                //validate the new name is not null
-                //if (ko.utils.isNullOrWhiteSpace(latestValue)) {
-                //    topic.publish('growler/growlWarning', 'Warning: feature name is required. Reverting to previous value "' + previousValue + '"');
-                //    feature.name(previousValue);
-                //    window.setTimeout(function () {
-                //        feature.select(); //if the name change event that started this all is clicking to a different feature, set it back
-                //        feature.nameHasFocus(true); //sets focus on the name element
-                //    }, 300);
-                //    return;
-                //};
-
-                //validate the new name is unique
-                //var matchedName = self.features().find(function (f) {
-                //    return feature !== f && f.name() === latestValue;
-                //});
-
-                //if (matchedName) {
-                //    topic.publish('growler/growlWarning', 'Warning: another feature with the name "' + latestValue + '" exists. Reverting to previous value "' + previousValue + '"');
-                //    feature.name(previousValue);
-                //    window.setTimeout(function () {
-                //        feature.select(); //if the name change event that started this all is clicking to a different feature, set it back
-                //        feature.nameHasFocus(true); //sets focus on the name element
-                //    }, 300);
-                //    return;
-                //}
-                //TODO validate latestValue, here or somewhere else, to prevent errors creating buffers with invalid values
-
-                //has something changed?
-                if (feature.graphic.attributes.FEATURE_NAME !== latestValue) {
-                    feature.graphic.attributes.FEATURE_NAME = latestValue;
+            /**
+             * These subscriptions trigger saving feature attributes when the name or buffer distance changes.
+             */
+            feature.name.subscribe(function (newValue) {
+                if (feature.graphic.attributes.FEATURE_NAME !== newValue) {
+                    feature.graphic.attributes.FEATURE_NAME = newValue;
                     feature.applyUpdate();
                 }
             });
 
             feature.bufferDistance.subscribe(function (newValue) {
-                console.log('bufferDistance changed');
                 self.bufferFeature(feature);
                 feature.graphic.attributes.BUFFER_DISTANCE = newValue;
                 if (newValue) {
@@ -2167,7 +2081,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     return deferred;
                 }
                 //calling this via setTimeout because it interrupts selecting another feature, the main thing that calls this function
-                window.setTimeout(function() {
+                window.setTimeout(function () {
                     self.loadingOverlay.show('Saving feature...');
                     layer.applyEdits(null, [graphic], null, 
                         function (adds, updates) { //eslint-disable-line no-unused-vars "adds" var is here because that's the structure of the callback, but will always be empty

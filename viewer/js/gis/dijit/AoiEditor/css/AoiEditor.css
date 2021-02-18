@@ -145,7 +145,7 @@ ul.no-margin {
     /*top: 6px;*/
     padding-right: 1px; /* keeps it lined up vertically with icons shown over inputs*/
 }
-input.invalid { /*not using :invalid pseudo-selector with required attribute; it has limitations, so we assign this class via ko */
+input.invalid { /*not using the ":invalid" pseudo-selector with required attribute; it has limitations, so we assign this class via ko */
     /* padding-right: 20px; add this if we want to use it for duplicate names, it will prevent the text from being under the icon floating over the input*/
     border: 1px solid red;
 }
@@ -158,10 +158,6 @@ input.invalid { /*not using :invalid pseudo-selector with required attribute; it
         width: 100%; /*overrides dijitTextBox width 15em from flat.css*/
     }
 
-input.invalid { /*not using the ":invalid" pseudo-selector with required attribute; it has limitations, so we assign this class via ko */
-    /* padding-right: 20px; add this if we want to use it for duplicate names, it will prevent the text from being under the icon floating over the input*/
-    border: 1px solid red;
-}
 
 .validationWrapper .validationIcon {
     position: absolute;
