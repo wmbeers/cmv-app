@@ -123,31 +123,47 @@
                         <tr class="feature-selected">
                             <td class="dgrid-cell"><input type="checkbox" checked disabled /></td>
                             <td class="dgrid-cell" data-bind="template: {name: 'geometry-type-icon', data: geometry}"></td>
-                            <td class="dgrid-cell">
-                                <input type="text" data-bind="value: name, hasFocus: nameHasFocus" maxlength="50" />
+                            <td class="dgrid-cell validationWrapper">
+                                <input type="text" class="dijitTextBox" data-bind="value: name, hasFocus: nameHasFocus, event: {keyup: validateName}, css: {invalid: hasNameValidationError}" maxlength="50" />
+                                <i class="validationIcon" data-bind="visible: hasNameValidationError, attr: {title: nameValidationErrorMessage}"></i>
                             </td>
-                            <td class="dgrid-cell"><input type="number" data-bind="value: bufferDistance" style="width: 3em" /></td>
-                            <td class="dgrid-cell"><select data-bind="options: $root.bufferUnitArray, optionsText: 'abbreviation', value: bufferUnit, attr: {title: bufferTextLong}" style="width: 3em" /></td>
+                            <td class="dgrid-cell validationWrapper">
+                                <input type="number" data-bind="value: bufferDistance, event: {keyup: validateBufferDistance}, css: {invalid: hasInvalidBufferDistance}" class="dijitTextBox bufferDistanceInput" />
+                                <i class="validationIcon" data-bind="visible: hasInvalidBufferDistance, attr: {title: bufferValidationErrorMessage}"></i>
+                            </td>
+                            <td class="dgrid-cell">
+                                <select data-bind="options: $root.bufferUnitArray, optionsText: 'abbreviation', value: bufferUnit, attr: {title: bufferTextLong}" style="width: 3em" />
+                            </td>
                         </tr>
                         <!-- /ko -->
                         <!-- ko ifnot: selected -->
                         <tr>
                             <td class="dgrid-cell"><input type="checkbox" data-bind="checked: visible" /></td>
                             <td class="dgrid-cell" data-bind="click: select, template: {name: 'geometry-type-icon', data: geometry}"></td>
-                            <td class="dgrid-cell" data-bind="click: select, text: name"></td>
-                            <td class="dgrid-cell" colspan="2" data-bind="click: select, text: bufferText, attr: {title: bufferTextLong}"></td>
+                            <td class="dgrid-cell" data-bind="click: select">
+                                <span data-bind="click: select, text: name"></span>
+                                <i class="validationIcon validationIconFloatRight" data-bind="visible: hasNameValidationError, attr: {title: nameValidationErrorMessage}"></i>
+                            </td>
+                            <td class="dgrid-cell" colspan="2" data-bind="click: select">
+                                <span data-bind="text: bufferText, attr: {title: bufferTextLong}"></span>
+                                <i class="validationIcon validationIconFloatRight" data-bind="visible: hasInvalidBufferDistance, attr: {title: bufferValidationErrorMessage}"></i>
+                            </td>
                         </tr>
                         <!-- /ko -->
                     </tbody>
                 </table>
 
-                <button data-dojo-type="dijit/form/Button"
-                        data-dojo-props="iconClass:'fa fa-plus-circle fa-fw'"
-                        data-bind="click: $root.showNewFeatureDialog"
-                        data-dojo-attach-point="addFeatureButton">
-                    Add Feature
-                </button>
                 <!--Note buttons have to be wrapped in a data-bound div, or they still render as empty buttons. Thanks, Dojo.-->
+                <div data-bind="visible: $root.drawMode() == null">
+                    <button data-dojo-type="dijit/form/Button"
+                            data-dojo-props="iconClass:'fa fa-plus-circle fa-fw'"
+                            data-bind="click: $root.showNewFeatureDialog"
+                            data-dojo-attach-point="addFeatureButton">
+                        Add Feature
+                    </button>
+                    <i class="validationIcon" data-bind="visible: showFeatureCountError" title="You must create at least one feature"></i>
+                </div>
+
                 <div data-bind="visible: $root.drawMode() === 'draw'">
                     <button data-bind="click: $root.deactivateDrawTool" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-stop-circle fa-fw'">
                         Cancel Draw
@@ -188,19 +204,20 @@
                     <button data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-redo fa-fw'" data-dojo-attach-point="redoButton" data-dojo-attach-event="onClick:redo">
                         Redo
                     </button>
-
                 </div>
 
                 <hr />
                 <div class="buttonContainer buttonContainerFull">
                     <button data-dojo-type="dijit/form/Button"
                             data-dojo-props="iconClass:'fa fa-caret-left fa-fw'"
-                            data-bind="click: showNameAndDescription">
+                            data-dojo-attach-point="featureScreenBackButton"
+                            data-bind="click: showNameAndDescription, disable: drawMode">
                         Back
                     </button>
 
                     <button data-dojo-type="dijit/form/Button"
-                            data-bind="click: showAnalysisAreas"
+                            data-dojo-attach-point="featureScreenNextButton"
+                            data-bind="click: validateFeaturesAndMoveNext, disable: drawMode"
                             data-dojo-props="style:'text-align: right'"
                             class="right">
                         Next <i class="fa fa-caret-right fa-fw"></i>

@@ -248,20 +248,31 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         //undo/redo
         undoManager: new UndoManager(),
         undo: function () {
+            var self = this;
+            if (self.drawMode()) {
+                return;
+            }
             this.undoManager.undo();
         },
         redo: function () {
+            var self = this;
+            if (self.drawMode()) {
+                return;
+            }
             this.undoManager.redo();
         },
         updateUndoRedoButtons: function () {
-            var operation = null,
-                title = '';
+            var self = this,
+                operation = null,
+                title = '',
+                isDrawing = self.drawMode() ? true : false; //drawMode will be something like 'draw', or null if not currently drawing. this converts to simple true/false, and only allows enabling undo/redo buttons if not drawing
+
             if (this.undoManager.canUndo) {
                 operation = this.undoManager.peekUndo();
                 title = 'Undo ' + operation.label + ' "' +
                     operation.feature.graphic.attributes.FEATURE_NAME + '"';
                 this.undoButton.set('title', title);
-                this.undoButton.set('disabled', false);
+                this.undoButton.set('disabled', isDrawing);
             } else {
                 this.undoButton.set('title', 'Nothing to undo');
                 this.undoButton.set('disabled', true);
@@ -271,7 +282,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 title = 'Redo ' + operation.label + ' "' +
                     operation.feature.graphic.attributes.FEATURE_NAME + '"';
                 this.redoButton.set('title', title);
-                this.redoButton.set('disabled', false);
+                this.redoButton.set('disabled', isDrawing);
             } else {
                 this.redoButton.set('title', 'Nothing to undo');
                 this.redoButton.set('disabled', true);
@@ -310,8 +321,75 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             });
         },
 
+        validateFeatureNameIsUnique: function () {
+            var uniqueNames = [],
+                duplicateNames = [];
+            this.features().forEach(function (f) {
+                f.hasDuplicateName(false); //gets reset to true if there's a problem, below
+                if (uniqueNames.indexOf(f.name()) >= 0) {
+                    duplicateNames.push(f.name());
+                } else {
+                    uniqueNames.push(f.name());
+                }
+            });
+            if (duplicateNames.length) {
+                duplicateNames.forEach(function (n) {
+                    this.features().forEach(function (f) {
+                        if (f.name() === n) {
+                            f.hasDuplicateName(true);
+                        }
+                    });
+                }, this);
+            }
+        },
+
+        validateFeatureNamesAreNotNull: function () {
+            this.features().forEach(function (feature) {
+                feature.isMissingName(ko.utils.isNullOrWhiteSpace(feature.name())); //don't call validateName, it's dependent on this being the currentFeature and function is bound to keyup on name input
+            });
+        },
+
+        validateFeatureBufferDistances: function () {
+            this.features().forEach(function (f) {
+                var val = parseInt(f.bufferDistance(), 10),
+                    valIsNaN = isNaN(val);
+                f.hasInvalidBufferDistance(valIsNaN || val < f.minBufferDistance() || (f.maxBufferDistance() && val > f.maxBufferDistance()));
+                //don't call validateBufferDistance, it's dependent the same way validateName is f.validateBufferDistance();
+            });
+        },
+
+        //calls validation functions on all features,
+        //and returns true if there are no errors, and at least one feature exists.
+        //If there are no features, or any features that have an error, returns false
+        validateFeatures: function () {
+            //quick shortcut if there's no features
+            if (this.features().length === 0) return false;
+            
+            //these method calls validate the features, but don't return anything
+            this.validateFeatureNameIsUnique();
+            this.validateFeatureNamesAreNotNull();
+            this.validateFeatureBufferDistances();
+
+            //look for any feature with an error
+            var featureWithError = ko.utils.arrayFirst(this.features(), function (f) {
+                return f.hasError();
+            });
+
+            //if there's at least one feature with an error, return false to indicate there's a problem
+            return featureWithError ? false : true; 
+        },
+
+        validateFeaturesAndMoveNext: function () {
+            //the binding for showing this error depends on both _showFeatureCountError being true and features().length === 0;
+            //toggling this true will display the error to users if there are no features, but only after clicking to move next
+            this._showFeatureCountError(true); 
+
+            if (this.validateFeatures()) {
+                this.showAnalysisAreas();
+            }
+        },
+
         showAnalysisAreas: function () {
-            //todo validate >0 features, features have buffers, etc.
             this.mode('analysisAreas');
         },
 
@@ -420,7 +498,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 }
             );
         },
-
+        //TODO: clarify this comment. I can't do it right now because even I, who wrote it a year ago, can't understand it.
         //Analysis areas are saved on the fly as features are added to them, but if the default, typical option
         //of NOT assigning features to analysisAreas is chosen, we'll need to do that here
         saveAnalysisAreas: function () {
@@ -460,8 +538,14 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             return deferred;
         },
 
+        /**
+         * Deletes records in T_PROJECT_ALT_AOI that have no features currently assigned to them.
+         * After deleting the records, it removes the associated AnalysisArea model from this.analysisAreas.
+         * @returns {Deferred} deferred object resolved after DWR call to delete records is complete.
+         **/
         _deleteEmptyAnalysisAreas: function () {
-            var deferred = new Deferred(),
+            var self = this,
+                deferred = new Deferred(),
                 emptyAnalysisAreas = this.analysisAreas().filter(function (aa) {
                     return aa.features().length === 0;
                 });
@@ -472,6 +556,10 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 });
                 MapDAO.deleteAoiAnalysisAreas(ids, this.currentAuthority().orgUserId, {
                     callback: function () {
+                        //Done deleting records, now remove from model.
+                        emptyAnalysisAreas.forEach(function (aa) {
+                            self.analysisAreas.remove(aa);
+                        });
                         deferred.resolve();
                     },
                     errorHandler: function (err) {
@@ -1015,6 +1103,30 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             //customizing the draw toolbar so the UI can remind user what they're doing, and have ability to cancel
             self.drawMode = ko.observable(); //either null, 'draw', 'extract1', 'extract2', or 'split'; controls what happens in draw-complete and visibility of cancel buttons in sidebar
 
+            self.drawMode.subscribe(function (newMode) {
+                var title = '',
+                    isDrawing = newMode ? true : false; //convert null to false, anything else to true
+
+                switch (newMode) {
+                case 'draw':
+                    title = 'Please complete drawing the new feature, or click the Cancel Draw button';
+                    break;
+                case 'split':
+                    title = 'Please complete the split feature operation, or click the Cancel Split button';
+                    break;
+                case 'extract1':
+                case 'extract2':
+                    title = 'Please complete extracting the new feature, or click the Cancel Extract button';
+                    break;
+                default:
+                    title = ''; //I know it's already set, but lint whines about it.
+                }
+                self.featureScreenBackButton.set('title', title);
+                self.featureScreenBackButton.set('disabled', isDrawing);
+                self.featureScreenNextButton.set('title', title);
+                self.featureScreenNextButton.set('disabled', isDrawing);
+            });
+
             self.activateDrawTool = function (mode) {
                 //put us in draw-new-feature mode.
                 self.drawMode(mode.startsWith('extract') ? mode : 'draw');
@@ -1028,7 +1140,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 topic.publish('mapClickMode/setCurrent', 'digitize');
                 //hide buffers
                 self.bufferGraphics.setVisibility(false);
-
+                //disable undo/redo during drawing
+                self.updateUndoRedoButtons();
             };
 
             self.activateSplitTool = function (geometryType) {
@@ -1043,6 +1156,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 topic.publish('mapClickMode/setCurrent', 'digitize');
                 //hide buffers
                 self.bufferGraphics.setVisibility(false);
+                //disable undo/redo during drawing
+                self.updateUndoRedoButtons();
             };
 
             self.deactivateDrawTool = function () {
@@ -1053,6 +1168,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 self.bufferGraphics.setVisibility(true);
                 //toggle back to default map click mode. The brief delay prevents identify from jumping on the bandwagon after extract
                 topic.publish('mapClickMode/setDefault');
+                //re-enable (if possible) undo/redo buttons
+                self.updateUndoRedoButtons();
             };
 
             self.deactivateExtract = function () {
@@ -1067,7 +1184,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             //event handler for draw complete, creates a new feature when user finishes digitizing, or splits a feature when user finishes drawing a line for splitting
             this.draw.on('draw-complete', function (event) {
-                var layer = self.layers[event.geometry.type], //note: only applys in draw mode, gets redefined in split mode
+                var layer = self.layers[event.geometry.type], //note: only applies in draw mode, gets redefined in split mode
                     mode = self.drawMode();
                 //toggle back to default map click mode, except when extracting
                 if (!(mode || '').startsWith('extract')) {
@@ -1301,7 +1418,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         /**
          * Builds the adds, edits and deletes arrays of analysisAreaBuffers; returns a deferred object that, when resolved, passes the 
          * arrays, ready for applyEdits. Makes external calls to geometryService to simplify and union. Only call this after syncing up 
-         * the analysisAreas with AoiAnalysisAreas (T_PROJECT_ALT_AOI) records.
+         * the analysisAreas (ko models in this.analysisAreas) with AoiAnalysisAreas (T_PROJECT_ALT_AOI) records.
          * @returns {Deferred} Deferred object, which, when resolved, will pass in a result with adds, updates and deletes array properties.
          */
         _buildAnalysisAreaBufferEdits: function () {
@@ -1313,8 +1430,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this._buildAnalysisAreasFromFeatures(); //TODO not needed any more, this happens upstream in saveAnalysisAreas
             this.loadingOverlay.show('Constructing analysis area buffers...');
 
-            var analysisAreaBuffers = this.layers.analysisAreaBuffer.graphics,
-                analysisAreaModels = this.analysisAreas(), //analysis areas observable defined in knockoutify
+            var analysisAreaBuffers = this.layers.analysisAreaBuffer.graphics, // the features of S_AOI
+                analysisAreaModels = this.analysisAreas(), //analysis areas observable defined in knockoutify, representing T_PROJECT_ALT_AOI
                 result = {
                     adds: [],
                     updates: [],
@@ -1325,14 +1442,35 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 deferred = new Deferred(), //the overall deferred to be resolved when we've got the edits all built
                 buildPromises = [];
 
+
+
             //loop through models to add or update
             analysisAreaModels.forEach(function (analysisAreaModel) {
                 var buildPromise = new Deferred(),
-                    geometries = analysisAreaModel.features().map(function (f) {
+                    allGeometries = analysisAreaModel.features().map(function (f) {
                         return f.buffer ? f.buffer.geometry : f.graphic.geometry;
+                    }),
+                    geometries = allGeometries.filter(function (g) { 
+                        return g; //truthy, excludes undefined, is what we'll get if the feature has no geometry to buffer
                     });
 
                 buildPromises.push(buildPromise);
+
+                //check if no features/empty geometry
+                //handle empty geometry
+
+                if (geometries.length === 0) {
+                    //this is the case when the analysiAreaModel has had all features removed; 
+                    //it should already have been deleted from analysisAreas (I've addressed deleting it in a change to _deleteEmptyAnalysisAreas), 
+                    //so this shouldn't happen, but just in case there might be other causes, we should keep this check to prevents the tool from crashing
+                    var analysisAreaFeature = self.getAnalysisAreaBuffer(analysisAreaModel.id(), 1); //TODO when we support multiple buffer distances this will need to change
+                    if (analysisAreaFeature) {
+                        result.deletes.push(analysisAreaFeature);
+                    }
+                    buildPromise.resolve(analysisAreaFeature);
+                    return; // skips to the next iteration in analysisAreaModels.forEach
+                }
+
 
                 //simplify
                 esriConfig.defaults.geometryService.simplify(geometries).then(function (simplifiedGeometries) {
@@ -1378,10 +1516,10 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                         }
                     );
                 }, function (e) {
+                    self.loadingOverlay.hide();
                     deferred.reject(e);
                 });
             }); // end loop through analysisAreaModels
-
 
             //the overall deferred for this function is resolved when all the deferreds to build analyisAreas are resolved
             all(buildPromises).then(function () {
@@ -1413,7 +1551,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         /**
          * Loads values into observable properties from the referenced AOI, then loads AOI features and analysis areas.
          * @param {any} aoi An AOI model, or null to create a new AOI model.
-         * @returns {Deferred} a Deferred object created by _loadAoiFeatures
+         * @returns {void} 
          */
         loadAoiModel: function (aoi) {
             //shouldn't need to do this, because the unload method also does it, but just to be safe
@@ -1477,7 +1615,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             this._updateAoiCache();
 
-            return this._loadAoiFeatures();
+            this._loadAoiFeatures();
         },
 
         /**
@@ -1616,8 +1754,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     self.extent = unionOfExtents; //facilitates zooming to the aoi
                     self.zoomTo();
                     self.features(featuresKo);
-                    //TODO there has to be a better way than this hack:
-                    //self.dummyForceRecompute(new Date());
+                    self.validateFeatures();
 
                 }, function (err) {
                     self.loadingOverlay.hide();
@@ -1648,7 +1785,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             if (featureOrEvent._sourceLayer) {
                 //feature is a graphic object returned from a feature layer
                 feature.name = featureOrEvent.attributes.FEATURE_NAME;
-                feature.bufferDistance = featureOrEvent.attributes.BUFFER_DISTANCE || self.lastBufferDistance; //default in case null for old data
+                feature.bufferDistance = featureOrEvent.attributes.BUFFER_DISTANCE;
                 feature.bufferUnit = (featureOrEvent.attributes.BUFFER_DISTANCE_UNITS ? self.bufferUnits[featureOrEvent.attributes.BUFFER_DISTANCE_UNITS.toLowerCase()] : null) || self.lastUnit; //default in case null; also converts to unit object
                 feature.graphic = featureOrEvent;
             } else {
@@ -1670,6 +1807,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             feature.graphic.feature = feature;
 
             feature.name = ko.observable(feature.name);
+
             feature.visible = ko.observable(true);
             feature.visible.subscribe(function (visible) {
                 feature.graphic.visible = visible;
@@ -1692,7 +1830,112 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 if (feature.bufferDistance() > 0 && feature.bufferUnit()) {
                     return feature.bufferDistance() + ' ' + feature.bufferUnit().name;
                 }
-                return '-';
+                return feature.type === 'polygon' ? 'No buffer' : 'Error, buffer distance is required';
+            });
+            feature.minBufferDistance = ko.pureComputed(function () {
+                return feature.type === 'polygon' ? 0 : 1;
+            });
+            feature.maxBufferDistance = ko.pureComputed(function () {
+                return null; //todo vary by units, or just don't bother
+            });
+            //feature attribute validation; these are set during feature validation, which is triggered by:
+            // * Attempting to select another feature, either in the map or in table
+            // * Attempting to create a new feature
+            // * Attempting to navigate away from the feature editing screen -- this action is prevented entirely; other actions are allowed, and validation error icons are shown
+            // these are simple true/false observables, not computed, because I only want to show the problems when the user is attempting to leave the feature.
+            feature.isMissingName = ko.observable(false); 
+            feature.hasDuplicateName = ko.observable(false);
+            feature.hasInvalidBufferDistance = ko.observable(false);
+            
+
+            feature.hasNameValidationError = ko.pureComputed(function () {
+                return feature.hasDuplicateName() || feature.isMissingName();
+            });
+
+            feature.nameValidationErrorMessage = ko.pureComputed(function () {
+                if (feature.hasNameValidationError()) {
+                    if (feature.isMissingName()) {
+                        return 'Feature name is missing';
+                    }
+                    if (feature.hasDuplicateName()) {
+                        return 'Feature name is not unique';
+                    }
+                }
+                return null;
+            });
+
+            feature.hasError = ko.pureComputed(function () {
+                return feature.nameValidationErrorMessage() || feature.hasInvalidBufferDistance();
+            });
+
+            // even though feature.name is still whatever it was before, because we only update that 
+            // observable when the input loses focus; we want this to happen as the user is typing
+            // also this gets around limitations of required and pattern validation
+            feature.validateName = function (f, e) {
+                //f we can ignore, it's just a reference back to this feature
+                //e is the event, from which we can get the raw input element to get the value the user is currently typing
+
+                var proposedName = e.delegateTarget.value,
+                    uniqueNames = [proposedName],
+                    duplicateNames = [],
+                    otherFeatures = [];
+                
+                //populate other features
+                self.features().forEach(function (f2) {
+                    if (f !== f2) {
+                        otherFeatures.push(f2);
+                    }
+                });
+
+                //easy
+                feature.isMissingName(ko.utils.isNullOrWhiteSpace(proposedName));
+                //tricky, have to compare to all other features, but use the proposedName
+                feature.hasDuplicateName(false); //gets reset to true if there's a problem, below, in next loop through duplicateNames
+
+                otherFeatures.forEach(function (f2) {
+                    f2.hasDuplicateName(false); //gets reset to true if there's a problem, below, in next loop through duplicateNames
+                    if (uniqueNames.indexOf(f2.name()) >= 0) {
+                        if (duplicateNames.indexOf(f2.name()) < 0) {
+                            duplicateNames.push(f2.name());
+                        }
+                    } else {
+                        uniqueNames.push(f2.name());
+                    }
+                });
+
+                //note this winds up invalidating other features, and that's ok! User has to sort it out one way or another, and it's all on the screen.
+                if (duplicateNames.length) {
+                    duplicateNames.forEach(function (n) {
+                        if (n === proposedName) {
+                            f.hasDuplicateName(true);
+                        }
+                        otherFeatures.forEach(function (f2) {
+                            if (f2.name() === n) {
+                                f2.hasDuplicateName(true);
+                            }
+                        });
+                    }, this);
+                }
+            };
+
+            feature.validateBufferDistance = function (f, e) {
+                //f is just a reference back to this feature, we could ignore it like above, or use it like below. TODO pick one!
+                //e is the event, from which we can get the raw input element to get the value the user is currently typing
+                var val = parseInt(e.delegateTarget.value, 10),
+                    valIsNaN = isNaN(val);
+                f.hasInvalidBufferDistance(valIsNaN || val < f.minBufferDistance() || (f.maxBufferDistance() && val > f.maxBufferDistance()));
+                //or could do this, but it's really annoying if the user is trying to delete the last digit just so they can type a different one
+                //e.delegateTarget.value = (valIsNaN || val < minBuffer) ? minBuffer : val;
+            };
+
+            feature.bufferValidationErrorMessage = ko.pureComputed(function () {
+                if (feature.hasInvalidBufferDistance()) {
+                    if (feature.type === 'polygon') {
+                        return 'Buffer distance must be greater than or equal to 0 for polygons'; //todo if we start using maxBufferDistance then add that to the message
+                    }
+                    return 'Buffer distance must be greater than or equal to 1 for ' + feature.type + 's';
+                }
+                return null;
             });
 
             //function to assign the feature to an analysisArea
@@ -1804,8 +2047,14 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             });
 
             //happens when user clicks on a feature in the table of features, but not when clicking on the map;
-            //a different function handles that, but doesn't include the zoom/pan
+            //a different function handles that, but doesn't include the zoom/pan, because the feature must be visible
+            //for the user to have clicked on it.
             feature.select = function () {
+                //can't change active feature while drawing
+                if (self.drawMode()) {
+                    return;
+                }
+                //note we could here prevent leaving current feature if it isn't invalid, but instead I'm opting to just show errors and prevent leaving wizard page
                 self.currentFeature(feature);
                 //todo zoom/pan if not in current extent
                 var geometry = feature.graphic ? feature.graphic.geometry : {
@@ -1827,26 +2076,12 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             feature.nameHasFocus = ko.observable(); //used to set focus to the name textbox
 
-            //This subscription undoes a user's attempt to enter duplicate feature names, and updates the database with the new feature name if it has changed.
-            feature.name.subscribeChanged(function (latestValue, previousValue) {
-                //validate the new name is unique
-                var matchedName = self.features().find(function (f) {
-                    return feature !== f && f.name() === latestValue;
-                });
-
-                if (matchedName) {
-                    topic.publish('growler/growlWarning', 'Warning: another feature with the name "' + latestValue + '" exists. Reverting to previous value "' + previousValue + '"');
-                    feature.name(previousValue);
-                    window.setTimeout(function () {
-                        feature.select(); //if the name change event that started this all is clicking to a different feature, set it back
-                        feature.nameHasFocus(true); //sets focus on the name element
-                    }, 300);
-                    return;
-                }
-
-                //has something changed?
-                if (feature.graphic.attributes.FEATURE_NAME !== latestValue) {
-                    feature.graphic.attributes.FEATURE_NAME = latestValue;
+            /**
+             * These subscriptions trigger saving feature attributes when the name or buffer distance changes.
+             */
+            feature.name.subscribe(function (newValue) {
+                if (feature.graphic.attributes.FEATURE_NAME !== newValue) {
+                    feature.graphic.attributes.FEATURE_NAME = newValue;
                     feature.applyUpdate();
                 }
             });
@@ -1888,21 +2123,26 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     deferred.resolve(false);
                     return deferred;
                 }
-                self.loadingOverlay.show('Saving feature...');
-                layer.applyEdits(null, [graphic], null, function (adds, updates) { //eslint-disable-line no-unused-vars "adds" var is here because that's the structure of the callback, but will always be empty
-                    self.loadingOverlay.hide();
-                    if (!updates || updates.length === 0) {
-                        //todo warn user and handle situation. Not sure if this actually happens
-                    }
-                    if (!(addToStack === false)) { //if null, or true, or anything other than a literal false, add to stack
-                        self.undoManager.add(operation);
-                    }
-                    deferred.resolve(true);
-                    //feature.cachePreUpdate();
-                }, function (err) {
-                    self.loadingOverlay.hide();
-                    deferred.reject(err);
-                });
+                //calling this via setTimeout because it interrupts selecting another feature, the main thing that calls this function
+                window.setTimeout(function () {
+                    self.loadingOverlay.show('Saving feature...');
+                    layer.applyEdits(null, [graphic], null, 
+                        function (adds, updates) { //eslint-disable-line no-unused-vars "adds" var is here because that's the structure of the callback, but will always be empty
+                            self.loadingOverlay.hide();
+                            if (!updates || updates.length === 0) {
+                                //todo warn user and handle situation. Not sure if this actually happens
+                            }
+                            if (!(addToStack === false)) { //if null, or true, or anything other than a literal false, add to stack
+                                self.undoManager.add(operation);
+                            }
+                            deferred.resolve(true);
+                            //feature.cachePreUpdate();
+                        }, function (err) {
+                            self.loadingOverlay.hide();
+                            deferred.reject(err);
+                        }
+                    );
+                }, 200);
                 return deferred;
             };
 
@@ -1914,7 +2154,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 self.deactivateExtract(); //deactivates draw tool too
                 self.edit.deactivate();
                 if (buffer) {
-                    self.bufferGraphics.remove(buffer);
+                    self.bufferGraphics.remove(buffer); 
                 }
                 layer.applyEdits(null, null, [graphic], function () {
                     self.features.remove(feature);
@@ -1924,6 +2164,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     if (addToStack !== false) {
                         self.undoManager.add(operation);
                     }
+                    //TODO delete analysis area now? If not, need to handle it later when buffering features--an existing analysis area related to this feature will continue to exist, and the system fails because it doesn't check for empty geometry (because there is no feature associated with it any more, and hence no geometry)
                 });
             };
             //no add function, handled elsewhere
@@ -2200,6 +2441,17 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     return comp;
                 });
             }, this);
+
+            //prevents showing a validation error icon when empty AOI first loads.
+            //Gets toggled to true when user clicks Next, regardless of whether there are any features
+            //the KO binding uses both properties to determine whether to display the error.
+            this._showFeatureCountError = ko.observable(false);
+
+            //combines above with feature count to determine whether to show the error icon to the user
+            this.showFeatureCountError = ko.pureComputed(function () {
+                return self._showFeatureCountError() && self.features().length === 0;
+            });
+
             //the active, highlighted feature in the table and map
             this.currentFeature = ko.observable();
 
@@ -2437,7 +2689,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             on(this.bufferGraphics, 'click', function (evt) {
                 //subscription on currentFeature does this edit.activate(2, evt.graphic);
-                if (evt.graphic && evt.graphic.feature) {
+                if (evt.graphic && evt.graphic.feature && !self.drawMode()) {
                     event.stopPropagation(evt);
                     self.currentFeature(evt.graphic.feature);
                 }

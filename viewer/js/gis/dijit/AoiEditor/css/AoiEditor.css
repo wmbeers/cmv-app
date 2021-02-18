@@ -33,6 +33,10 @@
     background-color: #f2f2f2;
 }
 
+.aoiList td {
+    vertical-align: middle;
+}
+
 /* Applied to the Type column in feature list when sorted by by geometry type to make it wide enough to prevent wrapping the sort caret */
 .type-sort {
     min-width: 56px;
@@ -113,3 +117,76 @@ ul.no-margin {
     margin-left: 0;
     padding-left: 18px;
 }
+
+/* mimics Dojo ValidationTextBox for a standard HTML input, to facilitate binding to KnockOut observables used on feature editor
+    (DoJo ValidationTextBox is rendered as a very complex chunk of html replacing the actual input, with hidden inputs and such
+    that are too hard to replicate, and we can't use these on dynmanically created inputs such as those in a template bound to 
+    a KO observableArray)
+    TODO move this to app.css so it can be shared with project editor
+*/
+/*the trinagle-exclamation icon itself*/
+.validationIcon {
+    /* from flat.css .dijitValidationContainer TODO trim this down to just what we need, or replace .validationIcon class references in sidebar with dijitValidationContainer;
+        I just think dijitValidationContainer is a confusing name and the class probably carries other weight */
+    color: #dd2c00;
+    width: 18px;
+    font-family: "Font Awesome\ 5 Free";
+    speak: none;
+    font-style: normal;
+    font-weight: 900;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/*used for unselected rows; see also .validationWrapper .validationIcon selector below */
+.validationIconFloatRight
+{
+    position: relative;
+    float: right;
+    top: 6px;
+    padding-right: 1px; /* keeps it lined up vertically with icons shown over inputs*/
+}
+
+input.invalid { /*not using the ":invalid" pseudo-selector with required attribute; it has limitations, so we assign this class via ko */
+    /* padding-right: 20px; add this if we want to use it for duplicate names, it will prevent the text from being under the icon floating over the input*/
+    border: 1px solid red;
+}
+
+/*For the editable version of a row, put this class on the td*/
+.validationWrapper {
+    position: relative;
+}
+    .validationWrapper input {
+        width: 100%; /*overrides dijitTextBox width 15em from flat.css*/
+    }
+
+
+.validationWrapper .validationIcon {
+    position: absolute;
+    right: 4px;
+    top: 9px;
+    padding-right: 0;
+}
+
+
+    .validationIcon::before {
+        content: "\f071";
+    }
+
+/* hide number spinners and set the width of buffer distance inputs */
+input.bufferDistanceInput {
+    width: 3em;
+    /*hide number spinner in firefox, see also next item*/
+    -moz-appearance: textfield;
+}
+
+    /* hide number spinner in Chrome, Safari, Edge, Opera */
+    input.bufferDistanceInput::-webkit-outer-spin-button,
+    input.bufferDistanceInput::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
