@@ -142,7 +142,6 @@ function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphi
             try {
                 jQuery.get(url, null,
                     function (reply) {
-
                         if (reply.features && reply.features.length > 0) {
                             deferred.resolve(reply);
                         } else {
@@ -258,7 +257,7 @@ function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphi
         
         /**
          * Parses the response from getRoadwayWithMeasures to construct a PolyLine representing the desired segment of roadway between the begin and end mileposts.
-         * @param {Array} roadwayFeatures The features (as JSON) returned from getRoadwayWithMeasures.
+         * @param {Array} roadwayFeatures The features (as JSON) returned from getRoadwayWithMeasures. It will include the entire roadway, including the portions outside of the desired range between beginMilePost and endMilePost
          * @param {Number} beginMilePost The begin milepost of the desired segment
          * @param {Number} endMilePost The end milepost of the desired segment
          * @returns {Array} An array of PolyLine objects in Web Mercator projection representing the desired segments of roadway between the begin and end mileposts.
@@ -344,14 +343,18 @@ function (Deferred, topic, FeatureSet, RouteParameters, RouteTask, Query, Graphi
                     if (endPoint) {
                         newPath.push([endPoint.x, endPoint.y, endPoint.m]);
                     }
-                    //convert to polyline todo maybe should be grapphics? So we can better preserve attributes?
-                    var polyLine = new PolyLine({
-                        paths: [newPath],
-                        spatialReference: {
-                            wkid: 102100
-                        }
-                    });
-                    polyLines.push(polyLine);
+
+                    //rounding error can result in us having just one point, if so, just bail.
+                    if (newPath.length >= 2) {
+                        //convert to polyline
+                        var polyLine = new PolyLine({
+                            paths: [newPath],
+                            spatialReference: {
+                                wkid: 102100
+                            }
+                        });
+                        polyLines.push(polyLine);
+                    }
                 }
 
                 return polyLines;
