@@ -358,21 +358,33 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             });
         },
 
+        //calls validation functions on all features,
+        //and returns true if there are no errors, and at least one feature exists.
+        //If there are no features, or any features that have an error, returns false
         validateFeatures: function () {
+            //quick shortcut if there's no features
+            if (this.features().length === 0) return false;
+            
+            //these method calls validate the features, but don't return anything
             this.validateFeatureNameIsUnique();
             this.validateFeatureNamesAreNotNull();
             this.validateFeatureBufferDistances();
-        },
 
-        validateFeaturesAndMoveNext: function () {
-            this.validateFeatures();
+            //look for any feature with an error
             var featureWithError = ko.utils.arrayFirst(this.features(), function (f) {
                 return f.hasError();
             });
-            if (featureWithError) {
-                //todo alert user in some more obvious way than the existing icons shown on the screen after validateFeatures?
-                //if not simplify this method
-            } else {
+
+            //if there's at least one feature with an error, return false to indicate there's a problem
+            return featureWithError ? false : true; 
+        },
+
+        validateFeaturesAndMoveNext: function () {
+            //the binding for showing this error depends on both _showFeatureCountError being true and features().length === 0;
+            //toggling this true will display the error to users if there are no features, but only after clicking to move next
+            this._showFeatureCountError(true); 
+
+            if (this.validateFeatures()) {
                 this.showAnalysisAreas();
             }
         },
@@ -486,7 +498,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 }
             );
         },
-
+        //TODO: clarify this comment. I can't do it right now because even I, who wrote it a year ago, can't understand it.
         //Analysis areas are saved on the fly as features are added to them, but if the default, typical option
         //of NOT assigning features to analysisAreas is chosen, we'll need to do that here
         saveAnalysisAreas: function () {
@@ -526,8 +538,14 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             return deferred;
         },
 
+        /**
+         * Deletes records in T_PROJECT_ALT_AOI that have no features currently assigned to them.
+         * After deleting the records, it removes the associated AnalysisArea model from this.analysisAreas.
+         * @returns {Deferred} deferred object resolved after DWR call to delete records is complete.
+         **/
         _deleteEmptyAnalysisAreas: function () {
-            var deferred = new Deferred(),
+            var self = this,
+                deferred = new Deferred(),
                 emptyAnalysisAreas = this.analysisAreas().filter(function (aa) {
                     return aa.features().length === 0;
                 });
@@ -538,6 +556,10 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 });
                 MapDAO.deleteAoiAnalysisAreas(ids, this.currentAuthority().orgUserId, {
                     callback: function () {
+                        //Done deleting records, now remove from model.
+                        emptyAnalysisAreas.forEach(function (aa) {
+                            self.analysisAreas.remove(aa);
+                        });
                         deferred.resolve();
                     },
                     errorHandler: function (err) {
@@ -1396,7 +1418,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         /**
          * Builds the adds, edits and deletes arrays of analysisAreaBuffers; returns a deferred object that, when resolved, passes the 
          * arrays, ready for applyEdits. Makes external calls to geometryService to simplify and union. Only call this after syncing up 
-         * the analysisAreas with AoiAnalysisAreas (T_PROJECT_ALT_AOI) records.
+         * the analysisAreas (ko models in this.analysisAreas) with AoiAnalysisAreas (T_PROJECT_ALT_AOI) records.
          * @returns {Deferred} Deferred object, which, when resolved, will pass in a result with adds, updates and deletes array properties.
          */
         _buildAnalysisAreaBufferEdits: function () {
@@ -1408,8 +1430,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             this._buildAnalysisAreasFromFeatures(); //TODO not needed any more, this happens upstream in saveAnalysisAreas
             this.loadingOverlay.show('Constructing analysis area buffers...');
 
-            var analysisAreaBuffers = this.layers.analysisAreaBuffer.graphics,
-                analysisAreaModels = this.analysisAreas(), //analysis areas observable defined in knockoutify
+            var analysisAreaBuffers = this.layers.analysisAreaBuffer.graphics, // the features of S_AOI
+                analysisAreaModels = this.analysisAreas(), //analysis areas observable defined in knockoutify, representing T_PROJECT_ALT_AOI
                 result = {
                     adds: [],
                     updates: [],
@@ -1420,14 +1442,35 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 deferred = new Deferred(), //the overall deferred to be resolved when we've got the edits all built
                 buildPromises = [];
 
+
+
             //loop through models to add or update
             analysisAreaModels.forEach(function (analysisAreaModel) {
                 var buildPromise = new Deferred(),
-                    geometries = analysisAreaModel.features().map(function (f) {
+                    allGeometries = analysisAreaModel.features().map(function (f) {
                         return f.buffer ? f.buffer.geometry : f.graphic.geometry;
+                    }),
+                    geometries = allGeometries.filter(function (g) { 
+                        return g; //truthy, excludes undefined, is what we'll get if the feature has no geometry to buffer
                     });
-//Bill this is where you left off, after you delete a feature, then click next and next again, the analysis area associated with the deleted feature is still in analysisAreaModels (line 1481), but with no features, geometries is empty, and simplify fails in a way that we are not catching
+
                 buildPromises.push(buildPromise);
+
+                //check if no features/empty geometry
+                //handle empty geometry
+
+                if (geometries.length === 0) {
+                    //this is the case when the analysiAreaModel has had all features removed; 
+                    //it should already have been deleted from analysisAreas (I've addressed deleting it in a change to _deleteEmptyAnalysisAreas), 
+                    //so this shouldn't happen, but just in case there might be other causes, we should keep this check to prevents the tool from crashing
+                    var analysisAreaFeature = self.getAnalysisAreaBuffer(analysisAreaModel.id(), 1); //TODO when we support multiple buffer distances this will need to change
+                    if (analysisAreaFeature) {
+                        result.deletes.push(analysisAreaFeature);
+                    }
+                    buildPromise.resolve(analysisAreaFeature);
+                    return; // skips to the next iteration in analysisAreaModels.forEach
+                }
+
 
                 //simplify
                 esriConfig.defaults.geometryService.simplify(geometries).then(function (simplifiedGeometries) {
@@ -1473,10 +1516,10 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                         }
                     );
                 }, function (e) {
+                    self.loadingOverlay.hide();
                     deferred.reject(e);
                 });
             }); // end loop through analysisAreaModels
-
 
             //the overall deferred for this function is resolved when all the deferreds to build analyisAreas are resolved
             all(buildPromises).then(function () {
@@ -2111,7 +2154,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 self.deactivateExtract(); //deactivates draw tool too
                 self.edit.deactivate();
                 if (buffer) {
-                    self.bufferGraphics.remove(buffer);
+                    self.bufferGraphics.remove(buffer); 
                 }
                 layer.applyEdits(null, null, [graphic], function () {
                     self.features.remove(feature);
@@ -2121,6 +2164,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     if (addToStack !== false) {
                         self.undoManager.add(operation);
                     }
+                    //TODO delete analysis area now? If not, need to handle it later when buffering features--an existing analysis area related to this feature will continue to exist, and the system fails because it doesn't check for empty geometry (because there is no feature associated with it any more, and hence no geometry)
                 });
             };
             //no add function, handled elsewhere
@@ -2397,6 +2441,17 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     return comp;
                 });
             }, this);
+
+            //prevents showing a validation error icon when empty AOI first loads.
+            //Gets toggled to true when user clicks Next, regardless of whether there are any features
+            //the KO binding uses both properties to determine whether to display the error.
+            this._showFeatureCountError = ko.observable(false);
+
+            //combines above with feature count to determine whether to show the error icon to the user
+            this.showFeatureCountError = ko.pureComputed(function () {
+                return self._showFeatureCountError() && self.features().length === 0;
+            });
+
             //the active, highlighted feature in the table and map
             this.currentFeature = ko.observable();
 

@@ -142,11 +142,11 @@
                             <td class="dgrid-cell" data-bind="click: select, template: {name: 'geometry-type-icon', data: geometry}"></td>
                             <td class="dgrid-cell" data-bind="click: select">
                                 <span data-bind="click: select, text: name"></span>
-                                <i class="validationIcon" data-bind="visible: hasNameValidationError, attr: {title: nameValidationErrorMessage}"></i>
+                                <i class="validationIcon validationIconFloatRight" data-bind="visible: hasNameValidationError, attr: {title: nameValidationErrorMessage}"></i>
                             </td>
                             <td class="dgrid-cell" colspan="2" data-bind="click: select">
                                 <span data-bind="text: bufferText, attr: {title: bufferTextLong}"></span>
-                                <i class="validationIcon" data-bind="visible: hasInvalidBufferDistance, attr: {title: bufferValidationErrorMessage}"></i>
+                                <i class="validationIcon validationIconFloatRight" data-bind="visible: hasInvalidBufferDistance, attr: {title: bufferValidationErrorMessage}"></i>
                             </td>
                         </tr>
                         <!-- /ko -->
@@ -161,6 +161,7 @@
                             data-dojo-attach-point="addFeatureButton">
                         Add Feature
                     </button>
+                    <i class="validationIcon" data-bind="visible: showFeatureCountError" title="You must create at least one feature"></i>
                 </div>
 
                 <div data-bind="visible: $root.drawMode() === 'draw'">

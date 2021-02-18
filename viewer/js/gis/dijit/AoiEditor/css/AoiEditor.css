@@ -126,7 +126,8 @@ ul.no-margin {
 */
 /*the trinagle-exclamation icon itself*/
 .validationIcon {
-    /* from flat.css .dijitValidationContainer TODO trim this down to just what we need */
+    /* from flat.css .dijitValidationContainer TODO trim this down to just what we need, or replace .validationIcon class references in sidebar with dijitValidationContainer;
+        I just think dijitValidationContainer is a confusing name and the class probably carries other weight */
     color: #dd2c00;
     width: 18px;
     font-family: "Font Awesome\ 5 Free";
@@ -139,12 +140,17 @@ ul.no-margin {
     font-size: 15px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /*overridden by .validationWrapper .validationIcon selector below */
+}
+
+/*used for unselected rows; see also .validationWrapper .validationIcon selector below */
+.validationIconFloatRight
+{
     position: relative;
     float: right;
-    /*top: 6px;*/
+    top: 6px;
     padding-right: 1px; /* keeps it lined up vertically with icons shown over inputs*/
 }
+
 input.invalid { /*not using the ":invalid" pseudo-selector with required attribute; it has limitations, so we assign this class via ko */
     /* padding-right: 20px; add this if we want to use it for duplicate names, it will prevent the text from being under the icon floating over the input*/
     border: 1px solid red;
@@ -165,6 +171,7 @@ input.invalid { /*not using the ":invalid" pseudo-selector with required attribu
     top: 9px;
     padding-right: 0;
 }
+
 
     .validationIcon::before {
         content: "\f071";
