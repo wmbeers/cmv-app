@@ -266,7 +266,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 operation = null,
                 title = '',
                 isDrawing = self.drawMode() ? true : false; //drawMode will be something like 'draw', or null if not currently drawing. this converts to simple true/false, and only allows enabling undo/redo buttons if not drawing
-                
+
             if (this.undoManager.canUndo) {
                 operation = this.undoManager.peekUndo();
                 title = 'Undo ' + operation.label + ' "' +
@@ -374,6 +374,65 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         },
          */
 
+        validateFeatureNameIsUnique: function () {
+            var uniqueNames = [],
+                duplicateNames = [];
+            this.features().forEach(function (f) {
+                f.hasDuplicateName(false); //gets reset to true if there's a problem, below
+                if (uniqueNames.indexOf(f.name()) >= 0) {
+                    duplicateNames.push(f.name());
+                } else {
+                    uniqueNames.push(f.name());
+                }
+            });
+            if (duplicateNames.length) {
+                duplicateNames.forEach(function (n) {
+                    this.features().forEach(function (f) {
+                        if (f.name() === n) {
+                            f.hasDuplicateName(true);
+                        }
+                    });
+                }, this);
+                return false; //
+            }
+        },
+
+        validateFeatureNamesAreNotNull: function () {
+            this.features().forEach(function (feature) {
+                feature.isMissingName(ko.utils.isNullOrWhiteSpace(feature.name())); //don't call validateName, it's dependent on this being the currentFeature and function is bound to keyup on name input
+            });
+        },
+
+        validateFeatureBufferDistances: function () {
+            this.features().forEach(function (f) {
+                var val = parseInt(f.bufferDistance()),
+                    valIsNaN = isNaN(val);
+                f.hasInvalidBufferDistance(valIsNaN || val < f.minBufferDistance() || (f.maxBufferDistance() && val > f.maxBufferDistance()));
+                //don't call validateBufferDistance, it's dependent the same way validateName is f.validateBufferDistance();
+            });
+        },
+
+        validateFeatures: function () {
+            this.validateFeatureNameIsUnique();
+            this.validateFeatureNamesAreNotNull();
+            this.validateFeatureBufferDistances();
+        },
+
+
+
+        validateFeaturesAndMoveNext() {
+            this.validateFeatures();
+            var featureWithError = ko.utils.arrayFirst(this.features(), function (f) {
+                return f.hasError();
+            });
+            if (featureWithError) {
+                //todo alert user in some more obvious way than the existing icons shown on the screen after validateFeatures?
+                //if not simplify this method
+            } else {
+                this.showAnalysisAreas();
+            }
+        },
+
         showAnalysisAreas: function () {
             this.mode('analysisAreas');
         },
@@ -469,7 +528,8 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             this.saveAnalysisAreas().then(
                 function () {
-                    self.saveAnalysisAreaBuffers().then(
+                    window.d = self.saveAnalysisAreaBuffers();
+                    d.then(
                         function () {
                             self.mode('analysisOptions');
                         },
@@ -1423,7 +1483,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     geometries = analysisAreaModel.features().map(function (f) {
                         return f.buffer ? f.buffer.geometry : f.graphic.geometry;
                     });
-
+//Bill this is where you left off, after you delete a feature, then click next and next again, the analysis area associated with the deleted feature is still in analysisAreaModels (line 1481), but with no features, geometries is empty, and simplify fails in a way that we are not catching
                 buildPromises.push(buildPromise);
 
                 //simplify
@@ -1505,7 +1565,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         /**
          * Loads values into observable properties from the referenced AOI, then loads AOI features and analysis areas.
          * @param {any} aoi An AOI model, or null to create a new AOI model.
-         * @returns {Deferred} a Deferred object created by _loadAoiFeatures
+         * @returns {void} 
          */
         loadAoiModel: function (aoi) {
             //shouldn't need to do this, because the unload method also does it, but just to be safe
@@ -1569,7 +1629,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             this._updateAoiCache();
 
-            return this._loadAoiFeatures();
+            this._loadAoiFeatures();
         },
 
         /**
@@ -1708,8 +1768,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     self.extent = unionOfExtents; //facilitates zooming to the aoi
                     self.zoomTo();
                     self.features(featuresKo);
-                    //TODO there has to be a better way than this hack:
-                    //self.dummyForceRecompute(new Date());
+                    self.validateFeatures();
 
                 }, function (err) {
                     self.loadingOverlay.hide();
@@ -1740,7 +1799,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             if (featureOrEvent._sourceLayer) {
                 //feature is a graphic object returned from a feature layer
                 feature.name = featureOrEvent.attributes.FEATURE_NAME;
-                feature.bufferDistance = featureOrEvent.attributes.BUFFER_DISTANCE || self.lastBufferDistance; //default in case null for old data
+                feature.bufferDistance = featureOrEvent.attributes.BUFFER_DISTANCE;
                 feature.bufferUnit = (featureOrEvent.attributes.BUFFER_DISTANCE_UNITS ? self.bufferUnits[featureOrEvent.attributes.BUFFER_DISTANCE_UNITS.toLowerCase()] : null) || self.lastUnit; //default in case null; also converts to unit object
                 feature.graphic = featureOrEvent;
             } else {
@@ -1762,6 +1821,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             feature.graphic.feature = feature;
 
             feature.name = ko.observable(feature.name);
+
             feature.visible = ko.observable(true);
             feature.visible.subscribe(function (visible) {
                 feature.graphic.visible = visible;
@@ -1778,13 +1838,118 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 if (feature.bufferDistance() > 0 && feature.bufferUnit()) {
                     return feature.bufferDistance() + ' ' + feature.bufferUnit().abbreviation;
                 }
-                return '-';
+                return '0';
             });
             feature.bufferTextLong = ko.pureComputed(function () {
                 if (feature.bufferDistance() > 0 && feature.bufferUnit()) {
                     return feature.bufferDistance() + ' ' + feature.bufferUnit().name;
                 }
-                return '-';
+                return feature.type === 'polygon' ? 'No buffer' : 'Error, buffer distance is required';
+            });
+            feature.minBufferDistance = ko.pureComputed(function () {
+                return feature.type === 'polygon' ? 0 : 1;
+            });
+            feature.maxBufferDistance = ko.pureComputed(function () {
+                return null; //todo vary by units, or just don't bother
+            });
+            //feature attribute validation; these are set during feature validation, which is triggered by:
+            // * Attempting to select another feature, either in the map or in table
+            // * Attempting to create a new feature
+            // * Attempting to navigate away from the feature editing screen -- this action is prevented entirely; other actions are allowed, and validation error icons are shown
+            // these are simple true/false observables, not computed, because I only want to show the problems when the user is attempting to leave the feature.
+            feature.isMissingName = ko.observable(false); 
+            feature.hasDuplicateName = ko.observable(false);
+            feature.hasInvalidBufferDistance = ko.observable(false);
+            
+
+            feature.hasNameValidationError = ko.pureComputed(function () {
+                return feature.hasDuplicateName() || feature.isMissingName();
+            });
+
+            feature.nameValidationErrorMessage = ko.pureComputed(function () {
+                if (feature.hasNameValidationError()) {
+                    if (feature.isMissingName()) {
+                        return 'Feature name is missing';
+                    }
+                    if (feature.hasDuplicateName()) {
+                        return 'Feature name is not unique';
+                    }
+                }
+                return null;
+            });
+
+            feature.hasError = ko.pureComputed(function() {
+                return feature.nameValidationErrorMessage() || feature.hasInvalidBufferDistance();
+            });
+
+            // even though feature.name is still whatever it was before, because we only update that 
+            // observable when the input loses focus; we want this to happen as the user is typing
+            // also this gets around limitations of required and pattern validation
+            feature.validateName = function (f, e) {
+                //f we can ignore, it's just a reference back to this feature
+                //e is the event, from which we can get the raw input element to get the value the user is currently typing
+
+                var proposedName = e.delegateTarget.value,
+                    uniqueNames = [proposedName],
+                    duplicateNames = [],
+                    otherFeatures = [];
+                
+                //populate other features
+                 self.features().forEach(function (f2) {
+                    if (f !== f2) {
+                        otherFeatures.push(f2);
+                    }
+                });
+
+                //easy
+                feature.isMissingName(ko.utils.isNullOrWhiteSpace(proposedName));
+                //tricky, have to compare to all other features, but use the proposedName
+                feature.hasDuplicateName(false); //gets reset to true if there's a problem, below, in next loop through duplicateNames
+
+                otherFeatures.forEach(function (f2) {
+                    f2.hasDuplicateName(false); //gets reset to true if there's a problem, below, in next loop through duplicateNames
+                    if (uniqueNames.indexOf(f2.name()) >= 0) {
+                        if (duplicateNames.indexOf(f2.name()) < 0) {
+                            duplicateNames.push(f2.name());
+                        }
+                    } else {
+                        uniqueNames.push(f2.name());
+                    }
+                });
+
+                //note this winds up invalidating other features, and that's ok! User has to sort it out one way or another, and it's all on the screen.
+                if (duplicateNames.length) {
+                    duplicateNames.forEach(function (n) {
+                        if (n === proposedName) {
+                            f.hasDuplicateName(true);
+                        }
+                        otherFeatures.forEach(function (f2) {
+                            if (f2.name() === n) {
+                                f2.hasDuplicateName(true);
+                            }
+                        });
+                    }, this);
+                }
+            };
+
+            feature.validateBufferDistance = function (f, e) {
+                //f is just a reference back to this feature, we could ignore it like above, or use it like below. TODO pick one!
+                //e is the event, from which we can get the raw input element to get the value the user is currently typing
+                var val = parseInt(e.delegateTarget.value),
+                    valIsNaN = isNaN(val);
+                f.hasInvalidBufferDistance(valIsNaN || val < f.minBufferDistance() || (f.maxBufferDistance() && val > f.maxBufferDistance()));
+                //or could do this, but it's really annoying if the user is trying to delete the last digit just so they can type a different one
+                //e.delegateTarget.value = (valIsNaN || val < minBuffer) ? minBuffer : val;
+            };
+
+            feature.bufferValidationErrorMessage = ko.pureComputed(function () {
+                if (feature.hasInvalidBufferDistance()) {
+                    if (feature.type == 'polygon') {
+                        return 'Buffer distance must be greater than or equal to 0 for polygons'; //todo if we start using maxBufferDistance then add that to the message
+                    }
+                    return 'Buffer distance must be greater than or equal to 1 for ' + feature.type + 's';
+                }
+                return null;
             });
 
             //function to assign the feature to an analysisArea
@@ -1896,11 +2061,16 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             });
 
             //happens when user clicks on a feature in the table of features, but not when clicking on the map;
-            //a different function handles that, but doesn't include the zoom/pan
+            //a different function handles that, but doesn't include the zoom/pan, because the feature must be visible
+            //for the user to have clicked on it.
             feature.select = function () {
+                console.log('selecting ' + feature.name());
+                //can't change active feature while drawing
                 if (self.drawMode()) {
+                    console.log(' or not...');
                     return;
                 }
+                //note we could here prevent leaving current feature if it isn't invalid, but instead I'm opting to just show errors and prevent leaving wizard page
                 self.currentFeature(feature);
                 //todo zoom/pan if not in current extent
                 var geometry = feature.graphic ? feature.graphic.geometry : {
@@ -1924,20 +2094,32 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
 
             //This subscription undoes a user's attempt to enter duplicate feature names, and updates the database with the new feature name if it has changed.
             feature.name.subscribeChanged(function (latestValue, previousValue) {
-                //validate the new name is unique
-                var matchedName = self.features().find(function (f) {
-                    return feature !== f && f.name() === latestValue;
-                });
+                //validate the new name is not null
+                //if (ko.utils.isNullOrWhiteSpace(latestValue)) {
+                //    topic.publish('growler/growlWarning', 'Warning: feature name is required. Reverting to previous value "' + previousValue + '"');
+                //    feature.name(previousValue);
+                //    window.setTimeout(function () {
+                //        feature.select(); //if the name change event that started this all is clicking to a different feature, set it back
+                //        feature.nameHasFocus(true); //sets focus on the name element
+                //    }, 300);
+                //    return;
+                //};
 
-                if (matchedName) {
-                    topic.publish('growler/growlWarning', 'Warning: another feature with the name "' + latestValue + '" exists. Reverting to previous value "' + previousValue + '"');
-                    feature.name(previousValue);
-                    window.setTimeout(function () {
-                        feature.select(); //if the name change event that started this all is clicking to a different feature, set it back
-                        feature.nameHasFocus(true); //sets focus on the name element
-                    }, 300);
-                    return;
-                }
+                //validate the new name is unique
+                //var matchedName = self.features().find(function (f) {
+                //    return feature !== f && f.name() === latestValue;
+                //});
+
+                //if (matchedName) {
+                //    topic.publish('growler/growlWarning', 'Warning: another feature with the name "' + latestValue + '" exists. Reverting to previous value "' + previousValue + '"');
+                //    feature.name(previousValue);
+                //    window.setTimeout(function () {
+                //        feature.select(); //if the name change event that started this all is clicking to a different feature, set it back
+                //        feature.nameHasFocus(true); //sets focus on the name element
+                //    }, 300);
+                //    return;
+                //}
+                //TODO validate latestValue, here or somewhere else, to prevent errors creating buffers with invalid values
 
                 //has something changed?
                 if (feature.graphic.attributes.FEATURE_NAME !== latestValue) {
@@ -1947,6 +2129,7 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             });
 
             feature.bufferDistance.subscribe(function (newValue) {
+                console.log('bufferDistance changed');
                 self.bufferFeature(feature);
                 feature.graphic.attributes.BUFFER_DISTANCE = newValue;
                 if (newValue) {
@@ -1983,21 +2166,26 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     deferred.resolve(false);
                     return deferred;
                 }
-                self.loadingOverlay.show('Saving feature...');
-                layer.applyEdits(null, [graphic], null, function (adds, updates) { //eslint-disable-line no-unused-vars "adds" var is here because that's the structure of the callback, but will always be empty
-                    self.loadingOverlay.hide();
-                    if (!updates || updates.length === 0) {
-                        //todo warn user and handle situation. Not sure if this actually happens
-                    }
-                    if (!(addToStack === false)) { //if null, or true, or anything other than a literal false, add to stack
-                        self.undoManager.add(operation);
-                    }
-                    deferred.resolve(true);
-                    //feature.cachePreUpdate();
-                }, function (err) {
-                    self.loadingOverlay.hide();
-                    deferred.reject(err);
-                });
+                //calling this via setTimeout because it interrupts selecting another feature, the main thing that calls this function
+                window.setTimeout(function() {
+                    self.loadingOverlay.show('Saving feature...');
+                    layer.applyEdits(null, [graphic], null, 
+                        function (adds, updates) { //eslint-disable-line no-unused-vars "adds" var is here because that's the structure of the callback, but will always be empty
+                            self.loadingOverlay.hide();
+                            if (!updates || updates.length === 0) {
+                                //todo warn user and handle situation. Not sure if this actually happens
+                            }
+                            if (!(addToStack === false)) { //if null, or true, or anything other than a literal false, add to stack
+                                self.undoManager.add(operation);
+                            }
+                            deferred.resolve(true);
+                            //feature.cachePreUpdate();
+                        }, function (err) {
+                            self.loadingOverlay.hide();
+                            deferred.reject(err);
+                        }
+                    );
+                }, 200);
                 return deferred;
             };
 

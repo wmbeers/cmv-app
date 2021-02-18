@@ -123,19 +123,41 @@
                         <tr class="feature-selected">
                             <td class="dgrid-cell"><input type="checkbox" checked disabled /></td>
                             <td class="dgrid-cell" data-bind="template: {name: 'geometry-type-icon', data: geometry}"></td>
-                            <td class="dgrid-cell">
-                                <input type="text" data-bind="value: name, hasFocus: nameHasFocus" maxlength="50" />
+                            <!--<td class="dgrid-cell">
+                                <input type="text" data-bind="value: name, hasFocus: nameHasFocus" maxlength="50" required style="background-image: url('http://www.endlessicons.com/wp-content/uploads/2012/12/lock-icon-614x460.png'); background-repeat: no-repeat; background-position: right center; background-size: 50px;" />
+                                <span data-bind="visible: hasNameValidationError, attr: {title: nameValidationErrorMessage}" class="fa fa-exclamation-triangle fa-fw"></span>
+                            </td>-->
+                            <td class="dgrid-cell validationWrapper">
+                                <input type="text" class="dijitTextBox" data-bind="value: name, hasFocus: nameHasFocus, event: {keyup: validateName}, css: {invalid: hasNameValidationError}" maxlength="50" />
+                                <!--<span data-bind="visible: hasNameValidationError, attr: {title: nameValidationErrorMessage}" class="fa fa-exclamation-triangle fa-fw" style="position: absolute; right: 5px"></span>-->
+                                <i class="validationIcon" data-bind="visible: hasNameValidationError, attr: {title: nameValidationErrorMessage}"></i>
                             </td>
-                            <td class="dgrid-cell"><input type="number" data-bind="value: bufferDistance" style="width: 3em" /></td>
-                            <td class="dgrid-cell"><select data-bind="options: $root.bufferUnitArray, optionsText: 'abbreviation', value: bufferUnit, attr: {title: bufferTextLong}" style="width: 3em" /></td>
+                            <td class="dgrid-cell validationWrapper">
+                                <input type="number" data-bind="value: bufferDistance, event: {keyup: validateBufferDistance}, css: {invalid: hasInvalidBufferDistance}" class="dijitTextBox bufferDistanceInput" />
+                                <!--<span data-bind="visible: hasInvalidBufferDistance, attr: {title: bufferValidationErrorMessage}" class="fa fa-exclamation-triangle fa-fw"></span>-->
+                                <i class="validationIcon" data-bind="visible: hasInvalidBufferDistance, attr: {title: bufferValidationErrorMessage}"></i>
+                            </td>
+                            <td class="dgrid-cell">
+                                <select data-bind="options: $root.bufferUnitArray, optionsText: 'abbreviation', value: bufferUnit, attr: {title: bufferTextLong}" style="width: 3em" />
+                            </td>
                         </tr>
                         <!-- /ko -->
                         <!-- ko ifnot: selected -->
                         <tr>
                             <td class="dgrid-cell"><input type="checkbox" data-bind="checked: visible" /></td>
                             <td class="dgrid-cell" data-bind="click: select, template: {name: 'geometry-type-icon', data: geometry}"></td>
-                            <td class="dgrid-cell" data-bind="click: select, text: name"></td>
-                            <td class="dgrid-cell" colspan="2" data-bind="click: select, text: bufferText, attr: {title: bufferTextLong}"></td>
+                            <td class="dgrid-cell" data-bind="click: select">
+                                <span data-bind="click: select, text: name"></span>
+                                <i class="validationIcon" data-bind="visible: hasNameValidationError, attr: {title: nameValidationErrorMessage}"></i>
+
+                                <!--<span data-bind="visible: hasNameValidationError, attr: {title: nameValidationErrorMessage}" class="fa fa-exclamation-triangle fa-fw"></span>-->
+                            </td>
+                            <td class="dgrid-cell" colspan="2" data-bind="click: select">
+                                <span data-bind="text: bufferText, attr: {title: bufferTextLong}"></span>
+                                <i class="validationIcon" data-bind="visible: hasInvalidBufferDistance, attr: {title: bufferValidationErrorMessage}"></i>
+                                
+                                <!--<span data-bind="visible: hasInvalidBufferDistance, attr: {title: bufferValidationErrorMessage}" class="fa fa-exclamation-triangle fa-fw"></span>-->
+                            </td>
                         </tr>
                         <!-- /ko -->
                     </tbody>
@@ -204,7 +226,7 @@
 
                     <button data-dojo-type="dijit/form/Button"
                             data-dojo-attach-point="featureScreenNextButton"
-                            data-bind="click: showAnalysisAreas, disable: drawMode"
+                            data-bind="click: validateFeaturesAndMoveNext, disable: drawMode"
                             data-dojo-props="style:'text-align: right'"
                             class="right">
                         Next <i class="fa fa-caret-right fa-fw"></i>
