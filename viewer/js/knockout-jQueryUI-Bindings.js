@@ -301,7 +301,7 @@ ko.virtualElements.allowedBindings.stopBinding = true;
 //for null or empty/whitespace string
 //first add a stand-alone function, because we'll use that elsewhere
 ko.utils.isNullOrWhiteSpace = function (value) {
-    if (typeof value === 'undefined' || value === null) {
+    if (typeof value === 'undefined') {
         return true;
     }
     if (typeof value === 'string') {
