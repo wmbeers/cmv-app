@@ -363,8 +363,10 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
         //If there are no features, or any features that have an error, returns false
         validateFeatures: function () {
             //quick shortcut if there's no features
-            if (this.features().length === 0) return false;
-            
+            if (this.features().length === 0) {
+                return false;
+            }
+
             //these method calls validate the features, but don't return anything
             this.validateFeatureNameIsUnique();
             this.validateFeatureNamesAreNotNull();
@@ -1442,11 +1444,10 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                 deferred = new Deferred(), //the overall deferred to be resolved when we've got the edits all built
                 buildPromises = [];
 
-
-
             //loop through models to add or update
             analysisAreaModels.forEach(function (analysisAreaModel) {
                 var buildPromise = new Deferred(),
+                    analysisAreaFeature = self.getAnalysisAreaBuffer(analysisAreaModel.id(), 1), //TODO when we support multiple buffer distances this will need to change
                     allGeometries = analysisAreaModel.features().map(function (f) {
                         return f.buffer ? f.buffer.geometry : f.graphic.geometry;
                     }),
@@ -1463,11 +1464,10 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     //this is the case when the analysiAreaModel has had all features removed; 
                     //it should already have been deleted from analysisAreas (I've addressed deleting it in a change to _deleteEmptyAnalysisAreas), 
                     //so this shouldn't happen, but just in case there might be other causes, we should keep this check to prevents the tool from crashing
-                    var analysisAreaFeature = self.getAnalysisAreaBuffer(analysisAreaModel.id(), 1); //TODO when we support multiple buffer distances this will need to change
                     if (analysisAreaFeature) {
                         result.deletes.push(analysisAreaFeature);
                     }
-                    buildPromise.resolve(analysisAreaFeature);
+                    buildPromise.resolve(analysisAreaFeature); // ok if it resolves with null
                     return; // skips to the next iteration in analysisAreaModels.forEach
                 }
 
@@ -1487,7 +1487,6 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
                     esriConfig.defaults.geometryService.buffer(params,
                         function (bufferedGeometries) {
                             //search for existing feature by id and buffer distance
-                            var analysisAreaFeature = self.getAnalysisAreaBuffer(analysisAreaModel.id(), 1); //TODO when we support multiple buffer distances this will need to change
                             if (analysisAreaFeature) {
                                 //update
                                 result.updates.push(analysisAreaFeature);

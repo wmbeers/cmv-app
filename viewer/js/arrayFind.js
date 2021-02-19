@@ -47,16 +47,16 @@ if (!Array.prototype.find) {
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 if (!Array.prototype.filter) {
     Array.prototype.filter = function (func, thisArg) {
-        'use strict';
-        if (!((typeof func === 'Function' || typeof func === 'function') && this))
+        if (!((typeof func === 'function') && this)) {
             throw new TypeError();
+        }
 
         var len = this.length >>> 0,
             res = new Array(len), // preallocate array
-            t = this, c = 0, i = -1;
+            t = this, c = 0, i = -1; //eslint-disable-line consistent-this
 
         var kValue;
-        if (thisArg === undefined) {
+        if (typeof thisArg === 'undefined') {
             while (++i !== len) {
                 // checks to see if the key was set
                 if (i in this) {
@@ -66,8 +66,7 @@ if (!Array.prototype.filter) {
                     }
                 }
             }
-        }
-        else {
+        } else {
             while (++i !== len) {
                 // checks to see if the key was set
                 if (i in this) {

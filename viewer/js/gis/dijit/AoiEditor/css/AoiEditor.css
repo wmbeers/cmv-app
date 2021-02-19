@@ -120,11 +120,12 @@ ul.no-margin {
 
 /* mimics Dojo ValidationTextBox for a standard HTML input, to facilitate binding to KnockOut observables used on feature editor
     (DoJo ValidationTextBox is rendered as a very complex chunk of html replacing the actual input, with hidden inputs and such
-    that are too hard to replicate, and we can't use these on dynmanically created inputs such as those in a template bound to 
+    that are too hard to replicate, and we can't use these on dynmanically created inputs such as those in a template bound to
     a KO observableArray)
     TODO move this to app.css so it can be shared with project editor
 */
-/*the trinagle-exclamation icon itself*/
+
+/* the triangle-exclamation icon itself */
 .validationIcon {
     /* from flat.css .dijitValidationContainer TODO trim this down to just what we need, or replace .validationIcon class references in sidebar with dijitValidationContainer;
         I just think dijitValidationContainer is a confusing name and the class probably carries other weight */
@@ -142,26 +143,26 @@ ul.no-margin {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/*used for unselected rows; see also .validationWrapper .validationIcon selector below */
-.validationIconFloatRight
-{
+/* used for unselected rows; see also .validationWrapper .validationIcon selector below */
+.validationIconFloatRight {
     position: relative;
     float: right;
     top: 6px;
-    padding-right: 1px; /* keeps it lined up vertically with icons shown over inputs*/
+    padding-right: 1px; /* keeps it lined up vertically with icons shown over inputs */
 }
 
-input.invalid { /*not using the ":invalid" pseudo-selector with required attribute; it has limitations, so we assign this class via ko */
-    /* padding-right: 20px; add this if we want to use it for duplicate names, it will prevent the text from being under the icon floating over the input*/
+input.invalid { /* not using the ":invalid" pseudo-selector with required attribute; it has limitations, so we assign this class via ko */
+    /* padding-right: 20px; add this if we want to use it for duplicate names, it will prevent the text from being under the icon floating over the input */
     border: 1px solid red;
 }
 
-/*For the editable version of a row, put this class on the td*/
+/* For the editable version of a row, put this class on the td */
 .validationWrapper {
     position: relative;
 }
+
     .validationWrapper input {
-        width: 100%; /*overrides dijitTextBox width 15em from flat.css*/
+        width: 100%; /* overrides dijitTextBox width 15em from flat.css */
     }
 
 
@@ -180,8 +181,7 @@ input.invalid { /*not using the ":invalid" pseudo-selector with required attribu
 /* hide number spinners and set the width of buffer distance inputs */
 input.bufferDistanceInput {
     width: 3em;
-    /*hide number spinner in firefox, see also next item*/
-    -moz-appearance: textfield;
+    -moz-appearance: textfield; /* hide number spinner in firefox, see also next item */
 }
 
     /* hide number spinner in Chrome, Safari, Edge, Opera */
