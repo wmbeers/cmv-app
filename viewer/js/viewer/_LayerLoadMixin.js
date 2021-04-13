@@ -180,8 +180,12 @@ define([
                     if (functions[i]) {
                         var f = functions[i],
                             a = args[i];
+                        i++;
                         f.apply(self, a).then(function () {
-                            i++;
+                            processNextFunction();
+                        },
+                        //even if the deferred is rejected we want to process the next
+                        function () {
                             processNextFunction();
                         });
                     }
@@ -782,6 +786,8 @@ define([
             if (layer) {
                 deferred = this.addLayer(layer);
             } else {
+                //alert user
+                topic.publish('growler/growlError', 'The layer ' + layerName + ' is not available at this time.');
                 deferred.reject('Invalid layerName "' + layerName + '" property passed to addLayerByLayerName function.');
             }
             return deferred;

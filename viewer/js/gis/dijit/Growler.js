@@ -99,7 +99,7 @@ define([
         //Bill Beers modified to support standardized growling of error and warning messages
         growlError: function (message) {
             var props = {
-                message: message,
+                message: message + '<br />Please contact the OEM Help Desk at <a href="mailto://help@fla-etat.org">help@fla-etat.org<a> or <a href="tel:850-414-5334">850-414-5334</a> for assistance.',
                 title: 'Error',
                 level: 'error',
                 timeout: 0
