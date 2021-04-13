@@ -787,7 +787,15 @@ define([
                 deferred = this.addLayer(layer);
             } else {
                 //alert user
-                topic.publish('growler/growlError', 'The layer ' + layerName + ' is not available at this time.');
+                topic.publish('growler/growl', {
+                    message: 'The ' + layerName +
+                        ' layer is unavailable. It may have been renamed or replaced, or is no longer in service. <strong>Check the layer browser for the latest available data</strong>.<br /><br />' +
+                        'If you need further assistance, please contact the OEM Help Desk at <a href="mailto:help@fla-etat.org?subject=' + layerName +
+                        ' is not available in EST map">help@fla-etat.org</a> or <a href="tel:850-414-5334">850-414-5334</a>.',
+                    title: 'Layer Unavailable',
+                    level: 'warning',
+                    timeout: 0
+                });
                 deferred.reject('Invalid layerName "' + layerName + '" property passed to addLayerByLayerName function.');
             }
             return deferred;
