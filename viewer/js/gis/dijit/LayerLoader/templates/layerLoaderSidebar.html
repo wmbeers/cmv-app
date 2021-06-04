@@ -13,10 +13,16 @@
 
     <h3>ETDM Projects</h3>
     <label>Project ID</label><br />
-    <input type="text" data-dojo-attach-point="projectAltId" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-event="keyup: handleProjectKeyUp" data-dojo-props="regExp:'\\d+-{0,1}\\d{0,2}',intermediateChanges:true" style="width: 150px"/>
+    <input type="text" data-dojo-attach-point="projectAltId" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-event="keyup: handleProjectKeyUp" data-dojo-props="regExp:'\\d+-{0,1}\\d{0,2}',intermediateChanges:true" style="width: 150px" />
     <div data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus fa-fw', showLabel: false" data-dojo-attach-event="click: addProject">
         Add Project
     </div>
+    <!--todo visible only if user has draft access
+    <br />
+    <input id="useDraft" name="useDraft" data-dojo-type="dijit/form/CheckBox" value="Y" data-dojo-attach-point="useDraft" />
+    <label id="useDraftCheckbox" for="useDraft">Use draft if available</label>
+        -->
+
 
     <p class="tip">Enter a project number to view all analysis areas for that project. To view just a specific analysis area, enter as project-analysis area ID, e.g. "1234-1".</p>
 

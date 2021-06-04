@@ -604,11 +604,10 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
         },
 
         /**
-            * Adds the project/project-alt identified by the value entered in the projectAltId field.
-            * @returns {void}
-            */
+         * Adds the project/project-alt identified by the value entered in the projectAltId field.
+         * @returns {void}
+         */
         addProject: function () {
-            //TODO: first a quick DWR call to check if user can see it (valid project, if draft then only show if user has draft access, etc.)
             //either do that here or in addProjectToMap function
             if (ko.utils.isNullOrWhiteSpace(this.projectAltId.value)) {
                 topic.publish('growler/growlError', 'Please enter a project ID to add to the map');
@@ -618,10 +617,10 @@ function (declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Dialog
         },
 
         /**
-            * Gets a saved map by its name, used to determine whether a user is overwriting an existing saved map
-            * @param {any} mapName The name of the map to get.
-            * @returns {object} A reference to the savedMap with the referenced mapName, or undefined if not found
-            */
+          * Gets a saved map by its name, used to determine whether a user is overwriting an existing saved map
+          * @param {any} mapName The name of the map to get.
+          * @returns {object} A reference to the savedMap with the referenced mapName, or undefined if not found
+          */
         getSavedMap: function (mapName) {
             var savedMap = this.savedMaps().find(function (sm) {
                 return sm.mapName === mapName;

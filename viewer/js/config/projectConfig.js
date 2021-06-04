@@ -28,7 +28,7 @@ function (ImageParameters, projectUrls) {
                 options: {
                     id: id,
                     opacity: 1.0,
-                    visible: true,
+                    visible: false, /* TODO current implementation is that all are visible by default, but new requirement is that only Currently in Review should be visible by default. Setting this to false temporarily for testing, will clarify at dev team meeting and make this an option that gets pushed into the method or something */
                     outFields: ['*'],
                     imageParameters: imageParameters,
                     mode: 1

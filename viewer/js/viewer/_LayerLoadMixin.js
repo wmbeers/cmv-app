@@ -35,7 +35,10 @@ define([
     'esri/renderers/SimpleRenderer',
     'esri/geometry/coordinateFormatter',
     'esri/geometry/webMercatorUtils',
-    'gis/plugins/LatLongParser'
+    'gis/plugins/LatLongParser',
+
+    'dojo/text!./templates/UseDraftDialog.html' // use-draft prompt dialog
+
     //note: 'jquery' // we don't need jquery, just an example of how to reference it
 ], function (
     declare,
@@ -70,7 +73,8 @@ define([
     SimpleRenderer,
     coordinateFormatter,
     webMercatorUtils,
-    LatLongParser
+    LatLongParser,
+    UseDraftDialogTemplate
     //jquery //we don't need jquery
 ) {
 
@@ -83,7 +87,7 @@ define([
             topic.subscribe('layerControl/viewMetadata', lang.hitch(this, 'viewMetadata'));
 
             //topics called from other places use topic layerLoader/... for clarity
-            topic.subscribe('layerLoader/addProjectToMap', lang.hitch(this, 'addProjectToMap'));
+            topic.subscribe('layerLoader/addProjectToMap', lang.hitch(this, 'addProject'));
             topic.subscribe('layerLoader/addAoiToMap', lang.hitch(this, 'addAoiToMap'));
             topic.subscribe('layerLoader/addLayerFromLayerDef', lang.hitch(this, 'addLayerFromLayerDef'));
             topic.subscribe('layerLoader/addLayerFromCategoryDef', lang.hitch(this, 'addLayerFromCategoryDef'));
@@ -839,6 +843,256 @@ define([
                 });
                 deferred.reject('Invalid layerName "' + layerName + '" property passed to addLayerByLayerName function.');
             }
+            return deferred;
+        },
+
+        _getProjectAltServiceInfos: function (projectAltId) {
+            var deferred = new Deferred(),
+                isAlt = false,
+                f = null,
+                id = null;
+
+            //parse out the projectAltId
+            if (typeof projectAltId === 'number' || !isNaN(projectAltId) || projectAltId.startsWith('p')) {
+                //presumed to be a project #
+                f = MapDAO.getProjectAltServiceInfos;
+                if (projectAltId.startsWith('p')) {
+                    id = projectAltId.substr(1);
+                } else {
+                    id = parseInt(projectAltId);
+                }
+            } else if (projectAltId.startsWith('a') || projectAltId.indexOf('-') > 0) {
+                //starts with a = specific alternative by fk_project_alt, contains dash = specific alternative identified by project-alt pattern, like '1234-1' for alt 1 of project 1234
+                f = MapDAO.getProjectAltServiceInfo; //singular, just works with alt
+                if (projectAltId.startsWith('a')) {
+                    id = projectAltId.substr(1);
+                } else {
+                    id = projectAltId; //as a string with the dash, server knows what to do
+                }
+                isAlt = true;
+            } else {
+                //something we don't know how to handle.
+                //no features found
+                topic.publish('growler/growl', {
+                    title: 'Invalid Project/Analysis Area ID',
+                    message: 'Unable to parse ID ' + projectAltId,
+                    level: 'error'
+                });
+                deferred.cancel('Invalid project/alt ID');
+                return deferred;
+            }
+
+            f(id, {
+                callback: function (reply) {
+                    var infos = reply;
+                    if (isAlt) {
+                        infos = [reply]; //convert to array
+                    }
+                    deferred.resolve(reply);
+                },
+                errorHandler: function (message, exception) {
+                    //self.loadingOverlay.hide();
+                    topic.publish('viewer/handleError', {
+                        source: '_LayerLoadMixin/addProject',
+                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)
+                    });
+                    deferred.reject(message);
+                }
+            });
+
+            return deferred;
+        },
+
+        _promptForSource: function () {
+            var dialog = new Dialog({
+                id: 'use_draft_dialog',
+                title: 'Select Data Source',
+                content: UseDraftDialogTemplate/*,
+                style: 'width: 90%; height: 75%'*/
+            });
+            dialog.show();
+        },
+
+        /**
+         * First step in the new chain of adding a project. Calls intermal function _getProjectAltServiceInfos, which queries EST to get projectAltServiceInfos for each alt of the project,
+         * which tells us where to get the data, and the extent. If project has both draft and non-draft versions available,
+         * and user has access to draft, user is prompted to choose which version to see. Once we've determined
+         * where we're getting the geometry from (draft or non-draft), this calls _loadProjectAlts. (If user input is needed,
+         * code branches to _promptForSource, and then through TODO, finally landing at _loadProjectAlts).
+         * @param {any} projectAltId The project or alternative ID, using one of the following patterns:
+         *                           * String 'p' followed by a project ID (e.g. p12992 to load project #12992)
+         *                           * Number, or string that contains just numbers (e.g. 12992 or '12992' to load project #12992)
+         *                           * String 'a' followed by a project alt ID (e.g. 'a9912' to load project alt 9912)
+         *                           * String containing two numbers separated by a dash (e.g. 12992-1 to load alt 1 of project 12992)
+         * @param {boolean} zoomOnLoad If true (or omitted), the map will zoom to the extent of the project after loading it. If false the current map extent is maintained. It is set to false when loading a saved map, because the desired map extent is saved with the map.
+         * @return {Deferred} Deffered instance, resolved when all alts of the project have finished loading
+         */
+        addProject: function (projectAltId, zoomOnLoad) {
+            var self = this,
+                deferred = new Deferred();
+            //first query to get ProjectAltServiceInfos
+            this._getProjectAltServiceInfos(projectAltId).then(function (serviceInfos) {
+                var promptForSource = false,
+                    errors = [];
+                serviceInfos.forEach(function (serviceInfo) {
+                    /*/decode source info
+                    switch (serviceInfo.nonDraftSource) {
+                        case 'ETAT_REVIEW':
+                            serviceInfo.source = projects.currentlyInReviewProjectsService;
+                            break;
+                        case 'PREVIOUSLY_REVIEWED':
+                            serviceInfo.source = projects.previouslyReviewedProjectsService;
+                            break;
+                        case 'ELIMINATED':
+                            //todo? separate prompt if there are any eliminated alts, ask user if they want to include eliminated alts? for now it will just load them.
+                            serviceInfo.source = projects.eliminatedProjectsService;
+                            break;
+                        default: // null is the only other option, and means
+                            //no milestone available, must be draft
+                            if (serviceInfo.hasDraftGeometry && this.hasViewDraftAuthority) {
+                                serviceInfo.source = projects.draftProjectsService;
+                            } else {
+                                //only draft, and user doesn't have access
+                                serviceInfo.source = null;
+                                errors.push('Unable to load analysis area ' + serviceInfo.altTitle + ': no non-draft geometry available');
+                            }
+                    }*/
+
+                    //does the alt have both draft and non-draft available, and user has draft access authority?
+                    if (serviceInfo.hasDraftGeometry && serviceInfo.hasNonDraftGeometry && self.hasViewDraftAuthority) {
+                        //prompt the user
+                        serviceInfo.promptForSource = true; //prompt this alt
+                        promptForSource = true; //overall prompt, at least one alt needs to be addressed
+                    } else {
+                        if (serviceInfo.hasNonDraftGeometry) {
+                            //only non-draft, or there is a draft and user doesn't have draft access
+                            serviceInfo.source = projects.nonDraftProjectsService;
+                        } else if (serviceInfo.hasDraftGeometry) {
+                            //only draft, and user doesn't have draft access
+                            //TODO how/when to warn user? 
+                            //Need to handle the case of some in draft/some not, as
+                            //well as all draft and user doesn't have draft access.
+                            //Could re-use the prompt?
+                        //} else {
+                            // Although it's possible for a draft alt to have no geometry,
+                            // even still the method for setting hasDraftGeometry only
+                            // takes into account the alt status, and so hasDraftGeometry
+                            // can be true even if nothing's been digitized yet,
+                            // so it's not possible for both hasNonDraftGeometry and hasDraftGeometry to be true
+                        }
+                    }
+                });
+                if (promptForSource) {
+                    //TODO a dialog that lists each serviceInfo with .promptForSource = true
+                    //with option to choose
+                    //e.g. 
+                    /* Alternative 1 has draft geometry available. Which version would you like
+                       ( ) Current Draft
+                       ( ) Most recent milestone
+                       Alternative 2 has....
+                       */
+                    //that dialog will call the _loadProjectAlts method once it's set the source, as above
+                    //main challenge here is hanging onto the deferred through the dialog so it can be passed to the method
+                    //temporary for testing. to mimic this w/o the dialog set the appropriate source
+                    //e.g. in dev console call 
+                    //  window.serviceInfos[x].serviceInfo.source = projects.nonDraftProjectsService;
+                    //or
+                    //  ...source = projects.draftProjectsService;
+                    //And call app._loadProjectAlts(window.serviceInfos, window.lpDeferred)
+                    window.serviceInfos = serviceInfos;
+                    window.lpDeferred = deferred;
+                    window.projectsConfig = projects;
+                    self._promptForSource();
+                } else {
+                    self._loadProjectAlts(serviceInfos, deferred);
+                }
+            });
+        },
+
+        /**
+         * Called from addProject or TODO method that deals with dialog results, taking the now
+         * complete serviceInfos and loading each alt.
+         * @param {any} serviceInfos The serviceInfos, which contain the alt IDs (FK_PROJECT_ALT), and whether to pull from draft or non-draft, and the extent.
+         * @param {any} deferred The Deferred object created by addProject, which will be resolved in this method when all alts are finished loading
+         */
+        _loadProjectAlts: function (serviceInfos, deferred) {
+            var self = this,
+                promises = [];
+            serviceInfos.forEach(function (serviceInfo) {
+                //turn the extent into an ESRI extent
+                serviceInfo.extent = new Extent({xmin: serviceInfo.extent.xmin, ymin: serviceInfo.extent.ymin, xmax: serviceInfo.extent.xmax, ymax: serviceInfo.extent.ymax, spatialReference: { wkid: 3086 }});
+                //add a dummy count property, so the zoomToExtents method can be used
+                serviceInfo.count = 1;
+                //load the alt, adding it to the promises array, used below
+                promises.push(this._loadProjectAlt(serviceInfo));
+            }, this);
+
+            //when all alts are loaded, the Deferreds stored in promises array are resolved,
+            //and this block resolves the overall Deferred.
+            all(promises).then(function () {
+                self.zoomToExtents(serviceInfos);
+                deferred.resolve(serviceInfos);
+            });
+        },
+
+        /**
+         * Converts a serviceInfo into an object that can be used by addLayer method,
+         * setting the definitions on each layer in the service. 
+         * @param {any} serviceInfo
+         */
+        _loadProjectAlt: function (serviceInfo) {
+            var self = this, //so we don't lose track buried down in callbacks
+                definitionQuery = 'project_alt=' + serviceInfo.id,
+                deferred = new Deferred();
+
+            //TODO get lex to make drafts layer have same structure with fk_project_alt field instead of project_alt
+            if (serviceInfo.source !== projects.draftProjectsService) {
+                definitionQuery = 'fk_' + definitionQuery;
+            }
+
+            //TODO get lex to make draft layer structure consistent
+            //query.outFields = queryDraft ? ['PROJECT_ALT', 'ALT_ID', 'ALT_NAME'] : ['FK_PROJECT', 'FK_PROJECT_ALT', 'ALT_ID', 'ALT_NAME'];
+
+            var projectLayerConfig = {
+                name: serviceInfo.altTitle,
+                id: ('projectAlt_' + serviceInfo.id), //internal ID, not really important, but helps with debugging
+                url: serviceInfo.source,
+                type: 'dynamic',
+                layerName: null, //only needed for metadata, which we don't have for projects
+                //used by identify widget to specify which layers will have identify results
+                //todo get lex to add labels to non-draft service so it has the same indexes as everything else:
+                //layerIds: [5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24]
+                layerIds: serviceInfo.source === projects.nonDraftProjectsService ? [1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19] : [5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24]
+            };
+
+            if (serviceInfo.source === projects.draftProjectsService) {
+                projectLayerConfig.name += ' (DRAFT)';
+            }
+
+            //convert definitionQuery into sparse array of layerDefinitions
+            var layerDefinitions = [],
+                //todo get lex to add labels to non-draft service so it has the same indexes as everything else: layerIndexes = [2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24];
+                layerIndexes = serviceInfo.source === projects.nonDraftProjectsService ? [1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13, 15, 16, 17, 19, 20] : [2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24];;
+                
+            layerIndexes.forEach(function (layerIndex) {
+                layerDefinitions[layerIndex] = definitionQuery;
+            });
+
+            projectLayerConfig.identifies = projectConfig.constructIdentifies(serviceInfo.source !== projects.draftProjectsService);
+
+            projectLayerConfig.projectAltId = 'a' + serviceInfo.id;
+            var projectLayer = self.constructLayer(projectLayerConfig,
+                layerDefinitions, // definitionQuery,
+                false, //prevents definitionExpression from overriding title TODO cleaner method of handling this
+                null
+            );
+            //resolve deferred via addLayer method
+            self.addLayer(projectLayer, false).then(
+                function (l) {
+                    deferred.resolve(l);
+                }
+            );
+
             return deferred;
         },
 
