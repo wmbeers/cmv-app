@@ -3,6 +3,7 @@ define([
     'dojo/_base/lang',
     'dojo/_base/array',
     'dojo/on',
+    'dojo/dom',
     'dojo/topic',
     'dojo/io-query',
     'dojo/Deferred',
@@ -45,6 +46,7 @@ define([
     lang,
     array,
     on,
+    dom,
     topic,
     ioQuery,
     Deferred,
@@ -114,6 +116,40 @@ define([
 
             window.addEventListener('storage', lang.hitch(this, '_handleStorageMessage'));
 
+            var self = this;
+            this.useDraftDialog = new Dialog({
+                id: 'use_draft_dialog',
+                title: 'Select Data Source',
+                content: UseDraftDialogTemplate,
+                style: 'width: 360px; height: 185px',
+                onCancel: function () {
+                    if (this.lpDeferred && !this.lpDeferred.isResolved()) {
+                        this.lpDeferred.resolve(); // not even sure why I need
+                    }
+                }/* onLoad doesn't seem to work.,
+                onLoad: function () {
+                    //because this is a mixin and not a widget, some bit of Dojo is missing in this context
+                    //that seems to be limiting what data-dojo-* attributes are actually parsed, and the
+                    //data-dojo-attach-* attributes are being ignored. So this bit of perfectly cromulent, 
+                    //albeit not the "Dojo" way, code adds the click event handlers
+                    parser.parse('use_draft_dialog').then(function () {
+                    }, function (abcd) {
+                        debugger;
+                    });
+                }*/
+            });
+
+            //doesn't seem to hurt that this is happening here and not in the never-firing onLoad event.
+            self.currentDraftButton = dom.byId('currentDraftButton');
+            on(self.currentDraftButton, 'click', function () {
+                self._setSourceAndLoadProject(projects.draftProjectsService);
+            });
+            self.mostRecentMilstoneButton = dom.byId('mostRecentMilstoneButton');
+            on(self.mostRecentMilstoneButton, 'click', function () {
+                self._setSourceAndLoadProject(projects.nonDraftProjectsService);
+            });
+
+
             this.inherited(arguments);
         },
 
@@ -149,32 +185,34 @@ define([
         },
 
         /**
-        * Handles arguments passed in the query string to do things after the map is loaded, like loading a saved map or adding a project to the map
-        * @param {object} queryString optional queryString when calling this method from _handleStorageMessage. If not provided, uses window.location.href to get queryString.
-        * Acceptable queryString parameters include:
-        * projectId: ID of the a project to load in the map (PK_PROJECT), or alternative (identified by PK_PROJECT_ALT prefixed with a, e.g. projectId=a33241, or as project-altnum (FK_PROJECT, PK_PRJ_ALT), e.g. projectId=3321-1
-        * aoiId: ID of an AOI project to load in the map (T_PROJECT_AOI.PK_PROJECT)
-        * aoiAnalysisAreaId: ID of an AOI project alt to load in the map
-        * layerName: SDE layer name of a layer to load in the map
-        * latLon: coordinates in lat/long, wgs84 datum assumed, to center the map on. Not currently used by EST. Can be decimal degress, decimal minutes, degrees/minutes/seconds
-        * mgrs: coordinates in Miltary Grid Reference System (MGRS) coordinate system
-        * zoomLevel: zoom level to set to the map. If not provided, it is inferred based on the precision of the MGRS coordinate, or the fourth-highest zoom level if using latLon
-        * featureId: the ID of a project feature to load in the map; must be paired with valid featureType parameter
-        * featureType: the type of project feature to load in the map (point, line or polygon); must be paried with featureId
-        * featureName: the name of the project feature, used as the label of the feature's layer in the Layers widget. If not provided, label "Feature ######" is used.
-        * Some parameters can be combined, including:
-        *  * layerName and any other parameter (e.g. with projectId, aoiId, or featureId/featureType)
-        *  * loadMap and any other parameter
-        *  * mgrs or latLon with any other parameter
-        * Zoom-to point paramters (mgrs and latLon) are mutually exclusive. If both are provided only mgrs value is used.
-        * Parameters related to loading projects/aois/features are mutually exclusive, and can't be combined; if multiple ones are provided the one earliest 
-        * on the following list is used:
-        *  * projectId
-        *  * aoiId
-        *  * featureId and featureType
-        * Parameters for loading a feature (featureId and featureType) have to be paired to add a feature to the map, and ideally also include 
-        * featureName. If featureName isn't provided, the feature is labeled "Feature ######" in the Layers widget.
-        * @returns {void}
+         * Handles arguments passed in the query string to do things after the map is loaded, like loading a saved map or adding a project to the map
+         * @param {object} queryString optional queryString when calling this method from _handleStorageMessage. If not provided, uses window.location.href to get queryString.
+         * Acceptable queryString parameters include:
+         * projectId: ID of the a project to load in the map (PK_PROJECT), or alternative (identified by PK_PROJECT_ALT prefixed with a, e.g. projectId=a33241, or as project-altnum (FK_PROJECT, PK_PRJ_ALT), e.g. projectId=3321-1
+         * version: Only valid when projectId parameter is used, valid values are "d" (for draft) and "m" (for milestone)
+         * aoiId: ID of an AOI project to load in the map (T_PROJECT_AOI.PK_PROJECT)
+         * aoiAnalysisAreaId: ID of an AOI project alt to load in the map
+         * layerName: SDE layer name of a layer to load in the map
+         * latLon: coordinates in lat/long, wgs84 datum assumed, to center the map on. Not currently used by EST. Can be decimal degress, decimal minutes, degrees/minutes/seconds
+         * mgrs: coordinates in Miltary Grid Reference System (MGRS) coordinate system
+         * zoomLevel: zoom level to set to the map. If not provided, it is inferred based on the precision of the MGRS coordinate, or the fourth-highest zoom level if using latLon
+         * featureId: the ID of a project feature to load in the map; must be paired with valid featureType parameter
+         * featureType: the type of project feature to load in the map (point, line or polygon); must be paried with featureId
+         * featureName: the name of the project feature, used as the label of the feature's layer in the Layers widget. If not provided, label "Feature ######" is used.
+         * Some parameters can be combined, including:
+         *  * layerName and any other parameter (e.g. with projectId, aoiId, or featureId/featureType)
+         *  * loadMap and any other parameter
+         *  * mgrs or latLon with any other parameter
+         *  * projectId and version
+         * Zoom-to point paramters (mgrs and latLon) are mutually exclusive. If both are provided only mgrs value is used.
+         * Parameters related to loading projects/aois/features are mutually exclusive, and can't be combined; if multiple ones are provided the one earliest 
+         * on the following list is used:
+         *  * projectId
+         *  * aoiId
+         *  * featureId and featureType
+         * Parameters for loading a feature (featureId and featureType) have to be paired to add a feature to the map, and ideally also include 
+         * featureName. If featureName isn't provided, the feature is labeled "Feature ######" in the Layers widget.
+         * @returns {void}
         */
         _handleQueryString: function (queryString) { //eslint-disable-line complexity
             var self = this, //so we don't lose track of the application as the appropriate closure scope
@@ -190,13 +228,15 @@ define([
                         var f = functions[i],
                             a = args[i];
                         i++;
-                        f.apply(self, a).then(function () {
-                            processNextFunction();
-                        },
-                        //even if the deferred is rejected we want to process the next
-                        function () {
-                            processNextFunction();
-                        });
+                        f.apply(self, a).then(
+                            function () {
+                                processNextFunction();
+                            },
+                            //even if the deferred is rejected we want to process the next
+                            function () {
+                                processNextFunction();
+                            }
+                        );
                     }
                 };
 
@@ -210,21 +250,21 @@ define([
                 //addProjectToMap accepts multiple arguments (projectAltId, zoomOnLoad, _deferred, queryDraft)
                 //we only care about the first two
                 //zoomOnLoad should be false if mgrs/latlong parameter is also included
-                functions.push(this.addProjectToMap);
+                functions.push(this.addProject);
                 var zoomOnLoadProject = true;
                 if (qsObj.mgrs || qsObj.latLong) {
                     zoomOnLoadProject = false;
                 }
-                args.push([qsObj.projectId, zoomOnLoadProject]);
+                args.push([qsObj.projectId, zoomOnLoadProject, qsObj.version]); /*version might be null/undefined, and that's ok, handled in addProject*/
                 //load an AOI
             } else if (qsObj.aoiId) {
                 functions.push(this.addAoiToMap);
                 args.push([qsObj.aoiId]);
-            //load an AOI analysis area
+                //load an AOI analysis area
             } else if (qsObj.aoiAnalysisAreaId) {
                 functions.push(this.addAoiAltToMap);
                 args.push([qsObj.aoiAnalysisAreaId]);
-            //load a project feature
+                //load a project feature
             } else if (qsObj.featureId && qsObj.featureType) {
                 functions.push(this.addProjectFeatureToMap);
                 var zoomOnLoadFeature = true;
@@ -281,7 +321,7 @@ define([
                         url: url,
                         maxAllowableOffset: 10, // TODO this is used for generalizing geometries. Example from CMV shows 100, but that was way too generalized; trying 10
                         where: definitionExpression,
-                        geometry: this.map.extent 
+                        geometry: this.map.extent
                     }//,
                     //idProperty: 'AUTOID' // doesn't seem to be necessary; works without it and we don't have to worry about this not working with layers w/o autoid, like projects/aois
                 },
@@ -505,7 +545,7 @@ define([
             //include sub-categories (and their sub-categories, ad infinitum)
             if (includeSubCategories) {
                 //eslint-disable-next-line no-inner-declarations
-                function recurse (c) { 
+                function recurse (c) {
                     c.categories.forEach(function (subCategory) {
                         var subLayerDefs = subCategory.layerDefs.slice(0).reverse();
                         layerDefs = layerDefs.concat(subLayerDefs);
@@ -589,9 +629,9 @@ define([
                 this._onLayerLoad(layer, deferred, zoomOnLoad, suppressGrowl);
             }
             on(layer, 'load', function () {
-                self._onLayerLoad(layer, deferred, zoomOnLoad, suppressGrowl); 
+                self._onLayerLoad(layer, deferred, zoomOnLoad, suppressGrowl);
             });
-            
+
             //add the layer to the map
             this.map.addLayer(layer);
 
@@ -650,10 +690,10 @@ define([
                 // * LayerControl widget, via layerControl/addLayerControls
                 // * Identify widget, via identify/addLayerInfos (with necessary change to Identify widget, under issue #69)
                 // * Legend widget, via self.legendLayerInfos (an app-global object that is somehow referenced by Legend widget)
-                var layerInfo = { 
+                var layerInfo = {
                     //layer, title and type are (I think) used by all widgets
                     layer: layer,
-                    title: layerDef.title, 
+                    title: layerDef.title,
                     type: layerDef.type,
                     //used by LayerControl
                     controlOptions: {
@@ -674,7 +714,7 @@ define([
                         //or as a basic configuration in viewer.js (essentially setting app.ignoreDynamicGroupVisibility = false).
                         //OR leave it up to user preference--crteate a pref dialog that lets user's decide how they want it to behave.
                         //Tricky bit is I don't think you can change it once loaded, so we'd need some sort of message to refresh the browser.
-                        ignoreDynamicGroupVisibility: true, 
+                        ignoreDynamicGroupVisibility: true,
                         //these are the menus that show up for stand-alone featureLayers; they do not appear at the root of a dynamic layer
                         menu: [
                             {
@@ -859,7 +899,7 @@ define([
                 if (projectAltId.startsWith('p')) {
                     id = projectAltId.substr(1);
                 } else {
-                    id = parseInt(projectAltId);
+                    id = parseInt(projectAltId, 10);
                 }
             } else if (projectAltId.startsWith('a') || projectAltId.indexOf('-') > 0) {
                 //starts with a = specific alternative by fk_project_alt, contains dash = specific alternative identified by project-alt pattern, like '1234-1' for alt 1 of project 1234
@@ -884,11 +924,7 @@ define([
 
             f(id, {
                 callback: function (reply) {
-                    var infos = reply;
-                    if (isAlt) {
-                        infos = [reply]; //convert to array
-                    }
-                    deferred.resolve(reply);
+                    deferred.resolve(isAlt? [reply] : reply);
                 },
                 errorHandler: function (message, exception) {
                     //self.loadingOverlay.hide();
@@ -904,36 +940,32 @@ define([
         },
 
         _promptForSource: function () {
-            var dialog = new Dialog({
-                id: 'use_draft_dialog',
-                title: 'Select Data Source',
-                content: UseDraftDialogTemplate/*,
-                style: 'width: 90%; height: 75%'*/
-            });
-            dialog.show();
+            this.useDraftDialog.show();
         },
 
         /**
-         * First step in the new chain of adding a project. Calls intermal function _getProjectAltServiceInfos, which queries EST to get projectAltServiceInfos for each alt of the project,
-         * which tells us where to get the data, and the extent. If project has both draft and non-draft versions available,
-         * and user has access to draft, user is prompted to choose which version to see. Once we've determined
-         * where we're getting the geometry from (draft or non-draft), this calls _loadProjectAlts. (If user input is needed,
-         * code branches to _promptForSource, and then through TODO, finally landing at _loadProjectAlts).
+         * First step in the new chain of adding a project, replacing addProjectToMap. Calls internal function _getProjectAltServiceInfos, which queries EST to get projectAltServiceInfos
+         * for each alt of the project, or getProjectAltServiceInfo (singular) for a specific alternative. The serviceInfo(s) returned 
+         * tell us where to get the data, and the extent TODO CAN WE TRUST THE EXTENT!. If project has both draft and non-draft versions available,
+         * and user has access to draft, user is prompted to choose which version to see, unless the version parameter was passed in the command. 
+         * Once we've determined where we're getting the geometry from (draft or non-draft), this calls _loadProjectAlts. (If user input is needed,
+         * code branches to _promptForSource, and then through _setSourceAndLoadProject when user selects a source, finally landing at _loadProjectAlts).
          * @param {any} projectAltId The project or alternative ID, using one of the following patterns:
          *                           * String 'p' followed by a project ID (e.g. p12992 to load project #12992)
          *                           * Number, or string that contains just numbers (e.g. 12992 or '12992' to load project #12992)
          *                           * String 'a' followed by a project alt ID (e.g. 'a9912' to load project alt 9912)
          *                           * String containing two numbers separated by a dash (e.g. 12992-1 to load alt 1 of project 12992)
          * @param {boolean} zoomOnLoad If true (or omitted), the map will zoom to the extent of the project after loading it. If false the current map extent is maintained. It is set to false when loading a saved map, because the desired map extent is saved with the map.
+         * @param {string} versionPreference If provided, and the project being loaded has both draft and milestone versions, this parameter is used to determine which version ('d' for draft or 'm' for milestoned) to load.
          * @return {Deferred} Deffered instance, resolved when all alts of the project have finished loading
          */
-        addProject: function (projectAltId, zoomOnLoad) {
+        addProject: function (projectAltId, zoomOnLoad, versionPreference) {
             var self = this,
                 deferred = new Deferred();
+
             //first query to get ProjectAltServiceInfos
             this._getProjectAltServiceInfos(projectAltId).then(function (serviceInfos) {
-                var promptForSource = false,
-                    errors = [];
+                var promptForSource = false;
                 serviceInfos.forEach(function (serviceInfo) {
                     /*/decode source info
                     switch (serviceInfo.nonDraftSource) {
@@ -959,68 +991,95 @@ define([
                     }*/
 
                     //does the alt have both draft and non-draft available, and user has draft access authority?
-                    if (serviceInfo.hasDraftGeometry && serviceInfo.hasNonDraftGeometry && self.hasViewDraftAuthority) {
-                        //prompt the user
-                        serviceInfo.promptForSource = true; //prompt this alt
-                        promptForSource = true; //overall prompt, at least one alt needs to be addressed
-                    } else {
-                        if (serviceInfo.hasNonDraftGeometry) {
-                            //only non-draft, or there is a draft and user doesn't have draft access
-                            serviceInfo.source = projects.nonDraftProjectsService;
-                        } else if (serviceInfo.hasDraftGeometry) {
-                            //only draft, and user doesn't have draft access
-                            //TODO how/when to warn user? 
-                            //Need to handle the case of some in draft/some not, as
-                            //well as all draft and user doesn't have draft access.
-                            //Could re-use the prompt?
-                        //} else {
-                            // Although it's possible for a draft alt to have no geometry,
-                            // even still the method for setting hasDraftGeometry only
-                            // takes into account the alt status, and so hasDraftGeometry
-                            // can be true even if nothing's been digitized yet,
-                            // so it's not possible for both hasNonDraftGeometry and hasDraftGeometry to be true
+                    //real cases that need to be handled:
+                    /* user has draft access, both draft and non-draft available: show prompt to choose
+                       user has draft access, only draft data are available: load draft
+                       only non-draft data are available (regardless of whether user has draft access): load milestone 
+                       user does not have draft access, non-draft data are available (draft data available or not, doesn't matter): load milestone 
+                       user does not have draft access, only draft data available: give warning data not available
+
+                        put another way:
+                        only draft available: if user has draft access, load the draft; if not show warning
+                        only non-draft available: load milestone
+                        both non-draft and draft: if user has draft access, prompt to choose; if not load milestone
+                     */
+
+                    if (serviceInfo.hasDraftGeometry && !serviceInfo.hasNonDraftGeometry) {
+                        //only draft available. does user have access?
+                        if (self.hasViewDraftAuthority) {
+                            serviceInfo.source = projects.draftProjectsService;
+                        } else {
+                            //TODO warn user and stop processing
+                            //need to figure out best way to stop this w/o breaking other load functions
                         }
+                    } else if (!serviceInfo.hasDraftGeometry && serviceInfo.hasNonDraftGeometry) {
+                        serviceInfo.source = projects.nonDraftProjectsService;
+                    } else if (self.hasViewDraftAuthority) {
+                        //both draft and non-draft are available (we can ignore the imaginable case of both false--our data structure prevents that), and user has access to the draft
+                        if (versionPreference === 'd') {
+                            serviceInfo.source = projects.draftProjectsService;
+                            //todo load draft
+                        } else if (versionPreference === 'm') {
+                            serviceInfo.source = projects.nonDraftProjectsService;
+                        } else {
+                            //prompt the user
+                            serviceInfo.promptForSource = true; //prompt this alt
+                            promptForSource = true; //overall prompt, at least one alt needs to be addressed
+                        }
+                    } else {
+                        //both draft and non-draft are available, but user only has non-draft access
+                        serviceInfo.source = projects.nonDraftProjectsService;
                     }
                 });
+
                 if (promptForSource) {
-                    //TODO a dialog that lists each serviceInfo with .promptForSource = true
-                    //with option to choose
-                    //e.g. 
-                    /* Alternative 1 has draft geometry available. Which version would you like
-                       ( ) Current Draft
-                       ( ) Most recent milestone
-                       Alternative 2 has....
-                       */
-                    //that dialog will call the _loadProjectAlts method once it's set the source, as above
-                    //main challenge here is hanging onto the deferred through the dialog so it can be passed to the method
-                    //temporary for testing. to mimic this w/o the dialog set the appropriate source
-                    //e.g. in dev console call 
-                    //  window.serviceInfos[x].serviceInfo.source = projects.nonDraftProjectsService;
-                    //or
-                    //  ...source = projects.draftProjectsService;
-                    //And call app._loadProjectAlts(window.serviceInfos, window.lpDeferred)
-                    window.serviceInfos = serviceInfos;
-                    window.lpDeferred = deferred;
-                    window.projectsConfig = projects;
+                    self.serviceInfos = serviceInfos;
+                    self.lpDeferred = deferred;
                     self._promptForSource();
                 } else {
                     self._loadProjectAlts(serviceInfos, deferred);
                 }
             });
+            return deferred;
         },
 
         /**
-         * Called from addProject or TODO method that deals with dialog results, taking the now
+         * Called from button event handlers on the UseDraftDialog. Hides the dialog, sets the propert source information, then
+         * calls _loadProjectAlts.
+         * @param {any} chosenSource a reference to projects.draftProjectsService or projects.nonDraftProjectsService
+         */
+        _setSourceAndLoadProject: function (chosenSource) {
+            this.useDraftDialog.hide();
+            this.serviceInfos.forEach(function (serviceInfo) {
+                if (serviceInfo.promptForSource) { //this check is purely for the unsupported case (but still have handfull of old projects where it's currently like this) where there's some split between alts about what status the data is in
+                    serviceInfo.source = chosenSource;
+                }
+            });
+            this._loadProjectAlts(this.serviceInfos, this.lpDeferred);
+        },
+
+        /**
+         * Called from addProject or method that deals with dialog results, taking the now
          * complete serviceInfos and loading each alt.
          * @param {any} serviceInfos The serviceInfos, which contain the alt IDs (FK_PROJECT_ALT), and whether to pull from draft or non-draft, and the extent.
          * @param {any} deferred The Deferred object created by addProject, which will be resolved in this method when all alts are finished loading
+         * @return {void}
          */
         _loadProjectAlts: function (serviceInfos, deferred) {
             var self = this,
                 promises = [];
             serviceInfos.forEach(function (serviceInfo) {
                 //turn the extent into an ESRI extent
-                serviceInfo.extent = new Extent({xmin: serviceInfo.extent.xmin, ymin: serviceInfo.extent.ymin, xmax: serviceInfo.extent.xmax, ymax: serviceInfo.extent.ymax, spatialReference: { wkid: 3086 }});
+                //todo not sure if the extent from serviceInfos can be trusted, should do a query for extent on analysis areas
+                serviceInfo.extent = new Extent({
+                    xmin: serviceInfo.extent.xmin,
+                    ymin: serviceInfo.extent.ymin,
+                    xmax: serviceInfo.extent.xmax,
+                    ymax: serviceInfo.extent.ymax,
+                    spatialReference: {
+                        wkid: 3086
+                    }
+                });
                 //add a dummy count property, so the zoomToExtents method can be used
                 serviceInfo.count = 1;
                 //load the alt, adding it to the promises array, used below
@@ -1038,20 +1097,44 @@ define([
         /**
          * Converts a serviceInfo into an object that can be used by addLayer method,
          * setting the definitions on each layer in the service. 
-         * @param {any} serviceInfo
+         * @param {any} serviceInfo object with source, altTitle, id property
+         * @returns {Deferred} a deferred object to be resolved when the call to addLayer from this function is resolved
          */
         _loadProjectAlt: function (serviceInfo) {
             var self = this, //so we don't lose track buried down in callbacks
-                definitionQuery = 'project_alt=' + serviceInfo.id,
                 deferred = new Deferred();
 
-            //TODO get lex to make drafts layer have same structure with fk_project_alt field instead of project_alt
             if (serviceInfo.source !== projects.draftProjectsService) {
                 definitionQuery = 'fk_' + definitionQuery;
             }
 
             //TODO get lex to make draft layer structure consistent
             //query.outFields = queryDraft ? ['PROJECT_ALT', 'ALT_ID', 'ALT_NAME'] : ['FK_PROJECT', 'FK_PROJECT_ALT', 'ALT_ID', 'ALT_NAME'];
+            //convert definitionQuery into sparse array of layerDefinitions
+
+            var layerDefinitions = [],
+                //layerIndexes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24];
+                //todo the layer index are different, non-draft service has labels at root (index 0), not under Analysis Area Features (index 0 in other services)
+                layerIndexes = serviceInfo.source === projects.nonDraftProjectsService ? [1, 2, 3, 5, 6, 7, 8, 9, 12, 13, 15, 16, 17, 19, 20] : [2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24];
+
+            layerIndexes.forEach(function (layerIndex) {
+                //This hackiness deals with the inconsistencies of naming the field we're filtering on from service to service and layer to layer.
+                //TODO update this when GeoPlan changes the structures
+                if (serviceInfo.source === projects.nonDraftProjectsService && layerIndex < 12) {
+                    //features and analysis areas of the non-draft service reference fk_project_alt
+                    layerDefinitions[layerIndex] = 'fk_project_alt=' + serviceInfo.id;
+                } else if (serviceInfo.source === projects.nonDraftProjectsService && layerIndex >= 12) {
+                    //buffers of feature and analysis areas of the non-draft service reference pk_project_alt
+                    layerDefinitions[layerIndex] = 'pk_project_alt=' + serviceInfo.id;
+                } else if (serviceInfo.source === projects.draftProjectsService && layerIndex >= 19) {
+                    //analysis area buffers of the draft service lack pk/fk_project_alt field, have to resort to alt_id
+                    layerDefinitions[layerIndex] = 'alt_id=\'' + serviceInfo.altNum + '\'';
+                } else {
+                    //other layers of the draft service use just "project_alt"
+                    layerDefinitions[layerIndex] = 'project_alt=' + serviceInfo.id;
+                }
+            });
+
 
             var projectLayerConfig = {
                 name: serviceInfo.altTitle,
@@ -1060,23 +1143,14 @@ define([
                 type: 'dynamic',
                 layerName: null, //only needed for metadata, which we don't have for projects
                 //used by identify widget to specify which layers will have identify results
-                //todo get lex to add labels to non-draft service so it has the same indexes as everything else:
-                //layerIds: [5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24]
-                layerIds: serviceInfo.source === projects.nonDraftProjectsService ? [1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19] : [5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24]
+                //done todo get lex to add labels to non-draft service so it has the same indexes as everything else:
+                layerIds: [5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24]
+                //layerIds: serviceInfo.source === projects.nonDraftProjectsService ? [1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19] : [5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24]
             };
 
             if (serviceInfo.source === projects.draftProjectsService) {
                 projectLayerConfig.name += ' (DRAFT)';
             }
-
-            //convert definitionQuery into sparse array of layerDefinitions
-            var layerDefinitions = [],
-                //todo get lex to add labels to non-draft service so it has the same indexes as everything else: layerIndexes = [2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24];
-                layerIndexes = serviceInfo.source === projects.nonDraftProjectsService ? [1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13, 15, 16, 17, 19, 20] : [2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24];;
-                
-            layerIndexes.forEach(function (layerIndex) {
-                layerDefinitions[layerIndex] = definitionQuery;
-            });
 
             projectLayerConfig.identifies = projectConfig.constructIdentifies(serviceInfo.source !== projects.draftProjectsService);
 
@@ -1098,6 +1172,7 @@ define([
 
         /**
          * TODO add support for project/alt milestones
+         * DEPRECATED replaced with addProject TODO delete this
          * Add a project or alternative to the map, using one of the following patterns:
          * 'p' followed by a project ID (e.g. p12992 to load project #12992)
          * number, or string that contains just numbers (e.g. 12992 or '12992' to load project #12992)
@@ -1116,7 +1191,7 @@ define([
                 deferred = _deferred || new Deferred(),
                 query = new Query(),
                 url = queryDraft && (this.hasProjectEditAuthority || this.hasViewDraftAuthority) ? projects.queryDraftLayer : projects.queryMmaLayer, //query task url is in the config file viewer/js/config/projects.js. 
-                queryTask = new QueryTask(url); 
+                queryTask = new QueryTask(url);
 
             //default zoomOnLoad to true
             if (typeof zoomOnLoad === 'undefined') {
@@ -1175,7 +1250,7 @@ define([
             //queryTask.executeForCount(query, function (count) {
             //    if (count === 0) {
             queryTask.execute(query, function (reply) {
-                if (reply.features.length === 0) {                
+                if (reply.features.length === 0) {
                     //no features found
                     if (!queryDraft && (self.hasProjectEditAuthority || self.hasViewDraftAuthority)) {
                         //try again with draft, passing the deferred we've already created and true for the queryDraft argument
@@ -1204,7 +1279,7 @@ define([
 
                     //convert definitionQuery into sparse array of layerDefinitions
                     var layerDefinitions = [],
-                        layerIndexes = [2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24]; 
+                        layerIndexes = [2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24];
 
                     layerIndexes.forEach(function (layerIndex) {
                         layerDefinitions[layerIndex] = definitionQuery;
@@ -1225,8 +1300,8 @@ define([
                         //cach the fk_project for savedMap
                         projectLayerConfig.projectId = queryDraft ? reply.features[0].attributes.ALT_ID.split('-')[0] : reply.features[0].attributes.FK_PROJECT;
                     }
-                    
-                    var projectLayer = self.constructLayer(projectLayerConfig, 
+
+                    var projectLayer = self.constructLayer(projectLayerConfig,
                         layerDefinitions, // definitionQuery,
                         false, //prevents definitionExpression from overriding title TODO cleaner method of handling this
                         null //todo just set this in the map service rather than having to code in js
@@ -1265,7 +1340,7 @@ define([
             return deferred;
         },
 
-     
+
         /**
          * Add the project feature to the map identified by featureId and featureType
          * @param {number} featureId The numeric ID of the feature
@@ -1369,8 +1444,8 @@ define([
                 },
                 function (msg) {
                     deferred.reject(msg);
-                //},
-                //function (progressMsg) {
+                    //},
+                    //function (progressMsg) {
                     //todo?
                 }
             );
@@ -1529,7 +1604,7 @@ define([
                     deferred.reject(err);
                 }
             });
-                
+
 
             return deferred;
         },
@@ -1592,7 +1667,7 @@ define([
                         2: {
                             title: 'Polygon feature of ' + aoiName,
                             description: popupTemplateString
-                            
+
                         },
                         3: {
                             title: 'Analysis Area of ' + aoiName,
@@ -1883,16 +1958,20 @@ define([
          */
         zoomToLayer: function (layer) {
             var self = this,
-                deferred = new Deferred(),
-                query;
+                deferred = new Deferred();
             //when called from the menu, "layer" argument isn't really the layer, but a structure created by layer control
             if (layer.layer) {
-                layer = layer.layer;
+                if (layer.subLayer) {
+                    //todo get a handle on the actual layer within the service and use that
+                    layer = layer.layer; // new FeatureLayer(layer.layer.url + '/' + layer.subLayer.id);
+                } else {
+                    layer = layer.layer;
+                }
             }
 
             //test if we have a definition expression applied, and if so, query the extent and zoom in query callback
             if (layer.getDefinitionExpression && layer.getDefinitionExpression()) {
-                query = new Query();
+                var query = new Query();
                 //query.where = '1=1' //definitionExpression, if present, doesn't need to be re-applied; nor does this '1=1' hack need to be here, because we're running the query against the layer which already is supplying the appropriate where clause
                 layer.queryExtent(query,
                     //query extent succeeded, zoom the map
@@ -1928,11 +2007,11 @@ define([
                     }
                     var subLayerUrl = layer.url + '/' + index,
                         queryTask = new QueryTask(subLayerUrl);
-                    query = new Query();
+                    var query = new Query();
                     query.where = layerDefinition; //definitionExpression/layerDefinition, if present, DOES need to be applied for this way of doing it, w/o building reference to a feature layer
                     return queryTask.executeForExtent(query);
                 });
-                all (extentRequests).then(
+                all(extentRequests).then(
                     function (extentReplies) {
                         self.zoomToExtents(extentReplies).then(
                             function (zoomResponse) {
@@ -2000,7 +2079,7 @@ define([
                 map = this.map,
                 deferred = new Deferred();
             if (extent.spatialReference === map.spatialReference) {
-                this._zoomToExtent(extent, deferred);               
+                this._zoomToExtent(extent, deferred);
             } else if (esriConfig.defaults.geometryService) {
                 //project the extent--most often we're getting an extent from one of our layers,
                 //and the extent will be in Albers; need to project it to the Map's World Mercator coordinate system

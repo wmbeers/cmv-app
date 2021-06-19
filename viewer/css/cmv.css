@@ -884,6 +884,16 @@ body {
 
 /* end esri directions widget overrides */
 
+/* dojo buttons */
+
+.dijitButton.full-width {
+    display: block;
+}
+
+    .dijitButton.full-width .dijitButtonNode {
+        width: 90%;
+    }
+
 /*
     media queries bootstrap style
     https://getbootstrap.com/css/#grid-media-queries

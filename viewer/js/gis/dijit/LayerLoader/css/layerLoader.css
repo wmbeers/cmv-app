@@ -62,6 +62,10 @@ span.selectedItem {
     text-align: right;
 }
 
+.buttonContainerFull .dijitButton {
+    width: 100%;
+}
+
 .emptyCategory {
     font-style: italic;
     color: gray;

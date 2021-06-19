@@ -1,19 +1,13 @@
 ﻿<div>
-    <h3>Show Draft Data?</h3>
-    <p>At least one analysis area being loaded has both draft and milestone (previously reviewed or in review) data. Please select which version to load</p>
-
-    <h4>Alternative 1</h4>
-    <div>
-        <input type="radio" name="useDraft" value="Y" /> <label>Draft</label>
-        <input type="radio" name="useDraft" value="N" /> <label>Most recent milestone</label>
+    <div style="margin-bottom: 10px">
+        This project has a current draft version which is newer than the most recent project milestone.
+        Which version would you like to load?
     </div>
-
-
-    <div class="buttonContainer buttonContainerRight">
-        <!-- ko if: url && url !== '' -->
-        <div data-bind="click: loadService" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'fa fa-plus-square fa-fw'">
-            Continue
-        </div>
-        <!-- /ko -->
+    <!--note the data-dojo-attach-event and ..attach-point attributes are ignored for some reason. See the constructor in _LayerLoadMixin.startup for how we handle clicks -->
+    <div id="currentDraftButton" class="full-width" data-dojo-type="dijit/form/Button">
+        Current Draft
+    </div>
+    <div id="mostRecentMilstoneButton" class="full-width" data-dojo-type="dijit/form/Button">
+        Most Recent Milestone
     </div>
 </div>
