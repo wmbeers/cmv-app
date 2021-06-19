@@ -924,7 +924,7 @@ define([
 
             f(id, {
                 callback: function (reply) {
-                    deferred.resolve(isAlt? [reply] : reply);
+                    deferred.resolve(isAlt ? [reply] : reply);
                 },
                 errorHandler: function (message, exception) {
                     //self.loadingOverlay.hide();
@@ -1047,6 +1047,7 @@ define([
          * Called from button event handlers on the UseDraftDialog. Hides the dialog, sets the propert source information, then
          * calls _loadProjectAlts.
          * @param {any} chosenSource a reference to projects.draftProjectsService or projects.nonDraftProjectsService
+         * @returns {void}
          */
         _setSourceAndLoadProject: function (chosenSource) {
             this.useDraftDialog.hide();
@@ -1103,10 +1104,6 @@ define([
         _loadProjectAlt: function (serviceInfo) {
             var self = this, //so we don't lose track buried down in callbacks
                 deferred = new Deferred();
-
-            if (serviceInfo.source !== projects.draftProjectsService) {
-                definitionQuery = 'fk_' + definitionQuery;
-            }
 
             //TODO get lex to make draft layer structure consistent
             //query.outFields = queryDraft ? ['PROJECT_ALT', 'ALT_ID', 'ALT_NAME'] : ['FK_PROJECT', 'FK_PROJECT_ALT', 'ALT_ID', 'ALT_NAME'];
@@ -1958,7 +1955,8 @@ define([
          */
         zoomToLayer: function (layer) {
             var self = this,
-                deferred = new Deferred();
+                deferred = new Deferred(),
+                query = null; //not needed at this scope, but lint complains if "var query" appears more than once, even when separated by if/else
             //when called from the menu, "layer" argument isn't really the layer, but a structure created by layer control
             if (layer.layer) {
                 if (layer.subLayer) {
@@ -1971,7 +1969,7 @@ define([
 
             //test if we have a definition expression applied, and if so, query the extent and zoom in query callback
             if (layer.getDefinitionExpression && layer.getDefinitionExpression()) {
-                var query = new Query();
+                query = new Query();
                 //query.where = '1=1' //definitionExpression, if present, doesn't need to be re-applied; nor does this '1=1' hack need to be here, because we're running the query against the layer which already is supplying the appropriate where clause
                 layer.queryExtent(query,
                     //query extent succeeded, zoom the map
@@ -2007,7 +2005,7 @@ define([
                     }
                     var subLayerUrl = layer.url + '/' + index,
                         queryTask = new QueryTask(subLayerUrl);
-                    var query = new Query();
+                    query = new Query();
                     query.where = layerDefinition; //definitionExpression/layerDefinition, if present, DOES need to be applied for this way of doing it, w/o building reference to a feature layer
                     return queryTask.executeForExtent(query);
                 });

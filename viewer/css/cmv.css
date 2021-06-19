@@ -657,6 +657,16 @@ body {
     content: '\f0c8';
 }
 
+/* dojo buttons "full-width" class used in UseDraftDialog; stuck here because stylelint insists it must come before the stuff under "basemap widge" */
+
+.dijitButton.full-width {
+    display: block;
+}
+
+    .dijitButton.full-width .dijitButtonNode {
+        width: 90%;
+    }
+
 /* basemap widget */
 .cmv .cmv-ui .basemapWidget .dijitDropDownButton {
     margin: 0;
@@ -884,15 +894,6 @@ body {
 
 /* end esri directions widget overrides */
 
-/* dojo buttons */
-
-.dijitButton.full-width {
-    display: block;
-}
-
-    .dijitButton.full-width .dijitButtonNode {
-        width: 90%;
-    }
 
 /*
     media queries bootstrap style
