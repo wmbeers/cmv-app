@@ -18,7 +18,7 @@ function (ImageParameters, projectUrls) {
         constructOperationalLayer: function (id, title) {
             var imageParameters = new ImageParameters();
             imageParameters.format = 'png32';
-            imageParameters.layerIds = [0, 6, 7, 8];
+            imageParameters.layerIds = [6, 7, 8];
             imageParameters.layerOption = 'show';
 
             return {

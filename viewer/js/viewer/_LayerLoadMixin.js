@@ -8,6 +8,8 @@ define([
     'dojo/io-query',
     'dojo/Deferred',
     'dijit/Dialog',
+    'gis/dijit/LoadingOverlay',
+
     'dojo/promise/all',
     'dojo/request',
     './js/config/projects.js',
@@ -51,6 +53,7 @@ define([
     ioQuery,
     Deferred,
     Dialog,
+    LoadingOverlay,
     all,
     request,
     projects,
@@ -149,6 +152,7 @@ define([
                 self._setSourceAndLoadProject(projects.nonDraftProjectsService);
             });
 
+            this.loadingOverlay = new LoadingOverlay(); //this can be defined at the root level, but...what, don't know, copied from AoiEditor
 
             this.inherited(arguments);
         },
@@ -922,8 +926,11 @@ define([
                 return deferred;
             }
 
+            this.loadingOverlay.show('Getting project information');
+            var self = this;
             f(id, {
                 callback: function (reply) {
+                    self.loadingOverlay.hide();
                     deferred.resolve(isAlt ? [reply] : reply);
                 },
                 errorHandler: function (message, exception) {
@@ -1071,7 +1078,7 @@ define([
                 promises = [];
             serviceInfos.forEach(function (serviceInfo) {
                 //turn the extent into an ESRI extent
-                //todo not sure if the extent from serviceInfos can be trusted, should do a query for extent on analysis areas
+                //TODO! not sure if the extent from serviceInfos can be trusted, should do a query for extent on analysis areas
                 serviceInfo.extent = new Extent({
                     xmin: serviceInfo.extent.xmin,
                     ymin: serviceInfo.extent.ymin,
@@ -1105,19 +1112,42 @@ define([
             var self = this, //so we don't lose track buried down in callbacks
                 deferred = new Deferred();
 
-            //TODO get lex to make draft layer structure consistent
-            //query.outFields = queryDraft ? ['PROJECT_ALT', 'ALT_ID', 'ALT_NAME'] : ['FK_PROJECT', 'FK_PROJECT_ALT', 'ALT_ID', 'ALT_NAME'];
-            //convert definitionQuery into sparse array of layerDefinitions
-
+            //convert definitionQuery into sparse array of layerDefinitions, 
             var layerDefinitions = [],
-                //layerIndexes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24];
-                //todo the layer index are different, non-draft service has labels at root (index 0), not under Analysis Area Features (index 0 in other services)
-                layerIndexes = serviceInfo.source === projects.nonDraftProjectsService ? [1, 2, 3, 5, 6, 7, 8, 9, 12, 13, 15, 16, 17, 19, 20] : [2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24];
+                layerIndexes = [
+                    /* eslint-disable no-multi-spaces */
+                    //0,  * Analysis Area Features folder
+                    //1,    * Labels folder
+                    2, //     Point Labels
+                    3, //     Line Labels
+                    4, //     Polygon Labels
+                    5, //   Termini
+                    6, //   Points
+                    7, //   Lines
+                    8, //   Polygons
+                    9, // Analysis Areas
+                    //10, * GIS Buffers folder, 
+                    //11,   * Feature Buffers Folder
+                    12, //    100 ft
+                    13, //    200 ft
+                    14, //    500 ft
+                    15, //    1320 ft
+                    16, //    2640 ft
+                    17, //    5280 ft
+                    //18,   * Analysis Area Buffers folder
+                    19, //    100 ft
+                    20, //    200 ft
+                    21, //    500 ft
+                    22, //    1310 ft
+                    23, //    2640 ft
+                    24  //    5280 ft
+                /* eslint-enable no-multi-spaces */
+                ];
 
             layerIndexes.forEach(function (layerIndex) {
-                //This hackiness deals with the inconsistencies of naming the field we're filtering on from service to service and layer to layer.
-                //TODO update this when GeoPlan changes the structures
-                if (serviceInfo.source === projects.nonDraftProjectsService && layerIndex < 12) {
+                //TODO delete this commented-out block, said hackiness seems no longer needed
+                //This hackiness dealt with the inconsistencies of naming the field we're filtering on from service to service and layer to layer.
+                /*if (serviceInfo.source === projects.nonDraftProjectsService && layerIndex < 12) {
                     //features and analysis areas of the non-draft service reference fk_project_alt
                     layerDefinitions[layerIndex] = 'fk_project_alt=' + serviceInfo.id;
                 } else if (serviceInfo.source === projects.nonDraftProjectsService && layerIndex >= 12) {
@@ -1129,7 +1159,8 @@ define([
                 } else {
                     //other layers of the draft service use just "project_alt"
                     layerDefinitions[layerIndex] = 'project_alt=' + serviceInfo.id;
-                }
+                }*/
+                layerDefinitions[layerIndex] = 'FK_PROJECT_ALT=' + serviceInfo.id;
             });
 
 
@@ -1139,10 +1170,14 @@ define([
                 url: serviceInfo.source,
                 type: 'dynamic',
                 layerName: null, //only needed for metadata, which we don't have for projects
-                //used by identify widget to specify which layers will have identify results
+                //layerIds array is used by identify widget to specify which layers will have identify results
                 //done todo get lex to add labels to non-draft service so it has the same indexes as everything else:
-                layerIds: [5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24]
+                layerIds: [5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24],
                 //layerIds: serviceInfo.source === projects.nonDraftProjectsService ? [1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19] : [5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24]
+                //imageParameters: {
+                //    layerIds: [0, 6, 7, 8]
+                //}
+                visibleLayers: [6, 7, 8]
             };
 
             if (serviceInfo.source === projects.draftProjectsService) {
@@ -1168,8 +1203,8 @@ define([
         },
 
         /**
-         * TODO add support for project/alt milestones
          * DEPRECATED replaced with addProject TODO delete this
+         * ignore this todo, N/A with deprecation of this methodTODO add support for project/alt milestones
          * Add a project or alternative to the map, using one of the following patterns:
          * 'p' followed by a project ID (e.g. p12992 to load project #12992)
          * number, or string that contains just numbers (e.g. 12992 or '12992' to load project #12992)
@@ -1199,7 +1234,7 @@ define([
             if (typeof projectAltId === 'number' || !isNaN(projectAltId)) {
                 //presumed to be a project #
                 //all alternatives for a given project
-                //TODO get lex to make drafts layer have same structure with fk_project field added
+                //ignore this todo, N/A with deprecation of this method TODO get lex to make drafts layer have same structure with fk_project field added
                 if (queryDraft) {
                     definitionQuery = 'alt_id like \'' + projectAltId + '-%\'';
                 } else {
@@ -1207,7 +1242,7 @@ define([
                 }
             } else if (projectAltId.startsWith('a')) {
                 //specific alternative by fk_project_alt
-                //TODO get lex to make drafts layer have same structure with fk_project_alt field instead of project_alt
+                //ignore this todo, N/A with deprecation of this method TODO get lex to make drafts layer have same structure with fk_project_alt field instead of project_alt
                 if (queryDraft) {
                     definitionQuery = 'project_alt=' + projectAltId.substr(1);
                 } else {
@@ -1219,7 +1254,7 @@ define([
                 definitionQuery = 'alt_id=\'' + projectAltId + '\'';
                 isAlt = true;
             } else if (projectAltId.startsWith('p')) {
-                //TODO get lex to make drafts layer have same structure with fk_project field added
+                //ignore this todo, N/A with deprecation of this method TODO get lex to make drafts layer have same structure with fk_project field added
                 if (queryDraft) {
                     definitionQuery = 'alt_id like \'' + projectAltId.substr(1) + '-%\'';
                 } else {
@@ -1239,7 +1274,7 @@ define([
             //validate the projectAltId
             query.where = definitionQuery;
             query.returnGeometry = false;
-            //TODO get lex to make draft layer structure consistent
+            //ignore this todo, N/A with deprecation of this method TODO get lex to make draft layer structure consistent
             query.outFields = queryDraft ? ['PROJECT_ALT', 'ALT_ID', 'ALT_NAME'] : ['FK_PROJECT', 'FK_PROJECT_ALT', 'ALT_ID', 'ALT_NAME'];
 
             //old way used executeForCount and just got the number of features,
