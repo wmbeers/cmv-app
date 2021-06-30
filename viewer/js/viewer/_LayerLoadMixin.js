@@ -92,7 +92,7 @@ define([
             topic.subscribe('layerControl/viewMetadata', lang.hitch(this, 'viewMetadata'));
 
             //topics called from other places use topic layerLoader/... for clarity
-            topic.subscribe('layerLoader/addProjectToMap', lang.hitch(this, 'addProject'));
+            topic.subscribe('layerLoader/addProjectToMap', lang.hitch(this, 'addProjectToMap'));
             topic.subscribe('layerLoader/addAoiToMap', lang.hitch(this, 'addAoiToMap'));
             topic.subscribe('layerLoader/addLayerFromLayerDef', lang.hitch(this, 'addLayerFromLayerDef'));
             topic.subscribe('layerLoader/addLayerFromCategoryDef', lang.hitch(this, 'addLayerFromCategoryDef'));
@@ -251,15 +251,13 @@ define([
             }
             //load a project, alternative, AOI, AOI analysis area, or feature
             if (qsObj.projectId) {
-                //addProjectToMap accepts multiple arguments (projectAltId, zoomOnLoad, _deferred, queryDraft)
-                //we only care about the first two
+                functions.push(this.addProjectToMap);
                 //zoomOnLoad should be false if mgrs/latlong parameter is also included
-                functions.push(this.addProject);
                 var zoomOnLoadProject = true;
                 if (qsObj.mgrs || qsObj.latLong) {
                     zoomOnLoadProject = false;
                 }
-                args.push([qsObj.projectId, zoomOnLoadProject, qsObj.version]); /*version might be null/undefined, and that's ok, handled in addProject*/
+                args.push([qsObj.projectId, zoomOnLoadProject, qsObj.version]); /*version is the indication of whether user wants (d)raft or (m)ilestoned data; might be null/undefined, and that's ok, handled in addProjectToMap*/
                 //load an AOI
             } else if (qsObj.aoiId) {
                 functions.push(this.addAoiToMap);
@@ -934,12 +932,13 @@ define([
                     deferred.resolve(isAlt ? [reply] : reply);
                 },
                 errorHandler: function (message, exception) {
-                    //self.loadingOverlay.hide();
-                    topic.publish('viewer/handleError', {
-                        source: '_LayerLoadMixin/addProject',
-                        error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)
+                    self.loadingOverlay.hide();
+                    topic.publish('growler/growl', {
+                        title: 'Error',
+                        message: message,
+                        level: 'error'
                     });
-                    deferred.reject(message);
+                    deferred.cancel('Invalid project/alt ID');
                 }
             });
 
@@ -951,7 +950,7 @@ define([
         },
 
         /**
-         * First step in the new chain of adding a project, replacing addProjectToMap. Calls internal function _getProjectAltServiceInfos, which queries EST to get projectAltServiceInfos
+         * First step in the chain of adding a project service. Calls internal function _getProjectAltServiceInfos, which queries EST to get projectAltServiceInfos
          * for each alt of the project, or getProjectAltServiceInfo (singular) for a specific alternative. The serviceInfo(s) returned 
          * tell us where to get the data, and the extent TODO CAN WE TRUST THE EXTENT!. If project has both draft and non-draft versions available,
          * and user has access to draft, user is prompted to choose which version to see, unless the version parameter was passed in the command. 
@@ -966,7 +965,7 @@ define([
          * @param {string} versionPreference If provided, and the project being loaded has both draft and milestone versions, this parameter is used to determine which version ('d' for draft or 'm' for milestoned) to load.
          * @return {Deferred} Deffered instance, resolved when all alts of the project have finished loading
          */
-        addProject: function (projectAltId, zoomOnLoad, versionPreference) {
+        addProjectToMap: function (projectAltId, zoomOnLoad, versionPreference) {
             var self = this,
                 deferred = new Deferred();
 
@@ -1067,10 +1066,10 @@ define([
         },
 
         /**
-         * Called from addProject or method that deals with dialog results, taking the now
+         * Called from addProjectToMap or method that deals with dialog results, taking the now
          * complete serviceInfos and loading each alt.
          * @param {any} serviceInfos The serviceInfos, which contain the alt IDs (FK_PROJECT_ALT), and whether to pull from draft or non-draft, and the extent.
-         * @param {any} deferred The Deferred object created by addProject, which will be resolved in this method when all alts are finished loading
+         * @param {any} deferred The Deferred object created by addProjectToMap, which will be resolved in this method when all alts are finished loading
          * @return {void}
          */
         _loadProjectAlts: function (serviceInfos, deferred) {
@@ -1145,21 +1144,6 @@ define([
                 ];
 
             layerIndexes.forEach(function (layerIndex) {
-                //TODO delete this commented-out block, said hackiness seems no longer needed
-                //This hackiness dealt with the inconsistencies of naming the field we're filtering on from service to service and layer to layer.
-                /*if (serviceInfo.source === projects.nonDraftProjectsService && layerIndex < 12) {
-                    //features and analysis areas of the non-draft service reference fk_project_alt
-                    layerDefinitions[layerIndex] = 'fk_project_alt=' + serviceInfo.id;
-                } else if (serviceInfo.source === projects.nonDraftProjectsService && layerIndex >= 12) {
-                    //buffers of feature and analysis areas of the non-draft service reference pk_project_alt
-                    layerDefinitions[layerIndex] = 'pk_project_alt=' + serviceInfo.id;
-                } else if (serviceInfo.source === projects.draftProjectsService && layerIndex >= 19) {
-                    //analysis area buffers of the draft service lack pk/fk_project_alt field, have to resort to alt_id
-                    layerDefinitions[layerIndex] = 'alt_id=\'' + serviceInfo.altNum + '\'';
-                } else {
-                    //other layers of the draft service use just "project_alt"
-                    layerDefinitions[layerIndex] = 'project_alt=' + serviceInfo.id;
-                }*/
                 layerDefinitions[layerIndex] = 'FK_PROJECT_ALT=' + serviceInfo.id;
             });
 
@@ -1171,13 +1155,8 @@ define([
                 type: 'dynamic',
                 layerName: null, //only needed for metadata, which we don't have for projects
                 //layerIds array is used by identify widget to specify which layers will have identify results
-                //done todo get lex to add labels to non-draft service so it has the same indexes as everything else:
                 layerIds: [5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24],
-                //layerIds: serviceInfo.source === projects.nonDraftProjectsService ? [1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19] : [5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24]
-                //imageParameters: {
-                //    layerIds: [0, 6, 7, 8]
-                //}
-                visibleLayers: [6, 7, 8]
+                visibleLayers: [6, 7, 8] //point, line, and polygon features on by default. Todo analysis areas as well?
             };
 
             if (serviceInfo.source === projects.draftProjectsService) {
@@ -1188,7 +1167,7 @@ define([
 
             projectLayerConfig.projectAltId = 'a' + serviceInfo.id;
             var projectLayer = self.constructLayer(projectLayerConfig,
-                layerDefinitions, // definitionQuery,
+                layerDefinitions,
                 false, //prevents definitionExpression from overriding title TODO cleaner method of handling this
                 null
             );
@@ -1201,177 +1180,6 @@ define([
 
             return deferred;
         },
-
-        /**
-         * DEPRECATED replaced with addProject TODO delete this
-         * ignore this todo, N/A with deprecation of this methodTODO add support for project/alt milestones
-         * Add a project or alternative to the map, using one of the following patterns:
-         * 'p' followed by a project ID (e.g. p12992 to load project #12992)
-         * number, or string that contains just numbers (e.g. 12992 or '12992' to load project #12992)
-         * 'a' followed by a project alt ID (e.g. 'a9912' to load project alt 9912)
-         * string containing two numbers separated by a dash (e.g. 12992-1 to load alt 1 of project 12992)
-         * @param {any} projectAltId The project or alternative ID, as described above
-         * @param {boolean} zoomOnLoad If true (or omitted), the map will zoom to the extent of the project after loading it. If false the current map extent is maintained. It is set to false when loading a saved map, because the desired map extent is saved with the map.
-         * @param {Deferred} _deferred Optional Deferred object, created if omitted. Used when calling this function from itself to maintain the promise.
-         * @param {Boolean} queryDraft Set when calling this function from itself to indicate we should check the draft layer
-         * @return {Deferred} Deffered instance--one created by this function or passed in via _deferred argument.
-         */
-        addProjectToMap: function (projectAltId, zoomOnLoad, _deferred, queryDraft) {
-            var self = this, //so we don't lose track buried down in callbacks
-                isAlt = false,
-                definitionQuery = '',
-                deferred = _deferred || new Deferred(),
-                query = new Query(),
-                url = queryDraft && (this.hasProjectEditAuthority || this.hasViewDraftAuthority) ? projects.queryDraftLayer : projects.queryMmaLayer, //query task url is in the config file viewer/js/config/projects.js. 
-                queryTask = new QueryTask(url);
-
-            //default zoomOnLoad to true
-            if (typeof zoomOnLoad === 'undefined') {
-                zoomOnLoad = true;
-            }
-
-            //figure out if we're zooming to a project or a specific alt
-            if (typeof projectAltId === 'number' || !isNaN(projectAltId)) {
-                //presumed to be a project #
-                //all alternatives for a given project
-                //ignore this todo, N/A with deprecation of this method TODO get lex to make drafts layer have same structure with fk_project field added
-                if (queryDraft) {
-                    definitionQuery = 'alt_id like \'' + projectAltId + '-%\'';
-                } else {
-                    definitionQuery = 'fk_project=' + projectAltId;
-                }
-            } else if (projectAltId.startsWith('a')) {
-                //specific alternative by fk_project_alt
-                //ignore this todo, N/A with deprecation of this method TODO get lex to make drafts layer have same structure with fk_project_alt field instead of project_alt
-                if (queryDraft) {
-                    definitionQuery = 'project_alt=' + projectAltId.substr(1);
-                } else {
-                    definitionQuery = 'fk_project_alt=' + projectAltId.substr(1);
-                }
-                isAlt = true;
-            } else if (projectAltId.indexOf('-') > 0) {
-                //specific alternative identified by project-alt pattern, like '1234-1' for alt 1 of project 1234
-                definitionQuery = 'alt_id=\'' + projectAltId + '\'';
-                isAlt = true;
-            } else if (projectAltId.startsWith('p')) {
-                //ignore this todo, N/A with deprecation of this method TODO get lex to make drafts layer have same structure with fk_project field added
-                if (queryDraft) {
-                    definitionQuery = 'alt_id like \'' + projectAltId.substr(1) + '-%\'';
-                } else {
-                    definitionQuery = 'fk_project=' + projectAltId.substr(1);
-                }
-            } else if (!isNaN(projectAltId)) {
-                //something we don't know how to handle.
-                //no features found
-                topic.publish('growler/growl', {
-                    title: 'Invalid Project/Analysis Area ID',
-                    message: 'Unable to parse ID ' + projectAltId,
-                    level: 'error'
-                });
-                deferred.cancel('Invalid project/alt ID');
-            }
-
-            //validate the projectAltId
-            query.where = definitionQuery;
-            query.returnGeometry = false;
-            //ignore this todo, N/A with deprecation of this method TODO get lex to make draft layer structure consistent
-            query.outFields = queryDraft ? ['PROJECT_ALT', 'ALT_ID', 'ALT_NAME'] : ['FK_PROJECT', 'FK_PROJECT_ALT', 'ALT_ID', 'ALT_NAME'];
-
-            //old way used executeForCount and just got the number of features,
-            //but we really need to know, if it's an alt, the fk_project_alt value for saving it
-            //queryTask.executeForCount(query, function (count) {
-            //    if (count === 0) {
-            queryTask.execute(query, function (reply) {
-                if (reply.features.length === 0) {
-                    //no features found
-                    if (!queryDraft && (self.hasProjectEditAuthority || self.hasViewDraftAuthority)) {
-                        //try again with draft, passing the deferred we've already created and true for the queryDraft argument
-                        self.addProjectToMap(projectAltId, zoomOnLoad, deferred, true);
-                    } else {
-                        //not found 
-                        topic.publish('growler/growl', {
-                            title: 'Invalid Project/Analysis Area ID',
-                            message: 'No projects found with id ' + projectAltId,
-                            level: 'error'
-                        });
-                        deferred.cancel('Invalid project/alt ID');
-                    }
-                } else {
-                    //load it!
-                    //first construct a layerDef
-                    var projectLayerConfig = {
-                        name: 'Project # ' + projectAltId,
-                        id: ('project_' + projectAltId).replace('-', '_'), //internal ID, not really important, but helps with debugging
-                        url: queryDraft ? projects.draftProjectsService : projects.previouslyReviewedProjectsService, // url, TODO switch to whatever proper service we're going to use that has everything non-draft
-                        type: 'dynamic',
-                        layerName: null, //only needed for metadata, which we don't have for projects
-                        //used by identify widget to specify which layers will have identify results
-                        layerIds: [5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24]
-                    };
-
-                    //convert definitionQuery into sparse array of layerDefinitions
-                    var layerDefinitions = [],
-                        layerIndexes = [2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24];
-
-                    layerIndexes.forEach(function (layerIndex) {
-                        layerDefinitions[layerIndex] = definitionQuery;
-                    });
-
-                    projectLayerConfig.identifies = projectConfig.constructIdentifies(!queryDraft);
-
-                    if (isAlt) {
-                        //cache the fk_project_alt for savedMap
-                        projectLayerConfig.projectAltId = queryDraft ? reply.features[0].attributes.PROJECT_ALT : reply.features[0].attributes.FK_PROJECT_ALT;
-                        //per bug 5100, alts use the alt_name
-                        if (reply.features[0].attributes.ALT_NAME) {
-                            projectLayerConfig.name = reply.features[0].attributes.ALT_NAME;
-                        } else {
-                            projectLayerConfig.name = 'Project # ' + reply.features[0].attributes.ALT_ID;
-                        }
-                    } else {
-                        //cach the fk_project for savedMap
-                        projectLayerConfig.projectId = queryDraft ? reply.features[0].attributes.ALT_ID.split('-')[0] : reply.features[0].attributes.FK_PROJECT;
-                    }
-
-                    var projectLayer = self.constructLayer(projectLayerConfig,
-                        layerDefinitions, // definitionQuery,
-                        false, //prevents definitionExpression from overriding title TODO cleaner method of handling this
-                        null //todo just set this in the map service rather than having to code in js
-                        //currently it's the right color, but the width is too narrow
-                        //new SimpleRenderer({
-                        //    'type': 'simple',
-                        //    'symbol': {
-                        //        'type': 'esriSFS',
-                        //        'style': 'esriSFSSolid',
-                        //        'color': [255, 255, 0, 180],
-                        //        'outline': {
-                        //            'type': 'esriSLS',
-                        //            'style': 'esriSLSSolid',
-                        //            'color': [255, 255, 0, 255],
-                        //            'width': 3
-                        //        }
-                        //    }
-                        //})
-                    );
-                    //resolve deferred via addLayer method
-                    self.addLayer(projectLayer, zoomOnLoad).then(
-                        function (l) {
-                            deferred.resolve(l);
-                        }
-                    );
-                }
-
-            }, function (e) {
-                topic.publish('viewer/handleError', {
-                    source: 'LayerLoadMixin.addProjectToMap',
-                    error: e
-                });
-                deferred.cancel('Invalid project/alt ID');
-            });
-
-            return deferred;
-        },
-
 
         /**
          * Add the project feature to the map identified by featureId and featureType
@@ -1562,10 +1370,10 @@ define([
         addAoiToMap: function (aoiId) {
             var self = this,
                 deferred = new Deferred();
-
+            self.loadingOverlay.show('Adding AOI to map');
             MapDAO.getAoiModel(aoiId, {
                 callback: function (aoi) {
-                    //todo loading overlay for this class self.loadingOverlay.hide();
+                    self.loadingOverlay.hide();
                     if (aoi) {
                         self.addAoiModelToMap(aoi).then(function (r) {
                             deferred.resolve(r);
@@ -1578,7 +1386,7 @@ define([
                     }
                 },
                 errorHandler: function (message, exception) {
-                    //self.loadingOverlay.hide();
+                    self.loadingOverlay.hide();
                     topic.publish('viewer/handleError', {
                         source: '_LayerLoadMixin/addAoiToMap',
                         error: 'Error message is: ' + message + ' - Error Details: ' + dwr.util.toDescriptiveString(exception, 2)
